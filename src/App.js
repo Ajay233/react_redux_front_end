@@ -1,24 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import NavBar from './navBar.js'
+import Login from './login/login.js';
+import SignUp from './login/signUp';
 
-function App() {
+const tmp = () => {
+  return(
+    <div>
+      This is a temporary placeholder page
+      <div>
+        <Link to="/login">Login</Link>
+      </div>
+    </div>
+  );
+}
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <div>
+          <NavBar />
+          <Route path="/" exact component={tmp}/>
+          <Route path="/login" render={() => <Login />}/>
+          <Route path="/signUp" render={() => <SignUp />}/>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
