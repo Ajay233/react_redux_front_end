@@ -33,11 +33,11 @@ export const setJwt = (jwt) => {
   }
 }
 
-export const setLoginStatus = () => {
+export const setLoginStatus = (status) => {
   return {
     type: "SET_LOGGED_IN",
     payload: {
-      loggedIn: true
+      loggedIn: status
     }
   }
 }

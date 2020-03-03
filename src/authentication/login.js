@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import {
+  setUser,
+  setLoginStatus,
+  setJwt,
+  logOutUser
+} from './actions'
 import axios from 'axios';
 
 
@@ -9,30 +15,13 @@ class Login extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      loggedIn: false,
       showVerified: false,
       doVerify: this.props.verify,
-      email: "",
-      password: "",
-      forename: "",
-      surname: "",
       response: "",
       error: ""
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  setLoggedIn = (status) => {
-    this.setState({ loggedIn: status });
-  }
-
-  setForename = (firstName) => {
-    this.setState({ forename: firstName });
-  }
-
-  setSurname = (lastName) => {
-    this.setState({ surname: lastName });
   }
 
   setResponse = (success) => {
@@ -53,10 +42,10 @@ class Login extends React.Component {
         'email': this.state.email,
         'password': this.state.password
     }).then((response) => {
-      this.setForename(response.data.user.forename);
-      this.setSurname(response.data.user.surname);
+      this.props.setUser(response.data.user);
+      this.props.setJwt(response.data.jwt);
+      this.props.setLoginStatus(true);
       this.setResponse(response);
-      this.setLoggedIn(true);
       console.log(response)
     }).catch((error) => {
       this.setError(error);
@@ -98,4 +87,10 @@ const mapStateToProps = (state) => {
   return {user: state.user};
 }
 // export default Login;
-export default connect(mapStateToProps)(Login);
+export default connect(
+  mapStateToProps, {
+    setUser,
+    setLoginStatus,
+    setJwt,
+    logOutUser
+  })(Login);
