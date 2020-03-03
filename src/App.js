@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import NavBar from './navBar.js'
-import Login from './login/login.js';
-import SignUp from './login/signUp';
+import Login from './authentication/login';
+import SignUp from './authentication/signUp';
+import Verify from './authentication/verify';
 
 const tmp = () => {
   return(
@@ -22,8 +23,9 @@ const App = () => {
         <div>
           <NavBar />
           <Route path="/" exact component={tmp}/>
-          <Route path="/login" render={() => <Login />}/>
+          <Route path="/login" render={() => <Login verify={false} />}/>
           <Route path="/signUp" render={() => <SignUp />}/>
+          <Route path="/verify" render={() => <Login verify={true} />}/>
         </div>
       </BrowserRouter>
     </div>
