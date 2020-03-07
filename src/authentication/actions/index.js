@@ -1,13 +1,30 @@
-export const setUser = (user) => {
-  return {
-    type: "SET_USER",
-    payload: {
-      forename: user.forename,
-      surname: user.surname,
-      email: user.email,
-      permission: user.permission,
-      verified: user.verified
-    }
+import { post } from '../../axiosRequests/requests'
+
+export const setUser = (endpoint, loginDetails) => {
+
+  return (dispatch) => {
+
+    post(endpoint, loginDetails).then((response) => {
+      dispatch({
+        type: "SET_USER_LOGGED_IN",
+        payload: {
+          forename: response.data.user.forename,
+          surname: response.data.user.surname,
+          email: response.data.user.email,
+          permission: response.data.user.permission,
+          verified: response.data.user.verified,
+          jwt: response.data.jwt,
+          loggedIn: true
+        }
+      })
+    }).catch((error) => {
+      dispatch({
+        type: "SET_USER_LOGGED_IN",
+        payload: {
+          error: error.response
+        }
+      })
+    })
   }
 }
 
@@ -19,26 +36,34 @@ export const logOutUser = () => {
       surname: "",
       email: "",
       permission: "",
-      verified: ""
+      verified: "",
+      jwt: "",
+      loggedIn: false
     }
   }
 }
 
-export const setJwt = (jwt) => {
-  return {
-    type: "SET_JWT",
-    payload: {
-      jwt: jwt
-    }
-  }
-}
+export const setVerficationProcess = (endpoint, verificationDetails) => {
 
-export const setLoginStatus = (status) => {
-  return {
-    type: "SET_LOGGED_IN",
-    payload: {
-      loggedIn: status
-    }
+  return (dispatch) => {
+
+    post(endpoint, verificationDetails).then((response) => {
+      dispatch({
+        type: "SET_VERIFY_PROCESS_STATUS",
+        payload: {
+          completionStatus: "completed"
+        }
+      })
+    }).catch((error) => {
+      dispatch({
+        type: "SET_VERIFY_PROCESS_STATUS",
+        payload: {
+          completionStatus: "not verified",
+          token: verificationDetails.token,
+          error: error.response
+        }
+      })
+    })
   }
 }
 

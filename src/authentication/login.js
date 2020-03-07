@@ -2,13 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
-  setUser,
-  setLoginStatus,
-  setJwt,
-  logOutUser
+  setUser
 } from './actions'
-import axios from 'axios';
 
+import { post } from '../axiosRequests/requests';
+import '../stylesheets/notifications.css'
 
 class Login extends React.Component {
 
@@ -17,19 +15,9 @@ class Login extends React.Component {
     this.state = {
       showVerified: false,
       doVerify: this.props.verify,
-      response: "",
-      error: ""
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  setResponse = (success) => {
-    this.setState({ response: success });
-  }
-
-  setError = (err) => {
-    this.setState({ error: err });
   }
 
   handleChange = (event) => {
@@ -38,34 +26,43 @@ class Login extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:8080/users/auth/login',{
-        'email': this.state.email,
-        'password': this.state.password
-    }).then((response) => {
-      this.props.setUser(response.data.user);
-      this.props.setJwt(response.data.jwt);
-      this.props.setLoginStatus(true);
-      this.setResponse(response);
-      console.log(response)
-    }).catch((error) => {
-      this.setError(error);
-      console.log(error);
-    });
+    const loginDetails =  {'email': this.state.email,'password': this.state.password}
+    this.props.setUser('users/auth/login', loginDetails);
   }
 
-  welcomeMsg = () => {
-    return <h1>Welcome back {this.state.forename}!!</h1>;
+  welcomeMsg = (user) => {
+    if (user){
+      if(user.loggedIn === true){
+        return <h1>Welcome back {this.props.userData.forename}!!</h1>;
+      }
+    }
   }
 
   verifiedMsg = () => {
-    return `Thank you {this.state.forename}, your email has now been verified.  Please login below to use the quiz app :)`
+    return `Thank you, your email has now been verified.  Please login below to use the quiz app :)`
+  }
+
+  errorMsg = () => {
+    if(this.props.userData.error){
+      if(this.props.userData.error.data === "Incorrect username or password"){
+        return <div className="error">The username or password you entered was incorrect</div>
+      } else {
+        return null
+      }
+    }
+  }
+
+  notVerifiedMsg = () => {
+
   }
 
   render(){
     return(
       <div>
-        <div>{this.state.showVerified === true ? this.verifiedMsg() : null}</div>
-        {this.state.loggedIn === true ? this.welcomeMsg() : null}
+        <div>{this.props.verificationProcess.completionStatus === "completed" ? this.verifiedMsg() : null}</div>
+        {console.log(this.props)}
+        {this.errorMsg()}
+        {this.props.userData ? this.welcomeMsg(this.props.userData) : null}
         <div>
           Login below
         </div>
@@ -84,13 +81,11 @@ class Login extends React.Component {
 
 const mapStateToProps = (state) => {
   console.log(state);
-  return {user: state.user};
+  console.log(state.verificationProcess);
+  return {
+    userData: state.userData,
+    verificationProcess: state.verificationProcess
+  };
 }
 // export default Login;
-export default connect(
-  mapStateToProps, {
-    setUser,
-    setLoginStatus,
-    setJwt,
-    logOutUser
-  })(Login);
+export default connect(mapStateToProps, {setUser})(Login);

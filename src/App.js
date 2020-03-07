@@ -25,7 +25,7 @@ const App = () => {
           <Route path="/" exact component={tmp}/>
           <Route path="/login" render={() => <Login verify={false} />}/>
           <Route path="/signUp" render={() => <SignUp />}/>
-          <Route path="/verify" render={() => <Login verify={true} />}/>
+          <Route path="/verify" render={() => <Verify />}/>
         </div>
       </BrowserRouter>
     </div>

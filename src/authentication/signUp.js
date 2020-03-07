@@ -51,6 +51,8 @@ class SignUp extends React.Component {
           <button>Go</button>
         </form>
         <div>{this.state.response}</div>
+        <div>{this.state.response === "" ? null :
+        "An email has been sent to the email address you provided.  \n\n Please login and click the link provided to verify your email address and complete the registration process.  \n\n Once your email address has been verified you will be able to log into the quiz app"}</div>
       </div>
     );
   }

@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
+import { verificationProcess } from '../factory/verificationFactory'
 
 export const setUserReducer = (userData={}, action) => {
-  if(action.type === "SET_USER"){
-    return [action.payload];
+  if(action.type === "SET_USER_LOGGED_IN"){
+    return action.payload;
   } else if (action.type === "LOG_OUT_USER"){
     return {};
   } else {
@@ -10,24 +11,31 @@ export const setUserReducer = (userData={}, action) => {
   }
 }
 
-export const setJwtReducer = (jwt="", action) => {
-  if(action.type === "SET_JWT"){
+export const setVerificationProcessStatus = (verificationProcessStatus=verificationProcess, action) => {
+  if(action.type === "SET_VERIFY_PROCESS_STATUS"){
     return action.payload;
   } else {
-    return jwt;
+    return verificationProcessStatus;
   }
 }
 
-export const setLoggedInReducer = (loggedIn=false, action) => {
-  if(action.type === "SET_LOGGED_IN"){
-    return action.payload;
-  } else {
-    return loggedIn;
-  }
-}
+// export const setJwtReducer = (jwt="", action) => {
+//   if(action.type === "SET_JWT"){
+//     return action.payload;
+//   } else {
+//     return jwt;
+//   }
+// }
+
+// export const setLoggedInReducer = (loggedIn=false, action) => {
+//   if(action.type === "SET_LOGGED_IN"){
+//     return action.payload;
+//   } else {
+//     return loggedIn;
+//   }
+// }
 
 export default combineReducers({
-  user: setUserReducer,
-  jwt: setJwtReducer,
-  loggedIn: setLoggedInReducer
+  userData: setUserReducer,
+  verificationProcess: setVerificationProcessStatus
 });
