@@ -51,7 +51,9 @@ export const setVerficationProcess = (endpoint, verificationDetails) => {
       dispatch({
         type: "SET_VERIFY_PROCESS_STATUS",
         payload: {
-          completionStatus: "completed"
+          completionStatus: "completed",
+          token: "",
+          error: {}
         }
       })
     }).catch((error) => {
@@ -67,7 +69,16 @@ export const setVerficationProcess = (endpoint, verificationDetails) => {
   }
 }
 
-// export const getUser = (userId) => {
+export const setRedirect = (status) => {
+  return {
+    type: "SET_REDIRECT",
+    payload: {
+      status: status
+    }
+  }
+}
+
+// export const getUsers = (endpoint, header) => {
 //   return {
 //     type: "GET_USER",
 //     payload: {

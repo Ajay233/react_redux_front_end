@@ -34,34 +34,30 @@ class Verify extends React.Component {
   }
 
   notFoundMsg = () => {
-    if(this.props.verificationProcess){
-      if(this.props.verificationProcess.error.data === "TOKEN_UNMATCHED"){
-        return (
-          <div className="error">
-            <p>Something went wrong, and the token you provided was not found.</p>
-            <p>Possible causes can include:</p>
-            <ul>
-              <li>You may have already verified your email address.  To check please click <Link to="/login">here</Link> to log in</li>
-              <li>If you copied and pasted the link into the browser adress bar, you will need to check you did not miss any characters</li>
-              <li>You have accessed this page in error</li>
-            </ul>
-          </div>
-        );
-      }
+    if(this.props.verificationProcess.error.data === "TOKEN_UNMATCHED"){
+      return (
+        <div className="error">
+          <p>Something went wrong, and the token you provided was not found.</p>
+          <p>Possible causes can include:</p>
+          <ul>
+            <li>You may have already verified your email address.  To check please click <Link to="/login">here</Link> to log in</li>
+            <li>If you copied and pasted the link into the browser adress bar, you will need to check you did not miss any characters</li>
+            <li>You have accessed this page in error</li>
+          </ul>
+        </div>
+      );
     }
   }
 
   tokenExpiredMsg = () => {
-    if(this.props.verificationProcess){
-      if(this.props.verificationProcess.error.data === "TOKEN_EXPIRED"){
-        return (
-          <div className="error">
-            <p>Your token has expired as it was issued more than 24 hours ago.</p>
-            <p>Please click resend to resend a new token</p>
-            <button onClick={this.handleResend}>Resend</button>
-          </div>
-        );
-      }
+    if(this.props.verificationProcess.error.data === "TOKEN_EXPIRED"){
+      return (
+        <div className="error">
+          <p>Your token has expired as it was issued more than 24 hours ago.</p>
+          <p>Please click resend to resend a new token</p>
+          <button onClick={this.handleResend}>Resend</button>
+        </div>
+      );
     }
   }
 
@@ -96,8 +92,9 @@ class Verify extends React.Component {
   render(){
     return(
       <div>
-        {this.props.verificationProcess === "" ? this.verifyingMsg() :
-        this.props.verificationProcess === "completed" ? this.verifiedMsg() : null}
+        {console.log(this.props.verificationProcess)}
+        {this.props.verificationProcess.completionStatus === "" ? this.verifyingMsg() : null}
+        {this.props.verificationProcess.completionStatus === "completed" ? this.verifiedMsg() : null}
         {this.tokenExpiredMsg()}
         {this.notFoundMsg()}
         {this.state.tokenResent === "Sent" ? this.resentMsg() : null}

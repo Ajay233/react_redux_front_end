@@ -1,20 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import NavBar from './navBar.js'
+import Home from './home';
 import Login from './authentication/login';
 import SignUp from './authentication/signUp';
 import Verify from './authentication/verify';
-
-const tmp = () => {
-  return(
-    <div>
-      This is a temporary placeholder page
-      <div>
-        <Link to="/login">Login</Link>
-      </div>
-    </div>
-  );
-}
+import Logout from './authentication/logout';
 
 const App = () => {
   return (
@@ -22,10 +13,11 @@ const App = () => {
       <BrowserRouter>
         <div>
           <NavBar />
-          <Route path="/" exact component={tmp}/>
+          <Route path="/" exact render={() => <Home />}/>
           <Route path="/login" render={() => <Login verify={false} />}/>
           <Route path="/signUp" render={() => <SignUp />}/>
           <Route path="/verify" render={() => <Verify />}/>
+          <Route path="/logout" component={Logout} />
         </div>
       </BrowserRouter>
     </div>

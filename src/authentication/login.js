@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
-  setUser
+  setUser,
+  setRedirect
 } from './actions'
 
 import { post } from '../axiosRequests/requests';
@@ -14,7 +15,7 @@ class Login extends React.Component {
     super(props);
     this.state = {
       showVerified: false,
-      doVerify: this.props.verify,
+      doVerify: this.props.verify
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,14 +29,18 @@ class Login extends React.Component {
     event.preventDefault();
     const loginDetails =  {'email': this.state.email,'password': this.state.password}
     this.props.setUser('users/auth/login', loginDetails);
+    this.props.setRedirect(true);
   }
 
-  welcomeMsg = (user) => {
-    if (user){
-      if(user.loggedIn === true){
-        return <h1>Welcome back {this.props.userData.forename}!!</h1>;
+  redirect = () => {
+
+  }
+
+  welcomeMsg = () => {
+      if(this.props.userData.loggedIn === true){
+        // return <h1>Welcome back {this.props.userData.forename}!!</h1>;
+        return <Redirect to="/" />
       }
-    }
   }
 
   verifiedMsg = () => {
@@ -62,7 +67,7 @@ class Login extends React.Component {
         <div>{this.props.verificationProcess.completionStatus === "completed" ? this.verifiedMsg() : null}</div>
         {console.log(this.props)}
         {this.errorMsg()}
-        {this.props.userData ? this.welcomeMsg(this.props.userData) : null}
+        {this.welcomeMsg()}
         <div>
           Login below
         </div>
@@ -88,4 +93,4 @@ const mapStateToProps = (state) => {
   };
 }
 // export default Login;
-export default connect(mapStateToProps, {setUser})(Login);
+export default connect(mapStateToProps, {setUser, setRedirect})(Login);

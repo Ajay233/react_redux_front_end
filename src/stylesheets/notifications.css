@@ -1,5 +1,26 @@
 .error {
-  border: 5px red solid;
+  border: 2px #f5c6cb solid;
+  background-color: #f8d7da;
   padding: 15px;
   font-style: normal;
+  color: #721c24;
+  border-radius: 5px;
+}
+
+.success {
+  border: 2px #c3e6cb solid;
+  background-color: #d4edda;
+  padding: 15px;
+  font-style: normal;
+  color: #155724;
+  border-radius: 5px;
+}
+
+.warning {
+  border: 2px #ffeeba solid;
+  background-color: #fff3cd;
+  padding: 15px;
+  font-style: normal;
+  color: #856404;
+  border-radius: 5px;
 }
