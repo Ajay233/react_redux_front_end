@@ -6,6 +6,7 @@ import Login from './authentication/login';
 import SignUp from './authentication/signUp';
 import Verify from './authentication/verify';
 import Logout from './authentication/logout';
+import UserList from './userList/userList'
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/signUp" render={() => <SignUp />}/>
           <Route path="/verify" render={() => <Verify />}/>
           <Route path="/logout" component={Logout} />
+          <Route path="/userList" component={() => <UserList/>} />
         </div>
       </BrowserRouter>
     </div>

@@ -1,10 +1,10 @@
-import { post } from '../../axiosRequests/requests'
+import { post, setHeader } from '../../axiosRequests/requests'
 
-export const setUser = (endpoint, loginDetails) => {
+export const setUser = (endpoint, loginDetails, token) => {
 
   return (dispatch) => {
 
-    post(endpoint, loginDetails).then((response) => {
+    post(endpoint, loginDetails, token).then((response) => {
       dispatch({
         type: "SET_USER_LOGGED_IN",
         payload: {
@@ -14,7 +14,8 @@ export const setUser = (endpoint, loginDetails) => {
           permission: response.data.user.permission,
           verified: response.data.user.verified,
           jwt: response.data.jwt,
-          loggedIn: true
+          loggedIn: true,
+          response: response
         }
       })
     }).catch((error) => {

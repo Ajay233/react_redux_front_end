@@ -25,6 +25,13 @@ class NavBar extends React.Component {
     return this.props.userData.loggedIn === true ? <button className="linkButton links" onClick={this.logOut}>Logout</button> : null
   }
 
+  renderListUser = () => {
+    return this.props.userData.loggedIn === true ? <Link to="/userList" className="links">List all Users</Link> : null
+  }
+
+
+
+  // removed call to this method as this needs to be changed so this does not continually redirect to logout
   redirect = () => {
     return this.props.userData.loggedIn === false ? <Redirect to="/logout" /> : null
   }
@@ -37,7 +44,7 @@ class NavBar extends React.Component {
         {this.renderLogin()}
         {this.renderSignUp()}
         {this.renderLogout()}
-        {this.redirect()}
+        {this.renderListUser()}
       </div>
     );
   }
