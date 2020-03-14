@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import {
   logOutUser
 } from './authentication/actions'
+import DropDown from './dropdown/dropdown'
 import './stylesheets/navBar.css'
 import './stylesheets/buttons.css'
 
@@ -41,6 +42,7 @@ class NavBar extends React.Component {
       <div className="nav">
         <strong>The Quiz App</strong>
         <Link to="/" className="links">Home</Link>
+        <DropDown name={"Menu"} buttonClassName={"links"}/>
         {this.renderLogin()}
         {this.renderSignUp()}
         {this.renderLogout()}
