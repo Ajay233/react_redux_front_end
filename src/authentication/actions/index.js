@@ -8,6 +8,7 @@ export const setUser = (endpoint, loginDetails, token) => {
       dispatch({
         type: "SET_USER_LOGGED_IN",
         payload: {
+          id: response.data.user.id,
           forename: response.data.user.forename,
           surname: response.data.user.surname,
           email: response.data.user.email,

@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import { reducer as formReducer } from 'redux-form'
 import {
   setUserReducer,
   setVerificationProcessStatus,
@@ -13,5 +14,6 @@ export default combineReducers({
   verificationProcess: setVerificationProcessStatus,
   redirect: setRedirectReducer,
   notificationData: setNotificationReducer,
-  listOfUsers: setUserListReducer
+  listOfUsers: setUserListReducer,
+  form: formReducer
 });

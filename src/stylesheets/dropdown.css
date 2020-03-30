@@ -1,0 +1,12 @@
+.list {
+  position: absolute;
+  right: 0;
+  color: white;
+  width: 150px;
+  z-index: 1;
+  background-color: black;
+}
+
+ul {
+  margin: 0;
+}
