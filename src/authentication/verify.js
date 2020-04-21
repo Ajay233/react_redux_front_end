@@ -68,7 +68,7 @@ class Verify extends React.Component {
   handleResend = () => {
     console.log(this.props.verificationProcess.token);
     const data = {'userId': 0, 'token': this.props.verificationProcess.token}
-    post("users/auth/resendToken", data).then((response) => {
+    post("auth/resendToken", data).then((response) => {
       this.setTokenResent("Sent")
     }).catch((error) => {
       console.log(error.response)
@@ -86,7 +86,7 @@ class Verify extends React.Component {
     console.log("VERIFYING.....")
     let token = this.getToken();
     const verificationDetails = {'userId': 0, 'token': token}
-    this.props.setVerficationProcess('users/auth/verify', verificationDetails);
+    this.props.setVerficationProcess('auth/verify', verificationDetails);
   }
 
   render(){

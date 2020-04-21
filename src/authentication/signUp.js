@@ -27,7 +27,7 @@ class SignUp extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:8080/users/auth/signUp',{
+    axios.post('http://localhost:8080/auth/signUp',{
         'forename': this.state.forename,
         'surname': this.state.surname,
         'email': this.state.email,

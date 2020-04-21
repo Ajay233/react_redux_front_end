@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {
-  setUser,
-  setRedirect
-} from './actions'
+import Notification from '../notifications/notifications'
+
+import { setUser, setRedirect } from './actions'
+import { setNotification } from '../notifications/actions';
 
 import { post } from '../axiosRequests/requests';
 import '../stylesheets/notifications.css'
@@ -28,7 +28,7 @@ class Login extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const loginDetails =  {'email': this.state.email,'password': this.state.password}
-    this.props.setUser('users/auth/login', loginDetails);
+    this.props.setUser('auth/login', loginDetails);
     this.props.setRedirect(true);
   }
 
@@ -48,9 +48,13 @@ class Login extends React.Component {
   }
 
   errorMsg = () => {
+    const msg = "The username or password you entered was incorrect"
+    // eror and true
+    this.props.setNotification(msg, "error", true)
     if(this.props.userData.error){
       if(this.props.userData.error.data === "Incorrect username or password"){
-        return <div className="error">The username or password you entered was incorrect</div>
+        // return <div className="error">The username or password you entered was incorrect</div>
+        return <Notification />
       } else {
         return null
       }
@@ -93,4 +97,4 @@ const mapStateToProps = (state) => {
   };
 }
 // export default Login;
-export default connect(mapStateToProps, {setUser, setRedirect})(Login);
+export default connect(mapStateToProps, {setUser, setRedirect, setNotification})(Login);

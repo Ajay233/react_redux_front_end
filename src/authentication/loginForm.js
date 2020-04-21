@@ -38,7 +38,7 @@ class LoginForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:8080/users/auth/login',{
+    axios.post('http://localhost:8080/auth/login',{
         'email': this.state.email,
         'password': this.state.password
     }).then((response) => {

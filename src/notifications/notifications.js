@@ -7,21 +7,12 @@ import { timedFunc } from '../utils/display'
 
 class Notification extends React.Component {
 
-  setStyle = () => {
-    switch (this.props.notificationData.type) {
-      case "error": return "error"; break;
-      case "success": return "success"; break;
-      case "warning": return "warning"; break;
-      default: return null;
-    };
-  }
-
   renderMsg = () => {
-    window.setTimeout(() => {
-      this.props.setNotification();
-    }, 2000);
+    const { setNotification } = this.props;
+    const { type } = this.props.notificationData;
+    timedFunc(2000, setNotification); 
     return (
-      <div className={this.setStyle()} >
+      <div className={type != null ? type : null} >
         {this.props.notificationData.message}
       </div>
     );
@@ -36,7 +27,7 @@ class Notification extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     notificationData: state.notificationData
   }

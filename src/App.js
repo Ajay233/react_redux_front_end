@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux'
 import NavBar from './navBar.js'
 import Home from './home';

@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setNotification } from './notifications/actions'
-import { fadeOut } from './utils/display'
 import './stylesheets/animations.css'
 
 import Notification from './notifications/notifications'
