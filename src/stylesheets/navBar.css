@@ -5,6 +5,7 @@
   color: white;
   padding: 10px;
   width: 100%;
+  z-index: 50;
 }
 
 .links {
@@ -13,7 +14,6 @@
     color: white;
     font-family: arial;
     font-size: 16px;
-    z-index: 1;
     padding: 5px;
     text-decoration: none;
 }

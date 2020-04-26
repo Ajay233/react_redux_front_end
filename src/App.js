@@ -9,6 +9,7 @@ import Verify from './authentication/verify';
 import Logout from './authentication/logout';
 import UserList from './userList/userList'
 import EditProfile from './forms/editProfile'
+import Notification from './notifications/notifications'
 import './stylesheets/main.css'
 
 class App extends React.Component {

@@ -7,6 +7,9 @@ import { setUser, setRedirect } from './actions'
 import { setNotification } from '../notifications/actions';
 
 import { post } from '../axiosRequests/requests';
+import '../stylesheets/login.css'
+import '../stylesheets/inputs.css'
+import '../stylesheets/buttons.css'
 import '../stylesheets/notifications.css'
 
 class Login extends React.Component {
@@ -67,21 +70,24 @@ class Login extends React.Component {
 
   render(){
     return(
-      <div>
+      <div className="loginContainer">
         <div>{this.props.verificationProcess.completionStatus === "completed" ? this.verifiedMsg() : null}</div>
         {console.log(this.props)}
+        <div className="login">
         {this.errorMsg()}
         {this.welcomeMsg()}
-        <div>
-          Login below
-        </div>
-        <form onSubmit={this.handleSubmit}>
-          <input name="email" onChange={this.handleChange}></input>
-          <input name="password" onChange={this.handleChange}></input>
-          <button>Go</button>
-        </form>
-        <div>
-          Don't have an account? <Link to="/signUp">Sign up</Link> here
+          <form onSubmit={this.handleSubmit} className="loginForm">
+            <div className="loginTitle">Login</div>
+            <label>Username (Email address):</label>
+            <input name="email" onChange={this.handleChange} className="inputBox"></input>
+            <label>Password:</label>
+            <input name="password" type="password" onChange={this.handleChange} className="inputBox"></input>
+            <button className="submit loginButton">Login</button>
+            <hr/>
+          <div id="signUpLink">
+            Don't have an account? <Link to="/signUp">Sign up</Link> here
+          </div>
+          </form>
         </div>
       </div>
     );

@@ -6,6 +6,10 @@ import '../stylesheets/dropdown.css'
 
 class DropdownList extends React.Component {
 
+  logOut = () => {
+    this.props.logOutUser();
+  }
+
   renderSignUp = () => {
     return this.props.userData.loggedIn === true ? null : <Link to="/signup" className="links">Go to Sign Up</Link>
   }

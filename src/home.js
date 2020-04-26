@@ -27,10 +27,10 @@ class Home extends React.Component {
     return(
       <div className="body">
         {this.renderWelcome()}
+        <Notification />
         <div className="textBackground">
           <div className="title">The Quiz App</div>
         </div>
-        <Notification />
       </div>
     );
   }

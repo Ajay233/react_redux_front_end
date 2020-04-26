@@ -39,7 +39,7 @@ class NavBar extends React.Component {
   }
 
   renderList = () => {
-    return this.state.show === true ? <DropdownList show={this.showList}/> : null;
+    return this.state.show === true ? <DropdownList logOutUser={this.props.logOutUser} show={this.showList}/> : null;
   }
 
   // removed call to this method as this needs to be changed so this does not continually redirect to logout

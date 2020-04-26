@@ -3,3 +3,21 @@
   background: none;
   color: white;
 }
+
+.submit {
+  padding: 9px 60px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #0068D9;
+  margin: 8px 0;
+}
+
+.submit:focus {
+  outline: none;
+}
+
+.submit:hover {
+  cursor: pointer;
+}

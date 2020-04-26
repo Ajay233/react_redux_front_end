@@ -1,3 +1,14 @@
+.notification {
+  border-radius: 5px;
+  z-index: 100;
+  width: 80%;
+  margin-top: 48px;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 15px;
+  font-style: normal;
+}
+
 .error {
   border: 2px #f5c6cb solid;
   background-color: #f8d7da;
@@ -5,6 +16,8 @@
   font-style: normal;
   color: #721c24;
   border-radius: 5px;
+  z-index: 100;
+
 }
 
 .success {
@@ -14,6 +27,8 @@
   font-style: normal;
   color: #155724;
   border-radius: 5px;
+  z-index: 100;
+
 }
 
 .warning {
@@ -23,4 +38,16 @@
   font-style: normal;
   color: #856404;
   border-radius: 5px;
+  z-index: 100;
+  
+}
+
+.spacing {
+  position: absolute;
+  margin-top: 60px;
+  width: 95%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  z-index: 100;
+  text-align: center;
 }

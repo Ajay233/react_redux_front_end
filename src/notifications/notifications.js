@@ -10,7 +10,7 @@ class Notification extends React.Component {
   renderMsg = () => {
     const { setNotification } = this.props;
     const { type } = this.props.notificationData;
-    timedFunc(2000, setNotification); 
+    timedFunc(2000, setNotification);
     return (
       <div className={type != null ? type : null} >
         {this.props.notificationData.message}
@@ -20,7 +20,7 @@ class Notification extends React.Component {
 
   render(){
     return(
-      <div>
+      <div className="spacing">
         {this.props.notificationData.show === true ? this.renderMsg() : null}
       </div>
     );
