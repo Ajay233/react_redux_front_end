@@ -14,9 +14,9 @@ import './stylesheets/main.css'
 class App extends React.Component {
   render(){
     return (
-      <div>
+      <div className="container">
         <BrowserRouter>
-          <div>
+          <div className="container">
             <NavBar />
             <Route path="/" exact render={() => <Home />}/>
             <Route path="/login" render={() => <Login verify={false} />}/>

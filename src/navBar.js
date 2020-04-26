@@ -58,13 +58,8 @@ class NavBar extends React.Component {
     return(
       <div>
       <div className="nav">
-        <strong>The Quiz App</strong>
-        <Link to="/" className="links">Home</Link>
-        <button className="linkButton links" onClick={this.showList}>Menu</button>
-        {this.renderLogin()}
-        {this.renderSignUp()}
-        {this.renderLogout()}
-        {this.renderListUser()}
+        <Link to="/" id="home" className="links">Home</Link>
+        <button className="linkButton links navItem" onClick={this.showList}>Menu</button>
       </div>
         {this.renderList()}
       </div>

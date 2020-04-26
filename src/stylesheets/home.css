@@ -1,0 +1,19 @@
+.body {
+  background-image: url("../public/backgrounds/892.jpg");
+  background-size: cover;
+  height: 100%;
+}
+
+.textBackground {
+  width: 50%;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(255, 255, 255, 0));
+  height: 100%;
+}
+
+.title {
+  position: absolute;
+  margin-top: 20%;
+  margin-left: 5%;
+  color: white;
+  font-size: 60px;
+}

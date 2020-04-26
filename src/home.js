@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { setNotification } from './notifications/actions'
 import './stylesheets/animations.css'
+import './stylesheets/home.css'
 
 import Notification from './notifications/notifications'
 
@@ -24,9 +25,11 @@ class Home extends React.Component {
 
   render(){
     return(
-      <div>
+      <div className="body">
         {this.renderWelcome()}
-        <div>The Quiz App</div>
+        <div className="textBackground">
+          <div className="title">The Quiz App</div>
+        </div>
         <Notification />
       </div>
     );
