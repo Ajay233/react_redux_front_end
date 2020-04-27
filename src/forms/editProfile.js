@@ -3,14 +3,30 @@ import { Field, reduxForm } from 'redux-form'
 import { post } from '../axiosRequests/requests'
 // import { connect } from 'react-redux'
 
+import '../stylesheets/inputs.css';
+import '../stylesheets/buttons.css';
+import '../stylesheets/editProfile.css';
+
+
 class EditProfile extends React.Component {
+
+  // TODO:
+  // Create a container class called editProfile
+  // Change this to be EditProfileForm
+  // Container class will need access to 'userData' and the 'setNotification' action creator
+  // Will need to create a new action creator for the edit profile action
+  //  - this will do the network request
+  //  - call the setNotification action creator
+  //  - then call the login action creator to update the userData?
+
+
 
   // formProps is always passed into the method you use in the Field 'component' attribute
   renderInput = (formProps) => {
     return(
       <div>
         <label>{formProps.label}</label>
-        <input {...formProps.input} placeholder={this.renderPlaceholder(formProps.input.name)}/>
+        <input {...formProps.input} placeholder={this.renderPlaceholder(formProps.input.name) } className="inputBox"/>
       </div>
     );
   }
@@ -48,15 +64,25 @@ class EditProfile extends React.Component {
     });
   }
 
+  // Chack if changing the label will break anything
+
   render(){
     return(
-      <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <Field name="forename" component={this.renderInput} label="Forename"/>
-        <Field name="surname" component={this.renderInput} label="Surname"/>
-        <div>Email: <span>{this.props.userData.email}</span></div>
-        <Field name="newEmail" component={this.renderInput} label="New Email"/>
-        <button>Submit</button>
+      <div id="editUserDetails">
+      <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="profileForm">
+        <div>
+        <img src={require('../public/icons/id.png')} id="idImg"/>
+        <div id="editProfileTitle">Edit Profile</div>
+        </div>
+        <Field className="inputBox" name="forename" component={this.renderInput} label="Forename"/>
+        <Field className="inputBox" name="surname" component={this.renderInput} label="Surname"/>
+        <div id="userEmail">Your email:
+           <span> {this.props.userData.email}</span>
+        </div>
+        <Field className="inputBox" name="newEmail" component={this.renderInput} label="New Email"/>
+        <button id="submit" className="submit">Submit</button>
       </form>
+      </div>
     );
   }
 }

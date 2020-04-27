@@ -11,6 +11,7 @@ import UserList from './userList/userList'
 import EditProfile from './forms/editProfile'
 import Notification from './notifications/notifications'
 import './stylesheets/main.css'
+import './fontawesome/css/all.css'
 
 class App extends React.Component {
   render(){

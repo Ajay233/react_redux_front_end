@@ -53,9 +53,9 @@ class Login extends React.Component {
   errorMsg = () => {
     const msg = "The username or password you entered was incorrect"
     // eror and true
-    this.props.setNotification(msg, "error", true)
     if(this.props.userData.error){
       if(this.props.userData.error.data === "Incorrect username or password"){
+        this.props.setNotification(msg, "error", true);
         // return <div className="error">The username or password you entered was incorrect</div>
         return <Notification />
       } else {

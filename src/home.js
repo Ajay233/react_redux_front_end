@@ -17,7 +17,7 @@ class Home extends React.Component {
 
   renderWelcome = () => {
     if(this.props.userData.loggedIn === true && this.props.redirect.status === true){
-      this.props.setNotification(`Welcome back ${this.props.userData.forename}`, "success", true)
+      this.props.setNotification(`Welcome back ${this.props.userData.forename}`, "loginSuccess", true)
       // fadeOut(this.msgRef);
       // return <div ref={this.msgRef} id="welcomeBack">Welcome back {this.props.userData.forename}</div>
     }

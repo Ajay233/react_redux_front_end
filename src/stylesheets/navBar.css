@@ -32,6 +32,10 @@
   text-decoration: none;
 }
 
+#homeIcon {
+  float: left;
+}
+
 .navItem {
   float: right;
 }

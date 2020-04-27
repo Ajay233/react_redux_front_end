@@ -12,6 +12,16 @@
   color: white;
   background-color: #0068D9;
   margin: 8px 0;
+  text-align: center;
+}
+
+.close {
+  float: right;
+}
+
+.close:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 .submit:focus {

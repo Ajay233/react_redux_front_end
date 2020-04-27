@@ -6,8 +6,10 @@ import {
 } from './authentication/actions'
 import DropDown from './dropdown/dropdown'
 import DropdownList from './dropdown/dropdownList';
+import Notification from './notifications/notifications';
 import './stylesheets/navBar.css'
 import './stylesheets/buttons.css'
+// import { home } from './public/icons/home.png'
 
 class NavBar extends React.Component {
 
@@ -54,14 +56,16 @@ class NavBar extends React.Component {
     })
   }
 
+// <Link to="/" id="home" className="links"><img src={require("./public/icons/home.png")} width="22px"/> Home</Link>
   render(){
     return(
       <div>
-      <div className="nav">
-        <Link to="/" id="home" className="links">Home</Link>
-        <button className="linkButton links navItem" onClick={this.showList}>Menu</button>
-      </div>
+        <div className="nav">
+          <Link to="/" id="home" className="links"><i class="fas fa-home"></i> Home</Link>
+          <button className="linkButton links navItem" onClick={this.showList}>Menu <i className="fas fa-bars"></i></button>
+        </div>
         {this.renderList()}
+        <Notification />
       </div>
     );
   }
