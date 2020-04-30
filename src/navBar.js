@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 import {
   logOutUser
 } from './authentication/actions'
-import DropDown from './dropdown/dropdown'
 import DropdownList from './dropdown/dropdownList';
-import Notification from './notifications/notifications';
 import './stylesheets/navBar.css'
 import './stylesheets/buttons.css'
 // import { home } from './public/icons/home.png'
@@ -61,11 +59,10 @@ class NavBar extends React.Component {
     return(
       <div>
         <div className="nav">
-          <Link to="/" id="home" className="links"><i class="fas fa-home"></i> Home</Link>
+          <Link to="/" id="home" className="links"><i className="fas fa-home"></i> Home</Link>
           <button className="linkButton links navItem" onClick={this.showList}>Menu <i className="fas fa-bars"></i></button>
         </div>
         {this.renderList()}
-        <Notification />
       </div>
     );
   }

@@ -20,6 +20,7 @@ class Notification extends React.Component {
     if(this.props.notificationData.show){
       console.log(isIconRequired(type));
       if (!isIconRequired(type)) timedFunc(4000, setNotification);
+      document.documentElement.scrollTop = 0;
       return isIconRequired(type) ? this.renderMsgWithIcon(type) : this.renderStandardMsg(type)
     } else {
       return null;
@@ -30,7 +31,7 @@ class Notification extends React.Component {
     return(
       <div className={type != null ? type : null} >
         <span className="close" onClick={this.handleClose}><i className="far fa-times-circle"></i></span>
-        <span><span><img src={require(`../public/icons/${iconPicker(type)}`)} className="img"/></span>{this.props.notificationData.message}</span>
+        <span><span><img src={require(`../public/icons/${iconPicker(type)}`)} className="img" alt=""/></span>{this.props.notificationData.message}</span>
       </div>
     );
   }

@@ -6,7 +6,6 @@ import Notification from '../notifications/notifications'
 import { setUser, setRedirect } from './actions'
 import { setNotification } from '../notifications/actions';
 
-import { post } from '../axiosRequests/requests';
 import '../stylesheets/login.css'
 import '../stylesheets/inputs.css'
 import '../stylesheets/buttons.css'
@@ -30,9 +29,10 @@ class Login extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    const {setNotification } = this.props
     const loginDetails =  {'email': this.state.email,'password': this.state.password}
-    this.props.setUser('auth/login', loginDetails);
-    this.props.setRedirect(true);
+    this.props.setUser('auth/login', loginDetails, setNotification);
+    // this.props.setRedirect(true);
   }
 
   redirect = () => {
@@ -41,8 +41,7 @@ class Login extends React.Component {
 
   welcomeMsg = () => {
       if(this.props.userData.loggedIn === true){
-        // return <h1>Welcome back {this.props.userData.forename}!!</h1>;
-        return <Redirect to="/" />
+        return this.props.userData.loggedIn ? <Redirect to="/" /> : null;
       }
   }
 
@@ -50,32 +49,20 @@ class Login extends React.Component {
     return `Thank you, your email has now been verified.  Please login below to use the quiz app :)`
   }
 
-  errorMsg = () => {
-    const msg = "The username or password you entered was incorrect"
-    // eror and true
-    if(this.props.userData.error){
-      if(this.props.userData.error.data === "Incorrect username or password"){
-        this.props.setNotification(msg, "error", true);
-        // return <div className="error">The username or password you entered was incorrect</div>
-        return <Notification />
-      } else {
-        return null
-      }
-    }
-  }
-
   notVerifiedMsg = () => {
-
+    const msg = "You have not yet verified your email address. \n\n You will need to do this to complet the registration process"
+    this.props.setNotification(msg, "error", true);
   }
 
   render(){
     return(
       <div className="loginContainer">
         <div>{this.props.verificationProcess.completionStatus === "completed" ? this.verifiedMsg() : null}</div>
-        {console.log(this.props)}
         <div className="login">
-        {this.errorMsg()}
+        <div className="notificationContainer">
         {this.welcomeMsg()}
+        <Notification />
+        </div>
           <form onSubmit={this.handleSubmit} className="loginForm">
             <div className="loginTitle">Login</div>
             <label>Username (Email address):</label>
@@ -95,8 +82,6 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
-  console.log(state.verificationProcess);
   return {
     userData: state.userData,
     verificationProcess: state.verificationProcess

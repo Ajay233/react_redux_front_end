@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { del } from '../axiosRequests/requests'
 import { setNotification } from '../notifications/actions'
 import '../stylesheets/dropdown.css'
 
@@ -9,6 +8,7 @@ class DropdownList extends React.Component {
 
   logOut = () => {
     this.props.logOutUser();
+    this.props.setNotification("Logged out", "success", true);
   }
 
   renderSignUp = () => {
@@ -37,29 +37,6 @@ class DropdownList extends React.Component {
 
   renderEditProfile = () => {
     return this.props.userData.loggedIn === true ? <li><Link to="/editProfile" className="links">Edit Profile</Link><hr/></li> : null
-  }
-
-  handleDelete = () => {
-    const successMsg = "Your account has been deleted";
-    const errorMsg = "An error has occurred, your account was not found";
-    const {id, jwt} = this.props.userData
-    console.log(id)
-    console.log(jwt)
-    const config = {
-      data: {
-        id: id
-      }
-    }
-    del("users/deleteAccount", config, jwt).then((response) => {
-      console.log("Deleted")
-      this.props.setNotification(successMsg, "success", true);
-      this.logOut();
-      // Need to clear reset redux store to clear all data
-    }).catch((error) => {
-      console.log(error.config);
-      this.props.setNotification(errorMsg, "error", true);
-    });
-
   }
 
   render(){

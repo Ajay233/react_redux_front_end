@@ -59,7 +59,9 @@ class SignUp extends React.Component {
     return(
       <div className="signupContainer">
         <div className="signup">
+        <div className="notificationContainer">
           <Notification />
+        </div>
           <form className="signupForm" onSubmit={this.handleSubmit}>
             <div className="signupTitle">Create Account</div>
             <label>First Name:</label>

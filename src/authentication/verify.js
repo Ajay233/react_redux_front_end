@@ -1,28 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import Notification from '../notifications/notifications';
 
 import { setVerficationProcess } from './actions'
+import { setNotification } from '../notifications/actions'
 import { post } from '../axiosRequests/requests'
-import '..//stylesheets/notifications.css'
+import '../stylesheets/notifications.css'
+import '../stylesheets/verify.css'
 
 
 class Verify extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      verified: false,
-      error: "",
-      tokenResent: ""
-    };
-  }
 
   componentDidMount(){
     this.verifyUser();
-  }
-
-  setTokenResent = (status) => {
-    this.setState({ tokenResent: status })
   }
 
   verifyingMsg = () => {
@@ -30,48 +21,58 @@ class Verify extends React.Component {
   }
 
   verifiedMsg = () => {
-    return <div>Your email has now been verified, please click <Link to="/login">here</Link> to log in</div>
+    const successMsg = "Your email has now been verified.  Please log in below to continue."
+    this.props.setNotification(successMsg, "success", true);
+    return <Redirect to="/login" />
   }
 
   notFoundMsg = () => {
-    if(this.props.verificationProcess.error.data === "TOKEN_UNMATCHED"){
       return (
-        <div className="error">
+        <div>
+        <div id="verifyTitle">
+          <div id="titleImg" >
+            <img  src={require("../public/icons/warning.png")} alt=""/>
+          </div>
+          <div id="verifyTitleTxt" >Oops 404</div>
+        </div>
           <p>Something went wrong, and the token you provided was not found.</p>
           <p>Possible causes can include:</p>
           <ul>
-            <li>You may have already verified your email address.  To check please click <Link to="/login">here</Link> to log in</li>
-            <li>If you copied and pasted the link into the browser adress bar, you will need to check you did not miss any characters</li>
-            <li>You have accessed this page in error</li>
+            <li>- You may have already verified your email address.  To check please click <Link to="/login">here</Link> to log in</li>
+            <br/>
+            <li>- If you copied and pasted the link into the browser adress bar, you will need to check you did not miss any characters</li>
+            <br/>
+            <li>- You have accessed this page in error</li>
           </ul>
         </div>
       );
-    }
   }
 
   tokenExpiredMsg = () => {
-    if(this.props.verificationProcess.error.data === "TOKEN_EXPIRED"){
       return (
-        <div className="error">
+        <div>
+          <div id="verifyTitle">
+            <div id="titleImg" >
+              <img  src={require("../public/icons/warning.png")} alt=""/>
+            </div>
+            <div id="verifyTitleTxt" >Token Expired</div>
+          </div>
           <p>Your token has expired as it was issued more than 24 hours ago.</p>
           <p>Please click resend to resend a new token</p>
-          <button onClick={this.handleResend}>Resend</button>
+          <button id="resendButton" className="resend" onClick={this.handleResend}>Resend</button>
         </div>
       );
-    }
-  }
-
-  resentMsg = () => {
-    return <div>Token resent to the email provided during signup, please check your email and use the link provided to complete the sign up process</div>
   }
 
   handleResend = () => {
+    const successMsg = "Token resent to the email provided during signup, please check your email and use the link provided to complete the sign up process";
     console.log(this.props.verificationProcess.token);
     const data = {'userId': 0, 'token': this.props.verificationProcess.token}
     post("auth/resendToken", data).then((response) => {
-      this.setTokenResent("Sent")
+      this.props.setNotification(successMsg, "success", true);
     }).catch((error) => {
       console.log(error.response)
+      this.props.setNotification(error.response.data, "error", true);
     })
   }
 
@@ -79,6 +80,7 @@ class Verify extends React.Component {
     let url = window.location.href;
     const regex = new RegExp(/(?<=token=)(s?)(.*)/gm);
     let token = url.match(regex).toString();
+    console.log(token);
     return token;
   }
 
@@ -89,16 +91,43 @@ class Verify extends React.Component {
     this.props.setVerficationProcess('auth/verify', verificationDetails);
   }
 
+  renderLogo = () => {
+    const { data } = this.props.verificationProcess.error;
+    if(data === "TOKEN_EXPIRED"){
+      return <img id="contentImg" src={require("../public/icons/expired.png")} alt="" />
+    } else if(data === "TOKEN_UNMATCHED") {
+      return <img id="contentImg" src={require("../public/icons/notFound.png")} alt=""/>
+    } else {
+      return null;
+    }
+  }
+
+  renderMsg = () => {
+    const { data } = this.props.verificationProcess.error;
+    if(data === "TOKEN_EXPIRED"){
+      return this.tokenExpiredMsg();
+    } else if(data === "TOKEN_UNMATCHED") {
+      return this.notFoundMsg();
+    } else {
+      return null;
+    }
+  }
+
   render(){
     return(
-      <div>
+      <div id="verifyContainer">
         {console.log(this.props.verificationProcess)}
         {this.props.verificationProcess.completionStatus === "" ? this.verifyingMsg() : null}
         {this.props.verificationProcess.completionStatus === "completed" ? this.verifiedMsg() : null}
-        {this.tokenExpiredMsg()}
-        {this.notFoundMsg()}
-        {this.state.tokenResent === "Sent" ? this.resentMsg() : null}
-        <Link to="/login">Go to login</Link>
+        <Notification />
+        <div id="verifyContent">
+          <div id="verifyLogo">
+            {this.renderLogo()}
+          </div>
+          <div id="verifyMessage">
+            {this.renderMsg()}
+          </div>
+        </div>
       </div>
     );
   }
@@ -111,6 +140,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {
-  setVerficationProcess
-})(Verify);
+export default connect(mapStateToProps, {setVerficationProcess, setNotification})(Verify);

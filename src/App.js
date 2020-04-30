@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { connect } from 'react-redux'
 import NavBar from './navBar.js'
 import Home from './home';
 import Login from './authentication/login';
@@ -8,9 +7,10 @@ import SignUp from './authentication/signUp';
 import Verify from './authentication/verify';
 import Logout from './authentication/logout';
 import UserList from './userList/userList'
-import EditProfile from './forms/editProfile'
-import Notification from './notifications/notifications'
+import EditProfile from './editProfile/editProfile'
 import './stylesheets/main.css'
+import './stylesheets/buttons.css'
+import './stylesheets/inputs.css'
 import './fontawesome/css/all.css'
 
 class App extends React.Component {
@@ -26,7 +26,7 @@ class App extends React.Component {
             <Route path="/verify" render={() => <Verify />}/>
             <Route path="/logout" component={Logout} />
             <Route path="/userList" component={() => <UserList/>} />
-            <Route path="/editProfile" component={()=> <EditProfile userData={this.props.userData}/>}/>
+            <Route path="/editProfile" component={()=> <EditProfile />}/>
           </div>
         </BrowserRouter>
       </div>
@@ -34,10 +34,4 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    userData: state.userData
-  }
-}
-
-export default connect(mapStateToProps)(App);
+export default App;

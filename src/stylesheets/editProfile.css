@@ -1,36 +1,88 @@
-#editUserDetails {
-  background-color: rgba(30, 30, 30, 1);
+#editProfileContainer {
+  padding-top: 60px;
+  font-family: arial;
   color: white;
-  height: 100%;
+  background-color: rgba(30, 30, 30, 1);
+}
+
+#editProfileTitle {
+  padding-top: 50px;
+  margin-bottom: 30px;
+  display: flex;
+  width: 100%;
+}
+
+.titleImgContainer {
+  width: 50%;
+  direction: rtl;
+}
+
+.titleText {
+  font-size: 50px;
+  font-weight: bold;
+  margin-top: 110px;
+}
+
+.titleTextContainer {
+  width: 50%;
+}
+
+#editUserDetails, #changePassword {
+  width: 45%;
+}
+
+.profileForm, .changePasswordForm {
+  padding: 10px;
+  font-family: arial;
+  width: 97.5%;
 }
 
 .profileForm {
-  position: absolute;
-  
-  padding: 10px;
-  font-family: arial;
-  width: 40%;
-  margin-left: 27%;
-  margin-right: 33%;
+  margin-left: 2.5%;
+}
+
+.changePasswordForm {
+  margin-right: 2.5%;
 }
 
 #userEmail {
   margin: 8px 0 20px 0;
 }
 
-#editProfileTitle {
+#editUserDetailsTitle, #changePasswordTitle, #deleteAccountTitle {
   font-family: arial;
   font-size: 30px;
-  color: white;
   margin-bottom: 40px;
 }
 
-#submit {
+#submit, #submitChangePassword {
   width: 30%;
   margin-left: 35%;
   margin-right: 35%;
   text-align: center;
 }
 
+#editProfileFormContainer {
+  width: 100%;
+  display: flex;
+}
+
 #idImg {
+  padding-right: 20px;
+}
+
+.formDividers {
+  width: 2.5%;
+}
+
+.left {
+  border-left: solid 1px white;
+}
+
+.right {
+  border-right: solid 1px white;
+}
+
+#deleteAccountContainer {
+  margin-left: 2.5%;
 }

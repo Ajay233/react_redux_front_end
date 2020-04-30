@@ -1,10 +1,10 @@
-import { post, setHeader } from '../../axiosRequests/requests'
+import { post } from '../../axiosRequests/requests'
 
-export const setUser = (endpoint, loginDetails, token) => {
+export const setUser = (endpoint, loginDetails, setNotification) => {
 
   return (dispatch) => {
 
-    post(endpoint, loginDetails, token).then((response) => {
+    post(endpoint, loginDetails).then((response) => {
       dispatch({
         type: "SET_USER_LOGGED_IN",
         payload: {
@@ -19,13 +19,15 @@ export const setUser = (endpoint, loginDetails, token) => {
           response: response
         }
       })
+      setNotification(`Welcome back ${response.data.user.forename}`, "loginSuccess", true)
     }).catch((error) => {
       dispatch({
         type: "SET_USER_LOGGED_IN",
         payload: {
           error: error.response
         }
-      })
+      });
+      setNotification("The username or password you entered was incorrect", "error", true);
     })
   }
 }

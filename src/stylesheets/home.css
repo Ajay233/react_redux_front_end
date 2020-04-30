@@ -2,6 +2,7 @@
   background-image: url("../public/backgrounds/892.jpg");
   background-size: cover;
   height: 100%;
+  padding-top: 30px;
 }
 
 .textBackground {
@@ -16,4 +17,11 @@
   margin-left: 5%;
   color: white;
   font-size: 60px;
+}
+
+#notificationContainer {
+  height: 100px;
+  position: absolute;
+  width: 100%;
+  padding-top: 20px;
 }

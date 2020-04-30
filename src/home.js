@@ -8,33 +8,18 @@ import Notification from './notifications/notifications'
 
 class Home extends React.Component {
 
-  constructor(props){
-    super(props)
-
-    this.msgRef = React.createRef();
-
-  }
-
-  renderWelcome = () => {
-    if(this.props.userData.loggedIn === true && this.props.redirect.status === true){
-      this.props.setNotification(`Welcome back ${this.props.userData.forename}`, "loginSuccess", true)
-      // fadeOut(this.msgRef);
-      // return <div ref={this.msgRef} id="welcomeBack">Welcome back {this.props.userData.forename}</div>
-    }
-  }
-
   render(){
     return(
       <div className="body">
-        {this.renderWelcome()}
+        <div id="notificationContainer">
         <Notification />
+        </div>
         <div className="textBackground">
           <div className="title">The Quiz App</div>
         </div>
       </div>
     );
   }
-
 }
 
 const mapStateToProps = (state) => {

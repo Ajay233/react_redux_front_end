@@ -1,18 +1,10 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { post } from '../axiosRequests/requests'
-// import { connect } from 'react-redux'
+import { put } from '../axiosRequests/requests'
 
-import '../stylesheets/inputs.css';
-import '../stylesheets/buttons.css';
-import '../stylesheets/editProfile.css';
-
-
-class EditProfile extends React.Component {
+class EditProfileForm extends React.Component {
 
   // TODO:
-  // Create a container class called editProfile
-  // Change this to be EditProfileForm
   // Container class will need access to 'userData' and the 'setNotification' action creator
   // Will need to create a new action creator for the edit profile action
   //  - this will do the network request
@@ -45,7 +37,9 @@ class EditProfile extends React.Component {
   }
 
   // We don't need event.preventDefault() because redux-form handles that for us
-  onSubmit = ({forename, surname, newEmail}) => {
+  onSubmitProfileChange = ({forename, surname, newEmail}) => {
+    const successMsg = "Profile information updated";
+    const errorMsg = "Error updating your profile data, please check the details you provided and try again";
     const {id, email, jwt} = this.props.userData
     console.log(newEmail)
     console.log(this.validateNewEmail(newEmail, email))
@@ -57,29 +51,31 @@ class EditProfile extends React.Component {
       email: email,
       newEmail: validatedNewEmail
     }
-    post('users/update', data, jwt).then((response) => {
+    put('users/update', data, jwt).then((response) => {
+      this.props.setNotification(successMsg, "success", true)
       console.log("Edited")
     }).catch((error) => {
+      this.props.setNotification(errorMsg, "error", true)
       console.log(error.config)
+      console.log(error.response)
     });
   }
 
-  // Chack if changing the label will break anything
+  // Check if changing the label will break anything
 
   render(){
     return(
       <div id="editUserDetails">
-      <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="profileForm">
+      <form onSubmit={this.props.handleSubmit(this.onSubmitProfileChange)} className="profileForm">
         <div>
-        <img src={require('../public/icons/id.png')} id="idImg"/>
-        <div id="editProfileTitle">Edit Profile</div>
+        <div id="editUserDetailsTitle">Edit Personal Details</div>
         </div>
-        <Field className="inputBox" name="forename" component={this.renderInput} label="Forename"/>
-        <Field className="inputBox" name="surname" component={this.renderInput} label="Surname"/>
+        <Field name="forename" component={this.renderInput} label="Forename"/>
+        <Field name="surname" component={this.renderInput} label="Surname"/>
         <div id="userEmail">Your email:
            <span> {this.props.userData.email}</span>
         </div>
-        <Field className="inputBox" name="newEmail" component={this.renderInput} label="New Email"/>
+        <Field name="newEmail" component={this.renderInput} label="New Email"/>
         <button id="submit" className="submit">Submit</button>
       </form>
       </div>
@@ -87,10 +83,5 @@ class EditProfile extends React.Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     userData: state.userData
-//   }
-// }
 
-export default reduxForm({ form: 'editProfile' })(EditProfile)
+export default reduxForm({ form: 'editProfile' })(EditProfileForm)

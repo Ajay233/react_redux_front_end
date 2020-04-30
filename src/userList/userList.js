@@ -5,7 +5,6 @@ import { setUserList } from './actions'
 class UserList extends React.Component {
 
   componentDidMount(){
-    const data = {"test": "test"};
     console.log(this.props.userData.jwt);
     this.props.setUserList("users", this.props.userData.jwt);
   }

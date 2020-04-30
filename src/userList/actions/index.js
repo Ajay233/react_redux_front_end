@@ -1,4 +1,4 @@
-import { get, setHeader } from '../../axiosRequests/requests'
+import { get } from '../../axiosRequests/requests'
 
 export const setUserList = (endpoint, data, token) => {
   return (dispatch) => {
