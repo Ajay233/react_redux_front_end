@@ -7,6 +7,7 @@ import {
 } from './authentication/reducers/index'
 import { setNotificationReducer } from './notifications/reducers/index'
 import { setUserListReducer } from './userList/reducers/index'
+import { setUserResultsReducer } from './editUserPrivilege/reducers'
 
 
 export default combineReducers({
@@ -14,6 +15,7 @@ export default combineReducers({
   verificationProcess: setVerificationProcessStatus,
   redirect: setRedirectReducer,
   notificationData: setNotificationReducer,
+  userResults: setUserResultsReducer,
   listOfUsers: setUserListReducer,
   form: formReducer
 });
