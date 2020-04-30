@@ -39,6 +39,10 @@ class DropdownList extends React.Component {
     return this.props.userData.loggedIn === true ? <li><Link to="/editProfile" className="links">Edit Profile</Link><hr/></li> : null
   }
 
+  renderEditPrivilege = () => {
+    return this.props.userData.loggedIn === true ? <li><Link to="/editUserPrivilege" className="links">Edit Privileges</Link><hr/></li> : null
+  }
+
   render(){
     return(
       <div className="list">
@@ -49,6 +53,7 @@ class DropdownList extends React.Component {
           {this.renderLogin()}
           {this.renderSignUp()}
           {this.renderListUser()}
+          {this.renderEditPrivilege()}
           {this.renderLogout()}
         </ul>
       </div>

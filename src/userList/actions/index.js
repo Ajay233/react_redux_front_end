@@ -5,9 +5,7 @@ export const setUserList = (endpoint, data, token) => {
     get(endpoint, data, token).then((response) => {
       dispatch({
         type: "SET_USER_LIST",
-        payload: {
-          response: response
-        }
+        payload: response.data
       })
     }).catch((error) => {
       dispatch({

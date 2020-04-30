@@ -33,6 +33,14 @@ export const get = (endpoint, token=null) => {
   );
 }
 
+export const getUsingParams = (endpoint, customParams, token=null) => {
+  setDefault(token);
+  return axios.get(
+    `http://localhost:8080/${endpoint}`,
+    { params: customParams }
+  );
+}
+
 export const put = (endpoint, data={}, token=null) => {
   setDefault(token);
   return axios.put(
