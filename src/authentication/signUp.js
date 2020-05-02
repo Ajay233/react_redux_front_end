@@ -51,7 +51,7 @@ class SignUp extends React.Component {
       this.setResponse(response.data);
     }).catch((error) => {
       this.props.setNotification(errorMsg, "error", true);
-      console.log(error);
+      console.log(error.response);
     });
   }
 

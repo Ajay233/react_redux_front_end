@@ -1,12 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setNotification } from './notifications/actions'
+import { setAllQuizes } from './quiz/actions'
 import './stylesheets/animations.css'
 import './stylesheets/home.css'
 
 import Notification from './notifications/notifications'
 
 class Home extends React.Component {
+
+  componentDidMount(){
+    const { userData, setAllQuizes } = this.props;
+    console.log(userData.loggedIn)
+    if (userData.loggedIn === true){
+      this.props.setAllQuizes("quiz/getAll", userData.jwt)
+    };
+  }
 
   render(){
     return(
@@ -30,4 +39,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setNotification })(Home)
+export default connect(mapStateToProps, { setNotification, setAllQuizes })(Home)

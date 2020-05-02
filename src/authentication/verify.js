@@ -40,9 +40,9 @@ class Verify extends React.Component {
           <ul>
             <li>- You may have already verified your email address.  To check please click <Link to="/login">here</Link> to log in</li>
             <br/>
-            <li>- If you copied and pasted the link into the browser adress bar, you will need to check you did not miss any characters</li>
+            <li>- If you copied and pasted the link into the browser address bar, you will need to check you did not miss any characters</li>
             <br/>
-            <li>- You have accessed this page in error</li>
+            <li>- You have accessed this page in error, in which case you will need to return to the <Link to="/">home</Link> page</li>
           </ul>
         </div>
       );
