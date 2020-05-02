@@ -9,7 +9,7 @@ import Logout from './authentication/logout';
 import UserList from './userList/userList'
 import ManageAccount from './manageAccount/manageAccount'
 import EditUserPrivilege from './editUserPrivilege/editUserPrivilege'
-import QuizSearch from './quiz/quizSearch'
+import QuizSearch from './quizSearch/quizSearch'
 import './stylesheets/main.css'
 import './stylesheets/buttons.css'
 import './stylesheets/inputs.css'

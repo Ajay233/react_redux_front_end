@@ -8,7 +8,7 @@ import {
 import { setNotificationReducer } from './notifications/reducers/index'
 import { setUserListReducer } from './userList/reducers/index'
 import { setUserResultsReducer } from './editUserPrivilege/reducers'
-import { setQuizesReducer } from './quiz/reducers'
+import { setQuizesReducer } from './quizSearch/reducers'
 
 
 export default combineReducers({

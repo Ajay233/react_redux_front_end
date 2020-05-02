@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import Quizes from './quizes'
+import QuizResults from './quizResults'
 import QuizSearchByName from '../forms/findQuizByName'
 import QuizSearchByCategory from '../forms/findQuizByCategory'
 import Notification from '../notifications/notifications'
@@ -48,7 +48,7 @@ class QuizSearch extends React.Component {
         <div>
           {this.renderResultsTitle(quizes)}
           {this.renderResultHeadings(quizes)}
-          <Quizes quizes={quizes} permission={userData.permission} />
+          <QuizResults quizes={quizes} permission={userData.permission} />
         </div>
       </div>
     );
