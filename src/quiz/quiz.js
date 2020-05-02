@@ -13,6 +13,11 @@ class Quiz extends React.Component {
     );
   }
 
+  // possible way to use different classes for option sheader if the header ends up being used
+  optionsClass = (permission) => {
+    return permission === "ADMIN" ? "" : "";
+  }
+
   renderOptions = () => {
     const { permission } = this.props;
     return(

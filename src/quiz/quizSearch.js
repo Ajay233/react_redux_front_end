@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import Quizes from './quizes'
 import QuizSearchByName from '../forms/findQuizByName'
+import QuizSearchByCategory from '../forms/findQuizByCategory'
 import Notification from '../notifications/notifications'
 import { setNotification } from '../notifications/actions'
 import { setQuizes, getQuizSearchResults } from './actions'
@@ -11,19 +12,23 @@ import "../stylesheets/quizSearch.css"
 class QuizSearch extends React.Component {
 
   renderResultsTitle = (quizes) => {
-    return quizes.length === 0 ? null : <div id="resultHeader">{`${quizes.length} Results`}</div>;
+    return quizes.length === 0 ? null : this.resultsTitle(quizes);
+  }
+
+  resultsTitle = (quizes) => {
+    return  <div id="resultHeader">{`${quizes.length} ${quizes.length > 1 ? 'Results' : 'Result'}`}</div>
   }
 
   renderResultHeadings = (quizes) => {
     return quizes.length === 0 ? null : this.resultHeadings()
   }
 
+// <div id="optionsHeader">Options</div>
   resultHeadings = () => {
     return(
       <div id="resultsHeadings">
         <div id="nameHeader">Quiz Name</div>
         <div id="descriptionHeader">Description</div>
-        <div id="optionsHeader">Options</div>
       </div>
     )
   }
@@ -38,7 +43,7 @@ class QuizSearch extends React.Component {
           <QuizSearchByName jwt={userData.jwt} setNotification={setNotification} getQuizSearchResults={getQuizSearchResults} />
         </div>
         <div id="quizSearchByCategory">
-
+          <QuizSearchByCategory jwt={userData.jwt} setNotification={setNotification} getQuizSearchResults={getQuizSearchResults} />
         </div>
         <div>
           {this.renderResultsTitle(quizes)}
