@@ -12,7 +12,7 @@ import '../stylesheets/inputs.css';
 import '../stylesheets/buttons.css';
 import '../stylesheets/editProfile.css';
 
-class EditProfile extends React.Component {
+class ManageAccount extends React.Component {
 
   handleDelete = () => {
     const successMsg = "Your account has been deleted";
@@ -43,7 +43,7 @@ class EditProfile extends React.Component {
           <img src={require('../public/icons/id.png')} id="idImg" alt=""/>
         </div>
         <div className="titleTextContainer">
-          <div className="titleText">Edit Profile</div>
+          <div className="titleText">My Account</div>
         </div>
       </div>
         <div id="editProfileFormContainer">
@@ -71,4 +71,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps, {setNotification, logOutUser})(EditProfile)
+export default connect(mapStateToProps, {setNotification, logOutUser})(ManageAccount)

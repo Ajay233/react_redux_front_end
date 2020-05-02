@@ -27,29 +27,33 @@ class DropdownList extends React.Component {
     return this.props.userData.loggedIn === true ? <li><Link to="/userList" className="links">List all Users</Link><hr/></li> : null
   }
 
-  renderDeleteAccount = () => {
-    return this.props.userData.loggedIn === true ? <li onClick={this.handleDelete} className="links">Delete account <hr/></li> : null
-  }
+  // renderDeleteAccount = () => {
+  //   return this.props.userData.loggedIn === true ? <li onClick={this.handleDelete} className="links">Delete account <hr/></li> : null
+  // }
 
-  renderChangePassword = () => {
-    return this.props.userData.loggedIn === true ? <li className="links">Change Password <hr/></li> : null
-  }
+  // renderChangePassword = () => {
+  //   return this.props.userData.loggedIn === true ? <li className="links">Change Password <hr/></li> : null
+  // }
 
   renderEditProfile = () => {
-    return this.props.userData.loggedIn === true ? <li><Link to="/editProfile" className="links">Edit Profile</Link><hr/></li> : null
+    return this.props.userData.loggedIn === true ? <li><Link to="/manageAccount" className="links">Manage my account</Link><hr/></li> : null
   }
 
   renderEditPrivilege = () => {
     return this.props.userData.loggedIn === true ? <li><Link to="/editUserPrivilege" className="links">Edit Privileges</Link><hr/></li> : null
   }
 
+// Todo:
+// make a menu item - Manage Users
+// make a sub menu for actions related to managing user to include:
+//  - renderListUser
+//  - renderEditPrivilege 
+
   render(){
     return(
       <div className="list">
         <ul>
           {this.renderEditProfile()}
-          {this.renderChangePassword()}
-          {this.renderDeleteAccount()}
           {this.renderLogin()}
           {this.renderSignUp()}
           {this.renderListUser()}

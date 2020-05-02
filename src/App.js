@@ -7,7 +7,7 @@ import SignUp from './authentication/signUp';
 import Verify from './authentication/verify';
 import Logout from './authentication/logout';
 import UserList from './userList/userList'
-import EditProfile from './editProfile/editProfile'
+import ManageAccount from './manageAccount/manageAccount'
 import EditUserPrivilege from './editUserPrivilege/editUserPrivilege'
 import './stylesheets/main.css'
 import './stylesheets/buttons.css'
@@ -27,7 +27,7 @@ class App extends React.Component {
             <Route path="/verify" render={() => <Verify />}/>
             <Route path="/logout" component={Logout} />
             <Route path="/userList" component={() => <UserList/>} />
-            <Route path="/editProfile" component={()=> <EditProfile />}/>
+            <Route path="/manageAccount" component={()=> <ManageAccount />}/>
             <Route path="/editUserPrivilege" component={()=> <EditUserPrivilege />}/>
           </div>
         </BrowserRouter>
