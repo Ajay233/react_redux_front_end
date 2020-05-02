@@ -1,0 +1,98 @@
+#quizSearch {
+  height: 100%;
+  padding-top: 60px;
+  background-color: rgb(30, 30, 30);
+  color: white;
+  font-family: arial;
+}
+
+#quizSearchTitle {
+  font-size: 40px;
+  text-align: center;
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+#resultHeader {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+#resultsHeadings {
+  border-bottom: solid 1px white;
+  font-weight: bold;
+}
+
+#nameHeader {
+  width: 25%;
+}
+
+#descriptionHeader {
+  width: 50%;
+}
+
+#optionsHeader {
+  width: 25%;
+}
+
+.quizContainer, #resultsHeadings {
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.quiz, #resultsHeadings {
+  width: 100%;
+  display: flex;
+}
+
+.quizName {
+  width: 25%;
+}
+
+.quizDescription {
+  width: 50%;
+}
+
+.options {
+  width: 25%;
+  direction: rtl;
+  display: flex;
+}
+
+#sectionDivider {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+}
+
+.edit, .start, .view, .deleteOption {
+  width: 25%;
+  direction:rtl;
+}
+
+.blue {
+  color: rgb(0, 104, 217);
+}
+
+.red {
+  color: rgb(227, 79, 38);
+}
+
+/* .start {
+  color: rgb(0, 104, 217);
+}
+
+.view {
+  color: rgb(0, 104, 217);
+} */
+
+/* .delete {
+  color: rgb(227, 79, 38);
+  width: 25%;
+  direction:rtl;
+} */

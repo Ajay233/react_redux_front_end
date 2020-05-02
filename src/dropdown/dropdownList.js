@@ -35,7 +35,11 @@ class DropdownList extends React.Component {
   //   return this.props.userData.loggedIn === true ? <li className="links">Change Password <hr/></li> : null
   // }
 
-  renderEditProfile = () => {
+  renderQuizSearch = () => {
+    return this.props.userData.loggedIn === true ? <li><Link to="/quizSearch" className="links">Quiz search</Link><hr/></li> : null
+  }
+
+  renderManageAccount = () => {
     return this.props.userData.loggedIn === true ? <li><Link to="/manageAccount" className="links">Manage my account</Link><hr/></li> : null
   }
 
@@ -47,17 +51,18 @@ class DropdownList extends React.Component {
 // make a menu item - Manage Users
 // make a sub menu for actions related to managing user to include:
 //  - renderListUser
-//  - renderEditPrivilege 
+//  - renderEditPrivilege
 
   render(){
     return(
       <div className="list">
         <ul>
-          {this.renderEditProfile()}
+          {this.renderManageAccount()}
           {this.renderLogin()}
           {this.renderSignUp()}
           {this.renderListUser()}
           {this.renderEditPrivilege()}
+          {this.renderQuizSearch()}
           {this.renderLogout()}
         </ul>
       </div>

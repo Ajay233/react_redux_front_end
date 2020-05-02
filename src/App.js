@@ -9,6 +9,7 @@ import Logout from './authentication/logout';
 import UserList from './userList/userList'
 import ManageAccount from './manageAccount/manageAccount'
 import EditUserPrivilege from './editUserPrivilege/editUserPrivilege'
+import QuizSearch from './quiz/quizSearch'
 import './stylesheets/main.css'
 import './stylesheets/buttons.css'
 import './stylesheets/inputs.css'
@@ -29,6 +30,7 @@ class App extends React.Component {
             <Route path="/userList" component={() => <UserList/>} />
             <Route path="/manageAccount" component={()=> <ManageAccount />}/>
             <Route path="/editUserPrivilege" component={()=> <EditUserPrivilege />}/>
+            <Route path="/quizSearch" component={()=> <QuizSearch />}/>
           </div>
         </BrowserRouter>
       </div>
