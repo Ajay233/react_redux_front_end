@@ -11,6 +11,7 @@ import { setUserResultsReducer } from './editUserPrivilege/reducers'
 import { setQuizSearchReducer } from './quizSearch/reducers'
 import { setQuizReducer } from './quiz/reducers'
 import { setQuestionsReducer } from './question/reducers'
+import { setAnswersReducer } from './answer/reducers'
 
 
 export default combineReducers({
@@ -23,5 +24,6 @@ export default combineReducers({
   quizes: setQuizSearchReducer,
   quiz: setQuizReducer,
   questions: setQuestionsReducer,
+  answers: setAnswersReducer,
   form: formReducer
 });

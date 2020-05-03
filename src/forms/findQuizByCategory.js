@@ -33,7 +33,7 @@ class QuizSearchByCategory extends React.Component {
       <div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="category" component={this.renderInput} label="Quiz category:">
-            <option value="" selected disabled>Select a category</option>
+            <option value="" disabled>Select a category</option>
             <option value="Comics">Comics</option>
             <option value="type1">type1</option>
             <option value="type2">type2</option>
