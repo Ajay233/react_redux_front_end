@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Answers from '../answer/answers'
+import UpdateQuestionForm from '../forms/updateQuestion'
+import Notification from '../notifications/notifications'
 
 class QuestionView extends React.Component {
 
@@ -13,8 +15,10 @@ class QuestionView extends React.Component {
     const { questionNumber, description } = this.props.currentQuestion
     return(
       <div id="questionView">test
+        <Notification />
         <div>{`Question number ${questionNumber} from the ${this.props.quiz.name} quiz`}</div>
         <div>{ description }</div>
+        <UpdateQuestionForm />
         <div id="answersHeader">Answers</div>
         <div id="answers">
           {this.renderAnswers()}
