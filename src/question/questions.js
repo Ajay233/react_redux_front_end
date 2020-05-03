@@ -3,7 +3,6 @@ import Question from './question'
 
 class Questions extends React.Component {
 
-  // questions
   renderQuestions = () => {
     const { questions } = this.props
     const listOfQuestions = questions.map(question => {

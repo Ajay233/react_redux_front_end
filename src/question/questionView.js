@@ -10,11 +10,12 @@ class QuestionView extends React.Component {
   }
 
   render(){
+    const { questionNumber, description } = this.props.currentQuestion
     return(
       <div id="questionView">test
-        <div></div>
-        <div></div>
-        <div></div>
+        <div>{`Question number ${questionNumber} from the ${this.props.quiz.name} quiz`}</div>
+        <div>{ description }</div>
+        <div id="answersHeader">Answers</div>
         <div id="answers">
           {this.renderAnswers()}
         </div>
