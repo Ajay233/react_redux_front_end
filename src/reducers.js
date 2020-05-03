@@ -11,7 +11,7 @@ import { setUserResultsReducer } from './editUserPrivilege/reducers'
 import { setQuizSearchReducer } from './quizSearch/reducers'
 import { setQuizReducer } from './quiz/reducers'
 import { setQuestionsReducer, setCurrentQuestionReducer } from './question/reducers'
-import { setAnswersReducer } from './answer/reducers'
+import { setAnswersReducer, setCurrentAnswerReducer } from './answer/reducers'
 
 
 export default combineReducers({
@@ -26,5 +26,6 @@ export default combineReducers({
   questions: setQuestionsReducer,
   currentQuestion: setCurrentQuestionReducer,
   answers: setAnswersReducer,
+  currentAnswer: setCurrentAnswerReducer,
   form: formReducer
 });

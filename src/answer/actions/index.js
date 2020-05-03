@@ -12,3 +12,10 @@ export const getAnswers = (endpoint, param, jwt) => {
     });
   }
 }
+
+export const setCurrentAnswer = (answer) => {
+  return {
+    type: "SET_CURRENT_ANSWER",
+    payload: answer
+  }
+}

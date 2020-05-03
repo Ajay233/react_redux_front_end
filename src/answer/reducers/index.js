@@ -6,3 +6,11 @@ export const setAnswersReducer = (state=answers, action) => {
     default: return state
   }
 }
+
+
+export const setCurrentAnswerReducer = (state={}, action) => {
+  switch (action.type) {
+    case "SET_CURRENT_ANSWER": return action.payload;
+    default: return state;
+  }
+}

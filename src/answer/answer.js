@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { setCurrentAnswer } from './actions'
 
 class Answer extends React.Component {
 
   handleEdit = () => {
-
+    this.props.setCurrentAnswer(this.props.answer);
   }
 
   handleDelete = () => {
@@ -28,7 +29,7 @@ class Answer extends React.Component {
     const { permission } = this.props.userData;
     return(
       <div className="options">
-        { permission === "ADMIN" ? <Link to="#" className="edit" onClick={this.handleEdit}><i className="fas fa-edit blue"></i> Edit</Link> : null }
+        { permission === "READ-ONLY" ? <Link to="/viewAnswer" className="edit" onClick={this.handleEdit}><i className="fas fa-edit blue"></i> Edit</Link> : null }
         { permission === "ADMIN" ? <Link to="#" className="deleteOption" onClick={this.handleDelete}><i className="fas fa-trash-alt red"></i> Delete</Link> : null }
       </div>
     );
@@ -49,4 +50,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Answer)
+export default connect(mapStateToProps, { setCurrentAnswer })(Answer)
