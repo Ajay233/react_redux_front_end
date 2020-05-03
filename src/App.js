@@ -11,6 +11,7 @@ import ManageAccount from './manageAccount/manageAccount'
 import EditUserPrivilege from './editUserPrivilege/editUserPrivilege'
 import QuizSearch from './quizSearch/quizSearch'
 import Quiz from './quiz/quiz'
+import QuestionView from './question/questionView'
 import './stylesheets/main.css'
 import './stylesheets/buttons.css'
 import './stylesheets/inputs.css'
@@ -33,6 +34,7 @@ class App extends React.Component {
             <Route path="/editUserPrivilege" component={()=> <EditUserPrivilege />}/>
             <Route path="/quizSearch" component={()=> <QuizSearch />}/>
             <Route path="/viewQuiz" component={()=> <Quiz />}/>
+            <Route path="/viewQuestion" component={()=> <QuestionView />}/>
           </div>
         </BrowserRouter>
       </div>

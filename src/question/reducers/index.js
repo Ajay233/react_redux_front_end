@@ -6,3 +6,11 @@ export const setQuestionsReducer = (state=questions, action) => {
     default: return state;
   }
 }
+
+
+export const setCurrentQuestionReducer = (state={}, action) => {
+  switch (action.type) {
+    case "SET_CURRENT_QUESTION": return action.payload
+    default: return state;
+  }
+}

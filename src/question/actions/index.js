@@ -13,3 +13,10 @@ export const getQuestions = (endpoint, param, jwt) => {
     });
   }
 }
+
+export const setCurrentQuestion = (question) => {
+  return {
+    type: "SET_CURRENT_QUESTION",
+    payload: question
+  }
+}
