@@ -4,9 +4,14 @@ import QuizResult from './quizResult'
 class QuizResults extends React.Component {
 
   buildQuizes = () => {
-    const { quizes, permission } = this.props;
+    const { quizes, permission , jwt} = this.props;
     const listOfQuizes = quizes.map(quiz => {
-      return <QuizResult key={quizes.indexOf(quiz)} name={quiz.name} description={quiz.description} permission={permission} />
+      return <QuizResult
+                key={quizes.indexOf(quiz)}
+                quiz={quiz}
+                permission={permission}
+                jwt={jwt}
+              />
     })
     return listOfQuizes
   }

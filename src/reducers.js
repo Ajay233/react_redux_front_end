@@ -8,7 +8,9 @@ import {
 import { setNotificationReducer } from './notifications/reducers/index'
 import { setUserListReducer } from './userList/reducers/index'
 import { setUserResultsReducer } from './editUserPrivilege/reducers'
-import { setQuizesReducer } from './quizSearch/reducers'
+import { setQuizSearchReducer } from './quizSearch/reducers'
+import { setQuizReducer } from './quiz/reducers'
+import { setQuestionsReducer } from './question/reducers'
 
 
 export default combineReducers({
@@ -18,6 +20,8 @@ export default combineReducers({
   notificationData: setNotificationReducer,
   userResults: setUserResultsReducer,
   listOfUsers: setUserListReducer,
-  quizes: setQuizesReducer,
+  quizes: setQuizSearchReducer,
+  quiz: setQuizReducer,
+  questions: setQuestionsReducer,
   form: formReducer
 });

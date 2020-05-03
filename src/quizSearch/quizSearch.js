@@ -48,7 +48,7 @@ class QuizSearch extends React.Component {
         <div>
           {this.renderResultsTitle(quizes)}
           {this.renderResultHeadings(quizes)}
-          <QuizResults quizes={quizes} permission={userData.permission} />
+          <QuizResults quizes={quizes} permission={userData.permission} jwt={userData.jwt}/>
         </div>
       </div>
     );
