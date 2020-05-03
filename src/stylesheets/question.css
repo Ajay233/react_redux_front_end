@@ -1,0 +1,83 @@
+#questionView {
+  height: 100%;
+  padding-top: 60px;
+  background-color: rgb(30, 30, 30);
+  color: white;
+  font-family: arial;
+}
+
+#answersTitle {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+#answerHeadings {
+  width: 100%;
+  display: flex;
+  border-bottom: solid 1px white;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+#numberHeader {
+  width: 10%;
+}
+
+#descriptionHeader {
+  width: 50%;
+}
+
+#correctAnswerHeading {
+  width: 15%;
+  text-align: center;
+}
+
+#optionsHeader {
+  width: 25%;
+}
+
+#answers {
+  width: 100%
+}
+
+.answerContainer {
+  width: 100%;
+  display: flex;
+  padding: 10px 5px 10px 5px;
+  border-bottom: solid 1px white
+
+}
+
+.ansNumber {
+  width: 10%;
+  text-align: center;
+}
+
+.ansDecription {
+  width: 50%;
+}
+
+.correctAns {
+  width: 15%;
+  text-align: center;
+}
+
+.ansOptions {
+  width: 25%;
+  display: flex;
+  flex-direction: row-reverse;
+  padding-right: 5px;
+}
+
+.edit {
+  width: 50%;
+}
+
+.deleteOption {
+  width: 50%;
+}

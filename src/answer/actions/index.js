@@ -19,3 +19,10 @@ export const setCurrentAnswer = (answer) => {
     payload: answer
   }
 }
+
+export const deleteAnswer = (answer) => {
+  return {
+    type: "DELETE_ANSWER",
+    payload: answer
+  }
+}

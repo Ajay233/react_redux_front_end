@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { setCurrentAnswer } from './actions'
+import { setCurrentAnswer, deleteAnswer } from './actions'
+import { setNotification } from '../notifications/actions'
+
+import { del } from '../axiosRequests/requests'
 
 class Answer extends React.Component {
 
@@ -10,17 +13,27 @@ class Answer extends React.Component {
   }
 
   handleDelete = () => {
-
+    const { answer, userData, setNotification, deleteAnswer } = this.props;
+    const config = {
+      data: [answer]
+    }
+    del("answer/delete", config, userData.jwt).then((response) => {
+      deleteAnswer(answer);
+      setNotification("Answer deleted", "success", true);
+    }).catch((error) => {
+      console.log(error.response);
+      setNotification("Error - Unable to delete this answer", "error", true)
+    });
   }
 
   renderAnswer = () => {
     const { answerNumber, description, correctAnswer } = this.props.answer
     return(
-      <div>
-        <div>{ answerNumber }</div>
-        <div>{ description }</div>
-        <div>{ correctAnswer === true ? <i className="far fa-check-circle"></i> : <i className="far fa-times-circle"></i> }</div>
-        <div>{this.renderOptions()}</div>
+      <div className="answerContainer">
+        <div className="ansNumber">{ answerNumber }</div>
+        <div className="ansDecription">{ description }</div>
+        <div className="correctAns">{ correctAnswer === true ? <i className="far fa-check-circle green"></i> : <i className="far fa-times-circle red"></i> }</div>
+        <div className="ansOptions">{this.renderOptions()}</div>
       </div>
     );
   }
@@ -29,8 +42,8 @@ class Answer extends React.Component {
     const { permission } = this.props.userData;
     return(
       <div className="options">
-        { permission === "READ-ONLY" ? <Link to="/viewAnswer" className="edit" onClick={this.handleEdit}><i className="fas fa-edit blue"></i> Edit</Link> : null }
-        { permission === "ADMIN" ? <Link to="#" className="deleteOption" onClick={this.handleDelete}><i className="fas fa-trash-alt red"></i> Delete</Link> : null }
+        { permission === "ADMIN" ? <Link to="/viewAnswer" className="edit" onClick={this.handleEdit}><i className="fas fa-edit blue"></i> Edit</Link> : null }
+        { permission === "READ-ONLY" ? <Link to="#" className="deleteOption" onClick={this.handleDelete}><i className="fas fa-trash-alt red"></i> Delete</Link> : null }
       </div>
     );
   }
@@ -50,4 +63,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setCurrentAnswer })(Answer)
+export default connect(mapStateToProps, { setCurrentAnswer, setNotification, deleteAnswer })(Answer)

@@ -64,8 +64,9 @@
 
 .options {
   width: 25%;
-  direction: rtl;
-  display: flex;
+  flex-direction: row-reverse;
+  /* direction: rtl;
+  display: flex; */
 }
 
 #sectionDivider {
@@ -85,6 +86,10 @@
 
 .red {
   color: rgb(227, 79, 38);
+}
+
+.green {
+  color: rgb(48, 186, 78)
 }
 
 /* .start {
