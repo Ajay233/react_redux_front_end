@@ -4,10 +4,12 @@ import { del } from '../axiosRequests/requests'
 import EditProfileForm from '../forms/editProfile'
 import ChangePassword from '../forms/changePassword'
 import Notification from '../notifications/notifications'
+import Modal from '../modal/modal'
 import history from '../history'
 
 import { setNotification } from '../notifications/actions'
 import { logOutUser } from '../authentication/actions'
+import { showModal, hideModal } from '../modal/actions'
 
 import '../stylesheets/inputs.css';
 import '../stylesheets/buttons.css';
@@ -30,9 +32,16 @@ class ManageAccount extends React.Component {
   }
 
   render(){
-    const { userData, setNotification } = this.props;
+    const { userData, setNotification, modalState, hideModal, showModal } = this.props;
     return(
       <div id="editProfileContainer">
+      <Modal
+        show={modalState}
+        title={"Account"}
+        message={"You are about to delete your account.  Once deleted your account will no longer be retreivable"}
+        onDelete={this.handleDelete}
+        onCancel={hideModal}
+      />
       <Notification />
       <div id="editProfileTitle">
         <div className="titleImgContainer">
@@ -52,7 +61,7 @@ class ManageAccount extends React.Component {
         <div id="deleteAccountContainer">
           <div id="deleteAccountTitle">Delete Account</div>
           <p>Please note that once you have deleted your account it will not be possible to retreive it.</p>
-          <button className="delete" onClick={this.handleDelete}>Delete</button>
+          <button className="delete" onClick={showModal}>Delete</button>
         </div>
       </div>
     );
@@ -63,8 +72,9 @@ class ManageAccount extends React.Component {
 const mapStateToProps = (state) => {
   return {
     userData: state.userData,
-    notificationData: state.notificationData
+    notificationData: state.notificationData,
+    modalState: state.showModal
   };
 }
 
-export default connect(mapStateToProps, {setNotification, logOutUser})(ManageAccount)
+export default connect(mapStateToProps, {setNotification, logOutUser, showModal, hideModal})(ManageAccount)
