@@ -4,6 +4,7 @@ import { del } from '../axiosRequests/requests'
 import EditProfileForm from '../forms/editProfile'
 import ChangePassword from '../forms/changePassword'
 import Notification from '../notifications/notifications'
+import history from '../history'
 
 import { setNotification } from '../notifications/actions'
 import { logOutUser } from '../authentication/actions'
@@ -18,15 +19,10 @@ class ManageAccount extends React.Component {
     const successMsg = "Your account has been deleted";
     const errorMsg = "An error has occurred, your account was not found";
     const {id, jwt} = this.props.userData
-    console.log(id)
-    console.log(jwt)
-    const config = {
-      data: {
-        id: id
-      }
-    }
+    const config = { data: { id: id } }
     del("users/deleteAccount", config, jwt).then((response) => {
       this.props.logOutUser();
+      history.push('/');
       this.props.setNotification(successMsg, "success", true);
     }).catch((error) => {
       this.props.setNotification(errorMsg, "error", true);

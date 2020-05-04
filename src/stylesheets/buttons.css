@@ -10,7 +10,7 @@
   font-size: 16px;
   font-weight: bold;
   color: white;
-  margin: 8px 0;
+  margin: 8px 5px;
   text-align: center;
 }
 
@@ -29,6 +29,10 @@
 .close:hover {
   cursor: pointer;
   opacity: 0.8;
+}
+
+.delete:hover {
+  cursor: pointer;
 }
 
 .submit:focus {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 import NavBar from './navBar.js'
 import Home from './home';
 import Login from './authentication/login';
@@ -13,6 +13,7 @@ import QuizSearch from './quizSearch/quizSearch'
 import Quiz from './quiz/quiz'
 import QuestionView from './question/questionView'
 import AnswerView from './answer/viewAnswer'
+import history from './history'
 import './stylesheets/main.css'
 import './stylesheets/buttons.css'
 import './stylesheets/inputs.css'
@@ -22,7 +23,7 @@ class App extends React.Component {
   render(){
     return (
       <div className="container">
-        <BrowserRouter>
+        <Router history={history}>
           <div className="container">
             <NavBar />
             <Route path="/" exact render={() => <Home />}/>
@@ -34,11 +35,11 @@ class App extends React.Component {
             <Route path="/manageAccount" component={()=> <ManageAccount />}/>
             <Route path="/editUserPrivilege" component={()=> <EditUserPrivilege />}/>
             <Route path="/quizSearch" component={()=> <QuizSearch />}/>
-            <Route path="/viewQuiz" component={()=> <Quiz />}/>
-            <Route path="/viewQuestion" component={()=> <QuestionView />}/>
-            <Route path="/viewAnswer" component={()=> <AnswerView />} />
+            <Route path={["/viewQuiz", "/editQuiz", "/newQuiz"]} component={()=> <Quiz />}/>
+            <Route path={["/viewQuestion", "/editQuestion", "newQuestion"]} component={()=> <QuestionView />}/>
+            <Route path={["/viewAnswer", "/editAnswer", "newAnswer"]} component={()=> <AnswerView />} />
           </div>
-        </BrowserRouter>
+        </Router>
       </div>
     );
   }

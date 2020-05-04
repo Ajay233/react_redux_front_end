@@ -12,6 +12,7 @@ import { setQuizSearchReducer } from './quizSearch/reducers'
 import { setQuizReducer } from './quiz/reducers'
 import { setQuestionsReducer, setCurrentQuestionReducer } from './question/reducers'
 import { setAnswersReducer, setCurrentAnswerReducer } from './answer/reducers'
+import { showModalReducer } from './modal/reducers'
 
 
 export default combineReducers({
@@ -27,5 +28,6 @@ export default combineReducers({
   currentQuestion: setCurrentQuestionReducer,
   answers: setAnswersReducer,
   currentAnswer: setCurrentAnswerReducer,
+  showModal: showModalReducer,
   form: formReducer
 });
