@@ -57,7 +57,7 @@ class UpdateAnswerForm extends React.Component {
             <option value={true}>Yes</option>
             <option value={false}>No</option>
           </Field>
-          <button className="submit">Save</button><Link to="#">Cancel</Link>
+          <button className="submit">Save</button><Link to="/viewQuestion">Cancel</Link>
         </form>
       </div>
     );

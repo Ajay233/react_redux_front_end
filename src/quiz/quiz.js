@@ -8,6 +8,8 @@ import { getQuestions } from '../question/actions'
 import { setNotification } from '../notifications/actions'
 import { setQuiz } from './actions'
 
+import '../stylesheets/quiz.css'
+
 class Quiz extends React.Component {
 
   componentDidMount(){
@@ -24,9 +26,9 @@ class Quiz extends React.Component {
   render(){
     const { name, description } = this.props.quiz
     return(
-      <div className="">
+      <div id="quiz">
         <Notification />
-        <div>{name}</div>
+        <div id="quizTitle">{name}</div>
         <div>Description:</div>
         <div>{description}</div>
         <UpdateQuizForm
@@ -35,7 +37,7 @@ class Quiz extends React.Component {
           jwt={this.props.userData.jwt}
           quiz={this.props.quiz}
         />
-        <div>Questions:</div>
+        <div id="questionsTitle">Questions:</div>
         <Questions questions={this.props.questions}/>
       </div>
     );

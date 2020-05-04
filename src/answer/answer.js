@@ -33,7 +33,7 @@ class Answer extends React.Component {
         <div className="ansNumber">{ answerNumber }</div>
         <div className="ansDecription">{ description }</div>
         <div className="correctAns">{ correctAnswer === true ? <i className="far fa-check-circle green"></i> : <i className="far fa-times-circle red"></i> }</div>
-        <div className="ansOptions">{this.renderOptions()}</div>
+        {this.renderOptions()}
       </div>
     );
   }

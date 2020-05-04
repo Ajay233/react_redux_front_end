@@ -41,7 +41,7 @@ class UpdateQuestionForm extends React.Component {
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="number" component={this.renderInput} label="Question Number:"/>
           <Field name="description" component={this.renderInput} label="Question description:"/>
-          <button className="submit">Save</button><Link to="#">Cancel</Link>
+          <button className="submit">Save</button><Link to="/viewQuiz">Cancel</Link>
         </form>
       </div>
     );

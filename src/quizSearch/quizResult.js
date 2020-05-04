@@ -3,8 +3,36 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setQuiz } from '../quiz/actions'
 import { del } from '../axiosRequests/requests'
+import { setNotification } from '../notifications/actions'
+import { deleteQuiz } from './actions'
 
 class QuizResult extends React.Component {
+
+  handleEdit = () => {
+
+  }
+
+  handleDelete = () => {
+    const { quiz, userData, deleteQuiz, setNotification } = this.props;
+    const config = {
+      data: quiz
+    }
+    del("quiz/delete", config, userData.jwt).then((response) => {
+      deleteQuiz(quiz)
+      setNotification("Quiz deleted", "success", true)
+    }).catch((error) => {
+      console.log(error.response)
+      setNotification("Error - Unable to delete this quiz", "error", true)
+    })
+  }
+
+  handleView = () => {
+    this.props.setQuiz(this.props.quiz);
+  }
+
+  handleStart = () => {
+    console.log(this.props)
+  }
 
   renderQuiz = () => {
     const { name, description} = this.props.quiz
@@ -15,22 +43,6 @@ class QuizResult extends React.Component {
         {this.renderOptions()}
       </div>
     );
-  }
-
-  handleEdit = () => {
-
-  }
-
-  handleDelete = () => {
-    
-  }
-
-  handleView = () => {
-    this.props.setQuiz(this.props.quiz);
-  }
-
-  handleStart = () => {
-    console.log(this.props)
   }
 
   // possible way to use different classes for option sheader if the header ends up being used
@@ -61,8 +73,8 @@ class QuizResult extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    usedData: state.userData
+    userData: state.userData
   }
 }
 
-export default connect(mapStateToProps,{ setQuiz })(QuizResult)
+export default connect(mapStateToProps,{ setQuiz, setNotification, deleteQuiz })(QuizResult)

@@ -34,3 +34,10 @@ export const getQuizSearchResults = (endpoint, data, token, setNotification, err
     })
   }
 }
+
+export const deleteQuiz = (quiz) => {
+  return {
+    type: "DELETE_QUIZ",
+    payload: quiz
+  }
+}

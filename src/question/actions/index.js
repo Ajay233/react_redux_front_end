@@ -20,3 +20,10 @@ export const setCurrentQuestion = (question) => {
     payload: question
   }
 }
+
+export const deleteQuestion = (question) => {
+  return {
+    type: "DELETE_QUESTION",
+    payload: question
+  }
+}

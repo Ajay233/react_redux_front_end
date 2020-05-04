@@ -71,7 +71,7 @@ class UpdateQuizForm extends React.Component {
             <option value="type3">type3</option>
           </Field>
           <div>
-            <button className="submit">Save</button><Link to="#">Cancel</Link>
+            <button className="submit">Save</button><Link to="/quizSearch">Cancel</Link>
           </div>
         </form>
       </div>
