@@ -42,7 +42,7 @@ class Answer extends React.Component {
     const { permission } = this.props.userData;
     return(
       <div className="options">
-        { permission === "ADMIN" ? <Link to="/viewAnswer" className="edit" onClick={this.handleEdit}><i className="fas fa-edit blue"></i> Edit</Link> : null }
+        { permission === "ADMIN" ? <Link to="/editAnswer" className="edit" onClick={this.handleEdit}><i className="fas fa-edit blue"></i> Edit</Link> : null }
         { permission === "READ-ONLY" ? <Link to="#" className="deleteOption" onClick={this.handleDelete}><i className="fas fa-trash-alt red"></i> Delete</Link> : null }
       </div>
     );

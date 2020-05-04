@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Modal from '../modal/modal'
 import { setQuiz } from '../quiz/actions'
 import { del } from '../axiosRequests/requests'
 import { setNotification } from '../notifications/actions'
 import { deleteQuiz } from './actions'
+import { showModal } from '../modal/actions'
 
 class QuizResult extends React.Component {
 
@@ -12,18 +14,27 @@ class QuizResult extends React.Component {
 
   }
 
+  renderModal = () => {
+
+  }
+
+  // handleDelete = () => {
+  //   const { quiz, userData, deleteQuiz, setNotification } = this.props;
+  //   const config = {
+  //     data: quiz
+  //   }
+  //   del("quiz/delete", config, userData.jwt).then((response) => {
+  //     deleteQuiz(quiz)
+  //     setNotification("Quiz deleted", "success", true)
+  //   }).catch((error) => {
+  //     console.log(error.response)
+  //     setNotification("Error - Unable to delete this quiz", "error", true)
+  //   })
+  // }
+
   handleDelete = () => {
-    const { quiz, userData, deleteQuiz, setNotification } = this.props;
-    const config = {
-      data: quiz
-    }
-    del("quiz/delete", config, userData.jwt).then((response) => {
-      deleteQuiz(quiz)
-      setNotification("Quiz deleted", "success", true)
-    }).catch((error) => {
-      console.log(error.response)
-      setNotification("Error - Unable to delete this quiz", "error", true)
-    })
+    this.props.setQuiz(this.props.quiz);
+    this.props.showModal();
   }
 
   handleView = () => {
@@ -56,7 +67,7 @@ class QuizResult extends React.Component {
       <div className="options">
         { permission === "USER" ? <Link to="#" className="start" onClick={this.handleStart}><i className="far fa-play-circle blue"></i> Start</Link> : null }
         { permission === "READ-ONLY" ? <Link to="/viewQuiz" className="view" onClick={this.handleView}><i className="far fa-eye blue"></i> View</Link> : null }
-        { permission === "ADMIN" ? <Link to="#" className="edit" onClick={this.handleEdit}><i className="fas fa-edit blue"></i> Edit</Link> : null }
+        { permission === "ADMIN" ? <Link to="/editQuiz" className="edit" onClick={this.handleEdit}><i className="fas fa-edit blue"></i> Edit</Link> : null }
         { permission === "ADMIN" ? <Link to="#" className="deleteOption" onClick={this.handleDelete}><i className="fas fa-trash-alt red"></i> Delete</Link> : null }
       </div>
     );
@@ -73,8 +84,9 @@ class QuizResult extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    userData: state.userData
+    userData: state.userData,
+    modalState: state.showModal
   }
 }
 
-export default connect(mapStateToProps,{ setQuiz, setNotification, deleteQuiz })(QuizResult)
+export default connect(mapStateToProps,{ setQuiz, setNotification, deleteQuiz, showModal })(QuizResult)

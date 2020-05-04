@@ -4,8 +4,11 @@ import QuizResults from './quizResults'
 import QuizSearchByName from '../forms/findQuizByName'
 import QuizSearchByCategory from '../forms/findQuizByCategory'
 import Notification from '../notifications/notifications'
+import Modal from '../modal/modal'
+import { del } from '../axiosRequests/requests'
 import { setNotification } from '../notifications/actions'
-import { setQuizes, getQuizSearchResults } from './actions'
+import { setQuizes, getQuizSearchResults, deleteQuiz } from './actions'
+import { hideModal } from '../modal/actions'
 import "../stylesheets/quizSearch.css"
 
 
@@ -33,10 +36,31 @@ class QuizSearch extends React.Component {
     )
   }
 
+  handleDelete = () => {
+    const { quiz, userData, deleteQuiz, setNotification } = this.props;
+    const config = {
+      data: quiz
+    }
+    del("quiz/delete", config, userData.jwt).then((response) => {
+      deleteQuiz(quiz)
+      setNotification("Quiz deleted", "success", true)
+    }).catch((error) => {
+      console.log(error.response)
+      setNotification("Error - Unable to delete this quiz", "error", true)
+    })
+  }
+
   render(){
-    const { quizes, userData, setNotification, getQuizSearchResults } = this.props
+    const { quizes, quiz, userData, setNotification, getQuizSearchResults, modalState, hideModal } = this.props
     return(
       <div id="quizSearch">
+        <Modal
+          show={modalState}
+          title={"Quiz"}
+          message={"You are about to delete a quiz which will also delete any questions and answers associated with is"}
+          onDelete={this.handleDelete}
+          onCancel={hideModal}
+        />
         <Notification />
         <div id="quizSearchTitle">Quiz Search</div>
         <div id="quizSearchByName">
@@ -59,8 +83,10 @@ const mapStateToProps = (state) => {
   return {
     userData: state.userData,
     notificationData: state.notificationData,
-    quizes: state.quizes
+    quizes: state.quizes,
+    quiz: state.quiz,
+    modalState: state.showModal
   }
 }
 
-export default connect(mapStateToProps, { setQuizes, getQuizSearchResults, setNotification })(QuizSearch)
+export default connect(mapStateToProps, { setQuizes, getQuizSearchResults, setNotification, hideModal, deleteQuiz })(QuizSearch)
