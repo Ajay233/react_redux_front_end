@@ -3,7 +3,8 @@ import { questions } from '../factory/questionsFactory'
 export const setQuestionsReducer = (state=questions, action) => {
   switch (action.type) {
     case "SET_QUESTIONS": return action.payload;
-    case "DELETE_QUESTION": return state.filter(question => question!== action.payload)
+    case "DELETE_QUESTION": return state.filter(question => question!== action.payload);
+    case "ADD_QUESTION": return [...state, action.payload]
     default: return state;
   }
 }

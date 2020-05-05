@@ -2,11 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Modal from '../modal/modal'
+
 import { setQuiz } from '../quiz/actions'
-import { del } from '../axiosRequests/requests'
 import { setNotification } from '../notifications/actions'
 import { deleteQuiz } from './actions'
 import { showModal } from '../modal/actions'
+import { getQuestions } from '../question/actions'
+
+import { del } from '../axiosRequests/requests'
 
 class QuizResult extends React.Component {
 
@@ -38,7 +41,10 @@ class QuizResult extends React.Component {
   }
 
   handleView = () => {
-    this.props.setQuiz(this.props.quiz);
+    const { userData, quiz, getQuestions, setQuiz } = this.props
+    const param = { quizId: quiz.id }
+    getQuestions("question/findByQuizId", param, userData.jwt)
+    setQuiz(quiz);
   }
 
   handleStart = () => {
@@ -89,4 +95,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps,{ setQuiz, setNotification, deleteQuiz, showModal })(QuizResult)
+export default connect(mapStateToProps,{ setQuiz, setNotification, deleteQuiz, showModal, getQuestions })(QuizResult)

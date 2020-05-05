@@ -2,12 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import { put } from '../axiosRequests/requests'
+import { post } from '../axiosRequests/requests'
 import history from '../history'
 import { setNotification } from '../notifications/actions'
-import { setCurrentQuestion } from '../question/actions'
+import { addQuestion } from '../question/actions'
 
-class UpdateQuestionForm extends React.Component {
+class NewQuestionForm extends React.Component {
 
   renderInput = (formProps) => {
     return(
@@ -19,28 +19,25 @@ class UpdateQuestionForm extends React.Component {
   }
 
   onSubmit = ({ number, description }) => {
-    const { userData, currentQuestion, setCurrentQuestion, setNotification } = this.props;
+    const { userData, quiz, setNotification, addQuestion } = this.props;
     const body = {
-      id: currentQuestion.id,
-      quizId: currentQuestion.quizId,
+      quizId: quiz.id,
       questionNumber: number,
       description: description
     }
-    put("question/update", [body], userData.jwt).then((response) => {
-      setCurrentQuestion(body);
+    post("question/create", [body], userData.jwt).then((response) => {
+      addQuestion(response.data[0]);
       history.push("/editQuiz");
-      setNotification("Question updated", "success", true)
+      setNotification("Question created", "success", true);
     }).catch((error) => {
       console.log(error.response);
-      setNotification("Error - unable to update question", "error", true)
+      setNotification("Error - unable to create question with the details provided", "error", true)
     });
   }
 
   render(){
-    const { questionNumber } = this.props.currentQuestion
     return(
-      <div>
-        <div className="">{`Edit Question ${questionNumber}`}</div>
+      <div className="container">
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="number" component={this.renderInput} label="Question Number:"/>
           <Field name="description" component={this.renderInput} label="Question description:"/>
@@ -53,13 +50,10 @@ class UpdateQuestionForm extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    initialValues: {
-      number: state.currentQuestion.questionNumber,
-      description: state.currentQuestion.description
-    },
     userData: state.userData,
-    currentQuestion: state.currentQuestion
+    currentQuestion: state.currentQuestion,
+    quiz: state.quiz
   }
 }
 
-export default connect(mapStateToProps, { setNotification, setCurrentQuestion })(reduxForm({ form: 'questionForm' })(UpdateQuestionForm))
+export default connect(mapStateToProps, { setNotification, addQuestion })(reduxForm({ form: 'questionForm' })(NewQuestionForm))

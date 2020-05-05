@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Notification from '../notifications/notifications'
 import Questions from '../question/questions'
@@ -14,11 +15,11 @@ import '../stylesheets/quiz.css'
 
 class Quiz extends React.Component {
 
-  componentDidMount(){
-    const { userData, quiz, getQuestions } = this.props
-    const param = { quizId: quiz.id }
-    getQuestions("question/findByQuizId", param, userData.jwt)
-  }
+  // componentWillMount(){
+  //   const { userData, quiz, getQuestions } = this.props
+  //   const param = { quizId: quiz.id }
+  //   getQuestions("question/findByQuizId", param, userData.jwt)
+  // }
 
   handleDelete = () => {
     const { currentQuestion, userData, setNotification, deleteQuestion } = this.props;
@@ -62,6 +63,7 @@ class Quiz extends React.Component {
         />
         <div id="questionsTitle">Questions:</div>
         <Questions questions={this.props.questions}/>
+        <Link to="/newQuestion"><i className="fas fa-plus-circle green"></i>Add a question</Link>
       </div>
     );
   }

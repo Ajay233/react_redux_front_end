@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Answers from '../answer/answers'
 import UpdateQuestionForm from '../forms/updateQuestion'
+import NewQuestionForm from '../forms/updateQuestion'
 import Notification from '../notifications/notifications'
 import Modal from '../modal/modal'
-
+import history from '../history'
 import { setNotification } from '../notifications/actions'
 import { hideModal } from '../modal/actions'
 import { deleteAnswer } from '../answer/actions'
@@ -20,6 +21,21 @@ class QuestionView extends React.Component {
   renderAnswers = () => {
     const { answers } = this.props;
     return answers.length === 0 ? null : <Answers answers={answers} />
+  }
+
+  renderDetails = () => {
+    const { currentQuestion, quiz } = this.props
+    return(
+      <React.Fragment>
+        <div>{`Question number ${currentQuestion.questionNumber} from the ${quiz.name} quiz`}</div>
+        <div>Question description:</div>
+        <div>{ currentQuestion.description }</div>
+      </React.Fragment>
+    );
+  }
+
+  renderFormOrDetails = () => {
+    return history.location.pathname === "/editQuestion" ? <UpdateQuestionForm/> : this.renderDetails();
   }
 
   handleDelete = () => {
@@ -49,9 +65,8 @@ class QuestionView extends React.Component {
           onCancel={hideModal}
         />
         <Notification />
-        <div>{`Question number ${questionNumber} from the ${this.props.quiz.name} quiz`}</div>
-        <div>{ description }</div>
-        <UpdateQuestionForm />
+        {this.renderFormOrDetails()}
+        <Link className="" to="/newAnswer"><i className="fas fa-plus-circle green"></i>Add an answer</Link>
         <div id="answersTitle">Answers</div>
         <div id="answerHeadings">
           <div id="numberHeader">Answer</div>
@@ -62,7 +77,6 @@ class QuestionView extends React.Component {
         <div id="answers">
           {this.renderAnswers()}
         </div>
-        <Link to="/newAnswer"><i className="fas fa-plus-circle green"></i>Add an answer</Link>
       </div>
     );
   }
