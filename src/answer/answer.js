@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setCurrentAnswer, deleteAnswer } from './actions'
 import { setNotification } from '../notifications/actions'
-
-import { del } from '../axiosRequests/requests'
+import { showModal } from '../modal/actions'
 
 class Answer extends React.Component {
 
@@ -12,18 +11,23 @@ class Answer extends React.Component {
     this.props.setCurrentAnswer(this.props.answer);
   }
 
+  // handleDelete = () => {
+  //   const { answer, userData, setNotification, deleteAnswer } = this.props;
+  //   const config = {
+  //     data: [answer]
+  //   }
+  //   del("answer/delete", config, userData.jwt).then((response) => {
+  //     deleteAnswer(answer);
+  //     setNotification("Answer deleted", "success", true);
+  //   }).catch((error) => {
+  //     console.log(error.response);
+  //     setNotification("Error - Unable to delete this answer", "error", true)
+  //   });
+  // }
+
   handleDelete = () => {
-    const { answer, userData, setNotification, deleteAnswer } = this.props;
-    const config = {
-      data: [answer]
-    }
-    del("answer/delete", config, userData.jwt).then((response) => {
-      deleteAnswer(answer);
-      setNotification("Answer deleted", "success", true);
-    }).catch((error) => {
-      console.log(error.response);
-      setNotification("Error - Unable to delete this answer", "error", true)
-    });
+    this.props.showModal();
+    this.props.setCurrentAnswer(this.props.answer);
   }
 
   renderAnswer = () => {
@@ -43,7 +47,7 @@ class Answer extends React.Component {
     return(
       <div className="options">
         { permission === "ADMIN" ? <Link to="/editAnswer" className="edit" onClick={this.handleEdit}><i className="fas fa-edit blue"></i> Edit</Link> : null }
-        { permission === "READ-ONLY" ? <Link to="#" className="deleteOption" onClick={this.handleDelete}><i className="fas fa-trash-alt red"></i> Delete</Link> : null }
+        { permission === "ADMIN" ? <Link to="#" className="deleteOption" onClick={this.handleDelete}><i className="fas fa-trash-alt red"></i> Delete</Link> : null }
       </div>
     );
   }
@@ -63,4 +67,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setCurrentAnswer, setNotification, deleteAnswer })(Answer)
+export default connect(mapStateToProps, { setCurrentAnswer, setNotification, deleteAnswer, showModal })(Answer)
