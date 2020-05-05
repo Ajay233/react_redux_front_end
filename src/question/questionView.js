@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Answers from '../answer/answers'
 import UpdateQuestionForm from '../forms/updateQuestion'
-import NewQuestionForm from '../forms/updateQuestion'
 import Notification from '../notifications/notifications'
 import Modal from '../modal/modal'
 import history from '../history'
+
 import { setNotification } from '../notifications/actions'
 import { hideModal } from '../modal/actions'
 import { deleteAnswer } from '../answer/actions'
@@ -58,7 +58,6 @@ class QuestionView extends React.Component {
   }
 
   render(){
-    const { questionNumber, description } = this.props.currentQuestion
     const { currentAnswer, modalState, hideModal } = this.props
     return(
       <div id="questionView">

@@ -19,14 +19,14 @@ class UpdatePermission extends React.Component {
     const { id } = this.props.userResults;
     const { jwt } = this.props.userData;
     const successMsg = "Permission level saved";
-    const errorMsg = "";
     const data = { id: id, permission: permission }
     put("users/updatePermission", data, jwt).then((response) => {
       this.props.setUserResults([]);
       this.props.setNotification(successMsg, "success", true);
     }).catch((error) => {
       console.log(error.response)
-      this.props.setNotification(error.response.data, "error", true);
+      const errorMsg = error.response.data ? error.response.data : "Error - unable to update permission for this user"
+      this.props.setNotification(errorMsg, "error", true);
     })
   }
 

@@ -66,21 +66,21 @@ class Quiz extends React.Component {
   }
 
   render(){
-    const { name, description } = this.props.quiz
+    const { questions, currentQuestion, hideModal, modalState } = this.props
     return(
       <div id="quiz">
         <Modal
-          show={this.props.modalState}
+          show={modalState}
           title={"Question"}
-          message={`You are about to delete question ${this.props.currentQuestion.questionNumber}, this will also delete any associated answers for this question.`}
+          message={`You are about to delete question ${currentQuestion.questionNumber}, this will also delete any associated answers for this question.`}
           onDelete={this.handleDelete}
-          onCancel={this.props.hideModal}
+          onCancel={hideModal}
         />
         <Notification />
         {this.renderDetailsOrUpdate()}
         {this.renderAddButton()}
         <div id="questionsTitle">Questions:</div>
-        <Questions questions={this.props.questions}/>
+        <Questions questions={questions}/>
       </div>
     );
   }

@@ -5,7 +5,6 @@ import { Field, reduxForm } from 'redux-form'
 import { addQuiz } from '../quizSearch/actions'
 import { setNotification } from '../notifications/actions'
 import { post } from '../axiosRequests/requests'
-import history from '../history'
 import Notification from '../notifications/notifications'
 
 
@@ -40,10 +39,10 @@ class NewQuizForm extends React.Component {
     }
     post("quiz/create", body, userData.jwt).then((response) => {
       addQuiz(response.data);
-      this.props.setNotification("Quiz created", "success", true);
+      setNotification("Quiz created", "success", true);
     }).catch((error) => {
       console.log(error.response);
-      this.props.setNotification("Error - Unable to update quiz", "error", true);
+      setNotification("Error - Unable to update quiz", "error", true);
     })
   }
 

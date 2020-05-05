@@ -15,10 +15,10 @@ class ChangePassword extends React.Component {
 
   errorMsg = (error) => {
     switch (error) {
-      case "PASSWORD MISMATCH": return "Retyped password did not match the new password"; break;
-      case "NO MATCH": return "The password you provided was incorrect"; break;
-      case "PASSWORD INCORRECT": return "The password you provided was incorrect"; break;
-      default: return null; break;
+      case "PASSWORD MISMATCH": return "Retyped password did not match the new password";
+      case "NO MATCH": return "The password you provided was incorrect";
+      case "PASSWORD INCORRECT": return "The password you provided was incorrect";
+      default: return null;
 
     }
   }

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import history from '../history'
 
-import { put, post } from '../axiosRequests/requests'
+import { put } from '../axiosRequests/requests'
 
 import { setNotification } from '../notifications/actions'
 import { setCurrentAnswer, updateAnswer } from '../answer/actions'

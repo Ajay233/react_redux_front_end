@@ -26,8 +26,8 @@ class EditProfileForm extends React.Component {
   renderPlaceholder = (name) => {
     const {forename, surname, email} = this.props.userData
     switch(name){
-      case 'forename': return forename; break;
-      case 'surname': return surname; break;
+      case 'forename': return forename;
+      case 'surname': return surname;
       default: return email;
     }
   }

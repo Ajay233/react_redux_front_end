@@ -3,8 +3,8 @@ import { user } from '../factory/userFactory'
 
 export const setUserReducer = (userData=user, action) => {
   switch (action.type) {
-    case "SET_USER_LOGGED_IN": return action.payload; break;
-    case "LOG_OUT_USER": return action.payload; break;
+    case "SET_USER_LOGGED_IN": return action.payload;
+    case "LOG_OUT_USER": return action.payload;
     default: return userData;
   }
   // if(action.type === "SET_USER_LOGGED_IN"){

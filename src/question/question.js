@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setCurrentQuestion, deleteQuestion } from './actions'
 import { getAnswers } from '../answer/actions'
@@ -15,20 +15,6 @@ class Question extends React.Component {
     this.props.getAnswers("answer/findByQuestionId", param, userData.jwt)
     this.props.setCurrentQuestion(question);
   }
-
-  // handleDelete = () => {
-  //   const { question, userData, setNotification, deleteQuestion } = this.props;
-  //   const config = {
-  //     data: [question]
-  //   }
-  //   del("question/delete", config, userData.jwt).then((response) => {
-  //     deleteQuestion(question);
-  //     setNotification("Question deleted", "success", true);
-  //   }).catch((error) => {
-  //     console.log(error.response);
-  //     setNotification("Error - Unable to delete this question", "error", true)
-  //   });
-  // }
 
   handleDelete = () => {
     const { question } = this.props

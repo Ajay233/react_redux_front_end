@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Modal from '../modal/modal'
 
 import { setQuiz } from '../quiz/actions'
 import { setNotification } from '../notifications/actions'
@@ -9,31 +8,7 @@ import { deleteQuiz } from './actions'
 import { showModal } from '../modal/actions'
 import { getQuestions } from '../question/actions'
 
-import { del } from '../axiosRequests/requests'
-
 class QuizResult extends React.Component {
-
-  handleEdit = () => {
-
-  }
-
-  renderModal = () => {
-
-  }
-
-  // handleDelete = () => {
-  //   const { quiz, userData, deleteQuiz, setNotification } = this.props;
-  //   const config = {
-  //     data: quiz
-  //   }
-  //   del("quiz/delete", config, userData.jwt).then((response) => {
-  //     deleteQuiz(quiz)
-  //     setNotification("Quiz deleted", "success", true)
-  //   }).catch((error) => {
-  //     console.log(error.response)
-  //     setNotification("Error - Unable to delete this quiz", "error", true)
-  //   })
-  // }
 
   handleDelete = () => {
     this.props.setQuiz(this.props.quiz);
@@ -60,11 +35,6 @@ class QuizResult extends React.Component {
         {this.renderOptions()}
       </div>
     );
-  }
-
-  // possible way to use different classes for option sheader if the header ends up being used
-  optionsClass = (permission) => {
-    return permission === "ADMIN" ? "" : "";
   }
 
   renderOptions = () => {

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import QuizResults from './quizResults'
 import QuizSearchByName from '../forms/findQuizByName'
@@ -52,7 +51,7 @@ class QuizSearch extends React.Component {
   }
 
   render(){
-    const { quizes, quiz, userData, setNotification, getQuizSearchResults, modalState, hideModal } = this.props
+    const { quizes, userData, setNotification, getQuizSearchResults, modalState, hideModal } = this.props
     return(
       <div id="quizSearch">
         <Modal
