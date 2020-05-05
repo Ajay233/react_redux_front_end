@@ -33,3 +33,10 @@ export const addAnswer = (answer) => {
     payload: answer
   }
 }
+
+export const updateAnswer = (answer) => {
+  return {
+    type: "UPDATE_ANSWER",
+    payload: answer
+  }
+}
