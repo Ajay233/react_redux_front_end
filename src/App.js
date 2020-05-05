@@ -36,8 +36,8 @@ class App extends React.Component {
             <Route path="/editUserPrivilege" component={()=> <EditUserPrivilege />}/>
             <Route path="/quizSearch" component={()=> <QuizSearch />}/>
             <Route path={["/viewQuiz", "/editQuiz", "/newQuiz"]} component={()=> <Quiz />}/>
-            <Route path={["/viewQuestion", "/editQuestion", "newQuestion"]} component={()=> <QuestionView />}/>
-            <Route path={["/editAnswer", "newAnswer"]} component={()=> <AnswerView />} />
+            <Route path={["/viewQuestion", "/editQuestion", "/newQuestion"]} component={()=> <QuestionView />}/>
+            <Route path={["/editAnswer", "/newAnswer"]} component={()=> <AnswerView />} />
           </div>
         </Router>
       </div>

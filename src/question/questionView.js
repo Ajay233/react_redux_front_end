@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Answers from '../answer/answers'
 import UpdateQuestionForm from '../forms/updateQuestion'
@@ -61,6 +62,7 @@ class QuestionView extends React.Component {
         <div id="answers">
           {this.renderAnswers()}
         </div>
+        <Link to="/newAnswer"><i className="fas fa-plus-circle green"></i>Add an answer</Link>
       </div>
     );
   }

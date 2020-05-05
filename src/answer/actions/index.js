@@ -26,3 +26,10 @@ export const deleteAnswer = (answer) => {
     payload: answer
   }
 }
+
+export const addAnswer = (answer) => {
+  return {
+    type: "ADD_ANSWER",
+    payload: answer
+  }
+}

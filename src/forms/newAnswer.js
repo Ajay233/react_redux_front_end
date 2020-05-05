@@ -4,12 +4,12 @@ import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import history from '../history'
 
-import { put, post } from '../axiosRequests/requests'
+import { post } from '../axiosRequests/requests'
 
 import { setNotification } from '../notifications/actions'
-import { setCurrentAnswer } from '../answer/actions'
+import { addAnswer } from '../answer/actions'
 
-class UpdateAnswerForm extends React.Component {
+class NewAnswerForm extends React.Component {
 
   renderInput = (formProps) => {
     return(
@@ -32,18 +32,17 @@ class UpdateAnswerForm extends React.Component {
   }
 
   onSubmit = ({ number, description, correct }) => {
-    const { currentAnswer, userData, setNotification, setCurrentAnswer } = this.props
-    const body = {
-      id: currentAnswer.id,
-      questionId: currentAnswer.questionId,
+    const { currentQuestion, userData, setNotification, addAnswer } = this.props
+    const data = {
+      questionId: currentQuestion.id,
       answerNumber: number,
       description: description,
       correctAnswer: correct
     }
-    put("answer/update", [body], userData.jwt).then((response) => {
-      setCurrentAnswer(body);
-      setNotification("Answer updated", "success", true);
+    post("answer/create", [data], userData.jwt).then((response) => {
+      addAnswer(data)
       history.push("/editQuestion");
+      setNotification("Answer created", "success", true);
     }).catch((error) => {
       console.log(error.response);
       setNotification("Error - unable to update answer", "error", true);
@@ -69,14 +68,9 @@ class UpdateAnswerForm extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    initialValues: {
-      number: state.currentAnswer.answerNumber,
-      description: state.currentAnswer.description,
-      correct: state.currentAnswer.correctAnswer
-    },
     userData: state.userData,
-    currentAnswer: state.currentAnswer
+    currentQuestion: state.currentQuestion
   }
 }
 
-export default connect(mapStateToProps, { setNotification, setCurrentAnswer })(reduxForm({ form: 'updateAnswer' })(UpdateAnswerForm))
+export default connect(mapStateToProps, { setNotification, addAnswer })(reduxForm({ form: 'updateAnswer' })(NewAnswerForm))
