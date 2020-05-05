@@ -4,7 +4,8 @@ export const setQuestionsReducer = (state=questions, action) => {
   switch (action.type) {
     case "SET_QUESTIONS": return action.payload;
     case "DELETE_QUESTION": return state.filter(question => question!== action.payload);
-    case "ADD_QUESTION": return [...state, action.payload]
+    case "ADD_QUESTION": return [...state, action.payload];
+    case "UPDATE_QUESTION": return state.map(question => question.id === action.payload.id ? action.payload : question)
     default: return state;
   }
 }

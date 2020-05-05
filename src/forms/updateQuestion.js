@@ -5,7 +5,7 @@ import { Field, reduxForm } from 'redux-form'
 import { put } from '../axiosRequests/requests'
 import history from '../history'
 import { setNotification } from '../notifications/actions'
-import { setCurrentQuestion } from '../question/actions'
+import { setCurrentQuestion, updateQuestion } from '../question/actions'
 
 class UpdateQuestionForm extends React.Component {
 
@@ -19,7 +19,7 @@ class UpdateQuestionForm extends React.Component {
   }
 
   onSubmit = ({ number, description }) => {
-    const { userData, currentQuestion, setCurrentQuestion, setNotification } = this.props;
+    const { userData, currentQuestion, setCurrentQuestion, setNotification, updateQuestion } = this.props;
     const body = {
       id: currentQuestion.id,
       quizId: currentQuestion.quizId,
@@ -28,6 +28,7 @@ class UpdateQuestionForm extends React.Component {
     }
     put("question/update", [body], userData.jwt).then((response) => {
       setCurrentQuestion(body);
+      updateQuestion(body)
       history.push("/editQuiz");
       setNotification("Question updated", "success", true)
     }).catch((error) => {
@@ -62,4 +63,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setNotification, setCurrentQuestion })(reduxForm({ form: 'questionForm' })(UpdateQuestionForm))
+export default connect(mapStateToProps,
+  { setNotification,
+    setCurrentQuestion,
+    updateQuestion })(reduxForm({ form: 'questionForm' })(UpdateQuestionForm))

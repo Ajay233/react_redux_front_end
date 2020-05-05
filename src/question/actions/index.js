@@ -34,3 +34,10 @@ export const addQuestion = (question) => {
     payload: question
   }
 }
+
+export const updateQuestion = (question) => {
+  return {
+    type: "UPDATE_QUESTION",
+    payload: question
+  }
+}
