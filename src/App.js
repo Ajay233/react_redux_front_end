@@ -10,6 +10,7 @@ import UserList from './userList/userList'
 import ManageAccount from './manageAccount/manageAccount'
 import EditUserPrivilege from './editUserPrivilege/editUserPrivilege'
 import QuizSearch from './quizSearch/quizSearch'
+import NewQuizForm from './forms/newQuiz'
 import Quiz from './quiz/quiz'
 import QuestionView from './question/questionView'
 import NewQuestionForm from './forms/newQuestion'
@@ -36,7 +37,8 @@ class App extends React.Component {
             <Route path="/manageAccount" component={()=> <ManageAccount />}/>
             <Route path="/editUserPrivilege" component={()=> <EditUserPrivilege />}/>
             <Route path="/quizSearch" component={()=> <QuizSearch />}/>
-            <Route path={["/viewQuiz", "/editQuiz", "/newQuiz"]} component={()=> <Quiz />}/>
+            <Route path={["/viewQuiz", "/editQuiz"]} component={()=> <Quiz />}/>
+            <Route path="/newQuiz" component={()=> <NewQuizForm />}/>
             <Route path={["/viewQuestion", "/editQuestion"]} component={()=> <QuestionView />}/>
             <Route path="/newQuestion" component={()=> <NewQuestionForm />}/>
             <Route path={["/editAnswer", "/newAnswer"]} component={()=> <AnswerView />} />

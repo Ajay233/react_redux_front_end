@@ -41,3 +41,10 @@ export const deleteQuiz = (quiz) => {
     payload: quiz
   }
 }
+
+export const addQuiz = (quiz) => {
+  return {
+    type: "ADD_QUIZ",
+    payload: quiz
+  }
+}

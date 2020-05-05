@@ -10,16 +10,11 @@ import { setNotification } from '../notifications/actions'
 import { setQuiz } from './actions'
 import { hideModal } from '../modal/actions'
 import { del } from '../axiosRequests/requests'
+import history from '../history'
 
 import '../stylesheets/quiz.css'
 
 class Quiz extends React.Component {
-
-  // componentWillMount(){
-  //   const { userData, quiz, getQuestions } = this.props
-  //   const param = { quizId: quiz.id }
-  //   getQuestions("question/findByQuizId", param, userData.jwt)
-  // }
 
   handleDelete = () => {
     const { currentQuestion, userData, setNotification, deleteQuestion } = this.props;
@@ -35,9 +30,39 @@ class Quiz extends React.Component {
     });
   }
 
+  renderDetails = () => {
+    const { name, description } = this.props.quiz
+    return(
+      <React.Fragment>
+        <div id="quizTitle">{name}</div>
+        <div>Description:</div>
+        <div>{description}</div>
+      </React.Fragment>
+    );
+  }
+
+  renderUpdateForm = () => {
+    const { name } = this.props.quiz
+    return(
+      <React.Fragment>
+        <div id="quizTitle">{`Edit the ${name} quiz`}</div>
+        <UpdateQuizForm />
+      </React.Fragment>
+    );
+  }
+
+  renderDetailsOrUpdate = () => {
+    return history.location.pathname === "/editQuiz" ? this.renderUpdateForm() : this.renderDetails()
+  }
+
   renderQuestions = () => {
     const { questions } = this.props;
     return questions.length === 0 ? null : <Questions questions={questions}/>
+  }
+
+  renderAddButton = () => {
+    const { permission } = this.props.userData.permission
+    return permission === "ADMIN" ? <Link to="/newQuestion"><i className="fas fa-plus-circle green"></i>Add a question</Link> : null
   }
 
   render(){
@@ -52,18 +77,10 @@ class Quiz extends React.Component {
           onCancel={this.props.hideModal}
         />
         <Notification />
-        <div id="quizTitle">{name}</div>
-        <div>Description:</div>
-        <div>{description}</div>
-        <UpdateQuizForm
-          setNotification={this.props.setNotification}
-          setQuiz={this.props.setQuiz}
-          jwt={this.props.userData.jwt}
-          quiz={this.props.quiz}
-        />
+        {this.renderDetailsOrUpdate()}
+        {this.renderAddButton()}
         <div id="questionsTitle">Questions:</div>
         <Questions questions={this.props.questions}/>
-        <Link to="/newQuestion"><i className="fas fa-plus-circle green"></i>Add a question</Link>
       </div>
     );
   }

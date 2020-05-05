@@ -2,22 +2,20 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
+import { addQuiz } from '../quizSearch/actions'
 import { setNotification } from '../notifications/actions'
-import { setQuiz } from '../quiz/actions'
+import { post } from '../axiosRequests/requests'
+import history from '../history'
+import Notification from '../notifications/notifications'
 
-import { put } from '../axiosRequests/requests'
 
-
-
-// pass in setNotification, setQuiz, jwt, quiz
-
-class UpdateQuizForm extends React.Component {
+class NewQuizForm extends React.Component {
 
   renderInput = (formProps) => {
     return(
       <div>
         <label>{ formProps.label }</label>
-        <input {...formProps.input} placeholder={this.renderPlaceholder(formProps.input.name)} className="inputBox"/>
+        <input {...formProps.input} className="inputBox"/>
       </div>
     )
   }
@@ -26,36 +24,23 @@ class UpdateQuizForm extends React.Component {
     return(
       <div>
         <label>{ formProps.label }</label>
-        <select {...formProps.input} placeholder={this.renderPlaceholder(formProps.input.name)} className="inputBox">
+        <select {...formProps.input} className="inputBox">
           {formProps.children}
         </select>
       </div>
     );
   }
 
-  renderPlaceholder = (inputName) => {
-    const {name, description, category} = this.props.quiz
-    switch(inputName){
-      case 'name': return name;
-      case 'description': return description;
-      case 'category': return category;
-      default: return null;
-    }
-  }
-
-
-
   onSubmit = ({ name, description, category }) => {
-    const { userData, quiz, setQuiz, setNotification } = this.props;
+    const { userData, setNotification, addQuiz } = this.props;
     const body = {
-      id: quiz.id,
       name: name,
       description: description,
       category: category
     }
-    put("quiz/update", body, userData.jwt).then((response) => {
-      setQuiz(body);
-      setNotification("Quiz updated", "success", true);
+    post("quiz/create", body, userData.jwt).then((response) => {
+      addQuiz(response.data);
+      this.props.setNotification("Quiz created", "success", true);
     }).catch((error) => {
       console.log(error.response);
       this.props.setNotification("Error - Unable to update quiz", "error", true);
@@ -65,6 +50,7 @@ class UpdateQuizForm extends React.Component {
   render(){
     return(
       <div>
+        <Notification />
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="name" component={this.renderInput} label="Quiz name:"/>
           <Field name="description" component={this.renderInput} label="Quiz description:"/>
@@ -87,13 +73,10 @@ class UpdateQuizForm extends React.Component {
 const mapStateToProps = (state) => {
   return {
     initialValues: {
-      name: state.quiz.name,
-      description: state.quiz.description,
-      category: state.quiz.category
+      category: "Comics"
     },
-    userData: state.userData,
-    quiz: state.quiz
+    userData: state.userData
   }
 }
 
-export default connect(mapStateToProps, { setQuiz, setNotification })(reduxForm({ form: 'quizForm' })(UpdateQuizForm))
+export default connect(mapStateToProps, { setNotification, addQuiz })(reduxForm({ form: 'quizForm' })(NewQuizForm))

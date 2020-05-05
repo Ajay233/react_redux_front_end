@@ -12,39 +12,43 @@ class DropdownList extends React.Component {
   }
 
   renderSignUp = () => {
-    return this.props.userData.loggedIn === true ? null : <li><Link to="/signup" className="links">Create Account</Link></li>
+    const { loggedIn } = this.props.userData;
+    return loggedIn === true ? null : <li><Link to="/signup" className="links">Create Account</Link></li>
   }
 
   renderLogin = () => {
-    return this.props.userData.loggedIn === true ? null : <li><Link to="/login" className="links">Login</Link><hr/></li>
+    const { loggedIn } = this.props.userData;
+    return loggedIn === true ? null : <li><Link to="/login" className="links">Login</Link><hr/></li>
   }
 
   renderLogout = () => {
-    return this.props.userData.loggedIn === true ? <li><button className="linkButton links" onClick={this.logOut}>Logout</button></li> : null
+    const { loggedIn } = this.props.userData;
+    return loggedIn === true ? <li><button className="linkButton links" onClick={this.logOut}>Logout</button></li> : null
   }
 
   renderListUser = () => {
-    return this.props.userData.loggedIn === true ? <li><Link to="/userList" className="links">List all Users</Link><hr/></li> : null
+    const { loggedIn, permission } = this.props.userData;
+    return loggedIn === true && permission === "ADMIN" ? <li><Link to="/userList" className="links">List all Users</Link><hr/></li> : null
   }
 
-  // renderDeleteAccount = () => {
-  //   return this.props.userData.loggedIn === true ? <li onClick={this.handleDelete} className="links">Delete account <hr/></li> : null
-  // }
-
-  // renderChangePassword = () => {
-  //   return this.props.userData.loggedIn === true ? <li className="links">Change Password <hr/></li> : null
-  // }
-
   renderQuizSearch = () => {
-    return this.props.userData.loggedIn === true ? <li><Link to="/quizSearch" className="links">Quiz search</Link><hr/></li> : null
+    const { loggedIn } = this.props.userData;
+    return loggedIn === true ? <li><Link to="/quizSearch" className="links">Quiz search</Link><hr/></li> : null
   }
 
   renderManageAccount = () => {
-    return this.props.userData.loggedIn === true ? <li><Link to="/manageAccount" className="links">Manage my account</Link><hr/></li> : null
+    const { loggedIn } = this.props.userData;
+    return loggedIn === true ? <li><Link to="/manageAccount" className="links">Manage my account</Link><hr/></li> : null
   }
 
   renderEditPrivilege = () => {
-    return this.props.userData.loggedIn === true ? <li><Link to="/editUserPrivilege" className="links">Edit Privileges</Link><hr/></li> : null
+    const { loggedIn, permission } = this.props.userData;
+    return loggedIn === true && permission === "ADMIN" ? <li><Link to="/editUserPrivilege" className="links">Edit Privileges</Link><hr/></li> : null
+  }
+
+  renderCreateQuiz = () => {
+    const { loggedIn, permission } = this.props.userData;
+    return loggedIn === true && permission === "ADMIN" ? <li><Link to={ { pathname: "/newQuiz", from: "dropdown" } } className="links">Create a Quiz</Link><hr/></li> : null
   }
 
 // Todo:
@@ -63,6 +67,7 @@ class DropdownList extends React.Component {
           {this.renderListUser()}
           {this.renderEditPrivilege()}
           {this.renderQuizSearch()}
+          {this.renderCreateQuiz()}
           {this.renderLogout()}
         </ul>
       </div>

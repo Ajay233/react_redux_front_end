@@ -38,6 +38,11 @@ class QuestionView extends React.Component {
     return history.location.pathname === "/editQuestion" ? <UpdateQuestionForm/> : this.renderDetails();
   }
 
+  renderAddButton = () => {
+    const { permission } = this.props.userData.permission
+    return permission === "ADMIN" ? <Link className="" to="/newAnswer"><i className="fas fa-plus-circle green"></i>Add an answer</Link> : null
+  }
+
   handleDelete = () => {
     const { currentAnswer, userData, setNotification, deleteAnswer } = this.props;
     const config = {
@@ -66,7 +71,7 @@ class QuestionView extends React.Component {
         />
         <Notification />
         {this.renderFormOrDetails()}
-        <Link className="" to="/newAnswer"><i className="fas fa-plus-circle green"></i>Add an answer</Link>
+        {this.renderAddButton()}
         <div id="answersTitle">Answers</div>
         <div id="answerHeadings">
           <div id="numberHeader">Answer</div>
