@@ -68,6 +68,9 @@ class NewAnswerForm extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    initialValues: {
+      correct: true
+    },
     userData: state.userData,
     currentQuestion: state.currentQuestion
   }
