@@ -77,7 +77,7 @@ class Quiz extends React.Component {
   }
 
   renderAddButton = () => {
-    return <Link to="/newQuestion"><i className="fas fa-plus-circle green"></i> Add a question</Link>
+    return <Link to="/newQuestion" className="add"><i className="fas fa-plus-circle green"></i> Add a question</Link>
   }
 
   triggerModal = () => {
@@ -85,7 +85,7 @@ class Quiz extends React.Component {
   }
 
   renderDeleteButton = () => {
-    return <button onClick={this.triggerModal} className="delete">Delete</button>
+    return <button onClick={this.triggerModal} className="delete"><i class="fas fa-trash-alt"></i> Delete</button>
   }
 
   renderOptions = () => {

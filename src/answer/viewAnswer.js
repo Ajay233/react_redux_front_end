@@ -13,7 +13,7 @@ class AnswerView extends React.Component {
 
   render(){
     return(
-      <div>
+      <div className="componentContainer">
         <div>
           <Notification />
         </div>

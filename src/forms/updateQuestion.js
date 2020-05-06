@@ -40,12 +40,12 @@ class UpdateQuestionForm extends React.Component {
   render(){
     const { questionNumber } = this.props.currentQuestion
     return(
-      <div>
-        <div className="">{`Edit Question ${questionNumber}`}</div>
+      <div className="">
+        <div className="title-large">{`Edit Question ${questionNumber}`}</div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="number" component={this.renderInput} label="Question Number:"/>
           <Field name="description" component={this.renderInput} label="Question description:"/>
-          <button className="submit">Save</button><Link to="/editQuiz">Cancel</Link>
+          <button className="submit">Save</button><Link to="/editQuiz" className="cancel">Cancel</Link>
         </form>
       </div>
     );

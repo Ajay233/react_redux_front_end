@@ -48,7 +48,8 @@ class NewQuizForm extends React.Component {
 
   render(){
     return(
-      <div>
+      <div className="componentContainer">
+        <div className="title-large">Create a Quiz</div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="name" component={this.renderInput} label="Quiz name:"/>
           <Field name="description" component={this.renderInput} label="Quiz description:"/>
@@ -59,7 +60,7 @@ class NewQuizForm extends React.Component {
             <option value="type3">type3</option>
           </Field>
           <div>
-            <button className="submit">Save</button><Link to="/quizSearch">Cancel</Link>
+            <button className="submit">Save</button><Link to="/quizSearch" className="cancel">Cancel</Link>
           </div>
         </form>
       </div>

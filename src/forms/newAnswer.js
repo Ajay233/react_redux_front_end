@@ -51,7 +51,8 @@ class NewAnswerForm extends React.Component {
 
   render(){
     return(
-      <div>
+      <div className="componentContainer">
+        <div className="title-large">Create an Answer</div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="number" component={this.renderInput} label="Answer number:"/>
           <Field name="description" component={this.renderInput} label="Answer description"/>
@@ -59,7 +60,7 @@ class NewAnswerForm extends React.Component {
             <option value={true}>Yes</option>
             <option value={false}>No</option>
           </Field>
-          <button className="submit">Save</button><Link to="/editQuestion">Cancel</Link>
+          <button className="submit">Save</button><Link className="cancel" to="/editQuestion" className="cancel">Cancel</Link>
         </form>
       </div>
     );

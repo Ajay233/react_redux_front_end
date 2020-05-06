@@ -4,7 +4,7 @@
   color: white;
 }
 
-.submit, .delete, .resend {
+.submit, .delete, .resend, .cancel, .save, .add {
   padding: 9px 60px;
   border-radius: 5px;
   font-size: 16px;
@@ -12,10 +12,16 @@
   color: white;
   margin: 8px 5px;
   text-align: center;
+  border: solid 1px white;
+  text-decoration: none;
 }
 
-.submit {
+.submit, .cancel, .add {
    background-color: #0068D9;
+}
+
+.save {
+  background-color: rgb(40, 167, 69)
 }
 
 .delete, .resend {

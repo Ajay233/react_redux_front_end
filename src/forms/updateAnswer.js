@@ -54,6 +54,7 @@ class UpdateAnswerForm extends React.Component {
   render(){
     return(
       <div>
+        <div className="title-large">{`Edit Answer ${this.props.currentAnswer.answerNumber}`}</div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="number" component={this.renderInput} label="Answer number:"/>
           <Field name="description" component={this.renderInput} label="Answer description"/>
@@ -61,7 +62,7 @@ class UpdateAnswerForm extends React.Component {
             <option value={true}>Yes</option>
             <option value={false}>No</option>
           </Field>
-          <button className="submit">Save</button><Link to="/editQuestion">Cancel</Link>
+          <button className="submit">Save</button><Link className="cancel" to="/editQuestion">Cancel</Link>
         </form>
       </div>
     );

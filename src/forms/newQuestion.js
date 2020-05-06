@@ -41,7 +41,7 @@ class NewQuestionForm extends React.Component {
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="number" component={this.renderInput} label="Question Number:"/>
           <Field name="description" component={this.renderInput} label="Question description:"/>
-          <button className="submit">Save</button><Link to="/editQuiz">Cancel</Link>
+          <button className="submit">Save</button><Link to="/editQuiz" className="cancel">Cancel</Link>
         </form>
       </div>
     );

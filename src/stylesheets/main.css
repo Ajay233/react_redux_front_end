@@ -7,3 +7,23 @@ body, .container {
   height: 100%;
   margin: 0;
 }
+
+.componentContainer{
+  padding-top: 65px;
+  background-color: rgb(30, 30, 30);
+  color: white;
+  font-family: arial;
+  height: 100%;
+}
+
+.title-large {
+  font-size: 40px;
+  text-align: center;
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+.form {
+  margin: 0 10% 0 10%;
+}
