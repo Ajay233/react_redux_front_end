@@ -10,8 +10,8 @@ const Modal = (props) => {
 
   return ReactDOM.createPortal(
     <div className={`${props.show ? "showModal" : "hide"}`} onClick={props.onCancel} >
-      <div className="modalContent">
-        <span className="close"><i className="fas fa-times-circle red"></i></span>
+      <div onClick={e => e.stopPropagation()} className="modalContent">
+        <span onClick={props.onCancel} className="close"><i className="fas fa-times-circle red"></i></span>
         <div className="modalHeader">{`Delete ${props.title}`}</div>
         <div className="modalMessage">
           <img src={require('../public/icons/warning.png')} alt="" />
