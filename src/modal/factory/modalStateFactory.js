@@ -1,1 +1,5 @@
-export const modalInitialState = false;
+export const modalInitialState = {
+  showModal: false,
+  showModal2: false,
+  showModal3: false
+};

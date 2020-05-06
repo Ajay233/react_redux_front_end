@@ -59,10 +59,10 @@ class NavBar extends React.Component {
     history.goBack();
   }
 
-  renderBackButton = () => {
-    const url = history.location.pathname
-    return url === "/" || url === ""  ? null : <button className="linkButton links navItem" onClick={this.handleGoingBack}><i className="fas fa-chevron-left"></i> Back</button>
-  }
+  // renderBackButton = () => {
+  //     const url = window.location.href
+  //     return url === "http://localhost:3000/" ? null : <Link className="linkButton links navItem" to="#" onClick={this.handleGoingBack}><i className="fas fa-chevron-left"></i> Back</Link>
+  // }
 
 // <Link to="/" id="home" className="links"><img src={require("./public/icons/home.png")} width="22px"/> Home</Link>
   render(){
@@ -71,7 +71,8 @@ class NavBar extends React.Component {
         <div className="nav">
           <Link to="/" id="home" className="links"><i className="fas fa-home"></i> Home</Link>
           <button className="linkButton links navItem" onClick={this.showList}>Menu <i className="fas fa-bars"></i></button>
-          {this.renderBackButton()}
+          {console.log("Rendering")}
+          
         </div>
         {this.renderList()}
       </div>

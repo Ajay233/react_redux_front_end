@@ -7,8 +7,9 @@ import UpdateQuizForm from '../forms/updateQuiz'
 import Modal from '../modal/modal'
 import { getQuestions, deleteQuestion } from '../question/actions'
 import { setNotification } from '../notifications/actions'
+import { deleteQuiz } from '../quizSearch/actions'
 import { setQuiz } from './actions'
-import { hideModal } from '../modal/actions'
+import { hideModal, showModal2 } from '../modal/actions'
 import { del } from '../axiosRequests/requests'
 import history from '../history'
 
@@ -16,7 +17,7 @@ import '../stylesheets/quiz.css'
 
 class Quiz extends React.Component {
 
-  handleDelete = () => {
+  handleDeleteQuestion = () => {
     const { currentQuestion, userData, setNotification, deleteQuestion } = this.props;
     const config = {
       data: [currentQuestion]
@@ -28,6 +29,21 @@ class Quiz extends React.Component {
       console.log(error.response);
       setNotification("Error - Unable to delete this question", "error", true)
     });
+  }
+
+  handleDeleteQuiz = () => {
+    const { quiz, userData, deleteQuiz, setNotification } = this.props;
+    const config = {
+      data: quiz
+    }
+    del("quiz/delete", config, userData.jwt).then((response) => {
+      deleteQuiz(quiz)
+      history.push("/quizSearch")
+      setNotification("Quiz deleted", "success", true)
+    }).catch((error) => {
+      console.log(error.response)
+      setNotification("Error - Unable to delete this quiz", "error", true)
+    })
   }
 
   renderDetails = () => {
@@ -61,24 +77,45 @@ class Quiz extends React.Component {
   }
 
   renderAddButton = () => {
-    const { permission } = this.props.userData
-    return permission === "ADMIN" ? <Link to="/newQuestion"><i className="fas fa-plus-circle green"></i> Add a question</Link> : null
+    return <Link to="/newQuestion"><i className="fas fa-plus-circle green"></i> Add a question</Link>
   }
+
+  triggerModal = () => {
+    this.props.showModal2()
+  }
+
+  renderDeleteButton = () => {
+    return <button onClick={this.triggerModal} className="delete">Delete</button>
+  }
+
+  renderOptions = () => {
+    const { permission } = this.props.userData
+    return permission === "ADMIN" ? <div>{this.renderAddButton()}{this.renderDeleteButton()}</div> : null
+  }
+
+
 
   render(){
     const { questions, currentQuestion, hideModal, modalState } = this.props
     return(
       <div id="quiz">
         <Modal
-          show={modalState}
+          show={modalState.showModal}
           title={"Question"}
           message={`You are about to delete question ${currentQuestion.questionNumber}, this will also delete any associated answers for this question.`}
-          onDelete={this.handleDelete}
+          onDelete={this.handleDeleteQuestion}
+          onCancel={hideModal}
+        />
+        <Modal
+          show={modalState.showModal2}
+          title={"Quiz"}
+          message={"You are about to delete a quiz which will also delete any questions and answers associated with this"}
+          onDelete={this.handleDeleteQuiz}
           onCancel={hideModal}
         />
         <Notification />
         {this.renderDetailsOrUpdate()}
-        {this.renderAddButton()}
+        {this.renderOptions()}
         <div id="questionsTitle">Questions:</div>
         <Questions questions={questions}/>
       </div>
@@ -96,4 +133,11 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { getQuestions, setQuiz, setNotification, hideModal, deleteQuestion })(Quiz)
+export default connect(mapStateToProps,
+  { getQuestions,
+    setQuiz,
+    setNotification,
+    hideModal,
+    deleteQuestion,
+    deleteQuiz,
+    showModal2 })(Quiz)

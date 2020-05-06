@@ -55,7 +55,7 @@ class QuizSearch extends React.Component {
     return(
       <div id="quizSearch">
         <Modal
-          show={modalState}
+          show={modalState.showModal}
           title={"Quiz"}
           message={"You are about to delete a quiz which will also delete any questions and answers associated with is"}
           onDelete={this.handleDelete}

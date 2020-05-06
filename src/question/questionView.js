@@ -62,7 +62,7 @@ class QuestionView extends React.Component {
     return(
       <div id="questionView">
         <Modal
-          show={modalState}
+          show={modalState.showModal}
           title={"Answer"}
           message={`You are about to delete answer ${currentAnswer.answerNumber}`}
           onDelete={this.handleDelete}

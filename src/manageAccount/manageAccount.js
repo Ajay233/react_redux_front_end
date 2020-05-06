@@ -36,7 +36,7 @@ class ManageAccount extends React.Component {
     return(
       <div id="editProfileContainer">
       <Modal
-        show={modalState}
+        show={modalState.showModal}
         title={"Account"}
         message={"You are about to delete your account.  Once deleted your account will no longer be retreivable"}
         onDelete={this.handleDelete}
