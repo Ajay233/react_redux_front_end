@@ -5,7 +5,7 @@ import { Field, reduxForm } from 'redux-form'
 import { addQuiz } from '../quizSearch/actions'
 import { setNotification } from '../notifications/actions'
 import { post } from '../axiosRequests/requests'
-import Notification from '../notifications/notifications'
+
 
 
 class NewQuizForm extends React.Component {
@@ -49,7 +49,6 @@ class NewQuizForm extends React.Component {
   render(){
     return(
       <div>
-        <Notification />
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="name" component={this.renderInput} label="Quiz name:"/>
           <Field name="description" component={this.renderInput} label="Quiz description:"/>
@@ -77,5 +76,18 @@ const mapStateToProps = (state) => {
     userData: state.userData
   }
 }
+
+// The warning is being caused by:
+//                                     initialValues: {
+//                                       category: "Comics"
+//                                     }
+
+// Setting the default value of a select does not work, for redux-form, the initialValues object has to be set somehow
+
+// Possible alternative from redux-form docs (doesn't throw any new warning/error but the old warning persists)
+// NewQuizForm = reduxForm({ form: 'quizForm' })(NewQuizForm)
+// NewQuizForm = connect( state => ({ initialValues: { category: "Comics" }, userData: state.userData }),{ setNotification, addQuiz })(NewQuizForm)
+//
+// export default NewQuizForm
 
 export default connect(mapStateToProps, { setNotification, addQuiz })(reduxForm({ form: 'quizForm' })(NewQuizForm))

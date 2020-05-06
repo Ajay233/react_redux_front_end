@@ -39,7 +39,7 @@ class QuestionView extends React.Component {
   }
 
   renderAddButton = () => {
-    const { permission } = this.props.userData.permission
+    const { permission } = this.props.userData
     return permission === "ADMIN" ? <Link className="" to="/newAnswer"><i className="fas fa-plus-circle green"></i>Add an answer</Link> : null
   }
 

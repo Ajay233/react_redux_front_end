@@ -82,6 +82,12 @@ export const setRedirect = (status) => {
   }
 }
 
+export const logOut = () => {
+  return {
+    type: "RESET_APP"
+  }
+}
+
 // export const getUsers = (endpoint, header) => {
 //   return {
 //     type: "GET_USER",

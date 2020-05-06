@@ -5,6 +5,7 @@ import {
   logOutUser
 } from './authentication/actions'
 import DropdownList from './dropdown/dropdownList';
+import history from './history'
 import './stylesheets/navBar.css'
 import './stylesheets/buttons.css'
 // import { home } from './public/icons/home.png'
@@ -54,6 +55,15 @@ class NavBar extends React.Component {
     })
   }
 
+  handleGoingBack = () => {
+    history.goBack();
+  }
+
+  renderBackButton = () => {
+    const url = history.location.pathname
+    return url === "/" || url === ""  ? null : <button className="linkButton links navItem" onClick={this.handleGoingBack}><i className="fas fa-chevron-left"></i> Back</button>
+  }
+
 // <Link to="/" id="home" className="links"><img src={require("./public/icons/home.png")} width="22px"/> Home</Link>
   render(){
     return(
@@ -61,6 +71,7 @@ class NavBar extends React.Component {
         <div className="nav">
           <Link to="/" id="home" className="links"><i className="fas fa-home"></i> Home</Link>
           <button className="linkButton links navItem" onClick={this.showList}>Menu <i className="fas fa-bars"></i></button>
+          {this.renderBackButton()}
         </div>
         {this.renderList()}
       </div>
@@ -69,7 +80,6 @@ class NavBar extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {userData: state.userData};
 }
 

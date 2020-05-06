@@ -14,8 +14,15 @@ import { setQuestionsReducer, setCurrentQuestionReducer } from './question/reduc
 import { setAnswersReducer, setCurrentAnswerReducer } from './answer/reducers'
 import { showModalReducer } from './modal/reducers'
 
+export const rootReducer = (state, action) => {
+  switch (action.type) {
+    case "RESET_APP": return state = undefined;
+    default: return allReducers(state, action);
+  }
+}
 
-export default combineReducers({
+
+export const allReducers = combineReducers({
   userData: setUserReducer,
   verificationProcess: setVerificationProcessStatus,
   redirect: setRedirectReducer,

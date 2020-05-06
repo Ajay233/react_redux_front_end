@@ -11,20 +11,6 @@ class Answer extends React.Component {
     this.props.setCurrentAnswer(this.props.answer);
   }
 
-  // handleDelete = () => {
-  //   const { answer, userData, setNotification, deleteAnswer } = this.props;
-  //   const config = {
-  //     data: [answer]
-  //   }
-  //   del("answer/delete", config, userData.jwt).then((response) => {
-  //     deleteAnswer(answer);
-  //     setNotification("Answer deleted", "success", true);
-  //   }).catch((error) => {
-  //     console.log(error.response);
-  //     setNotification("Error - Unable to delete this answer", "error", true)
-  //   });
-  // }
-
   handleDelete = () => {
     this.props.showModal();
     this.props.setCurrentAnswer(this.props.answer);

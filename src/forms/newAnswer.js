@@ -59,7 +59,7 @@ class NewAnswerForm extends React.Component {
             <option value={true}>Yes</option>
             <option value={false}>No</option>
           </Field>
-          <button className="submit">Save</button><Link to="/viewQuestion">Cancel</Link>
+          <button className="submit">Save</button><Link to="/editQuestion">Cancel</Link>
         </form>
       </div>
     );

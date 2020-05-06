@@ -61,8 +61,8 @@ class Quiz extends React.Component {
   }
 
   renderAddButton = () => {
-    const { permission } = this.props.userData.permission
-    return permission === "ADMIN" ? <Link to="/newQuestion"><i className="fas fa-plus-circle green"></i>Add a question</Link> : null
+    const { permission } = this.props.userData
+    return permission === "ADMIN" ? <Link to="/newQuestion"><i className="fas fa-plus-circle green"></i> Add a question</Link> : null
   }
 
   render(){
