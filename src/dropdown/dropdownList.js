@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { setNotification } from '../notifications/actions'
 import { logOut } from '../authentication/actions'
+import { getAllQuizes } from '../quizSearch/actions'
 
 import history from '../history'
 
@@ -57,6 +58,16 @@ class DropdownList extends React.Component {
     return loggedIn === true && permission === "ADMIN" ? <li><Link to={ { pathname: "/newQuiz", from: "dropdown" } } className="links">Create a Quiz</Link><hr/></li> : null
   }
 
+  renderBrowseAllQuizes = () => {
+    const { loggedIn } = this.props.userData
+    return loggedIn === true ? <li><Link to="/allQuizes" onClick={this.handleViewAll} className="links">Browse All Quizes</Link><hr/></li> : null;
+  }
+
+  handleViewAll = () => {
+    const { getAllQuizes, userData } = this.props
+    getAllQuizes("quiz/getAll", userData.jwt)
+  }
+
 // Todo:
 // make a menu item - Manage Users
 // make a sub menu for actions related to managing user to include:
@@ -72,6 +83,7 @@ class DropdownList extends React.Component {
           {this.renderSignUp()}
           {this.renderListUser()}
           {this.renderEditPrivilege()}
+          {this.renderBrowseAllQuizes()}
           {this.renderQuizSearch()}
           {this.renderCreateQuiz()}
           {this.renderLogout()}
@@ -87,4 +99,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setNotification, logOut })(DropdownList)
+export default connect(mapStateToProps, { setNotification, logOut, getAllQuizes })(DropdownList)

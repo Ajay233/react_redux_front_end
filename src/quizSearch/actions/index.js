@@ -7,9 +7,9 @@ export const setQuizes = (quizes) => {
   }
 }
 
-export const getAllQuizes = (endpoint, data, token) => {
+export const getAllQuizes = (endpoint, token) => {
   return (dispatch) => {
-    get(endpoint, data, token).then((response) => {
+    get(endpoint, token).then((response) => {
       console.log(response)
       dispatch({
         type: "GET_ALL_QUIZES",
