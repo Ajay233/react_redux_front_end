@@ -37,7 +37,8 @@ class NewQuestionForm extends React.Component {
 
   render(){
     return(
-      <div className="container">
+      <div className="componentContainer">
+        <div className="title-large">Create a Question</div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="number" component={this.renderInput} label="Question Number:"/>
           <Field name="description" component={this.renderInput} label="Question description:"/>

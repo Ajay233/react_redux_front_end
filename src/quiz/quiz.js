@@ -18,15 +18,17 @@ import '../stylesheets/quiz.css'
 class Quiz extends React.Component {
 
   handleDeleteQuestion = () => {
-    const { currentQuestion, userData, setNotification, deleteQuestion } = this.props;
+    const { currentQuestion, userData, setNotification, deleteQuestion, hideModal } = this.props;
     const config = {
       data: [currentQuestion]
     }
     del("question/delete", config, userData.jwt).then((response) => {
+      hideModal()
       deleteQuestion(currentQuestion);
       setNotification("Question deleted", "success", true);
     }).catch((error) => {
       console.log(error.response);
+      hideModal()
       setNotification("Error - Unable to delete this question", "error", true)
     });
   }
@@ -37,11 +39,13 @@ class Quiz extends React.Component {
       data: quiz
     }
     del("quiz/delete", config, userData.jwt).then((response) => {
+      hideModal()
       deleteQuiz(quiz)
       history.push("/quizSearch")
       setNotification("Quiz deleted", "success", true)
     }).catch((error) => {
       console.log(error.response)
+      hideModal()
       setNotification("Error - Unable to delete this quiz", "error", true)
     })
   }

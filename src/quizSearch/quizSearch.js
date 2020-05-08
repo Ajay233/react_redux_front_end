@@ -37,15 +37,17 @@ class QuizSearch extends React.Component {
   }
 
   handleDelete = () => {
-    const { quiz, userData, deleteQuiz, setNotification } = this.props;
+    const { quiz, userData, deleteQuiz, setNotification, hideModal } = this.props;
     const config = {
       data: quiz
     }
     del("quiz/delete", config, userData.jwt).then((response) => {
+      hideModal()
       deleteQuiz(quiz)
       setNotification("Quiz deleted", "success", true)
     }).catch((error) => {
       console.log(error.response)
+      hideModal()
       setNotification("Error - Unable to delete this quiz", "error", true)
     })
   }

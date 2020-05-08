@@ -39,15 +39,17 @@ class QuestionView extends React.Component {
   }
 
   handleDeleteAnswer = () => {
-    const { currentAnswer, userData, setNotification, deleteAnswer } = this.props;
+    const { currentAnswer, userData, setNotification, deleteAnswer, hideModal } = this.props;
     const config = {
       data: [currentAnswer]
     }
     del("answer/delete", config, userData.jwt).then((response) => {
+      hideModal()
       deleteAnswer(currentAnswer);
       setNotification("Answer deleted", "success", true);
     }).catch((error) => {
       console.log(error.response);
+      hideModal()
       setNotification("Error - Unable to delete this answer", "error", true)
     });
   }
@@ -58,11 +60,13 @@ class QuestionView extends React.Component {
       data: [currentQuestion]
     }
     del("question/delete", config, userData.jwt).then((response) => {
+      hideModal()
       deleteQuestion(currentQuestion);
       history.push("/editQuiz")
       setNotification("Question deleted", "success", true);
     }).catch((error) => {
       console.log(error.response);
+      hideModal()
       setNotification("Error - Unable to delete this question", "error", true)
     });
   }
