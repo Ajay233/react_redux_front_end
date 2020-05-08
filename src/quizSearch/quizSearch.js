@@ -53,7 +53,7 @@ class QuizSearch extends React.Component {
   }
 
   render(){
-    const { quizes, userData, setNotification, getQuizSearchResults, modalState, hideModal } = this.props
+    const { quizes, userData, setNotification, getQuizSearchResults, modalState, hideModal, lists } = this.props
     return(
       <div id="quizSearch">
         <Modal
@@ -69,7 +69,12 @@ class QuizSearch extends React.Component {
           <QuizSearchByName jwt={userData.jwt} setNotification={setNotification} getQuizSearchResults={getQuizSearchResults} />
         </div>
         <div id="quizSearchByCategory">
-          <QuizSearchByCategory jwt={userData.jwt} setNotification={setNotification} getQuizSearchResults={getQuizSearchResults} />
+          <QuizSearchByCategory
+            jwt={userData.jwt}
+            setNotification={setNotification}
+            getQuizSearchResults={getQuizSearchResults}
+            categories={lists.categories}
+          />
         </div>
         <div>
           {this.renderResultsTitle(quizes)}
@@ -87,6 +92,7 @@ const mapStateToProps = (state) => {
     notificationData: state.notificationData,
     quizes: state.quizes,
     quiz: state.quiz,
+    lists: state.lists,
     modalState: state.showModal
   }
 }

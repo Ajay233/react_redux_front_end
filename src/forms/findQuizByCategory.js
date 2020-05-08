@@ -20,13 +20,13 @@ class QuizSearchByCategory extends React.Component {
     getQuizSearchResults("quiz/findByCategory", param, jwt, setNotification, errorMsg);
   }
 
-  // ToDo:
-  // Add a table for lookups
-  // Add all categories to it (each category will be lookup type = category)
-  // Make an endpoint for getting a list of all categories
-  // Add componentDidMount and make the call to the endpoint within the componentDidMount method
-  // Save response to a lookup redux state
-  // use the list to populate the options
+  renderOptions = () => {
+    const { categories } = this.props;
+    let optionsList = categories.map(category => {
+      return <option key={categories.indexOf(category)} value={category}>{category}</option>
+    })
+    return optionsList;
+  }
 
   render(){
     return(
@@ -34,10 +34,7 @@ class QuizSearchByCategory extends React.Component {
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="category" component={this.renderInput} label="Quiz category:">
             <option value="" disabled>Select a category</option>
-            <option value="Comics">Comics</option>
-            <option value="type1">type1</option>
-            <option value="type2">type2</option>
-            <option value="type3">type3</option>
+            {this.renderOptions()}
           </Field>
           <button className="submit"><i className="fas fa-search"></i> Search</button>
         </form>
