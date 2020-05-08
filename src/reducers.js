@@ -13,6 +13,7 @@ import { setQuizReducer } from './quiz/reducers'
 import { setQuestionsReducer, setCurrentQuestionReducer } from './question/reducers'
 import { setAnswersReducer, setCurrentAnswerReducer } from './answer/reducers'
 import { showModalReducer } from './modal/reducers'
+import { setListsReducer } from './lists/reducers'
 
 export const rootReducer = (state, action) => {
   switch (action.type) {
@@ -36,5 +37,6 @@ export const allReducers = combineReducers({
   answers: setAnswersReducer,
   currentAnswer: setCurrentAnswerReducer,
   showModal: showModalReducer,
+  lists: setListsReducer,
   form: formReducer
 });

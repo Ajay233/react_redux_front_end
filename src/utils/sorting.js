@@ -1,25 +1,10 @@
 export function sortAscending(array){
-  let ascendingResults = [];
-  for(let i = 0; i < array.length; i++){
-
-  }
+  
 }
 
 export function sortDescending(array){
 
 }
-
-// When adding an answer or question inset it into the list at a specified index
-// will need to do a function to iterate through comparing values until I get the right index, then use th eindex to insert
-
-
-// If the array is empty, just add the payload
-// else
-// compare current question number to each element
-// if the element > current question number
-// splice(indexOf(element), 0, current question)
-// if every element < current question
-// just add it to the end as normal
 
 export function insertQuestion(state, question){
   if(state.length === 0){
