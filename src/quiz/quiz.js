@@ -8,7 +8,7 @@ import Modal from '../modal/modal'
 import { getQuestions, deleteQuestion } from '../question/actions'
 import { setNotification } from '../notifications/actions'
 import { deleteQuiz } from '../quizSearch/actions'
-import { setQuiz } from './actions'
+import { setQuiz, updateQuizStatus } from './actions'
 import { hideModal, showModal2 } from '../modal/actions'
 import { del } from '../axiosRequests/requests'
 import history from '../history'
@@ -55,6 +55,7 @@ class Quiz extends React.Component {
     return(
       <React.Fragment>
         <div id="quizTitle">{name}</div>
+        <div className="quizStatus">Status: {this.renderStatus()}</div>
         <div>Description:</div>
         <div>{description}</div>
       </React.Fragment>
@@ -66,6 +67,7 @@ class Quiz extends React.Component {
     return(
       <React.Fragment>
         <div id="quizTitle">{`Edit the ${name} quiz`}</div>
+        <div className="quizStatus">Status: {this.renderStatus()}</div>
         <UpdateQuizForm />
       </React.Fragment>
     );
@@ -81,7 +83,8 @@ class Quiz extends React.Component {
   }
 
   renderAddButton = () => {
-    return <Link to="/newQuestion" className="add"><i className="fas fa-plus-circle green"></i> Add a question</Link>
+    const { permission } = this.props.userData
+    return permission === "ADMIN" ? <Link to="/newQuestion" className="add addButton"><i className="fas fa-plus-circle green"></i> Add a question</Link> : null
   }
 
   triggerModal = () => {
@@ -92,9 +95,35 @@ class Quiz extends React.Component {
     return <button onClick={this.triggerModal} className="delete"><i class="fas fa-trash-alt"></i> Delete</button>
   }
 
+  renderStatusButton = () => {
+    const { quiz } = this.props;
+    return( <button className={quiz.status === "DRAFT" ? "save" : "warningButton"} onClick={this.updateStatus}>
+              { quiz.status === "DRAFT" ? <i className="far fa-check-circle"></i> : <i className="fas fa-pencil-ruler"></i>}
+              { quiz.status === "DRAFT" ? " Mark as Ready" : " Revert to draft" }
+            </button>
+    );
+  }
+
+  updateStatus = () => {
+    const { quiz, updateQuizStatus, userData } = this.props;
+    const data = {
+      id: quiz.id,
+      name: quiz.name,
+      description: quiz.description,
+      category: quiz.category,
+      status: quiz.status === "DRAFT" ? "READY" : "DRAFT"
+    }
+    updateQuizStatus(data, userData.jwt)
+  }
+
+  renderStatus = () => {
+    const { quiz } = this.props;
+    return quiz.status === "DRAFT" ? <span className="draftFlag"><i className="fas fa-pencil-ruler"></i> Currenty in Draft</span> : <span className="readyFlag"><i className="far fa-check-circle"></i> Ready for use</span>
+  }
+
   renderOptions = () => {
     const { permission } = this.props.userData
-    return permission === "ADMIN" ? <div>{this.renderAddButton()}{this.renderDeleteButton()}</div> : null
+    return permission === "ADMIN" ? <div>{this.renderDeleteButton()}{this.renderStatusButton()}</div> : null
   }
 
 
@@ -120,7 +149,15 @@ class Quiz extends React.Component {
         <Notification />
         {this.renderDetailsOrUpdate()}
         {this.renderOptions()}
-        <div id="questionsTitle">Questions:</div>
+        <div className="headerContainer">
+          <div id="questionsTitle">Questions</div>
+          {this.renderAddButton()}
+        </div>
+        <div id="questionHeadings">
+          <div id="questionNumberHeader">Answer</div>
+          <div id="questionDescriptionHeader">Description</div>
+          <div id="questionOptionsHeader"></div>
+        </div>
         <Questions questions={questions}/>
       </div>
     );
@@ -144,4 +181,6 @@ export default connect(mapStateToProps,
     hideModal,
     deleteQuestion,
     deleteQuiz,
-    showModal2 })(Quiz)
+    showModal2,
+    updateQuizStatus
+  })(Quiz)

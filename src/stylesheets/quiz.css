@@ -8,10 +8,37 @@
 
 #quizTitle {
   font-size: 40px;
+  font-weight: bold;
   text-align: center;
-  width: 30%;
-  margin-left: 35%;
-  margin-right: 35%;
+  width: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.quizStatus {
+  width: 40%;
+  margin: 10px 30% 10px 30%;
+  text-align: center;
+}
+
+.draftFlag {
+  border: 2px #ffeeba solid;
+  background-color: #fff3cd;
+  padding: 5px;
+  color: #856404;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-left: 15px;
+}
+
+.readyFlag {
+  border: 2px #c3e6cb solid;
+  background-color: #d4edda;
+  padding: 5px;
+  color: #155724;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-left: 15px;
 }
 
 #questionsTitle {
@@ -20,6 +47,35 @@
   margin-top: 50px;
   margin-bottom: 5px;
   padding: 5px;
+  width: 86%;
+}
+
+.addButton {
+  margin-top: 57px;
+  width: 14%;
+}
+
+.headerContainer {
+  display: flex;
+}
+
+#questionHeadings{
+  display: flex;
+  padding: 10px 5px;
+  border-bottom: solid 2px white;
+  font-weight: bold;
+}
+
+#questionNumberHeader{
+  width: 20%;
+}
+
+#questionDescriptionHeader{
+  width: 55%;
+}
+
+#questionOptionsHeader{
+  width: 25%;
 }
 
 .questionContainer {
