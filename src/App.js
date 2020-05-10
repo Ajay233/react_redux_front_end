@@ -16,6 +16,7 @@ import QuestionView from './question/questionView'
 import NewQuestionForm from './forms/newQuestion'
 import AnswerView from './answer/viewAnswer'
 import AllQuizes from './quiz/allQuizes'
+import QuizStart from './quizStart/quizStart'
 import history from './history'
 import './stylesheets/main.css'
 import './stylesheets/buttons.css'
@@ -44,6 +45,7 @@ class App extends React.Component {
             <Route path={["/viewQuestion", "/editQuestion"]} component={()=> <QuestionView />}/>
             <Route path="/newQuestion" component={()=> <NewQuestionForm />}/>
             <Route path={["/editAnswer", "/newAnswer"]} component={()=> <AnswerView />} />
+            <Route path="/startQuiz" component={()=>< QuizStart/>} />
           </div>
         </Router>
       </div>

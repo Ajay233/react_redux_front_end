@@ -6,7 +6,10 @@ import { setQuiz } from '../quiz/actions'
 import { setNotification } from '../notifications/actions'
 import { deleteQuiz } from './actions'
 import { showModal } from '../modal/actions'
-import { getQuestions } from '../question/actions'
+import { getQuestions, setCurrentQuestion } from '../question/actions'
+import { getAnswers } from '../answer/actions'
+
+import history from '../history'
 
 class QuizResult extends React.Component {
 
@@ -22,8 +25,13 @@ class QuizResult extends React.Component {
     setQuiz(quiz);
   }
 
+  // if questions.length is not greater than 0, setNotification or use modal
   handleStart = () => {
-    console.log(this.props)
+    const { userData, quiz, getQuestions, getAnswers, setCurrentQuestion, setQuiz } = this.props
+    const param = { quizId: quiz.id }
+    getQuestions("question/findByQuizId", param, userData.jwt, true, getAnswers, setCurrentQuestion)
+    setQuiz(quiz);
+    history.push("/startQuiz")
   }
 
   renderQuiz = () => {
@@ -65,4 +73,12 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps,{ setQuiz, setNotification, deleteQuiz, showModal, getQuestions })(QuizResult)
+export default connect(mapStateToProps,
+  { setQuiz,
+    setNotification,
+    deleteQuiz,
+    showModal,
+    getQuestions,
+    getAnswers,
+    setCurrentQuestion
+  })(QuizResult)

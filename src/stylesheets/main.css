@@ -32,10 +32,27 @@ body, .container {
   margin-right: 69%;
 }
 
+.title-medium-left {
+  font-size: 20px;
+  text-align: left;
+  width: 30%;
+  margin-left: 1%;
+  margin-right: 69%;
+}
+
 .form {
   margin: 0 10% 0 10%;
 }
 
 .bottomSpacing {
   margin-bottom: 30px;
+}
+
+.sectionSpacing {
+  margin: 30px 0px 30px 0px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed !important;
 }

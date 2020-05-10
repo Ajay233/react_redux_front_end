@@ -12,6 +12,9 @@ import { del } from '../axiosRequests/requests'
 
 class AllQuizes extends React.Component {
 
+  // add contitional css alternate between left and right align classes
+  // Will need a way to turn this on and off, possibly by using history.location.pathname
+  // so this is only applied on the all quizes view
   renderCategories = () => {
     const { quizes, userData } = this.props
     let quizesList = quizes.map(listItem => {

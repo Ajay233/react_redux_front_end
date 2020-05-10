@@ -14,10 +14,15 @@ import { setQuestionsReducer, setCurrentQuestionReducer } from './question/reduc
 import { setAnswersReducer, setCurrentAnswerReducer } from './answer/reducers'
 import { showModalReducer } from './modal/reducers'
 import { setListsReducer } from './lists/reducers'
+import { setQuizProgressTracking } from './quizStart/reducers'
 
 export const rootReducer = (state, action) => {
   switch (action.type) {
     case "RESET_APP": return state = undefined;
+    case "RESET_STATE": {
+      const { userData, notificationData } = state;
+      return state = { userData, notificationData }
+    };
     default: return allReducers(state, action);
   }
 }
@@ -30,6 +35,7 @@ export const allReducers = combineReducers({
   notificationData: setNotificationReducer,
   userResults: setUserResultsReducer,
   listOfUsers: setUserListReducer,
+  quizProgressTracking: setQuizProgressTracking,
   quizes: setQuizSearchReducer,
   quiz: setQuizReducer,
   questions: setQuestionsReducer,
