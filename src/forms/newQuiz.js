@@ -5,11 +5,12 @@ import { Field, reduxForm } from 'redux-form'
 import Notification from '../notifications/notifications'
 
 import { addQuiz } from '../quizSearch/actions'
+import { setQuiz } from '../quiz/actions'
 import { setNotification } from '../notifications/actions'
 
 import { post } from '../axiosRequests/requests'
 
-
+import history from '../history'
 
 class NewQuizForm extends React.Component {
 
@@ -42,18 +43,21 @@ class NewQuizForm extends React.Component {
   }
 
   onSubmit = ({ name, description, category }) => {
-    const { userData, setNotification, addQuiz } = this.props;
+    const { userData, setNotification, addQuiz, setQuiz } = this.props;
     const body = {
       name: name,
       description: description,
-      category: category
+      category: category,
+      status: "DRAFT"
     }
     post("quiz/create", body, userData.jwt).then((response) => {
       addQuiz(response.data);
-      setNotification("Quiz created", "success", true);
+      setQuiz(response.data);
+      history.push("/editQuiz")
+      setNotification("Quiz created, but what's a quiz without questions? Add your questions below.", "success", true);
     }).catch((error) => {
       console.log(error.response);
-      setNotification("Error - Unable to update quiz", "error", true);
+      setNotification("Error - Unable to create quiz", "error", true);
     })
   }
 
@@ -69,7 +73,7 @@ class NewQuizForm extends React.Component {
             {this.renderOptions()}
           </Field>
           <div>
-            <button className="submit">Save</button><Link to="/quizSearch" className="cancel">Cancel</Link>
+            <button className="submit">Save and continue</button><Link to="/quizSearch" className="cancel">Cancel</Link>
           </div>
         </form>
       </div>
@@ -101,4 +105,4 @@ const mapStateToProps = (state) => {
 //
 // export default NewQuizForm
 
-export default connect(mapStateToProps, { setNotification, addQuiz })(reduxForm({ form: 'quizForm' })(NewQuizForm))
+export default connect(mapStateToProps, { setNotification, addQuiz, setQuiz })(reduxForm({ form: 'quizForm' })(NewQuizForm))

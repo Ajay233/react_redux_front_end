@@ -92,7 +92,7 @@ class Quiz extends React.Component {
   }
 
   renderDeleteButton = () => {
-    return <button onClick={this.triggerModal} className="delete"><i class="fas fa-trash-alt"></i> Delete</button>
+    return <button onClick={this.triggerModal} className="delete"><i className="fas fa-trash-alt"></i> Delete</button>
   }
 
   renderStatusButton = () => {
