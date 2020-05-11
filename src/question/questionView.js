@@ -12,6 +12,7 @@ import { hideModal, showModal2 } from '../modal/actions'
 import { deleteAnswer } from '../answer/actions'
 import { deleteQuestion } from '../question/actions'
 import { del } from '../axiosRequests/requests'
+import { sessionExpired } from '../utils/session'
 
 import '../stylesheets/question.css'
 import '../stylesheets/answer.css'
@@ -49,8 +50,12 @@ class QuestionView extends React.Component {
       setNotification("Answer deleted", "success", true);
     }).catch((error) => {
       console.log(error.response);
-      hideModal()
-      setNotification("Error - Unable to delete this answer", "error", true)
+      if(error.response.status === 403){
+        sessionExpired(this.props.dispatch);
+      } else {
+        hideModal()
+        setNotification("Error - Unable to delete this answer", "error", true)
+      }
     });
   }
 

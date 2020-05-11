@@ -10,6 +10,7 @@ import history from '../history'
 import { setNotification } from '../notifications/actions'
 import { logOutUser } from '../authentication/actions'
 import { showModal, hideModal } from '../modal/actions'
+import { sessionExpired } from '../utils/session'
 
 import '../stylesheets/inputs.css';
 import '../stylesheets/buttons.css';
@@ -27,7 +28,11 @@ class ManageAccount extends React.Component {
       history.push('/');
       this.props.setNotification(successMsg, "success", true);
     }).catch((error) => {
-      this.props.setNotification(errorMsg, "error", true);
+      if(error.response.status === 403){
+        sessionExpired(this.props.dispatch);
+      } else {
+        this.props.setNotification(errorMsg, "error", true);
+      }
     });
   }
 

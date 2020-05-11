@@ -9,6 +9,7 @@ import { hideModal } from '../modal/actions'
 import { setNotification } from '../notifications/actions'
 
 import { del } from '../axiosRequests/requests'
+import { sessionExpired } from '../utils/session'
 
 class AllQuizes extends React.Component {
 
@@ -53,8 +54,12 @@ class AllQuizes extends React.Component {
       setNotification("Quiz deleted", "success", true)
     }).catch((error) => {
       console.log(error.response)
-      hideModal()
-      setNotification("Error - Unable to delete this quiz", "error", true)
+      if(error.response.status === 403){
+        sessionExpired(this.props.dispatch);
+      } else {
+        hideModal()
+        setNotification("Error - Unable to delete this quiz", "error", true)
+      }
     })
   }
 

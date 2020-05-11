@@ -60,7 +60,6 @@ class Login extends React.Component {
         <div>{this.props.verificationProcess.completionStatus === "completed" ? this.verifiedMsg() : null}</div>
         <div className="login">
         <div className="notificationContainer">
-        {this.welcomeMsg()}
         <Notification />
         </div>
           <form onSubmit={this.handleSubmit} className="loginForm">

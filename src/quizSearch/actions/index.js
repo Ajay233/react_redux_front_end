@@ -1,4 +1,5 @@
 import { get, getUsingParams } from '../../axiosRequests/requests';
+import { sessionExpired } from '../../utils/session'
 
 export const setQuizes = (quizes) => {
   return {
@@ -17,6 +18,9 @@ export const getAllQuizes = (endpoint, token) => {
       })
     }).catch((error) => {
       console.log(error.response)
+      if(error.response.status === 403){
+        sessionExpired(dispatch);
+      }
     });
   }
 }
@@ -30,7 +34,11 @@ export const getQuizSearchResults = (endpoint, data, token, setNotification, err
       })
     }).catch((error) => {
       console.log(error.response);
+      if(error.response.status === 403){
+        sessionExpired(dispatch);
+      } else {
       setNotification(errorMsg, "error", true);
+      }
     })
   }
 }

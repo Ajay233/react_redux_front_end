@@ -10,11 +10,12 @@ export const setHeader = (token) => {
   return options;
 }
 
+// instead of return I need to unset the authorization header
 export const setDefault = (token) => {
   if (token !== null){
     axios.defaults.headers.common['Authorization'] = "Bearer " + token;
   } else {
-    return
+    delete axios.defaults.headers.common["Authorization"];
   }
 }
 

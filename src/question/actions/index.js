@@ -1,4 +1,5 @@
 import { getUsingParams } from '../../axiosRequests/requests'
+import { sessionExpired } from '../../utils/session'
 
 export const getQuestions = (endpoint, param, jwt, startQuiz=false, getAnswers, setCurrentQuestion) => {
   return (dispatch) => {
@@ -15,6 +16,9 @@ export const getQuestions = (endpoint, param, jwt, startQuiz=false, getAnswers, 
       console.log("success")
     }).catch((error) => {
       console.log(error);
+      if(error.response.status === 403){
+        sessionExpired(dispatch);
+      }
     });
   }
 }

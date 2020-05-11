@@ -6,6 +6,7 @@ import { put } from '../axiosRequests/requests'
 import history from '../history'
 import { setNotification } from '../notifications/actions'
 import { setCurrentQuestion, updateQuestion } from '../question/actions'
+import { sessionExpired } from '../utils/session'
 
 class UpdateQuestionForm extends React.Component {
 
@@ -33,7 +34,11 @@ class UpdateQuestionForm extends React.Component {
       setNotification("Question updated", "success", true)
     }).catch((error) => {
       console.log(error.response);
-      setNotification("Error - unable to update question", "error", true)
+      if(error.response.status === 403){
+        sessionExpired(this.props.dispatch);
+      } else {
+        setNotification("Error - unable to update question", "error", true)
+      }
     });
   }
 

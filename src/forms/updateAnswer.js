@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import history from '../history'
 
+import { sessionExpired } from '../utils/session'
 import { put } from '../axiosRequests/requests'
 
 import { setNotification } from '../notifications/actions'
@@ -47,7 +48,11 @@ class UpdateAnswerForm extends React.Component {
       setNotification("Answer updated", "success", true);
     }).catch((error) => {
       console.log(error.response);
-      setNotification("Error - unable to update answer", "error", true);
+      if(error.response.status === 403){
+        sessionExpired(this.props.dispatch);
+      } else {
+        setNotification("Error - unable to update answer", "error", true);
+      }
     });
   }
 

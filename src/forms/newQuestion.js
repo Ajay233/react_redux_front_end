@@ -6,6 +6,7 @@ import { post } from '../axiosRequests/requests'
 import history from '../history'
 import { setNotification } from '../notifications/actions'
 import { addQuestion } from '../question/actions'
+import { sessionExpired } from '../utils/session'
 
 class NewQuestionForm extends React.Component {
 
@@ -30,8 +31,12 @@ class NewQuestionForm extends React.Component {
       history.push("/editQuiz");
       setNotification("Question created", "success", true);
     }).catch((error) => {
-      console.log(error.response);
-      setNotification("Error - unable to create question with the details provided", "error", true)
+      if(error.response.status === 403){
+        sessionExpired(this.props.dispatch);
+      } else {
+        console.log(error.response);
+        setNotification("Error - unable to create question with the details provided", "error", true)
+      }
     });
   }
 

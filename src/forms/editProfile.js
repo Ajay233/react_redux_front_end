@@ -1,6 +1,8 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { put } from '../axiosRequests/requests'
+import { sessionExpired } from '../utils/session'
+
 
 class EditProfileForm extends React.Component {
 
@@ -55,9 +57,13 @@ class EditProfileForm extends React.Component {
       this.props.setNotification(successMsg, "success", true)
       console.log("Edited")
     }).catch((error) => {
-      this.props.setNotification(errorMsg, "error", true)
-      console.log(error.config)
-      console.log(error.response)
+      if(error.response.status === 403){
+        sessionExpired(this.props.dispatch);
+      } else {
+        this.props.setNotification(errorMsg, "error", true)
+        console.log(error.config)
+        console.log(error.response)
+      }
     });
   }
 

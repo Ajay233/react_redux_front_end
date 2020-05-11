@@ -6,7 +6,7 @@ import { setNotification } from '../notifications/actions'
 import { setQuiz } from '../quiz/actions'
 
 import { put } from '../axiosRequests/requests'
-
+import { sessionExpired } from '../utils/session'
 
 
 // pass in setNotification, setQuiz, jwt, quiz
@@ -43,7 +43,13 @@ class UpdateQuizForm extends React.Component {
     }
   }
 
-
+  renderOptions = () => {
+    const { categories } = this.props.lists
+    let listOfOptions = categories.map(category => {
+      return <option key={categories.indexOf(category)} value={category}>{category}</option>
+    })
+    return listOfOptions
+  }
 
   onSubmit = ({ name, description, category }) => {
     const { userData, quiz, setQuiz, setNotification } = this.props;
@@ -58,9 +64,15 @@ class UpdateQuizForm extends React.Component {
       setNotification("Quiz updated", "success", true);
     }).catch((error) => {
       console.log(error.response);
-      this.props.setNotification("Error - Unable to update quiz", "error", true);
+      if(error.response.status === 403){
+        sessionExpired(this.props.dispatch);
+      } else {
+        this.props.setNotification("Error - Unable to update quiz", "error", true);
+      }
     })
   }
+
+  // <option value="" disabled>{this.props.quiz.category}</option>
 
   render(){
     return(
@@ -69,10 +81,7 @@ class UpdateQuizForm extends React.Component {
           <Field name="name" component={this.renderInput} label="Quiz name:"/>
           <Field name="description" component={this.renderInput} label="Quiz description:"/>
           <Field name="category" component={this.renderSelect} label="Quiz category:">
-            <option value="Comics">Comics</option>
-            <option value="type1">type1</option>
-            <option value="type2">type2</option>
-            <option value="type3">type3</option>
+            {this.renderOptions()}
           </Field>
           <div>
             <button className="submit">Save</button>
@@ -93,8 +102,9 @@ const mapStateToProps = (state) => {
       category: state.quiz.category
     },
     userData: state.userData,
-    quiz: state.quiz
+    quiz: state.quiz,
+    lists: state.lists
   }
 }
 
-export default connect(mapStateToProps, { setQuiz, setNotification })(reduxForm({ form: 'quizForm' })(UpdateQuizForm))
+export default connect(mapStateToProps, { setQuiz, setNotification })(reduxForm({ form: 'editQuizForm', enableReinitialize: true })(UpdateQuizForm))

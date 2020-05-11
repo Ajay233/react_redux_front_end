@@ -1,6 +1,8 @@
 import { post } from '../../axiosRequests/requests'
+import { setNotification } from '../../notifications/actions'
+import history from '../../history'
 
-export const setUser = (endpoint, loginDetails, setNotification) => {
+export const setUser = (endpoint, loginDetails) => {
 
   return (dispatch) => {
 
@@ -19,7 +21,8 @@ export const setUser = (endpoint, loginDetails, setNotification) => {
           response: response
         }
       })
-      setNotification(`Welcome back ${response.data.user.forename}`, "loginSuccess", true)
+      history.push("/")
+      dispatch(setNotification(`Welcome back ${response.data.user.forename}`, "loginSuccess", true))
     }).catch((error) => {
       dispatch({
         type: "SET_USER_LOGGED_IN",
@@ -27,7 +30,7 @@ export const setUser = (endpoint, loginDetails, setNotification) => {
           error: error.response
         }
       });
-      setNotification("The username or password you entered was incorrect", "error", true);
+      dispatch(setNotification("The username or password you entered was incorrect", "error", true));
     })
   }
 }

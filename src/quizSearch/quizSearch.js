@@ -9,6 +9,8 @@ import { del } from '../axiosRequests/requests'
 import { setNotification } from '../notifications/actions'
 import { setQuizes, getQuizSearchResults, deleteQuiz } from './actions'
 import { hideModal } from '../modal/actions'
+import { sessionExpired } from '../utils/session'
+
 import "../stylesheets/quizSearch.css"
 
 
@@ -47,8 +49,12 @@ class QuizSearch extends React.Component {
       setNotification("Quiz deleted", "success", true)
     }).catch((error) => {
       console.log(error.response)
-      hideModal()
-      setNotification("Error - Unable to delete this quiz", "error", true)
+      if(error.response.status === 403){
+        sessionExpired(this.props.dispatch);
+      } else {
+        hideModal()
+        setNotification("Error - Unable to delete this quiz", "error", true)
+      }
     })
   }
 

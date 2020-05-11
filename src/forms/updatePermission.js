@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { put } from '../axiosRequests/requests';
+import { sessionExpired } from '../utils/session'
 
 class UpdatePermission extends React.Component {
 
@@ -25,8 +26,12 @@ class UpdatePermission extends React.Component {
       this.props.setNotification(successMsg, "success", true);
     }).catch((error) => {
       console.log(error.response)
-      const errorMsg = error.response.data ? error.response.data : "Error - unable to update permission for this user"
-      this.props.setNotification(errorMsg, "error", true);
+      if(error.response.status === 403){
+        sessionExpired(this.props.dispatch);
+      } else {
+        const errorMsg = error.response.data ? error.response.data : "Error - unable to update permission for this user"
+        this.props.setNotification(errorMsg, "error", true);
+      }
     })
   }
 

@@ -1,4 +1,5 @@
 import { get } from '../../axiosRequests/requests'
+import { sessionExpired } from '../../utils/session'
 
 export const setUserList = (endpoint, data, token) => {
   return (dispatch) => {
@@ -8,12 +9,9 @@ export const setUserList = (endpoint, data, token) => {
         payload: response.data
       })
     }).catch((error) => {
-      dispatch({
-        type: "SET_USER_LIST",
-        payload: {
-          error: error
-        }
-      })
+      if(error.response.status === 403){
+        sessionExpired(dispatch);
+      }
     })
   }
 }

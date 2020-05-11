@@ -1,6 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form';
 import { getUsingParams } from '../axiosRequests/requests'
+import { sessionExpired } from '../utils/session'
 
 class FindUserByEmail extends React.Component {
 
@@ -11,9 +12,13 @@ class FindUserByEmail extends React.Component {
     getUsingParams("users/findByEmail", param, jwt).then((response) => {
       this.props.setUserResults(response.data);
     }).catch((error) => {
-      const msg = error;
-      this.props.setNotification(msg, "error", true);
-      console.log(error.response)
+      if(error.response.status === 403){
+        sessionExpired(this.props.dispatch);
+      } else {
+        const msg = error;
+        this.props.setNotification(msg, "error", true);
+        console.log(error.response)
+      }
     });
   }
 

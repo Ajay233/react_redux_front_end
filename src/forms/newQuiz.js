@@ -51,10 +51,10 @@ class NewQuizForm extends React.Component {
       status: "DRAFT"
     }
     post("quiz/create", body, userData.jwt).then((response) => {
-      addQuiz(response.data);
       setQuiz(response.data);
-      history.push("/editQuiz")
+      addQuiz(response.data);
       setNotification("Quiz created, but what's a quiz without questions? Add your questions below.", "success", true);
+      history.push("/editQuiz");
     }).catch((error) => {
       console.log(error.response);
       setNotification("Error - Unable to create quiz", "error", true);
@@ -105,4 +105,4 @@ const mapStateToProps = (state) => {
 //
 // export default NewQuizForm
 
-export default connect(mapStateToProps, { setNotification, addQuiz, setQuiz })(reduxForm({ form: 'quizForm' })(NewQuizForm))
+export default connect(mapStateToProps, { setNotification, addQuiz, setQuiz })(reduxForm({ form: 'newQuizForm' })(NewQuizForm))

@@ -1,4 +1,5 @@
 import { get } from '../../axiosRequests/requests'
+import { sessionExpired } from '../../utils/session'
 
 export const getCategories = (jwt) => {
   return (dispatch) => {
@@ -9,6 +10,9 @@ export const getCategories = (jwt) => {
       })
     }).catch((error) => {
       console.log(error.response)
+      if(error.response.status === 403){
+        sessionExpired(dispatch);
+      }
     })
   }
 }

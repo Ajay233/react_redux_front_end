@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { put } from '../axiosRequests/requests';
+import { sessionExpired } from '../utils/session'
 
 class ChangePassword extends React.Component {
 
@@ -37,8 +38,12 @@ class ChangePassword extends React.Component {
       this.props.setNotification(successMsg, "success", true);
       console.log(response);
     }).catch((error) => {
-      this.props.setNotification(this.errorMsg(error.response.data), "error", true);
-      console.log(error.response.data);
+      if(error.response.status === 403){
+        sessionExpired(this.props.dispatch);
+      } else {
+        this.props.setNotification(this.errorMsg(error.response.data), "error", true);
+        console.log(error.response.data);
+      }
     })
   }
 

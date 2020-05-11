@@ -11,6 +11,7 @@ import { deleteQuiz } from '../quizSearch/actions'
 import { setQuiz, updateQuizStatus } from './actions'
 import { hideModal, showModal2 } from '../modal/actions'
 import { del } from '../axiosRequests/requests'
+import { sessionExpired } from '../utils/session'
 import history from '../history'
 
 import '../stylesheets/quiz.css'
@@ -28,8 +29,12 @@ class Quiz extends React.Component {
       setNotification("Question deleted", "success", true);
     }).catch((error) => {
       console.log(error.response);
-      hideModal()
-      setNotification("Error - Unable to delete this question", "error", true)
+      if(error.response.status === 403){
+        sessionExpired(this.props.dispatch);
+      } else {
+        hideModal()
+        setNotification("Error - Unable to delete this question", "error", true)
+      }
     });
   }
 
