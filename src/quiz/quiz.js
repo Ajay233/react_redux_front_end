@@ -139,14 +139,14 @@ class Quiz extends React.Component {
       <div id="quiz">
         <Modal
           show={modalState.showModal}
-          title={"Question"}
+          title={"Delete Question"}
           message={`You are about to delete question ${currentQuestion.questionNumber}, this will also delete any associated answers for this question.`}
           onDelete={this.handleDeleteQuestion}
           onCancel={hideModal}
         />
         <Modal
           show={modalState.showModal2}
-          title={"Quiz"}
+          title={"Delete Quiz"}
           message={"You are about to delete a quiz which will also delete any questions and answers associated with this"}
           onDelete={this.handleDeleteQuiz}
           onCancel={hideModal}

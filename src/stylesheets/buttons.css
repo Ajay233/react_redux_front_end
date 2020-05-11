@@ -4,7 +4,7 @@
   color: white;
 }
 
-.submit, .delete, .resend, .cancel, .save, .add, .warningButton {
+.submit, .delete, .resend, .cancel, .save, .add, .warningButton, .startButton {
   padding: 9px 60px;
   border-radius: 5px;
   font-size: 16px;
@@ -25,7 +25,7 @@
   color: black;
 }
 
-.save {
+.save, .startButton {
   background-color: rgb(40, 167, 69)
 }
 
@@ -47,10 +47,16 @@
   background-color: rgb(33, 136, 56);
 }
 
+.startButton:hover {
+  cursor: pointer;
+  background-color: rgb(33, 136, 56);
+}
+
 .delete:hover {
   cursor: pointer;
   opacity: 0.8;
 }
+
 
 .submit:focus {
   outline: none;

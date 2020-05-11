@@ -8,8 +8,10 @@ import Modal from '../modal/modal'
 import { del } from '../axiosRequests/requests'
 import { setNotification } from '../notifications/actions'
 import { setQuizes, getQuizSearchResults, deleteQuiz } from './actions'
+import { getQuestions } from '../question/actions'
 import { hideModal } from '../modal/actions'
 import { sessionExpired } from '../utils/session'
+import history from '../history'
 
 import "../stylesheets/quizSearch.css"
 
@@ -58,15 +60,32 @@ class QuizSearch extends React.Component {
     })
   }
 
+  handleStartQuiz = () => {
+    const { userData, quiz, getQuestions, hideModal } = this.props
+    const param = { quizId: quiz.id }
+    getQuestions("question/findByQuizId", param, userData.jwt, true)
+    hideModal()
+    history.push("/startQuiz")
+  }
+
   render(){
     const { quizes, userData, setNotification, getQuizSearchResults, modalState, hideModal, lists } = this.props
     return(
       <div id="quizSearch">
         <Modal
+          type={"delete"}
           show={modalState.showModal}
-          title={"Quiz"}
+          title={"Delete Quiz"}
           message={"You are about to delete a quiz which will also delete any questions and answers associated with is"}
           onDelete={this.handleDelete}
+          onCancel={hideModal}
+        />
+        <Modal
+          type={"start"}
+          show={modalState.showModal2}
+          title={"Start Quiz"}
+          message={"You are about to start a quiz, would you like to continue?"}
+          onStart={this.handleStartQuiz}
           onCancel={hideModal}
         />
         <Notification />
@@ -103,4 +122,12 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setQuizes, getQuizSearchResults, setNotification, hideModal, deleteQuiz })(QuizSearch)
+export default connect(mapStateToProps,
+  {
+    setQuizes,
+    getQuizSearchResults,
+    setNotification,
+    hideModal,
+    getQuestions,
+    deleteQuiz
+  })(QuizSearch)

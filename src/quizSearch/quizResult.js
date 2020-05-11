@@ -5,11 +5,10 @@ import { connect } from 'react-redux'
 import { setQuiz } from '../quiz/actions'
 import { setNotification } from '../notifications/actions'
 import { deleteQuiz } from './actions'
-import { showModal } from '../modal/actions'
+import { showModal, showModal2 } from '../modal/actions'
 import { getQuestions, setCurrentQuestion } from '../question/actions'
 import { getAnswers } from '../answer/actions'
 
-import history from '../history'
 
 class QuizResult extends React.Component {
 
@@ -26,12 +25,18 @@ class QuizResult extends React.Component {
   }
 
   // if questions.length is not greater than 0, setNotification or use modal
+  // handleStart = () => {
+    // const { userData, quiz, getQuestions, getAnswers, setCurrentQuestion, setQuiz } = this.props
+    // const param = { quizId: quiz.id }
+    // getQuestions("question/findByQuizId", param, userData.jwt, true, getAnswers, setCurrentQuestion)
+    // setQuiz(quiz);
+    // history.push("/startQuiz")
+  // }
+
   handleStart = () => {
-    const { userData, quiz, getQuestions, getAnswers, setCurrentQuestion, setQuiz } = this.props
-    const param = { quizId: quiz.id }
-    getQuestions("question/findByQuizId", param, userData.jwt, true, getAnswers, setCurrentQuestion)
+    const { quiz, setQuiz, showModal2 } = this.props
     setQuiz(quiz);
-    history.push("/startQuiz")
+    showModal2();
   }
 
   renderQuiz = () => {
@@ -78,6 +83,7 @@ export default connect(mapStateToProps,
     setNotification,
     deleteQuiz,
     showModal,
+    showModal2,
     getQuestions,
     getAnswers,
     setCurrentQuestion

@@ -1,7 +1,8 @@
 import { getUsingParams } from '../../axiosRequests/requests'
+import { getAnswers } from '../../answer/actions'
 import { sessionExpired } from '../../utils/session'
 
-export const getQuestions = (endpoint, param, jwt, startQuiz=false, getAnswers, setCurrentQuestion) => {
+export const getQuestions = (endpoint, param, jwt, startQuiz=false) => {
   return (dispatch) => {
     getUsingParams(endpoint, param, jwt).then((response) => {
       dispatch({
@@ -10,8 +11,8 @@ export const getQuestions = (endpoint, param, jwt, startQuiz=false, getAnswers, 
       })
       if(startQuiz){
         const body = { questionId: response.data[0].id }
-        getAnswers("answer/findByQuestionId", body, jwt)
-        setCurrentQuestion(response.data[0]);
+        dispatch(getAnswers("answer/findByQuestionId", body, jwt))
+        dispatch(setCurrentQuestion(response.data[0]));
       }
       console.log("success")
     }).catch((error) => {

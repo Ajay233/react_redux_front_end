@@ -98,15 +98,17 @@ class QuestionView extends React.Component {
     return(
       <div id="questionView">
         <Modal
+          type={"delete"}
           show={modalState.showModal}
-          title={"Answer"}
+          title={"Delete Answer"}
           message={`You are about to delete answer ${currentAnswer.answerNumber}`}
           onDelete={this.handleDeleteAnswer}
           onCancel={hideModal}
         />
         <Modal
+          type={"delete"}
           show={modalState.showModal2}
-          title={"Question"}
+          title={"Delete Question"}
           message={`You are about to delete question ${currentQuestion.questionNumber}, this will also delete any associated answers for this question.`}
           onDelete={this.handleDeleteQuestion}
           onCancel={hideModal}
