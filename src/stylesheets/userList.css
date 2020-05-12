@@ -1,0 +1,55 @@
+.userDetailHeaders{
+  width:100%;
+  display: flex;
+  border-bottom: solid 2px white;
+  margin-top: 40px;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.userDetails{
+  width: 100%;
+  display: flex;
+  border-bottom: solid 1px white;
+  padding: 10px 5px;
+}
+
+.forename{
+  width: 20%
+}
+
+.surname{
+  width: 20%
+}
+
+.email{
+  width: 30%
+}
+
+.permission{
+  width: 15%
+}
+
+.verified{
+  width: 15%
+}
+
+.forenameHeader{
+  width: 20%
+}
+
+.surnameHeader{
+  width: 20%
+}
+
+.emailHeader{
+  width: 30%
+}
+
+.permissionHeader{
+  width: 15%
+}
+
+.verifiedHeader{
+  width: 15%
+}

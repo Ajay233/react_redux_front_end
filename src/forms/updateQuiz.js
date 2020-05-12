@@ -107,4 +107,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setQuiz, setNotification })(reduxForm({ form: 'editQuizForm', enableReinitialize: true })(UpdateQuizForm))
+export default connect(mapStateToProps, { setQuiz, setNotification })(reduxForm({ form: 'editQuizForm' })(UpdateQuizForm))
