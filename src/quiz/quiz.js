@@ -39,7 +39,7 @@ class Quiz extends React.Component {
   }
 
   handleDeleteQuiz = () => {
-    const { quiz, userData, deleteQuiz, setNotification } = this.props;
+    const { quiz, userData, deleteQuiz, setNotification, hideModal } = this.props;
     const config = {
       data: quiz
     }
@@ -175,7 +175,8 @@ const mapStateToProps = (state) => {
     quiz: state.quiz,
     questions: state.questions,
     currentQuestion: state.currentQuestion,
-    modalState: state.showModal
+    modalState: state.showModal,
+    lists: state.lists
   }
 }
 

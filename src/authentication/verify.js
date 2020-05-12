@@ -31,7 +31,7 @@ class Verify extends React.Component {
         <div>
         <div id="verifyTitle">
           <div id="titleImg" >
-            <img  src={require("../public/icons/warning.png")} alt=""/>
+            <img src={require("../public/icons/warning.png")} alt="" className="verifyTitleImg"/>
           </div>
           <div id="verifyTitleTxt" >Oops 404</div>
         </div>
@@ -53,7 +53,7 @@ class Verify extends React.Component {
         <div>
           <div id="verifyTitle">
             <div id="titleImg" >
-              <img  src={require("../public/icons/warning.png")} alt=""/>
+              <img src={require("../public/icons/warning.png")} alt="" className="verifyTitleImg"/>
             </div>
             <div id="verifyTitleTxt" >Token Expired</div>
           </div>

@@ -21,6 +21,10 @@
   margin: auto;
 }
 
+.verifyTitleImg {
+  width: 100%;
+}
+
 #verifyContent {
   padding-top: 120px;
 }

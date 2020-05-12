@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { put } from '../axiosRequests/requests'
 import { sessionExpired } from '../utils/session'
@@ -89,5 +90,13 @@ class EditProfileForm extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    initialValues: {
+      forename: state.userData.forename,
+      surname: state.userData.surname
+    }
+  }
+}
 
-export default reduxForm({ form: 'editProfile' })(EditProfileForm)
+export default connect(mapStateToProps)(reduxForm({ form: 'editProfile' })(EditProfileForm))

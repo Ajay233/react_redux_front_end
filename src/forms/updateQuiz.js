@@ -67,7 +67,7 @@ class UpdateQuizForm extends React.Component {
       if(error.response.status === 403){
         sessionExpired(this.props.dispatch);
       } else {
-        this.props.setNotification("Error - Unable to update quiz", "error", true);
+        setNotification("Error - Unable to update quiz", "error", true);
       }
     })
   }
