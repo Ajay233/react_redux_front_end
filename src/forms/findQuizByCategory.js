@@ -14,10 +14,10 @@ class QuizSearchByCategory extends React.Component {
   }
 
   onSubmit = ({ category }) => {
-    const { jwt, setNotification, getQuizSearchResults } = this.props;
+    const { jwt, permission, getQuizSearchResults } = this.props;
     const param = {category: category}
     const errorMsg = `No match found for: ${category}`
-    getQuizSearchResults("quiz/findByCategory", param, jwt, setNotification, errorMsg);
+    getQuizSearchResults("quiz/findByCategory", param, jwt, permission, errorMsg);
   }
 
   renderOptions = () => {

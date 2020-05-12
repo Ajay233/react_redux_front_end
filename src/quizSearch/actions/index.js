@@ -1,4 +1,5 @@
 import { get, getUsingParams } from '../../axiosRequests/requests';
+import { setNotification } from '../../notifications/actions'
 import { sessionExpired } from '../../utils/session'
 
 export const setQuizes = (quizes) => {
@@ -25,19 +26,23 @@ export const getAllQuizes = (endpoint, token) => {
   }
 }
 
-export const getQuizSearchResults = (endpoint, data, token, setNotification, errorMsg) => {
+export const getQuizSearchResults = (endpoint, data, token, permission, errorMsg) => {
   return (dispatch) => {
     getUsingParams(endpoint, data, token).then((response) => {
+      let filteredQuizList = permission === "USER" ? response.data.filter(quiz => quiz.status === "READY") : response.data;
       dispatch({
         type: "SET_QUIZ_SEARCH_RESULTS",
-        payload: response.data
+        payload: filteredQuizList
       })
+      if(filteredQuizList.length === 0){
+         dispatch(setNotification(errorMsg, "error", true))
+       }
     }).catch((error) => {
       console.log(error.response);
       if(error.response.status === 403){
         sessionExpired(dispatch);
       } else {
-      setNotification(errorMsg, "error", true);
+      dispatch(setNotification(errorMsg, "error", true));
       }
     })
   }

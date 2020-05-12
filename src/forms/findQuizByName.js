@@ -13,10 +13,10 @@ class QuizSearchByName extends React.Component {
   }
   // endpoint, data, token, setNotification, errorMsg
   onSubmit = ({ name }) => {
-    const { jwt, setNotification, getQuizSearchResults } = this.props;
+    const { jwt, permission, getQuizSearchResults } = this.props;
     const param = {name: name}
     const errorMsg = `No match found for: ${name}`
-    getQuizSearchResults("quiz/findByName", param, jwt, setNotification, errorMsg);
+    getQuizSearchResults("quiz/findByName", param, jwt, permission, errorMsg);
   }
 
   render(){

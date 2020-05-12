@@ -96,7 +96,12 @@ class QuizSearch extends React.Component {
         <Notification />
         <div id="quizSearchTitle">Quiz Search</div>
         <div id="quizSearchByName">
-          <QuizSearchByName jwt={userData.jwt} setNotification={setNotification} getQuizSearchResults={getQuizSearchResults} />
+          <QuizSearchByName
+            jwt={userData.jwt}
+            setNotification={setNotification}
+            getQuizSearchResults={getQuizSearchResults}
+            permission={userData.permission} 
+          />
         </div>
         <div id="quizSearchByCategory">
           <QuizSearchByCategory
@@ -104,6 +109,7 @@ class QuizSearch extends React.Component {
             setNotification={setNotification}
             getQuizSearchResults={getQuizSearchResults}
             categories={lists.categories}
+            permission={userData.permission}
           />
         </div>
         <div>

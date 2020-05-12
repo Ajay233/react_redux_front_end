@@ -16,6 +16,8 @@ class QuizResults extends React.Component {
     return listOfQuizes
   }
 
+
+
   renderQuizes = () => {
     return this.props.quizes.length === 0 ? null : this.buildQuizes();
   }
