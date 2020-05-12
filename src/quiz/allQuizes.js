@@ -19,11 +19,12 @@ class AllQuizes extends React.Component {
   renderCategories = () => {
     const { quizes, userData } = this.props
     let quizesList = quizes.map(listItem => {
+      let filteredQuizList = userData.permission === "USER" ? listItem.quizList.filter(quiz => quiz.status === "READY") : listItem.quizList;
       return(
         <div className="bottomSpacing">
-          <div className="title-large-left">{listItem.category}</div>
-          {this.renderResultHeadings(listItem.quizList)}
-          <QuizResults quizes={listItem.quizList} permission={userData.permission} jwt={userData.jwt} />
+          <div className="title-large-left">{filteredQuizList.length === 0 ? null : listItem.category}</div>
+          {this.renderResultHeadings(filteredQuizList)}
+          <QuizResults key={"Quiz" + quizes.indexOf(listItem)} quizes={filteredQuizList} permission={userData.permission} jwt={userData.jwt} />
         </div>
       );
     })
