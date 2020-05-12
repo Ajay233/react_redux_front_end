@@ -7,6 +7,7 @@ const PickAnswer = (props) => {
   const renderInput = (formProps) => {
     return(
       <div>
+        {console.log(formProps)}
         <label><input {...formProps.input} type={formProps.type} className="radioInput"/>{formProps.label}</label>
       </div>
     );
@@ -28,6 +29,11 @@ const PickAnswer = (props) => {
     return props.currentQuestionNumber < props.numberOfQuestions ? "Next Question" : "Finish"
   }
 
+  const submitForm = ({ answer }) => {
+    props.onSubmit({ answer });
+    props.reset("pickedAnswer")
+  }
+
   const handleClick = () => {
     history.push("/");
     props.exit();
@@ -35,14 +41,15 @@ const PickAnswer = (props) => {
 
   return(
     <div>
-      <form onSubmit={props.handleSubmit(props.onSubmit)}>
+      <form onSubmit={props.handleSubmit(submitForm)}>
+        {console.log(props)}
         {props.title}
         {mapFields(props.answers)}
-        <button className="submit" disabled={props.showResults}>{renderButtonTitle()}</button>
+        <button className="submit" disabled={props.pristine}>{renderButtonTitle()}</button>
         <button className="submit" onClick={handleClick}>Quit</button>
       </form>
     </div>
   );
 }
 
-export default reduxForm({ form: 'pickedAnswer' })(PickAnswer)
+export default reduxForm({ form: 'pickedAnswer', enableReinitialize: true })(PickAnswer)
