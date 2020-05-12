@@ -26,9 +26,9 @@ import './fontawesome/css/all.css'
 class App extends React.Component {
   render(){
     return (
-      <div className="container">
+      <React.Fragment>
         <Router history={history}>
-          <div className="container">
+          <React.Fragment>
             <NavBar />
             <Route path="/" exact render={() => <Home />}/>
             <Route path="/login" render={() => <Login verify={false} />}/>
@@ -46,9 +46,9 @@ class App extends React.Component {
             <Route path="/newQuestion" component={()=> <NewQuestionForm />}/>
             <Route path={["/editAnswer", "/newAnswer"]} component={()=> <AnswerView />} />
             <Route path="/startQuiz" component={()=>< QuizStart/>} />
-          </div>
+          </React.Fragment>
         </Router>
-      </div>
+      </React.Fragment>
     );
   }
 }
