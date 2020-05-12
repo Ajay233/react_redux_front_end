@@ -15,3 +15,10 @@ export const setUserList = (endpoint, data, token) => {
     })
   }
 }
+
+export const clearUserList = () => {
+  return {
+    type: "CLEAR_USER_LIST",
+    payload: []
+  }
+}

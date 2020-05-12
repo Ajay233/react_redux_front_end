@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { setUserList } from './actions'
+import { setUserList, clearUserList } from './actions'
 
 import '../stylesheets/userList.css'
 
@@ -8,6 +8,10 @@ class UserList extends React.Component {
 
   componentDidMount(){
     this.props.setUserList("users", this.props.userData.jwt);
+  }
+
+  componentWillUnmount(){
+    this.props.clearUserList()
   }
 
   renderList = () => {
@@ -56,4 +60,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps, {setUserList})(UserList)
+export default connect(mapStateToProps, { setUserList, clearUserList })(UserList)
