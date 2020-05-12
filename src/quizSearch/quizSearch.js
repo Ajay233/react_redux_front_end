@@ -7,7 +7,7 @@ import Notification from '../notifications/notifications'
 import Modal from '../modal/modal'
 import { del } from '../axiosRequests/requests'
 import { setNotification } from '../notifications/actions'
-import { setQuizes, getQuizSearchResults, deleteQuiz } from './actions'
+import { setQuizes, getQuizSearchResults, deleteQuiz, clearQuizes } from './actions'
 import { getQuestions } from '../question/actions'
 import { hideModal } from '../modal/actions'
 import { sessionExpired } from '../utils/session'
@@ -17,6 +17,11 @@ import "../stylesheets/quizSearch.css"
 
 
 class QuizSearch extends React.Component {
+
+  componentWillUnmount(){
+    console.log("I will now clear the quizzes store :)")
+    this.props.clearQuizes();
+  }
 
   renderResultsTitle = (quizes) => {
     return quizes.length === 0 ? null : this.resultsTitle(quizes);
@@ -129,5 +134,6 @@ export default connect(mapStateToProps,
     setNotification,
     hideModal,
     getQuestions,
-    deleteQuiz
+    deleteQuiz,
+    clearQuizes
   })(QuizSearch)

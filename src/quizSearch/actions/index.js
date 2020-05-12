@@ -56,3 +56,10 @@ export const addQuiz = (quiz) => {
     payload: quiz
   }
 }
+
+export const clearQuizes = () => {
+  return {
+    type: "CLEAR_QUIZZES_STORE",
+    payload: []
+  }
+}
