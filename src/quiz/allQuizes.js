@@ -4,7 +4,7 @@ import Notification from '../notifications/notifications'
 import QuizResults from '../quizSearch/quizResults'
 import Modal from '../modal/modal'
 
-import { getAllQuizes, deleteQuiz } from '../quizSearch/actions'
+import { getAllQuizes, deleteQuiz, clearQuizes } from '../quizSearch/actions'
 import { hideModal } from '../modal/actions'
 import { setNotification } from '../notifications/actions'
 
@@ -12,6 +12,10 @@ import { del } from '../axiosRequests/requests'
 import { sessionExpired } from '../utils/session'
 
 class AllQuizes extends React.Component {
+
+  componentWillUnmount(){
+    this.props.clearQuizes();
+  }
 
   // add contitional css alternate between left and right align classes
   // Will need a way to turn this on and off, possibly by using history.location.pathname
@@ -91,4 +95,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { getAllQuizes, deleteQuiz, hideModal, setNotification })(AllQuizes)
+export default connect(mapStateToProps,
+  { getAllQuizes,
+    deleteQuiz,
+    hideModal,
+    setNotification,
+    clearQuizes 
+  })(AllQuizes)
