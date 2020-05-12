@@ -4,3 +4,10 @@ export const setUserResults = (results) => {
     payload: results
   }
 }
+
+export const clearUserResults = () => {
+  return {
+    type: "CLEAR_USER_RESULTS",
+    payload: []
+  }
+}

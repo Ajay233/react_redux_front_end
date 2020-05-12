@@ -5,12 +5,16 @@ import Notification from '../notifications/notifications'
 import User from './user'
 import UpdatePermission from '../forms/updatePermission'
 
-import { setUserResults } from './actions'
+import { setUserResults, clearUserResults } from './actions'
 import { setNotification } from '../notifications/actions'
 
 import '../stylesheets/editUserPrivilege.css'
 
 class EditUserPrivilege extends React.Component {
+
+  componentWillUnmount(){
+    this.props.clearUserResults()
+  }
 
   renderUser = () => {
     return this.props.userResults.length === 0 ? null : <User userResults={this.props.userResults}/>;
@@ -45,4 +49,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setUserResults, setNotification })(EditUserPrivilege)
+export default connect(mapStateToProps, { setUserResults, clearUserResults, setNotification })(EditUserPrivilege)
