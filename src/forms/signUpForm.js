@@ -7,10 +7,21 @@ class SignUpForm extends React.Component {
   renderInput = (formProps) => {
     return(
       <div>
+        {this.renderError(formProps.meta)}
         <label>{ formProps.label }</label>
-        <input {...formProps.input} type={formProps.type ? formProps.type : ""} className="inputBox"/>
+        <input
+          {...formProps.input}
+          type={formProps.type ? formProps.type : ""}
+          autoComplete="off"
+          className={`inputBox ${formProps.meta.error && formProps.meta.touched ? 'inputBoxError' : null}`}
+        />
       </div>
     );
+  }
+
+  renderError = (meta) => {
+    const { error, touched } = meta
+    return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null;
   }
 
   onSubmit = ({ forename, surname, email, password }) => {
@@ -40,11 +51,34 @@ class SignUpForm extends React.Component {
           <Field name="surname" component={this.renderInput} label="Surname:"/>
           <Field name="email" component={this.renderInput} label="Email address:"/>
           <Field name="password" component={this.renderInput} type="password" label="Password:"/>
-          <button className="submit signupButton">Create Account</button>
+          <button className="submit signupButton" >Create Account</button>
         </form>
       </div>
     );
   }
 }
 
-export default reduxForm({ form: 'signUpForm' })(SignUpForm)
+const validate = (formValues) => {
+  const errors = {}
+  const regex = /[^@]+@[^]+\..+/g
+  if(!formValues.forename){
+    errors.forename = "You must enter your first name"
+  }
+
+  if(!formValues.surname){
+    errors.surname = "you must enter your surname"
+  }
+
+  if(!formValues.email){
+    errors.email = "you must enter an email address"
+  } else if(!formValues.email.match(regex)){
+    errors.email = "you must enter a valid email address e.g. test@test.com"
+  }
+
+  if(!formValues.password){
+    errors.password = "you must enter a password"
+  }
+  return errors
+}
+
+export default reduxForm({ form: 'signUpForm', validate: validate })(SignUpForm)
