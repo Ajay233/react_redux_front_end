@@ -8,10 +8,16 @@ class ChangePassword extends React.Component {
   renderInput = (formProps) => {
     return(
       <div>
+        {this.renderFieldValidationError(formProps.meta)}
         <label>{formProps.label}</label>
         <input {...formProps.input} type="password" className="inputBox"/>
       </div>
     );
+  }
+
+  renderFieldValidationError = (meta) => {
+    const { error, touched } = meta
+    return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null
   }
 
   errorMsg = (error) => {
@@ -65,4 +71,22 @@ class ChangePassword extends React.Component {
 
 }
 
-export default reduxForm({ form: 'changePassword' })(ChangePassword)
+const validate = (formValues) => {
+  const { password, newPassword, retypedPassword } = formValues
+  const errors = {}
+
+  if(!password){
+    errors.password = "This field must not be empty"
+  }
+
+  if(!newPassword){
+    errors.newPassword = "This field must not be empty"
+  }
+
+  if(!retypedPassword){
+    errors.retypedPassword = "This field must not be empty"
+  }
+  return errors
+}
+
+export default reduxForm({ form: 'changePassword', validate: validate })(ChangePassword)
