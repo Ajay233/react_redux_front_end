@@ -25,10 +25,16 @@ class FindUserByEmail extends React.Component {
   renderInput = (formProps) => {
     return(
       <div>
+        {this.renderError(formProps.meta)}
         <label>{formProps.label}</label>
         <input {...formProps.input} className="inputBox" />
       </div>
     );
+  }
+
+  renderError = (meta) => {
+    const { error, touched } = meta
+    return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null
   }
 
   render(){
@@ -43,4 +49,16 @@ class FindUserByEmail extends React.Component {
   }
 }
 
-export default reduxForm({ form: 'findUserByEmail' })(FindUserByEmail)
+const validate = (formValues) => {
+  const { email } = formValues
+  const errors = {}
+  const regex = /[^@]+@[^]+\..+/g
+  if(!email){
+    errors.email = "You must enter an email address before a search can be conducted"
+  } else if(!email.match(regex)){
+    errors.email = "You must enter a valid email address e.g. test@test.com"
+  }
+  return errors
+}
+
+export default reduxForm({ form: 'findUserByEmail', validate: validate })(FindUserByEmail)
