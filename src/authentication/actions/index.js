@@ -24,6 +24,9 @@ export const setUser = (endpoint, loginDetails) => {
       history.push("/")
       dispatch(setNotification(`Welcome back ${response.data.user.forename}`, "loginSuccess", true))
     }).catch((error) => {
+      // AFTER back end update on login endpoint:
+      // update action creator so it sets the correct error notification for incorrect credentials or
+      // user has not yet verified their email address
       dispatch({
         type: "SET_USER_LOGGED_IN",
         payload: {
