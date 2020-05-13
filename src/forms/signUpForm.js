@@ -66,17 +66,17 @@ const validate = (formValues) => {
   }
 
   if(!formValues.surname){
-    errors.surname = "you must enter your surname"
+    errors.surname = "You must enter your surname"
   }
 
   if(!formValues.email){
-    errors.email = "you must enter an email address"
+    errors.email = "You must enter an email address"
   } else if(!formValues.email.match(regex)){
-    errors.email = "you must enter a valid email address e.g. test@test.com"
+    errors.email = "You must enter a valid email address e.g. test@test.com"
   }
 
   if(!formValues.password){
-    errors.password = "you must enter a password"
+    errors.password = "You must enter a password"
   }
   return errors
 }

@@ -7,10 +7,16 @@ class LoginForm extends React.Component {
   renderInput = (formProps) => {
     return(
       <div>
+        {this.renderError(formProps.meta)}
         <label>{ formProps.label }</label>
         <input {...formProps.input} type={ formProps.type ? formProps.type : "" }className="inputBox"/>
       </div>
     );
+  }
+
+  renderError = (meta) => {
+    const { error, touched } = meta
+    return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null;
   }
 
   onSubmit = ({ userName, password }) => {
@@ -36,4 +42,19 @@ class LoginForm extends React.Component {
   }
 }
 
-export default reduxForm({ form: 'loginForm' })(LoginForm)
+const validate = (formValues) => {
+  const errors = {};
+  const regex = /[^@]+@[^]+\..+/g
+  if(!formValues.userName){
+    errors.userName = "You must enter an email address"
+  } else if(!formValues.userName.match(regex)){
+    errors.userName = "You must enter a valid email address e.g. test@test.com"
+  }
+
+  if(!formValues.password){
+    errors.password = "You must enter a password"
+  }
+  return errors
+}
+
+export default reduxForm({ form: 'loginForm', validate: validate })(LoginForm)
