@@ -8,12 +8,18 @@ class UpdatePermission extends React.Component {
   renderSelect = (formProps) => {
     return(
       <div>
+        {this.renderError(formProps.meta)}
         <label>{formProps.label}</label>
         <select {...formProps.input} className="inputBox">
           {formProps.children}
         </select>
       </div>
     )
+  }
+
+  renderError = (meta) => {
+    const { error, touched } = meta
+    return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null
   }
 
   onSubmit = ({ permission }) => {
@@ -53,4 +59,15 @@ class UpdatePermission extends React.Component {
 
 }
 
-export default reduxForm({ form: 'updatePermission' })(UpdatePermission)
+const validate = (formValues) => {
+  const { permission } = formValues
+  const errors = {}
+
+  if(!permission){
+    errors.permission = "This field must not be empty"
+  }
+
+  return errors
+}
+
+export default reduxForm({ form: 'updatePermission', validate: validate })(UpdatePermission)
