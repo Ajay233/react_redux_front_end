@@ -20,10 +20,16 @@ class EditProfileForm extends React.Component {
   renderInput = (formProps) => {
     return(
       <div>
+        {this.renderErrors(formProps.meta)}
         <label>{formProps.label}</label>
         <input {...formProps.input} placeholder={this.renderPlaceholder(formProps.input.name) } className="inputBox"/>
       </div>
     );
+  }
+
+  renderErrors = (meta) => {
+    const { error, touched } = meta
+    return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null
   }
 
   renderPlaceholder = (name) => {
@@ -90,13 +96,35 @@ class EditProfileForm extends React.Component {
   }
 }
 
+const validate = (formValues) => {
+  const errors = {};
+  const regex = /[^@]+@[^]+\..+/g
+  const { forename, surname, newEmail } = formValues
+
+  if(!forename){
+    errors.forename = "You must enter a forename"
+  }
+
+  if(!surname){
+    errors.surname = "You must enter a surname"
+  }
+
+  if(!newEmail){
+    errors.newEmail = "You must enter an email address"
+  } else if(!newEmail.match(regex)){
+    errors.newEmail = "You must enter a valid email address e.g. test@test.com"
+  }
+  return errors
+}
+
 const mapStateToProps = (state) => {
   return {
     initialValues: {
       forename: state.userData.forename,
-      surname: state.userData.surname
+      surname: state.userData.surname,
+      newEmail: state.userData.email
     }
   }
 }
 
-export default connect(mapStateToProps)(reduxForm({ form: 'editProfile' })(EditProfileForm))
+export default connect(mapStateToProps)(reduxForm({ form: 'editProfile', validate: validate })(EditProfileForm))
