@@ -26,5 +26,32 @@ describe("the notification reducer", () => {
     expect(newState.timed).toEqual(true)
 
   })
-  
+
+  it("can return its initial state if no matching action is passed in", () => {
+
+    const initialState = {
+      message: "",
+      type: "",
+      show: false,
+      timed: true
+    }
+
+    const testState = {
+      message: "Test message",
+      type: "error",
+      show: true,
+      timed: true
+    }
+
+    const action = {
+      type: "UNRECOGNISED_TYPE",
+      payload: testState
+    }
+
+    const newState = setNotificationReducer(initialState, action)
+
+    expect(newState).toEqual(initialState)
+
+  })
+
 })
