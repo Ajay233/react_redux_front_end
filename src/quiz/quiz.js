@@ -71,7 +71,7 @@ class Quiz extends React.Component {
     const { name } = this.props.quiz
     return(
       <React.Fragment>
-        <div id="quizTitle">{`Edit the ${name} quiz`}</div>
+        <div id="quizTitle">{`Edit the ${name} ${name.includes("quiz") || name.includes("Quiz") ? "" : "quiz"}`}</div>
         <div className="quizStatus">Status: {this.renderStatus()}</div>
         <UpdateQuizForm />
       </React.Fragment>
