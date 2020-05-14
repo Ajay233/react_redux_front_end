@@ -6,11 +6,18 @@ class QuizSearchByName extends React.Component {
   renderInput = (formProps) => {
     return(
       <div>
+        {this.renderError(formProps.meta)}
         <label>{formProps.label}</label>
         <input {...formProps.input} className="inputBox"/>
       </div>
     );
   }
+
+  renderError = (meta) => {
+    const { error, touched } = meta
+    return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null
+  }
+
   // endpoint, data, token, setNotification, errorMsg
   onSubmit = ({ name }) => {
     const { jwt, permission, getQuizSearchResults } = this.props;
@@ -31,4 +38,13 @@ class QuizSearchByName extends React.Component {
   }
 }
 
-export default reduxForm({ form: "quizName" })(QuizSearchByName)
+const validate = (formValues) => {
+  const { name } = formValues
+  const errors = {}
+  if(!name){
+    errors.name = "A name must be entered to conduct a search by quiz name"
+  }
+  return errors
+}
+
+export default reduxForm({ form: "quizName", validate: validate })(QuizSearchByName)
