@@ -8,6 +8,7 @@ export const setQuestionsReducer = (state=questions, action) => {
     case "DELETE_QUESTION": return state.filter(question => question!== action.payload);
     case "ADD_QUESTION": return insertQuestion(state, action.payload);
     case "UPDATE_QUESTION": return state.map(question => question.id === action.payload.id ? action.payload : question)
+    case "CLEAR_QUESTIONS": return action.payload;
     default: return state;
   }
 }

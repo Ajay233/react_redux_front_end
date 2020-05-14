@@ -51,3 +51,10 @@ export const updateQuestion = (question) => {
     payload: question
   }
 }
+
+export const clearQuestions = () => {
+  return {
+    type: "CLEAR_QUESTIONS",
+    payload: []
+  }
+}

@@ -6,6 +6,7 @@ import Notification from '../notifications/notifications'
 
 import { addQuiz } from '../quizSearch/actions'
 import { setQuiz } from '../quiz/actions'
+import { clearQuestions } from '../question/actions'
 import { setNotification } from '../notifications/actions'
 
 import { post } from '../axiosRequests/requests'
@@ -50,7 +51,7 @@ class NewQuizForm extends React.Component {
   }
 
   onSubmit = ({ name, description, category }) => {
-    const { userData, setNotification, addQuiz, setQuiz, dispatch } = this.props;
+    const { userData, setNotification, addQuiz, setQuiz, clearQuestions, dispatch } = this.props;
     const body = {
       name: name,
       description: description,
@@ -60,6 +61,7 @@ class NewQuizForm extends React.Component {
     post("quiz/create", body, userData.jwt).then((response) => {
       setQuiz(response.data);
       addQuiz(response.data);
+      clearQuestions();
       setNotification("Quiz created, but what's a quiz without questions? Add your questions below.", "success", true);
       history.push("/editQuiz");
     }).catch((error) => {
@@ -132,4 +134,10 @@ const mapStateToProps = (state) => {
 //
 // export default NewQuizForm
 
-export default connect(mapStateToProps, { setNotification, addQuiz, setQuiz })(reduxForm({ form: 'newQuizForm', validate: validate })(NewQuizForm))
+export default connect(mapStateToProps,
+  {
+    setNotification,
+    addQuiz,
+    setQuiz,
+    clearQuestions
+  })(reduxForm({ form: 'newQuizForm', validate: validate })(NewQuizForm))
