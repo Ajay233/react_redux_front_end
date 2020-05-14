@@ -6,11 +6,17 @@ class QuizSearchByCategory extends React.Component {
   renderInput = (formProps) => {
     return(
       <div>
+        {this.renderError(formProps.meta)}
         <select {...formProps.input} className="inputBox">
           {formProps.children}
         </select>
       </div>
     );
+  }
+
+  renderError = (meta) => {
+    const { error, touched } = meta
+    return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null
   }
 
   onSubmit = ({ category }) => {
@@ -43,4 +49,13 @@ class QuizSearchByCategory extends React.Component {
   }
 }
 
-export default reduxForm({ form: 'quizCategory' })(QuizSearchByCategory)
+const validate = (formValues) => {
+  const { category } = formValues
+  const errors = {}
+  if(!category){
+    errors.category = "You must select a category to search for a quiz by category"
+  }
+  return errors
+}
+
+export default reduxForm({ form: 'quizCategory', validate: validate })(QuizSearchByCategory)
