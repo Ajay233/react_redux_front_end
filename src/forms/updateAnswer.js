@@ -15,6 +15,7 @@ class UpdateAnswerForm extends React.Component {
   renderInput = (formProps) => {
     return(
       <div>
+        {this.renderError(formProps.meta)}
         <label>{ formProps.label }</label>
         <input {...formProps.input} className="inputBox"/>
       </div>
@@ -24,12 +25,18 @@ class UpdateAnswerForm extends React.Component {
   renderSelect = (formProps) => {
     return(
       <div>
+        {this.renderError(formProps.meta)}
         <label>{ formProps.label }</label>
         <select {...formProps.input} className="inputBox">
           {formProps.children}
         </select>
       </div>
     );
+  }
+
+  renderError = (meta) => {
+    const { error, touched } = meta
+    return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null
   }
 
   onSubmit = ({ number, description, correct }) => {
@@ -74,6 +81,27 @@ class UpdateAnswerForm extends React.Component {
   }
 }
 
+const validate = (formValues) => {
+  const { number, description, correct } = formValues
+  const errors = {}
+
+  if(!number){
+    errors.number = "The answer number must not be empty"
+  } else if(isNaN(number)){
+    errors.number = "Only numbers are valid for the answer number"
+  }
+
+  if(!description){
+    errors.description = "The answer description must not be empty"
+  }
+
+  if(!correct){
+    errors.correct = "The answer must be marked as right of wrong"
+  }
+
+  return errors
+}
+
 const mapStateToProps = (state) => {
   return {
     initialValues: {
@@ -90,4 +118,4 @@ export default connect(mapStateToProps,
   { setNotification,
     setCurrentAnswer,
     updateAnswer
-  })(reduxForm({ form: 'updateAnswer' })(UpdateAnswerForm))
+  })(reduxForm({ form: 'updateAnswer', validate: validate })(UpdateAnswerForm))
