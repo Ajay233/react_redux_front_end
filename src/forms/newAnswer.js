@@ -15,6 +15,7 @@ class NewAnswerForm extends React.Component {
   renderInput = (formProps) => {
     return(
       <div>
+        {this.renderError(formProps.meta)}
         <label>{ formProps.label }</label>
         <input {...formProps.input} className="inputBox"/>
       </div>
@@ -24,12 +25,18 @@ class NewAnswerForm extends React.Component {
   renderSelect = (formProps) => {
     return(
       <div>
+        {this.renderError(formProps.meta)}
         <label>{ formProps.label }</label>
         <select {...formProps.input} className="inputBox">
           {formProps.children}
         </select>
       </div>
     );
+  }
+
+  renderError = (meta) => {
+    const { error, touched } = meta
+    return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null
   }
 
   onSubmit = ({ number, description, correct }) => {
@@ -62,6 +69,7 @@ class NewAnswerForm extends React.Component {
           <Field name="number" component={this.renderInput} label="Answer number:"/>
           <Field name="description" component={this.renderInput} label="Answer description"/>
           <Field name="correct" component={this.renderSelect} label="Correct? Yes/No:">
+            <option value="" disabled>Select an option</option>
             <option value={true}>Yes</option>
             <option value={false}>No</option>
           </Field>
@@ -72,14 +80,33 @@ class NewAnswerForm extends React.Component {
   }
 }
 
+const validate = (formValues) => {
+  const { number, description, correct } = formValues
+  const errors = {}
+  const regex = /^\d+$/g
+
+  if(!number){
+    errors.number = "The answer number must not be empty"
+  } else if(!number.match(regex)){
+    errors.number = "Only numbers are valid for the answer number"
+  }
+
+  if(!description){
+    errors.description = "The answer description must not be empty"
+  }
+
+  if(!correct){
+    errors.correct = "The answer must be marked as right of wrong"
+  }
+
+  return errors
+}
+
 const mapStateToProps = (state) => {
   return {
-    initialValues: {
-      correct: true
-    },
     userData: state.userData,
     currentQuestion: state.currentQuestion
   }
 }
 
-export default connect(mapStateToProps, { setNotification, addAnswer })(reduxForm({ form: 'updateAnswer' })(NewAnswerForm))
+export default connect(mapStateToProps, { setNotification, addAnswer })(reduxForm({ form: 'updateAnswer', validate: validate })(NewAnswerForm))
