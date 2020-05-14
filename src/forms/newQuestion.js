@@ -13,10 +13,16 @@ class NewQuestionForm extends React.Component {
   renderInput = (formProps) => {
     return(
       <div>
+        {this.renderError(formProps.meta)}
         <label>{ formProps.label }</label>
         <input {...formProps.input} className="inputBox"/>
       </div>
     );
+  }
+
+  renderError = (meta) => {
+    const { error, touched } = meta
+    return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null
   }
 
   onSubmit = ({ number, description }) => {
@@ -54,6 +60,25 @@ class NewQuestionForm extends React.Component {
   }
 }
 
+const validate = (formValues) => {
+  const { number, description } = formValues
+  const errors = {}
+  const regex = /^\d+$/g
+
+  if(!number){
+    errors.number = "The question number must not be empty"
+  } else if (!number.match(regex)){
+    errors.number = "Only numbers are valid for the question number"
+  }
+
+  if(!description){
+    errors.description = "The question description must not be left empty"
+  }
+
+  return errors
+
+}
+
 const mapStateToProps = (state) => {
   return {
     userData: state.userData,
@@ -62,4 +87,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setNotification, addQuestion })(reduxForm({ form: 'questionForm' })(NewQuestionForm))
+export default connect(mapStateToProps, { setNotification, addQuestion })(reduxForm({ form: 'questionForm', validate: validate })(NewQuestionForm))
