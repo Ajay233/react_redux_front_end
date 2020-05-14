@@ -16,6 +16,7 @@ class UpdateQuizForm extends React.Component {
   renderInput = (formProps) => {
     return(
       <div>
+        {this.renderError(formProps.meta)}
         <label>{ formProps.label }</label>
         <input {...formProps.input} placeholder={this.renderPlaceholder(formProps.input.name)} className="inputBox"/>
       </div>
@@ -25,12 +26,18 @@ class UpdateQuizForm extends React.Component {
   renderSelect = (formProps) => {
     return(
       <div>
+        {this.renderError(formProps.meta)}
         <label>{ formProps.label }</label>
         <select {...formProps.input} placeholder={this.renderPlaceholder(formProps.input.name)} className="inputBox">
           {formProps.children}
         </select>
       </div>
     );
+  }
+
+  renderError = (meta) => {
+    const { error, touched } = meta
+    return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null
   }
 
   renderPlaceholder = (inputName) => {
@@ -93,6 +100,22 @@ class UpdateQuizForm extends React.Component {
   }
 }
 
+const validate = (formValues) => {
+  const { name, description, category } = formValues
+  const errors = {}
+   if(!name){
+     errors.name = "Quiz name must not be empty"
+   }
+
+   if(!description){
+     errors.description = "Quiz description must not be empty"
+   }
+
+   if(!category){
+     errors.description = "Quiz category must be selected"
+   }
+   return errors
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -107,4 +130,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setQuiz, setNotification })(reduxForm({ form: 'editQuizForm' })(UpdateQuizForm))
+export default connect(mapStateToProps, { setQuiz, setNotification })(reduxForm({ form: 'editQuizForm', validate: validate })(UpdateQuizForm))
