@@ -9,7 +9,7 @@ import { setQuiz } from '../quiz/actions'
 import { setNotification } from '../notifications/actions'
 
 import { post } from '../axiosRequests/requests'
-
+import { sessionExpired } from '../utils/session'
 import history from '../history'
 
 class NewQuizForm extends React.Component {
@@ -17,15 +17,22 @@ class NewQuizForm extends React.Component {
   renderInput = (formProps) => {
     return(
       <div>
+        {this.renderError(formProps.meta)}
         <label>{ formProps.label }</label>
         <input {...formProps.input} className="inputBox"/>
       </div>
     )
   }
 
+  renderError = (meta) => {
+    const { error, touched } = meta
+    return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null
+  }
+
   renderSelect = (formProps) => {
     return(
       <div>
+        {this.renderError(formProps.meta)}
         <label>{ formProps.label }</label>
         <select {...formProps.input} className="inputBox">
           {formProps.children}
@@ -43,7 +50,7 @@ class NewQuizForm extends React.Component {
   }
 
   onSubmit = ({ name, description, category }) => {
-    const { userData, setNotification, addQuiz, setQuiz } = this.props;
+    const { userData, setNotification, addQuiz, setQuiz, dispatch } = this.props;
     const body = {
       name: name,
       description: description,
@@ -57,7 +64,11 @@ class NewQuizForm extends React.Component {
       history.push("/editQuiz");
     }).catch((error) => {
       console.log(error.response);
-      setNotification("Error - Unable to create quiz", "error", true);
+      if(error.response.status === 403){
+        sessionExpired(dispatch);
+      } else {
+        setNotification("Error - Unable to create quiz", "error", true);
+      }
     })
   }
 
@@ -70,6 +81,7 @@ class NewQuizForm extends React.Component {
           <Field name="name" component={this.renderInput} label="Quiz name:"/>
           <Field name="description" component={this.renderInput} label="Quiz description:"/>
           <Field name="category" component={this.renderSelect} label="Quiz category:">
+            <option value="" disabled>Select a category</option>
             {this.renderOptions()}
           </Field>
           <div>
@@ -81,12 +93,27 @@ class NewQuizForm extends React.Component {
   }
 }
 
+const validate = (formValues) => {
+  const { name, description, category } = formValues
+  const errors = {}
+
+  if(!name){
+    errors.name = "You must enter a quiz name"
+  }
+
+  if(!description){
+    errors.description = "You must enter a quiz description"
+  }
+
+  if(!category){
+    errors.category = "You must select a quiz category"
+  }
+
+  return errors
+}
 
 const mapStateToProps = (state) => {
   return {
-    initialValues: {
-      category: "Comics"
-    },
     userData: state.userData,
     lists: state.lists
   }
@@ -105,4 +132,4 @@ const mapStateToProps = (state) => {
 //
 // export default NewQuizForm
 
-export default connect(mapStateToProps, { setNotification, addQuiz, setQuiz })(reduxForm({ form: 'newQuizForm' })(NewQuizForm))
+export default connect(mapStateToProps, { setNotification, addQuiz, setQuiz })(reduxForm({ form: 'newQuizForm', validate: validate })(NewQuizForm))
