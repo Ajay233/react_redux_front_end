@@ -24,16 +24,18 @@ export const setUser = (endpoint, loginDetails) => {
       history.push("/")
       dispatch(setNotification(`Welcome back ${response.data.user.forename}`, "loginSuccess", true))
     }).catch((error) => {
-      // AFTER back end update on login endpoint:
-      // update action creator so it sets the correct error notification for incorrect credentials or
-      // user has not yet verified their email address
-      dispatch({
-        type: "SET_USER_LOGGED_IN",
-        payload: {
-          error: error.response
-        }
-      });
-      dispatch(setNotification("The username or password you entered was incorrect", "error", true));
+      if(error.response.data === "NOT VERIFIED"){
+        const verifyMsg = "Your email has not yet been veirified.  You will need to verify your email before you can log in"
+        dispatch(setNotification(verifyMsg, "warning", true))
+      } else {
+        dispatch({
+          type: "SET_USER_LOGGED_IN",
+          payload: {
+            error: error.response
+          }
+        });
+        dispatch(setNotification("The username or password you entered was incorrect", "error", true));
+      }
     })
   }
 }
