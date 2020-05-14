@@ -49,8 +49,8 @@ class UpdateAnswerForm extends React.Component {
       correctAnswer: correct
     }
     put("answer/update", [body], userData.jwt).then((response) => {
-      setCurrentAnswer(body);
-      updateAnswer(body);
+      setCurrentAnswer(response.data[0]);
+      updateAnswer(response.data[0]);
       history.push("/editQuestion");
       setNotification("Answer updated", "success", true);
     }).catch((error) => {
