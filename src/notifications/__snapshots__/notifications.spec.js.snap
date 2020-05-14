@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notification component can hide a notification message when the show property is set to false 1`] = `
+<div
+  className="spacing"
+/>
+`;
+
+exports[`Notification component can render a notification 1`] = `
+<div
+  className="spacing"
+>
+  <div
+    className="success"
+  >
+    <span
+      className="close"
+      onClick={[Function]}
+    >
+      <i
+        className="far fa-times-circle"
+      />
+    </span>
+    Test message
+  </div>
+</div>
+`;
