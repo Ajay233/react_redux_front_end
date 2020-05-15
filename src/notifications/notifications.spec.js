@@ -55,6 +55,29 @@ describe('Notification component', () => {
 
   })
 
+  it('can render a notification with an icon', () => {
+
+    let store;
+    let component;
+
+    store = mockStore({
+      notificationData: {
+        message: "test of notification that includes an icon png",
+        type: "verifyProcess",
+        show: true,
+        timed: true
+      }
+    });
+
+    component = renderer.create(
+      <Provider store={store}>
+        <Notification />
+      </Provider>
+    );
+
+    expect(component).toMatchSnapshot();
+  })
+
   it('can hide a notification message when the show property is set to false', () => {
 
     let store;

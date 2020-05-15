@@ -25,3 +25,32 @@ exports[`Notification component can render a notification 1`] = `
   </div>
 </div>
 `;
+
+exports[`Notification component can render a notification with an icon 1`] = `
+<div
+  className="spacing"
+>
+  <div
+    className="verifyProcess"
+  >
+    <span
+      className="close"
+      onClick={[Function]}
+    >
+      <i
+        className="far fa-times-circle"
+      />
+    </span>
+    <span>
+      <span>
+        <img
+          alt=""
+          className="img"
+          src="mail-sent.png"
+        />
+      </span>
+      test of notification that includes an icon png
+    </span>
+  </div>
+</div>
+`;
