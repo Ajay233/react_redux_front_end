@@ -29,11 +29,10 @@ describe('mapStateToProps', () => {
 
 describe('Notification component', () => {
 
-  it('can render a notification', () => {
+  let store;
+  let component;
 
-    let store;
-    let component;
-
+  beforeEach(() => {
     store = mockStore({
       notificationData: {
         message: "Test message",
@@ -42,6 +41,9 @@ describe('Notification component', () => {
         timed: true
       }
     });
+  })
+
+  it('can render a notification', () => {
 
     component = renderer.create(
       <Provider store={store}>
@@ -54,6 +56,7 @@ describe('Notification component', () => {
   })
 
   it('can hide a notification message when the show property is set to false', () => {
+
     let store;
     let component;
 
