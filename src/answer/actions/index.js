@@ -1,14 +1,15 @@
 import { getUsingParams } from '../../axiosRequests/requests'
+import { setNotification } from '../../notifications/actions'
 
 export const getAnswers = (endpoint, param, jwt) => {
   return (dispatch) => {
-    getUsingParams(endpoint, param, jwt).then((response) => {
+    return getUsingParams(endpoint, param, jwt).then((response) => {
       dispatch({
         type: "SET_ANSWERS",
         payload: response.data
       });
     }).catch((error) => {
-      console.log(error.response)
+      setNotification("Error retrieving answers", "error", true)
     });
   }
 }
