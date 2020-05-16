@@ -1,16 +1,25 @@
-export function sortAscending(array){
-  
+export function sortAnswersAscending(answers, highestIndex){
+
 }
 
 export function sortDescending(array){
 
 }
 
+export function updateAnswerAndSort(state, updatedAnswer){
+  if(state.length < 2){
+    return state.map(answer => answer.id === updatedAnswer.id ? updatedAnswer : answer);
+  } else {
+    let newState = state.filter(answer => answer.id !== updatedAnswer.id);
+    return insertAnswer(newState, updatedAnswer);
+  }
+}
+
+
 export function insertQuestion(state, question){
   if(state.length === 0){
     return [...state, question];
   } else if(state.every(function(e){return e.questionNumber < question.questionNumber})){
-    console.log("Question number was reater than all others")
     return [...state, question];
   } else {
     let added = false

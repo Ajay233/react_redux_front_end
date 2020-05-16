@@ -1,4 +1,4 @@
-import { insertQuestion, insertAnswer } from './sorting'
+import { insertQuestion, insertAnswer, updateAnswerAndSort } from './sorting'
 
 describe("insertQuestion", () => {
 
@@ -76,5 +76,66 @@ describe("insertAnswer", () => {
     let newState = insertAnswer(emptyStore, answer)
 
     expect(newState.indexOf(answer)).toEqual(0)
+  })
+})
+
+describe("updateAnswerAndSort", () => {
+  it("can replace the old answer in an array that has less than 2 elements", () => {
+    const initialState = [
+      { id: 1,
+        answerNumber: 1,
+        description: "testDescription"
+      }
+    ]
+
+    const updatedAnswer = {
+      id: 1,
+      answerNumber: 3,
+      description: "updatedDescription"
+    }
+
+    const newState = [
+      {
+        id: 1,
+        answerNumber: 3,
+        description: "updatedDescription"
+      }
+    ]
+
+    expect(updateAnswerAndSort(initialState, updatedAnswer)).toEqual(newState)
+  })
+
+  it("can remove the old answer and insert the new answer in an array that has 2 or more elements", () => {
+    const initialState = [
+      { id: 1,
+        answerNumber: 1,
+        description: "testDescription"
+      },
+      { id: 3,
+        answerNumber: 2,
+        description: "testDescription"
+      }
+    ]
+
+    const expectedState = [
+      { id: 3,
+        answerNumber: 2,
+        description: "testDescription"
+      },
+      {
+        id: 1,
+        answerNumber: 3,
+        description: "updatedDescription"
+      }
+    ]
+
+    const updatedAnswer = {
+      id: 1,
+      answerNumber: 3,
+      description: "updatedDescription"
+    }
+
+    expect(updateAnswerAndSort(initialState, updatedAnswer)).toEqual(expectedState)
+
   })
 })
