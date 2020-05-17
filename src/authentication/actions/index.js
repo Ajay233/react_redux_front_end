@@ -6,7 +6,7 @@ export const setUser = (endpoint, loginDetails) => {
 
   return (dispatch) => {
 
-    post(endpoint, loginDetails).then((response) => {
+    return post(endpoint, loginDetails).then((response) => {
       dispatch({
         type: "SET_USER_LOGGED_IN",
         payload: {
@@ -17,8 +17,7 @@ export const setUser = (endpoint, loginDetails) => {
           permission: response.data.user.permission,
           verified: response.data.user.verified,
           jwt: response.data.jwt,
-          loggedIn: true,
-          response: response
+          loggedIn: true
         }
       })
       history.push("/")
@@ -28,30 +27,9 @@ export const setUser = (endpoint, loginDetails) => {
         const verifyMsg = "Your email has not yet been veirified.  You will need to verify your email before you can log in"
         dispatch(setNotification(verifyMsg, "warning", true))
       } else {
-        dispatch({
-          type: "SET_USER_LOGGED_IN",
-          payload: {
-            error: error.response
-          }
-        });
         dispatch(setNotification("The username or password you entered was incorrect", "error", true));
       }
     })
-  }
-}
-
-export const logOutUser = () => {
-  return {
-    type: "LOG_OUT_USER",
-    payload: {
-      forename: "",
-      surname: "",
-      email: "",
-      permission: "",
-      verified: "",
-      jwt: "",
-      loggedIn: false
-    }
   }
 }
 
@@ -59,13 +37,12 @@ export const setVerficationProcess = (endpoint, verificationDetails) => {
 
   return (dispatch) => {
 
-    post(endpoint, verificationDetails).then((response) => {
+    return post(endpoint, verificationDetails).then((response) => {
       dispatch({
         type: "SET_VERIFY_PROCESS_STATUS",
         payload: {
           completionStatus: "completed",
-          token: "",
-          error: {}
+          token: ""
         }
       })
     }).catch((error) => {
@@ -73,8 +50,7 @@ export const setVerficationProcess = (endpoint, verificationDetails) => {
         type: "SET_VERIFY_PROCESS_STATUS",
         payload: {
           completionStatus: "not verified",
-          token: verificationDetails.token,
-          error: error.response
+          token: verificationDetails.token
         }
       })
     })
@@ -95,11 +71,3 @@ export const logOut = () => {
     type: "RESET_APP"
   }
 }
-
-// export const getUsers = (endpoint, header) => {
-//   return {
-//     type: "GET_USER",
-//     payload: {
-//       userId
-//   }
-// }

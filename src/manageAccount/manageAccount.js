@@ -8,7 +8,7 @@ import Modal from '../modal/modal'
 import history from '../history'
 
 import { setNotification } from '../notifications/actions'
-import { logOutUser } from '../authentication/actions'
+import { logOut } from '../authentication/actions'
 import { showModal, hideModal } from '../modal/actions'
 import { sessionExpired } from '../utils/session'
 
@@ -24,7 +24,7 @@ class ManageAccount extends React.Component {
     const {id, jwt} = this.props.userData
     const config = { data: { id: id } }
     del("users/deleteAccount", config, jwt).then((response) => {
-      this.props.logOutUser();
+      this.props.logOut();
       history.push('/');
       this.props.setNotification(successMsg, "success", true);
     }).catch((error) => {
@@ -82,4 +82,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps, {setNotification, logOutUser, showModal, hideModal})(ManageAccount)
+export default connect(mapStateToProps, {setNotification, logOut, showModal, hideModal})(ManageAccount)
