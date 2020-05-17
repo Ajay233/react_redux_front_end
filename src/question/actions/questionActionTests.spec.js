@@ -30,6 +30,32 @@ describe("getQuestions", () => {
     })
   })
 
+  it("should call get answers and set current questions if startQuiz is set to true", () => {
+    const store = mockStore({})
+
+    const expectedAction = {
+      type: "SET_QUESTIONS",
+      payload: [{ id: 1, questionNumber: 1 }, { id: 2, questionNumber: 2 }, { id: 3, questionNumber: 3 }]
+    }
+
+    const expectedAction2 = {
+      type: "SET_CURRENT_QUESTION",
+      payload: { id: 1, questionNumber: 1 }
+    }
+
+    const expectedAction3 = {
+      type: "SET_ANSWERS",
+      payload: [{ questionNumber: 1 },{ questionNumber: 2 }]
+    }
+
+    return store.dispatch(getQuestions("question/findByQuizId", "data", "jwt", true)).then(() => {
+      expect(store.getActions()[0]).toEqual(expectedAction)
+      expect(store.getActions()[1]).toEqual(expectedAction2)
+      expect(store.getActions()[2]).toEqual(expectedAction3)
+    })
+
+  })
+
   it("should call sessionExpired if an error occurrs and the status id 403", () => {
     const store = mockStore({})
 
