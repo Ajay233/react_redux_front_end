@@ -11,6 +11,16 @@ module.exports = {
           }
         ]
       })
+    } else if(url === "http://localhost:8080/lookup/quizCategories"){
+      return Promise.resolve({
+        data: [ "item1", "item2", "item3" ]
+      })
+    } else if(url === "http://localhost:8080/lookup/quizCategories/sessionExpired"){
+        return Promise.reject({
+          response: {
+            status: 403
+          }
+        })
     } else {
       return Promise.reject({
         data: "Error"

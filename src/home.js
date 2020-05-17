@@ -11,7 +11,7 @@ class Home extends React.Component {
 
   fetchInitialData = () => {
     const { userData, getCategories } = this.props;
-    return userData.loggedIn ? getCategories(userData.jwt) : null;
+    return userData.loggedIn ? getCategories("lookup/quizCategories", userData.jwt) : null;
   }
 
   render(){

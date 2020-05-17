@@ -1,9 +1,9 @@
 import { get } from '../../axiosRequests/requests'
 import { sessionExpired } from '../../utils/session'
 
-export const getCategories = (jwt) => {
+export const getCategories = (endpoint, jwt) => {
   return (dispatch) => {
-    get("lookup/quizCategories", jwt).then((response) => {
+    return get(endpoint, jwt).then((response) => {
       dispatch({
         type: "SET_CATEGORIES",
         payload: response.data
