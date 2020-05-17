@@ -118,7 +118,7 @@ class Quiz extends React.Component {
       category: quiz.category,
       status: quiz.status === "DRAFT" ? "READY" : "DRAFT"
     }
-    updateQuizStatus(data, userData.jwt)
+    updateQuizStatus("quiz/updateStatus", data, userData.jwt)
   }
 
   renderStatus = () => {

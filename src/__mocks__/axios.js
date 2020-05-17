@@ -76,7 +76,31 @@ module.exports = {
       })
     }
   }),
-  put: jest.fn((url) => {}),
+  put: jest.fn((url) => {
+    if(url === "http://localhost:8080/quiz/updateStatus"){
+      return Promise.resolve({
+        data: {
+          id: "1",
+          name: "Test",
+          description: "Test description",
+          category: "Test category",
+          status: "READY"
+        }
+      })
+    } else if(url === "http://localhost:8080/sessionExpired"){
+      return Promise.reject({
+        response: {
+          status: 403
+        }
+      })
+    } else {
+      return Promise.reject({
+        response: {
+          data: "Error"
+        }
+      })
+    }
+  }),
   delete: jest.fn((url) => {}),
   create: jest.fn(function () {
     return this;

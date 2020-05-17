@@ -2,5 +2,6 @@ export const quiz = {
   id: "",
   name: "",
   description: "",
-  category: ""
+  category: "",
+  status: ""
 }

@@ -1,6 +1,7 @@
 import { getUsingParams } from '../../axiosRequests/requests'
 import { getAnswers } from '../../answer/actions'
 import { sessionExpired } from '../../utils/session'
+import { setNotification } from '../../notifications/actions'
 
 export const getQuestions = (endpoint, param, jwt, startQuiz=false) => {
   return (dispatch) => {
@@ -19,6 +20,8 @@ export const getQuestions = (endpoint, param, jwt, startQuiz=false) => {
       console.log(error);
       if(error.response.status === 403){
         sessionExpired(dispatch);
+      } else {
+        dispatch(setNotification(error.response.data, "error", true))
       }
     });
   }
