@@ -1,5 +1,6 @@
-import configureMockStore from 'reduc-mock-store'
+import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
+import { sessionExpired } from "../../utils/session"
 import {
   getQuestions,
   setCurrentQuestion,
@@ -67,9 +68,11 @@ describe("addQuestion", () => {
 describe("updateQuestion", () => {
   it("should return an action that will update a question in the questions store", () => {
     const expectedAction = {
-      ype: "UPDATE_QUESTION",
-      payload: { id: 1 }
+      type: "UPDATE_QUESTION",
+      payload: { id: 1, questionNumber: 1 }
     }
+
+    const question = { id: 1, questionNumber: 1 }
 
     expect(updateQuestion(question)).toEqual(expectedAction)
   })

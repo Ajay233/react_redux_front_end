@@ -1,5 +1,5 @@
 import { questions } from '../factory/questionsFactory'
-import { insertQuestion } from '../../utils/sorting'
+import { insertQuestion, updateQuestionAndSort } from '../../utils/sorting'
 
 
 export const setQuestionsReducer = (state=questions, action) => {
@@ -7,7 +7,7 @@ export const setQuestionsReducer = (state=questions, action) => {
     case "SET_QUESTIONS": return action.payload;
     case "DELETE_QUESTION": return state.filter(question => question!== action.payload);
     case "ADD_QUESTION": return insertQuestion(state, action.payload);
-    case "UPDATE_QUESTION": return state.map(question => question.id === action.payload.id ? action.payload : question)
+    case "UPDATE_QUESTION": return updateQuestionAndSort(state, action.payload)
     case "CLEAR_QUESTIONS": return action.payload;
     default: return state;
   }
