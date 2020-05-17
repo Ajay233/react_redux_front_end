@@ -23,7 +23,7 @@ describe("clearUserResults", () => {
   it("should return an action to clear the user results state", () => {
     const expectedAction = {
       type: "CLEAR_USER_RESULTS",
-      payload: []
+      payload: {}
     }
 
     expect(clearUserResults()).toEqual(expectedAction)

@@ -1,1 +1,1 @@
-export const userResults = []
+export const userResults = {}
