@@ -26,7 +26,7 @@ describe("getCategories", () => {
   it("should call session expired if a 403 status error is recieved", () => {
     const store = mockStore({})
 
-    return store.dispatch(getCategories("lookup/quizCategories/sessionExpired", "jwt")).then(() => {
+    return store.dispatch(getCategories("sessionExpired", "jwt")).then(() => {
       expect(sessionExpired).toHaveBeenCalledTimes(1);
     })
   })

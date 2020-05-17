@@ -4,7 +4,7 @@ import { sessionExpired } from '../../utils/session'
 
 export const getQuestions = (endpoint, param, jwt, startQuiz=false) => {
   return (dispatch) => {
-    getUsingParams(endpoint, param, jwt).then((response) => {
+    return getUsingParams(endpoint, param, jwt).then((response) => {
       dispatch({
         type: "SET_QUESTIONS",
         payload: response.data

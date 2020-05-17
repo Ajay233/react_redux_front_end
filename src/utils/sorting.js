@@ -15,6 +15,14 @@ export function updateAnswerAndSort(state, updatedAnswer){
   }
 }
 
+export function updateQuestionAndSort(state, updatedQuestion){
+  if(state.length < 2){
+    return state.map(question => question.id === updatedQuestion.id ? updatedQuestion : question);
+  } else {
+    let newState = state.filter(question => question.id !== updatedQuestion.id);
+    return insertQuestion(newState, updatedQuestion);
+  }
+}
 
 export function insertQuestion(state, question){
   if(state.length === 0){

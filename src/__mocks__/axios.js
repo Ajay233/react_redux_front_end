@@ -15,7 +15,11 @@ module.exports = {
       return Promise.resolve({
         data: [ "item1", "item2", "item3" ]
       })
-    } else if(url === "http://localhost:8080/lookup/quizCategories/sessionExpired"){
+    } else if(url === "http://localhost:8080/question/findByQuizId"){
+      return Promise.resolve({
+        data: [{ id: 1, questionNumber: 1 }, { id: 2, questionNumber: 2 }, { id: 3, questionNumber: 3 }]
+      })
+    } else if(url === "http://localhost:8080/sessionExpired"){
         return Promise.reject({
           response: {
             status: 403
