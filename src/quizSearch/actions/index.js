@@ -11,8 +11,7 @@ export const setQuizes = (quizes) => {
 
 export const getAllQuizes = (endpoint, token) => {
   return (dispatch) => {
-    get(endpoint, token).then((response) => {
-      console.log(response)
+    return get(endpoint, token).then((response) => {
       dispatch({
         type: "GET_ALL_QUIZES",
         payload: response.data
@@ -21,14 +20,17 @@ export const getAllQuizes = (endpoint, token) => {
       console.log(error.response)
       if(error.response.status === 403){
         sessionExpired(dispatch);
+      } else {
+        dispatch(setNotification("Error - unable to get quiz list", "error", true));
       }
+
     });
   }
 }
 
 export const getQuizSearchResults = (endpoint, data, token, permission, errorMsg) => {
   return (dispatch) => {
-    getUsingParams(endpoint, data, token).then((response) => {
+    return getUsingParams(endpoint, data, token).then((response) => {
       let filteredQuizList = permission === "USER" ? response.data.filter(quiz => quiz.status === "READY") : response.data;
       dispatch({
         type: "SET_QUIZ_SEARCH_RESULTS",

@@ -19,6 +19,41 @@ module.exports = {
       return Promise.resolve({
         data: [{ id: 1, questionNumber: 1 }, { id: 2, questionNumber: 2 }, { id: 3, questionNumber: 3 }]
       })
+    } else if(url === "http://localhost:8080/quiz/getAll"){
+      return Promise.resolve({
+        data: [
+          {
+            category: "cat1",
+            quizes: [
+              {id: 1, name: "test1"},
+              {id: 2, name: "test2"}
+            ]
+          },
+          {
+            category: "cat2",
+            quizes: [
+              {id: 3, name: "test3"},
+              {id: 4, name: "test4"}
+            ]
+          }
+        ]
+      })
+    } else if(url === "http://localhost:8080/quiz/findByName"){
+        return Promise.resolve({
+          data: [
+            {id: 1, name: "test1", status: "DRAFT"},
+            {id: 2, name: "test2", status: "DRAFT"},
+            {id: 3, name: "test3", status: "DRAFT"}
+          ]
+        })
+    } else if(url === "http://localhost:8080/quiz/findByCategory"){
+        return Promise.resolve({
+          data: [
+            {id: 1, name: "test1", status: "READY"},
+            {id: 2, name: "test2", status: "DRAFT"},
+            {id: 3, name: "test3", status: "READY"}
+          ]
+        })
     } else if(url === "http://localhost:8080/sessionExpired"){
         return Promise.reject({
           response: {
@@ -27,7 +62,10 @@ module.exports = {
         })
     } else {
       return Promise.reject({
-        data: "Error"
+        response:{
+          status: 404,
+          data: "Error"
+        }
       })
     }
   }),
