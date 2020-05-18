@@ -54,6 +54,13 @@ module.exports = {
             {id: 3, name: "test3", status: "READY"}
           ]
         })
+    } else if(url === "http://localhost:8080/users"){
+        return Promise.resolve({
+          data: [
+            { id: 1, forename: "test" },
+            { id: 2, forename: "test2" }
+          ]
+        })
     } else if(url === "http://localhost:8080/sessionExpired"){
         return Promise.reject({
           response: {
