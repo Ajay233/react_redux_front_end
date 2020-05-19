@@ -64,7 +64,8 @@ class UpdateQuizForm extends React.Component {
       id: quiz.id,
       name: name,
       description: description,
-      category: category
+      category: category,
+      status: quiz.status
     }
     put("quiz/update", body, userData.jwt).then((response) => {
       setQuiz(body);
