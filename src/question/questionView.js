@@ -60,7 +60,7 @@ class QuestionView extends React.Component {
   }
 
   handleDeleteQuestion = () => {
-    const { currentQuestion, userData, setNotification, deleteQuestion } = this.props;
+    const { currentQuestion, userData, setNotification, deleteQuestion, hideModal } = this.props;
     const config = {
       data: [currentQuestion]
     }
