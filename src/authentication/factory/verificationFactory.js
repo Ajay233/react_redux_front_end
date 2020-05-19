@@ -1,4 +1,5 @@
 export const verificationProcess = {
   completionStatus: "",
-  token: ""
+  token: "",
+  error: {}
 }

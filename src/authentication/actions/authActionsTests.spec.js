@@ -91,7 +91,8 @@ describe("setVerficationProcess", () => {
       type: "SET_VERIFY_PROCESS_STATUS",
       payload: {
         completionStatus: "completed",
-        token: ""
+        token: "",
+        error: {}
       }
     }
 
@@ -107,7 +108,10 @@ describe("setVerficationProcess", () => {
       type: "SET_VERIFY_PROCESS_STATUS",
       payload: {
         completionStatus: "not verified",
-        token: "testToken"
+        token: "testToken",
+        error: {
+          "data": ""
+        }
       }
     }
 

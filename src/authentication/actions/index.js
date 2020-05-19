@@ -42,7 +42,8 @@ export const setVerficationProcess = (endpoint, verificationDetails) => {
         type: "SET_VERIFY_PROCESS_STATUS",
         payload: {
           completionStatus: "completed",
-          token: ""
+          token: "",
+          error: {}
         }
       })
     }).catch((error) => {
@@ -50,7 +51,8 @@ export const setVerficationProcess = (endpoint, verificationDetails) => {
         type: "SET_VERIFY_PROCESS_STATUS",
         payload: {
           completionStatus: "not verified",
-          token: verificationDetails.token
+          token: verificationDetails.token,
+          error: error.response
         }
       })
     })
