@@ -11,7 +11,6 @@ import { setNotification } from '../notifications/actions'
 import { logOut } from '../authentication/actions'
 import { showModal, hideModal } from '../modal/actions'
 import { sessionExpired } from '../utils/session'
-import { deleteAccount } from '../utils/deleteActions'
 
 import '../stylesheets/inputs.css';
 import '../stylesheets/buttons.css';
@@ -24,13 +23,24 @@ class ManageAccount extends React.Component {
     const errorMsg = "An error has occurred, your account was not found";
     const {id, jwt} = this.props.userData
     const config = { data: { id: id } }
-    deleteAccount(config, jwt, successMsg, errorMsg, this.props.dispatch)
+    del("users/deleteAccount", config, jwt).then((response) => {
+      this.props.logOut();
+      history.push('/');
+      this.props.setNotification(successMsg, "success", true);
+    }).catch((error) => {
+      if(error.response.status === 403){
+        sessionExpired(this.props.dispatch);
+      } else {
+        this.props.setNotification(errorMsg, "error", true);
+      }
+    });
   }
 
   render(){
     const { userData, setNotification, modalState, hideModal, showModal } = this.props;
     return(
       <div id="editProfileContainer">
+      {console.log(this.props)}
       <Modal
         show={modalState.showModal}
         title={"Account"}

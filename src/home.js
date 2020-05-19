@@ -3,21 +3,13 @@ import { connect } from 'react-redux'
 import './stylesheets/animations.css'
 import './stylesheets/home.css'
 
-import { getCategories } from './lists/actions'
-
 import Notification from './notifications/notifications'
 
 class Home extends React.Component {
 
-  fetchInitialData = () => {
-    const { userData, getCategories } = this.props;
-    return userData.loggedIn ? getCategories("lookup/quizCategories", userData.jwt) : null;
-  }
-
   render(){
     return(
       <div className="body">
-        {this.fetchInitialData()}
         <div id="notificationContainer">
         <Notification />
         </div>
@@ -37,4 +29,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { getCategories })(Home)
+export default connect(mapStateToProps)(Home)

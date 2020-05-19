@@ -39,9 +39,15 @@ describe("setUser", () => {
       }
     }
 
+    const expectedAction3 = {
+      type: "SET_CATEGORIES",
+      payload: [ "item1", "item2", "item3" ]
+    }
+
     return store.dispatch(setUser("auth/login", "data")).then(() => {
       expect(store.getActions()[0]).toEqual(expectedAction1)
       expect(store.getActions()[1]).toEqual(expectedAction2)
+      expect(store.getActions()[2]).toEqual(expectedAction3)
     })
 
   })

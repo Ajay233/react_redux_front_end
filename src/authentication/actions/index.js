@@ -1,5 +1,6 @@
 import { post } from '../../axiosRequests/requests'
 import { setNotification } from '../../notifications/actions'
+import { getCategories } from '../../lists/actions'
 import history from '../../history'
 
 export const setUser = (endpoint, loginDetails) => {
@@ -21,6 +22,7 @@ export const setUser = (endpoint, loginDetails) => {
         }
       })
       history.push("/")
+      dispatch(getCategories("lookup/quizCategories", response.data.jwt))
       dispatch(setNotification(`Welcome back ${response.data.user.forename}`, "loginSuccess", true))
     }).catch((error) => {
       if(error.response.data === "NOT VERIFIED"){
