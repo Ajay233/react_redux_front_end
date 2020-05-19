@@ -122,6 +122,7 @@ module.exports = {
     }
   }),
   put: jest.fn((url) => {
+    console.log(url)
     if(url === "http://localhost:8080/quiz/updateStatus"){
       return Promise.resolve({
         data: {
@@ -131,6 +132,11 @@ module.exports = {
           category: "Test category",
           status: "READY"
         }
+      })
+    } else if(url === "http://localhost:8080/users/updatePassword") {
+      console.log("used axios fake put")
+      return Promise.resolve({
+          data: "UPDATED"
       })
     } else if(url === "http://localhost:8080/sessionExpired"){
       return Promise.reject({

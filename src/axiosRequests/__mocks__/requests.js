@@ -2,6 +2,9 @@
 // mocks of my custom axios request wrapper functions
 
 export const put = jest.fn((endpoint, data=null, jwt=null) => {
+  console.log(endpoint)
+  console.log(data)
+  console.log(jwt)
   if(endpoint === "quiz/updateStatus" && jwt === "Jwt"){
     return Promise.resolve({
       data: {
@@ -12,6 +15,10 @@ export const put = jest.fn((endpoint, data=null, jwt=null) => {
         status: "READY"
       }
     })
+  } else if(endpoint === "users/updatePassword"){
+    return Promise.resolve({
+      data: "UPDATED"
+    }).catch(() => { return })
   } else if(jwt === "expiredJwt"){
     return Promise.reject({
       response: {

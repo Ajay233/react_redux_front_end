@@ -18,16 +18,16 @@ describe("getCategories", () => {
       payload: [ "item1", "item2", "item3" ]
     }
 
-    return store.dispatch(getCategories("lookup/quizCategories", "jwt")).then(() => {
+    return store.dispatch(getCategories("lookup/quizCategories", "jwt"))
       expect(store.getActions()[0]).toEqual(expectedAction)
-    })
+
   })
 
   it("should call session expired if a 403 status error is recieved", () => {
     const store = mockStore({})
 
-    return store.dispatch(getCategories("sessionExpired", "jwt")).then(() => {
-      expect(sessionExpired).toHaveBeenCalledTimes(1);
-    })
+    return store.dispatch(getCategories("sessionExpired", "jwt"))
+    expect(sessionExpired).toHaveBeenCalledTimes(1);
+
   })
 })

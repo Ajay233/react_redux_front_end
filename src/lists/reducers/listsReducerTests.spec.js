@@ -21,10 +21,8 @@ describe("setListsReducer", () => {
     }
 
 
-    return store.dispatch(getCategories("lookup/quizCategories", "jwt")).then(() => {
-      const newState = setListsReducer(initialState, store.getActions()[0])
-      return newState
-    })
+    return store.dispatch(getCategories("lookup/quizCategories", "jwt"))
+    const newState = setListsReducer(initialState, store.getActions()[0])
 
     expect(newState).toEqual(expectedState)
   })

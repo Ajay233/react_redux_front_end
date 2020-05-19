@@ -10,7 +10,7 @@ class ChangePassword extends React.Component {
       <div>
         {this.renderFieldValidationError(formProps.meta)}
         <label>{formProps.label}</label>
-        <input {...formProps.input} type="password" className="inputBox"/>
+        <input id={`ChangePassword - ${formProps.input.name}`} {...formProps.input} type="password" className="inputBox"/>
       </div>
     );
   }
@@ -26,7 +26,6 @@ class ChangePassword extends React.Component {
       case "NO MATCH": return "The password you provided was incorrect";
       case "PASSWORD INCORRECT": return "The password you provided was incorrect";
       default: return null;
-
     }
   }
 

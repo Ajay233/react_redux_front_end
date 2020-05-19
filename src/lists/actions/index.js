@@ -3,7 +3,7 @@ import { sessionExpired } from '../../utils/session'
 
 export const getCategories = (endpoint, jwt) => {
   return (dispatch) => {
-    return get(endpoint, jwt).then((response) => {
+    get(endpoint, jwt).then((response) => {
       dispatch({
         type: "SET_CATEGORIES",
         payload: response.data
