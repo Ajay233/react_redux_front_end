@@ -15,7 +15,7 @@ class FindUserByEmail extends React.Component {
       if(error.response.status === 403){
         sessionExpired(this.props.dispatch);
       } else {
-        const msg = error;
+        const msg = error.response.data;
         this.props.setNotification(msg, "error", true);
         console.log(error.response)
       }

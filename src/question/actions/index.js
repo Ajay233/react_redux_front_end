@@ -6,10 +6,12 @@ import { setNotification } from '../../notifications/actions'
 export const getQuestions = (endpoint, param, jwt, startQuiz=false) => {
   return (dispatch) => {
     return getUsingParams(endpoint, param, jwt).then((response) => {
-      dispatch({
-        type: "SET_QUESTIONS",
-        payload: response.data
-      })
+      if(response.data !== "NO QUESTIONS"){
+        dispatch({
+          type: "SET_QUESTIONS",
+          payload: response.data
+        })
+      }
       if(startQuiz){
         const body = { questionId: response.data[0].id }
         dispatch(getAnswers("answer/findByQuestionId", body, jwt))

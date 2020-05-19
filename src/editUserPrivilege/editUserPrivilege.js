@@ -17,12 +17,12 @@ class EditUserPrivilege extends React.Component {
   }
 
   renderUser = () => {
-    return this.props.userResults.length === 0 ? null : <User userResults={this.props.userResults}/>;
+    return Object.entries(this.props.userResults).length === 0 ? null : <div><hr/><User userResults={this.props.userResults}/></div>;
   }
 
   renderUpdatePermission = () => {
-    const {userResults, userData, setNotification, setUserResults} = this.props
-    return this.props.userResults.length === 0 ? null : <UpdatePermission userResults={userResults} setUserResults={setUserResults} userData={userData} setNotification={setNotification} />;
+    const {userResults, userData, setNotification, clearUserResults} = this.props
+    return Object.entries(this.props.userResults).length === 0 ? null : <UpdatePermission userResults={userResults} clearUserResults={clearUserResults} userData={userData} setNotification={setNotification} />;
   }
 
   render(){
@@ -33,7 +33,6 @@ class EditUserPrivilege extends React.Component {
         <div>
         <FindUserByEmail userData={userData} setUserResults={setUserResults} setNotification={setNotification} />
         </div>
-        <hr/>
         {this.renderUser()}
         {this.renderUpdatePermission()}
 
