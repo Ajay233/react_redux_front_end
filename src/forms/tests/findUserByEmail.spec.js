@@ -16,7 +16,7 @@ jest.mock("../../utils/session")
 
 const mockStore = configureStore({})
 
-describe("findQuizByName form", () => {
+describe("findUserByEmail form", () => {
   let store;
   let props;
   beforeEach(() => {
