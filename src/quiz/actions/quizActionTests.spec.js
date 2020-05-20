@@ -2,6 +2,7 @@ import { setQuiz, updateQuizStatus } from './index'
 import configureMockStore from 'redux-mock-store'
 import { sessionExpired } from '../../utils/session'
 import thunk from 'redux-thunk'
+import mockAxios from 'jest-mock-axios'
 
 jest.mock("../../axiosRequests/axiosUtil")
 jest.mock("../../utils/session")
@@ -23,8 +24,23 @@ describe("setQuiz", () => {
 })
 
 describe("updateQuizStatus", () => {
+
+  afterEach(() => {
+    mockAxios.reset();
+  })
+
   it("should return an action to set the quiz status store", () => {
     const store = mockStore({})
+
+    const requestResponse = {
+      data: {
+        id: "1",
+        name: "Test",
+        description: "Test description",
+        category: "Test category",
+        status: "READY"
+      }
+    }
 
     const expectedAction = {
       type: "SET_STATUS",
@@ -37,22 +53,33 @@ describe("updateQuizStatus", () => {
       }
     }
 
-    return store.dispatch(updateQuizStatus("quiz/updateStatus", "quizData", "Jwt")).then(() => {
-      expect(store.getActions()[0]).toEqual(expectedAction)
-    })
-
+    store.dispatch(updateQuizStatus("quiz/updateStatus", "quizData", "Jwt"))
+    mockAxios.mockResponse(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
   })
 
   it("should call the sessionExpired function", () => {
     const store = mockStore({})
 
-    return store.dispatch(updateQuizStatus("sessionExpired", "quizData", "expiredJwt")).then(() => {
-      expect(sessionExpired).toHaveBeenCalledTimes(1);
-    })
+    const requestError = {
+      response: {
+        status: 403
+      }
+    }
+
+    store.dispatch(updateQuizStatus("sessionExpired", "quizData", "expiredJwt"))
+    mockAxios.mockError(requestError)
+    expect(sessionExpired).toHaveBeenCalledTimes(1);
   })
 
   it("should return an action to set the notification store with an error message", () => {
     const store = mockStore({})
+
+    const requestError = {
+      response: {
+        status: 404
+      }
+    }
 
     const expectedAction = {
       type: "SET_NOTIFICATION",
@@ -64,8 +91,9 @@ describe("updateQuizStatus", () => {
       }
     }
 
-    return store.dispatch(updateQuizStatus()).then(() => {
-      expect(store.getActions()[0]).toEqual(expectedAction)
-    })
+    store.dispatch(updateQuizStatus())
+    mockAxios.mockError(requestError)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+
   })
 })

@@ -2,6 +2,7 @@ import { setQuiz, updateQuizStatus } from '../actions'
 import { setQuizReducer } from './index'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
+import mockAxios from 'jest-mock-axios'
 
 jest.mock("../../axiosRequests/axiosUtil")
 
@@ -9,6 +10,7 @@ const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 
 describe("setQuizReducer", () => {
+
   it("should set the quiz store when passed an action from setQuiz", () => {
     const store = mockStore({})
 
@@ -52,10 +54,20 @@ describe("setQuizReducer", () => {
       status: "READY"
     }
 
-    return store.dispatch(updateQuizStatus("quiz/updateStatus", "quizData", "Jwt")).then(() => {
-      const newState = setQuizReducer(initialState, store.getActions()[0])
-      return newState
-    })
+    const requestResponse = {
+      data: {
+        id: "1",
+        name: "Test",
+        description: "Test description",
+        category: "Test category",
+        status: "READY"
+      }
+    }
+
+    store.dispatch(updateQuizStatus("quiz/updateStatus", "quizData", "Jwt"))
+    mockAxios.mockResponse(requestResponse)
+    const newState = setQuizReducer(initialState, store.getActions()[0])
+
 
     expect(newState).toEqual(expectedState)
   })

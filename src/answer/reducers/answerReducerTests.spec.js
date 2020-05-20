@@ -8,6 +8,7 @@ import {
 } from '../actions'
 import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
+import mockAxios from 'jest-mock-axios'
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares)
@@ -21,18 +22,23 @@ describe("setAnswersReducer", () => {
       answers:[]
     })
 
+    let requestResponse = {
+      data: [
+        { answerNumber: 1 },
+        { answerNumber: 2 }
+      ]
+    }
+
     const expectedState = [
       { answerNumber: 1 },
       { answerNumber: 2 }
     ]
 
-    return store.dispatch(getAnswers("answer/findByQuestionId", "")).then(() =>{
-      const newState = setAnswersReducer(store, store.getActions()[0])
-      return newState
-    })
+    store.dispatch(getAnswers("answer/findByQuestionId", ""))
+    mockAxios.mockResponse(requestResponse)
+    const newState = setAnswersReducer(store, store.getActions()[0])
 
     expect(newState).toEqual(expectedState)
-
   })
 
   it("can set the state of answers when passed the updateAnswer action", () => {
@@ -64,7 +70,6 @@ describe("setAnswersReducer", () => {
     const newState = setAnswersReducer(initialState, action)
 
     expect(newState).toEqual(expectedState)
-
   })
 
   it("can set the state of answers when passed the deleteAnswer action", () => {
@@ -122,7 +127,6 @@ describe("setAnswersReducer", () => {
 
     expect(newState).toEqual(initialState)
   })
-
 })
 
 describe("setCurrentAnswerReducer", () => {

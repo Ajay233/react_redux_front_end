@@ -9,6 +9,8 @@ import {
   addQuiz,
   clearQuizes
 } from './index'
+import mockAxios from 'jest-mock-axios'
+
 
 jest.mock("../../axiosRequests/axiosUtil")
 jest.mock("../../utils/session")
@@ -30,8 +32,32 @@ describe("setQuizes", () => {
 })
 
 describe("getAllQuizes", () => {
+
+  beforeEach(() => {
+    mockAxios.reset();
+  })
+
   it("should return an action to set all quizes in the quizes store", () => {
     const store = mockStore({})
+
+    const requestResponse = {
+      data: [
+        {
+          category: "cat1",
+          quizes: [
+            {id: 1, name: "test1"},
+            {id: 2, name: "test2"}
+          ]
+        },
+        {
+          category: "cat2",
+          quizes: [
+            {id: 3, name: "test3"},
+            {id: 4, name: "test4"}
+          ]
+        }
+      ]
+    }
 
     const expectedAction = {
       type: "GET_ALL_QUIZES",
@@ -53,21 +79,33 @@ describe("getAllQuizes", () => {
       ]
     }
 
-    return store.dispatch(getAllQuizes("quiz/getAll", "jwt")).then(() => {
-      expect(store.getActions()[0]).toEqual(expectedAction)
-    })
+    store.dispatch(getAllQuizes("quiz/getAll", "jwt"))
+    mockAxios.mockResponse(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
   })
 
   it("should call sessionExpired if a 403 error status is recieved", () => {
     const store = mockStore({})
 
-    return store.dispatch(getAllQuizes("sessionExpired", "jwt")).then(() => {
-      expect(sessionExpired).toHaveBeenCalledTimes(1)
-    })
+    const requestError = {
+      response: {
+        status: 403
+      }
+    }
+
+    store.dispatch(getAllQuizes("sessionExpired", "jwt"))
+    mockAxios.mockError(requestError)
+    expect(sessionExpired).toHaveBeenCalledTimes(1)
   })
 
   it("should return an action to set an error notification", () => {
     const store = mockStore({})
+
+    const requestError = {
+      response: {
+        status: 404
+      }
+    }
 
     const expectedAction = {
       type: "SET_NOTIFICATION",
@@ -79,15 +117,28 @@ describe("getAllQuizes", () => {
       }
     }
 
-    return store.dispatch(getAllQuizes()).then(() => {
-      expect(store.getActions()[0]).toEqual(expectedAction)
-    })
+    store.dispatch(getAllQuizes())
+    mockAxios.mockError(requestError)
+    expect(store.getActions()[0]).toEqual(expectedAction)
   })
 })
 
 describe("getQuizSearchResults", () => {
+
+  beforeEach(() => {
+    mockAxios.reset();
+  })
+
   it("should return an action to set quiz search results in the quizes store", () => {
     const store = mockStore({})
+
+    const requestResponse = {
+      data: [
+        {id: 1, name: "test1", status: "DRAFT"},
+        {id: 2, name: "test2", status: "DRAFT"},
+        {id: 3, name: "test3", status: "DRAFT"}
+      ]
+    }
 
     const expectedAction = {
       type: "SET_QUIZ_SEARCH_RESULTS",
@@ -98,13 +149,21 @@ describe("getQuizSearchResults", () => {
       ]
     }
 
-    return store.dispatch(getQuizSearchResults("quiz/findByName","data", "jwt", "ADMIN")).then(() => {
-      expect(store.getActions()[0]).toEqual(expectedAction)
-    })
+    store.dispatch(getQuizSearchResults("quiz/findByName","data", "jwt", "ADMIN"))
+    mockAxios.mockResponse(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
   })
 
   it("should filter out draft reports if requestor has USER permission to set appropriate payload", () => {
     const store = mockStore({})
+
+    const requestResponse = {
+      data: [
+        {id: 1, name: "test1", status: "READY"},
+        {id: 2, name: "test2", status: "DRAFT"},
+        {id: 3, name: "test3", status: "READY"}
+      ]
+    }
 
     const expectedAction = {
       type: "SET_QUIZ_SEARCH_RESULTS",
@@ -114,14 +173,21 @@ describe("getQuizSearchResults", () => {
       ]
     }
 
-    return store.dispatch(getQuizSearchResults("quiz/findByCategory", "data", "jwt", "USER")).then(() => {
-      expect(store.getActions()[0]).toEqual(expectedAction)
-    })
-
+    store.dispatch(getQuizSearchResults("quiz/findByCategory", "data", "jwt", "USER"))
+    mockAxios.mockResponse(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
   })
 
   it("should return an action to set an error notification if the response array is empty", () => {
     const store = mockStore({})
+
+    const requestResponse = {
+      data: [
+        {id: 1, name: "test1", status: "DRAFT"},
+        {id: 2, name: "test2", status: "DRAFT"},
+        {id: 3, name: "test3", status: "DRAFT"}
+      ]
+    }
 
     const expectedAction = {
       type: "SET_QUIZ_SEARCH_RESULTS",
@@ -140,10 +206,10 @@ describe("getQuizSearchResults", () => {
 
     const msg = "No results were found"
 
-    return store.dispatch(getQuizSearchResults("quiz/findByName", "data", "jwt", "USER", msg)).then(() => {
-      expect(store.getActions()[0]).toEqual(expectedAction)
-      expect(store.getActions()[1]).toEqual(expectedAction2)
-    })
+    store.dispatch(getQuizSearchResults("quiz/findByName", "data", "jwt", "USER", msg))
+    mockAxios.mockResponse(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
   })
 
   it("should call sessionExpired if a 403 error status is recieved", () => {
@@ -151,13 +217,25 @@ describe("getQuizSearchResults", () => {
 
     const store = mockStore({})
 
-    return store.dispatch(getQuizSearchResults("sessionExpired", "jwt")).then(() => {
-      expect(sessionExpired).toHaveBeenCalledTimes(1)
-    })
+    const requestError = {
+      response: {
+        status: 403
+      }
+    }
+
+    store.dispatch(getQuizSearchResults("sessionExpired", "jwt"))
+    mockAxios.mockError(requestError)
+    expect(sessionExpired).toHaveBeenCalledTimes(1)
   })
 
   it("should return an action to set an error notification", () => {
     const store = mockStore({})
+
+    const requestError = {
+      response: {
+        status: 404
+      }
+    }
 
     const expectedAction = {
       type: "SET_NOTIFICATION",
@@ -169,11 +247,10 @@ describe("getQuizSearchResults", () => {
       }
     }
     const msg = "Error - unable to get quiz list"
-    return store.dispatch(getQuizSearchResults("error", "data", "jwt", "ADMIN", msg)).then(() => {
-      expect(store.getActions()[0]).toEqual(expectedAction)
-    })
+    store.dispatch(getQuizSearchResults("error", "data", "jwt", "ADMIN", msg))
+    mockAxios.mockError(requestError)
+    expect(store.getActions()[0]).toEqual(expectedAction)
   })
-
 })
 
 describe("deleteQuiz", () => {

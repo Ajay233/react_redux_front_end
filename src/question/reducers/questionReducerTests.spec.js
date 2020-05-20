@@ -9,6 +9,7 @@ import {
   updateQuestion,
   clearQuestions
 } from '../actions'
+import mockAxios from 'jest-mock-axios'
 
 jest.mock("../../axiosRequests/axiosUtil")
 
@@ -19,12 +20,15 @@ describe("setQuestionsReducer", () => {
   it("should add a list of questions to the questions store if passed an action from getQuestions", () => {
     const store = mockStore({})
     const initialState = []
+    const requestResponse = {
+      data: [{ id: 1, questionNumber: 1 }, { id: 2, questionNumber: 2 }, { id: 3, questionNumber: 3 }]
+    }
     const expectedState = [{ id: 1, questionNumber: 1 }, { id: 2, questionNumber: 2 }, { id: 3, questionNumber: 3 }]
 
-    return store.dispatch(getQuestions("question/findByQuizId", "data", "jwt")).then(() => {
-      const newState = setQuestionsReducer(initialState, store.getActions()[0])
-      return newState
-    })
+    store.dispatch(getQuestions("question/findByQuizId", "data", "jwt"))
+    mockAxios.mockResponse(requestResponse)
+    const newState = setQuestionsReducer(initialState, store.getActions()[0])
+
 
     expect(newState).toEqual(expectedState)
   })

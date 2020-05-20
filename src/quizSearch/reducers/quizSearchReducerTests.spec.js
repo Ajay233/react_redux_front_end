@@ -9,6 +9,8 @@ import {
   addQuiz,
   clearQuizes
 } from '../actions'
+import mockAxios from 'jest-mock-axios'
+
 
 jest.mock("../../axiosRequests/axiosUtil")
 
@@ -16,6 +18,11 @@ const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 
 describe("", () => {
+
+  beforeEach(() => {
+    mockAxios.reset()
+  })
+
   it("should use the payload from setQuizes to set the state", () => {
     const initialState = []
     const expectedState = [
@@ -52,11 +59,13 @@ describe("", () => {
       }
     ]
 
-    return store.dispatch(getAllQuizes("quiz/getAll", "jwt")).then(() => {
-      const newState = setQuizSearchReducer(initialState, store.getActions()[0])
-      return newState
-    })
+    const requestResponse = {
+      data: expectedState
+    }
 
+    store.dispatch(getAllQuizes("quiz/getAll", "jwt"))
+    mockAxios.mockResponse(requestResponse)
+    const newState = setQuizSearchReducer(initialState, store.getActions()[0])
     expect(newState).toEqual(expectedState)
   })
 
@@ -69,11 +78,17 @@ describe("", () => {
       {id: 3, name: "test3", status: "READY"}
     ]
 
-    return store.dispatch(getQuizSearchResults("quiz/findByCategory", "data", "jwt", "USER")).then(() => {
-      const newState = setQuizSearchReducer(initialState, store.getActions()[0])
-      return newState
-    })
+    const requestResponse = {
+      data: [
+        {id: 1, name: "test1", status: "READY"},
+        {id: 2, name: "test2", status: "DRAFT"},
+        {id: 3, name: "test3", status: "READY"}
+      ]
+    }
 
+    store.dispatch(getQuizSearchResults("quiz/findByCategory", "data", "jwt", "USER"))
+    mockAxios.mockResponse(requestResponse)
+    const newState = setQuizSearchReducer(initialState, store.getActions()[0])
     expect(newState).toEqual(expectedState)
 
   })

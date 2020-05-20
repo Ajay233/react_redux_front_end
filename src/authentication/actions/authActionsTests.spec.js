@@ -2,6 +2,7 @@ import { setUser, logOut, setVerficationProcess, setRedirect } from './index'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import { post } from '../../axiosRequests/requests'
+import mockAxios from 'jest-mock-axios'
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
@@ -10,9 +11,32 @@ jest.mock("../../axiosRequests/axiosUtil")
 
 describe("setUser", () => {
 
+  afterEach(() => {
+    mockAxios.reset();
+  });
+
   it("should create an action to set a user's data and an action to set notification", () => {
 
     let store = mockStore({})
+
+    let requestResponse = {
+      data: {
+        user: {
+          id: 1,
+          forename: "Joe",
+          surname: "Bloggs",
+          email: "JoeBloggs@test.com",
+          permission: "USER",
+          verified: "true"
+        },
+        jwt: "jwtString"
+      }
+    }
+
+    let requestResponse2 = {
+      data: [ "item1", "item2", "item3" ]
+    }
+
 
     const expectedAction1 = {
       type: "SET_USER_LOGGED_IN",
@@ -44,16 +68,23 @@ describe("setUser", () => {
       payload: [ "item1", "item2", "item3" ]
     }
 
-    return store.dispatch(setUser("auth/login", "data")).then(() => {
-      expect(store.getActions()[0]).toEqual(expectedAction1)
-      expect(store.getActions()[1]).toEqual(expectedAction2)
-      expect(store.getActions()[2]).toEqual(expectedAction3)
-    })
-
+    store.dispatch(setUser("auth/login", "data"))
+    mockAxios.mockResponse(requestResponse)  // mock response for the login request
+    mockAxios.mockResponse(requestResponse2) // mock response for the getCategories request
+    expect(store.getActions()[0]).toEqual(expectedAction1)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
   })
 
   it("can return an action to set email not verified notification", () => {
     let store = mockStore({})
+
+    let requestError = {
+      response:{
+        data: "NOT VERIFIED"
+      }
+    }
+
     const expectedAction = {
       type: "SET_NOTIFICATION",
       payload: {
@@ -64,10 +95,9 @@ describe("setUser", () => {
       }
     }
 
-    return store.dispatch(setUser("auth/loginUnverified", "data")).then(() => {
-      expect(store.getActions()[0]).toEqual(expectedAction)
-    })
-
+    store.dispatch(setUser("auth/loginUnverified", "data"))
+    mockAxios.mockError(requestError)
+    expect(store.getActions()[0]).toEqual(expectedAction)
   })
 
   it("can return an action to set incorrect credentials notification", () => {
@@ -82,14 +112,24 @@ describe("setUser", () => {
       }
     }
 
-    return store.dispatch(setUser("auth/loginFailed", "")).then(() => {
-      expect(store.getActions()[0]).toEqual(expectedAction)
-    })
+    let requestError = {
+      response:{
+        status: 400
+      }
+    }
 
+    store.dispatch(setUser("auth/loginFailed", ""))
+    mockAxios.mockError(requestError)
+    expect(store.getActions()[0]).toEqual(expectedAction)
   })
 })
 
 describe("setVerficationProcess", () => {
+
+  afterEach(() => {
+    mockAxios.reset();
+  });
+
   it("can create an action to set the status of the verification process", () => {
     let store = mockStore({})
 
@@ -102,9 +142,9 @@ describe("setVerficationProcess", () => {
       }
     }
 
-    return store.dispatch(setVerficationProcess("auth/verify", {token: "testToken"})).then(() => {
-      expect(store.getActions()[0]).toEqual(expectedAction)
-    })
+    store.dispatch(setVerficationProcess("auth/verify", {token: "testToken"}))
+    mockAxios.mockResponse();
+    expect(store.getActions()[0]).toEqual(expectedAction)
   })
 
   it("can create an action to set an error status of the verification process", () => {
@@ -121,9 +161,15 @@ describe("setVerficationProcess", () => {
       }
     }
 
-    return store.dispatch(setVerficationProcess("auth/verifyFailed", {token: "testToken"})).then(() => {
-      expect(store.getActions()[0]).toEqual(expectedAction)
-    })
+    let requestError = {
+      response:{
+        data: ""
+      }
+    }
+
+    store.dispatch(setVerficationProcess("auth/verifyFailed", {token: "testToken"}))
+    mockAxios.mockError(requestError);
+    expect(store.getActions()[0]).toEqual(expectedAction)
   })
 })
 
@@ -137,7 +183,6 @@ describe("redirect", () => {
     }
 
     expect(setRedirect("redirect")).toEqual(expectedAction)
-
   })
 })
 
@@ -148,6 +193,5 @@ describe("logOut", () => {
     }
 
     expect(logOut()).toEqual(expectedAction)
-
   })
 })

@@ -2,6 +2,7 @@ import {setUser, logOut, setVerficationProcess, setRedirect} from '../actions'
 import { setUserReducer, setVerificationProcessStatus, setRedirectReducer } from './index'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
+import mockAxios from 'jest-mock-axios'
 
 const middlewares = [thunk]
 const mockStore =  configureMockStore(middlewares)
@@ -9,29 +10,43 @@ const mockStore =  configureMockStore(middlewares)
 jest.mock("../../axiosRequests/axiosUtil")
 
 describe("setUserReducer", () => {
+
+  afterEach(() => {
+    mockAxios.reset();
+  });
+
   it("sets the user state when passed the setUser action", () => {
 
     const store = mockStore({})
 
-    const expectedState = {
-      type: "SET_USER_LOGGED_IN",
-      payload: {
-        id: 1,
-        forename: "Joe",
-        surname: "Bloggs",
-        email: "JoeBloggs@test.com",
-        permission: "USER",
-        verified: "true",
-        jwt: "jwtString",
-        loggedIn: true
-
+    let requestResponse = {
+      data: {
+        user: {
+          id: 1,
+          forename: "Joe",
+          surname: "Bloggs",
+          email: "JoeBloggs@test.com",
+          permission: "USER",
+          verified: "true"
+        },
+        jwt: "jwtString"
       }
     }
 
-    return store.dispatch(setUser("auth/login", "credentials")).then(() => {
-      const newState = setUserReducer(store, store.getActions()[0])
-      return newState
-    })
+    const expectedState = {
+      id: 1,
+      forename: "Joe",
+      surname: "Bloggs",
+      email: "JoeBloggs@test.com",
+      permission: "USER",
+      verified: "true",
+      jwt: "jwtString",
+      loggedIn: true
+    }
+
+    store.dispatch(setUser("auth/login", "credentials"))
+    mockAxios.mockResponse(requestResponse)
+    const newState = setUserReducer(store, store.getActions()[0])
 
     expect(newState).toEqual(expectedState)
 
@@ -60,23 +75,24 @@ describe("setUserReducer", () => {
 })
 
 describe("setVerificationProcessStatus", () => {
+
+  afterEach(() => {
+    mockAxios.reset();
+  });
+
   it("sets the virification status state when passed the setVerficationProcess action", () => {
     const store = mockStore({})
 
     const expectedState = {
-      type: "SET_NOTIFICATION",
-      payload: {
-        message: "Your email has not yet been veirified.  You will need to verify your email before you can log in",
-        type: "warning",
-        show: true,
-        timed: true
-      }
+      completionStatus: "completed",
+      token: "",
+      error: {}
     }
 
-    return store.dispatch(setVerficationProcess("auth/verify", {token: "testToken"})).then(() => {
-      const newState = setVerificationProcessStatus(store, store.getActions()[0])
-      return newState
-    })
+    store.dispatch(setVerficationProcess("auth/verify", {token: "testToken"}))
+    mockAxios.mockResponse();
+    const newState = setVerificationProcessStatus(store, store.getActions()[0])
+
     expect(newState).toEqual(expectedState)
   })
 

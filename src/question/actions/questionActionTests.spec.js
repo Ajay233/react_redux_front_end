@@ -9,6 +9,8 @@ import {
   updateQuestion,
   clearQuestions
 } from './index'
+import mockAxios from 'jest-mock-axios'
+
 
 jest.mock("../../utils/session")
 jest.mock("../../axiosRequests/axiosUtil")
@@ -20,18 +22,31 @@ describe("getQuestions", () => {
   it("should return an action that will add a list of questions the questions store", () => {
     const store = mockStore({})
 
+    const requestResponse = {
+      data: [{ id: 1, questionNumber: 1 }, { id: 2, questionNumber: 2 }, { id: 3, questionNumber: 3 }]
+    }
+
     const expectedAction = {
       type: "SET_QUESTIONS",
       payload: [{ id: 1, questionNumber: 1 }, { id: 2, questionNumber: 2 }, { id: 3, questionNumber: 3 }]
     }
 
-    return store.dispatch(getQuestions("question/findByQuizId", "data", "jwt")).then(() => {
-      expect(store.getActions()[0]).toEqual(expectedAction)
-    })
+    store.dispatch(getQuestions("question/findByQuizId", "data", "jwt"))
+    mockAxios.mockResponse(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+
   })
 
   it("should call get answers and set current questions if startQuiz is set to true", () => {
     const store = mockStore({})
+
+    const requestResponse = {
+      data: [{ id: 1, questionNumber: 1 }, { id: 2, questionNumber: 2 }, { id: 3, questionNumber: 3 }]
+    }
+
+    const requestResponse2 = {
+      data: [{ questionNumber: 1 },{ questionNumber: 2 }]
+    }
 
     const expectedAction = {
       type: "SET_QUESTIONS",
@@ -48,20 +63,26 @@ describe("getQuestions", () => {
       payload: [{ questionNumber: 1 },{ questionNumber: 2 }]
     }
 
-    return store.dispatch(getQuestions("question/findByQuizId", "data", "jwt", true)).then(() => {
-      expect(store.getActions()[0]).toEqual(expectedAction)
-      expect(store.getActions()[1]).toEqual(expectedAction2)
-      expect(store.getActions()[2]).toEqual(expectedAction3)
-    })
-
+    store.dispatch(getQuestions("question/findByQuizId", "data", "jwt", true))
+    mockAxios.mockResponse(requestResponse)
+    mockAxios.mockResponse(requestResponse2)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
   })
 
   it("should call sessionExpired if an error occurrs and the status id 403", () => {
     const store = mockStore({})
 
-    return store.dispatch(getQuestions("sessionExpired", "data", "Jwt")).then(() => {
-      expect(sessionExpired).toHaveBeenCalledTimes(1);
-    })
+    const requestError = {
+      response: {
+        status: 403
+      }
+    }
+
+    store.dispatch(getQuestions("sessionExpired", "data", "Jwt"))
+    mockAxios.mockError(requestError)
+    expect(sessionExpired).toHaveBeenCalledTimes(1);
   })
 })
 

@@ -3,6 +3,7 @@ import { setUserListReducer } from './index'
 import { sessionExpired } from '../../utils/session'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
+import mockAxios from 'jest-mock-axios'
 
 jest.mock("../../axiosRequests/axiosUtil")
 jest.mock("../../utils/session")
@@ -20,11 +21,16 @@ describe("setUserListReducer", () => {
       { id: 2, forename: "test2" }
     ]
 
-    return store.dispatch(setUserList("users", "jwt")).then(() => {
-      const newState = setUserListReducer(initialState, store.getActions()[0])
-      return newState
-    })
+    const requestResponse = {
+      data: [
+        { id: 1, forename: "test" },
+        { id: 2, forename: "test2" }
+      ]
+    }
 
+    store.dispatch(setUserList("users", "jwt"))
+    mockAxios.mockResponse(requestResponse)
+    const newState = setUserListReducer(initialState, store.getActions()[0])
     expect(newState).toEqual(expectedState)
   })
 
