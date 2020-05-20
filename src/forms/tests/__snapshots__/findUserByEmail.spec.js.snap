@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`findQuizByName form should match the snapshot 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <div>
+      <label>
+        Email:
+      </label>
+      <input
+        className="inputBox"
+        name="email"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onDragStart={[Function]}
+        onDrop={[Function]}
+        onFocus={[Function]}
+        value=""
+      />
+    </div>
+    <button
+      className="submit"
+    >
+      Search
+    </button>
+  </form>
+</div>
+`;
