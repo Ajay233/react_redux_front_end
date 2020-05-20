@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`findQuizByCategory form should match the snapshot 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <div>
+      <select
+        className="inputBox"
+        name="category"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onDragStart={[Function]}
+        onDrop={[Function]}
+        onFocus={[Function]}
+        value=""
+      >
+        <option
+          disabled={true}
+          value=""
+        >
+          Select a category
+        </option>
+        <option
+          value="cat1"
+        >
+          cat1
+        </option>
+        <option
+          value="cat2"
+        >
+          cat2
+        </option>
+        <option
+          value="cat3"
+        >
+          cat3
+        </option>
+        <option
+          value="cat4"
+        >
+          cat4
+        </option>
+      </select>
+    </div>
+    <button
+      className="submit"
+    >
+      <i
+        className="fas fa-search"
+      />
+       Search
+    </button>
+  </form>
+</div>
+`;
