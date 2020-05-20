@@ -3,12 +3,14 @@
 exports[`Notification component can hide a notification message when the show property is set to false 1`] = `
 <div
   className="spacing"
+  id="notification"
 />
 `;
 
 exports[`Notification component can render a notification 1`] = `
 <div
   className="spacing"
+  id="notification"
 >
   <div
     className="success"
@@ -29,6 +31,7 @@ exports[`Notification component can render a notification 1`] = `
 exports[`Notification component can render a notification with an icon 1`] = `
 <div
   className="spacing"
+  id="notification"
 >
   <div
     className="verifyProcess"

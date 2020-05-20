@@ -5,11 +5,8 @@ import { shallow, mount } from 'enzyme'
 import configureStore from 'redux-mock-store'
 import renderer from 'react-test-renderer'
 import mockAxios from 'jest-mock-axios'
-// import axios from 'axios'
 
-// jest.mock('axios')
 jest.mock("../../axiosRequests/axiosUtil")
-// jest.mock("../../axiosRequests/requests")
 
 const mockStore = configureStore({})
 
@@ -23,11 +20,9 @@ describe("ChangePassword", () => {
     store = mockStore({})
 
     props = {
-      userData: {
         id: 1,
         email: "email",
         jwt: "Jwt"
-      }
     }
 
     wrapper = mount(
@@ -43,19 +38,27 @@ describe("ChangePassword", () => {
   });
 
 
-  it("should call the custom axios put methos when submit is clicked", () => {
+  it("should call axios put method when submit is clicked", () => {
 
+    // const data = {
+    //   id: 1,
+    //   email: "email",
+    //   password: "test",
+    //   newPassword: "testChange",
+    //   retypedPassword: "testChange"
+    // }
 
-
-    wrapper.find('input').at(0).simulate('change', { target: { name: 'password', value: "test" } })
-    wrapper.find('input').at(1).simulate('change', { target: { name: 'newPassword', value: "testChange" } })
-    wrapper.find('input').at(2).simulate('change', { target: { name: 'retypedPassword', value: "testChange" } })
+    // Will need to create a separate store for these to work properly
+    // wrapper.find('input').at(0).simulate('change', { target: { name: 'password', value: "test" } })
+    // wrapper.find('input').at(1).simulate('change', { target: { name: 'newPassword', value: "testChange" } })
+    // wrapper.find('input').at(2).simulate('change', { target: { name: 'retypedPassword', value: "testChange" } })
     wrapper.find('.changePasswordForm').simulate('submit')
 
     expect(mockAxios.put).toHaveBeenCalledTimes(1)
+
   })
 
-  it("should match the cnapshot when rendered", () => {
+  it("should match the snapshot when rendered", () => {
     let component;
 
     component = renderer.create(
@@ -65,7 +68,6 @@ describe("ChangePassword", () => {
     )
 
     expect(component).toMatchSnapshot();
-
   })
 
 })

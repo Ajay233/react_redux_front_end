@@ -1,74 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ChangePassword should match the snapshot when rendered 1`] = `
+exports[`editProfile form should match the snapshot 1`] = `
 <div
-  id="changePassword"
+  id="editUserDetails"
 >
   <form
-    className="changePasswordForm"
+    className="profileForm"
     onSubmit={[Function]}
   >
     <div>
       <div
-        id="changePasswordTitle"
+        id="editUserDetailsTitle"
       >
-        Change Password
+        Edit Personal Details
       </div>
     </div>
     <div>
       <label>
-        Current Password:
+        Forename
       </label>
       <input
         className="inputBox"
-        id="ChangePassword - password"
-        name="password"
+        name="forename"
         onBlur={[Function]}
         onChange={[Function]}
         onDragStart={[Function]}
         onDrop={[Function]}
         onFocus={[Function]}
-        type="password"
+        placeholder="testForename"
         value=""
       />
     </div>
     <div>
       <label>
-        New Password:
+        Surname
       </label>
       <input
         className="inputBox"
-        id="ChangePassword - newPassword"
-        name="newPassword"
+        name="surname"
         onBlur={[Function]}
         onChange={[Function]}
         onDragStart={[Function]}
         onDrop={[Function]}
         onFocus={[Function]}
-        type="password"
+        placeholder="testSurname"
         value=""
       />
     </div>
+    <div
+      id="userEmail"
+    >
+      Your email:
+      <span>
+         
+        testEmail
+      </span>
+    </div>
     <div>
       <label>
-         Re-type Password:
+        New Email
       </label>
       <input
         className="inputBox"
-        id="ChangePassword - retypedPassword"
-        name="retypedPassword"
+        name="newEmail"
         onBlur={[Function]}
         onChange={[Function]}
         onDragStart={[Function]}
         onDrop={[Function]}
         onFocus={[Function]}
-        type="password"
+        placeholder="testEmail"
         value=""
       />
     </div>
     <button
       className="submit"
-      id="submitChangePassword"
+      id="submit"
     >
       Submit
     </button>
