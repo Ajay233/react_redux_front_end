@@ -8,8 +8,8 @@ import Modal from '../modal/modal'
 import history from '../history'
 
 import { setNotification } from '../notifications/actions'
-import { hideModal, showModal2 } from '../modal/actions'
-import { deleteAnswer } from '../answer/actions'
+import { hideModal, showModal, showModal2 } from '../modal/actions'
+import { setCurrentAnswer, deleteAnswer } from '../answer/actions'
 import { deleteQuestion } from '../question/actions'
 import { del } from '../axiosRequests/requests'
 import { sessionExpired } from '../utils/session'
@@ -20,8 +20,16 @@ import '../stylesheets/answer.css'
 class QuestionView extends React.Component {
 
   renderAnswers = () => {
-    const { answers } = this.props;
-    return answers.length === 0 ? null : <Answers answers={answers} />
+    const { answers, userData, setCurrentAnswer, setNotification, deleteAnswer, showModal } = this.props;
+    return answers.length === 0 ? null :
+    <Answers
+      answers={answers}
+      userData={userData}
+      setCurrentAnswer={setCurrentAnswer}
+      setNotification={setNotification}
+      deleteAnswer={deleteAnswer}
+      showModal={showModal}
+    />
   }
 
   renderDetails = () => {
@@ -85,7 +93,7 @@ class QuestionView extends React.Component {
   }
 
   renderDeleteButton = () => {
-    return <button onClick={this.triggerModal} className="delete"><i class="fas fa-trash-alt"></i> Delete</button>
+    return <button onClick={this.triggerModal} className="delete"><i className="fas fa-trash-alt"></i> Delete</button>
   }
 
   renderOptions = () => {
@@ -142,4 +150,13 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setNotification, hideModal, deleteAnswer, deleteQuestion, showModal2 })(QuestionView)
+export default connect(mapStateToProps,
+  {
+    setNotification,
+    hideModal,
+    deleteAnswer,
+    setCurrentAnswer,
+    deleteQuestion,
+    showModal,
+    showModal2
+  })(QuestionView)

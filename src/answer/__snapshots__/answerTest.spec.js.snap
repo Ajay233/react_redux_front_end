@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Answer should match snapshot for user with 'ADMIN' permission 1`] = `
+<div>
+  <div
+    className="answerContainer"
+  >
+    <div
+      className="ansNumber"
+    >
+      1
+    </div>
+    <div
+      className="ansDecription"
+    >
+      testDescription
+    </div>
+    <div
+      className="correctAns"
+    >
+      <i
+        className="far fa-times-circle red"
+      />
+    </div>
+    <div
+      className="options"
+    >
+      <a
+        className="edit"
+        href="/editAnswer"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-edit blue"
+        />
+         Edit
+      </a>
+      <a
+        className="deleteOption"
+        href="/"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-trash-alt red"
+        />
+         Delete
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Answer should match snapshot for user with 'READ-ONLY' permission 1`] = `
+<div>
+  <div
+    className="answerContainer"
+  >
+    <div
+      className="ansNumber"
+    >
+      1
+    </div>
+    <div
+      className="ansDecription"
+    >
+      testDescription
+    </div>
+    <div
+      className="correctAns"
+    >
+      <i
+        className="far fa-times-circle red"
+      />
+    </div>
+    <div
+      className="options"
+    />
+  </div>
+</div>
+`;
+
+exports[`Answer should match snapshot which renders a correct answer 1`] = `
+<div>
+  <div
+    className="answerContainer"
+  >
+    <div
+      className="ansNumber"
+    >
+      1
+    </div>
+    <div
+      className="ansDecription"
+    >
+      testDescription
+    </div>
+    <div
+      className="correctAns"
+    >
+      <i
+        className="far fa-check-circle green"
+      />
+    </div>
+    <div
+      className="options"
+    >
+      <a
+        className="edit"
+        href="/editAnswer"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-edit blue"
+        />
+         Edit
+      </a>
+      <a
+        className="deleteOption"
+        href="/"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-trash-alt red"
+        />
+         Delete
+      </a>
+    </div>
+  </div>
+</div>
+`;

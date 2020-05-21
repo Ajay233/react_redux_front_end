@@ -1,11 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { setCurrentAnswer, deleteAnswer } from './actions'
-import { setNotification } from '../notifications/actions'
-import { showModal } from '../modal/actions'
 
-class Answer extends React.Component {
+export class Answer extends React.Component {
 
   handleEdit = () => {
     this.props.setCurrentAnswer(this.props.answer);
@@ -47,10 +43,4 @@ class Answer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    userData: state.userData
-  }
-}
-
-export default connect(mapStateToProps, { setCurrentAnswer, setNotification, deleteAnswer, showModal })(Answer)
+export default Answer
