@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`newQuiz form should match the snapshot 1`] = `
+<div
+  className="componentContainer"
+>
+  <div
+    className="spacing"
+    id="notification"
+  />
+  <div
+    className="title-large"
+  >
+    Create a Quiz
+  </div>
+  <form
+    onSubmit={[Function]}
+  >
+    <div>
+      <label>
+        Quiz name:
+      </label>
+      <input
+        className="inputBox"
+        name="name"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onDragStart={[Function]}
+        onDrop={[Function]}
+        onFocus={[Function]}
+        value=""
+      />
+    </div>
+    <div>
+      <label>
+        Quiz description:
+      </label>
+      <input
+        className="inputBox"
+        name="description"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onDragStart={[Function]}
+        onDrop={[Function]}
+        onFocus={[Function]}
+        value=""
+      />
+    </div>
+    <div>
+      <label>
+        Quiz category:
+      </label>
+      <select
+        className="inputBox"
+        name="category"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onDragStart={[Function]}
+        onDrop={[Function]}
+        onFocus={[Function]}
+        value=""
+      >
+        <option
+          disabled={true}
+          value=""
+        >
+          Select a category
+        </option>
+        <option
+          value="test1"
+        >
+          test1
+        </option>
+        <option
+          value="test2"
+        >
+          test2
+        </option>
+        <option
+          value="test3"
+        >
+          test3
+        </option>
+      </select>
+    </div>
+    <div>
+      <button
+        className="submit"
+      >
+        Save and continue
+      </button>
+      <a
+        className="cancel"
+        href="/quizSearch"
+        onClick={[Function]}
+      >
+        Cancel
+      </a>
+    </div>
+  </form>
+</div>
+`;

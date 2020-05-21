@@ -60,7 +60,7 @@ class NewQuizForm extends React.Component {
     }
     post("quiz/create", body, userData.jwt).then((response) => {
       setQuiz(response.data);
-      addQuiz(response.data);
+      addQuiz(response.data);  // remove this??
       clearQuestions();
       setNotification("Quiz created, but what's a quiz without questions? Add your questions below.", "success", true);
       history.push("/editQuiz");
