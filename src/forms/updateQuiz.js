@@ -68,7 +68,7 @@ class UpdateQuizForm extends React.Component {
       status: quiz.status
     }
     put("quiz/update", body, userData.jwt).then((response) => {
-      setQuiz(body);
+      setQuiz(response.data);
       setNotification("Quiz updated", "success", true);
     }).catch((error) => {
       console.log(error.response);
