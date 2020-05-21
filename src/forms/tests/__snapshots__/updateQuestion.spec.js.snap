@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UpdateQuestionForm should match the snapshot 1`] = `
+<div
+  className=""
+>
+  <div
+    className="title-large"
+  >
+    Edit Question 1
+  </div>
+  <form
+    onSubmit={[Function]}
+  >
+    <div>
+      <label>
+        Question Number:
+      </label>
+      <input
+        className="inputBox"
+        name="number"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onDragStart={[Function]}
+        onDrop={[Function]}
+        onFocus={[Function]}
+        value=""
+      />
+    </div>
+    <div>
+      <label>
+        Question description:
+      </label>
+      <input
+        className="inputBox"
+        name="description"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onDragStart={[Function]}
+        onDrop={[Function]}
+        onFocus={[Function]}
+        value=""
+      />
+    </div>
+    <button
+      className="submit"
+    >
+      Save
+    </button>
+    <a
+      className="cancel"
+      href="/editQuiz"
+      onClick={[Function]}
+    >
+      Cancel
+    </a>
+  </form>
+</div>
+`;
