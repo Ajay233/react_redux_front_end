@@ -7,7 +7,6 @@ const PickAnswer = (props) => {
   const renderInput = (formProps) => {
     return(
       <div>
-        {console.log(formProps)}
         <label><input {...formProps.input} type={formProps.type} className="radioInput"/>{formProps.label}</label>
       </div>
     );
@@ -42,7 +41,6 @@ const PickAnswer = (props) => {
   return(
     <div>
       <form onSubmit={props.handleSubmit(submitForm)}>
-        {console.log(props)}
         {props.title}
         {mapFields(props.answers)}
         <button className="submit" disabled={props.pristine}>{renderButtonTitle()}</button>
