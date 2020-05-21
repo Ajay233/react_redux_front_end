@@ -48,7 +48,7 @@ class NewAnswerForm extends React.Component {
       correctAnswer: correct
     }
     post("answer/create", [data], userData.jwt).then((response) => {
-      addAnswer(response.data[0])
+      addAnswer(response.data[0]);
       history.push("/editQuestion");
       setNotification("Answer created", "success", true);
     }).catch((error) => {
