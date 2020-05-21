@@ -11,6 +11,11 @@ export const getQuestions = (endpoint, param, jwt, startQuiz=false) => {
           type: "SET_QUESTIONS",
           payload: response.data
         })
+      } else {
+        dispatch({
+          type: "SET_QUESTIONS",
+          payload: []
+        })
       }
       if(startQuiz){
         const body = { questionId: response.data[0].id }

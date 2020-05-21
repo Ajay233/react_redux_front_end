@@ -1,25 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { setCurrentQuestion, deleteQuestion } from './actions'
-import { getAnswers } from '../answer/actions'
-import { setNotification } from '../notifications/actions'
-import { showModal } from '../modal/actions'
-
 
 class Question extends React.Component {
 
   handleView = () => {
-    const { question, userData } = this.props
+    const { question, userData, getAnswers, setCurrentQuestion } = this.props
     const param = { questionId: question.id }
-    this.props.getAnswers("answer/findByQuestionId", param, userData.jwt)
-    this.props.setCurrentQuestion(question);
+    getAnswers("answer/findByQuestionId", param, userData.jwt)
+    setCurrentQuestion(question);
   }
 
   handleDelete = () => {
-    const { question } = this.props
-    this.props.setCurrentQuestion(question);
-    this.props.showModal();
+    const { question, setCurrentQuestion, showModal } = this.props
+    setCurrentQuestion(question);
+    showModal();
   }
 
   renderQuestion = () => {
@@ -53,16 +47,4 @@ class Question extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    userData: state.userData
-  }
-}
-
-export default connect(mapStateToProps,
-  { getAnswers,
-    setCurrentQuestion,
-    setNotification,
-    deleteQuestion,
-    showModal
-  })(Question)
+export default Question

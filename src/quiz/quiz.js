@@ -5,11 +5,12 @@ import Notification from '../notifications/notifications'
 import Questions from '../question/questions'
 import UpdateQuizForm from '../forms/updateQuiz'
 import Modal from '../modal/modal'
-import { getQuestions, deleteQuestion } from '../question/actions'
+import { getQuestions, deleteQuestion, setCurrentQuestion } from '../question/actions'
 import { setNotification } from '../notifications/actions'
 import { deleteQuiz } from '../quizSearch/actions'
+import { getAnswers } from '../answer/actions'
 import { setQuiz, updateQuizStatus } from './actions'
-import { hideModal, showModal2 } from '../modal/actions'
+import { hideModal, showModal2, showModal } from '../modal/actions'
 import { del } from '../axiosRequests/requests'
 import { sessionExpired } from '../utils/session'
 import history from '../history'
@@ -131,10 +132,25 @@ class Quiz extends React.Component {
     return permission === "ADMIN" ? <div>{this.renderDeleteButton()}{this.renderStatusButton()}</div> : null
   }
 
+  renderQuestions = () => {
+    const { questions, showModal, userData, getAnswers, setCurrentQuestion, deleteQuestion, setNotification } = this.props
+    return( questions.length === 0 ? null :
+      <Questions
+        questions={questions}
+        userData={userData}
+        getAnswers={getAnswers}
+        setCurrentQuestion={setCurrentQuestion}
+        setNotification={setNotification}
+        deleteQuestion={deleteQuestion}
+        showModal={showModal}
+      />
+    );
+  }
+
 
 
   render(){
-    const { questions, currentQuestion, hideModal, modalState } = this.props
+    const { currentQuestion, hideModal, modalState } = this.props
     return(
       <div id="quiz">
         <Modal
@@ -163,7 +179,7 @@ class Quiz extends React.Component {
           <div id="questionDescriptionHeader">Description</div>
           <div id="questionOptionsHeader"></div>
         </div>
-        <Questions questions={questions}/>
+        {this.renderQuestions()}
       </div>
     );
   }
@@ -182,11 +198,14 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps,
   { getQuestions,
+    setCurrentQuestion,
     setQuiz,
     setNotification,
     hideModal,
     deleteQuestion,
     deleteQuiz,
+    showModal,
     showModal2,
-    updateQuizStatus
+    updateQuizStatus,
+    getAnswers
   })(Quiz)
