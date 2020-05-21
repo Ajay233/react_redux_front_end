@@ -1,0 +1,230 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a list of answers with options for ADMIN users 1`] = `
+<div>
+  <div>
+    <div
+      className="answerContainer"
+    >
+      <div
+        className="ansNumber"
+      >
+        1
+      </div>
+      <div
+        className="ansDecription"
+      >
+        testDescription
+      </div>
+      <div
+        className="correctAns"
+      >
+        <i
+          className="far fa-times-circle red"
+        />
+      </div>
+      <div
+        className="options"
+      >
+        <a
+          className="edit"
+          href="/editAnswer"
+          onClick={[Function]}
+        >
+          <i
+            className="fas fa-edit blue"
+          />
+           Edit
+        </a>
+        <a
+          className="deleteOption"
+          href="/"
+          onClick={[Function]}
+        >
+          <i
+            className="fas fa-trash-alt red"
+          />
+           Delete
+        </a>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className="answerContainer"
+    >
+      <div
+        className="ansNumber"
+      >
+        2
+      </div>
+      <div
+        className="ansDecription"
+      >
+        testDescription2
+      </div>
+      <div
+        className="correctAns"
+      >
+        <i
+          className="far fa-check-circle green"
+        />
+      </div>
+      <div
+        className="options"
+      >
+        <a
+          className="edit"
+          href="/editAnswer"
+          onClick={[Function]}
+        >
+          <i
+            className="fas fa-edit blue"
+          />
+           Edit
+        </a>
+        <a
+          className="deleteOption"
+          href="/"
+          onClick={[Function]}
+        >
+          <i
+            className="fas fa-trash-alt red"
+          />
+           Delete
+        </a>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className="answerContainer"
+    >
+      <div
+        className="ansNumber"
+      >
+        3
+      </div>
+      <div
+        className="ansDecription"
+      >
+        testDescriptio3
+      </div>
+      <div
+        className="correctAns"
+      >
+        <i
+          className="far fa-times-circle red"
+        />
+      </div>
+      <div
+        className="options"
+      >
+        <a
+          className="edit"
+          href="/editAnswer"
+          onClick={[Function]}
+        >
+          <i
+            className="fas fa-edit blue"
+          />
+           Edit
+        </a>
+        <a
+          className="deleteOption"
+          href="/"
+          onClick={[Function]}
+        >
+          <i
+            className="fas fa-trash-alt red"
+          />
+           Delete
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render a list of answers without options for READ-ONLY users 1`] = `
+<div>
+  <div>
+    <div
+      className="answerContainer"
+    >
+      <div
+        className="ansNumber"
+      >
+        1
+      </div>
+      <div
+        className="ansDecription"
+      >
+        testDescription
+      </div>
+      <div
+        className="correctAns"
+      >
+        <i
+          className="far fa-times-circle red"
+        />
+      </div>
+      <div
+        className="options"
+      />
+    </div>
+  </div>
+  <div>
+    <div
+      className="answerContainer"
+    >
+      <div
+        className="ansNumber"
+      >
+        2
+      </div>
+      <div
+        className="ansDecription"
+      >
+        testDescription2
+      </div>
+      <div
+        className="correctAns"
+      >
+        <i
+          className="far fa-check-circle green"
+        />
+      </div>
+      <div
+        className="options"
+      />
+    </div>
+  </div>
+  <div>
+    <div
+      className="answerContainer"
+    >
+      <div
+        className="ansNumber"
+      >
+        3
+      </div>
+      <div
+        className="ansDecription"
+      >
+        testDescriptio3
+      </div>
+      <div
+        className="correctAns"
+      >
+        <i
+          className="far fa-times-circle red"
+        />
+      </div>
+      <div
+        className="options"
+      />
+    </div>
+  </div>
+</div>
+`;
