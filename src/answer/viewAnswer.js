@@ -5,7 +5,7 @@ import NewAnswerForm from '../forms/newAnswer'
 import Notification from '../notifications/notifications'
 import history from '../history'
 
-class AnswerView extends React.Component {
+export class AnswerView extends React.Component {
 
   renderForm = () => {
     return history.location.pathname === "/newAnswer" ? <NewAnswerForm /> : <UpdateAnswerForm />;
@@ -23,7 +23,7 @@ class AnswerView extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     userData: state.userData,
     currentAnswer: state.currentAnswer
