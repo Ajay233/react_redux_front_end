@@ -38,6 +38,7 @@ describe("signUpForm", () => {
 
     wrapper.find('form').simulate('submit')
     mockAxios.mockResponse(requestResponse)
+    expect(mockAxios.post).toHaveBeenCalledTimes(1)
     expect(setNotification).toHaveBeenCalledTimes(1)
   })
 
