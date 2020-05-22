@@ -17,7 +17,7 @@ import { sessionExpired } from '../utils/session'
 import '../stylesheets/question.css'
 import '../stylesheets/answer.css'
 
-class QuestionView extends React.Component {
+export class QuestionView extends React.Component {
 
   renderAnswers = () => {
     const { answers, userData, setCurrentAnswer, setNotification, deleteAnswer, showModal } = this.props;
@@ -102,12 +102,13 @@ class QuestionView extends React.Component {
   }
 
   render(){
-    const { currentAnswer, modalState, hideModal, currentQuestion } = this.props
+    const { currentAnswer, hideModal, currentQuestion } = this.props
+    const { showModal, showModal2} = this.props.showModal
     return(
       <div id="questionView">
         <Modal
           type={"delete"}
-          show={modalState.showModal}
+          show={showModal}
           title={"Delete Answer"}
           message={`You are about to delete answer ${currentAnswer.answerNumber}`}
           onDelete={this.handleDeleteAnswer}
@@ -115,7 +116,7 @@ class QuestionView extends React.Component {
         />
         <Modal
           type={"delete"}
-          show={modalState.showModal2}
+          show={showModal2}
           title={"Delete Question"}
           message={`You are about to delete question ${currentQuestion.questionNumber}, this will also delete any associated answers for this question.`}
           onDelete={this.handleDeleteQuestion}
@@ -139,14 +140,14 @@ class QuestionView extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     userData: state.userData,
     quiz: state.quiz,
     currentQuestion: state.currentQuestion,
     answers: state.answers,
     currentAnswer: state.currentAnswer,
-    modalState: state.showModal
+    showModal: state.showModal
   }
 }
 
