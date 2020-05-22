@@ -8,7 +8,7 @@ import '../stylesheets/inputs.css'
 import '../stylesheets/buttons.css'
 import '../stylesheets/signup.css'
 
-class SignUp extends React.Component {
+export class SignUp extends React.Component {
 
   render(){
     const { setNotification } = this.props
@@ -25,7 +25,7 @@ class SignUp extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     notificationData: state.notificationData
   }

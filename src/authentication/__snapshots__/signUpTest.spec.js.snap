@@ -1,0 +1,223 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignUp should render the signup page and form 1`] = `
+<div
+  className="signupContainer"
+>
+  <div
+    className="signup"
+  >
+    <div
+      className="notificationContainer"
+    >
+      <div
+        className="spacing"
+        id="notification"
+      />
+    </div>
+    <div>
+      <form
+        className="signupForm"
+        onSubmit={[Function]}
+      >
+        <div
+          className="signupTitle"
+        >
+          Create Account
+        </div>
+        <div>
+          <label>
+            First Name:
+          </label>
+          <input
+            autoComplete="off"
+            className="inputBox null"
+            name="forename"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type=""
+            value=""
+          />
+        </div>
+        <div>
+          <label>
+            Surname:
+          </label>
+          <input
+            autoComplete="off"
+            className="inputBox null"
+            name="surname"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type=""
+            value=""
+          />
+        </div>
+        <div>
+          <label>
+            Email address:
+          </label>
+          <input
+            autoComplete="off"
+            className="inputBox null"
+            name="email"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type=""
+            value=""
+          />
+        </div>
+        <div>
+          <label>
+            Password:
+          </label>
+          <input
+            autoComplete="off"
+            className="inputBox null"
+            name="password"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type="password"
+            value=""
+          />
+        </div>
+        <button
+          className="submit signupButton"
+        >
+          Create Account
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SignUp should render the signup page and form and a notification 1`] = `
+<div
+  className="signupContainer"
+>
+  <div
+    className="signup"
+  >
+    <div
+      className="notificationContainer"
+    >
+      <div
+        className="spacing"
+        id="notification"
+      >
+        <div
+          className="success"
+        >
+          <span
+            className="close"
+            onClick={[Function]}
+          >
+            <i
+              className="far fa-times-circle"
+            />
+          </span>
+          Test signup worked
+        </div>
+      </div>
+    </div>
+    <div>
+      <form
+        className="signupForm"
+        onSubmit={[Function]}
+      >
+        <div
+          className="signupTitle"
+        >
+          Create Account
+        </div>
+        <div>
+          <label>
+            First Name:
+          </label>
+          <input
+            autoComplete="off"
+            className="inputBox null"
+            name="forename"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type=""
+            value=""
+          />
+        </div>
+        <div>
+          <label>
+            Surname:
+          </label>
+          <input
+            autoComplete="off"
+            className="inputBox null"
+            name="surname"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type=""
+            value=""
+          />
+        </div>
+        <div>
+          <label>
+            Email address:
+          </label>
+          <input
+            autoComplete="off"
+            className="inputBox null"
+            name="email"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type=""
+            value=""
+          />
+        </div>
+        <div>
+          <label>
+            Password:
+          </label>
+          <input
+            autoComplete="off"
+            className="inputBox null"
+            name="password"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type="password"
+            value=""
+          />
+        </div>
+        <button
+          className="submit signupButton"
+        >
+          Create Account
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+`;
