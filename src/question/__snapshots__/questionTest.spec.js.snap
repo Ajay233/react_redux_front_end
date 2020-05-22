@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Question should render a question along with edit and delete options for ADMIN users 1`] = `
+<div>
+  <div
+    className="questionContainer"
+  >
+    <div
+      className="questionNumber"
+    >
+      1
+    </div>
+    <div
+      className="questionDescription"
+    >
+      testDescription
+    </div>
+    <div
+      className="options"
+    >
+      <a
+        className="edit"
+        href="/editQuestion"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-edit blue"
+        />
+         Edit
+      </a>
+      <a
+        className="deleteOption"
+        href="/"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-trash-alt red"
+        />
+         Delete
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Question should render a question along with view option for READ-ONLY users 1`] = `
+<div>
+  <div
+    className="questionContainer"
+  >
+    <div
+      className="questionNumber"
+    >
+      1
+    </div>
+    <div
+      className="questionDescription"
+    >
+      testDescription
+    </div>
+    <div
+      className="options"
+    >
+      <a
+        className="view"
+        href="/viewQuestion"
+        onClick={[Function]}
+      >
+        <i
+          className="far fa-eye blue"
+        />
+         View
+      </a>
+    </div>
+  </div>
+</div>
+`;

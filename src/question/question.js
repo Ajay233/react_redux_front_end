@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-class Question extends React.Component {
+export class Question extends React.Component {
 
   handleView = () => {
     const { question, userData, getAnswers, setCurrentQuestion } = this.props
