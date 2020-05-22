@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login should render the login form with notification 1`] = `
+<div
+  className="loginContainer"
+>
+  <div
+    className="login"
+  >
+    <div
+      className="notificationContainer"
+    >
+      <div
+        className="spacing"
+        id="notification"
+      >
+        <div
+          className="error"
+        >
+          <span
+            className="close"
+            onClick={[Function]}
+          >
+            <i
+              className="far fa-times-circle"
+            />
+          </span>
+          Username or passord incorrect
+        </div>
+      </div>
+    </div>
+    <div>
+      <form
+        className="loginForm"
+        onSubmit={[Function]}
+      >
+        <div
+          className="loginTitle"
+        >
+          Login
+        </div>
+        <div>
+          <label>
+            Username (Email address):
+          </label>
+          <input
+            className="inputBox"
+            name="userName"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type=""
+            value=""
+          />
+        </div>
+        <div>
+          <label>
+            Password:
+          </label>
+          <input
+            className="inputBox"
+            name="password"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type="password"
+            value=""
+          />
+        </div>
+        <button
+          className="submit loginButton"
+        >
+          Login
+        </button>
+        <hr />
+        <div
+          id="signUpLink"
+        >
+          Don't have an account? 
+          <a
+            href="/signUp"
+            onClick={[Function]}
+          >
+            Sign up
+          </a>
+           here
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Login should render the login form without notification 1`] = `
+<div
+  className="loginContainer"
+>
+  <div
+    className="login"
+  >
+    <div
+      className="notificationContainer"
+    >
+      <div
+        className="spacing"
+        id="notification"
+      />
+    </div>
+    <div>
+      <form
+        className="loginForm"
+        onSubmit={[Function]}
+      >
+        <div
+          className="loginTitle"
+        >
+          Login
+        </div>
+        <div>
+          <label>
+            Username (Email address):
+          </label>
+          <input
+            className="inputBox"
+            name="userName"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type=""
+            value=""
+          />
+        </div>
+        <div>
+          <label>
+            Password:
+          </label>
+          <input
+            className="inputBox"
+            name="password"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type="password"
+            value=""
+          />
+        </div>
+        <button
+          className="submit loginButton"
+        >
+          Login
+        </button>
+        <hr />
+        <div
+          id="signUpLink"
+        >
+          Don't have an account? 
+          <a
+            href="/signUp"
+            onClick={[Function]}
+          >
+            Sign up
+          </a>
+           here
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;

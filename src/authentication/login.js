@@ -8,7 +8,7 @@ import { setNotification } from '../notifications/actions';
 
 import '../stylesheets/login.css'
 
-class Login extends React.Component {
+export class Login extends React.Component {
 
   // AFTER back end update on login endpoint:
   // update action creator so it sets the correct error notification for incorrect credentials or
@@ -29,7 +29,7 @@ class Login extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     userData: state.userData,
     verificationProcess: state.verificationProcess
