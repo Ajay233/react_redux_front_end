@@ -9,7 +9,6 @@ import { getAnswers } from '../answer/actions'
 import { showModal } from '../modal/actions'
 import history from '../history'
 
-//pass in questions, userData
 jest.mock("../notifications/actions")
 jest.mock("../answer/actions")
 jest.mock("../question/actions")

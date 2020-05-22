@@ -1,10 +1,10 @@
 import React from 'react';
 import Question from './question'
 
-class Questions extends React.Component {
+const Questions = (props) => {
 
-  renderQuestions = () => {
-    const { questions, userData, getAnswers, setCurrentQuestion, setNotification, deleteQuestion, showModal } = this.props
+  const renderQuestions = () => {
+    const { questions, userData, getAnswers, setCurrentQuestion, setNotification, deleteQuestion, showModal } = props
     const listOfQuestions = questions.map(question => {
       return( <Question
                 key={questions.indexOf(question)}
@@ -21,13 +21,12 @@ class Questions extends React.Component {
     return listOfQuestions;
   }
 
-  render(){
-    return(
-        <div>
-          {this.renderQuestions()}
-        </div>
-    );
-  }
+  return(
+    <div>
+      {renderQuestions()}
+    </div>
+  );
+  
 }
 
 export default Questions
