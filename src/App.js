@@ -20,7 +20,6 @@ import history from './history'
 import './stylesheets/main.css'
 import './stylesheets/buttons.css'
 import './stylesheets/inputs.css'
-// import '../public/fontawesome/css/all.css'
 
 class App extends React.Component {
   render(){
