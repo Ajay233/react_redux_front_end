@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home should render the home component 1`] = `
+<div
+  className="body"
+>
+  <div
+    id="notificationContainer"
+  >
+    <div
+      className="spacing"
+      id="notification"
+    />
+  </div>
+  <div
+    className="textBackground"
+  >
+    <div
+      className="title"
+    >
+      The Quiz App
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Home should render the home component and a notification 1`] = `
+<div
+  className="body"
+>
+  <div
+    id="notificationContainer"
+  >
+    <div
+      className="spacing"
+      id="notification"
+    >
+      <div
+        className="success"
+      >
+        <span
+          className="close"
+          onClick={[Function]}
+        >
+          <i
+            className="far fa-times-circle"
+          />
+        </span>
+        Test
+      </div>
+    </div>
+  </div>
+  <div
+    className="textBackground"
+  >
+    <div
+      className="title"
+    >
+      The Quiz App
+    </div>
+  </div>
+</div>
+`;
