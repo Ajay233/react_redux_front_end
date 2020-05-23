@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User should render a user's details using the props passed to it 1`] = `
+<div>
+  <div>
+    Name: testForename testSurname
+  </div>
+  <div>
+    Email: testEmail
+  </div>
+  <div>
+    Permission: USER
+  </div>
+  <div>
+    Verified: No
+  </div>
+</div>
+`;
