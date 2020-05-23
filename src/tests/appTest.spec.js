@@ -1,43 +1,43 @@
 import React from 'react'
 import { Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux'
-import App from './app.js'
-import NavBar from './navBar.js'
-import Home from './home';
-import Login from './authentication/login';
-import SignUp from './authentication/signUp';
-import Verify from './authentication/verify';
-import UserList from './userList/userList'
-import ManageAccount from './manageAccount/manageAccount'
-import EditUserPrivilege from './editUserPrivilege/editUserPrivilege'
-import QuizSearch from './quizSearch/quizSearch'
-import NewQuizForm from './forms/newQuiz'
-import Quiz from './quiz/quiz'
-import QuestionView from './question/questionView'
-import NewQuestionForm from './forms/newQuestion'
-import AnswerView from './answer/viewAnswer'
-import AllQuizes from './quiz/allQuizes'
-import QuizStart from './quizStart/quizStart'
+import App from '../app.js'
+import NavBar from '../navBar.js'
+import Home from '../home';
+import Login from '../authentication/login';
+import SignUp from '../authentication/signUp';
+import Verify from '../authentication/verify';
+import UserList from '../userList/userList'
+import ManageAccount from '../manageAccount/manageAccount'
+import EditUserPrivilege from '../editUserPrivilege/editUserPrivilege'
+import QuizSearch from '../quizSearch/quizSearch'
+import NewQuizForm from '../forms/newQuiz'
+import Quiz from '../quiz/quiz'
+import QuestionView from '../question/questionView'
+import NewQuestionForm from '../forms/newQuestion'
+import AnswerView from '../answer/viewAnswer'
+import AllQuizes from '../quiz/allQuizes'
+import QuizStart from '../quizStart/quizStart'
 import { shallow, mount } from 'enzyme'
-import { setNotification } from './notifications/actions'
+import { setNotification } from '../notifications/actions'
 
 import configureStore from 'redux-mock-store'
-import history from './history'
+import history from '../history'
 
 const mockStore = configureStore({})
 
-jest.mock('./authentication/verify');
-jest.mock('./userList/userList')
-jest.mock('./manageAccount/manageAccount')
-jest.mock('./editUserPrivilege/editUserPrivilege')
-jest.mock('./quizSearch/quizSearch')
-jest.mock('./forms/newQuiz')
-jest.mock('./quiz/quiz')
-jest.mock('./question/questionView')
-jest.mock('./forms/newQuestion')
-jest.mock('./answer/viewAnswer')
-jest.mock('./quiz/allQuizes')
-jest.mock('./quizStart/quizStart')
+jest.mock('../authentication/verify');
+jest.mock('../userList/userList')
+jest.mock('../manageAccount/manageAccount')
+jest.mock('../editUserPrivilege/editUserPrivilege')
+jest.mock('../quizSearch/quizSearch')
+jest.mock('../forms/newQuiz')
+jest.mock('../quiz/quiz')
+jest.mock('../question/questionView')
+jest.mock('../forms/newQuestion')
+jest.mock('../answer/viewAnswer')
+jest.mock('../quiz/allQuizes')
+jest.mock('../quizStart/quizStart')
 
 describe("App", () => {
 
