@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar should render with just the options home and menu 1`] = `
+<div>
+  <div
+    className="nav"
+  >
+    <a
+      className="links"
+      href="/"
+      id="home"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-home"
+      />
+       Home
+    </a>
+    <button
+      className="linkButton links navItem"
+      onClick={[Function]}
+    >
+      Menu 
+      <i
+        className="fas fa-bars"
+      />
+    </button>
+  </div>
+</div>
+`;

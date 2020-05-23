@@ -20,11 +20,6 @@ class NavBar extends React.Component {
     return this.state.show === true ? <DropdownList show={this.showList}/> : null;
   }
 
-  // removed call to this method as this needs to be changed so this does not continually redirect to logout
-  redirect = () => {
-    return this.props.userData.loggedIn === false ? <Redirect to="/logout" /> : null
-  }
-
   showList = () => {
     let bool = !this.state.show;
     this.setState({ show: bool }, () => {
@@ -32,9 +27,9 @@ class NavBar extends React.Component {
     })
   }
 
-  handleGoingBack = () => {
-    history.goBack();
-  }
+  // handleGoingBack = () => {
+  //   history.goBack();
+  // }
 
   // renderBackButton = () => {
   //     const url = window.location.href
