@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { setNotification } from '../notifications/actions'
-import { logOut } from '../authentication/actions'
-import { getAllQuizes } from '../quizSearch/actions'
 
 import history from '../history'
 
@@ -99,4 +96,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setNotification, logOut, getAllQuizes })(DropdownList)
+export default connect(mapStateToProps)(DropdownList)

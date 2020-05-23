@@ -2,6 +2,9 @@ import React from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import DropdownList from './dropdown/dropdownList';
+import { setNotification } from './notifications/actions'
+import { logOut } from './authentication/actions'
+import { getAllQuizes } from './quizSearch/actions'
 import history from './history'
 import './stylesheets/navBar.css'
 import './stylesheets/buttons.css'
@@ -17,7 +20,15 @@ class NavBar extends React.Component {
   }
 
   renderList = () => {
-    return this.state.show === true ? <DropdownList show={this.showList}/> : null;
+    const { setNotification, logOut, getAllQuizes } = this.props
+    return( this.state.show === true ?
+      <DropdownList
+        show={this.showList}
+        setNotification={setNotification}
+        logOut={logOut}
+        getAllQuizes={getAllQuizes}
+      /> : null
+    );
   }
 
   showList = () => {
@@ -56,4 +67,4 @@ const mapStateToProps = (state) => {
   return {userData: state.userData};
 }
 
-export default connect(mapStateToProps)( NavBar);
+export default connect(mapStateToProps, { setNotification, logOut, getAllQuizes })( NavBar);

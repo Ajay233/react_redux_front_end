@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropdownList should render only ADMIN options for user with ADMIN permission 1`] = `
+<div
+  className="list"
+>
+  <ul>
+    <li>
+      <a
+        className="links"
+        onClick={[Function]}
+      >
+        Manage my account
+      </a>
+      <hr />
+    </li>
+    <li>
+      <a
+        className="links"
+        onClick={[Function]}
+      >
+        List all Users
+      </a>
+      <hr />
+    </li>
+    <li>
+      <a
+        className="links"
+        onClick={[Function]}
+      >
+        Edit Privileges
+      </a>
+      <hr />
+    </li>
+    <li>
+      <a
+        className="links"
+        onClick={[Function]}
+      >
+        Browse All Quizes
+      </a>
+      <hr />
+    </li>
+    <li>
+      <a
+        className="links"
+        onClick={[Function]}
+      >
+        Quiz search
+      </a>
+      <hr />
+    </li>
+    <li>
+      <a
+        className="links"
+        onClick={[Function]}
+      >
+        Create a Quiz
+      </a>
+      <hr />
+    </li>
+    <li>
+      <button
+        className="linkButton links"
+        onClick={[Function]}
+      >
+        Logout
+      </button>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`DropdownList should render only READ-ONLY options for user with READ-ONLY permission 1`] = `
+<div
+  className="list"
+>
+  <ul>
+    <li>
+      <a
+        className="links"
+        onClick={[Function]}
+      >
+        Manage my account
+      </a>
+      <hr />
+    </li>
+    <li>
+      <a
+        className="links"
+        onClick={[Function]}
+      >
+        Browse All Quizes
+      </a>
+      <hr />
+    </li>
+    <li>
+      <a
+        className="links"
+        onClick={[Function]}
+      >
+        Quiz search
+      </a>
+      <hr />
+    </li>
+    <li>
+      <button
+        className="linkButton links"
+        onClick={[Function]}
+      >
+        Logout
+      </button>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`DropdownList should render only USER options for user with USER permission 1`] = `
+<div
+  className="list"
+>
+  <ul>
+    <li>
+      <a
+        className="links"
+        onClick={[Function]}
+      >
+        Manage my account
+      </a>
+      <hr />
+    </li>
+    <li>
+      <a
+        className="links"
+        onClick={[Function]}
+      >
+        Browse All Quizes
+      </a>
+      <hr />
+    </li>
+    <li>
+      <a
+        className="links"
+        onClick={[Function]}
+      >
+        Quiz search
+      </a>
+      <hr />
+    </li>
+    <li>
+      <button
+        className="linkButton links"
+        onClick={[Function]}
+      >
+        Logout
+      </button>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`DropdownList should render only login and create account if user is not logged in 1`] = `
+<div
+  className="list"
+>
+  <ul>
+    <li>
+      <a
+        className="links"
+        onClick={[Function]}
+      >
+        Login
+      </a>
+      <hr />
+    </li>
+    <li>
+      <a
+        className="links"
+        onClick={[Function]}
+      >
+        Create Account
+      </a>
+    </li>
+  </ul>
+</div>
+`;
