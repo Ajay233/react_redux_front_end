@@ -5,7 +5,6 @@ import Home from './home';
 import Login from './authentication/login';
 import SignUp from './authentication/signUp';
 import Verify from './authentication/verify';
-import Logout from './authentication/logout';
 import UserList from './userList/userList'
 import ManageAccount from './manageAccount/manageAccount'
 import EditUserPrivilege from './editUserPrivilege/editUserPrivilege'
@@ -34,7 +33,6 @@ class App extends React.Component {
             <Route path="/login" render={() => <Login verify={false} />}/>
             <Route path="/signUp" render={() => <SignUp />}/>
             <Route path="/verify" render={() => <Verify />}/>
-            <Route path="/logout" component={Logout} />
             <Route path="/userList" component={() => <UserList/>} />
             <Route path="/manageAccount" component={()=> <ManageAccount />}/>
             <Route path="/editUserPrivilege" component={()=> <EditUserPrivilege />}/>

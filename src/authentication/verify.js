@@ -6,13 +6,14 @@ import Notification from '../notifications/notifications';
 import { setVerficationProcess } from './actions'
 import { setNotification } from '../notifications/actions'
 import { post } from '../axiosRequests/requests'
+import history from '../history'
 import '../stylesheets/notifications.css'
 import '../stylesheets/verify.css'
 
 
-class Verify extends React.Component {
+export class Verify extends React.Component {
 
-  componentDidMount(){
+  componentWillMount(){
     this.verifyUser();
   }
 
@@ -21,9 +22,11 @@ class Verify extends React.Component {
   }
 
   verifiedMsg = () => {
+    const { setNotification } = this.props
     const successMsg = "Your email has now been verified.  Please log in below to continue."
-    this.props.setNotification(successMsg, "success", true);
-    return <Redirect to="/login" />
+    setNotification(successMsg, "success", true);
+    history.push("/login")
+    // return <Redirect to="/login" />
   }
 
   notFoundMsg = () => {
@@ -77,10 +80,10 @@ class Verify extends React.Component {
   }
 
   getToken = () => {
-    let url = window.location.href;
+    // let url = window.location.href;
+    let url = history.location.search;
     const regex = new RegExp(/(?<=token=)(s?)(.*)/gm);
     let token = url.match(regex).toString();
-    console.log(token);
     return token;
   }
 
@@ -133,7 +136,7 @@ class Verify extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     userData: state.userData,
     verificationProcess: state.verificationProcess

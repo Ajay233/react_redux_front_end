@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Verify component should render the token expired message when error data is set to 'TOKEN_EXPIRED' 1`] = `
+<div
+  id="verifyContainer"
+>
+  <div
+    className="spacing"
+    id="notification"
+  />
+  <div
+    id="verifyContent"
+  >
+    <div
+      id="verifyLogo"
+    >
+      <img
+        alt=""
+        id="contentImg"
+        src="expired.png"
+      />
+    </div>
+    <div
+      id="verifyMessage"
+    >
+      <div>
+        <div
+          id="verifyTitle"
+        >
+          <div
+            id="titleImg"
+          >
+            <img
+              alt=""
+              className="verifyTitleImg"
+              src="warning.png"
+            />
+          </div>
+          <div
+            id="verifyTitleTxt"
+          >
+            Token Expired
+          </div>
+        </div>
+        <p>
+          Your token has expired as it was issued more than 24 hours ago.
+        </p>
+        <p>
+          Please click resend to resend a new token
+        </p>
+        <button
+          className="resend"
+          id="resendButton"
+          onClick={[Function]}
+        >
+          Resend
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Verify component should render the token expired message when error data is set to 'TOKEN_UNMATCHED' 1`] = `
+<div
+  id="verifyContainer"
+>
+  <div
+    className="spacing"
+    id="notification"
+  />
+  <div
+    id="verifyContent"
+  >
+    <div
+      id="verifyLogo"
+    >
+      <img
+        alt=""
+        id="contentImg"
+        src="notFound.png"
+      />
+    </div>
+    <div
+      id="verifyMessage"
+    >
+      <div>
+        <div
+          id="verifyTitle"
+        >
+          <div
+            id="titleImg"
+          >
+            <img
+              alt=""
+              className="verifyTitleImg"
+              src="warning.png"
+            />
+          </div>
+          <div
+            id="verifyTitleTxt"
+          >
+            Oops 404
+          </div>
+        </div>
+        <p>
+          Something went wrong, and the token you provided was not found.
+        </p>
+        <p>
+          Possible causes can include:
+        </p>
+        <ul>
+          <li>
+            - You may have already verified your email address.  To check please click 
+            <a
+              href="/login"
+              onClick={[Function]}
+            >
+              here
+            </a>
+             to log in
+          </li>
+          <br />
+          <li>
+            - If you copied and pasted the link into the browser address bar, you will need to check you did not miss any characters
+          </li>
+          <br />
+          <li>
+            - You have accessed this page in error, in which case you will need to return to the 
+            <a
+              href="/"
+              onClick={[Function]}
+            >
+              home
+            </a>
+             page
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Verify component should render the token expired message when error data is set to 'TOKEN_UNMATCHED' 2`] = `
+<div
+  id="verifyContainer"
+>
+  <div
+    className="spacing"
+    id="notification"
+  />
+  <div
+    id="verifyContent"
+  >
+    <div
+      id="verifyLogo"
+    />
+    <div
+      id="verifyMessage"
+    />
+  </div>
+</div>
+`;
