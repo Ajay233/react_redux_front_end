@@ -12,7 +12,7 @@ exports[`User should render a user's details using the props passed to it 1`] = 
     Permission: USER
   </div>
   <div>
-    Verified: No
+    Verified: Yes
   </div>
 </div>
 `;

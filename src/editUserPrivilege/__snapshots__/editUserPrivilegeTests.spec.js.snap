@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User should render a user's details using the props passed to it 1`] = `
+<div
+  id="editUserPrivilege"
+>
+  <div
+    className="spacing"
+    id="notification"
+  />
+  <div>
+    <div>
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Email:
+          </label>
+          <input
+            className="inputBox"
+            name="email"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            value=""
+          />
+        </div>
+        <button
+          className="submit"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+  <div>
+    <hr />
+    <div>
+      <div>
+        Name: testForename testSurname
+      </div>
+      <div>
+        Email: testEmail
+      </div>
+      <div>
+        Permission: USER
+      </div>
+      <div>
+        Verified: No
+      </div>
+    </div>
+  </div>
+  <div>
+    <form
+      onSubmit={[Function]}
+    >
+      <div>
+        <label>
+          Set Permission:
+        </label>
+        <select
+          className="inputBox"
+          name="permission"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          value=""
+        >
+          <option>
+            Select permission level
+          </option>
+          <option
+            value="USER"
+          >
+            USER
+          </option>
+          <option
+            value="READ-ONLY"
+          >
+            READ-ONLY
+          </option>
+          <option
+            value="ADMIN"
+          >
+            ADMIN
+          </option>
+        </select>
+      </div>
+      <button
+        className="submit"
+      >
+        Save
+      </button>
+    </form>
+  </div>
+</div>
+`;

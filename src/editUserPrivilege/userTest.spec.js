@@ -12,7 +12,7 @@ describe("User", () => {
       surname: "testSurname",
       email: "testEmail",
       permission: "USER",
-      verified: true
+      verified: "true"
     }
     const component = renderer.create(
       <User userResults={userResults} />
