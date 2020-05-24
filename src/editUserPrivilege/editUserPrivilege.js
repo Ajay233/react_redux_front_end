@@ -10,7 +10,7 @@ import { setNotification } from '../notifications/actions'
 
 import '../stylesheets/editUserPrivilege.css'
 
-class EditUserPrivilege extends React.Component {
+export class EditUserPrivilege extends React.Component {
 
   componentWillUnmount(){
     this.props.clearUserResults()
@@ -41,7 +41,7 @@ class EditUserPrivilege extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     userData: state.userData,
     userResults: state.userResults

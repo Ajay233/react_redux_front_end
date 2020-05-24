@@ -1,5 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`User should not render the edit privilege form if the userResults is empty 1`] = `
+<div
+  id="editUserPrivilege"
+>
+  <div
+    className="spacing"
+    id="notification"
+  />
+  <div>
+    <div>
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Email:
+          </label>
+          <input
+            className="inputBox"
+            name="email"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            value=""
+          />
+        </div>
+        <button
+          className="submit"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`User should render a user's details using the props passed to it 1`] = `
 <div
   id="editUserPrivilege"
