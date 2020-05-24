@@ -25,7 +25,7 @@ class ChangePassword extends React.Component {
       case "PASSWORD MISMATCH": return "Retyped password did not match the new password";
       case "NO MATCH": return "The password you provided was incorrect";
       case "PASSWORD INCORRECT": return "The password you provided was incorrect";
-      default: return null;
+      default: return "An error has occurred please ty again";
     }
   }
 
