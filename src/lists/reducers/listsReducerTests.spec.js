@@ -2,6 +2,7 @@ import { getCategories } from '../actions'
 import { setListsReducer } from './index'
 import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
+import mockAxios from 'jest-mock-axios'
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
@@ -20,10 +21,13 @@ describe("setListsReducer", () => {
       categories: [ "item1", "item2", "item3" ]
     }
 
+    const requestResponse = {
+      data: [ "item1", "item2", "item3" ]
+    }
 
-    return store.dispatch(getCategories("lookup/quizCategories", "jwt"))
+    store.dispatch(getCategories("lookup/quizCategories", "jwt"))
+    mockAxios.mockResponse(requestResponse)
     const newState = setListsReducer(initialState, store.getActions()[0])
-
     expect(newState).toEqual(expectedState)
   })
 
