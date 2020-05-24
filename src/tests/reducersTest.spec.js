@@ -59,7 +59,7 @@ describe("reducers", () => {
       currentQuestion: {},
       answers: [],
       currentAnswer: {},
-      showModal: { showModal: false, showModal2: false, showModal3: false },
+      modalState: { showModal: false, showModal2: false, showModal3: false },
       lists: { categories: [] },
       form: {}
     }
@@ -81,7 +81,7 @@ describe("reducers", () => {
       currentQuestion: { },
       answers: ["test1", "test2", "test3", "test4"],
       currentAnswer: { id: 1, answerNumber: 1, description: "test", correctAnswer: true },
-      showModal: { showModal: false, showModal2: false, showModal3: false },
+      modalState: { showModal: false, showModal2: false, showModal3: false },
       lists: { categories: [] },
       form: {}
     }

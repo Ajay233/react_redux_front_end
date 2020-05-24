@@ -10,8 +10,8 @@ const Modal = (props) => {
 
   const returnButton = (props) => {
     switch (props.type) {
-      case "start": return <button className="startButton" onClick={props.onStart}>Start</button>;
-      default: return <button className="delete" onClick={props.onDelete}>Delete</button>;
+      case "start": return <button data-testid="modal-start-button" className="startButton" onClick={props.onStart}>Start</button>;
+      default: return <button data-testid="modal-delete-button" className="delete" onClick={props.onDelete}>Delete</button>;
     }
   }
 
@@ -28,7 +28,7 @@ const Modal = (props) => {
         </div>
         <div className="modalActions">
           {returnButton(props)}
-          <button className="submit" onClick={props.onCancel}>Cancel</button>
+          <button data-testid="modal-cancel-button" className="submit" onClick={props.onCancel}>Cancel</button>
         </div>
       </div>
     </div>,

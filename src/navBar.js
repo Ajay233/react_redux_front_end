@@ -54,7 +54,7 @@ class NavBar extends React.Component {
         <div className="nav">
           <Link to="/" id="home" className="links"><i className="fas fa-home"></i> Home</Link>
           <button className="linkButton links navItem" onClick={this.showList}>Menu <i className="fas fa-bars"></i></button>
-          {console.log("Rendering")}
+          
 
         </div>
         {this.renderList()}

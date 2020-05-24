@@ -74,7 +74,7 @@ class QuizResult extends React.Component {
 const mapStateToProps = (state) => {
   return {
     userData: state.userData,
-    modalState: state.showModal
+    modalState: state.modalState
   }
 }
 

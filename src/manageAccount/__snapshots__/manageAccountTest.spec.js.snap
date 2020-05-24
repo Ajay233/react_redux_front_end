@@ -1,0 +1,266 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Manage Account should call showModal when delete account is clicked 1`] = `
+<div
+  id="editProfileContainer"
+>
+  <div
+    className="hide"
+  >
+    <div
+      className="modalContent"
+      onClick={[Function]}
+    >
+      <span
+        className="close"
+      >
+        <i
+          className="fas fa-times-circle red"
+        />
+      </span>
+      <div
+        className="modalHeader"
+      >
+        Account
+      </div>
+      <div
+        className="modalMessage"
+      >
+        <img
+          alt=""
+          src="warning.png"
+        />
+        <div
+          className="txt"
+        >
+          You are about to delete your account.  Once deleted your account will no longer be retreivable
+        </div>
+      </div>
+      <div
+        className="modalActions"
+      >
+        <button
+          className="delete"
+          data-testid="modal-delete-button"
+          onClick={[Function]}
+        >
+          Delete
+        </button>
+        <button
+          className="submit"
+          data-testid="modal-cancel-button"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="spacing"
+    id="notification"
+  />
+  <div
+    id="editProfileTitle"
+  >
+    <div
+      className="titleImgContainer"
+    >
+      <img
+        alt=""
+        id="idImg"
+        src="id.png"
+      />
+    </div>
+    <div
+      className="titleTextContainer"
+    >
+      <div
+        className="titleText"
+      >
+        My Account
+      </div>
+    </div>
+  </div>
+  <div
+    id="editProfileFormContainer"
+  >
+    <div
+      id="editUserDetails"
+    >
+      <form
+        className="profileForm"
+        onSubmit={[Function]}
+      >
+        <div>
+          <div
+            id="editUserDetailsTitle"
+          >
+            Edit Personal Details
+          </div>
+        </div>
+        <div>
+          <label>
+            Forename
+          </label>
+          <input
+            className="inputBox"
+            name="forename"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            placeholder="testForename"
+            value=""
+          />
+        </div>
+        <div>
+          <label>
+            Surname
+          </label>
+          <input
+            className="inputBox"
+            name="surname"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            placeholder="testSurname"
+            value=""
+          />
+        </div>
+        <div
+          id="userEmail"
+        >
+          Your email:
+          <span>
+             
+            testEmail
+          </span>
+        </div>
+        <div>
+          <label>
+            New Email
+          </label>
+          <input
+            className="inputBox"
+            name="newEmail"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            placeholder="testEmail"
+            value=""
+          />
+        </div>
+        <button
+          className="submit"
+          id="submit"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+    <div
+      className="formDividers right"
+    />
+    <div
+      className="formDividers left"
+    />
+    <div
+      id="changePassword"
+    >
+      <form
+        className="changePasswordForm"
+        onSubmit={[Function]}
+      >
+        <div>
+          <div
+            id="changePasswordTitle"
+          >
+            Change Password
+          </div>
+        </div>
+        <div>
+          <label>
+            Current Password:
+          </label>
+          <input
+            className="inputBox"
+            id="ChangePassword - password"
+            name="password"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type="password"
+            value=""
+          />
+        </div>
+        <div>
+          <label>
+            New Password:
+          </label>
+          <input
+            className="inputBox"
+            id="ChangePassword - newPassword"
+            name="newPassword"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type="password"
+            value=""
+          />
+        </div>
+        <div>
+          <label>
+             Re-type Password:
+          </label>
+          <input
+            className="inputBox"
+            id="ChangePassword - retypedPassword"
+            name="retypedPassword"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type="password"
+            value=""
+          />
+        </div>
+        <button
+          className="submit"
+          id="submitChangePassword"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+  <hr />
+  <div
+    id="deleteAccountContainer"
+  >
+    <div
+      id="deleteAccountTitle"
+    >
+      Delete Account
+    </div>
+    <p>
+      Please note that once you have deleted your account it will not be possible to retreive it.
+    </p>
+    <button
+      className="delete"
+      data-testid="delete-account"
+    >
+      Delete
+    </button>
+  </div>
+</div>
+`;

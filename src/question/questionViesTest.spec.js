@@ -20,7 +20,7 @@ describe("mapStateToProps", () => {
       currentQuestion: { id: 1, questionNumber: 1},
       answers: [{id: 1, answerNumber: 1}, {id: 2, answerNumber: 2}],
       currentAnswer: {id: 1, answerNumber: 1},
-      showModal: { showModal: false }
+      modalState: { showModal: false }
     }
 
     const componentState = mapStateToProps(appState)

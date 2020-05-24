@@ -103,7 +103,7 @@ export class QuestionView extends React.Component {
 
   render(){
     const { currentAnswer, hideModal, currentQuestion } = this.props
-    const { showModal, showModal2} = this.props.showModal
+    const { showModal, showModal2} = this.props.modalState
     return(
       <div id="questionView">
         <Modal
@@ -147,7 +147,7 @@ export const mapStateToProps = (state) => {
     currentQuestion: state.currentQuestion,
     answers: state.answers,
     currentAnswer: state.currentAnswer,
-    showModal: state.showModal
+    modalState: state.modalState
   }
 }
 

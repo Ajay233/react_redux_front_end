@@ -100,7 +100,7 @@ class QuizSearch extends React.Component {
             jwt={userData.jwt}
             setNotification={setNotification}
             getQuizSearchResults={getQuizSearchResults}
-            permission={userData.permission} 
+            permission={userData.permission}
           />
         </div>
         <div id="quizSearchByCategory">
@@ -129,7 +129,7 @@ const mapStateToProps = (state) => {
     quizes: state.quizes,
     quiz: state.quiz,
     lists: state.lists,
-    modalState: state.showModal
+    modalState: state.modalState
   }
 }
 

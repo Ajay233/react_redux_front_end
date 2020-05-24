@@ -16,7 +16,7 @@ import '../stylesheets/inputs.css';
 import '../stylesheets/buttons.css';
 import '../stylesheets/editProfile.css';
 
-class ManageAccount extends React.Component {
+export class ManageAccount extends React.Component {
 
   handleDelete = () => {
     const successMsg = "Your account has been deleted";
@@ -40,7 +40,6 @@ class ManageAccount extends React.Component {
     const { userData, setNotification, modalState, hideModal, showModal } = this.props;
     return(
       <div id="editProfileContainer">
-      {console.log(this.props)}
       <Modal
         show={modalState.showModal}
         title={"Account"}
@@ -67,7 +66,7 @@ class ManageAccount extends React.Component {
         <div id="deleteAccountContainer">
           <div id="deleteAccountTitle">Delete Account</div>
           <p>Please note that once you have deleted your account it will not be possible to retreive it.</p>
-          <button className="delete" onClick={showModal}>Delete</button>
+          <button data-testid="delete-account" className="delete" onClick={showModal}>Delete</button>
         </div>
       </div>
     );
@@ -75,11 +74,11 @@ class ManageAccount extends React.Component {
 
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     userData: state.userData,
     notificationData: state.notificationData,
-    modalState: state.showModal
+    modalState: state.modalState
   };
 }
 

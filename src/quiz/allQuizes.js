@@ -91,7 +91,7 @@ const mapStateToProps = (state) => {
     userData: state.userData,
     quizes: state.quizes,
     quiz: state.quiz,
-    modalState: state.showModal
+    modalState: state.modalState
   }
 }
 
@@ -100,5 +100,5 @@ export default connect(mapStateToProps,
     deleteQuiz,
     hideModal,
     setNotification,
-    clearQuizes 
+    clearQuizes
   })(AllQuizes)

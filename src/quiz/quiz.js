@@ -191,7 +191,7 @@ const mapStateToProps = (state) => {
     quiz: state.quiz,
     questions: state.questions,
     currentQuestion: state.currentQuestion,
-    modalState: state.showModal,
+    modalState: state.modalState,
     lists: state.lists
   }
 }

@@ -42,7 +42,7 @@ export const allReducers = combineReducers({
   currentQuestion: setCurrentQuestionReducer,
   answers: setAnswersReducer,
   currentAnswer: setCurrentAnswerReducer,
-  showModal: showModalReducer,
+  modalState: showModalReducer,
   lists: setListsReducer,
   form: formReducer
 });
