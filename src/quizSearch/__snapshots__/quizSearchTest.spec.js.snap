@@ -1,0 +1,313 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuizSearch should render quiz serchByName, searchByCategory forms and no results 1`] = `
+<div
+  id="quizSearch"
+>
+  <div
+    className="spacing"
+    id="notification"
+  />
+  <div
+    id="quizSearchTitle"
+  >
+    Quiz Search
+  </div>
+  <div
+    id="quizSearchByName"
+  >
+    <div>
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Quiz name:
+          </label>
+          <input
+            className="inputBox"
+            name="name"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            value=""
+          />
+        </div>
+        <button
+          className="submit"
+        >
+          <i
+            className="fas fa-search"
+          />
+           Search
+        </button>
+      </form>
+    </div>
+  </div>
+  <div
+    id="quizSearchByCategory"
+  >
+    <div>
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <select
+            className="inputBox"
+            name="category"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            value=""
+          >
+            <option
+              disabled={true}
+              value=""
+            >
+              Select a category
+            </option>
+            <option
+              value="test"
+            >
+              test
+            </option>
+            <option
+              value="test2"
+            >
+              test2
+            </option>
+            <option
+              value="test3"
+            >
+              test3
+            </option>
+          </select>
+        </div>
+        <button
+          className="submit"
+        >
+          <i
+            className="fas fa-search"
+          />
+           Search
+        </button>
+      </form>
+    </div>
+  </div>
+  <div>
+    <div />
+  </div>
+</div>
+`;
+
+exports[`QuizSearch should render quiz serchByName, searchByCategory forms and results 1`] = `
+<div
+  id="quizSearch"
+>
+  <div
+    className="spacing"
+    id="notification"
+  />
+  <div
+    id="quizSearchTitle"
+  >
+    Quiz Search
+  </div>
+  <div
+    id="quizSearchByName"
+  >
+    <div>
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Quiz name:
+          </label>
+          <input
+            className="inputBox"
+            name="name"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            value=""
+          />
+        </div>
+        <button
+          className="submit"
+        >
+          <i
+            className="fas fa-search"
+          />
+           Search
+        </button>
+      </form>
+    </div>
+  </div>
+  <div
+    id="quizSearchByCategory"
+  >
+    <div>
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <select
+            className="inputBox"
+            name="category"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            value=""
+          >
+            <option
+              disabled={true}
+              value=""
+            >
+              Select a category
+            </option>
+            <option
+              value="test"
+            >
+              test
+            </option>
+            <option
+              value="test2"
+            >
+              test2
+            </option>
+            <option
+              value="test3"
+            >
+              test3
+            </option>
+          </select>
+        </div>
+        <button
+          className="submit"
+        >
+          <i
+            className="fas fa-search"
+          />
+           Search
+        </button>
+      </form>
+    </div>
+  </div>
+  <div>
+    <div
+      id="resultHeader"
+    >
+      2 Results
+    </div>
+    <div
+      id="resultsHeadings"
+    >
+      <div
+        id="nameHeader"
+      >
+        Quiz Name
+      </div>
+      <div
+        id="descriptionHeader"
+      >
+        Description
+      </div>
+    </div>
+    <div>
+      <div
+        className="quizContainer"
+      >
+        <div
+          className="quiz"
+        >
+          <div
+            className="quizName"
+          >
+            1
+          </div>
+          <div
+            className="quizDescription"
+          >
+            test
+          </div>
+          <div
+            className="options"
+          >
+            <a
+              className="edit"
+              href="/editQuiz"
+              onClick={[Function]}
+            >
+              <i
+                className="fas fa-edit blue"
+              />
+               Edit
+            </a>
+            <a
+              className="deleteOption"
+              href="/"
+              onClick={[Function]}
+            >
+              <i
+                className="fas fa-trash-alt red"
+              />
+               Delete
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="quizContainer"
+      >
+        <div
+          className="quiz"
+        >
+          <div
+            className="quizName"
+          >
+            2
+          </div>
+          <div
+            className="quizDescription"
+          >
+            test2
+          </div>
+          <div
+            className="options"
+          >
+            <a
+              className="edit"
+              href="/editQuiz"
+              onClick={[Function]}
+            >
+              <i
+                className="fas fa-edit blue"
+              />
+               Edit
+            </a>
+            <a
+              className="deleteOption"
+              href="/"
+              onClick={[Function]}
+            >
+              <i
+                className="fas fa-trash-alt red"
+              />
+               Delete
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

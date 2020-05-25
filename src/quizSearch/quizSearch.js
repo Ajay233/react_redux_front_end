@@ -16,11 +16,41 @@ import history from '../history'
 import "../stylesheets/quizSearch.css"
 
 
-class QuizSearch extends React.Component {
+export class QuizSearch extends React.Component {
 
   componentWillUnmount(){
     console.log("I will now clear the quizzes store :)")
     this.props.clearQuizes();
+  }
+
+  renderModal = () => {
+    const { hideModal } = this.props
+    const { showModal, showModal2 } = this.props.modalState
+    if(showModal === true){
+      return(
+        <Modal
+          type={"delete"}
+          show={showModal}
+          title={"Delete Quiz"}
+          message={"You are about to delete a quiz which will also delete any questions and answers associated with is"}
+          onDelete={this.handleDelete}
+          onCancel={hideModal}
+        />
+      );
+    } else if(showModal2 === true){
+      return(
+        <Modal
+          type={"start"}
+          show={showModal2}
+          title={"Start Quiz"}
+          message={"You are about to start a quiz, would you like to continue?"}
+          onStart={this.handleStartQuiz}
+          onCancel={hideModal}
+        />
+      );
+    } else {
+      return null;
+    }
   }
 
   renderResultsTitle = (quizes) => {
@@ -77,22 +107,7 @@ class QuizSearch extends React.Component {
     const { quizes, userData, setNotification, getQuizSearchResults, modalState, hideModal, lists } = this.props
     return(
       <div id="quizSearch">
-        <Modal
-          type={"delete"}
-          show={modalState.showModal}
-          title={"Delete Quiz"}
-          message={"You are about to delete a quiz which will also delete any questions and answers associated with is"}
-          onDelete={this.handleDelete}
-          onCancel={hideModal}
-        />
-        <Modal
-          type={"start"}
-          show={modalState.showModal2}
-          title={"Start Quiz"}
-          message={"You are about to start a quiz, would you like to continue?"}
-          onStart={this.handleStartQuiz}
-          onCancel={hideModal}
-        />
+        {this.renderModal()}
         <Notification />
         <div id="quizSearchTitle">Quiz Search</div>
         <div id="quizSearchByName">
@@ -122,7 +137,7 @@ class QuizSearch extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     userData: state.userData,
     notificationData: state.notificationData,
