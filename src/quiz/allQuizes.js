@@ -11,7 +11,7 @@ import { setNotification } from '../notifications/actions'
 import { del } from '../axiosRequests/requests'
 import { sessionExpired } from '../utils/session'
 
-class AllQuizes extends React.Component {
+export class AllQuizes extends React.Component {
 
   componentWillUnmount(){
     this.props.clearQuizes();
@@ -25,7 +25,7 @@ class AllQuizes extends React.Component {
     let quizesList = quizes.map(listItem => {
       let filteredQuizList = userData.permission === "USER" ? listItem.quizList.filter(quiz => quiz.status === "READY") : listItem.quizList;
       return(
-        <div className="bottomSpacing">
+        <div key={"QuizCategory" + quizes.indexOf(listItem)} className="bottomSpacing">
           <div className="title-large-left">{filteredQuizList.length === 0 ? null : listItem.category}</div>
           {this.renderResultHeadings(filteredQuizList)}
           <QuizResults key={"Quiz" + quizes.indexOf(listItem)} quizes={filteredQuizList} permission={userData.permission} jwt={userData.jwt} />
@@ -86,7 +86,7 @@ class AllQuizes extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     userData: state.userData,
     quizes: state.quizes,
