@@ -7,7 +7,7 @@ import { mount } from 'enzyme'
 import configureStore from 'redux-mock-store'
 import mockAxios from 'jest-mock-axios'
 import { render, fireEvent, cleanup } from '@testing-library/react'
-
+import renderer from 'react-test-renderer'
 import { getAllQuizes, deleteQuiz, clearQuizes } from '../quizSearch/actions'
 import { hideModal } from '../modal/actions'
 import { setNotification } from '../notifications/actions'
@@ -118,7 +118,7 @@ describe("AllQuizes", () => {
   })
 
   it("should render only READY quizes for a user", () => {
-    const wrapper = render(
+    const component = renderer.create(
       <Provider store={store}>
         <AllQuizes
           userData={userData}
@@ -129,7 +129,7 @@ describe("AllQuizes", () => {
       </Provider>
     )
 
-
+    expect(component).toMatchSnapshot()
   })
 
   it("should render all quizes regardless of status for ADMIN users", () => {
@@ -138,7 +138,7 @@ describe("AllQuizes", () => {
       permision: "ADMIN"
     }
 
-    const wrapper = render(
+    const component = renderer.create(
       <Provider store={store}>
         <AllQuizes
           userData={userData}
@@ -149,6 +149,7 @@ describe("AllQuizes", () => {
       </Provider>
     )
 
+    expect(component).toMatchSnapshot()
   })
 
   describe("handleDelete", () => {

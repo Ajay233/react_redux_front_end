@@ -17,7 +17,35 @@ import history from '../history'
 
 import '../stylesheets/quiz.css'
 
-class Quiz extends React.Component {
+export class Quiz extends React.Component {
+
+  renderModal = () => {
+    const { hideModal, currentQuestion } = this.props
+    const { showModal, showModal2 } = this.props.modalState
+    if(showModal === true){
+      return(
+        <Modal
+          show={showModal}
+          title={"Delete Question"}
+          message={`You are about to delete question ${currentQuestion.questionNumber}, this will also delete any associated answers for this question.`}
+          onDelete={this.handleDeleteQuestion}
+          onCancel={hideModal}
+        />
+      );
+    } else if(showModal2 === true) {
+      return (
+        <Modal
+          show={showModal2}
+          title={"Delete Quiz"}
+          message={"You are about to delete a quiz which will also delete any questions and answers associated with this"}
+          onDelete={this.handleDeleteQuiz}
+          onCancel={hideModal}
+        />
+      );
+    } else {
+      return null
+    }
+  }
 
   handleDeleteQuestion = () => {
     const { currentQuestion, userData, setNotification, deleteQuestion, hideModal } = this.props;
@@ -51,8 +79,12 @@ class Quiz extends React.Component {
       setNotification("Quiz deleted", "success", true)
     }).catch((error) => {
       console.log(error.response)
-      hideModal()
-      setNotification("Error - Unable to delete this quiz", "error", true)
+      if(error.response.status === 403){
+        sessionExpired(this.props.dispatch);
+      } else {
+        hideModal()
+        setNotification("Error - Unable to delete this quiz", "error", true)
+      }
     })
   }
 
@@ -98,12 +130,12 @@ class Quiz extends React.Component {
   }
 
   renderDeleteButton = () => {
-    return <button onClick={this.triggerModal} className="delete"><i className="fas fa-trash-alt"></i> Delete</button>
+    return <button data-testid="delete-quiz-button" onClick={this.triggerModal} className="delete"><i className="fas fa-trash-alt"></i> Delete</button>
   }
 
   renderStatusButton = () => {
     const { quiz } = this.props;
-    return( <button className={quiz.status === "DRAFT" ? "save" : "warningButton"} onClick={this.updateStatus}>
+    return( <button data-testid="updateStatus-button" className={quiz.status === "DRAFT" ? "save" : "warningButton"} onClick={this.updateStatus}>
               { quiz.status === "DRAFT" ? <i className="far fa-check-circle"></i> : <i className="fas fa-pencil-ruler"></i>}
               { quiz.status === "DRAFT" ? " Mark as Ready" : " Revert to draft" }
             </button>
@@ -150,23 +182,9 @@ class Quiz extends React.Component {
 
 
   render(){
-    const { currentQuestion, hideModal, modalState } = this.props
     return(
       <div id="quiz">
-        <Modal
-          show={modalState.showModal}
-          title={"Delete Question"}
-          message={`You are about to delete question ${currentQuestion.questionNumber}, this will also delete any associated answers for this question.`}
-          onDelete={this.handleDeleteQuestion}
-          onCancel={hideModal}
-        />
-        <Modal
-          show={modalState.showModal2}
-          title={"Delete Quiz"}
-          message={"You are about to delete a quiz which will also delete any questions and answers associated with this"}
-          onDelete={this.handleDeleteQuiz}
-          onCancel={hideModal}
-        />
+        {this.renderModal()}
         <Notification />
         {this.renderDetailsOrUpdate()}
         {this.renderOptions()}
@@ -185,7 +203,7 @@ class Quiz extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     userData: state.userData,
     quiz: state.quiz,
