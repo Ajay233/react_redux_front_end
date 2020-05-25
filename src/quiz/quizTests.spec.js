@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Quiz, mapStateToProps } from './Quiz'
+import { Quiz, mapStateToProps } from './quiz'
 import { Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
