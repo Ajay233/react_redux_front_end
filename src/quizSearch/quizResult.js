@@ -10,7 +10,7 @@ import { getQuestions, setCurrentQuestion } from '../question/actions'
 import { getAnswers } from '../answer/actions'
 
 
-class QuizResult extends React.Component {
+export class QuizResult extends React.Component {
 
   handleDelete = () => {
     this.props.setQuiz(this.props.quiz);
@@ -71,7 +71,7 @@ class QuizResult extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     userData: state.userData,
     modalState: state.modalState

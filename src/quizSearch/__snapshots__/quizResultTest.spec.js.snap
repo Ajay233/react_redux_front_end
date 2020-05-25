@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuizResult should render a quiz result and the appropriate options for a user with ADMIN permission 1`] = `
+<div
+  className="quizContainer"
+>
+  <div
+    className="quiz"
+  >
+    <div
+      className="quizName"
+    >
+      test
+    </div>
+    <div
+      className="quizDescription"
+    >
+      test
+    </div>
+    <div
+      className="options"
+    >
+      <a
+        className="edit"
+        href="/editQuiz"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-edit blue"
+        />
+         Edit
+      </a>
+      <a
+        className="deleteOption"
+        href="/"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-trash-alt red"
+        />
+         Delete
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`QuizResult should render a quiz result and the appropriate options for a user with READ-ONLY permission 1`] = `
+<div
+  className="quizContainer"
+>
+  <div
+    className="quiz"
+  >
+    <div
+      className="quizName"
+    >
+      test
+    </div>
+    <div
+      className="quizDescription"
+    >
+      test
+    </div>
+    <div
+      className="options"
+    >
+      <a
+        className="view"
+        href="/viewQuiz"
+        onClick={[Function]}
+      >
+        <i
+          className="far fa-eye blue"
+        />
+         View
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`QuizResult should render a quiz result and the appropriate options for a user with USER permission 1`] = `
+<div
+  className="quizContainer"
+>
+  <div
+    className="quiz"
+  >
+    <div
+      className="quizName"
+    >
+      test
+    </div>
+    <div
+      className="quizDescription"
+    >
+      test
+    </div>
+    <div
+      className="options"
+    >
+      <a
+        className="start"
+        href="/"
+        onClick={[Function]}
+      >
+        <i
+          className="far fa-play-circle blue"
+        />
+         Start
+      </a>
+    </div>
+  </div>
+</div>
+`;
