@@ -1,0 +1,236 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuestionView should render the QuestionView component, question details and answers 1`] = `
+<div
+  id="questionView"
+>
+  <div
+    className="spacing"
+    id="notification"
+  />
+  <div>
+    Question number 1 from the Quiz 1 quiz
+  </div>
+  <div>
+    Question description:
+  </div>
+  <div>
+    Test question
+  </div>
+  <div>
+    <a
+      className="add"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-plus-circle green"
+      />
+       Add an answer
+    </a>
+    <button
+      className="delete"
+      data-testid="delete-question-button"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-trash-alt"
+      />
+       Delete
+    </button>
+  </div>
+  <div
+    id="answersTitle"
+  >
+    Answers
+  </div>
+  <div
+    id="answerHeadings"
+  >
+    <div
+      id="numberHeader"
+    >
+      Answer
+    </div>
+    <div
+      id="descriptionHeader"
+    >
+      Description
+    </div>
+    <div
+      id="correctAnswerHeading"
+    >
+      Correct answer?
+    </div>
+    <div
+      id="optionsHeader"
+    />
+  </div>
+  <div
+    id="answers"
+  >
+    <div>
+      <div>
+        <div
+          className="answerContainer"
+        >
+          <div
+            className="ansNumber"
+          >
+            1
+          </div>
+          <div
+            className="ansDecription"
+          >
+            Test answer
+          </div>
+          <div
+            className="correctAns"
+          >
+            <i
+              className="far fa-times-circle red"
+            />
+          </div>
+          <div
+            className="options"
+          >
+            <a
+              className="edit"
+              onClick={[Function]}
+            >
+              <i
+                className="fas fa-edit blue"
+              />
+               Edit
+            </a>
+            <a
+              className="deleteOption"
+              onClick={[Function]}
+            >
+              <i
+                className="fas fa-trash-alt red"
+              />
+               Delete
+            </a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          className="answerContainer"
+        >
+          <div
+            className="ansNumber"
+          >
+            2
+          </div>
+          <div
+            className="ansDecription"
+          >
+            Test answer2
+          </div>
+          <div
+            className="correctAns"
+          >
+            <i
+              className="far fa-check-circle green"
+            />
+          </div>
+          <div
+            className="options"
+          >
+            <a
+              className="edit"
+              onClick={[Function]}
+            >
+              <i
+                className="fas fa-edit blue"
+              />
+               Edit
+            </a>
+            <a
+              className="deleteOption"
+              onClick={[Function]}
+            >
+              <i
+                className="fas fa-trash-alt red"
+              />
+               Delete
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`QuestionView should render the QuestionView component, update question form and no answers if the answers array is empty 1`] = `
+<div
+  id="questionView"
+>
+  <div
+    className="spacing"
+    id="notification"
+  />
+  <div>
+    Question number 1 from the Quiz 1 quiz
+  </div>
+  <div>
+    Question description:
+  </div>
+  <div>
+    Test question
+  </div>
+  <div>
+    <a
+      className="add"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-plus-circle green"
+      />
+       Add an answer
+    </a>
+    <button
+      className="delete"
+      data-testid="delete-question-button"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-trash-alt"
+      />
+       Delete
+    </button>
+  </div>
+  <div
+    id="answersTitle"
+  >
+    Answers
+  </div>
+  <div
+    id="answerHeadings"
+  >
+    <div
+      id="numberHeader"
+    >
+      Answer
+    </div>
+    <div
+      id="descriptionHeader"
+    >
+      Description
+    </div>
+    <div
+      id="correctAnswerHeading"
+    >
+      Correct answer?
+    </div>
+    <div
+      id="optionsHeader"
+    />
+  </div>
+  <div
+    id="answers"
+  />
+</div>
+`;

@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { Router } from 'react-router-dom'
 import Modal from '../modal/modal'
-import { ManageAccount, mapStateToProps } from './ManageAccount'
+import { ManageAccount, mapStateToProps } from './manageAccount'
 import configureStore from 'redux-mock-store'
 import mockAxios from 'jest-mock-axios'
 import { mount } from 'enzyme'
 import renderer from 'react-test-renderer'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, cleanup } from '@testing-library/react'
 import history from '../history'
 
 import { setNotification } from '../notifications/actions'
@@ -100,6 +100,7 @@ describe("Manage Account", () => {
   afterEach(() => {
     setNotification.mockClear()
     mockAxios.reset()
+    cleanup()
   })
 
   it("should call showModal when delete account is clicked", () => {

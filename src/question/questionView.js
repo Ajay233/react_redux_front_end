@@ -19,6 +19,34 @@ import '../stylesheets/answer.css'
 
 export class QuestionView extends React.Component {
 
+  renderModal = () => {
+    const { currentAnswer, hideModal, currentQuestion } = this.props
+    const { showModal, showModal2 } = this.props.modalState
+    if(showModal === true){
+      return(<Modal
+          type={"delete"}
+          show={showModal}
+          title={"Delete Answer"}
+          message={`You are about to delete answer ${currentAnswer.answerNumber}`}
+          onDelete={this.handleDeleteAnswer}
+          onCancel={hideModal}
+        />
+      );
+    } else if(showModal2 === true){
+      return(<Modal
+          type={"delete"}
+          show={showModal2}
+          title={"Delete Question"}
+          message={`You are about to delete question ${currentQuestion.questionNumber}, this will also delete any associated answers for this question.`}
+          onDelete={this.handleDeleteQuestion}
+          onCancel={hideModal}
+        />
+      );
+    } else {
+      return null
+    }
+  }
+
   renderAnswers = () => {
     const { answers, userData, setCurrentAnswer, setNotification, deleteAnswer, showModal } = this.props;
     return answers.length === 0 ? null :
@@ -79,8 +107,12 @@ export class QuestionView extends React.Component {
       setNotification("Question deleted", "success", true);
     }).catch((error) => {
       console.log(error.response);
-      hideModal()
-      setNotification("Error - Unable to delete this question", "error", true)
+      if(error.response.status === 403){
+        sessionExpired(this.props.dispatch);
+      } else {
+        hideModal()
+        setNotification("Error - Unable to delete this question", "error", true)
+      }
     });
   }
 
@@ -93,7 +125,7 @@ export class QuestionView extends React.Component {
   }
 
   renderDeleteButton = () => {
-    return <button onClick={this.triggerModal} className="delete"><i className="fas fa-trash-alt"></i> Delete</button>
+    return <button data-testid="delete-question-button" onClick={this.triggerModal} className="delete"><i className="fas fa-trash-alt"></i> Delete</button>
   }
 
   renderOptions = () => {
@@ -106,22 +138,7 @@ export class QuestionView extends React.Component {
     const { showModal, showModal2} = this.props.modalState
     return(
       <div id="questionView">
-        <Modal
-          type={"delete"}
-          show={showModal}
-          title={"Delete Answer"}
-          message={`You are about to delete answer ${currentAnswer.answerNumber}`}
-          onDelete={this.handleDeleteAnswer}
-          onCancel={hideModal}
-        />
-        <Modal
-          type={"delete"}
-          show={showModal2}
-          title={"Delete Question"}
-          message={`You are about to delete question ${currentQuestion.questionNumber}, this will also delete any associated answers for this question.`}
-          onDelete={this.handleDeleteQuestion}
-          onCancel={hideModal}
-        />
+        {this.renderModal()}
         <Notification />
         {this.renderFormOrDetails()}
         {this.renderOptions()}
