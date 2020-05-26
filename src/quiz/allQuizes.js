@@ -12,6 +12,8 @@ import { del } from '../axiosRequests/requests'
 import { sessionExpired } from '../utils/session'
 import history from '../history'
 
+import "../stylesheets/allQuizzes.css"
+
 export class AllQuizes extends React.Component {
 
   componentWillUnmount(){
@@ -47,6 +49,24 @@ export class AllQuizes extends React.Component {
     }
   }
 
+  renderCategoryIcon = (category) => {
+    switch (category) {
+      case "Comics": return <div><img className="categoryIcon" src={require("../public/icons/comics.png")} alt=""/></div>
+      case "TV": return <div><img className="categoryIcon" src={require("../public/icons/tv.png")} alt=""/></div>
+      case "Gaming": return <div><img className="categoryIcon" src={require("../public/icons/games.png")} alt=""/></div>
+      case "Films": return <div><img className="categoryIcon" src={require("../public/icons/films2.png")} alt=""/></div>
+      case "Sports": return <div><img className="categoryIcon" src={require("../public/icons/sport.png")} alt=""/></div>
+      case "Music": return <div><img className="categoryIcon" src={require("../public/icons/music.png")} alt=""/></div>
+      case "History": return <div><img className="categoryIcon" src={require("../public/icons/books.png")} alt=""/></div>
+      case "Science": return <div><img className="categoryIcon" src={require("../public/icons/science.png")} alt=""/></div>
+      case "Technology": return <div><img className="categoryIcon" src={require("../public/icons/technology.png")} alt=""/></div>
+      case "Art": return <div><img className="categoryIcon" src={require("../public/icons/art.png")} alt=""/></div>
+      case "Literature": return <div><img className="categoryIcon" src={require("../public/icons/books.png")} alt=""/></div>
+      case "General Knowledge": return <div><img className="categoryIcon" src={require("../public/icons/generalKnowledge.png")} alt=""/></div>
+      default: return null
+    }
+  }
+
   // add contitional css alternate between left and right align classes
   // Will need a way to turn this on and off, possibly by using history.location.pathname
   // so this is only applied on the all quizes view
@@ -55,8 +75,11 @@ export class AllQuizes extends React.Component {
     let quizesList = quizes.map(listItem => {
       let filteredQuizList = userData.permission === "USER" ? listItem.quizList.filter(quiz => quiz.status === "READY") : listItem.quizList;
       return(
-        <div key={"QuizCategory" + quizes.indexOf(listItem)} className="bottomSpacing">
-          <div className="title-large-left">{filteredQuizList.length === 0 ? null : listItem.category}</div>
+        <div key={"QuizCategory" + quizes.indexOf(listItem)} className="quizCategorySection">
+          <div className="categoryHeader">
+            <div className="categoryTitle">{filteredQuizList.length === 0 ? null : listItem.category}</div>
+            <div>{filteredQuizList.length === 0 ? null : this.renderCategoryIcon(listItem.category)}</div>
+          </div>
           {this.renderResultHeadings(filteredQuizList)}
           <QuizResults key={"Quiz" + quizes.indexOf(listItem)} quizes={filteredQuizList} permission={userData.permission} jwt={userData.jwt} />
         </div>
@@ -111,6 +134,7 @@ export class AllQuizes extends React.Component {
     return(
       <div className="componentContainer">
         <Notification />
+        <div id="allQuizzesTitle">Browse all quizzes by Category</div>
         {this.renderModal()}
         {this.renderCategories()}
       </div>

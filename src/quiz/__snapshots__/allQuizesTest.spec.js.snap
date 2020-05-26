@@ -9,12 +9,22 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
     id="notification"
   />
   <div
-    className="bottomSpacing"
+    id="allQuizzesTitle"
+  >
+    Browse all quizzes by Category
+  </div>
+  <div
+    className="quizCategorySection"
   >
     <div
-      className="title-large-left"
+      className="categoryHeader"
     >
-      test1
+      <div
+        className="categoryTitle"
+      >
+        test1
+      </div>
+      <div />
     </div>
     <div
       id="resultsHeadings"
@@ -76,12 +86,17 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
     </div>
   </div>
   <div
-    className="bottomSpacing"
+    className="quizCategorySection"
   >
     <div
-      className="title-large-left"
+      className="categoryHeader"
     >
-      test2
+      <div
+        className="categoryTitle"
+      >
+        test2
+      </div>
+      <div />
     </div>
     <div
       id="resultsHeadings"
@@ -143,11 +158,16 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
     </div>
   </div>
   <div
-    className="bottomSpacing"
+    className="quizCategorySection"
   >
     <div
-      className="title-large-left"
-    />
+      className="categoryHeader"
+    >
+      <div
+        className="categoryTitle"
+      />
+      <div />
+    </div>
     <div />
   </div>
 </div>
@@ -162,12 +182,22 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
     id="notification"
   />
   <div
-    className="bottomSpacing"
+    id="allQuizzesTitle"
+  >
+    Browse all quizzes by Category
+  </div>
+  <div
+    className="quizCategorySection"
   >
     <div
-      className="title-large-left"
+      className="categoryHeader"
     >
-      test1
+      <div
+        className="categoryTitle"
+      >
+        test1
+      </div>
+      <div />
     </div>
     <div
       id="resultsHeadings"
@@ -229,12 +259,17 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
     </div>
   </div>
   <div
-    className="bottomSpacing"
+    className="quizCategorySection"
   >
     <div
-      className="title-large-left"
+      className="categoryHeader"
     >
-      test2
+      <div
+        className="categoryTitle"
+      >
+        test2
+      </div>
+      <div />
     </div>
     <div
       id="resultsHeadings"
@@ -296,11 +331,16 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
     </div>
   </div>
   <div
-    className="bottomSpacing"
+    className="quizCategorySection"
   >
     <div
-      className="title-large-left"
-    />
+      className="categoryHeader"
+    >
+      <div
+        className="categoryTitle"
+      />
+      <div />
+    </div>
     <div />
   </div>
 </div>
