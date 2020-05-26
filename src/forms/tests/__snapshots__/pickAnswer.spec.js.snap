@@ -1,115 +1,151 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`pickAnswer form should match the snapshot, button title should be: 'Finish' 1`] = `
-<div>
+<div
+  id="pickAnswerForm"
+>
   <form
     onSubmit={[Function]}
   >
-    Answers
-    <div>
-      <label>
-        <input
-          checked={false}
-          className="radioInput"
-          name="answer"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          onFocus={[Function]}
-          type="radio"
-          value="test"
-        />
-        test
-      </label>
-    </div>
-    <div>
-      <label>
-        <input
-          checked={false}
-          className="radioInput"
-          name="answer"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          onFocus={[Function]}
-          type="radio"
-          value="test2"
-        />
-        test2
-      </label>
-    </div>
-    <button
-      className="submit"
-      data-testid="next-button"
+    <div
+      id="answerContainer"
     >
-      Finish
-    </button>
-    <button
-      className="submit"
-      data-testid="quit-button"
-      onClick={[Function]}
+      <div
+        className="title-medium-left-alt"
+      >
+        Answers
+      </div>
+      <div>
+        <label>
+          <input
+            checked={false}
+            className="radioInput"
+            name="answer"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type="radio"
+            value="test"
+          />
+          test
+        </label>
+      </div>
+      <div>
+        <label>
+          <input
+            checked={false}
+            className="radioInput"
+            name="answer"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type="radio"
+            value="test2"
+          />
+          test2
+        </label>
+      </div>
+    </div>
+    <img
+      alt=""
+      src="reply.png"
+    />
+    <div
+      className="buttonContainer"
     >
-      Quit
-    </button>
+      <button
+        className="submit quizButton-left"
+        data-testid="next-button"
+      >
+        Finish
+      </button>
+      <button
+        className="submit quizButton-right"
+        data-testid="quit-button"
+        onClick={[Function]}
+      >
+        Quit
+      </button>
+    </div>
   </form>
 </div>
 `;
 
 exports[`pickAnswer form should match the snapshot, button title should be: 'Next Question' 1`] = `
-<div>
+<div
+  id="pickAnswerForm"
+>
   <form
     onSubmit={[Function]}
   >
-    Answers
-    <div>
-      <label>
-        <input
-          checked={false}
-          className="radioInput"
-          name="answer"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          onFocus={[Function]}
-          type="radio"
-          value="test"
-        />
-        test
-      </label>
-    </div>
-    <div>
-      <label>
-        <input
-          checked={false}
-          className="radioInput"
-          name="answer"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          onFocus={[Function]}
-          type="radio"
-          value="test2"
-        />
-        test2
-      </label>
-    </div>
-    <button
-      className="submit"
-      data-testid="next-button"
+    <div
+      id="answerContainer"
     >
-      Next Question
-    </button>
-    <button
-      className="submit"
-      data-testid="quit-button"
-      onClick={[Function]}
+      <div
+        className="title-medium-left-alt"
+      >
+        Answers
+      </div>
+      <div>
+        <label>
+          <input
+            checked={false}
+            className="radioInput"
+            name="answer"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type="radio"
+            value="test"
+          />
+          test
+        </label>
+      </div>
+      <div>
+        <label>
+          <input
+            checked={false}
+            className="radioInput"
+            name="answer"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            type="radio"
+            value="test2"
+          />
+          test2
+        </label>
+      </div>
+    </div>
+    <img
+      alt=""
+      src="reply.png"
+    />
+    <div
+      className="buttonContainer"
     >
-      Quit
-    </button>
+      <button
+        className="submit quizButton-left"
+        data-testid="next-button"
+      >
+        Next Question
+      </button>
+      <button
+        className="submit quizButton-right"
+        data-testid="quit-button"
+        onClick={[Function]}
+      >
+        Quit
+      </button>
+    </div>
   </form>
 </div>
 `;

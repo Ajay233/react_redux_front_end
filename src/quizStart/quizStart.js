@@ -6,6 +6,8 @@ import { addAnswer, incrementQuestion, showResults, exitQuiz } from './actions'
 import { setCurrentQuestion } from '../question/actions'
 import { getAnswers } from '../answer/actions'
 
+import '../stylesheets/quizStart.css'
+
 export class QuizStart extends React.Component {
 
   handleSubmit = ({ answer }) => {
@@ -38,14 +40,14 @@ export class QuizStart extends React.Component {
     const { questions } = this.props;
     const { answersPicked, showResults } = this.props.quizProgressTracking
     const correctAnswers = answersPicked.filter(e => { return e.correctAnswer === true })
-    return showResults ? <div className="title-large">{`You scored ${correctAnswers.length} out of ${questions.length}`}</div> : null;
+    return showResults ? <div id="quizResult" className="title-large"><b>{`You scored ${correctAnswers.length} out of ${questions.length}`}</b></div> : null;
   }
 
   renderQuestion = () => {
     const { currentQuestion } = this.props;
     return(
-      <div className="sectionSpacing">
-        <div className="title-medium-left">{`Question ${currentQuestion.questionNumber}`}</div>
+      <div id="questionContainer" className="sectionSpacing">
+        <div className="title-medium-left-alt">{`Question ${currentQuestion.questionNumber}`}</div>
         <div>
           {currentQuestion.description}
         </div>
@@ -59,18 +61,25 @@ export class QuizStart extends React.Component {
     return(
       <div className="componentContainer">
         {questions[1] === undefined ? null : console.log(questions[1].description)}
-        <div className="title-large">{quiz.name}</div>
-        {this.renderQuestion()}
-        <PickAnswer
-          title={"Answers"}
-          answers={answers}
-          onSubmit={this.handleSubmit}
-          numberOfQuestions={questions.length}
-          currentQuestionNumber={questionNumber + 1}
-          showResults={showResults}
-          exit={exitQuiz}
-          />
-        {this.renderResults()}
+        <div id="quizStartTitle">{quiz.name}</div>
+        <div id="quizStartContainer">
+          <div id="questionDetailsContainer">
+            {this.renderQuestion()}
+            <img src={require("../public/icons/quizBot2.png")} alt="" />
+            {this.renderResults()}
+          </div>
+          <div id="answerFormContainer">
+            <PickAnswer
+              title={"Answers"}
+              answers={answers}
+              onSubmit={this.handleSubmit}
+              numberOfQuestions={questions.length}
+              currentQuestionNumber={questionNumber + 1}
+              showResults={showResults}
+              exit={exitQuiz}
+            />
+          </div>
+        </div>
       </div>
     );
   }

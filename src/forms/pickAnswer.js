@@ -23,7 +23,6 @@ const PickAnswer = (props) => {
 
   const renderError = (meta) => {
     const { error, touched } = meta
-
     return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null;
   }
 
@@ -56,12 +55,17 @@ const PickAnswer = (props) => {
   }
 
   return(
-    <div>
+    <div id="pickAnswerForm">
       <form onSubmit={props.handleSubmit(submitForm)}>
-        {props.title}
+        <div id="answerContainer">
+        <div className="title-medium-left-alt">{props.title}</div>
         {mapFields(props.answers)}
-        <button data-testid="next-button" className="submit" >{renderButtonTitle()}</button>
-        <button data-testid="quit-button" className="submit" onClick={handleClick}>Quit</button>
+        </div>
+        <img src={require("../public/icons/reply.png")} alt="" />
+        <div className="buttonContainer">
+          <button data-testid="next-button" className="submit quizButton-left" >{renderButtonTitle()}</button>
+          <button data-testid="quit-button" className="submit quizButton-right" onClick={handleClick}>Quit</button>
+        </div>
       </form>
     </div>
   );

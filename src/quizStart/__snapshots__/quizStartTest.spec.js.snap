@@ -5,75 +5,110 @@ exports[`should render a question, list of answers to pick, 'next question' and 
   className="componentContainer"
 >
   <div
-    className="title-large"
+    id="quizStartTitle"
   >
     test
   </div>
   <div
-    className="sectionSpacing"
+    id="quizStartContainer"
   >
     <div
-      className="title-medium-left"
+      id="questionDetailsContainer"
     >
-      Question 1
-    </div>
-    <div>
-      test
-    </div>
-  </div>
-  <div>
-    <form
-      onSubmit={[Function]}
-    >
-      Answers
-      <div>
-        <label>
-          <input
-            checked={false}
-            className="radioInput"
-            name="answer"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onDragStart={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            type="radio"
-            value="test"
-          />
+      <div
+        className="sectionSpacing"
+        id="questionContainer"
+      >
+        <div
+          className="title-medium-left-alt"
+        >
+          Question 1
+        </div>
+        <div>
           test
-        </label>
+        </div>
       </div>
-      <div>
-        <label>
-          <input
-            checked={false}
-            className="radioInput"
-            name="answer"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onDragStart={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            type="radio"
-            value="test2"
+      <img
+        alt=""
+        src="quizBot2.png"
+      />
+    </div>
+    <div
+      id="answerFormContainer"
+    >
+      <div
+        id="pickAnswerForm"
+      >
+        <form
+          onSubmit={[Function]}
+        >
+          <div
+            id="answerContainer"
+          >
+            <div
+              className="title-medium-left-alt"
+            >
+              Answers
+            </div>
+            <div>
+              <label>
+                <input
+                  checked={false}
+                  className="radioInput"
+                  name="answer"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onDragStart={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  type="radio"
+                  value="test"
+                />
+                test
+              </label>
+            </div>
+            <div>
+              <label>
+                <input
+                  checked={false}
+                  className="radioInput"
+                  name="answer"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onDragStart={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  type="radio"
+                  value="test2"
+                />
+                test2
+              </label>
+            </div>
+          </div>
+          <img
+            alt=""
+            src="reply.png"
           />
-          test2
-        </label>
+          <div
+            className="buttonContainer"
+          >
+            <button
+              className="submit quizButton-left"
+              data-testid="next-button"
+            >
+              Next Question
+            </button>
+            <button
+              className="submit quizButton-right"
+              data-testid="quit-button"
+              onClick={[Function]}
+            >
+              Quit
+            </button>
+          </div>
+        </form>
       </div>
-      <button
-        className="submit"
-        data-testid="next-button"
-      >
-        Next Question
-      </button>
-      <button
-        className="submit"
-        data-testid="quit-button"
-        onClick={[Function]}
-      >
-        Quit
-      </button>
-    </form>
+    </div>
   </div>
 </div>
 `;
@@ -83,80 +118,118 @@ exports[`should render the results 1`] = `
   className="componentContainer"
 >
   <div
-    className="title-large"
+    id="quizStartTitle"
   >
     test
   </div>
   <div
-    className="sectionSpacing"
+    id="quizStartContainer"
   >
     <div
-      className="title-medium-left"
+      id="questionDetailsContainer"
     >
-      Question 1
-    </div>
-    <div>
-      test
-    </div>
-  </div>
-  <div>
-    <form
-      onSubmit={[Function]}
-    >
-      Answers
-      <div>
-        <label>
-          <input
-            checked={false}
-            className="radioInput"
-            name="answer"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onDragStart={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            type="radio"
-            value="test"
-          />
+      <div
+        className="sectionSpacing"
+        id="questionContainer"
+      >
+        <div
+          className="title-medium-left-alt"
+        >
+          Question 1
+        </div>
+        <div>
           test
-        </label>
+        </div>
       </div>
-      <div>
-        <label>
-          <input
-            checked={false}
-            className="radioInput"
-            name="answer"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onDragStart={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            type="radio"
-            value="test2"
+      <img
+        alt=""
+        src="quizBot2.png"
+      />
+      <div
+        className="title-large"
+        id="quizResult"
+      >
+        <b>
+          You scored 1 out of 2
+        </b>
+      </div>
+    </div>
+    <div
+      id="answerFormContainer"
+    >
+      <div
+        id="pickAnswerForm"
+      >
+        <form
+          onSubmit={[Function]}
+        >
+          <div
+            id="answerContainer"
+          >
+            <div
+              className="title-medium-left-alt"
+            >
+              Answers
+            </div>
+            <div>
+              <label>
+                <input
+                  checked={false}
+                  className="radioInput"
+                  name="answer"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onDragStart={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  type="radio"
+                  value="test"
+                />
+                test
+              </label>
+            </div>
+            <div>
+              <label>
+                <input
+                  checked={false}
+                  className="radioInput"
+                  name="answer"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onDragStart={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  type="radio"
+                  value="test2"
+                />
+                test2
+              </label>
+            </div>
+          </div>
+          <img
+            alt=""
+            src="reply.png"
           />
-          test2
-        </label>
+          <div
+            className="buttonContainer"
+          >
+            <button
+              className="submit quizButton-left"
+              data-testid="next-button"
+            >
+              Finish
+            </button>
+            <button
+              className="submit quizButton-right"
+              data-testid="quit-button"
+              onClick={[Function]}
+            >
+              Quit
+            </button>
+          </div>
+        </form>
       </div>
-      <button
-        className="submit"
-        data-testid="next-button"
-      >
-        Finish
-      </button>
-      <button
-        className="submit"
-        data-testid="quit-button"
-        onClick={[Function]}
-      >
-        Quit
-      </button>
-    </form>
-  </div>
-  <div
-    className="title-large"
-  >
-    You scored 1 out of 2
+    </div>
   </div>
 </div>
 `;
