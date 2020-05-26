@@ -4,7 +4,7 @@ import history from '../history'
 
 const PickAnswer = (props) => {
 
-  const renderInput = (formProps) => {
+  const renderInputWithError = (formProps) => {
     return(
       <div>
         {renderError(formProps.meta)}
@@ -13,8 +13,17 @@ const PickAnswer = (props) => {
     );
   }
 
+  const renderInput = (formProps) => {
+    return(
+      <div>
+        <label><input {...formProps.input} type={formProps.type} className="radioInput"/>{formProps.label}</label>
+      </div>
+    );
+  }
+
   const renderError = (meta) => {
     const { error, touched } = meta
+
     return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null;
   }
 
@@ -22,8 +31,10 @@ const PickAnswer = (props) => {
     let listOfFields = answers.map(answer => {
       return <Field
                 key={answers.indexOf(answer)}
-                name="answer" component={renderInput}
-                type="radio" value={answer.description}
+                name="answer"
+                component={ answers.indexOf(answer) === 0 ? renderInputWithError : renderInput }
+                type="radio"
+                value={answer.description}
                 label={`${answer.description}`}
               />
     })
@@ -59,13 +70,14 @@ const PickAnswer = (props) => {
 // needs to be updated to validate whether number of picked answers matches the
 // number of correct answers in answers array
 const validate = (formValues) => {
+  console.log(formValues)
   const errors = {}
 
   if(!formValues.answer){
-    errors.answer = "You must pick an answer"
+    errors.answer = "You must pick an answer before you can continue to the next question"
   }
 
   return errors
 }
 
-export default reduxForm({ form: 'pickedAnswer', enableReinitialize: true })(PickAnswer)
+export default reduxForm({ form: 'pickedAnswer', validate: validate, enableReinitialize: true })(PickAnswer)
