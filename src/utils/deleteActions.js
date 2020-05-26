@@ -13,3 +13,15 @@ import history from '../history'
 //     handleErrors(error.response.status, dispatch, errorMsg)
 //   });
 // }
+
+export const deleteQuizFromCategory = (state, quiz) => {
+  let filteredState = state.map(element => {
+    if(element.category !== quiz.category){
+      return element
+    } else {
+      let updatedList = element.quizList.filter(listItem => listItem !== quiz)
+      return {...element, quizList: updatedList}
+    }
+  })
+  return filteredState
+}

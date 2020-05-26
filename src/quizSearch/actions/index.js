@@ -70,3 +70,10 @@ export const clearQuizes = () => {
     payload: []
   }
 }
+
+export const deleteQuizFromCategory = (quiz) => {
+  return {
+    type: "DELETE_QUIZ_FROM_CATEGORY",
+    payload: quiz
+  }
+}

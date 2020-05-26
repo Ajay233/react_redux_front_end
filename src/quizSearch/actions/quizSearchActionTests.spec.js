@@ -7,7 +7,8 @@ import {
   getQuizSearchResults,
   deleteQuiz,
   addQuiz,
-  clearQuizes
+  clearQuizes,
+  deleteQuizFromCategory
 } from './index'
 import mockAxios from 'jest-mock-axios'
 
@@ -288,5 +289,18 @@ describe("clearQuizes", () => {
     }
 
     expect(clearQuizes()).toEqual(expectedAction)
+  })
+})
+
+describe("deleteQuizFromCategory", () => {
+  it("should return an action to quiz from a category's quizList in quizes store", () => {
+    const expectedAction = {
+      type: "DELETE_QUIZ_FROM_CATEGORY",
+      payload: { id: 1, name: "test" }
+    }
+
+    const quiz = { id: 1, name: "test" }
+
+    expect(deleteQuizFromCategory(quiz)).toEqual(expectedAction)
   })
 })

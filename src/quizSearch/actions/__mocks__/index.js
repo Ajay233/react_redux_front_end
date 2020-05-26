@@ -9,3 +9,5 @@ export const deleteQuiz = jest.fn()
 export const addQuiz = jest.fn()
 
 export const clearQuizes = jest.fn()
+
+export const deleteQuizFromCategory = jest.fn()

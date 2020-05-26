@@ -8,7 +8,7 @@ import configureStore from 'redux-mock-store'
 import mockAxios from 'jest-mock-axios'
 import { render, fireEvent, cleanup } from '@testing-library/react'
 import renderer from 'react-test-renderer'
-import { getAllQuizes, deleteQuiz, clearQuizes } from '../quizSearch/actions'
+import { getAllQuizes, deleteQuizFromCategory, clearQuizes } from '../quizSearch/actions'
 import { hideModal } from '../modal/actions'
 import { setNotification } from '../notifications/actions'
 import { sessionExpired } from '../utils/session'
@@ -179,7 +179,7 @@ describe("AllQuizes", () => {
             quizes={quizes}
             clearQuizes={clearQuizes}
             hideModal={hideModal}
-            deleteQuiz={deleteQuiz}
+            deleteQuizFromCategory={deleteQuizFromCategory}
             setNotification={setNotification}
           />
         </Provider>
@@ -192,7 +192,7 @@ describe("AllQuizes", () => {
       fireEvent.click(wrapper.getByTestId("modal-delete-button"))
       mockAxios.mockResponse(requestResponse)
       expect(hideModal).toHaveBeenCalledTimes(1)
-      expect(deleteQuiz).toHaveBeenCalledTimes(1)
+      expect(deleteQuizFromCategory).toHaveBeenCalledTimes(1)
       expect(setNotification).toHaveBeenCalledTimes(1)
       expect(setNotification).toHaveBeenCalledWith("Quiz deleted", "success", true)
     })
@@ -207,7 +207,7 @@ describe("AllQuizes", () => {
             quizes={quizes}
             clearQuizes={clearQuizes}
             hideModal={hideModal}
-            deleteQuiz={deleteQuiz}
+            deleteQuizFromCategory={deleteQuizFromCategory}
             setNotification={setNotification}
           />
         </Provider>
@@ -234,7 +234,7 @@ describe("AllQuizes", () => {
             quizes={quizes}
             clearQuizes={clearQuizes}
             hideModal={hideModal}
-            deleteQuiz={deleteQuiz}
+            deleteQuizFromCategory={deleteQuizFromCategory}
             setNotification={setNotification}
           />
         </Provider>
@@ -268,7 +268,7 @@ describe("AllQuizes", () => {
             quiz={quiz}
             clearQuizes={clearQuizes}
             hideModal={hideModal}
-            deleteQuiz={deleteQuiz}
+            deleteQuizFromCategory={deleteQuizFromCategory}
             setNotification={setNotification}
             getQuestions={getQuestions}
           />

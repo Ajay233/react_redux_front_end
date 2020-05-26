@@ -4,7 +4,7 @@ import Notification from '../notifications/notifications'
 import QuizResults from '../quizSearch/quizResults'
 import Modal from '../modal/modal'
 
-import { getAllQuizes, deleteQuiz, clearQuizes } from '../quizSearch/actions'
+import { getAllQuizes, deleteQuizFromCategory, clearQuizes } from '../quizSearch/actions'
 import { hideModal } from '../modal/actions'
 import { setNotification } from '../notifications/actions'
 import { getQuestions } from '../question/actions'
@@ -79,13 +79,13 @@ export class AllQuizes extends React.Component {
   }
 
   handleDelete = () => {
-    const { quiz, userData, deleteQuiz, setNotification, hideModal } = this.props;
+    const { quiz, userData, deleteQuizFromCategory, setNotification, hideModal } = this.props;
     const config = {
       data: quiz
     }
     del("quiz/delete", config, userData.jwt).then((response) => {
       hideModal()
-      deleteQuiz(quiz)
+      deleteQuizFromCategory(quiz)
       setNotification("Quiz deleted", "success", true)
     }).catch((error) => {
       console.log(error.response)
@@ -129,7 +129,7 @@ export const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps,
   { getAllQuizes,
-    deleteQuiz,
+    deleteQuizFromCategory,
     getQuestions,
     hideModal,
     setNotification,
