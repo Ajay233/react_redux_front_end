@@ -12,6 +12,8 @@ import { getAllQuizes, deleteQuiz, clearQuizes } from '../quizSearch/actions'
 import { hideModal } from '../modal/actions'
 import { setNotification } from '../notifications/actions'
 import { sessionExpired } from '../utils/session'
+import { getQuestions } from '../question/actions'
+import history from '../history'
 
 const mockStore = configureStore({})
 
@@ -19,6 +21,8 @@ jest.mock('../quizSearch/actions')
 jest.mock('../modal/actions')
 jest.mock('../notifications/actions')
 jest.mock('../utils/session')
+jest.mock('../question/actions')
+jest.mock('../history')
 
 describe("mapStateToProps", () => {
   it("should map state to props", () => {
@@ -40,13 +44,13 @@ describe("mapStateToProps", () => {
 })
 
 
-// 23,24,37,38,39
 describe("AllQuizes", () => {
 
   let store;
   let userData;
   let modalState;
   let quizes;
+  let quiz;
 
   beforeEach(() => {
     store = mockStore({
@@ -109,8 +113,11 @@ describe("AllQuizes", () => {
 
     userData = {
       id: 1,
-      permision: "USER"
+      permision: "USER",
+      jwt: "jwt"
     }
+
+    quiz = { id: 1, name: "test", description: "test" }
 
     ReactDOM.createPortal = jest.fn((element, node) => {
       return element
@@ -154,6 +161,8 @@ describe("AllQuizes", () => {
 
   describe("handleDelete", () => {
 
+    const renderModal1 = { showModal: true, showModal2: false, showModal3: false }
+
     afterEach(() => {
       setNotification.mockClear()
       hideModal.mockClear()
@@ -166,7 +175,7 @@ describe("AllQuizes", () => {
         <Provider store={store}>
           <AllQuizes
             userData={userData}
-            modalState={modalState}
+            modalState={renderModal1}
             quizes={quizes}
             clearQuizes={clearQuizes}
             hideModal={hideModal}
@@ -194,7 +203,7 @@ describe("AllQuizes", () => {
         <Provider store={store}>
           <AllQuizes
             userData={userData}
-            modalState={modalState}
+            modalState={renderModal1}
             quizes={quizes}
             clearQuizes={clearQuizes}
             hideModal={hideModal}
@@ -221,7 +230,7 @@ describe("AllQuizes", () => {
         <Provider store={store}>
           <AllQuizes
             userData={userData}
-            modalState={modalState}
+            modalState={renderModal1}
             quizes={quizes}
             clearQuizes={clearQuizes}
             hideModal={hideModal}
@@ -245,5 +254,36 @@ describe("AllQuizes", () => {
     })
   })
 
+  describe("handleStartQuiz", () => {
+    it("should call getQuestions, hideModal, history.push", () => {
+
+      const renderModal2 = { showModal: false, showModal2: true, showModal3: false }
+
+      const wrapper = render(
+        <Provider store={store}>
+          <AllQuizes
+            userData={userData}
+            modalState={renderModal2}
+            quizes={quizes}
+            quiz={quiz}
+            clearQuizes={clearQuizes}
+            hideModal={hideModal}
+            deleteQuiz={deleteQuiz}
+            setNotification={setNotification}
+            getQuestions={getQuestions}
+          />
+        </Provider>
+      )
+
+      const param = { quizId: 1 }
+
+      fireEvent.click(wrapper.getByTestId("modal-start-button"))
+      expect(getQuestions).toHaveBeenCalledTimes(1)
+      expect(getQuestions).toHaveBeenCalledWith("question/findByQuizId", param, "jwt", true)
+      expect(hideModal).toHaveBeenCalledTimes(1)
+      expect(history.push).toHaveBeenCalledTimes(1)
+      expect(history.push).toHaveBeenCalledWith("/startQuiz")
+    })
+  })
 
 })

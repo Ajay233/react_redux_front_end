@@ -7,14 +7,44 @@ import Modal from '../modal/modal'
 import { getAllQuizes, deleteQuiz, clearQuizes } from '../quizSearch/actions'
 import { hideModal } from '../modal/actions'
 import { setNotification } from '../notifications/actions'
-
+import { getQuestions } from '../question/actions'
 import { del } from '../axiosRequests/requests'
 import { sessionExpired } from '../utils/session'
+import history from '../history'
 
 export class AllQuizes extends React.Component {
 
   componentWillUnmount(){
     this.props.clearQuizes();
+  }
+
+  renderModal = () => {
+    const { hideModal } = this.props
+    const { showModal, showModal2 } = this.props.modalState
+    if(showModal){
+      return(
+        <Modal
+          show={showModal}
+          title={"Quiz"}
+          message={"You are about to delete a quiz which will also delete any questions and answers associated with is"}
+          onDelete={this.handleDelete}
+          onCancel={hideModal}
+        />
+      );
+    } else if(showModal2){
+      return(
+        <Modal
+          type={"start"}
+          show={showModal2}
+          title={"Start Quiz"}
+          message={"You are about to start a quiz, would you like to continue?"}
+          onStart={this.handleStartQuiz}
+          onCancel={hideModal}
+        />
+      );
+    } else {
+      return null
+    }
   }
 
   // add contitional css alternate between left and right align classes
@@ -68,19 +98,21 @@ export class AllQuizes extends React.Component {
     })
   }
 
+  handleStartQuiz = () => {
+    const { userData, quiz, getQuestions, hideModal } = this.props
+    const param = { quizId: quiz.id }
+    getQuestions("question/findByQuizId", param, userData.jwt, true)
+    hideModal()
+    history.push("/startQuiz")
+  }
+
   render(){
     const { modalState, hideModal } = this.props
     return(
       <div className="componentContainer">
         <Notification />
-        <Modal
-          show={modalState.showModal}
-          title={"Quiz"}
-          message={"You are about to delete a quiz which will also delete any questions and answers associated with is"}
-          onDelete={this.handleDelete}
-          onCancel={hideModal}
-          />
-          {this.renderCategories()}
+        {this.renderModal()}
+        {this.renderCategories()}
       </div>
     );
   }
@@ -98,6 +130,7 @@ export const mapStateToProps = (state) => {
 export default connect(mapStateToProps,
   { getAllQuizes,
     deleteQuiz,
+    getQuestions,
     hideModal,
     setNotification,
     clearQuizes
