@@ -6,7 +6,7 @@ import { addAnswer, incrementQuestion, showResults, exitQuiz } from './actions'
 import { setCurrentQuestion } from '../question/actions'
 import { getAnswers } from '../answer/actions'
 
-class QuizStart extends React.Component {
+export class QuizStart extends React.Component {
 
   handleSubmit = ({ answer }) => {
     const { questions } = this.props;
@@ -77,7 +77,7 @@ class QuizStart extends React.Component {
 }
 
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return{
     userData: state.userData,
     quiz: state.quiz,
