@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserList should render a list of users 1`] = `
+<div
+  className="componentContainer"
+>
+  <div
+    className="title-large"
+  >
+    List of all users
+  </div>
+  <div
+    className="userDetailHeaders"
+  >
+    <div
+      className="forenameHeader"
+    >
+      First Name
+    </div>
+    <div
+      className="surnameHeader"
+    >
+      Surname
+    </div>
+    <div
+      className="emailHeader"
+    >
+      Email
+    </div>
+    <div
+      className="permissionHeader"
+    >
+      Permission
+    </div>
+    <div
+      className="verifiedHeader"
+    >
+      Verified?
+    </div>
+  </div>
+  <div
+    className="userDetails"
+  >
+    <div
+      className="forename"
+    >
+      testForename1
+    </div>
+    <div
+      className="surname"
+    >
+      testSurname1
+    </div>
+    <div
+      className="email"
+    >
+      testEmail1
+    </div>
+    <div
+      className="permission"
+    >
+      USER
+    </div>
+    <div
+      className="verified"
+    >
+      Yes
+    </div>
+  </div>
+  <div
+    className="userDetails"
+  >
+    <div
+      className="forename"
+    >
+      testForename2
+    </div>
+    <div
+      className="surname"
+    >
+      testSurname2
+    </div>
+    <div
+      className="email"
+    >
+      testEmail2
+    </div>
+    <div
+      className="permission"
+    >
+      USER
+    </div>
+    <div
+      className="verified"
+    >
+      No
+    </div>
+  </div>
+</div>
+`;

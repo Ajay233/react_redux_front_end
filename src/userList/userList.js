@@ -4,7 +4,7 @@ import { setUserList, clearUserList } from './actions'
 
 import '../stylesheets/userList.css'
 
-class UserList extends React.Component {
+export class UserList extends React.Component {
 
   componentDidMount(){
     this.props.setUserList("users", this.props.userData.jwt);
@@ -53,7 +53,7 @@ class UserList extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     userData: state.userData,
     listOfUsers: state.listOfUsers
