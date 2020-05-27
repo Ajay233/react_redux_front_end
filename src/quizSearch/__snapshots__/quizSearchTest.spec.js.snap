@@ -11,91 +11,113 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and n
   <div
     id="quizSearchTitle"
   >
-    Quiz Search
-  </div>
-  <div
-    id="quizSearchByName"
-  >
-    <div>
-      <form
-        onSubmit={[Function]}
-      >
-        <div>
-          <label>
-            Quiz name:
-          </label>
-          <input
-            className="inputBox"
-            name="name"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onDragStart={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            value=""
-          />
-        </div>
-        <button
-          className="submit"
-        >
-          <i
-            className="fas fa-search"
-          />
-           Search
-        </button>
-      </form>
+    <img
+      alt=""
+      id="searchTitleImg"
+      src="search.png"
+    />
+    <div
+      id="quizSearchTitleText"
+    >
+      Quiz Search
     </div>
   </div>
   <div
-    id="quizSearchByCategory"
+    id="quizSearchForms"
   >
-    <div>
-      <form
-        onSubmit={[Function]}
-      >
-        <div>
-          <select
-            className="inputBox"
-            name="category"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onDragStart={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            value=""
+    <div
+      id="quizSearchByName"
+    >
+      <div>
+        <form
+          onSubmit={[Function]}
+        >
+          <div>
+            <label>
+              Quiz name:
+            </label>
+            <input
+              className="inputBox"
+              name="name"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onDragStart={[Function]}
+              onDrop={[Function]}
+              onFocus={[Function]}
+              value=""
+            />
+          </div>
+          <button
+            className="submit"
           >
-            <option
-              disabled={true}
+            <i
+              className="fas fa-search"
+            />
+             Search
+          </button>
+        </form>
+      </div>
+    </div>
+    <div
+      id="divider-left"
+    />
+    <div
+      id="divider-right"
+    />
+    <div
+      id="quizSearchByCategory"
+    >
+      <div>
+        <form
+          onSubmit={[Function]}
+        >
+          <div>
+            <label>
+              Quiz category:
+            </label>
+            <select
+              className="inputBox select"
+              name="category"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onDragStart={[Function]}
+              onDrop={[Function]}
+              onFocus={[Function]}
               value=""
             >
-              Select a category
-            </option>
-            <option
-              value="test"
-            >
-              test
-            </option>
-            <option
-              value="test2"
-            >
-              test2
-            </option>
-            <option
-              value="test3"
-            >
-              test3
-            </option>
-          </select>
-        </div>
-        <button
-          className="submit"
-        >
-          <i
-            className="fas fa-search"
-          />
-           Search
-        </button>
-      </form>
+              <option
+                disabled={true}
+                value=""
+              >
+                Select a category
+              </option>
+              <option
+                value="test"
+              >
+                test
+              </option>
+              <option
+                value="test2"
+              >
+                test2
+              </option>
+              <option
+                value="test3"
+              >
+                test3
+              </option>
+            </select>
+          </div>
+          <button
+            className="submit"
+          >
+            <i
+              className="fas fa-search"
+            />
+             Search
+          </button>
+        </form>
+      </div>
     </div>
   </div>
   <div>
@@ -115,91 +137,113 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
   <div
     id="quizSearchTitle"
   >
-    Quiz Search
-  </div>
-  <div
-    id="quizSearchByName"
-  >
-    <div>
-      <form
-        onSubmit={[Function]}
-      >
-        <div>
-          <label>
-            Quiz name:
-          </label>
-          <input
-            className="inputBox"
-            name="name"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onDragStart={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            value=""
-          />
-        </div>
-        <button
-          className="submit"
-        >
-          <i
-            className="fas fa-search"
-          />
-           Search
-        </button>
-      </form>
+    <img
+      alt=""
+      id="searchTitleImg"
+      src="search.png"
+    />
+    <div
+      id="quizSearchTitleText"
+    >
+      Quiz Search
     </div>
   </div>
   <div
-    id="quizSearchByCategory"
+    id="quizSearchForms"
   >
-    <div>
-      <form
-        onSubmit={[Function]}
-      >
-        <div>
-          <select
-            className="inputBox"
-            name="category"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onDragStart={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            value=""
+    <div
+      id="quizSearchByName"
+    >
+      <div>
+        <form
+          onSubmit={[Function]}
+        >
+          <div>
+            <label>
+              Quiz name:
+            </label>
+            <input
+              className="inputBox"
+              name="name"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onDragStart={[Function]}
+              onDrop={[Function]}
+              onFocus={[Function]}
+              value=""
+            />
+          </div>
+          <button
+            className="submit"
           >
-            <option
-              disabled={true}
+            <i
+              className="fas fa-search"
+            />
+             Search
+          </button>
+        </form>
+      </div>
+    </div>
+    <div
+      id="divider-left"
+    />
+    <div
+      id="divider-right"
+    />
+    <div
+      id="quizSearchByCategory"
+    >
+      <div>
+        <form
+          onSubmit={[Function]}
+        >
+          <div>
+            <label>
+              Quiz category:
+            </label>
+            <select
+              className="inputBox select"
+              name="category"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onDragStart={[Function]}
+              onDrop={[Function]}
+              onFocus={[Function]}
               value=""
             >
-              Select a category
-            </option>
-            <option
-              value="test"
-            >
-              test
-            </option>
-            <option
-              value="test2"
-            >
-              test2
-            </option>
-            <option
-              value="test3"
-            >
-              test3
-            </option>
-          </select>
-        </div>
-        <button
-          className="submit"
-        >
-          <i
-            className="fas fa-search"
-          />
-           Search
-        </button>
-      </form>
+              <option
+                disabled={true}
+                value=""
+              >
+                Select a category
+              </option>
+              <option
+                value="test"
+              >
+                test
+              </option>
+              <option
+                value="test2"
+              >
+                test2
+              </option>
+              <option
+                value="test3"
+              >
+                test3
+              </option>
+            </select>
+          </div>
+          <button
+            className="submit"
+          >
+            <i
+              className="fas fa-search"
+            />
+             Search
+          </button>
+        </form>
+      </div>
     </div>
   </div>
   <div>

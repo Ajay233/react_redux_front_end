@@ -6,8 +6,11 @@ exports[`findQuizByCategory form should match the snapshot 1`] = `
     onSubmit={[Function]}
   >
     <div>
+      <label>
+        Quiz category:
+      </label>
       <select
-        className="inputBox"
+        className="inputBox select"
         name="category"
         onBlur={[Function]}
         onChange={[Function]}
