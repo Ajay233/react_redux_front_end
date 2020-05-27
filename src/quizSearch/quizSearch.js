@@ -104,7 +104,7 @@ export class QuizSearch extends React.Component {
   }
 
   render(){
-    const { quizes, userData, setNotification, getQuizSearchResults, modalState, hideModal, lists } = this.props
+    const { quizes, userData, setNotification, getQuizSearchResults, lists } = this.props
     return(
       <div id="quizSearch">
         {this.renderModal()}

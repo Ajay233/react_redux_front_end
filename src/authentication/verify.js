@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Notification from '../notifications/notifications';
 
 import { setVerficationProcess } from './actions'
@@ -26,7 +26,6 @@ export class Verify extends React.Component {
     const successMsg = "Your email has now been verified.  Please log in below to continue."
     setNotification(successMsg, "success", true);
     history.push("/login")
-    // return <Redirect to="/login" />
   }
 
   notFoundMsg = () => {

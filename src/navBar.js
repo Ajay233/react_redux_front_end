@@ -1,14 +1,12 @@
 import React from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import DropdownList from './dropdown/dropdownList';
 import { setNotification } from './notifications/actions'
 import { logOut } from './authentication/actions'
 import { getAllQuizes } from './quizSearch/actions'
-import history from './history'
 import './stylesheets/navBar.css'
 import './stylesheets/buttons.css'
-// import { home } from './public/icons/home.png'
 
 class NavBar extends React.Component {
 
@@ -54,7 +52,7 @@ class NavBar extends React.Component {
         <div className="nav">
           <Link to="/" id="home" className="links"><i className="fas fa-home"></i> Home</Link>
           <button className="linkButton links navItem" onClick={this.showList}>Menu <i className="fas fa-bars"></i></button>
-          
+
 
         </div>
         {this.renderList()}

@@ -134,8 +134,6 @@ export class QuestionView extends React.Component {
   }
 
   render(){
-    const { currentAnswer, hideModal, currentQuestion } = this.props
-    const { showModal, showModal2} = this.props.modalState
     return(
       <div id="questionView">
         {this.renderModal()}

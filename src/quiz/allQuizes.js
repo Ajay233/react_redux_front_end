@@ -130,7 +130,6 @@ export class AllQuizes extends React.Component {
   }
 
   render(){
-    const { modalState, hideModal } = this.props
     return(
       <div className="componentContainer">
         <Notification />
