@@ -109,23 +109,30 @@ export class QuizSearch extends React.Component {
       <div id="quizSearch">
         {this.renderModal()}
         <Notification />
-        <div id="quizSearchTitle">Quiz Search</div>
-        <div id="quizSearchByName">
-          <QuizSearchByName
-            jwt={userData.jwt}
-            setNotification={setNotification}
-            getQuizSearchResults={getQuizSearchResults}
-            permission={userData.permission}
-          />
+        <div id="quizSearchTitle">
+          <img id="searchTitleImg" src={require("../public/icons/search.png")} alt=""/>
+          <div id="quizSearchTitleText">Quiz Search</div>
         </div>
-        <div id="quizSearchByCategory">
-          <QuizSearchByCategory
-            jwt={userData.jwt}
-            setNotification={setNotification}
-            getQuizSearchResults={getQuizSearchResults}
-            categories={lists.categories}
-            permission={userData.permission}
-          />
+        <div id="quizSearchForms">
+          <div id="quizSearchByName">
+            <QuizSearchByName
+              jwt={userData.jwt}
+              setNotification={setNotification}
+              getQuizSearchResults={getQuizSearchResults}
+              permission={userData.permission}
+            />
+          </div>
+          <div id="divider-left"></div>
+          <div id="divider-right"></div>
+          <div id="quizSearchByCategory">
+            <QuizSearchByCategory
+              jwt={userData.jwt}
+              setNotification={setNotification}
+              getQuizSearchResults={getQuizSearchResults}
+              categories={lists.categories}
+              permission={userData.permission}
+            />
+          </div>
         </div>
         <div>
           {this.renderResultsTitle(quizes)}

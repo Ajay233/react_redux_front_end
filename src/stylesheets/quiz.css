@@ -15,6 +15,22 @@
   margin-bottom: 30px;
 }
 
+#quizDetailsContainer{
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+}
+
+.updateQuizForm {
+  width: 70%;
+  padding: 10px;
+}
+
+.updateQuizImg {
+  width: 30%;
+  margin: 0 5% 0 5%;
+}
+
 .quizStatus {
   width: 40%;
   margin: 10px 30% 10px 30%;

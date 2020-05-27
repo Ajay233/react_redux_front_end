@@ -186,7 +186,10 @@ export class Quiz extends React.Component {
       <div id="quiz">
         {this.renderModal()}
         <Notification />
+
         {this.renderDetailsOrUpdate()}
+
+
         {this.renderOptions()}
         <div className="headerContainer">
           <div id="questionsTitle">Questions</div>

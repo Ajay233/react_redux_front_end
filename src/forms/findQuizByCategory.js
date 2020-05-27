@@ -7,7 +7,8 @@ class QuizSearchByCategory extends React.Component {
     return(
       <div>
         {this.renderError(formProps.meta)}
-        <select {...formProps.input} className="inputBox">
+        <label>{formProps.label}</label>
+        <select {...formProps.input} className="inputBox select">
           {formProps.children}
         </select>
       </div>

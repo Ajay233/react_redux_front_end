@@ -7,11 +7,22 @@
 }
 
 #quizSearchTitle {
-  font-size: 40px;
+  display: flex;
+  font-size: 60px;
   text-align: center;
-  width: 30%;
-  margin-left: 35%;
-  margin-right: 35%;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+#quizSearchTitleText {
+  margin: auto;
+  margin-left: 0px;
+  font-weight: bold;
+}
+
+#searchTitleImg {
+  margin: 0;
 }
 
 #resultHeader {
@@ -93,6 +104,30 @@
 
 .green {
   color: rgb(48, 186, 78)
+}
+
+#quizSearchForms {
+  width: 100%;
+  display: flex;
+  margin-top: 50px;
+}
+
+#quizSearchByName {
+  width: 45%;
+}
+
+#quizSearchByCategory{
+  width: 45%;
+}
+
+#divider-right {
+  margin-right: 5%;
+  border-left: solid 1px white;
+}
+
+#divider-left {
+  margin-left: 5%;
+  border-right: solid 1px white;
 }
 
 /* .start {
