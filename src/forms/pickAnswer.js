@@ -41,7 +41,11 @@ const PickAnswer = (props) => {
   }
 
   const renderButtonTitle = () => {
-    return props.currentQuestionNumber < props.numberOfQuestions ? "Next Question" : "Finish"
+    return props.currentQuestionNumber <= props.numberOfQuestions ? "Quit" : "Exit quiz"
+  }
+
+  const disableButton = () => {
+    return props.currentQuestionNumber <= props.numberOfQuestions ? false : true
   }
 
   const submitForm = ({ answer }) => {
@@ -56,6 +60,9 @@ const PickAnswer = (props) => {
 
   return(
     <div id="pickAnswerForm">
+      {console.log("Current question: " + props.currentQuestionNumber)}
+      {console.log("Number of questions: " + props.numberOfQuestions)}
+      {console.log("current q greater than or equal to total: " + props.currentQuestionNumber <= props.numberOfQuestions)}
       <form onSubmit={props.handleSubmit(submitForm)}>
         <div id="answerContainer">
         <div className="title-medium-left-alt">{props.title}</div>
@@ -63,8 +70,8 @@ const PickAnswer = (props) => {
         </div>
         <img src={require("../public/icons/reply.png")} alt="" />
         <div className="buttonContainer">
-          <button data-testid="next-button" className="submit quizButton-left" >{renderButtonTitle()}</button>
-          <button data-testid="quit-button" className="submit quizButton-right" onClick={handleClick}>Quit</button>
+          <button data-testid="next-button" className="submit quizButton-left" disabled={disableButton()}>Next Question</button>
+          <button data-testid="quit-button" className="submit quizButton-right" onClick={handleClick}>{renderButtonTitle()}</button>
         </div>
       </form>
     </div>

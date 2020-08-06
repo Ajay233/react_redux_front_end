@@ -20,8 +20,8 @@ export const rootReducer = (state, action) => {
   switch (action.type) {
     case "RESET_APP": return state = undefined;
     case "RESET_STATE": {
-      const { userData, notificationData } = state;
-      return state = { userData, notificationData }
+      const { userData, notificationData, lists } = state;
+      return state = { userData, notificationData, lists }
     };
     default: return allReducers(state, action);
   }

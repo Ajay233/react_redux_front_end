@@ -96,6 +96,7 @@ exports[`should render a question, list of answers to pick, 'next question' and 
             <button
               className="submit quizButton-left"
               data-testid="next-button"
+              disabled={false}
             >
               Next Question
             </button>
@@ -218,15 +219,16 @@ exports[`should render the results 1`] = `
             <button
               className="submit quizButton-left"
               data-testid="next-button"
+              disabled={true}
             >
-              Finish
+              Next Question
             </button>
             <button
               className="submit quizButton-right"
               data-testid="quit-button"
               onClick={[Function]}
             >
-              Quit
+              Exit quiz
             </button>
           </div>
         </form>

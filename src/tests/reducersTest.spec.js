@@ -117,7 +117,8 @@ describe("rootReducer", () => {
 
     const expectedState = {
       userData: {id: 1, forename: "test", surname: "test", email: "test", permission: "ADMIN", verified: true, jwt: "jwt", loggedIn: true},
-      notificationData: { message: "test", type: "success", show: true, timed: true }
+      notificationData: { message: "test", type: "success", show: true, timed: true },
+      lists:{ categories:[] }
     }
 
     let state = allReducers({}, {type: "INIT"})

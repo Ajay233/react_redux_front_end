@@ -60,8 +60,9 @@ exports[`pickAnswer form should match the snapshot, button title should be: 'Fin
       <button
         className="submit quizButton-left"
         data-testid="next-button"
+        disabled={false}
       >
-        Finish
+        Next Question
       </button>
       <button
         className="submit quizButton-right"
@@ -135,6 +136,7 @@ exports[`pickAnswer form should match the snapshot, button title should be: 'Nex
       <button
         className="submit quizButton-left"
         data-testid="next-button"
+        disabled={false}
       >
         Next Question
       </button>

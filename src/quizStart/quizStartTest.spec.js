@@ -158,7 +158,7 @@ describe("", () => {
   describe("addLastAnswer", () => {
     it("should call", () => {
       const lastQuestion = { id: 2, questionNumber: 2, description: "test2" }
-      const quizProgressTracking = { questionNumber: 2, answersPicked:[], showResults: false }
+      const quizProgressTracking = { questionNumber: 1, answersPicked:[], showResults: false }
       const component = render(
         <Provider store={store}>
           <Router history={history}>
@@ -178,7 +178,7 @@ describe("", () => {
           </Router>
         </Provider>
       );
-
+      console.log(questions.length)
       fireEvent.click(component.getByTestId("next-button"))
       expect(addAnswer).toHaveBeenCalledTimes(1)
       // // expect(addAnswer).toHaveBeenCalledwith()
