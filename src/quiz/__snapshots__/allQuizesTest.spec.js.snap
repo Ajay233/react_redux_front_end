@@ -59,7 +59,17 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
           </div>
           <div
             className="options"
-          />
+          >
+            <a
+              className="start"
+              onClick={[Function]}
+            >
+              <i
+                className="far fa-play-circle blue"
+              />
+               Start
+            </a>
+          </div>
         </div>
       </div>
       <div
@@ -80,7 +90,17 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
           </div>
           <div
             className="options"
-          />
+          >
+            <a
+              className="start"
+              onClick={[Function]}
+            >
+              <i
+                className="far fa-play-circle blue"
+              />
+               Start
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -131,7 +151,17 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
           </div>
           <div
             className="options"
-          />
+          >
+            <a
+              className="start"
+              onClick={[Function]}
+            >
+              <i
+                className="far fa-play-circle blue"
+              />
+               Start
+            </a>
+          </div>
         </div>
       </div>
       <div
@@ -152,7 +182,17 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
           </div>
           <div
             className="options"
-          />
+          >
+            <a
+              className="start"
+              onClick={[Function]}
+            >
+              <i
+                className="far fa-play-circle blue"
+              />
+               Start
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -232,7 +272,17 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
           </div>
           <div
             className="options"
-          />
+          >
+            <a
+              className="start"
+              onClick={[Function]}
+            >
+              <i
+                className="far fa-play-circle blue"
+              />
+               Start
+            </a>
+          </div>
         </div>
       </div>
       <div
@@ -253,7 +303,17 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
           </div>
           <div
             className="options"
-          />
+          >
+            <a
+              className="start"
+              onClick={[Function]}
+            >
+              <i
+                className="far fa-play-circle blue"
+              />
+               Start
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -304,7 +364,17 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
           </div>
           <div
             className="options"
-          />
+          >
+            <a
+              className="start"
+              onClick={[Function]}
+            >
+              <i
+                className="far fa-play-circle blue"
+              />
+               Start
+            </a>
+          </div>
         </div>
       </div>
       <div
@@ -325,7 +395,17 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
           </div>
           <div
             className="options"
-          />
+          >
+            <a
+              className="start"
+              onClick={[Function]}
+            >
+              <i
+                className="far fa-play-circle blue"
+              />
+               Start
+            </a>
+          </div>
         </div>
       </div>
     </div>

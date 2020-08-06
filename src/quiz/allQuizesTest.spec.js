@@ -127,12 +127,14 @@ describe("AllQuizes", () => {
   it("should render only READY quizes for a user", () => {
     const component = renderer.create(
       <Provider store={store}>
+      <Router history={history}>
         <AllQuizes
           userData={userData}
           modalState={modalState}
           quizes={quizes}
           clearQuizes={clearQuizes}
         />
+        </Router>
       </Provider>
     )
 
@@ -147,12 +149,14 @@ describe("AllQuizes", () => {
 
     const component = renderer.create(
       <Provider store={store}>
-        <AllQuizes
-          userData={userData}
-          modalState={modalState}
-          quizes={quizes}
-          clearQuizes={clearQuizes}
-        />
+        <Router history={history}>
+          <AllQuizes
+            userData={userData}
+            modalState={modalState}
+            quizes={quizes}
+            clearQuizes={clearQuizes}
+          />
+        </Router>
       </Provider>
     )
 
@@ -173,15 +177,17 @@ describe("AllQuizes", () => {
 
       const wrapper = render(
         <Provider store={store}>
-          <AllQuizes
-            userData={userData}
-            modalState={renderModal1}
-            quizes={quizes}
-            clearQuizes={clearQuizes}
-            hideModal={hideModal}
-            deleteQuizFromCategory={deleteQuizFromCategory}
-            setNotification={setNotification}
-          />
+          <Router history={history}>
+            <AllQuizes
+              userData={userData}
+              modalState={renderModal1}
+              quizes={quizes}
+              clearQuizes={clearQuizes}
+              hideModal={hideModal}
+              deleteQuizFromCategory={deleteQuizFromCategory}
+              setNotification={setNotification}
+            />
+          </Router>
         </Provider>
       )
 
@@ -201,15 +207,17 @@ describe("AllQuizes", () => {
 
       const wrapper = render(
         <Provider store={store}>
-          <AllQuizes
-            userData={userData}
-            modalState={renderModal1}
-            quizes={quizes}
-            clearQuizes={clearQuizes}
-            hideModal={hideModal}
-            deleteQuizFromCategory={deleteQuizFromCategory}
-            setNotification={setNotification}
-          />
+          <Router history={history}>
+            <AllQuizes
+              userData={userData}
+              modalState={renderModal1}
+              quizes={quizes}
+              clearQuizes={clearQuizes}
+              hideModal={hideModal}
+              deleteQuizFromCategory={deleteQuizFromCategory}
+              setNotification={setNotification}
+            />
+          </Router>
         </Provider>
       )
 
@@ -228,15 +236,17 @@ describe("AllQuizes", () => {
 
       const wrapper = render(
         <Provider store={store}>
-          <AllQuizes
-            userData={userData}
-            modalState={renderModal1}
-            quizes={quizes}
-            clearQuizes={clearQuizes}
-            hideModal={hideModal}
-            deleteQuizFromCategory={deleteQuizFromCategory}
-            setNotification={setNotification}
-          />
+          <Router history={history}>
+            <AllQuizes
+              userData={userData}
+              modalState={renderModal1}
+              quizes={quizes}
+              clearQuizes={clearQuizes}
+              hideModal={hideModal}
+              deleteQuizFromCategory={deleteQuizFromCategory}
+              setNotification={setNotification}
+            />
+          </Router>
         </Provider>
       )
 
@@ -261,17 +271,19 @@ describe("AllQuizes", () => {
 
       const wrapper = render(
         <Provider store={store}>
-          <AllQuizes
-            userData={userData}
-            modalState={renderModal2}
-            quizes={quizes}
-            quiz={quiz}
-            clearQuizes={clearQuizes}
-            hideModal={hideModal}
-            deleteQuizFromCategory={deleteQuizFromCategory}
-            setNotification={setNotification}
-            getQuestions={getQuestions}
-          />
+          <Router history={history}>
+            <AllQuizes
+              userData={userData}
+              modalState={renderModal2}
+              quizes={quizes}
+              quiz={quiz}
+              clearQuizes={clearQuizes}
+              hideModal={hideModal}
+              deleteQuizFromCategory={deleteQuizFromCategory}
+              setNotification={setNotification}
+              getQuestions={getQuestions}
+            />
+          </Router>
         </Provider>
       )
 

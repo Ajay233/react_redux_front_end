@@ -21,6 +21,16 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
       className="options"
     >
       <a
+        className="start"
+        href="/"
+        onClick={[Function]}
+      >
+        <i
+          className="far fa-play-circle blue"
+        />
+         Start
+      </a>
+      <a
         className="edit"
         href="/editQuiz"
         onClick={[Function]}
@@ -65,6 +75,16 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
     <div
       className="options"
     >
+      <a
+        className="start"
+        href="/"
+        onClick={[Function]}
+      >
+        <i
+          className="far fa-play-circle blue"
+        />
+         Start
+      </a>
       <a
         className="view"
         href="/viewQuiz"

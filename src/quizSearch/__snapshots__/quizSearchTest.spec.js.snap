@@ -287,6 +287,16 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
             className="options"
           >
             <a
+              className="start"
+              href="/"
+              onClick={[Function]}
+            >
+              <i
+                className="far fa-play-circle blue"
+              />
+               Start
+            </a>
+            <a
               className="edit"
               href="/editQuiz"
               onClick={[Function]}
@@ -328,6 +338,16 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
           <div
             className="options"
           >
+            <a
+              className="start"
+              href="/"
+              onClick={[Function]}
+            >
+              <i
+                className="far fa-play-circle blue"
+              />
+               Start
+            </a>
             <a
               className="edit"
               href="/editQuiz"
