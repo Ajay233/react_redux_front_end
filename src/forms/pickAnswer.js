@@ -60,9 +60,6 @@ const PickAnswer = (props) => {
 
   return(
     <div id="pickAnswerForm">
-      {console.log("Current question: " + props.currentQuestionNumber)}
-      {console.log("Number of questions: " + props.numberOfQuestions)}
-      {console.log("current q greater than or equal to total: " + props.currentQuestionNumber <= props.numberOfQuestions)}
       <form onSubmit={props.handleSubmit(submitForm)}>
         <div id="answerContainer">
         <div className="title-medium-left-alt">{props.title}</div>
