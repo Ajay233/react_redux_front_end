@@ -66,6 +66,8 @@ describe("", () => {
       { id: 2, answerNumber: 2, description: "test2" }
     ],
     quizProgressTracking = { questionNumber: 0, answersPicked:[], showResults: false }
+
+    window.scrollTo = jest.fn()
   })
 
   afterEach(() => {

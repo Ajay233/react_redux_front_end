@@ -10,6 +10,10 @@ import '../stylesheets/quizStart.css'
 
 export class QuizStart extends React.Component {
 
+  componentDidMount(){
+    window.scrollTo(500, 0);
+  }
+
   handleSubmit = ({ answer }) => {
     const { questions } = this.props;
     const { questionNumber } = this.props.quizProgressTracking
@@ -65,7 +69,7 @@ export class QuizStart extends React.Component {
         <div id="quizStartContainer">
           <div id="questionDetailsContainer">
             {this.renderQuestion()}
-            <img src={require("../public/icons/quizBot2.png")} alt="" />
+            <img id="quizBot2" src={require("../public/icons/quizBot2.png")} alt="" />
             {this.renderResults()}
           </div>
           <div id="answerFormContainer">

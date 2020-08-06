@@ -18,7 +18,7 @@
 #questionContainer {
   padding: 10px;
   background-color: rgb(50, 50, 50);
-  width: fit-content;
+  width: 65%;
   border-right: solid 5px rgb(179, 136, 221);
   border-radius: 5px;
 
@@ -84,6 +84,10 @@ img {
   width:auto;
   margin-left: 10%;
   margin-right: 10%;
+}
+
+#quizBot2 {
+  margin-left: 15%;
 }
 
 #quizResult {

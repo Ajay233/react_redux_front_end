@@ -30,6 +30,7 @@ exports[`should render a question, list of answers to pick, 'next question' and 
       </div>
       <img
         alt=""
+        id="quizBot2"
         src="quizBot2.png"
       />
     </div>
@@ -143,6 +144,7 @@ exports[`should render the results 1`] = `
       </div>
       <img
         alt=""
+        id="quizBot2"
         src="quizBot2.png"
       />
       <div
