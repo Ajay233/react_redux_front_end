@@ -9,6 +9,15 @@ export const post = (endpoint, data={}, token=null) => {
   );
 }
 
+export const postUsingParams = (endpoint, params, token=null) => {
+  setDefault(token, axios);
+  return axios.post(
+    `http://localhost:8080/${endpoint}`,
+    null,
+    { params: params }
+  );
+}
+
 export const get = (endpoint, token=null) => {
   setDefault(token, axios);
   return axios.get(
