@@ -5,10 +5,6 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
   className="componentContainer"
 >
   <div
-    className="spacing"
-    id="notification"
-  />
-  <div
     id="allQuizzesTitle"
   >
     Browse all quizzes by Category
@@ -217,10 +213,6 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
 <div
   className="componentContainer"
 >
-  <div
-    className="spacing"
-    id="notification"
-  />
   <div
     id="allQuizzesTitle"
   >

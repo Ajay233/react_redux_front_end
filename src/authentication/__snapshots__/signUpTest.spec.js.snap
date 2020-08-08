@@ -9,12 +9,7 @@ exports[`SignUp should render the signup page and form 1`] = `
   >
     <div
       className="notificationContainer"
-    >
-      <div
-        className="spacing"
-        id="notification"
-      />
-    </div>
+    />
     <div>
       <form
         className="signupForm"
@@ -115,22 +110,10 @@ exports[`SignUp should render the signup page and form and a notification 1`] = 
       className="notificationContainer"
     >
       <div
-        className="spacing"
+        className="spacing success"
         id="notification"
       >
-        <div
-          className="success"
-        >
-          <span
-            className="close"
-            onClick={[Function]}
-          >
-            <i
-              className="far fa-times-circle"
-            />
-          </span>
-          Test signup worked
-        </div>
+        Test signup worked
       </div>
     </div>
     <div>

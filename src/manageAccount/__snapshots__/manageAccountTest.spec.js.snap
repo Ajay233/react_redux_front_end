@@ -56,10 +56,6 @@ exports[`Manage Account should call showModal when delete account is clicked 1`]
     </div>
   </div>
   <div
-    className="spacing"
-    id="notification"
-  />
-  <div
     id="editProfileTitle"
   >
     <div

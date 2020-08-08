@@ -5,10 +5,6 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and n
   id="quizSearch"
 >
   <div
-    className="spacing"
-    id="notification"
-  />
-  <div
     id="quizSearchTitle"
   >
     <img
@@ -130,10 +126,6 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
 <div
   id="quizSearch"
 >
-  <div
-    className="spacing"
-    id="notification"
-  />
   <div
     id="quizSearchTitle"
   >

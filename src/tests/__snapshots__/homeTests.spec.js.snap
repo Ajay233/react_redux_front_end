@@ -6,12 +6,7 @@ exports[`Home should render the home component 1`] = `
 >
   <div
     id="notificationContainer"
-  >
-    <div
-      className="spacing"
-      id="notification"
-    />
-  </div>
+  />
   <div
     className="textBackground"
   >
@@ -32,22 +27,10 @@ exports[`Home should render the home component and a notification 1`] = `
     id="notificationContainer"
   >
     <div
-      className="spacing"
+      className="spacing success"
       id="notification"
     >
-      <div
-        className="success"
-      >
-        <span
-          className="close"
-          onClick={[Function]}
-        >
-          <i
-            className="far fa-times-circle"
-          />
-        </span>
-        Test
-      </div>
+      Test
     </div>
   </div>
   <div

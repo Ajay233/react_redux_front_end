@@ -5,10 +5,6 @@ exports[`Verify component should render the token expired message when error dat
   id="verifyContainer"
 >
   <div
-    className="spacing"
-    id="notification"
-  />
-  <div
     id="verifyContent"
   >
     <div
@@ -65,10 +61,6 @@ exports[`Verify component should render the token expired message when error dat
 <div
   id="verifyContainer"
 >
-  <div
-    className="spacing"
-    id="notification"
-  />
   <div
     id="verifyContent"
   >
@@ -146,10 +138,6 @@ exports[`Verify component should render the token expired message when error dat
 <div
   id="verifyContainer"
 >
-  <div
-    className="spacing"
-    id="notification"
-  />
   <div
     id="verifyContent"
   >

@@ -4,12 +4,7 @@ exports[`AnswerView should render the NewAnswerForm 1`] = `
 <div
   className="componentContainer"
 >
-  <div>
-    <div
-      className="spacing"
-      id="notification"
-    />
-  </div>
+  <div />
   <div
     className="componentContainer"
   >
@@ -104,12 +99,7 @@ exports[`AnswerView should render the UpdateAnswerForm 1`] = `
 <div
   className="componentContainer"
 >
-  <div>
-    <div
-      className="spacing"
-      id="notification"
-    />
-  </div>
+  <div />
   <div>
     <div
       className="title-large"

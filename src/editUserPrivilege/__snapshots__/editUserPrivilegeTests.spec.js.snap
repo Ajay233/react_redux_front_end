@@ -4,10 +4,6 @@ exports[`User should not render the edit privilege form if the userResults is em
 <div
   id="editUserPrivilege"
 >
-  <div
-    className="spacing"
-    id="notification"
-  />
   <div>
     <div>
       <form
@@ -43,10 +39,6 @@ exports[`User should render a user's details using the props passed to it 1`] = 
 <div
   id="editUserPrivilege"
 >
-  <div
-    className="spacing"
-    id="notification"
-  />
   <div>
     <div>
       <form

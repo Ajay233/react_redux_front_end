@@ -5,10 +5,6 @@ exports[`newQuiz form should match the snapshot 1`] = `
   className="componentContainer"
 >
   <div
-    className="spacing"
-    id="notification"
-  />
-  <div
     className="title-large"
   >
     Create a Quiz

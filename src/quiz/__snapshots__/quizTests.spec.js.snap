@@ -5,10 +5,6 @@ exports[`Quiz should render the quiz details, 'READY' status and questions for '
   id="quiz"
 >
   <div
-    className="spacing"
-    id="notification"
-  />
-  <div
     id="quizTitle"
   >
     test
@@ -105,10 +101,6 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
 <div
   id="quiz"
 >
-  <div
-    className="spacing"
-    id="notification"
-  />
   <div
     id="quizTitle"
   >

@@ -4,10 +4,6 @@ exports[`QuestionView should render the QuestionView component, question details
 <div
   id="questionView"
 >
-  <div
-    className="spacing"
-    id="notification"
-  />
   <div>
     Question number 1 from the Quiz 1 quiz
   </div>
@@ -168,10 +164,6 @@ exports[`QuestionView should render the QuestionView component, update question 
 <div
   id="questionView"
 >
-  <div
-    className="spacing"
-    id="notification"
-  />
   <div>
     Question number 1 from the Quiz 1 quiz
   </div>

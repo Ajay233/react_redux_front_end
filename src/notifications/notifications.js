@@ -9,6 +9,10 @@ import { isIconRequired, iconPicker } from '../utils/icons'
 
 class Notification extends React.Component {
 
+  componentDidMount(){
+    this.notificationRef = React.createRef();
+  }
+
   // take a parameter to determine an icon needs to be rendered
   // decide if timer needs to be applied
   // decide what icon to rende
@@ -18,7 +22,7 @@ class Notification extends React.Component {
     const { setNotification } = this.props;
     const { type } = this.props.notificationData;
     if(this.props.notificationData.show){
-      if (!isIconRequired(type)) timedFunc(4000, setNotification);
+      if (!isIconRequired(type)) timedFunc(3000, this.notificationRef, setNotification);
       document.documentElement.scrollTop = 0;
       return isIconRequired(type) ? this.renderMsgWithIcon(type) : this.renderStandardMsg(type)
     } else {
@@ -28,7 +32,7 @@ class Notification extends React.Component {
 
   renderMsgWithIcon = (type) => {
     return(
-      <div className={type != null ? type : null} >
+      <div ref={this.notificationRef} id="notification" className={`spacing ${type != null ? type : null}`}>
         <span className="close" onClick={this.handleClose}><i className="far fa-times-circle"></i></span>
         <span><span><img src={require(`../public/icons/${iconPicker(type)}`)} className="img" alt=""/></span>{this.props.notificationData.message}</span>
       </div>
@@ -37,22 +41,25 @@ class Notification extends React.Component {
 
   renderStandardMsg = (type) => {
     return(
-      <div className={type != null ? type : null} >
-        <span className="close" onClick={this.handleClose}><i className="far fa-times-circle"></i></span>
+      <div ref={this.notificationRef} id="notification" className={`spacing ${type != null ? type : null}`}>
         {this.props.notificationData.message}
       </div>
     );
   }
 
   handleClose = () => {
-    this.props.setNotification();
+    const { setNotification } = this.props;
+    this.notificationRef.current.classList.add("shrinkNotification")
+    window.setTimeout(function(){
+      setNotification();
+    }, 488)
   }
 
   render(){
     return(
-      <div id="notification" className="spacing">
+      <React.Fragment>
         {this.renderMsg()}
-      </div>
+      </React.Fragment>
     );
   }
 }

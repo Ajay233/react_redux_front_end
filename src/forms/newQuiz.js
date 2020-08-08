@@ -62,8 +62,8 @@ class NewQuizForm extends React.Component {
       setQuiz(response.data);
       addQuiz(response.data);  // remove this??
       clearQuestions();
-      setNotification("Quiz created, but what's a quiz without questions? Add your questions below.", "success", true);
       history.push("/editQuiz");
+      setNotification("Quiz created, but what's a quiz without questions? Add your questions below.", "success", true);
     }).catch((error) => {
       console.log(error.response);
       if(error.response.status === 403){

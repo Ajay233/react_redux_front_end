@@ -11,22 +11,10 @@ exports[`Login should render the login form with notification 1`] = `
       className="notificationContainer"
     >
       <div
-        className="spacing"
+        className="spacing error"
         id="notification"
       >
-        <div
-          className="error"
-        >
-          <span
-            className="close"
-            onClick={[Function]}
-          >
-            <i
-              className="far fa-times-circle"
-            />
-          </span>
-          Username or passord incorrect
-        </div>
+        Username or passord incorrect
       </div>
     </div>
     <div>
@@ -104,12 +92,7 @@ exports[`Login should render the login form without notification 1`] = `
   >
     <div
       className="notificationContainer"
-    >
-      <div
-        className="spacing"
-        id="notification"
-      />
-    </div>
+    />
     <div>
       <form
         className="loginForm"

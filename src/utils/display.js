@@ -4,8 +4,11 @@ export function fadeOut(element){
   }, 2000);
 }
 
-export function timedFunc(delay, funcToDo){
+export function timedFunc(delay, element, funcToDo){
   window.setTimeout(function(){
-    funcToDo();
+    element.current.classList.add("shrinkNotification")
+    window.setTimeout(function(){
+      funcToDo();
+    }, 488);
   }, delay);
 }

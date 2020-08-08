@@ -1,4 +1,4 @@
-export const setNotification = (msg, type, show, timed=true) => {
+export const setNotification = (msg="", type="", show=false, timed=true) => {
   return {
     type: "SET_NOTIFICATION",
     payload: {

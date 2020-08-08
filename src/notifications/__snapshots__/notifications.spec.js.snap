@@ -1,59 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Notification component can hide a notification message when the show property is set to false 1`] = `
-<div
-  className="spacing"
-  id="notification"
-/>
-`;
+exports[`Notification component can hide a notification message when the show property is set to false 1`] = `null`;
 
 exports[`Notification component can render a notification 1`] = `
 <div
-  className="spacing"
+  className="spacing success"
   id="notification"
 >
-  <div
-    className="success"
-  >
-    <span
-      className="close"
-      onClick={[Function]}
-    >
-      <i
-        className="far fa-times-circle"
-      />
-    </span>
-    Test message
-  </div>
+  Test message
 </div>
 `;
 
 exports[`Notification component can render a notification with an icon 1`] = `
 <div
-  className="spacing"
+  className="spacing verifyProcess"
   id="notification"
 >
-  <div
-    className="verifyProcess"
+  <span
+    className="close"
+    onClick={[Function]}
   >
-    <span
-      className="close"
-      onClick={[Function]}
-    >
-      <i
-        className="far fa-times-circle"
+    <i
+      className="far fa-times-circle"
+    />
+  </span>
+  <span>
+    <span>
+      <img
+        alt=""
+        className="img"
+        src="mail-sent.png"
       />
     </span>
-    <span>
-      <span>
-        <img
-          alt=""
-          className="img"
-          src="mail-sent.png"
-        />
-      </span>
-      test of notification that includes an icon png
-    </span>
-  </div>
+    test of notification that includes an icon png
+  </span>
 </div>
 `;
