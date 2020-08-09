@@ -11,6 +11,7 @@ class Notification extends React.Component {
 
   componentDidMount(){
     this.notificationRef = React.createRef();
+    this.imgRef = React.createRef();
   }
 
   // take a parameter to determine an icon needs to be rendered
@@ -20,21 +21,28 @@ class Notification extends React.Component {
 
   renderMsg = () => {
     const { setNotification } = this.props;
-    const { type } = this.props.notificationData;
+    const { type, timed } = this.props.notificationData;
     if(this.props.notificationData.show){
-      if (!isIconRequired(type)) timedFunc(3000, this.notificationRef, setNotification);
+      if (timed) timedFunc(4000, this.notificationRef, setNotification);
       document.documentElement.scrollTop = 0;
-      return isIconRequired(type) ? this.renderMsgWithIcon(type) : this.renderStandardMsg(type)
+      return isIconRequired(type) ? this.renderMsgWithIcon(type, timed) : this.renderStandardMsg(type)
     } else {
       return null;
     }
   }
 
-  renderMsgWithIcon = (type) => {
+  renderMsgWithIcon = (type, timed) => {
     return(
       <div ref={this.notificationRef} id="notification" className={`spacing ${type != null ? type : null}`}>
-        <span className="close" onClick={this.handleClose}><i className="far fa-times-circle"></i></span>
-        <span><span><img src={require(`../public/icons/${iconPicker(type)}`)} className="img" alt=""/></span>{this.props.notificationData.message}</span>
+        {timed ? null : <span className="close" onClick={this.handleClose}><i className="far fa-times-circle"></i></span>}
+        <div className="notificationBody">
+          <div className="notificationImg">
+            <img ref={this.imgRef} src={require(`../public/icons/${iconPicker(type)}`)} className="img" alt=""/>
+          </div>
+          <div className="notificationText">
+            {this.props.notificationData.message}
+          </div>
+        </div>
       </div>
     );
   }
@@ -50,9 +58,10 @@ class Notification extends React.Component {
   handleClose = () => {
     const { setNotification } = this.props;
     this.notificationRef.current.classList.add("shrinkNotification")
+    this.imgRef.current.classList.add("shrinkImg")
     window.setTimeout(function(){
       setNotification();
-    }, 488)
+    }, 487)
   }
 
   render(){

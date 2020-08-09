@@ -24,8 +24,8 @@ export class Verify extends React.Component {
   verifiedMsg = () => {
     const { setNotification } = this.props
     const successMsg = "Your email has now been verified.  Please log in below to continue."
-    setNotification(successMsg, "success", true);
     history.push("/login")
+    setNotification(successMsg, "verifySuccess", true);
   }
 
   notFoundMsg = () => {
@@ -71,7 +71,7 @@ export class Verify extends React.Component {
     console.log(this.props.verificationProcess.token);
     const data = {'userId': 0, 'token': this.props.verificationProcess.token}
     post("auth/resendToken", data).then((response) => {
-      this.props.setNotification(successMsg, "success", true);
+      this.props.setNotification(successMsg, "verifyResend", true, false);
     }).catch((error) => {
       console.log(error.response)
       this.props.setNotification(error.response.data, "error", true);
@@ -120,7 +120,6 @@ export class Verify extends React.Component {
       <div id="verifyContainer">
         {console.log(this.props.verificationProcess)}
         {this.props.verificationProcess.completionStatus === "" ? this.verifyingMsg() : null}
-        {this.props.verificationProcess.completionStatus === "completed" ? this.verifiedMsg() : null}
         <Notification />
         <div id="verifyContent">
           <div id="verifyLogo">

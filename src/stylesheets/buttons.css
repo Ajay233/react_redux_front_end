@@ -57,6 +57,11 @@
   opacity: 0.8;
 }
 
+.resend:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 
 .submit:focus {
   outline: none;

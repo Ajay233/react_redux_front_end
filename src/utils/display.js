@@ -9,6 +9,6 @@ export function timedFunc(delay, element, funcToDo){
     element.current.classList.add("shrinkNotification")
     window.setTimeout(function(){
       funcToDo();
-    }, 488);
+    }, 487);
   }, delay);
 }

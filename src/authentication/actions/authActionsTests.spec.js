@@ -133,12 +133,15 @@ describe("setVerficationProcess", () => {
   it("can create an action to set the status of the verification process", () => {
     let store = mockStore({})
 
+    const successMsg = "Your email has now been verified.  Please log in below to continue."
+
     const expectedAction = {
-      type: "SET_VERIFY_PROCESS_STATUS",
+      type: "SET_NOTIFICATION",
       payload: {
-        completionStatus: "completed",
-        token: "",
-        error: {}
+        message: successMsg,
+        type: "verifySuccess",
+        show: true,
+        timed: false
       }
     }
 

@@ -35,7 +35,7 @@ class SignUpForm extends React.Component {
         'password': password
     }).then((response) => {
       console.log(response.data);
-      setNotification(successMsg, "verifyProcess", true);
+      setNotification(successMsg, "verifyProcess", true, false);
     }).catch((error) => {
       console.log(error.response);
       setNotification(errorMsg, "error", true);

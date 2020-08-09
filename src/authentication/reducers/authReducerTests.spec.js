@@ -80,17 +80,23 @@ describe("setVerificationProcessStatus", () => {
     mockAxios.reset();
   });
 
-  it("sets the virification status state when passed the setVerficationProcess action", () => {
+  it("sets the verification status state when passed the setVerficationProcess action", () => {
     const store = mockStore({})
 
     const expectedState = {
-      completionStatus: "completed",
-      token: "",
-      error: {}
+      completionStatus: "not verified",
+      token: "testToken",
+      error: { status: 400 }
+    }
+
+    const errorResponse = {
+      response: {
+        status: 400
+      }
     }
 
     store.dispatch(setVerficationProcess("auth/verify", {token: "testToken"}))
-    mockAxios.mockResponse();
+    mockAxios.mockError(errorResponse);
     const newState = setVerificationProcessStatus(store, store.getActions()[0])
 
     expect(newState).toEqual(expectedState)
