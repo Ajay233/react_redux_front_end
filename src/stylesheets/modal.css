@@ -31,7 +31,7 @@
 }
 
 .close {
-  
+
 }
 
 .modalMessage {
@@ -40,16 +40,17 @@
 }
 
 .txt {
-  text-align: center;
+  text-align: justify;
   margin: auto;
+  margin-right: 5%;
 }
 
 .modalActions {
-  width: 55%;
-  margin-left: 22.5%;
-  margin-right: 22.5%;
+  width: fit-content;
+  margin: 10px auto 0 auto;
 }
 
-img{
-  width: 15%;
+.modalImg{
+  margin-right: 5%;
+  margin-left: 5%;
 }

@@ -21,7 +21,7 @@ const Modal = (props) => {
         <span onClick={props.onCancel} className="close"><i className="fas fa-times-circle red"></i></span>
         <div className="modalHeader">{`${props.title}`}</div>
         <div className="modalMessage">
-          <img src={require('../public/icons/warning.png')} alt="" />
+          <img className="modalImg" src={require('../public/icons/warning.png')} alt="" />
           <div className="txt">
             {props.message}
           </div>
