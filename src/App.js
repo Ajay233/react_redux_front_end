@@ -20,6 +20,7 @@ import history from './history'
 import './stylesheets/main.css'
 import './stylesheets/buttons.css'
 import './stylesheets/inputs.css'
+import './stylesheets/links.css'
 
 class App extends React.Component {
   render(){

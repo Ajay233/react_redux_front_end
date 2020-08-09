@@ -37,7 +37,7 @@ export class Quiz extends React.Component {
         <Modal
           show={showModal2}
           title={"Delete Quiz"}
-          message={"You are about to delete a quiz which will also delete any questions and answers associated with this"}
+          message={"You are about to delete this quiz which will also delete any questions and answers associated with this"}
           onDelete={this.handleDeleteQuiz}
           onCancel={hideModal}
         />
@@ -106,7 +106,7 @@ export class Quiz extends React.Component {
       <React.Fragment>
         <div id="quizTitle">{`Edit the ${name} ${name.includes("quiz") || name.includes("Quiz") ? "" : "quiz"}`}</div>
         <div className="quizStatus">Status: {this.renderStatus()}</div>
-        <UpdateQuizForm />
+        <UpdateQuizForm triggerModal={this.triggerModal} updateStatus={this.updateStatus}/>
       </React.Fragment>
     );
   }
@@ -122,25 +122,26 @@ export class Quiz extends React.Component {
 
   renderAddButton = () => {
     const { permission } = this.props.userData
-    return permission === "ADMIN" ? <Link to="/newQuestion" className="add addButton"><i className="fas fa-plus-circle green"></i> Add a question</Link> : null
+    return permission === "ADMIN" ? <Link to="/newQuestion" className="addButton"><i className="fas fa-plus-circle green"></i> Add a question</Link> : null
   }
 
-  triggerModal = () => {
+  triggerModal = (event) => {
+    event.preventDefault()
     this.props.showModal2()
   }
 
-  renderDeleteButton = () => {
-    return <button data-testid="delete-quiz-button" onClick={this.triggerModal} className="delete"><i className="fas fa-trash-alt"></i> Delete</button>
-  }
-
-  renderStatusButton = () => {
-    const { quiz } = this.props;
-    return( <button data-testid="updateStatus-button" className={quiz.status === "DRAFT" ? "save" : "warningButton"} onClick={this.updateStatus}>
-              { quiz.status === "DRAFT" ? <i className="far fa-check-circle"></i> : <i className="fas fa-pencil-ruler"></i>}
-              { quiz.status === "DRAFT" ? " Mark as Ready" : " Revert to draft" }
-            </button>
-    );
-  }
+  // renderDeleteButton = () => {
+  //   return <button data-testid="delete-quiz-button" onClick={this.triggerModal} className="delete"><i className="fas fa-trash-alt"></i> Delete</button>
+  // }
+  //
+  // renderStatusButton = () => {
+  //   const { quiz } = this.props;
+  //   return( <button data-testid="updateStatus-button" className={quiz.status === "DRAFT" ? "save" : "warningButton"} onClick={this.updateStatus}>
+  //             { quiz.status === "DRAFT" ? <i className="far fa-check-circle"></i> : <i className="fas fa-pencil-ruler"></i>}
+  //             { quiz.status === "DRAFT" ? " Mark as Ready" : " Revert to draft" }
+  //           </button>
+  //   );
+  // }
 
   updateStatus = () => {
     const { quiz, updateQuizStatus, userData } = this.props;
@@ -161,7 +162,7 @@ export class Quiz extends React.Component {
 
   renderOptions = () => {
     const { permission } = this.props.userData
-    return permission === "ADMIN" ? <div>{this.renderDeleteButton()}{this.renderStatusButton()}</div> : null
+    return permission === "ADMIN" ? <div>{this.renderStatusButton()}</div> : null
   }
 
   renderQuestions = () => {
@@ -185,12 +186,9 @@ export class Quiz extends React.Component {
     return(
       <div id="quiz">
         {this.renderModal()}
+        <Link className="link back" to="/quizSearch"><i className="fas fa-chevron-circle-left blue"></i> Back</Link>
         <Notification />
-
         {this.renderDetailsOrUpdate()}
-
-
-        {this.renderOptions()}
         <div className="headerContainer">
           <div id="questionsTitle">Questions</div>
           {this.renderAddButton()}

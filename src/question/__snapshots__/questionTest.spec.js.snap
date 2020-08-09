@@ -19,16 +19,6 @@ exports[`Question should render a question along with edit and delete options fo
       className="options"
     >
       <a
-        className="edit"
-        href="/editQuestion"
-        onClick={[Function]}
-      >
-        <i
-          className="fas fa-edit blue"
-        />
-         Edit
-      </a>
-      <a
         className="deleteOption"
         href="/"
         onClick={[Function]}
@@ -37,6 +27,16 @@ exports[`Question should render a question along with edit and delete options fo
           className="fas fa-trash-alt red"
         />
          Delete
+      </a>
+      <a
+        className="edit"
+        href="/editQuestion"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-edit blue"
+        />
+         Edit
       </a>
     </div>
   </div>

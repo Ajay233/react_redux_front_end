@@ -4,6 +4,16 @@ exports[`Quiz should render the quiz details, 'READY' status and questions for '
 <div
   id="quiz"
 >
+  <a
+    className="link back"
+    href="/quizSearch"
+    onClick={[Function]}
+  >
+    <i
+      className="fas fa-chevron-circle-left blue"
+    />
+     Back
+  </a>
   <div
     id="quizTitle"
   >
@@ -101,6 +111,16 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
 <div
   id="quiz"
 >
+  <a
+    className="link back"
+    href="/quizSearch"
+    onClick={[Function]}
+  >
+    <i
+      className="fas fa-chevron-circle-left blue"
+    />
+     Back
+  </a>
   <div
     id="quizTitle"
   >
@@ -121,6 +141,7 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
   </div>
   <div>
     <form
+      className="form-centered"
       onSubmit={[Function]}
     >
       <div>
@@ -143,7 +164,7 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
         <label>
           Quiz description:
         </label>
-        <input
+        <textarea
           className="inputBox"
           name="description"
           onBlur={[Function]}
@@ -159,70 +180,66 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
         <label>
           Quiz category:
         </label>
-        <select
-          className="inputBox"
-          name="category"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          onFocus={[Function]}
-          value=""
-        >
-          <option
-            value="Cat1"
+        <div>
+          <select
+            className="inputBox select-medium"
+            name="category"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            value=""
           >
-            Cat1
-          </option>
-          <option
-            value="Cat2"
-          >
-            Cat2
-          </option>
-          <option
-            value="Cat3"
-          >
-            Cat3
-          </option>
-        </select>
+            <option
+              value="Cat1"
+            >
+              Cat1
+            </option>
+            <option
+              value="Cat2"
+            >
+              Cat2
+            </option>
+            <option
+              value="Cat3"
+            >
+              Cat3
+            </option>
+          </select>
+        </div>
       </div>
       <div>
         <button
           className="submit"
         >
-          Save
+          <i
+            className="far fa-save"
+          />
+           Save Changes
         </button>
-        <a
-          className="cancel"
-          href="/quizSearch"
+        <button
+          className="delete"
+          data-testid="delete-quiz-button"
           onClick={[Function]}
         >
-          Cancel
-        </a>
+          <i
+            className="fas fa-trash-alt"
+          />
+           Delete Quiz
+        </button>
+        <button
+          className="warningButton"
+          data-testid="updateStatus-button"
+          onClick={[Function]}
+        >
+          <i
+            className="fas fa-pencil-ruler"
+          />
+           Revert to draft
+        </button>
       </div>
     </form>
-  </div>
-  <div>
-    <button
-      className="delete"
-      data-testid="delete-quiz-button"
-      onClick={[Function]}
-    >
-      <i
-        className="fas fa-trash-alt"
-      />
-       Delete
-    </button>
-    <button
-      className="warningButton"
-      data-testid="updateStatus-button"
-      onClick={[Function]}
-    >
-      <i
-        className="fas fa-pencil-ruler"
-      />
-       Revert to draft
-    </button>
   </div>
   <div
     className="headerContainer"
@@ -233,7 +250,7 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
       Questions
     </div>
     <a
-      className="add addButton"
+      className="addButton"
       href="/newQuestion"
       onClick={[Function]}
     >
@@ -279,16 +296,6 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
           className="options"
         >
           <a
-            className="edit"
-            href="/editQuestion"
-            onClick={[Function]}
-          >
-            <i
-              className="fas fa-edit blue"
-            />
-             Edit
-          </a>
-          <a
             className="deleteOption"
             href="/editQuiz"
             onClick={[Function]}
@@ -297,6 +304,16 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
               className="fas fa-trash-alt red"
             />
              Delete
+          </a>
+          <a
+            className="edit"
+            href="/editQuestion"
+            onClick={[Function]}
+          >
+            <i
+              className="fas fa-edit blue"
+            />
+             Edit
           </a>
         </div>
       </div>
@@ -319,16 +336,6 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
           className="options"
         >
           <a
-            className="edit"
-            href="/editQuestion"
-            onClick={[Function]}
-          >
-            <i
-              className="fas fa-edit blue"
-            />
-             Edit
-          </a>
-          <a
             className="deleteOption"
             href="/editQuiz"
             onClick={[Function]}
@@ -337,6 +344,16 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
               className="fas fa-trash-alt red"
             />
              Delete
+          </a>
+          <a
+            className="edit"
+            href="/editQuestion"
+            onClick={[Function]}
+          >
+            <i
+              className="fas fa-edit blue"
+            />
+             Edit
           </a>
         </div>
       </div>

@@ -26,3 +26,7 @@
 .select {
   height: 34px;
 }
+
+.select-medium {
+  width: 30%;
+}

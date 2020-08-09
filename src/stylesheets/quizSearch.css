@@ -34,7 +34,7 @@
 }
 
 #resultsHeadings {
-  border-bottom: solid 1px white;
+  border-bottom: solid 3px white;
   font-weight: bold;
 }
 
@@ -88,10 +88,14 @@
 }
 
 .edit, .start, .view, .deleteOption {
-  width: 25%;
-  direction:rtl;
+  width: fit-content;
   color: white;
   text-decoration: none;
+  margin: 0 20px;
+}
+
+.edit:hover, .start:hover, .view:hover, .deleteOption:hover {
+  color: orange;
 }
 
 .blue {

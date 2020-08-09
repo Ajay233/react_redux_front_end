@@ -20,16 +20,6 @@ exports[`Questions should render a list of questions with delete and edit option
         className="options"
       >
         <a
-          className="edit"
-          href="/editQuestion"
-          onClick={[Function]}
-        >
-          <i
-            className="fas fa-edit blue"
-          />
-           Edit
-        </a>
-        <a
           className="deleteOption"
           href="/"
           onClick={[Function]}
@@ -38,6 +28,16 @@ exports[`Questions should render a list of questions with delete and edit option
             className="fas fa-trash-alt red"
           />
            Delete
+        </a>
+        <a
+          className="edit"
+          href="/editQuestion"
+          onClick={[Function]}
+        >
+          <i
+            className="fas fa-edit blue"
+          />
+           Edit
         </a>
       </div>
     </div>
@@ -60,16 +60,6 @@ exports[`Questions should render a list of questions with delete and edit option
         className="options"
       >
         <a
-          className="edit"
-          href="/editQuestion"
-          onClick={[Function]}
-        >
-          <i
-            className="fas fa-edit blue"
-          />
-           Edit
-        </a>
-        <a
           className="deleteOption"
           href="/"
           onClick={[Function]}
@@ -78,6 +68,16 @@ exports[`Questions should render a list of questions with delete and edit option
             className="fas fa-trash-alt red"
           />
            Delete
+        </a>
+        <a
+          className="edit"
+          href="/editQuestion"
+          onClick={[Function]}
+        >
+          <i
+            className="fas fa-edit blue"
+          />
+           Edit
         </a>
       </div>
     </div>
@@ -100,16 +100,6 @@ exports[`Questions should render a list of questions with delete and edit option
         className="options"
       >
         <a
-          className="edit"
-          href="/editQuestion"
-          onClick={[Function]}
-        >
-          <i
-            className="fas fa-edit blue"
-          />
-           Edit
-        </a>
-        <a
           className="deleteOption"
           href="/"
           onClick={[Function]}
@@ -118,6 +108,16 @@ exports[`Questions should render a list of questions with delete and edit option
             className="fas fa-trash-alt red"
           />
            Delete
+        </a>
+        <a
+          className="edit"
+          href="/editQuestion"
+          onClick={[Function]}
+        >
+          <i
+            className="fas fa-edit blue"
+          />
+           Edit
         </a>
       </div>
     </div>

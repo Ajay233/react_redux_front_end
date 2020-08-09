@@ -1,5 +1,5 @@
 #quiz {
-  padding-top: 65px;
+  padding: 65px 10px 5px 10px;;
   background-color: rgb(30, 30, 30);
   color: white;
   font-family: arial;
@@ -33,7 +33,7 @@
 
 .quizStatus {
   width: 40%;
-  margin: 10px 30% 10px 30%;
+  margin: 10px 30% 40px 30%;
   text-align: center;
 }
 
@@ -67,8 +67,16 @@
 }
 
 .addButton {
-  margin-top: 57px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 63px;
   width: 14%;
+}
+
+.addButton:hover {
+  color: orange;
 }
 
 .headerContainer {
@@ -78,7 +86,7 @@
 #questionHeadings{
   display: flex;
   padding: 10px 5px;
-  border-bottom: solid 2px white;
+  border-bottom: solid 3px white;
   font-weight: bold;
 }
 
@@ -95,7 +103,6 @@
 }
 
 .questionContainer {
-  width: 100%;
   display: flex;
   padding: 10px 5px 10px 5px;
   border-bottom: solid 1px white;

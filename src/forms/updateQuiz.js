@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { setNotification } from '../notifications/actions'
@@ -23,14 +22,26 @@ class UpdateQuizForm extends React.Component {
     )
   }
 
+  renderTextArea = (formProps) => {
+    return(
+      <div>
+        {this.renderError(formProps.meta)}
+        <label>{ formProps.label }</label>
+        <textarea {...formProps.input} placeholder={this.renderPlaceholder(formProps.input.name)} className="inputBox"/>
+      </div>
+    )
+  }
+
   renderSelect = (formProps) => {
     return(
       <div>
         {this.renderError(formProps.meta)}
         <label>{ formProps.label }</label>
-        <select {...formProps.input} placeholder={this.renderPlaceholder(formProps.input.name)} className="inputBox">
-          {formProps.children}
-        </select>
+        <div>
+          <select {...formProps.input} placeholder={this.renderPlaceholder(formProps.input.name)} className="inputBox select-medium">
+            {formProps.children}
+          </select>
+        </div>
       </div>
     );
   }
@@ -80,20 +91,36 @@ class UpdateQuizForm extends React.Component {
     })
   }
 
+  renderStatusButton = () => {
+    const { quiz } = this.props;
+    return( <button data-testid="updateStatus-button" className={quiz.status === "DRAFT" ? "save" : "warningButton"} onClick={this.props.updateStatus}>
+              { quiz.status === "DRAFT" ? <i className="far fa-check-circle"></i> : <i className="fas fa-pencil-ruler"></i>}
+              { quiz.status === "DRAFT" ? " Mark as Ready" : " Revert to draft" }
+            </button>
+    );
+  }
+
   // <option value="" disabled>{this.props.quiz.category}</option>
 
   render(){
     return(
       <div>
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
           <Field name="name" component={this.renderInput} label="Quiz name:"/>
-          <Field name="description" component={this.renderInput} label="Quiz description:"/>
+          <Field name="description" component={this.renderTextArea} label="Quiz description:"/>
           <Field name="category" component={this.renderSelect} label="Quiz category:">
             {this.renderOptions()}
           </Field>
           <div>
-            <button className="submit">Save</button>
-            <Link className="cancel" to="/quizSearch">Cancel</Link>
+            <button className="submit"><i className="far fa-save"></i> Save Changes</button>
+            <button
+              data-testid="delete-quiz-button"
+              onClick={this.props.triggerModal}
+              className="delete"
+            >
+              <i className="fas fa-trash-alt"></i> Delete Quiz
+            </button>
+            {this.renderStatusButton()}
           </div>
         </form>
       </div>
