@@ -5,11 +5,12 @@ exports[`newQuestion form should match the snapshot 1`] = `
   className="componentContainer"
 >
   <div
-    className="title-large"
+    className="title-large-spaced"
   >
     Create a Question
   </div>
   <form
+    className="form-centered"
     onSubmit={[Function]}
   >
     <div>
@@ -31,7 +32,7 @@ exports[`newQuestion form should match the snapshot 1`] = `
       <label>
         Question description:
       </label>
-      <input
+      <textarea
         className="inputBox"
         name="description"
         onBlur={[Function]}
@@ -42,18 +43,22 @@ exports[`newQuestion form should match the snapshot 1`] = `
         value=""
       />
     </div>
-    <button
-      className="submit"
+    <div
+      className="buttonGroup"
     >
-      Save
-    </button>
-    <a
-      className="cancel"
-      href="/editQuiz"
-      onClick={[Function]}
-    >
-      Cancel
-    </a>
+      <button
+        className="submit"
+      >
+        Save
+      </button>
+      <a
+        className="cancel"
+        href="/editQuiz"
+        onClick={[Function]}
+      >
+        Cancel
+      </a>
+    </div>
   </form>
 </div>
 `;

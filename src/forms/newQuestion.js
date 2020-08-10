@@ -20,6 +20,16 @@ class NewQuestionForm extends React.Component {
     );
   }
 
+  renderTextArea = (formProps) => {
+    return(
+      <div>
+        {this.renderError(formProps.meta)}
+        <label>{ formProps.label }</label>
+        <textarea {...formProps.input} className="inputBox"/>
+      </div>
+    );
+  }
+
   renderError = (meta) => {
     const { error, touched } = meta
     return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null
@@ -49,11 +59,13 @@ class NewQuestionForm extends React.Component {
   render(){
     return(
       <div className="componentContainer">
-        <div className="title-large">Create a Question</div>
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+        <div className="title-large-spaced">Create a Question</div>
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
           <Field name="number" component={this.renderInput} label="Question Number:"/>
-          <Field name="description" component={this.renderInput} label="Question description:"/>
-          <button className="submit">Save</button><Link to="/editQuiz" className="cancel">Cancel</Link>
+          <Field name="description" component={this.renderTextArea} label="Question description:"/>
+          <div className="buttonGroup">
+            <button className="submit">Save</button><Link to="/editQuiz" className="cancel">Cancel</Link>
+          </div>
         </form>
       </div>
     );
