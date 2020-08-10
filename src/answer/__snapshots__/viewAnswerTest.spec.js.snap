@@ -36,7 +36,7 @@ exports[`AnswerView should render the NewAnswerForm 1`] = `
         <label>
           Answer description
         </label>
-        <input
+        <textarea
           className="inputBox"
           name="description"
           onBlur={[Function]}
@@ -109,11 +109,12 @@ exports[`AnswerView should render the UpdateAnswerForm 1`] = `
   <div />
   <div>
     <div
-      className="title-large"
+      className="title-large-spaced"
     >
       Edit Answer 1
     </div>
     <form
+      className="form-centered"
       onSubmit={[Function]}
     >
       <div>
@@ -135,7 +136,7 @@ exports[`AnswerView should render the UpdateAnswerForm 1`] = `
         <label>
           Answer description
         </label>
-        <input
+        <textarea
           className="inputBox"
           name="description"
           onBlur={[Function]}
@@ -150,40 +151,46 @@ exports[`AnswerView should render the UpdateAnswerForm 1`] = `
         <label>
           Correct? Yes/No:
         </label>
-        <select
-          className="inputBox"
-          name="correct"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          onFocus={[Function]}
-          value=""
-        >
-          <option
-            value={true}
+        <div>
+          <select
+            className="inputBox select-medium"
+            name="correct"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            value=""
           >
-            Yes
-          </option>
-          <option
-            value={false}
-          >
-            No
-          </option>
-        </select>
+            <option
+              value={true}
+            >
+              Yes
+            </option>
+            <option
+              value={false}
+            >
+              No
+            </option>
+          </select>
+        </div>
       </div>
-      <button
-        className="submit"
+      <div
+        className="buttonGroup"
       >
-        Save
-      </button>
-      <a
-        className="cancel"
-        href="/editQuestion"
-        onClick={[Function]}
-      >
-        Cancel
-      </a>
+        <button
+          className="submit"
+        >
+          Save
+        </button>
+        <a
+          className="cancel"
+          href="/editQuestion"
+          onClick={[Function]}
+        >
+          Cancel
+        </a>
+      </div>
     </form>
   </div>
 </div>

@@ -22,14 +22,26 @@ class UpdateAnswerForm extends React.Component {
     );
   }
 
+  renderTextArea = (formProps) => {
+    return(
+      <div>
+        {this.renderError(formProps.meta)}
+        <label>{ formProps.label }</label>
+        <textarea {...formProps.input} className="inputBox"/>
+      </div>
+    );
+  }
+
   renderSelect = (formProps) => {
     return(
       <div>
         {this.renderError(formProps.meta)}
         <label>{ formProps.label }</label>
-        <select {...formProps.input} className="inputBox">
-          {formProps.children}
-        </select>
+        <div>
+          <select {...formProps.input} className="inputBox select-medium">
+            {formProps.children}
+          </select>
+        </div>
       </div>
     );
   }
@@ -66,15 +78,17 @@ class UpdateAnswerForm extends React.Component {
   render(){
     return(
       <div>
-        <div className="title-large">{`Edit Answer ${this.props.currentAnswer.answerNumber}`}</div>
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+        <div className="title-large-spaced">{`Edit Answer ${this.props.currentAnswer.answerNumber}`}</div>
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
           <Field name="number" component={this.renderInput} label="Answer number:"/>
-          <Field name="description" component={this.renderInput} label="Answer description"/>
+          <Field name="description" component={this.renderTextArea} label="Answer description"/>
           <Field name="correct" component={this.renderSelect} label="Correct? Yes/No:">
             <option value={true}>Yes</option>
             <option value={false}>No</option>
           </Field>
-          <button className="submit">Save</button><Link className="cancel" to="/editQuestion">Cancel</Link>
+          <div className="buttonGroup">
+            <button className="submit">Save</button><Link className="cancel" to="/editQuestion">Cancel</Link>
+          </div>
         </form>
       </div>
     );

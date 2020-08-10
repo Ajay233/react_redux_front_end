@@ -79,7 +79,7 @@ class NewAnswerForm extends React.Component {
         <div className="title-large-spaced">Create an Answer</div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
           <Field name="number" component={this.renderInput} label="Answer number:"/>
-          <Field name="description" component={this.renderInput} label="Answer description"/>
+          <Field name="description" component={this.renderTextArea} label="Answer description"/>
           <Field name="correct" component={this.renderSelect} label="Correct? Yes/No:">
             <option value="" disabled>Select an option</option>
             <option value={true}>Yes</option>

@@ -32,7 +32,7 @@ exports[`newAnswer form should match the snapshot 1`] = `
       <label>
         Answer description
       </label>
-      <input
+      <textarea
         className="inputBox"
         name="description"
         onBlur={[Function]}
