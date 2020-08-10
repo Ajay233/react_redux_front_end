@@ -72,7 +72,9 @@ exports[`UpdateQuiz Form should match the snapshot 1`] = `
         </select>
       </div>
     </div>
-    <div>
+    <div
+      className="buttonGroup"
+    >
       <button
         className="submit"
       >

@@ -209,7 +209,9 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
           </select>
         </div>
       </div>
-      <div>
+      <div
+        className="buttonGroup"
+      >
         <button
           className="submit"
         >

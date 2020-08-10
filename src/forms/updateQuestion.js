@@ -65,14 +65,16 @@ class UpdateQuestionForm extends React.Component {
         <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
           <Field name="number" component={this.renderInput} label="Question Number:"/>
           <Field name="description" component={this.renderTextArea} label="Question description:"/>
+          <div className="buttonGroup">
           <button className="submit"><i className="far fa-save"></i> Save Changes</button>
-          <button
-            data-testid="delete-question-button"
-            onClick={this.props.triggerModal}
-            className="delete"
-          >
-            <i className="fas fa-trash-alt"></i> Delete
-          </button>
+            <button
+              data-testid="delete-question-button"
+              onClick={this.props.triggerModal}
+              className="delete"
+            >
+              <i className="fas fa-trash-alt"></i> Delete
+            </button>
+          </div>
         </form>
       </div>
     );

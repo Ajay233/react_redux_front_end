@@ -111,7 +111,7 @@ class UpdateQuizForm extends React.Component {
           <Field name="category" component={this.renderSelect} label="Quiz category:">
             {this.renderOptions()}
           </Field>
-          <div>
+          <div className="buttonGroup">
             <button className="submit"><i className="far fa-save"></i> Save Changes</button>
             <button
               data-testid="delete-quiz-button"

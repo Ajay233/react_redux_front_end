@@ -44,23 +44,27 @@ exports[`UpdateQuestionForm should match the snapshot 1`] = `
         value=""
       />
     </div>
-    <button
-      className="submit"
+    <div
+      className="buttonGroup"
     >
-      <i
-        className="far fa-save"
-      />
-       Save Changes
-    </button>
-    <button
-      className="delete"
-      data-testid="delete-question-button"
-    >
-      <i
-        className="fas fa-trash-alt"
-      />
-       Delete
-    </button>
+      <button
+        className="submit"
+      >
+        <i
+          className="far fa-save"
+        />
+         Save Changes
+      </button>
+      <button
+        className="delete"
+        data-testid="delete-question-button"
+      >
+        <i
+          className="fas fa-trash-alt"
+        />
+         Delete
+      </button>
+    </div>
   </form>
 </div>
 `;
