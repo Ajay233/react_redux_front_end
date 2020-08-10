@@ -22,14 +22,26 @@ class NewAnswerForm extends React.Component {
     );
   }
 
+  renderTextArea = (formProps) => {
+    return(
+      <div>
+        {this.renderError(formProps.meta)}
+        <label>{ formProps.label }</label>
+        <textarea {...formProps.input} className="inputBox"/>
+      </div>
+    );
+  }
+
   renderSelect = (formProps) => {
     return(
       <div>
         {this.renderError(formProps.meta)}
         <label>{ formProps.label }</label>
-        <select {...formProps.input} className="inputBox">
-          {formProps.children}
-        </select>
+        <div>
+          <select {...formProps.input} className="inputBox select-medium">
+            {formProps.children}
+          </select>
+        </div>
       </div>
     );
   }
@@ -64,8 +76,8 @@ class NewAnswerForm extends React.Component {
   render(){
     return(
       <div className="componentContainer">
-        <div className="title-large">Create an Answer</div>
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+        <div className="title-large-spaced">Create an Answer</div>
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
           <Field name="number" component={this.renderInput} label="Answer number:"/>
           <Field name="description" component={this.renderInput} label="Answer description"/>
           <Field name="correct" component={this.renderSelect} label="Correct? Yes/No:">
@@ -73,7 +85,9 @@ class NewAnswerForm extends React.Component {
             <option value={true}>Yes</option>
             <option value={false}>No</option>
           </Field>
-          <button className="submit">Save</button><Link to="/editQuestion" className="cancel">Cancel</Link>
+          <div className="buttonGroup">
+            <button className="submit">Save</button><Link to="/editQuestion" className="cancel">Cancel</Link>
+          </div>
         </form>
       </div>
     );

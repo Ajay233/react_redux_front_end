@@ -5,11 +5,12 @@ exports[`newAnswer form should match the snapshot 1`] = `
   className="componentContainer"
 >
   <div
-    className="title-large"
+    className="title-large-spaced"
   >
     Create an Answer
   </div>
   <form
+    className="form-centered"
     onSubmit={[Function]}
   >
     <div>
@@ -46,46 +47,52 @@ exports[`newAnswer form should match the snapshot 1`] = `
       <label>
         Correct? Yes/No:
       </label>
-      <select
-        className="inputBox"
-        name="correct"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        value=""
-      >
-        <option
-          disabled={true}
+      <div>
+        <select
+          className="inputBox select-medium"
+          name="correct"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
           value=""
         >
-          Select an option
-        </option>
-        <option
-          value={true}
-        >
-          Yes
-        </option>
-        <option
-          value={false}
-        >
-          No
-        </option>
-      </select>
+          <option
+            disabled={true}
+            value=""
+          >
+            Select an option
+          </option>
+          <option
+            value={true}
+          >
+            Yes
+          </option>
+          <option
+            value={false}
+          >
+            No
+          </option>
+        </select>
+      </div>
     </div>
-    <button
-      className="submit"
+    <div
+      className="buttonGroup"
     >
-      Save
-    </button>
-    <a
-      className="cancel"
-      href="/editQuestion"
-      onClick={[Function]}
-    >
-      Cancel
-    </a>
+      <button
+        className="submit"
+      >
+        Save
+      </button>
+      <a
+        className="cancel"
+        href="/editQuestion"
+        onClick={[Function]}
+      >
+        Cancel
+      </a>
+    </div>
   </form>
 </div>
 `;
