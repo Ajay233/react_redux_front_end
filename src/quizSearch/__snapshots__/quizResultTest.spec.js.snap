@@ -21,14 +21,14 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
       className="options"
     >
       <a
-        className="start"
+        className="deleteOption"
         href="/"
         onClick={[Function]}
       >
         <i
-          className="far fa-play-circle blue"
+          className="fas fa-trash-alt red"
         />
-         Start
+         Delete
       </a>
       <a
         className="edit"
@@ -41,14 +41,14 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
          Edit
       </a>
       <a
-        className="deleteOption"
+        className="start"
         href="/"
         onClick={[Function]}
       >
         <i
-          className="fas fa-trash-alt red"
+          className="far fa-play-circle blue"
         />
-         Delete
+         Start
       </a>
     </div>
   </div>
@@ -76,16 +76,6 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
       className="options"
     >
       <a
-        className="start"
-        href="/"
-        onClick={[Function]}
-      >
-        <i
-          className="far fa-play-circle blue"
-        />
-         Start
-      </a>
-      <a
         className="view"
         href="/viewQuiz"
         onClick={[Function]}
@@ -94,6 +84,16 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
           className="far fa-eye blue"
         />
          View
+      </a>
+      <a
+        className="start"
+        href="/"
+        onClick={[Function]}
+      >
+        <i
+          className="far fa-play-circle blue"
+        />
+         Start
       </a>
     </div>
   </div>

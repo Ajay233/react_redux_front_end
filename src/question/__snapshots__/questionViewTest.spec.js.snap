@@ -91,15 +91,6 @@ exports[`QuestionView should render the QuestionView component, question details
             className="options"
           >
             <a
-              className="edit"
-              onClick={[Function]}
-            >
-              <i
-                className="fas fa-edit blue"
-              />
-               Edit
-            </a>
-            <a
               className="deleteOption"
               onClick={[Function]}
             >
@@ -107,6 +98,15 @@ exports[`QuestionView should render the QuestionView component, question details
                 className="fas fa-trash-alt red"
               />
                Delete
+            </a>
+            <a
+              className="edit"
+              onClick={[Function]}
+            >
+              <i
+                className="fas fa-edit blue"
+              />
+               Edit
             </a>
           </div>
         </div>
@@ -136,15 +136,6 @@ exports[`QuestionView should render the QuestionView component, question details
             className="options"
           >
             <a
-              className="edit"
-              onClick={[Function]}
-            >
-              <i
-                className="fas fa-edit blue"
-              />
-               Edit
-            </a>
-            <a
               className="deleteOption"
               onClick={[Function]}
             >
@@ -152,6 +143,15 @@ exports[`QuestionView should render the QuestionView component, question details
                 className="fas fa-trash-alt red"
               />
                Delete
+            </a>
+            <a
+              className="edit"
+              onClick={[Function]}
+            >
+              <i
+                className="fas fa-edit blue"
+              />
+               Edit
             </a>
           </div>
         </div>

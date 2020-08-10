@@ -279,14 +279,14 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
             className="options"
           >
             <a
-              className="start"
+              className="deleteOption"
               href="/"
               onClick={[Function]}
             >
               <i
-                className="far fa-play-circle blue"
+                className="fas fa-trash-alt red"
               />
-               Start
+               Delete
             </a>
             <a
               className="edit"
@@ -299,14 +299,14 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
                Edit
             </a>
             <a
-              className="deleteOption"
+              className="start"
               href="/"
               onClick={[Function]}
             >
               <i
-                className="fas fa-trash-alt red"
+                className="far fa-play-circle blue"
               />
-               Delete
+               Start
             </a>
           </div>
         </div>
@@ -331,14 +331,14 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
             className="options"
           >
             <a
-              className="start"
+              className="deleteOption"
               href="/"
               onClick={[Function]}
             >
               <i
-                className="far fa-play-circle blue"
+                className="fas fa-trash-alt red"
               />
-               Start
+               Delete
             </a>
             <a
               className="edit"
@@ -351,14 +351,14 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
                Edit
             </a>
             <a
-              className="deleteOption"
+              className="start"
               href="/"
               onClick={[Function]}
             >
               <i
-                className="fas fa-trash-alt red"
+                className="far fa-play-circle blue"
               />
-               Delete
+               Start
             </a>
           </div>
         </div>

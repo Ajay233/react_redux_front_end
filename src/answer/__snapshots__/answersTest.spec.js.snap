@@ -27,16 +27,6 @@ exports[`should render a list of answers with options for ADMIN users 1`] = `
         className="options"
       >
         <a
-          className="edit"
-          href="/editAnswer"
-          onClick={[Function]}
-        >
-          <i
-            className="fas fa-edit blue"
-          />
-           Edit
-        </a>
-        <a
           className="deleteOption"
           href="/"
           onClick={[Function]}
@@ -45,6 +35,16 @@ exports[`should render a list of answers with options for ADMIN users 1`] = `
             className="fas fa-trash-alt red"
           />
            Delete
+        </a>
+        <a
+          className="edit"
+          href="/editAnswer"
+          onClick={[Function]}
+        >
+          <i
+            className="fas fa-edit blue"
+          />
+           Edit
         </a>
       </div>
     </div>
@@ -74,16 +74,6 @@ exports[`should render a list of answers with options for ADMIN users 1`] = `
         className="options"
       >
         <a
-          className="edit"
-          href="/editAnswer"
-          onClick={[Function]}
-        >
-          <i
-            className="fas fa-edit blue"
-          />
-           Edit
-        </a>
-        <a
           className="deleteOption"
           href="/"
           onClick={[Function]}
@@ -92,6 +82,16 @@ exports[`should render a list of answers with options for ADMIN users 1`] = `
             className="fas fa-trash-alt red"
           />
            Delete
+        </a>
+        <a
+          className="edit"
+          href="/editAnswer"
+          onClick={[Function]}
+        >
+          <i
+            className="fas fa-edit blue"
+          />
+           Edit
         </a>
       </div>
     </div>
@@ -121,16 +121,6 @@ exports[`should render a list of answers with options for ADMIN users 1`] = `
         className="options"
       >
         <a
-          className="edit"
-          href="/editAnswer"
-          onClick={[Function]}
-        >
-          <i
-            className="fas fa-edit blue"
-          />
-           Edit
-        </a>
-        <a
           className="deleteOption"
           href="/"
           onClick={[Function]}
@@ -139,6 +129,16 @@ exports[`should render a list of answers with options for ADMIN users 1`] = `
             className="fas fa-trash-alt red"
           />
            Delete
+        </a>
+        <a
+          className="edit"
+          href="/editAnswer"
+          onClick={[Function]}
+        >
+          <i
+            className="fas fa-edit blue"
+          />
+           Edit
         </a>
       </div>
     </div>

@@ -51,7 +51,7 @@
 }
 
 .quizContainer, #resultsHeadings {
-  padding: 5px;
+  padding: 5px 5px 10px 5px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -79,6 +79,7 @@
   flex-direction: row-reverse;
   padding-right: 5px;
   color: white;
+  margin: auto;
 }
 
 #sectionDivider {
