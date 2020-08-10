@@ -1,6 +1,6 @@
 #quizSearch {
   height: 100%;
-  padding-top: 60px;
+  padding: 60px 10px 10px 10px;
   background-color: rgb(30, 30, 30);
   color: white;
   font-family: arial;
@@ -39,7 +39,7 @@
 }
 
 #nameHeader {
-  width: 25%;
+  width: 23%;
 }
 
 #descriptionHeader {
@@ -47,7 +47,7 @@
 }
 
 #optionsHeader {
-  width: 25%;
+  width: 27%;
 }
 
 .quizContainer, #resultsHeadings {
@@ -61,12 +61,11 @@
 }
 
 .quiz, #resultsHeadings {
-  width: 100%;
   display: flex;
 }
 
 .quizName {
-  width: 25%;
+  width: 23%;
 }
 
 .quizDescription {
@@ -74,7 +73,7 @@
 }
 
 .options {
-  width: 25%;
+  width: 27%;
   display: flex;
   flex-direction: row-reverse;
   padding-right: 5px;
@@ -112,9 +111,9 @@
 }
 
 #quizSearchForms {
-  width: 100%;
+  width: 90%;
   display: flex;
-  margin-top: 50px;
+  margin: 50px auto 0 auto;
 }
 
 #quizSearchByName {
