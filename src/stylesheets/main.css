@@ -17,12 +17,16 @@ body{
   height: 100%;
 }
 
-.title-large {
+.title-large, .title-large-spaced {
   font-size: 40px;
   text-align: center;
   width: 30%;
   margin-left: 35%;
   margin-right: 35%;
+}
+
+.title-large-spaced {
+  margin-bottom: 40px;
 }
 
 .title-large-left {
@@ -65,6 +69,11 @@ body{
 button:disabled {
   opacity: 0.6;
   cursor: not-allowed !important;
+}
+
+.buttonGroup {
+  width: fit-content;
+  margin: auto;
 }
 
 .neumorphicElem {

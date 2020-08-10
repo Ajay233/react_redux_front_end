@@ -25,6 +25,16 @@ class NewQuizForm extends React.Component {
     )
   }
 
+  renderTextArea = (formProps) => {
+    return(
+      <div>
+        {this.renderError(formProps.meta)}
+        <label>{ formProps.label }</label>
+        <textarea {...formProps.input} className="inputBox"/>
+      </div>
+    )
+  }
+
   renderError = (meta) => {
     const { error, touched } = meta
     return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null
@@ -35,9 +45,11 @@ class NewQuizForm extends React.Component {
       <div>
         {this.renderError(formProps.meta)}
         <label>{ formProps.label }</label>
-        <select {...formProps.input} className="inputBox">
-          {formProps.children}
-        </select>
+        <div>
+          <select {...formProps.input} className="inputBox select-medium">
+            {formProps.children}
+          </select>
+        </div>
       </div>
     );
   }
@@ -78,15 +90,15 @@ class NewQuizForm extends React.Component {
     return(
       <div className="componentContainer">
         <Notification />
-        <div className="title-large">Create a Quiz</div>
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+        <div className="title-large-spaced">Create a Quiz</div>
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
           <Field name="name" component={this.renderInput} label="Quiz name:"/>
-          <Field name="description" component={this.renderInput} label="Quiz description:"/>
+          <Field name="description" component={this.renderTextArea} label="Quiz description:"/>
           <Field name="category" component={this.renderSelect} label="Quiz category:">
             <option value="" disabled>Select a category</option>
             {this.renderOptions()}
           </Field>
-          <div>
+          <div className="buttonGroup">
             <button className="submit">Save and continue</button><Link to="/quizSearch" className="cancel">Cancel</Link>
           </div>
         </form>

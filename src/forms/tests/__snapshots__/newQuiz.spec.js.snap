@@ -5,11 +5,12 @@ exports[`newQuiz form should match the snapshot 1`] = `
   className="componentContainer"
 >
   <div
-    className="title-large"
+    className="title-large-spaced"
   >
     Create a Quiz
   </div>
   <form
+    className="form-centered"
     onSubmit={[Function]}
   >
     <div>
@@ -31,7 +32,7 @@ exports[`newQuiz form should match the snapshot 1`] = `
       <label>
         Quiz description:
       </label>
-      <input
+      <textarea
         className="inputBox"
         name="description"
         onBlur={[Function]}
@@ -46,40 +47,44 @@ exports[`newQuiz form should match the snapshot 1`] = `
       <label>
         Quiz category:
       </label>
-      <select
-        className="inputBox"
-        name="category"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        value=""
-      >
-        <option
-          disabled={true}
+      <div>
+        <select
+          className="inputBox select-medium"
+          name="category"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
           value=""
         >
-          Select a category
-        </option>
-        <option
-          value="test1"
-        >
-          test1
-        </option>
-        <option
-          value="test2"
-        >
-          test2
-        </option>
-        <option
-          value="test3"
-        >
-          test3
-        </option>
-      </select>
+          <option
+            disabled={true}
+            value=""
+          >
+            Select a category
+          </option>
+          <option
+            value="test1"
+          >
+            test1
+          </option>
+          <option
+            value="test2"
+          >
+            test2
+          </option>
+          <option
+            value="test3"
+          >
+            test3
+          </option>
+        </select>
+      </div>
     </div>
-    <div>
+    <div
+      className="buttonGroup"
+    >
       <button
         className="submit"
       >
