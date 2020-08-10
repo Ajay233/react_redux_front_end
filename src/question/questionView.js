@@ -19,6 +19,10 @@ import '../stylesheets/answer.css'
 
 export class QuestionView extends React.Component {
 
+  componentDidMount(){
+    document.documentElement.scrollTop = 0;
+  }
+
   renderModal = () => {
     const { currentAnswer, hideModal, currentQuestion } = this.props
     const { showModal, showModal2 } = this.props.modalState
@@ -72,7 +76,7 @@ export class QuestionView extends React.Component {
   }
 
   renderFormOrDetails = () => {
-    return history.location.pathname === "/editQuestion" ? <UpdateQuestionForm/> : this.renderDetails();
+    return history.location.pathname === "/editQuestion" ? <UpdateQuestionForm triggerModal={this.triggerModal}/> : this.renderDetails();
   }
 
   handleDeleteAnswer = () => {
@@ -117,30 +121,34 @@ export class QuestionView extends React.Component {
   }
 
   renderAddButton = () => {
-    return <Link to="/newAnswer" className="add"><i className="fas fa-plus-circle green"></i> Add an answer</Link>
+    return <Link to="/newAnswer" className="addButton"><i className="fas fa-plus-circle green"></i> Add an answer</Link>
   }
 
-  triggerModal = () => {
+  triggerModal = (event) => {
+    event.preventDefault()
     this.props.showModal2()
   }
 
-  renderDeleteButton = () => {
-    return <button data-testid="delete-question-button" onClick={this.triggerModal} className="delete"><i className="fas fa-trash-alt"></i> Delete</button>
-  }
+  // renderDeleteButton = () => {
+  //   return <button data-testid="delete-question-button" onClick={this.triggerModal} className="delete"><i className="fas fa-trash-alt"></i> Delete</button>
+  // }
 
-  renderOptions = () => {
-    const { permission } = this.props.userData
-    return permission === "ADMIN" ? <div>{this.renderAddButton()}{this.renderDeleteButton()}</div> : null
-  }
+  // renderOptions = () => {
+  //   const { permission } = this.props.userData
+  //   return permission === "ADMIN" ? <div>{this.renderDeleteButton()}</div> : null
+  // }
 
   render(){
     return(
       <div id="questionView">
         {this.renderModal()}
+        <Link to="/editQuiz" className="link back"><i className="fas fa-chevron-circle-left blue"></i> Back</Link>
         <Notification />
         {this.renderFormOrDetails()}
-        {this.renderOptions()}
-        <div id="answersTitle">Answers</div>
+        <div className="headerContainer">
+          <div id="answersTitle">Answers</div>
+          {this.renderAddButton()}
+        </div>
         <div id="answerHeadings">
           <div id="numberHeader">Answer</div>
           <div id="descriptionHeader">Description</div>

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { put } from '../axiosRequests/requests'
@@ -16,6 +15,16 @@ class UpdateQuestionForm extends React.Component {
         {this.renderError(formProps.meta)}
         <label>{ formProps.label }</label>
         <input {...formProps.input} className="inputBox"/>
+      </div>
+    );
+  }
+
+  renderTextArea = (formProps) => {
+    return(
+      <div>
+        {this.renderError(formProps.meta)}
+        <label>{ formProps.label }</label>
+        <textarea {...formProps.input} className="inputBox"/>
       </div>
     );
   }
@@ -52,11 +61,18 @@ class UpdateQuestionForm extends React.Component {
     const { questionNumber } = this.props.currentQuestion
     return(
       <div className="">
-        <div className="title-large">{`Edit Question ${questionNumber}`}</div>
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+        <div id="questionViewTitle" className="title-large">{`Edit Question ${questionNumber}`}</div>
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
           <Field name="number" component={this.renderInput} label="Question Number:"/>
-          <Field name="description" component={this.renderInput} label="Question description:"/>
-          <button className="submit">Save</button><Link to="/editQuiz" className="cancel">Cancel</Link>
+          <Field name="description" component={this.renderTextArea} label="Question description:"/>
+          <button className="submit"><i className="far fa-save"></i> Save Changes</button>
+          <button
+            data-testid="delete-question-button"
+            onClick={this.props.triggerModal}
+            className="delete"
+          >
+            <i className="fas fa-trash-alt"></i> Delete
+          </button>
         </form>
       </div>
     );

@@ -13,7 +13,7 @@ import '../stylesheets/verify.css'
 
 export class Verify extends React.Component {
 
-  componentWillMount(){
+  componentDidMount(){
     this.verifyUser();
   }
 

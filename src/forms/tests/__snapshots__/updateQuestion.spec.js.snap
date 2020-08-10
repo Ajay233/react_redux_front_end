@@ -6,10 +6,12 @@ exports[`UpdateQuestionForm should match the snapshot 1`] = `
 >
   <div
     className="title-large"
+    id="questionViewTitle"
   >
     Edit Question 1
   </div>
   <form
+    className="form-centered"
     onSubmit={[Function]}
   >
     <div>
@@ -31,7 +33,7 @@ exports[`UpdateQuestionForm should match the snapshot 1`] = `
       <label>
         Question description:
       </label>
-      <input
+      <textarea
         className="inputBox"
         name="description"
         onBlur={[Function]}
@@ -45,15 +47,20 @@ exports[`UpdateQuestionForm should match the snapshot 1`] = `
     <button
       className="submit"
     >
-      Save
+      <i
+        className="far fa-save"
+      />
+       Save Changes
     </button>
-    <a
-      className="cancel"
-      href="/editQuiz"
-      onClick={[Function]}
+    <button
+      className="delete"
+      data-testid="delete-question-button"
     >
-      Cancel
-    </a>
+      <i
+        className="fas fa-trash-alt"
+      />
+       Delete
+    </button>
   </form>
 </div>
 `;

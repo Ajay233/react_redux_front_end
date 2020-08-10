@@ -4,6 +4,15 @@ exports[`QuestionView should render the QuestionView component, question details
 <div
   id="questionView"
 >
+  <a
+    className="link back"
+    onClick={[Function]}
+  >
+    <i
+      className="fas fa-chevron-circle-left blue"
+    />
+     Back
+  </a>
   <div>
     Question number 1 from the Quiz 1 quiz
   </div>
@@ -13,9 +22,16 @@ exports[`QuestionView should render the QuestionView component, question details
   <div>
     Test question
   </div>
-  <div>
+  <div
+    className="headerContainer"
+  >
+    <div
+      id="answersTitle"
+    >
+      Answers
+    </div>
     <a
-      className="add"
+      className="addButton"
       onClick={[Function]}
     >
       <i
@@ -23,21 +39,6 @@ exports[`QuestionView should render the QuestionView component, question details
       />
        Add an answer
     </a>
-    <button
-      className="delete"
-      data-testid="delete-question-button"
-      onClick={[Function]}
-    >
-      <i
-        className="fas fa-trash-alt"
-      />
-       Delete
-    </button>
-  </div>
-  <div
-    id="answersTitle"
-  >
-    Answers
   </div>
   <div
     id="answerHeadings"
@@ -164,6 +165,15 @@ exports[`QuestionView should render the QuestionView component, update question 
 <div
   id="questionView"
 >
+  <a
+    className="link back"
+    onClick={[Function]}
+  >
+    <i
+      className="fas fa-chevron-circle-left blue"
+    />
+     Back
+  </a>
   <div>
     Question number 1 from the Quiz 1 quiz
   </div>
@@ -173,9 +183,16 @@ exports[`QuestionView should render the QuestionView component, update question 
   <div>
     Test question
   </div>
-  <div>
+  <div
+    className="headerContainer"
+  >
+    <div
+      id="answersTitle"
+    >
+      Answers
+    </div>
     <a
-      className="add"
+      className="addButton"
       onClick={[Function]}
     >
       <i
@@ -183,21 +200,6 @@ exports[`QuestionView should render the QuestionView component, update question 
       />
        Add an answer
     </a>
-    <button
-      className="delete"
-      data-testid="delete-question-button"
-      onClick={[Function]}
-    >
-      <i
-        className="fas fa-trash-alt"
-      />
-       Delete
-    </button>
-  </div>
-  <div
-    id="answersTitle"
-  >
-    Answers
   </div>
   <div
     id="answerHeadings"

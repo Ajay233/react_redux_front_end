@@ -23,7 +23,7 @@ class Notification extends React.Component {
     const { setNotification } = this.props;
     const { type, timed } = this.props.notificationData;
     if(this.props.notificationData.show){
-      if (timed) timedFunc(4000, this.notificationRef, setNotification);
+      if (timed) timedFunc(2000, this.notificationRef, setNotification);
       document.documentElement.scrollTop = 0;
       return isIconRequired(type) ? this.renderMsgWithIcon(type, timed) : this.renderStandardMsg(type)
     } else {

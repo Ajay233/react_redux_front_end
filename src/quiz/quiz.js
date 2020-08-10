@@ -19,6 +19,10 @@ import '../stylesheets/quiz.css'
 
 export class Quiz extends React.Component {
 
+  componentDidMount(){
+    document.documentElement.scrollTop = 0;
+  }
+
   renderModal = () => {
     const { hideModal, currentQuestion } = this.props
     const { showModal, showModal2 } = this.props.modalState
