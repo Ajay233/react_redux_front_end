@@ -58,6 +58,11 @@ body{
   margin: auto;
 }
 
+.centeredContent  {
+  width: 60%;
+  margin: 30px auto 0 auto;
+}
+
 .bottomSpacing {
   margin-bottom: 30px;
 }

@@ -3,46 +3,52 @@
 exports[`UpdatePermission form should match the snapshot 1`] = `
 <div>
   <form
+    className="form-centered"
     onSubmit={[Function]}
   >
     <div>
       <label>
         Set Permission:
       </label>
-      <select
-        className="inputBox"
-        name="permission"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        value=""
-      >
-        <option>
-          Select permission level
-        </option>
-        <option
-          value="USER"
+      <div>
+        <select
+          className="inputBox select-medium"
+          name="permission"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          value=""
         >
-          USER
-        </option>
-        <option
-          value="READ-ONLY"
-        >
-          READ-ONLY
-        </option>
-        <option
-          value="ADMIN"
-        >
-          ADMIN
-        </option>
-      </select>
+          <option>
+            Select permission level
+          </option>
+          <option
+            value="USER"
+          >
+            USER
+          </option>
+          <option
+            value="READ-ONLY"
+          >
+            READ-ONLY
+          </option>
+          <option
+            value="ADMIN"
+          >
+            ADMIN
+          </option>
+        </select>
+      </div>
     </div>
     <button
       className="submit"
     >
-      Save
+      <i
+        className="far fa-save"
+      />
+       Save
     </button>
   </form>
 </div>

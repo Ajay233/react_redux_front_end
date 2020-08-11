@@ -1,7 +1,25 @@
 #editUserPrivilege {
-  padding-top: 160px;
+  padding: 65px 10px 10px 10px;
   background-color: rgb(30, 30, 30);
   height: 100%;
   color: white;
   font-family: arial;
+}
+
+#editPrivilegeHeading {
+  display: flex;
+  width: 60%;
+  margin: 0 auto 40px auto;
+}
+
+#editPrivilegeImg {
+  width: 30%;
+  margin: 0px;
+}
+
+#editPrivilegeTitle {
+  font-size: 50px;
+  font-weight: bold;
+  width: 70%;
+  margin: auto 0 auto 0;
 }

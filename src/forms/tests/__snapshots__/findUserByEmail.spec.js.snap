@@ -3,6 +3,7 @@
 exports[`findUserByEmail form should match the snapshot 1`] = `
 <div>
   <form
+    className="form-centered"
     onSubmit={[Function]}
   >
     <div>
@@ -23,7 +24,10 @@ exports[`findUserByEmail form should match the snapshot 1`] = `
     <button
       className="submit"
     >
-      Search
+      <i
+        className="fas fa-search"
+      />
+       Search
     </button>
   </form>
 </div>

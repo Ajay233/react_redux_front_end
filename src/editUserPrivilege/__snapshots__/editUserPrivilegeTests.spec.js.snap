@@ -4,9 +4,25 @@ exports[`User should not render the edit privilege form if the userResults is em
 <div
   id="editUserPrivilege"
 >
+  <div
+    id="editPrivilegeHeading"
+  >
+    <img
+      alt=""
+      id="editPrivilegeImg"
+      src="privilege.png"
+    />
+    <div
+      className=""
+      id="editPrivilegeTitle"
+    >
+      Edit user privilege
+    </div>
+  </div>
   <div>
     <div>
       <form
+        className="form-centered"
         onSubmit={[Function]}
       >
         <div>
@@ -27,7 +43,10 @@ exports[`User should not render the edit privilege form if the userResults is em
         <button
           className="submit"
         >
-          Search
+          <i
+            className="fas fa-search"
+          />
+           Search
         </button>
       </form>
     </div>
@@ -39,9 +58,25 @@ exports[`User should render a user's details using the props passed to it 1`] = 
 <div
   id="editUserPrivilege"
 >
+  <div
+    id="editPrivilegeHeading"
+  >
+    <img
+      alt=""
+      id="editPrivilegeImg"
+      src="privilege.png"
+    />
+    <div
+      className=""
+      id="editPrivilegeTitle"
+    >
+      Edit user privilege
+    </div>
+  </div>
   <div>
     <div>
       <form
+        className="form-centered"
         onSubmit={[Function]}
       >
         <div>
@@ -62,12 +97,17 @@ exports[`User should render a user's details using the props passed to it 1`] = 
         <button
           className="submit"
         >
-          Search
+          <i
+            className="fas fa-search"
+          />
+           Search
         </button>
       </form>
     </div>
   </div>
-  <div>
+  <div
+    className="centeredContent"
+  >
     <hr />
     <div>
       <div>
@@ -86,46 +126,52 @@ exports[`User should render a user's details using the props passed to it 1`] = 
   </div>
   <div>
     <form
+      className="form-centered"
       onSubmit={[Function]}
     >
       <div>
         <label>
           Set Permission:
         </label>
-        <select
-          className="inputBox"
-          name="permission"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          onFocus={[Function]}
-          value=""
-        >
-          <option>
-            Select permission level
-          </option>
-          <option
-            value="USER"
+        <div>
+          <select
+            className="inputBox select-medium"
+            name="permission"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            value=""
           >
-            USER
-          </option>
-          <option
-            value="READ-ONLY"
-          >
-            READ-ONLY
-          </option>
-          <option
-            value="ADMIN"
-          >
-            ADMIN
-          </option>
-        </select>
+            <option>
+              Select permission level
+            </option>
+            <option
+              value="USER"
+            >
+              USER
+            </option>
+            <option
+              value="READ-ONLY"
+            >
+              READ-ONLY
+            </option>
+            <option
+              value="ADMIN"
+            >
+              ADMIN
+            </option>
+          </select>
+        </div>
       </div>
       <button
         className="submit"
       >
-        Save
+        <i
+          className="far fa-save"
+        />
+         Save
       </button>
     </form>
   </div>

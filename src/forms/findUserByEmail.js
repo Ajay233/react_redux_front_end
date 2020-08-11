@@ -40,9 +40,9 @@ class FindUserByEmail extends React.Component {
   render(){
     return(
       <div>
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
           <Field name="email" component={this.renderInput} label="Email:"/>
-          <button className="submit">Search</button>
+          <button className="submit"><i className="fas fa-search"></i> Search</button>
         </form>
       </div>
     );

@@ -10,9 +10,11 @@ class UpdatePermission extends React.Component {
       <div>
         {this.renderError(formProps.meta)}
         <label>{formProps.label}</label>
-        <select {...formProps.input} className="inputBox">
-          {formProps.children}
-        </select>
+        <div>
+          <select {...formProps.input} className="inputBox select-medium">
+            {formProps.children}
+          </select>
+        </div>
       </div>
     )
   }
@@ -44,14 +46,14 @@ class UpdatePermission extends React.Component {
   render(){
     return(
       <div>
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
           <Field name="permission" component={this.renderSelect} label="Set Permission:">
             <option>Select permission level</option>
             <option value="USER">USER</option>
             <option value="READ-ONLY">READ-ONLY</option>
             <option value="ADMIN">ADMIN</option>
           </Field>
-          <button className="submit">Save</button>
+          <button className="submit"><i className="far fa-save"></i> Save</button>
         </form>
       </div>
     );

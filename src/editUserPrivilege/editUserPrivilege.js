@@ -17,7 +17,7 @@ export class EditUserPrivilege extends React.Component {
   }
 
   renderUser = () => {
-    return Object.entries(this.props.userResults).length === 0 ? null : <div><hr/><User userResults={this.props.userResults}/></div>;
+    return Object.entries(this.props.userResults).length === 0 ? null : <div className="centeredContent"><hr/><User userResults={this.props.userResults}/></div>;
   }
 
   renderUpdatePermission = () => {
@@ -30,6 +30,10 @@ export class EditUserPrivilege extends React.Component {
     return(
       <div id="editUserPrivilege">
         <Notification />
+        <div id="editPrivilegeHeading">
+          <img id="editPrivilegeImg" src={require("../public/icons/privilege.png")} alt=""/>
+          <div id="editPrivilegeTitle" className="">Edit user privilege</div>
+        </div>
         <div>
         <FindUserByEmail userData={userData} setUserResults={setUserResults} setNotification={setNotification} />
         </div>
