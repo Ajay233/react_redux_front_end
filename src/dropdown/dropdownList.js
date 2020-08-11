@@ -11,8 +11,8 @@ class DropdownList extends React.Component {
   logOut = () => {
     const { logOut, setNotification } = this.props
     logOut();
-    setNotification("Logged out", "success", true);
     history.push("/");
+    setNotification("Logged out", "success", true);
   }
 
   renderSignUp = () => {

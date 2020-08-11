@@ -4,11 +4,8 @@ export function fadeOut(element){
   }, 2000);
 }
 
-export function timedFunc(delay, element, funcToDo){
+export function timedFunc(delay, funcToDo){
   window.setTimeout(function(){
-    element.current.classList.add("shrinkNotification")
-    window.setTimeout(function(){
-      funcToDo();
-    }, 487);
+    funcToDo();
   }, delay);
 }

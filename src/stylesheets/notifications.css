@@ -8,6 +8,10 @@
   font-style: normal;
 }
 
+.hide {
+  display: none
+}
+
 .notificationBody {
   display: flex;
 }
@@ -82,6 +86,7 @@
 
 .shrinkImg {
   animation-name: shrinkImg;
+  animation-delay: 3000ms;
   animation-duration: 500ms;
 }
 
@@ -101,5 +106,6 @@
 
 .shrinkNotification {
   animation-name: shrink;
+  animation-delay: 3000ms;
   animation-duration: 500ms;
 }

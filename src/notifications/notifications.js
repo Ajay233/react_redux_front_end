@@ -21,9 +21,9 @@ class Notification extends React.Component {
 
   renderMsg = () => {
     const { setNotification } = this.props;
-    const { type, timed } = this.props.notificationData;
-    if(this.props.notificationData.show){
-      if (timed) timedFunc(2000, this.notificationRef, setNotification);
+    const { show, type, timed } = this.props.notificationData;
+    if(show){
+      if (timed) timedFunc(3470, setNotification);
       document.documentElement.scrollTop = 0;
       return isIconRequired(type) ? this.renderMsgWithIcon(type, timed) : this.renderStandardMsg(type)
     } else {
@@ -33,7 +33,11 @@ class Notification extends React.Component {
 
   renderMsgWithIcon = (type, timed) => {
     return(
-      <div ref={this.notificationRef} id="notification" className={`spacing ${type != null ? type : null}`}>
+      <div
+        ref={this.notificationRef}
+        id="notification"
+        className={`spacing ${type} shrinkNotification shrinkImg`}
+      >
         {timed ? null : <span className="close" onClick={this.handleClose}><i className="far fa-times-circle"></i></span>}
         <div className="notificationBody">
           <div className="notificationImg">
@@ -49,7 +53,11 @@ class Notification extends React.Component {
 
   renderStandardMsg = (type) => {
     return(
-      <div ref={this.notificationRef} id="notification" className={`spacing ${type != null ? type : null}`}>
+      <div
+        ref={this.notificationRef}
+        id="notification"
+        className={`spacing shrinkNotification ${type}`}
+      >
         {this.props.notificationData.message}
       </div>
     );

@@ -110,7 +110,7 @@ exports[`SignUp should render the signup page and form and a notification 1`] = 
       className="notificationContainer"
     >
       <div
-        className="spacing success"
+        className="spacing shrinkNotification success"
         id="notification"
       >
         Test signup worked

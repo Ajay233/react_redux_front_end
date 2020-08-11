@@ -11,7 +11,7 @@ exports[`Login should render the login form with notification 1`] = `
       className="notificationContainer"
     >
       <div
-        className="spacing error"
+        className="spacing shrinkNotification error"
         id="notification"
       >
         Username or passord incorrect

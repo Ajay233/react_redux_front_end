@@ -147,7 +147,8 @@ export class Quiz extends React.Component {
   //   );
   // }
 
-  updateStatus = () => {
+  updateStatus = (event) => {
+    event.preventDefault()
     const { quiz, updateQuizStatus, userData } = this.props;
     const data = {
       id: quiz.id,

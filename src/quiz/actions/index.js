@@ -22,6 +22,8 @@ export const updateQuizStatus = (endpoint, data, jwt) => {
       console.log(error.response)
       if(error.response.status === 403){
         sessionExpired(dispatch);
+      } else if(error.response.status === 400){
+        dispatch(setNotification(error.response.data, "error", true))
       } else {
         dispatch(setNotification("Error - Unable to update quiz status", "error", true))
       }
