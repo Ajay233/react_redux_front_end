@@ -6,6 +6,7 @@ import { mount } from 'enzyme'
 import mockAxios from 'jest-mock-axios'
 import configureStore from 'redux-mock-store'
 import renderer from 'react-test-renderer'
+import { render, fireEvent, cleanup } from '@testing-library/react'
 import history from '../../history'
 import { setCurrentQuestion, updateQuestion } from '../../question/actions'
 import { setNotification } from '../../notifications/actions'
@@ -112,6 +113,23 @@ describe("UpdateQuestionForm", () => {
     mockAxios.mockError(errorResponse)
     expect(mockAxios.put).toHaveBeenCalledTimes(1)
     expect(setNotification).toHaveBeenCalledTimes(1)
+  })
+
+  it("should call triggerModal when the delete button is clicked", () => {
+    const triggerModal = jest.fn()
+
+    const wrapper = render(
+      <Provider store={store}>
+        <Router history={history}>
+          <UpdateQuestionForm
+            triggerModal={triggerModal}
+          />
+        </Router>
+      </Provider>
+    )
+
+    fireEvent.click(wrapper.getByTestId("delete-question-button"))
+    expect(triggerModal).toHaveBeenCalledTimes(1)
   })
 
   it("should match the snapshot", () => {

@@ -189,34 +189,36 @@ describe("QuestionView", () => {
     expect(renderedComponent).toMatchSnapshot()
   })
 
-  it("has a delete queston button that calls showModal2 when clicked", () => {
-    // history.push("/editQuestion")
-    // history.location.pathname = "/editQuestion"
-    console.log(history.location.pathname)
-    const component = render(
-      <Provider store={store}>
-        <Router history={history}>
-          <QuestionView
-            modalState={modalState}
-            userData={userData}
-            notificationData={notificationData}
-            currentAnswer={currentAnswer}
-            currentQuestion={currentQuestion}
-            quiz={quiz}
-            answers={answers}
-            showModal={showModal}
-            showModal2={showModal2}
-            hideModal={hideModal}
-            setNotification={setNotification}
-            deleteQuestion={deleteQuestion}
-          />
-        </Router>
-      </Provider>
-    );
+  // ** This test has been moved into the update question test as the delete button is now rendered there **
 
-    // fireEvent.click(component.getByTestId("delete-question-button"))
-    // expect(showModal2).toHaveBeenCalledTimes(1)
-  })
+  // it("has a delete queston button that calls showModal2 when clicked", () => {
+  //   // history.push("/editQuestion")
+  //   // history.location.pathname = "/editQuestion"
+  //   console.log(history.location.pathname)
+  //   const component = render(
+  //     <Provider store={store}>
+  //       <Router history={history}>
+  //         <QuestionView
+  //           modalState={modalState}
+  //           userData={userData}
+  //           notificationData={notificationData}
+  //           currentAnswer={currentAnswer}
+  //           currentQuestion={currentQuestion}
+  //           quiz={quiz}
+  //           answers={answers}
+  //           showModal={showModal}
+  //           showModal2={showModal2}
+  //           hideModal={hideModal}
+  //           setNotification={setNotification}
+  //           deleteQuestion={deleteQuestion}
+  //         />
+  //       </Router>
+  //     </Provider>
+  //   );
+  //
+  //   // fireEvent.click(component.getByTestId("delete-question-button"))
+  //   // expect(showModal2).toHaveBeenCalledTimes(1)
+  // })
 
   describe("handleDeleteQuestion", () => {
 
