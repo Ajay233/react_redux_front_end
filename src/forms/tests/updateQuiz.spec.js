@@ -6,6 +6,7 @@ import { mount } from 'enzyme'
 import mockAxios from 'jest-mock-axios'
 import configureStore from 'redux-mock-store'
 import renderer from 'react-test-renderer'
+import { render, fireEvent, cleanup } from '@testing-library/react'
 import history from '../../history'
 import { setQuiz } from '../../quiz/actions'
 import { setNotification } from '../../notifications/actions'
@@ -117,6 +118,24 @@ describe("UpdateQuiz Form", () => {
     mockAxios.mockError(errorResponse)
     expect(mockAxios.put).toHaveBeenCalledTimes(1)
     expect(setNotification).toHaveBeenCalledTimes(1)
+  })
+
+  it("should call updateStatus when the update status button is clicked", () => {
+
+    const updateStatus = jest.fn()
+
+    const wrapper = render(
+      <Provider store={store}>
+        <Router history={history}>
+          <UpdateQuizForm
+            updateStatus={updateStatus}
+          />
+        </Router>
+      </Provider>
+    )
+
+    fireEvent.click(wrapper.getByTestId("updateStatus-button"))
+    expect(updateStatus).toHaveBeenCalledTimes(1)
   })
 
   it("should match the snapshot", () => {

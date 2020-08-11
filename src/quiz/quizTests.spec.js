@@ -115,32 +115,33 @@ describe("Quiz", () => {
     expect(component).toMatchSnapshot()
   })
 
+  // ** The test below has been moved to the update quiz form test as the button now renders there **
 
-  describe("updateStatus", () => {
-
-    it("should call updateQuizStatus", () => {
-      userData = { id: 1, permission: 'ADMIN', jwt: "jwt" }
-      history.push('/editQuiz')
-      const component = render(
-        <Provider store={store}>
-          <Router history={history}>
-            <Quiz
-              userData={userData}
-              modalState={allModalsClosed}
-              currentQuestion={currentQuestion}
-              quiz={quiz}
-              questions={questions}
-              updateQuizStatus={updateQuizStatus}
-              jwt={userData.jwt}
-            />
-          </Router>
-        </Provider>
-      )
-
-      // fireEvent.click(component.getByTestId("updateStatus-button"))
-      // expect(updateQuizStatus).toHaveBeenCalledTimes(1)
-    })
-  })
+  // describe("updateStatus", () => {
+  //
+  //   it("should call updateQuizStatus", () => {
+  //     userData = { id: 1, permission: 'ADMIN', jwt: "jwt" }
+  //     history.push('/editQuiz')
+  //     const component = render(
+  //       <Provider store={store}>
+  //         <Router history={history}>
+  //           <Quiz
+  //             userData={userData}
+  //             modalState={allModalsClosed}
+  //             currentQuestion={currentQuestion}
+  //             quiz={quiz}
+  //             questions={questions}
+  //             updateQuizStatus={updateQuizStatus}
+  //             jwt={userData.jwt}
+  //           />
+  //         </Router>
+  //       </Provider>
+  //     )
+  //
+  //     // fireEvent.click(component.getByTestId("updateStatus-button"))
+  //     // expect(updateQuizStatus).toHaveBeenCalledTimes(1)
+  //   })
+  // })
 
   describe("Delete quiz button", () => {
 
