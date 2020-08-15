@@ -128,12 +128,25 @@ exports[`Manage Account should call showModal when delete account is clicked 1`]
           />
         </div>
         <div
+          className="accountFieldText"
           id="userEmail"
         >
           Your email:
           <span>
              
             testEmail
+             
+            <span
+              className="red rightAlign"
+            >
+              <b>
+                Unverified
+              </b>
+               
+              <i
+                className="fas fa-times-circle"
+              />
+            </span>
           </span>
         </div>
         <div>
@@ -236,6 +249,81 @@ exports[`Manage Account should call showModal when delete account is clicked 1`]
           id="submitChangePassword"
         >
           Submit
+        </button>
+      </form>
+    </div>
+  </div>
+  <hr />
+  <div>
+    <div
+      id="editUserDetails"
+    >
+      <form
+        className="profileForm"
+        onSubmit={[Function]}
+      >
+        <div>
+          <div
+            id="editUserDetailsTitle"
+          >
+            Permission Level
+          </div>
+        </div>
+        <div>
+          <div
+            className="accountFieldText"
+          >
+            Current permission level: 
+          </div>
+        </div>
+        <div>
+          <label>
+            Permission level
+          </label>
+          <div>
+            <select
+              className="inputBox select-half"
+              name="permission"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onDragStart={[Function]}
+              onDrop={[Function]}
+              onFocus={[Function]}
+              value=""
+            >
+              <option
+                disabled={true}
+                value=""
+              >
+                Select a category
+              </option>
+              <option
+                value="READ-ONLY"
+              >
+                READ-ONLY
+              </option>
+              <option
+                value="ADMIN"
+              >
+                ADMIN
+              </option>
+              <option
+                value="SUPER-USER"
+              >
+                SUPER-USER
+              </option>
+            </select>
+          </div>
+        </div>
+        <button
+          className="submit"
+          disabled={true}
+          id="submitPermissionRequest"
+        >
+          <i
+            className="far fa-envelope"
+          />
+           Send Request
         </button>
       </form>
     </div>

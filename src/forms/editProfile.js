@@ -74,6 +74,14 @@ class EditProfileForm extends React.Component {
     });
   }
 
+  verifiedEmail = () => {
+    if(this.props.userData.verified){
+      return <span className="green rightAlign"><b>Verified</b> <i className="fas fa-check-circle"></i></span>
+    } else {
+      return <span className="red rightAlign"><b>Unverified</b> <i className="fas fa-times-circle"></i></span>
+    }
+  }
+
   // Check if changing the label will break anything
 
   render(){
@@ -85,8 +93,8 @@ class EditProfileForm extends React.Component {
         </div>
         <Field name="forename" component={this.renderInput} label="Forename"/>
         <Field name="surname" component={this.renderInput} label="Surname"/>
-        <div id="userEmail">Your email:
-           <span> {this.props.userData.email}</span>
+        <div id="userEmail" className="accountFieldText">Your email:
+           <span> {this.props.userData.email} {this.verifiedEmail()}</span>
         </div>
         <Field name="newEmail" component={this.renderInput} label="New Email"/>
         <button id="submit" className="submit">Submit</button>

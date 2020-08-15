@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { del } from '../axiosRequests/requests'
 import EditProfileForm from '../forms/editProfile'
 import ChangePassword from '../forms/changePassword'
+import PermissionChangeRequestForm from '../forms/permissionChangeRequest'
 import Notification from '../notifications/notifications'
 import Modal from '../modal/modal'
 import history from '../history'
@@ -61,6 +62,10 @@ export class ManageAccount extends React.Component {
           <div className="formDividers right"></div>
           <div className="formDividers left"></div>
           <ChangePassword userData={userData} setNotification={setNotification}/>
+        </div>
+        <hr/>
+        <div>
+          <PermissionChangeRequestForm />
         </div>
         <hr/>
         <div id="deleteAccountContainer">

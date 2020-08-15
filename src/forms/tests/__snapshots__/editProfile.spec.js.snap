@@ -48,12 +48,25 @@ exports[`editProfile form should match the snapshot 1`] = `
       />
     </div>
     <div
+      className="accountFieldText"
       id="userEmail"
     >
       Your email:
       <span>
          
         testEmail
+         
+        <span
+          className="green rightAlign"
+        >
+          <b>
+            Verified
+          </b>
+           
+          <i
+            className="fas fa-check-circle"
+          />
+        </span>
       </span>
     </div>
     <div>
