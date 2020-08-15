@@ -92,7 +92,7 @@
 
 .shrinkImgNow {
   animation-name: shrinkImg;
-  animation-duration: 500ms;
+  animation-duration: 485ms;
 }
 
 @keyframes shrinkImg {

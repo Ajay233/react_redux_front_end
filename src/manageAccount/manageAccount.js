@@ -4,6 +4,7 @@ import { del } from '../axiosRequests/requests'
 import EditProfileForm from '../forms/editProfile'
 import ChangePassword from '../forms/changePassword'
 import PermissionChangeRequestForm from '../forms/permissionChangeRequest'
+import PermissionDetails from './permissionDetails'
 import Notification from '../notifications/notifications'
 import Modal from '../modal/modal'
 import history from '../history'
@@ -64,8 +65,9 @@ export class ManageAccount extends React.Component {
           <ChangePassword userData={userData} setNotification={setNotification}/>
         </div>
         <hr/>
-        <div>
+        <div className="manageAccountRow">
           <PermissionChangeRequestForm />
+          <PermissionDetails permission={userData.permission}/>
         </div>
         <hr/>
         <div id="deleteAccountContainer">

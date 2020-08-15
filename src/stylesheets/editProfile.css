@@ -49,7 +49,7 @@
   margin: 8px 0 20px 0;
 }
 
-#editUserDetailsTitle, #changePasswordTitle, #deleteAccountTitle {
+#editUserDetailsTitle, #changePasswordTitle, #deleteAccountTitle, #permissionDetailsTitle {
   font-family: arial;
   font-size: 30px;
   margin-bottom: 40px;
@@ -85,4 +85,32 @@
 
 #deleteAccountContainer {
   margin-left: 2.5%;
+}
+
+.manageAccountRow, .permissionDetailsHeading{
+  display: flex;
+}
+
+.permissionDetailsContainer {
+  width: 50%;
+  padding: 10px;
+}
+
+.permissionDetails {
+  margin: 0 auto 0 auto;
+  width: 65%;
+}
+
+#permissionDetailsTitle {
+  margin: auto 0;
+}
+
+.permissionImg {
+  width: 20%;
+  mergin-right: 2% !important;
+}
+
+li {
+  padding: 2px 0;
+  list-style: disc;
 }
