@@ -13,7 +13,7 @@ exports[`Notification component can render a notification 1`] = `
 
 exports[`Notification component can render a notification with an icon 1`] = `
 <div
-  className="spacing verifyProcess shrinkNotification shrinkImg"
+  className="spacing verifyProcessshrinkNotification"
   id="notification"
 >
   <div
@@ -24,7 +24,7 @@ exports[`Notification component can render a notification with an icon 1`] = `
     >
       <img
         alt=""
-        className="img"
+        className="img shrinkImg"
         src="mail-sent.png"
       />
     </div>

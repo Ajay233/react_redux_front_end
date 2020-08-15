@@ -36,12 +36,12 @@ class Notification extends React.Component {
       <div
         ref={this.notificationRef}
         id="notification"
-        className={`spacing ${type} shrinkNotification shrinkImg`}
+        className={`spacing ${type}${timed ? "shrinkNotification" : ""}`}
       >
         {timed ? null : <span className="close" onClick={this.handleClose}><i className="far fa-times-circle"></i></span>}
         <div className="notificationBody">
           <div className="notificationImg">
-            <img ref={this.imgRef} src={require(`../public/icons/${iconPicker(type)}`)} className="img" alt=""/>
+            <img ref={this.imgRef} src={require(`../public/icons/${iconPicker(type)}`)} className={`img ${timed ? "shrinkImg" : ""}`} alt=""/>
           </div>
           <div className="notificationText">
             {this.props.notificationData.message}
@@ -65,8 +65,8 @@ class Notification extends React.Component {
 
   handleClose = () => {
     const { setNotification } = this.props;
-    this.notificationRef.current.classList.add("shrinkNotification")
-    this.imgRef.current.classList.add("shrinkImg")
+    this.notificationRef.current.classList.add("shrinkNotificationNow")
+    this.imgRef.current.classList.add("shrinkImgNow")
     window.setTimeout(function(){
       setNotification();
     }, 487)

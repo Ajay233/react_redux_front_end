@@ -90,6 +90,11 @@
   animation-duration: 500ms;
 }
 
+.shrinkImgNow {
+  animation-name: shrinkImg;
+  animation-duration: 500ms;
+}
+
 @keyframes shrinkImg {
   to { width: 0px; }
 }
@@ -107,5 +112,10 @@
 .shrinkNotification {
   animation-name: shrink;
   animation-delay: 3000ms;
+  animation-duration: 500ms;
+}
+
+.shrinkNotificationNow {
+  animation-name: shrink;
   animation-duration: 500ms;
 }
