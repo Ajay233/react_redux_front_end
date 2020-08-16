@@ -52,6 +52,7 @@ class UpdatePermission extends React.Component {
             <option value="USER">USER</option>
             <option value="READ-ONLY">READ-ONLY</option>
             <option value="ADMIN">ADMIN</option>
+            <option value="SUPER-USER">SUPER-USER</option>
           </Field>
           <button className="submit"><i className="far fa-save"></i> Save</button>
         </form>

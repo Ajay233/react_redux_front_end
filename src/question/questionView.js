@@ -121,12 +121,22 @@ export class QuestionView extends React.Component {
   }
 
   renderAddButton = () => {
-    return <Link to="/newAnswer" className="addButton"><i className="fas fa-plus-circle green"></i> Add an answer</Link>
+    const { permission } = this.props.userData
+    return permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="/newAnswer" className="addButton"><i className="fas fa-plus-circle green"></i> Add an answer</Link> : null
   }
 
   triggerModal = (event) => {
     event.preventDefault()
     this.props.showModal2()
+  }
+
+  renderBackButton = () => {
+    const { permission } = this.props.userData
+    if(permission === "READ-ONLY"){
+      return <Link to="/viewQuiz" className="link back"><i className="fas fa-chevron-circle-left blue"></i> Back</Link>
+    } else {
+      return <Link to="/editQuiz" className="link back"><i className="fas fa-chevron-circle-left blue"></i> Back</Link>
+    }
   }
 
   // renderDeleteButton = () => {
@@ -142,7 +152,7 @@ export class QuestionView extends React.Component {
     return(
       <div id="questionView">
         {this.renderModal()}
-        <Link to="/editQuiz" className="link back"><i className="fas fa-chevron-circle-left blue"></i> Back</Link>
+        {this.renderBackButton()}
         <Notification />
         {this.renderFormOrDetails()}
         <div className="headerContainer">

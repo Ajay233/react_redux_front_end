@@ -32,7 +32,7 @@ class DropdownList extends React.Component {
 
   renderListUser = () => {
     const { loggedIn, permission } = this.props.userData;
-    return loggedIn === true && permission === "ADMIN" ? <li><Link to="/userList" className="links">List all Users</Link><hr/></li> : null
+    return loggedIn === true && permission === "SUPER-USER" ? <li><Link to="/userList" className="links">List all Users</Link><hr/></li> : null
   }
 
   renderQuizSearch = () => {
@@ -47,12 +47,12 @@ class DropdownList extends React.Component {
 
   renderEditPrivilege = () => {
     const { loggedIn, permission } = this.props.userData;
-    return loggedIn === true && permission === "ADMIN" ? <li><Link to="/editUserPrivilege" className="links">Edit Privileges</Link><hr/></li> : null
+    return loggedIn === true && permission === "SUPER-USER" ? <li><Link to="/editUserPrivilege" className="links">Edit Privileges</Link><hr/></li> : null
   }
 
   renderCreateQuiz = () => {
     const { loggedIn, permission } = this.props.userData;
-    return loggedIn === true && permission === "ADMIN" ? <li><Link to={ { pathname: "/newQuiz", from: "dropdown" } } className="links">Create a Quiz</Link><hr/></li> : null
+    return loggedIn === true && (permission === "ADMIN" || permission === "SUPER-USER") ? <li><Link to={ { pathname: "/newQuiz", from: "dropdown" } } className="links">Create a Quiz</Link><hr/></li> : null
   }
 
   renderBrowseAllQuizes = () => {

@@ -162,6 +162,11 @@ exports[`User should render a user's details using the props passed to it 1`] = 
             >
               ADMIN
             </option>
+            <option
+              value="SUPER-USER"
+            >
+              SUPER-USER
+            </option>
           </select>
         </div>
       </div>

@@ -126,7 +126,7 @@ export class Quiz extends React.Component {
 
   renderAddButton = () => {
     const { permission } = this.props.userData
-    return permission === "ADMIN" ? <Link to="/newQuestion" className="addButton"><i className="fas fa-plus-circle green"></i> Add a question</Link> : null
+    return permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="/newQuestion" className="addButton"><i className="fas fa-plus-circle green"></i> Add a question</Link> : null
   }
 
   triggerModal = (event) => {

@@ -19,24 +19,6 @@ exports[`DropdownList should render only ADMIN options for user with ADMIN permi
         className="links"
         onClick={[Function]}
       >
-        List all Users
-      </a>
-      <hr />
-    </li>
-    <li>
-      <a
-        className="links"
-        onClick={[Function]}
-      >
-        Edit Privileges
-      </a>
-      <hr />
-    </li>
-    <li>
-      <a
-        className="links"
-        onClick={[Function]}
-      >
         Browse All Quizes
       </a>
       <hr />

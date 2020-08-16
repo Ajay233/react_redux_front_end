@@ -28,8 +28,8 @@ export class Answer extends React.Component {
     const { permission } = this.props.userData;
     return(
       <div className="options">
-        { permission === "ADMIN" ? <Link to="#" className="deleteOption" onClick={this.handleDelete}><i className="fas fa-trash-alt red"></i> Delete</Link> : null }
-        { permission === "ADMIN" ? <Link to="/editAnswer" className="edit" onClick={this.handleEdit}><i className="fas fa-edit blue"></i> Edit</Link> : null }
+        { permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="#" className="deleteOption" onClick={this.handleDelete}><i className="fas fa-trash-alt red"></i> Delete</Link> : null }
+        { permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="/editAnswer" className="edit" onClick={this.handleEdit}><i className="fas fa-edit blue"></i> Edit</Link> : null }
       </div>
     );
   }

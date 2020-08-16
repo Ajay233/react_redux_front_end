@@ -39,6 +39,11 @@ exports[`UpdatePermission form should match the snapshot 1`] = `
           >
             ADMIN
           </option>
+          <option
+            value="SUPER-USER"
+          >
+            SUPER-USER
+          </option>
         </select>
       </div>
     </div>
