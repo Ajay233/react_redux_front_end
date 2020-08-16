@@ -201,10 +201,16 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
     >
       <div
         className="categoryTitle"
-      />
+      >
+        test3
+      </div>
       <div />
     </div>
-    <div />
+    <div
+      id="noQuizzesMsg"
+    >
+      "There are currenty no quizzes for this category"
+    </div>
   </div>
 </div>
 `;
@@ -410,10 +416,16 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
     >
       <div
         className="categoryTitle"
-      />
+      >
+        test3
+      </div>
       <div />
     </div>
-    <div />
+    <div
+      id="noQuizzesMsg"
+    >
+      "There are currenty no quizzes for this category"
+    </div>
   </div>
 </div>
 `;

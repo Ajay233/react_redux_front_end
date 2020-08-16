@@ -67,6 +67,24 @@ export class AllQuizes extends React.Component {
     }
   }
 
+  renderQuizResults = (filteredQuizList, quizes, listItem, userData) => {
+    if(filteredQuizList.length > 0){
+      return(
+        <React.Fragment>
+          {this.renderResultHeadings(filteredQuizList)}
+          <QuizResults
+            key={"Quiz" + quizes.indexOf(listItem)}
+            quizes={filteredQuizList}
+            permission={userData.permission}
+            jwt={userData.jwt}
+          />
+        </React.Fragment>
+      );
+    } else {
+      return <div id="noQuizzesMsg">"There are currenty no quizzes for this category"</div>
+    }
+  }
+
   // add contitional css alternate between left and right align classes
   // Will need a way to turn this on and off, possibly by using history.location.pathname
   // so this is only applied on the all quizes view
@@ -77,11 +95,10 @@ export class AllQuizes extends React.Component {
       return(
         <div key={"QuizCategory" + quizes.indexOf(listItem)} className="quizCategorySection">
           <div className="categoryHeader">
-            <div className="categoryTitle">{filteredQuizList.length === 0 ? null : listItem.category}</div>
-            <div>{filteredQuizList.length === 0 ? null : this.renderCategoryIcon(listItem.category)}</div>
+            <div className="categoryTitle">{listItem.category}</div>
+            <div>{this.renderCategoryIcon(listItem.category)}</div>
           </div>
-          {this.renderResultHeadings(filteredQuizList)}
-          <QuizResults key={"Quiz" + quizes.indexOf(listItem)} quizes={filteredQuizList} permission={userData.permission} jwt={userData.jwt} />
+          {this.renderQuizResults(filteredQuizList, quizes, listItem, userData)}
         </div>
       );
     })
