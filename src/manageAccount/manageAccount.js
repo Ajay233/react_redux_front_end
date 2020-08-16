@@ -58,12 +58,20 @@ export class ManageAccount extends React.Component {
           <div className="titleText">My Account</div>
         </div>
       </div>
-        <div id="editProfileFormContainer">
+        <div className="manageAccountRow">
           <EditProfileForm userData={userData} setNotification={setNotification}/>
-          <div className="formDividers right"></div>
-          <div className="formDividers left"></div>
-          <ChangePassword userData={userData} setNotification={setNotification}/>
+          <div className="rowImg">
+            <img src={require("../public/icons/userDetails.png")} className="profileDetailsImg" alt=""/>
+          </div>
         </div>
+        <hr/>
+        <div className="manageAccountRow">
+          <ChangePassword userData={userData} setNotification={setNotification}/>
+          <div className="rowImg">
+            <img src={require("../public/icons/changePassword.png")} className="changePasswordImg" alt=""/>
+          </div>
+        </div>
+
         <hr/>
         <div className="manageAccountRow">
           <PermissionChangeRequestForm />

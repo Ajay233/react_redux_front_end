@@ -79,7 +79,7 @@ exports[`Manage Account should call showModal when delete account is clicked 1`]
     </div>
   </div>
   <div
-    id="editProfileFormContainer"
+    className="manageAccountRow"
   >
     <div
       id="editUserDetails"
@@ -174,11 +174,19 @@ exports[`Manage Account should call showModal when delete account is clicked 1`]
       </form>
     </div>
     <div
-      className="formDividers right"
-    />
-    <div
-      className="formDividers left"
-    />
+      className="rowImg"
+    >
+      <img
+        alt=""
+        className="profileDetailsImg"
+        src="userDetails.png"
+      />
+    </div>
+  </div>
+  <hr />
+  <div
+    className="manageAccountRow"
+  >
     <div
       id="changePassword"
     >
@@ -251,6 +259,15 @@ exports[`Manage Account should call showModal when delete account is clicked 1`]
           Submit
         </button>
       </form>
+    </div>
+    <div
+      className="rowImg"
+    >
+      <img
+        alt=""
+        className="changePasswordImg"
+        src="changePassword.png"
+      />
     </div>
   </div>
   <hr />
@@ -356,25 +373,39 @@ exports[`Manage Account should call showModal when delete account is clicked 1`]
             The undefined privelege provides access to the following features:
           </div>
           <ul>
-            <li>
+            <li
+              className="listWithBullets"
+            >
               Option to find users and edit their privilege levels
             </li>
-            <li>
+            <li
+              className="listWithBullets"
+            >
               Option to list all users
             </li>
-            <li>
+            <li
+              className="listWithBullets"
+            >
               Read & Write privileges on all quizzes, questions and answers
             </li>
-            <li>
+            <li
+              className="listWithBullets"
+            >
               Option to create quizzes
             </li>
-            <li>
+            <li
+              className="listWithBullets"
+            >
               Option to search for a quiz by name or category
             </li>
-            <li>
+            <li
+              className="listWithBullets"
+            >
               Option to browse all quizzes
             </li>
-            <li>
+            <li
+              className="listWithBullets"
+            >
               Option to take a quiz
             </li>
           </ul>

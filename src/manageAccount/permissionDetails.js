@@ -16,13 +16,13 @@ const PermissionDetails = (props) => {
       <div className="permissionDetailsText">
         <div>{`The ${props.permission} privelege provides access to the following features:`}</div>
         <ul>
-          <li>Option to find users and edit their privilege levels</li>
-          <li>Option to list all users</li>
-          <li>Read & Write privileges on all quizzes, questions and answers</li>
-          <li>Option to create quizzes</li>
-          <li>Option to search for a quiz by name or category</li>
-          <li>Option to browse all quizzes</li>
-          <li>Option to take a quiz</li>
+          <li className="listWithBullets">Option to find users and edit their privilege levels</li>
+          <li className="listWithBullets">Option to list all users</li>
+          <li className="listWithBullets">Read & Write privileges on all quizzes, questions and answers</li>
+          <li className="listWithBullets">Option to create quizzes</li>
+          <li className="listWithBullets">Option to search for a quiz by name or category</li>
+          <li className="listWithBullets">Option to browse all quizzes</li>
+          <li className="listWithBullets">Option to take a quiz</li>
         </ul>
       </div>
     );
@@ -33,11 +33,11 @@ const PermissionDetails = (props) => {
       <div className="permissionDetailsText">
         <div>{`The ${props.permission} privelege provides access to the following features:`}</div>
         <ul>
-          <li>Read & Write privileges on all quizzes, questions and answers</li>
-          <li>Option to create quizzes</li>
-          <li>Option to search for a quiz by name or category</li>
-          <li>Option to browse all quizzes</li>
-          <li>Option to take a quiz</li>
+          <li className="listWithBullets">Read & Write privileges on all quizzes, questions and answers</li>
+          <li className="listWithBullets">Option to create quizzes</li>
+          <li className="listWithBullets">Option to search for a quiz by name or category</li>
+          <li className="listWithBullets">Option to browse all quizzes</li>
+          <li className="listWithBullets">Option to take a quiz</li>
         </ul>
       </div>
     );
@@ -48,10 +48,10 @@ const PermissionDetails = (props) => {
       <div className="permissionDetailsText">
         <div>{`The ${props.permission} privelege provides access to the following features:`}</div>
         <ul>
-          <li>Read privileges on all quizzes, questions and answers</li>
-          <li>Option to search for a quiz by name or category</li>
-          <li>Option to browse all quizzes</li>
-          <li>Option to take a quiz</li>
+          <li className="listWithBullets">Read privileges on all quizzes, questions and answers</li>
+          <li className="listWithBullets">Option to search for a quiz by name or category</li>
+          <li className="listWithBullets">Option to browse all quizzes</li>
+          <li className="listWithBullets">Option to take a quiz</li>
         </ul>
       </div>
     );
@@ -62,9 +62,9 @@ const PermissionDetails = (props) => {
       <div className="permissionDetailsText">
         <div>{`The ${props.permission} privelege provides access to the following features:`}</div>
         <ul>
-          <li>Option to search for a quiz by name or category</li>
-          <li>Option to browse all quizzes</li>
-          <li>Option to take a quiz</li>
+          <li className="listWithBullets">Option to search for a quiz by name or category</li>
+          <li className="listWithBullets">Option to browse all quizzes</li>
+          <li className="listWithBullets">Option to take a quiz</li>
         </ul>
       </div>
     );
