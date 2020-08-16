@@ -91,15 +91,15 @@
 }
 
 #questionNumberHeader{
-  width: 20%;
+  width: 23%;
 }
 
 #questionDescriptionHeader{
-  width: 55%;
+  width: 50%;
 }
 
 #questionOptionsHeader{
-  width: 25%;
+  width: 27%;
 }
 
 .questionContainer {
@@ -109,9 +109,9 @@
 }
 
 .questionNumber {
-  width: 20%;
+  width: 23%;
 }
 
 .questionDescription {
-  width: 55%;
+  width: 50%;
 }

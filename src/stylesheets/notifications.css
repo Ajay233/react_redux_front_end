@@ -119,3 +119,12 @@
   animation-name: shrink;
   animation-duration: 500ms;
 }
+
+@keyframes expand {
+  to { height: max-height; }
+}
+
+.expandElement {
+  animation-name: expand;
+  animation-duration: 500ms;
+}

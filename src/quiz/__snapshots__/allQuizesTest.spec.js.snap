@@ -209,7 +209,7 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
     <div
       id="noQuizzesMsg"
     >
-      "There are currenty no quizzes for this category"
+      There are currenty no quizzes for this category
     </div>
   </div>
 </div>
@@ -424,7 +424,7 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
     <div
       id="noQuizzesMsg"
     >
-      "There are currenty no quizzes for this category"
+      There are currenty no quizzes for this category
     </div>
   </div>
 </div>

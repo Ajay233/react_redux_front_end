@@ -81,7 +81,7 @@ export class AllQuizes extends React.Component {
         </React.Fragment>
       );
     } else {
-      return <div id="noQuizzesMsg">"There are currenty no quizzes for this category"</div>
+      return <div id="noQuizzesMsg">There are currenty no quizzes for this category</div>
     }
   }
 
