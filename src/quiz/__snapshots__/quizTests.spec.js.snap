@@ -32,11 +32,33 @@ exports[`Quiz should render the quiz details, 'READY' status and questions for '
        Ready for use
     </span>
   </div>
-  <div>
-    Description:
+  <div
+    className="detailsContainer"
+  >
+    <div
+      className="detailsHeading"
+    >
+      Description:
+    </div>
+    <div
+      className="detailsContent"
+    >
+      test
+    </div>
   </div>
-  <div>
-    test
+  <div
+    className="detailsContainer"
+  >
+    <div
+      className="detailsHeading"
+    >
+      Category:
+    </div>
+    <div
+      className="detailsContent"
+    >
+      test
+    </div>
   </div>
   <div
     className="headerContainer"

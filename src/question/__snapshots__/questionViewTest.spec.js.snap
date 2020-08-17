@@ -13,14 +13,24 @@ exports[`QuestionView should render the QuestionView component, question details
     />
      Back
   </a>
-  <div>
+  <div
+    className="title-large"
+  >
     Question number 1 from the Quiz 1 quiz
   </div>
-  <div>
-    Question description:
-  </div>
-  <div>
-    Test question
+  <div
+    className="detailsContainer"
+  >
+    <div
+      className="detailsHeading"
+    >
+      Question description:
+    </div>
+    <div
+      className="detailsContent"
+    >
+      Test question
+    </div>
   </div>
   <div
     className="headerContainer"
@@ -174,14 +184,24 @@ exports[`QuestionView should render the QuestionView component, update question 
     />
      Back
   </a>
-  <div>
+  <div
+    className="title-large"
+  >
     Question number 1 from the Quiz 1 quiz
   </div>
-  <div>
-    Question description:
-  </div>
-  <div>
-    Test question
+  <div
+    className="detailsContainer"
+  >
+    <div
+      className="detailsHeading"
+    >
+      Question description:
+    </div>
+    <div
+      className="detailsContent"
+    >
+      Test question
+    </div>
   </div>
   <div
     className="headerContainer"

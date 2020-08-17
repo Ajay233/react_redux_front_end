@@ -93,13 +93,19 @@ export class Quiz extends React.Component {
   }
 
   renderDetails = () => {
-    const { name, description } = this.props.quiz
+    const { name, description, category } = this.props.quiz
     return(
       <React.Fragment>
         <div id="quizTitle">{name}</div>
         <div className="quizStatus">Status: {this.renderStatus()}</div>
-        <div>Description:</div>
-        <div>{description}</div>
+        <div className="detailsContainer">
+          <div className="detailsHeading">Description:</div>
+          <div className="detailsContent">{description}</div>
+        </div>
+        <div className="detailsContainer">
+          <div className="detailsHeading">Category:</div>
+          <div className="detailsContent">{category}</div>
+        </div>
       </React.Fragment>
     );
   }

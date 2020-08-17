@@ -68,9 +68,11 @@ export class QuestionView extends React.Component {
     const { currentQuestion, quiz } = this.props
     return(
       <React.Fragment>
-        <div>{`Question number ${currentQuestion.questionNumber} from the ${quiz.name} quiz`}</div>
-        <div>Question description:</div>
-        <div>{ currentQuestion.description }</div>
+        <div className="title-large">{`Question number ${currentQuestion.questionNumber} from the ${quiz.name} quiz`}</div>
+        <div className="detailsContainer">
+          <div className="detailsHeading">Question description:</div>
+          <div className="detailsContent">{ currentQuestion.description }</div>
+        </div>
       </React.Fragment>
     );
   }

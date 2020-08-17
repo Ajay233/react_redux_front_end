@@ -79,6 +79,21 @@
   color: orange;
 }
 
+.detailsContainer {
+  display: flex;
+  width: 50%;
+  margin: 10px auto;
+  padding: 10px 5px 10px 5px;
+}
+
+.detailsHeading {
+  font-weight: bold;
+}
+
+.detailsContent {
+  margin-left: 10px;
+}
+
 .headerContainer {
   display: flex;
 }
