@@ -42,6 +42,15 @@ exports[`DropdownList should render only ADMIN options for user with ADMIN permi
       <hr />
     </li>
     <li>
+      <a
+        className="links"
+        onClick={[Function]}
+      >
+        Help
+      </a>
+      <hr />
+    </li>
+    <li>
       <button
         className="linkButton links"
         onClick={[Function]}
@@ -86,6 +95,15 @@ exports[`DropdownList should render only READ-ONLY options for user with READ-ON
       <hr />
     </li>
     <li>
+      <a
+        className="links"
+        onClick={[Function]}
+      >
+        Help
+      </a>
+      <hr />
+    </li>
+    <li>
       <button
         className="linkButton links"
         onClick={[Function]}
@@ -126,6 +144,15 @@ exports[`DropdownList should render only USER options for user with USER permiss
         onClick={[Function]}
       >
         Quiz search
+      </a>
+      <hr />
+    </li>
+    <li>
+      <a
+        className="links"
+        onClick={[Function]}
+      >
+        Help
       </a>
       <hr />
     </li>

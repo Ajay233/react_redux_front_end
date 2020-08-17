@@ -36,12 +36,16 @@ body{
   margin-right: 69%;
 }
 
-.title-medium-left, .title-medium-left-alt {
+.title-medium-left, .title-medium-left-alt, .title-medium-centered {
   font-size: 20px;
   text-align: left;
   width: 30%;
   margin-left: 1%;
   margin-right: 69%;
+}
+
+.title-medium-centered {
+  margin: 0 auto;
 }
 
 .title-medium-left-alt {

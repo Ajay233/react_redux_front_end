@@ -1,0 +1,60 @@
+.helpTitleContainer {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.helpTitleImgContainer {
+  width: 30%;
+}
+
+.helpTitleImg {
+  width: 70%;
+}
+
+.helpTitle {
+  width: 70%;
+  font-size: 50px;
+  font-weight: bold;
+  margin: auto 0;
+}
+
+.helpLink {
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+.helpLinkContainer {
+  margin: auto 0;
+}
+
+.helpLink:hover {
+  cursor: pointer;
+  color: orange;
+}
+
+.helpIndex {
+  width: 80%;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.helpIndexList {
+  display: flex;
+}
+
+.helpIndexListColumn {
+  width: 50%;
+}
+
+.helpImg {
+  width: 20%;
+  margin: 0 5% 0 10%;
+}
+
+.helpListItem {
+  display: flex;
+  width: 70%;
+  margin: 20px auto;
+}

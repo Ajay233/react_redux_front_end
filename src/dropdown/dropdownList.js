@@ -60,6 +60,11 @@ class DropdownList extends React.Component {
     return loggedIn === true ? <li><Link to="/allQuizes" onClick={this.handleViewAll} className="links">Browse All Quizes</Link><hr/></li> : null;
   }
 
+  renderHelp = () => {
+    const { loggedIn } = this.props.userData
+    return loggedIn === true ? <li><Link to="/help" onClick={this.handleViewAll} className="links">Help</Link><hr/></li> : null;
+  }
+
   handleViewAll = () => {
     const { getAllQuizes, userData } = this.props
     getAllQuizes("quiz/getAll", userData.jwt)
@@ -83,6 +88,7 @@ class DropdownList extends React.Component {
           {this.renderBrowseAllQuizes()}
           {this.renderQuizSearch()}
           {this.renderCreateQuiz()}
+          {this.renderHelp()}
           {this.renderLogout()}
         </ul>
       </div>
