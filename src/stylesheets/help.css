@@ -88,3 +88,7 @@ td, th {
   border: 1px solid white;
   background-color: rgb(40, 40, 40)
 }
+
+ol > li {
+  margin: 15px 0;
+}

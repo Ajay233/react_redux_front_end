@@ -25,8 +25,8 @@ class HelpIndex extends React.Component {
               <div className="helpLinkContainer"><Link to="/help/userRolesHelp" className="helpLink">User Roles</Link></div>
             </li>
             <li className="helpListItem">
-              <img src={require("../../public/icons/application-add-icon.png")} className="helpImg" alt=""/>
-              <div className="helpLinkContainer"><Link to="/help/accountManagementHelp" className="helpLink">Creating a Quiz</Link></div>
+              <img src={require("../../public/icons/quizManagement.png")} className="helpImg" alt=""/>
+              <div className="helpLinkContainer"><Link to="/help/managingQuizzesHelp" className="helpLink">Managing Quizzes</Link></div>
             </li>
             </div>
             <div className="helpIndexListColumn">

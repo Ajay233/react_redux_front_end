@@ -37,7 +37,7 @@
   border-radius: 5px;
 }
 
-.error-medium {
+.error-medium, .warning-medium {
   padding: 5px;
   margin-bottom: 5px;
   width: fit-content;
@@ -61,7 +61,7 @@
   font-size: 1em;
 }
 
-.warning {
+.warning, .warning-medium {
   border: 2px #ffeeba solid;
   background-color: #fff3cd;
   padding: 15px;
