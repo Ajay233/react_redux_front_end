@@ -22,7 +22,7 @@ class HelpIndex extends React.Component {
             </li>
             <li className="helpListItem">
               <img src={require("../../public/icons/access.png")} className="helpImg" alt=""/>
-              <div className="helpLinkContainer"><Link to="/help/accountManagementHelp" className="helpLink">User Roles</Link></div>
+              <div className="helpLinkContainer"><Link to="/help/userRolesHelp" className="helpLink">User Roles</Link></div>
             </li>
             <li className="helpListItem">
               <img src={require("../../public/icons/application-add-icon.png")} className="helpImg" alt=""/>

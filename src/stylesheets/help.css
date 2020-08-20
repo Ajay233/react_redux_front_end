@@ -76,3 +76,15 @@
   width: 75%;
   margin-right: 5%;
 }
+
+table {
+  border-spacing: 0;
+}
+
+td, th {
+  padding: 10px 5px;
+  text-align: center;
+  width: 15%;
+  border: 1px solid white;
+  background-color: rgb(40, 40, 40)
+}
