@@ -17,6 +17,10 @@ body{
   height: 100%;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .title-large, .title-large-spaced {
   font-size: 40px;
   text-align: center;

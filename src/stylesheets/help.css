@@ -63,3 +63,16 @@
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+.helpContainer {
+  display: flex;
+}
+
+.helpSideBar {
+  width: 20%;
+}
+
+.helpContent {
+  width: 75%;
+  margin-right: 5%;
+}
