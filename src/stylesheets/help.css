@@ -25,13 +25,23 @@
   color: white;
 }
 
-.helpLinkContainer {
-  margin: auto 0;
-}
-
 .helpLink:hover {
   cursor: pointer;
   color: orange;
+}
+
+.helpLinkStandard {
+  font-weight: bold;
+  color: white;
+}
+
+.helpLinkStandard:hover {
+  cursor: pointer;
+  color: orange;
+}
+
+.helpLinkContainer {
+  margin: auto 0;
 }
 
 .helpIndex {

@@ -24,27 +24,19 @@ class HelpIndex extends React.Component {
               <img src={require("../../public/icons/access.png")} className="helpImg" alt=""/>
               <div className="helpLinkContainer"><Link to="/help/userRolesHelp" className="helpLink">User Roles</Link></div>
             </li>
+            </div>
+            <div className="helpIndexListColumn">
             <li className="helpListItem">
               <img src={require("../../public/icons/quizManagement.png")} className="helpImg" alt=""/>
               <div className="helpLinkContainer"><Link to="/help/managingQuizzesHelp" className="helpLink">Managing Quizzes</Link></div>
             </li>
-            </div>
-            <div className="helpIndexListColumn">
-            <li className="helpListItem">
-              <img src={require("../../public/icons/viewIcon2.png")} className="helpImg" alt=""/>
-              <div className="helpLinkContainer"><Link to="/help/accountManagementHelp" className="helpLink">Viewing Quiz Qetails</Link></div>
-            </li>
             <li className="helpListItem">
               <img src={require("../../public/icons/search.png")} className="helpImg" alt=""/>
-              <div className="helpLinkContainer"><Link to="/help/accountManagementHelp" className="helpLink">Searching for Quizzes</Link></div>
-            </li>
-            <li className="helpListItem">
-              <img src={require("../../public/icons/Inventory-icon.png")} className="helpImg" alt=""/>
-              <div className="helpLinkContainer"><Link to="/help/accountManagementHelp" className="helpLink">Browsing Quizzes</Link></div>
+              <div className="helpLinkContainer"><Link to="/help/findingQuizzesHelp" className="helpLink">Finding Quizzes</Link></div>
             </li>
             <li className="helpListItem">
               <img src={require("../../public/icons/test.png")} className="helpImg" alt=""/>
-              <div className="helpLinkContainer"><Link to="/help/accountManagementHelp" className="helpLink">Taking a Quiz</Link></div>
+              <div className="helpLinkContainer"><Link to="/help/takingQuizzesHelp" className="helpLink">Taking a Quiz</Link></div>
             </li>
             </div>
           </ul>
