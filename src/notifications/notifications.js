@@ -36,7 +36,7 @@ class Notification extends React.Component {
       <div
         ref={this.notificationRef}
         id="notification"
-        className={`spacing ${type}${timed ? "shrinkNotification" : ""}`}
+        className={`spacing ${type} ${timed ? "shrinkNotification" : ""}`}
       >
         {timed ? null : <span className="close" onClick={this.handleClose}><i className="far fa-times-circle"></i></span>}
         <div className="notificationBody">

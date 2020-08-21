@@ -24,7 +24,7 @@
 .notificationText {
   width: 80%;
   padding-right: 10px;
-  margin: 0 auto;
+  margin: auto auto;
   text-align: justify;
 }
 

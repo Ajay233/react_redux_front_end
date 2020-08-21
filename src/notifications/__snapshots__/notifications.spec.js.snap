@@ -13,7 +13,7 @@ exports[`Notification component can render a notification 1`] = `
 
 exports[`Notification component can render a notification with an icon 1`] = `
 <div
-  className="spacing verifyProcessshrinkNotification"
+  className="spacing verifyProcess shrinkNotification"
   id="notification"
 >
   <div

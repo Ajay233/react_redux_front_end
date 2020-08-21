@@ -30,14 +30,16 @@ class PermissionChangeRequestForm extends React.Component {
 
   onSubmitRequest = ({permission}) => {
     const { userData, setNotification } = this.props
+    const successMessage = "Your request has now been sent to a super user for approval.  You will be notified via email when the request has been actioned."
     const data = {
+      id: userData.id,
       forename: userData.forename,
       surname: userData.surname,
       email: userData.email,
       permission: userData.permission
     }
     post("users/updatePermissionRequest", data, userData.jwt).then((response) => {
-      setNotification(response.data, "permissionRequest", true)
+      setNotification(successMessage, "permissionRequest", true)
     }).catch((error) => {
       console.log(error.response)
       if(error.response.status === 403){

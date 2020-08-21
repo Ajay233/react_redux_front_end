@@ -65,7 +65,7 @@ exports[`Manage Account should call showModal when delete account is clicked 1`]
       <img
         alt=""
         id="idImg"
-        src="id.png"
+        src="idV2.png"
       />
     </div>
     <div

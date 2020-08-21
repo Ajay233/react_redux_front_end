@@ -52,7 +52,7 @@ export class ManageAccount extends React.Component {
       <Notification />
       <div id="editProfileTitle">
         <div className="titleImgContainer">
-          <img src={require('../public/icons/id.png')} id="idImg" alt=""/>
+          <img src={require('../public/icons/idV2.png')} id="idImg" alt=""/>
         </div>
         <div className="titleTextContainer">
           <div className="titleText">My Account</div>
