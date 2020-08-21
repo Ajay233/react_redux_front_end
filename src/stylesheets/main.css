@@ -34,8 +34,8 @@ body{
 }
 
 .title-large-spaced {
-  margin-top: 30px;
-  margin-bottom: 40px;
+  width: 50%;
+  margin: 30px 25% 40px 25%;
 }
 
 .title-large-left {

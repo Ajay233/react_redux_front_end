@@ -1,15 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import SideBar from './sideBar'
 
 class ManagingQuizzesHelp extends React.Component {
   render(){
     return(
-      <div className="componentContainer">
-        <div className="title-large-spaced">Quiz management help</div>
-        <div className="helpContainer">
+      <div className="componentContainer-alt">
+
           <div className="helpSideBar">
+            <SideBar />
           </div>
           <div className="helpContent">
+            <div className="title-large-spaced">Quiz management help</div>
             <div className="helpSectionSpacing">
               <div className="title-medium-left-alt bold">Creating a quiz</div>
               <div className="">
@@ -249,7 +251,7 @@ class ManagingQuizzesHelp extends React.Component {
             </div>
 
           </div>
-        </div>
+
       </div>
     );
   }
