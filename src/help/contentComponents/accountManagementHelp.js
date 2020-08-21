@@ -1,18 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import SideBar from './sideBar'
 
 class AccountManagementHelp extends React.Component {
   render(){
     return(
-      <div className="componentContainer">
-        <div className="title-large-spaced">Account Management Help</div>
-        <div className="helpContainer">
-
-          <div className="helpSideBar"></div>
+      <div className="componentContainer-alt">
+    
+          <div className="helpSideBar">
+            <SideBar />
+          </div>
 
           <div className="helpContent">
 
             <div className="helpSectionSpacing">
+              <div className="title-large-spaced">Account Management Help</div>
               <div className="title-medium-left-alt bold">Updating user details</div>
               <div className="">
                 The first row in the account management page provides you with the details currently
@@ -63,7 +65,6 @@ class AccountManagementHelp extends React.Component {
 
           </div>
 
-        </div>
       </div>
     );
   }
