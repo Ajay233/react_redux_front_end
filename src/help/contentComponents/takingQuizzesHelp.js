@@ -1,16 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import SideBar from './sideBar'
 
 class TakingQuizzesHelp extends React.Component {
   render(){
     return(
-      <div className="componentContainer">
-        <div className="title-large-spaced">Taking a quiz</div>
-        <div className="helpContainer">
+      <div className="componentContainer-alt">
+
           <div className="helpSideBar">
+            <SideBar />
           </div>
           <div className="helpContent">
-
+            <div className="title-large-spaced">Taking a quiz</div>
             <div className="helpSectionSpacing">
               <div className="title-medium-left-alt bold"></div>
               <div className="">
@@ -51,7 +52,6 @@ class TakingQuizzesHelp extends React.Component {
             </div>
 
           </div>
-        </div>
       </div>
     );
   }

@@ -63,9 +63,19 @@
   margin: 0 5% 0 10%;
 }
 
-.helpListItem {
+.helpListItem, .sideBarListItem {
   display: flex;
   width: 70%;
+  margin: 20px auto;
+}
+
+#sideBar {
+  position: fixed;
+  z-index: 1;
+}
+
+.sideBarListItem {
+  width: 90%;
   margin: 20px auto;
 }
 
@@ -80,11 +90,16 @@
 
 .helpSideBar {
   width: 20%;
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(20, 20, 20);
+  height: 100%;
 }
 
 .helpContent {
-  width: 75%;
-  margin-right: 5%;
+  width: 65%;
+  margin-left: 25%;
+  margin-right: 10%;
 }
 
 table {
@@ -101,4 +116,28 @@ td, th {
 
 ol > li {
   margin: 15px 0;
+}
+
+#sideBarTitleImg {
+  width: 50%;
+  margin: 40px 25% 0 25%;
+}
+
+#sideBarTitle {
+  font-size: 20px;
+  font-weight: bold;
+  width: fit-content;
+  margin: auto;
+}
+
+.sideBarLinks {
+  width: 80%;
+  font-size: 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.sideBarLinks:hover {
+  color: orange;
+  cursor: pointer;
 }
