@@ -1,16 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import SideBar from './sideBar'
 
 class EditUserPrivilegeHelp extends React.Component {
   render(){
     return(
-      <div className="componentContainer">
-        <div className="title-large-spaced">Editing user privileges</div>
-        <div className="helpContainer">
+      <div className="componentContainer-alt">
+
+
           <div className="helpSideBar">
+            <SideBar />
           </div>
           <div className="helpContent">
             <div className="helpSectionSpacing">
+              <div className="title-large-spaced">Editing user privileges</div>
               <div className="title-medium-left-alt bold"></div>
               <div className="">
                 To edit a user’s privilege first click on the drop down menu and select the ‘edit user privilege’ option.
@@ -33,7 +36,7 @@ class EditUserPrivilegeHelp extends React.Component {
               </div>
             </div>
           </div>
-        </div>
+
       </div>
     );
   }
