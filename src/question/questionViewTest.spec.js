@@ -33,8 +33,8 @@ describe("mapStateToProps", () => {
       userData: { id: 1, jwt: "jwt"},
       quiz: { id: 1, name: "test"},
       currentQuestion: { id: 1, questionNumber: 1},
-      answers: [{id: 1, answerNumber: 1}, {id: 2, answerNumber: 2}],
-      currentAnswer: {id: 1, answerNumber: 1},
+      answers: [{id: 1, answerIndex: 1}, {id: 2, answerIndex: 2}],
+      currentAnswer: {id: 1, answerIndex: 1},
       modalState: { showModal: false }
     }
 
@@ -89,13 +89,13 @@ describe("QuestionView", () => {
     answers = [
       {
         id: 1,
-        answerNumber: 1,
+        answerIndex: 1,
         description: "Test answer",
         correctAnswer: false
       },
       {
         id: 2,
-        answerNumber: 2,
+        answerIndex: 2,
         description: "Test answer2",
         correctAnswer: true
       }
@@ -103,7 +103,7 @@ describe("QuestionView", () => {
 
     currentAnswer = {
       id: 1,
-      answerNumber: 1,
+      answerIndex: 1,
       description: "Test answer",
       correctAnswer: false
     }

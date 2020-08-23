@@ -56,7 +56,7 @@ describe("App", () => {
       questions: [],
       currentQuestion: {id: 1, questionNumber: 1, description: ""},
       answers: [],
-      currentAnswer: { id: 1, answerNumber: 1, description: "", correctAnswer: true },
+      currentAnswer: { id: 1, answerIndex: 1, description: "", correctAnswer: true },
       showModal: { showModal: false, showModal2: false, showModal3: false },
       lists: { categories: ["", "", "", ""] }
     })

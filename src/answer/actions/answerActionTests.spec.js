@@ -67,7 +67,7 @@ describe("getAnswers", () => {
 
 describe("setCurrentAnswer", () => {
   it("should create an action to set the current answer", () => {
-    const answer = {answerNumber: 1, description: "answer"}
+    const answer = {answerIndex: 1, description: "answer"}
 
     const expectedAction = {
       type: "SET_CURRENT_ANSWER",
@@ -80,7 +80,7 @@ describe("setCurrentAnswer", () => {
 
 describe("deleteAnswer", () => {
   it("should create an action to delete an answer", () => {
-    const answer = {answerNumber: 1, description: "answer"}
+    const answer = {answerIndex: 1, description: "answer"}
 
     const expectedAction = {
       type: "DELETE_ANSWER",
@@ -93,7 +93,7 @@ describe("deleteAnswer", () => {
 
 describe("addAnswer", () => {
   it("should create an action to add an answer", () => {
-    const answer = {answerNumber: 1, description: "answer"}
+    const answer = {answerIndex: 1, description: "answer"}
 
     const expectedAction = {
       type: "ADD_ANSWER",
@@ -106,7 +106,7 @@ describe("addAnswer", () => {
 
 describe("updateAnswer", () => {
   it("should create an action to update an answer", () => {
-    const answer = {answerNumber: 1, description: "answer"}
+    const answer = {answerIndex: 1, description: "answer"}
 
     const expectedAction = {
       type: "UPDATE_ANSWER",

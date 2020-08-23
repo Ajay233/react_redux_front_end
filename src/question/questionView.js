@@ -31,7 +31,7 @@ export class QuestionView extends React.Component {
           type={"delete"}
           show={showModal}
           title={"Delete Answer"}
-          message={`You are about to delete answer ${currentAnswer.answerNumber}`}
+          message={`You are about to delete answer ${currentAnswer.answerIndex}`}
           onDelete={this.handleDeleteAnswer}
           onCancel={hideModal}
         />

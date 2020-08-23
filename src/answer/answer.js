@@ -13,10 +13,10 @@ export class Answer extends React.Component {
   }
 
   renderAnswer = () => {
-    const { answerNumber, description, correctAnswer } = this.props.answer
+    const { answerIndex, description, correctAnswer } = this.props.answer
     return(
       <div className="answerContainer">
-        <div className="ansNumber">{ answerNumber }</div>
+        <div className="ansNumber">{ answerIndex }</div>
         <div className="ansDecription">{ description }</div>
         <div className="correctAns">{ correctAnswer === true ? <i className="far fa-check-circle green"></i> : <i className="far fa-times-circle red"></i> }</div>
         {this.renderOptions()}

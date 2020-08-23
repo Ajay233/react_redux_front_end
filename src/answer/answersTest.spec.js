@@ -21,19 +21,19 @@ describe("", () => {
     answers = [
       {
         id: 1,
-        answerNumber: 1,
+        answerIndex: 1,
         description: "testDescription",
         correctAnswer: false
       },
       {
         id: 2,
-        answerNumber: 2,
+        answerIndex: 2,
         description: "testDescription2",
         correctAnswer: true
       },
       {
         id: 3,
-        answerNumber: 3,
+        answerIndex: 3,
         description: "testDescriptio3",
         correctAnswer: false
       }

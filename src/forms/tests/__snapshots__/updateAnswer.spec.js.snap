@@ -5,7 +5,7 @@ exports[`UpdateAnswerForm should match the snapshot 1`] = `
   <div
     className="title-large-spaced"
   >
-    Edit Answer 1
+    Edit Answer a
   </div>
   <form
     className="form-centered"
@@ -13,11 +13,11 @@ exports[`UpdateAnswerForm should match the snapshot 1`] = `
   >
     <div>
       <label>
-        Answer number:
+        Answer index:
       </label>
       <input
         className="inputBox"
-        name="number"
+        name="answerIndex"
         onBlur={[Function]}
         onChange={[Function]}
         onDragStart={[Function]}

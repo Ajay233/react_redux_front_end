@@ -53,7 +53,7 @@ describe("AnswerView", () => {
       },
       currentAnswer: {
         id: 1,
-        answerNumber: 1,
+        answerIndex: 1,
         description: "testDescription",
         correctAnswer: true
       }

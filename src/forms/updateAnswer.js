@@ -51,12 +51,12 @@ class UpdateAnswerForm extends React.Component {
     return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null
   }
 
-  onSubmit = ({ number, description, correct }) => {
+  onSubmit = ({ answerIndex, description, correct }) => {
     const { currentAnswer, userData, setNotification, setCurrentAnswer, updateAnswer } = this.props
     const body = {
       id: currentAnswer.id,
       questionId: currentAnswer.questionId,
-      answerNumber: number,
+      answerIndex: answerIndex,
       description: description,
       correctAnswer: correct
     }
@@ -78,9 +78,9 @@ class UpdateAnswerForm extends React.Component {
   render(){
     return(
       <div>
-        <div className="title-large-spaced">{`Edit Answer ${this.props.currentAnswer.answerNumber}`}</div>
+        <div className="title-large-spaced">{`Edit Answer ${this.props.currentAnswer.answerIndex}`}</div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
-          <Field name="number" component={this.renderInput} label="Answer number:"/>
+          <Field name="answerIndex" component={this.renderInput} label="Answer index:"/>
           <Field name="description" component={this.renderTextArea} label="Answer description"/>
           <Field name="correct" component={this.renderSelect} label="Correct? Yes/No:">
             <option value={true}>Yes</option>
@@ -96,20 +96,22 @@ class UpdateAnswerForm extends React.Component {
 }
 
 const validate = (formValues) => {
-  const { number, description, correct } = formValues
+  const { answerIndex, description, correct } = formValues
   const errors = {}
 
-  if(!number){
-    errors.number = "The answer number must not be empty"
-  } else if(isNaN(number)){
-    errors.number = "Only numbers are valid for the answer number"
+  if(!answerIndex){
+    errors.answerIndex = "This field must not be left empty"
+  } else if(!isNaN(answerIndex)){
+    errors.answerIndex = "This should be a single letter e.g. A, B, C, D or E"
+  } else if(answerIndex.length > 1){
+    errors.answerIndex = "This should be a single letter e.g. A, B, C, D or E"
   }
 
   if(!description){
     errors.description = "The answer description must not be empty"
   }
 
-  if(typeof correct !== 'boolean' ){
+  if(!correct){
     errors.correct = "The answer must be marked as right of wrong"
   }
 
@@ -119,7 +121,7 @@ const validate = (formValues) => {
 const mapStateToProps = (state) => {
   return {
     initialValues: {
-      number: state.currentAnswer.answerNumber,
+      answerIndex: state.currentAnswer.answerIndex,
       description: state.currentAnswer.description,
       correct: state.currentAnswer.correctAnswer
     },

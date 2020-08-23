@@ -18,8 +18,8 @@ describe("mapStateToProps", () => {
       userData: { id: 1, jwt: "jwt"},
       quiz: { id: 1, name: "test"},
       currentQuestion: { id: 1, questionNumber: 1},
-      answers: [{id: 1, answerNumber: 1}, {id: 2, answerNumber: 2}],
-      currentAnswer: {id: 1, answerNumber: 1},
+      answers: [{id: 1, answerIndex: 1}, {id: 2, answerIndex: 2}],
+      currentAnswer: {id: 1, answerIndex: 1},
       modalState: { showModal: false }
     }
 
@@ -33,10 +33,10 @@ describe("QuestionView", () => {
   let store;
   const userData={ id: 1, jwt: "jwt"}
   const showModal={ showModal: false, showModal2: false, showModal3: false }
-  const currentAnswer={id: 1, answerNumber: 1}
+  const currentAnswer={id: 1, answerIndex: 1}
   const currentQuestion={ id: 1, questionNumber: 1}
   const quiz={ id: 1, name: "test"}
-  const answers=[{id: 1, answerNumber: 1}, {id: 2, answerNumber: 2}]
+  const answers=[{id: 1, answerIndex: 1}, {id: 2, answerIndex: 2}]
   const notificationData={message: "test", type: "success", show: false, timed: true}
 
   beforeEach(() => {

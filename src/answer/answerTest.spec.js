@@ -20,7 +20,7 @@ describe("Answer", () => {
   beforeEach(() => {
     answer = {
       id: 1,
-      answerNumber: 1,
+      answerIndex: 1,
       description: "testDescription",
       correctAnswer: false
     }
@@ -67,7 +67,7 @@ describe("Answer", () => {
 
     const correctAnswer = {
       id: 1,
-      answerNumber: 1,
+      answerIndex: 1,
       description: "testDescription",
       correctAnswer: true
     }
@@ -97,7 +97,7 @@ describe("handleEdit", () => {
   beforeEach(() => {
     answer = {
       id: 1,
-      answerNumber: 1,
+      answerIndex: 1,
       description: "testDescription",
       correct: false
     }
@@ -130,7 +130,7 @@ describe("handleDelete", () => {
   beforeEach(() => {
     answer = {
       id: 1,
-      answerNumber: 1,
+      answerIndex: 1,
       description: "testDescription",
       correct: false
     }

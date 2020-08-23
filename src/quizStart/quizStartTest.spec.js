@@ -30,8 +30,8 @@ describe("mapStateToProps", () => {
       ],
       currentQuestion: { id: 1, questionNumber: 1, description: "test" },
       answers: [
-        { id: 1, answerNumber: 1, description: "test" },
-        { id: 2, answerNumber: 2, description: "test2" }
+        { id: 1, answerIndex: 1, description: "test" },
+        { id: 2, answerIndex: 2, description: "test2" }
       ],
       quizProgressTracking: { questionNumber: 0, answersPicked:[], showResults: false }
     }
@@ -62,8 +62,8 @@ describe("", () => {
     ],
     currentQuestion = { id: 1, questionNumber: 1, description: "test" },
     answers = [
-      { id: 1, answerNumber: 1, description: "test" },
-      { id: 2, answerNumber: 2, description: "test2" }
+      { id: 1, answerIndex: 1, description: "test" },
+      { id: 2, answerIndex: 2, description: "test2" }
     ],
     quizProgressTracking = { questionNumber: 0, answersPicked:[], showResults: false }
 
@@ -97,8 +97,8 @@ describe("", () => {
     const finishedQuiz = {
       questionNumber: 2,
       answersPicked:[
-        { id: 1, answerNumber: 1, description: "test", correctAnswer: true },
-        { id: 2, answerNumber: 2, description: "test2", correctAnswer: false }
+        { id: 1, answerIndex: 1, description: "test", correctAnswer: true },
+        { id: 2, answerIndex: 2, description: "test2", correctAnswer: false }
       ],
       showResults: true
     }
@@ -121,7 +121,7 @@ describe("", () => {
 
   describe("nextQuestion", () => {
     it("should call", () => {
-      const pickedAns = { id: 1, answerNumber: 1, description: "test" }
+      const pickedAns = { id: 1, answerIndex: 1, description: "test" }
       const body = { questionId: 2 }
       const component = render(
         <Provider store={store}>

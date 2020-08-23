@@ -12,12 +12,12 @@ describe("setQuizProgressTracking", () => {
     const expectedState = {
       questionNumber: 0,
       answersPicked:[
-        { id: 1, answerNumber: 1 }
+        { id: 1, answerIndex: 1 }
       ],
       showResults: false
     }
 
-    const answer = { id: 1, answerNumber: 1 }
+    const answer = { id: 1, answerIndex: 1 }
 
     const newState = setQuizProgressTracking(initialState, addAnswer(answer))
 

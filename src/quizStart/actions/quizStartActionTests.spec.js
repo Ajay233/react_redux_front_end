@@ -4,10 +4,10 @@ describe("addAnswer", () => {
   it("should return an action to add an answer to progressTracking", () => {
     const expectedAction = {
       type: "ADD_SELECTED_ANSWER",
-      payload: { id: 1, answerNumber: 1 }
+      payload: { id: 1, answerIndex: 1 }
     }
 
-    const answer = { id: 1, answerNumber: 1 }
+    const answer = { id: 1, answerIndex: 1 }
 
     expect(addAnswer(answer)).toEqual(expectedAction)
   })

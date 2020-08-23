@@ -25,7 +25,7 @@ describe("UpdateAnswerForm", () => {
     store = mockStore({
       currentAnswer: {
         id: 1,
-        answerNumber: 1,
+        answerIndex: "a",
         description: "testAnswer"
       },
       userData: {
@@ -57,7 +57,7 @@ describe("UpdateAnswerForm", () => {
     const requestResponse = {
       data: [{
         id: 1,
-        answerNumber: 2,
+        answerIndex: "b",
         description: "updatedAnswer"
       }],
       status: 200

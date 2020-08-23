@@ -4,7 +4,7 @@ import { allReducers, rootReducer } from '../reducers'
 const testAction1 = {
   type: "SET_CURRENT_ANSWER",
   payload: {
-    id: 1, answerNumber: 1, description: "test", correctAnswer: true
+    id: 1, answerIndex: 1, description: "test", correctAnswer: true
   }
 }
 
@@ -80,7 +80,7 @@ describe("reducers", () => {
       questions: ["test1", "test2", "test3", "test4"],
       currentQuestion: { },
       answers: ["test1", "test2", "test3", "test4"],
-      currentAnswer: { id: 1, answerNumber: 1, description: "test", correctAnswer: true },
+      currentAnswer: { id: 1, answerIndex: 1, description: "test", correctAnswer: true },
       modalState: { showModal: false, showModal2: false, showModal3: false },
       lists: { categories: [] },
       form: {}

@@ -39,12 +39,17 @@ describe("newAnswer form", () => {
         verified: "true",
         jwt: "testJwt",
         loggedIn: true
+      },
+      initialValues: {
+        answerIndex: "b"
       }
     })
 
     props = {
-      id: 1
+      id: 1,
+      answerIndex: "b"
     }
+
   })
 
   afterEach(() => {
@@ -71,7 +76,7 @@ describe("newAnswer form", () => {
     )
 
     const requestResponse = {
-      data: [{ id: 2 }]
+      data: [{ id: 2, answerIndex: "B" }]
     }
 
     wrapper.find('form').simulate('submit')

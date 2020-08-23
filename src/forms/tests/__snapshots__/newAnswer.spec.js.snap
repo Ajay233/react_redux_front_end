@@ -15,11 +15,11 @@ exports[`newAnswer form should match the snapshot 1`] = `
   >
     <div>
       <label>
-        Answer number:
+        Answer index:
       </label>
       <input
         className="inputBox"
-        name="number"
+        name="answerIndex"
         onBlur={[Function]}
         onChange={[Function]}
         onDragStart={[Function]}

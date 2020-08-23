@@ -51,11 +51,11 @@ class NewAnswerForm extends React.Component {
     return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null
   }
 
-  onSubmit = ({ number, description, correct }) => {
+  onSubmit = ({ answerIndex, description, correct }) => {
     const { currentQuestion, userData, setNotification, addAnswer } = this.props
     const data = {
       questionId: currentQuestion.id,
-      answerNumber: number,
+      answerIndex: answerIndex,
       description: description,
       correctAnswer: correct
     }
@@ -78,7 +78,7 @@ class NewAnswerForm extends React.Component {
       <div className="componentContainer">
         <div className="title-large-spaced">Create an Answer</div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
-          <Field name="number" component={this.renderInput} label="Answer number:"/>
+          <Field name="answerIndex" component={this.renderInput} label="Answer index:"/>
           <Field name="description" component={this.renderTextArea} label="Answer description"/>
           <Field name="correct" component={this.renderSelect} label="Correct? Yes/No:">
             <option value="" disabled>Select an option</option>
@@ -95,14 +95,15 @@ class NewAnswerForm extends React.Component {
 }
 
 const validate = (formValues) => {
-  const { number, description, correct } = formValues
+  const { answerIndex, description, correct } = formValues
   const errors = {}
-  const regex = /^\d+$/g
 
-  if(!number){
-    errors.number = "The answer number must not be empty"
-  } else if(!number.match(regex)){
-    errors.number = "Only numbers are valid for the answer number"
+  if(!answerIndex){
+    errors.answerIndex = "This field must not be left empty"
+  } else if(!isNaN(answerIndex)){
+    errors.answerIndex = "This should be a single letter e.g. A, B, C, D or E"
+  } else if(answerIndex.length > 1){
+    errors.answerIndex = "This should be a single letter e.g. A, B, C, D or E"
   }
 
   if(!description){

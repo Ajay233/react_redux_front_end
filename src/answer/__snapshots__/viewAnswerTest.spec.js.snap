@@ -19,11 +19,11 @@ exports[`AnswerView should render the NewAnswerForm 1`] = `
     >
       <div>
         <label>
-          Answer number:
+          Answer index:
         </label>
         <input
           className="inputBox"
-          name="number"
+          name="answerIndex"
           onBlur={[Function]}
           onChange={[Function]}
           onDragStart={[Function]}
@@ -119,11 +119,11 @@ exports[`AnswerView should render the UpdateAnswerForm 1`] = `
     >
       <div>
         <label>
-          Answer number:
+          Answer index:
         </label>
         <input
           className="inputBox"
-          name="number"
+          name="answerIndex"
           onBlur={[Function]}
           onChange={[Function]}
           onDragStart={[Function]}

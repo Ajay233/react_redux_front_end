@@ -46,15 +46,15 @@ describe("insertAnswer", () => {
 
   beforeEach(() => {
     store = [
-      {answerNumber: 2},
-      {answerNumber: 4},
-      {answerNumber: 6},
-      {answerNumber: 8}
+      {answerIndex: 2},
+      {answerIndex: 4},
+      {answerIndex: 6},
+      {answerIndex: 8}
     ]
   });
 
   it("can insert a answer into the correct index of an array of answers, based on answer number", () => {
-    const answer = {answerNumber: 5}
+    const answer = {answerIndex: 5}
 
     let newState = insertAnswer(store, answer)
 
@@ -62,7 +62,7 @@ describe("insertAnswer", () => {
   })
 
   it("can add the answer to the end of an array if the answer number is larger than the rest", () => {
-    const answer = {answerNumber: 10}
+    const answer = {answerIndex: 10}
 
     let newState = insertAnswer(store, answer)
 
@@ -71,7 +71,7 @@ describe("insertAnswer", () => {
 
   it("can simply add the answer to an array if the array is empty", () => {
     let emptyStore = []
-    const answer = {answerNumber: 5}
+    const answer = {answerIndex: 5}
 
     let newState = insertAnswer(emptyStore, answer)
 
@@ -83,21 +83,21 @@ describe("updateAnswerAndSort", () => {
   it("can replace the old answer in an array that has less than 2 elements", () => {
     const initialState = [
       { id: 1,
-        answerNumber: 1,
+        answerIndex: 1,
         description: "testDescription"
       }
     ]
 
     const updatedAnswer = {
       id: 1,
-      answerNumber: 3,
+      answerIndex: 3,
       description: "updatedDescription"
     }
 
     const newState = [
       {
         id: 1,
-        answerNumber: 3,
+        answerIndex: 3,
         description: "updatedDescription"
       }
     ]
@@ -108,30 +108,30 @@ describe("updateAnswerAndSort", () => {
   it("can remove the old answer and insert the new answer in an array that has 2 or more elements", () => {
     const initialState = [
       { id: 1,
-        answerNumber: 1,
+        answerIndex: 1,
         description: "testDescription"
       },
       { id: 3,
-        answerNumber: 2,
+        answerIndex: 2,
         description: "testDescription"
       }
     ]
 
     const expectedState = [
       { id: 3,
-        answerNumber: 2,
+        answerIndex: 2,
         description: "testDescription"
       },
       {
         id: 1,
-        answerNumber: 3,
+        answerIndex: 3,
         description: "updatedDescription"
       }
     ]
 
     const updatedAnswer = {
       id: 1,
-      answerNumber: 3,
+      answerIndex: 3,
       description: "updatedDescription"
     }
 

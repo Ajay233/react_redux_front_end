@@ -43,21 +43,42 @@ export function insertQuestion(state, question){
   }
 }
 
-export function insertAnswer(state, answer){
-  if(state.length === 0){
-    return [...state, answer];
-  } else if(state.every(function(e){return e.answerNumber < answer.answerNumber})){
-    return [...state, answer];
+// export function insertAnswer(state, answer){
+//   if(state.length === 0){
+//     return [...state, answer];
+//   } else if(state.every(function(e){return e.answerIndex < answer.answerIndex})){
+//     return [...state, answer];
+//   } else {
+//     let added = false
+//     let newState = state.slice()
+//     newState.forEach(element => {
+//       if(element.answerIndex > answer.answerIndex && added === false){
+//         added = true
+//         newState.splice(newState.indexOf(element), 0, answer)
+//         return;
+//       }
+//     })
+//     return newState
+//   }
+// }
+
+export const allAnswersSmaller = (state, answer) => {
+  return state.every(function(element){
+    return element.answerIndex < answer.answerIndex
+  })
+}
+
+export const insertAnswer = (state, answer) => {
+  if(state.length === 0 || allAnswersSmaller(state, answer)){
+    return [...state, answer]
   } else {
-    let added = false
     let newState = state.slice()
-    newState.forEach(element => {
-      if(element.answerNumber > answer.answerNumber && added === false){
-        added = true
-        newState.splice(newState.indexOf(element), 0, answer)
-        return;
+    for(let i = 0; i < state.length; i++){
+      if(state[i].answerIndex > answer.answerIndex){
+        newState.splice(i, 0, answer)
+        break;
       }
-    })
+    }
     return newState
   }
 }
