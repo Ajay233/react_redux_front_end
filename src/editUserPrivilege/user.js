@@ -4,10 +4,10 @@ const User = (props) => {
   const { forename, surname, email, permission, verified } = props.userResults;
   return(
       <div>
-        <div>{`Name: ${forename} ${surname}`}</div>
-        <div>{`Email: ${email}`}</div>
-        <div>{`Permission: ${permission}`}</div>
-        <div>{`Verified: ${verified === "true" ? "Yes" : "No"}`}</div>
+        <div className="spacedContent"><b>Name: </b> {`${forename} ${surname}`}</div>
+        <div className="spacedContent"><b>Email: </b> {`${email}`}</div>
+        <div className="spacedContent"><b>Permission: </b>{`${permission}`}</div>
+        <div className="spacedContent"><b>Verified: </b>{`${verified === "true" ? "Yes" : "No"}`}</div>
       </div>
     );
 }

@@ -110,17 +110,39 @@ exports[`User should render a user's details using the props passed to it 1`] = 
   >
     <hr />
     <div>
-      <div>
-        Name: testForename testSurname
+      <div
+        className="spacedContent"
+      >
+        <b>
+          Name: 
+        </b>
+         
+        testForename testSurname
       </div>
-      <div>
-        Email: testEmail
+      <div
+        className="spacedContent"
+      >
+        <b>
+          Email: 
+        </b>
+         
+        testEmail
       </div>
-      <div>
-        Permission: USER
+      <div
+        className="spacedContent"
+      >
+        <b>
+          Permission: 
+        </b>
+        USER
       </div>
-      <div>
-        Verified: No
+      <div
+        className="spacedContent"
+      >
+        <b>
+          Verified: 
+        </b>
+        No
       </div>
     </div>
   </div>

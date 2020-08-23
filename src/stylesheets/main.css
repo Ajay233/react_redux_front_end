@@ -98,6 +98,10 @@ button:disabled {
   float: right;
 }
 
+.spacedParagraph, .spacedContent {
+  margin: 20px 0;
+}
+
 .neumorphicElem {
   box-shadow: -12px -12px 12px 0px rgba(70, 70, 70, 1), 12px 12px 12px 0px rgba(0, 0, 0, 0.3);
   border: none;
