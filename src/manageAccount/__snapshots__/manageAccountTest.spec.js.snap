@@ -12,7 +12,7 @@ exports[`Manage Account should call showModal when delete account is clicked 1`]
       onClick={[Function]}
     >
       <span
-        className="close"
+        className="closeModal"
       >
         <i
           className="fas fa-times-circle red"

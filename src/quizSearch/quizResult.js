@@ -40,11 +40,13 @@ export class QuizResult extends React.Component {
   }
 
   renderQuiz = () => {
-    const { name, description} = this.props.quiz
+    const { name, description, status } = this.props.quiz
+    const { permission } = this.props;
     return(
       <div className="quiz">
-        <div className="quizName">{name}</div>
+        <div className={permission !== "USER" ? "quizName" : "quizNameExpanded"}>{name}</div>
         <div className="quizDescription">{description}</div>
+        { permission !== "USER" ? <div className="quizStatus">{status}</div> : null }
         {this.renderOptions()}
       </div>
     );
@@ -52,12 +54,13 @@ export class QuizResult extends React.Component {
 
   renderOptions = () => {
     const { permission } = this.props;
+    const { status } = this.props.quiz
     return(
       <div className="options">
         { permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="#" className="deleteOption" onClick={this.handleDelete}><i className="fas fa-trash-alt red"></i> Delete</Link> : null }
         { permission === "READ-ONLY" ? <Link to="/viewQuiz" className="view" onClick={this.handleView}><i className="far fa-eye blue"></i> View</Link> : null }
         { permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="/editQuiz" className="edit" onClick={this.handleView}><i className="fas fa-edit blue"></i> Edit</Link> : null }
-        <Link to="#" className="start" onClick={this.handleStart}><i className="far fa-play-circle blue"></i> Start</Link>
+        { status === "READY" ? <Link to="#" className="start" onClick={this.handleStart}><i className="far fa-play-circle blue"></i> Start</Link> : null }
       </div>
     );
   }

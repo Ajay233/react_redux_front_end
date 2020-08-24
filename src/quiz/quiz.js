@@ -115,7 +115,7 @@ export class Quiz extends React.Component {
     return(
       <React.Fragment>
         <div id="quizTitle">{`Edit the ${name} ${name.includes("quiz") || name.includes("Quiz") ? "" : "quiz"}`}</div>
-        <div className="quizStatus">Status: {this.renderStatus()}</div>
+        <div className="quizStatusBadge">Status: {this.renderStatus()}</div>
         <UpdateQuizForm triggerModal={this.triggerModal} updateStatus={this.updateStatus}/>
       </React.Fragment>
     );

@@ -26,14 +26,19 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
       id="resultsHeadings"
     >
       <div
-        id="nameHeader"
+        className="nameHeader"
       >
         Quiz Name
       </div>
       <div
-        id="descriptionHeader"
+        className="descriptionHeader"
       >
         Description
+      </div>
+      <div
+        className="statusHeader"
+      >
+        Status
       </div>
     </div>
     <div>
@@ -52,6 +57,11 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
             className="quizDescription"
           >
             test
+          </div>
+          <div
+            className="quizStatus"
+          >
+            READY
           </div>
           <div
             className="options"
@@ -85,18 +95,13 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
             test2
           </div>
           <div
-            className="options"
+            className="quizStatus"
           >
-            <a
-              className="start"
-              onClick={[Function]}
-            >
-              <i
-                className="far fa-play-circle blue"
-              />
-               Start
-            </a>
+            DRAFT
           </div>
+          <div
+            className="options"
+          />
         </div>
       </div>
     </div>
@@ -118,14 +123,19 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
       id="resultsHeadings"
     >
       <div
-        id="nameHeader"
+        className="nameHeader"
       >
         Quiz Name
       </div>
       <div
-        id="descriptionHeader"
+        className="descriptionHeader"
       >
         Description
+      </div>
+      <div
+        className="statusHeader"
+      >
+        Status
       </div>
     </div>
     <div>
@@ -144,6 +154,11 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
             className="quizDescription"
           >
             test
+          </div>
+          <div
+            className="quizStatus"
+          >
+            READY
           </div>
           <div
             className="options"
@@ -177,18 +192,13 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
             test2
           </div>
           <div
-            className="options"
+            className="quizStatus"
           >
-            <a
-              className="start"
-              onClick={[Function]}
-            >
-              <i
-                className="far fa-play-circle blue"
-              />
-               Start
-            </a>
+            DRAFT
           </div>
+          <div
+            className="options"
+          />
         </div>
       </div>
     </div>
@@ -241,14 +251,19 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
       id="resultsHeadings"
     >
       <div
-        id="nameHeader"
+        className="nameHeader"
       >
         Quiz Name
       </div>
       <div
-        id="descriptionHeader"
+        className="descriptionHeader"
       >
         Description
+      </div>
+      <div
+        className="statusHeader"
+      >
+        Status
       </div>
     </div>
     <div>
@@ -267,6 +282,11 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
             className="quizDescription"
           >
             test
+          </div>
+          <div
+            className="quizStatus"
+          >
+            READY
           </div>
           <div
             className="options"
@@ -300,18 +320,13 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
             test2
           </div>
           <div
-            className="options"
+            className="quizStatus"
           >
-            <a
-              className="start"
-              onClick={[Function]}
-            >
-              <i
-                className="far fa-play-circle blue"
-              />
-               Start
-            </a>
+            DRAFT
           </div>
+          <div
+            className="options"
+          />
         </div>
       </div>
     </div>
@@ -333,14 +348,19 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
       id="resultsHeadings"
     >
       <div
-        id="nameHeader"
+        className="nameHeader"
       >
         Quiz Name
       </div>
       <div
-        id="descriptionHeader"
+        className="descriptionHeader"
       >
         Description
+      </div>
+      <div
+        className="statusHeader"
+      >
+        Status
       </div>
     </div>
     <div>
@@ -359,6 +379,11 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
             className="quizDescription"
           >
             test
+          </div>
+          <div
+            className="quizStatus"
+          >
+            READY
           </div>
           <div
             className="options"
@@ -392,18 +417,13 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
             test2
           </div>
           <div
-            className="options"
+            className="quizStatus"
           >
-            <a
-              className="start"
-              onClick={[Function]}
-            >
-              <i
-                className="far fa-play-circle blue"
-              />
-               Start
-            </a>
+            DRAFT
           </div>
+          <div
+            className="options"
+          />
         </div>
       </div>
     </div>

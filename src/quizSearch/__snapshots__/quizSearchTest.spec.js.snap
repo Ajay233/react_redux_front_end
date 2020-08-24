@@ -248,14 +248,19 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
       id="resultsHeadings"
     >
       <div
-        id="nameHeader"
+        className="nameHeader"
       >
         Quiz Name
       </div>
       <div
-        id="descriptionHeader"
+        className="descriptionHeader"
       >
         Description
+      </div>
+      <div
+        className="statusHeader"
+      >
+        Status
       </div>
     </div>
     <div>
@@ -274,6 +279,11 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
             className="quizDescription"
           >
             test
+          </div>
+          <div
+            className="quizStatus"
+          >
+            READY
           </div>
           <div
             className="options"
@@ -326,6 +336,11 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
             className="quizDescription"
           >
             test2
+          </div>
+          <div
+            className="quizStatus"
+          >
+            READY
           </div>
           <div
             className="options"

@@ -38,12 +38,20 @@
   font-weight: bold;
 }
 
-#nameHeader {
+.nameHeader {
+  width: 18%;
+}
+
+.nameHeaderExpanded {
   width: 23%;
 }
 
-#descriptionHeader {
+.descriptionHeader {
   width: 50%;
+}
+
+.statusHeader {
+  width: 5%;
 }
 
 #optionsHeader {
@@ -65,11 +73,19 @@
 }
 
 .quizName {
+  width: 18%;
+}
+
+.quizNameExpanded {
   width: 23%;
 }
 
 .quizDescription {
   width: 50%;
+}
+
+.quizStatus {
+  width: 5%;
 }
 
 .options {

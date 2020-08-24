@@ -67,10 +67,12 @@ export class QuizSearch extends React.Component {
 
 // <div id="optionsHeader">Options</div>
   resultHeadings = () => {
+    const { permission } = this.props.userData
     return(
       <div id="resultsHeadings">
-        <div id="nameHeader">Quiz Name</div>
-        <div id="descriptionHeader">Description</div>
+        <div className={permission !== "USER" ? "nameHeader" : "nameHeaderExpanded"}>Quiz Name</div>
+        <div className="descriptionHeader">Description</div>
+        { permission !== "USER" ? <div className="statusHeader">Status</div> : null }
       </div>
     )
   }

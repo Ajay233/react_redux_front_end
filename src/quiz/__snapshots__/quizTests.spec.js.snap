@@ -149,7 +149,7 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
     Edit the test quiz
   </div>
   <div
-    className="quizStatus"
+    className="quizStatusBadge"
   >
     Status: 
     <span

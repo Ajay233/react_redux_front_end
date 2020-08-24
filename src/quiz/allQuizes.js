@@ -57,12 +57,14 @@ export class AllQuizes extends React.Component {
       case "Films": return <div><img className="categoryIcon" src={require("../public/icons/films2.png")} alt=""/></div>
       case "Sports": return <div><img className="categoryIcon" src={require("../public/icons/sport.png")} alt=""/></div>
       case "Music": return <div><img className="categoryIcon" src={require("../public/icons/music.png")} alt=""/></div>
-      case "History": return <div><img className="categoryIcon" src={require("../public/icons/books.png")} alt=""/></div>
+      case "History": return <div><img className="categoryIcon" src={require("../public/icons/museumV2.png")} alt=""/></div>
       case "Science": return <div><img className="categoryIcon" src={require("../public/icons/science.png")} alt=""/></div>
       case "Technology": return <div><img className="categoryIcon" src={require("../public/icons/technology.png")} alt=""/></div>
       case "Art": return <div><img className="categoryIcon" src={require("../public/icons/art.png")} alt=""/></div>
       case "Literature": return <div><img className="categoryIcon" src={require("../public/icons/books.png")} alt=""/></div>
       case "General Knowledge": return <div><img className="categoryIcon" src={require("../public/icons/generalKnowledge.png")} alt=""/></div>
+      case "Food and Drink": return <div><img className="categoryIcon" src={require("../public/icons/Food-icon.png")} alt=""/></div>
+      case "Geography": return <div><img className="categoryIcon" src={require("../public/icons/globe-icon.png")} alt=""/></div>
       default: return null
     }
   }
@@ -110,10 +112,12 @@ export class AllQuizes extends React.Component {
   }
 
   resultHeadings = () => {
+    const { permission } = this.props.userData
     return(
       <div id="resultsHeadings">
-        <div id="nameHeader">Quiz Name</div>
-        <div id="descriptionHeader">Description</div>
+        <div className={permission !== "USER" ? "nameHeader" : "nameHeaderExpanded"}>Quiz Name</div>
+        <div className="descriptionHeader">Description</div>
+        { permission !== "USER" ? <div className="statusHeader">Status</div> : null }
       </div>
     )
   }

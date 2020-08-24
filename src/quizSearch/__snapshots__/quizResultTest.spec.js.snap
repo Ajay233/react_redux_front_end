@@ -18,6 +18,11 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
       test
     </div>
     <div
+      className="quizStatus"
+    >
+      READY
+    </div>
+    <div
       className="options"
     >
       <a
@@ -73,6 +78,11 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
       test
     </div>
     <div
+      className="quizStatus"
+    >
+      READY
+    </div>
+    <div
       className="options"
     >
       <a
@@ -108,7 +118,7 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
     className="quiz"
   >
     <div
-      className="quizName"
+      className="quizNameExpanded"
     >
       test
     </div>
