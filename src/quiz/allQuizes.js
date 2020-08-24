@@ -27,8 +27,8 @@ export class AllQuizes extends React.Component {
       return(
         <Modal
           show={showModal}
-          title={"Quiz"}
-          message={"You are about to delete a quiz which will also delete any questions and answers associated with is"}
+          title={"Delete Quiz"}
+          message={"You are about to delete a quiz which will also delete any questions and answers associated with it.  Do you want to continue?"}
           onDelete={this.handleDelete}
           onCancel={hideModal}
         />

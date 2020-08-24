@@ -32,7 +32,7 @@ export class QuizSearch extends React.Component {
           type={"delete"}
           show={showModal}
           title={"Delete Quiz"}
-          message={"You are about to delete a quiz which will also delete any questions and answers associated with is"}
+          message={"You are about to delete a quiz which will also delete any questions and answers associated with it.  Do you want to continue?"}
           onDelete={this.handleDelete}
           onCancel={hideModal}
         />

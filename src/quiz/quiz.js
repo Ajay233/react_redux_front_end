@@ -31,7 +31,7 @@ export class Quiz extends React.Component {
         <Modal
           show={showModal}
           title={"Delete Question"}
-          message={`You are about to delete question ${currentQuestion.questionNumber}, this will also delete any associated answers for this question.`}
+          message={`You are about to delete question ${currentQuestion.questionNumber}, this will also delete any associated answers for this question.  Do you want to continue?`}
           onDelete={this.handleDeleteQuestion}
           onCancel={hideModal}
         />
@@ -41,7 +41,7 @@ export class Quiz extends React.Component {
         <Modal
           show={showModal2}
           title={"Delete Quiz"}
-          message={"You are about to delete this quiz which will also delete any questions and answers associated with this"}
+          message={"You are about to delete this quiz which will also delete any questions and answers associated with it.  Do you want to continue?"}
           onDelete={this.handleDeleteQuiz}
           onCancel={hideModal}
         />

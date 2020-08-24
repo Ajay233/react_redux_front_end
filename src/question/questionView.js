@@ -31,7 +31,7 @@ export class QuestionView extends React.Component {
           type={"delete"}
           show={showModal}
           title={"Delete Answer"}
-          message={`You are about to delete answer ${currentAnswer.answerIndex}`}
+          message={`You are about to delete answer ${currentAnswer.answerIndex}.  Do you want to continue?`}
           onDelete={this.handleDeleteAnswer}
           onCancel={hideModal}
         />
@@ -41,7 +41,7 @@ export class QuestionView extends React.Component {
           type={"delete"}
           show={showModal2}
           title={"Delete Question"}
-          message={`You are about to delete question ${currentQuestion.questionNumber}, this will also delete any associated answers for this question.`}
+          message={`You are about to delete question ${currentQuestion.questionNumber}, this will also delete any associated answers for this question.  Do you want to continue?`}
           onDelete={this.handleDeleteQuestion}
           onCancel={hideModal}
         />
