@@ -17,18 +17,22 @@ const Modal = (props) => {
 
   return ReactDOM.createPortal(
     <div className={`${props.show ? "showModal" : "hide"}`} onClick={props.onCancel} >
-      <div onClick={e => e.stopPropagation()} className="modalContent">
-        <span onClick={props.onCancel} className="closeModal"><i className="fas fa-times-circle red"></i></span>
-        <div className="modalHeader">{`${props.title}`}</div>
-        <div className="modalMessage">
-          <img className="modalImg" src={require('../public/icons/warning.png')} alt="" />
-          <div className="txt">
-            {props.message}
-          </div>
+      <div onClick={e => e.stopPropagation()} className="modalContainer">
+        <div className="modalHeader">
+          <span onClick={props.onCancel} className="closeModal"><i className="fas fa-times"></i></span>
         </div>
-        <div className="modalActions">
-          {returnButton(props)}
-          <button data-testid="modal-cancel-button" className="submit" onClick={props.onCancel}>Cancel</button>
+        <div className="modalContent">
+          <div className="modalHeading">{`${props.title}`}</div>
+          <div className="modalMessage">
+            <img className="modalImg" src={require('../public/icons/warning.png')} alt="" />
+            <div className="txt">
+              {props.message}
+            </div>
+          </div>
+          <div className="modalActions">
+            {returnButton(props)}
+            <button data-testid="modal-cancel-button" className="submit" onClick={props.onCancel}>Cancel</button>
+          </div>
         </div>
       </div>
     </div>,

@@ -8,51 +8,59 @@ exports[`Manage Account should call showModal when delete account is clicked 1`]
     className="hide"
   >
     <div
-      className="modalContent"
+      className="modalContainer"
       onClick={[Function]}
     >
-      <span
-        className="closeModal"
-      >
-        <i
-          className="fas fa-times-circle red"
-        />
-      </span>
       <div
         className="modalHeader"
       >
-        Account
+        <span
+          className="closeModal"
+        >
+          <i
+            className="fas fa-times"
+          />
+        </span>
       </div>
       <div
-        className="modalMessage"
+        className="modalContent"
       >
-        <img
-          alt=""
-          className="modalImg"
-          src="warning.png"
-        />
         <div
-          className="txt"
+          className="modalHeading"
         >
-          You are about to delete your account.  Once deleted your account will no longer be retreivable
+          Account
         </div>
-      </div>
-      <div
-        className="modalActions"
-      >
-        <button
-          className="delete"
-          data-testid="modal-delete-button"
-          onClick={[Function]}
+        <div
+          className="modalMessage"
         >
-          Delete
-        </button>
-        <button
-          className="submit"
-          data-testid="modal-cancel-button"
+          <img
+            alt=""
+            className="modalImg"
+            src="warning.png"
+          />
+          <div
+            className="txt"
+          >
+            You are about to delete your account.  Once deleted your account will no longer be retreivable
+          </div>
+        </div>
+        <div
+          className="modalActions"
         >
-          Cancel
-        </button>
+          <button
+            className="delete"
+            data-testid="modal-delete-button"
+            onClick={[Function]}
+          >
+            Delete
+          </button>
+          <button
+            className="submit"
+            data-testid="modal-cancel-button"
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   </div>

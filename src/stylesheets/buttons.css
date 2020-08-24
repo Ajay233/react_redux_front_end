@@ -30,7 +30,7 @@
 }
 
 .delete, .resend {
-  background-color: rgba(200, 34, 51, 1);
+  background-color: rgb(220, 53, 69);
 }
 
 .close {
@@ -54,7 +54,7 @@
 
 .delete:hover {
   cursor: pointer;
-  opacity: 0.8;
+  background-color: rgb(200, 35, 51);
 }
 
 .resend:hover {

@@ -14,24 +14,60 @@
   display: none
 }
 
-.modalContent{
+.modalContainer{
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
+
   border: 1px solid #888;
   width: 50%; /* Could be more or less, depending on screen size */
   border-radius: 5px;
   font-family: arial;
 }
 
-.modalHeader{
+.modalHeader {
+  height: 40px;
+  background-image: linear-gradient(to right, #1C0E0B, #AF7C46, #62604D, #1A7790, #072732);
+  background-image: -ms-linear-gradient(to right, #1C0E0B, #AF7C46, #62604D, #1A7790, #072732);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.modalContent {
+  padding: 20px;
+}
+
+.modalHeading{
   font-size: 30px;
   font-weight: bold;
   text-align: center;
 }
 
+.closeBackground {
+  background-color: white;
+  float: right;
+  width: 10px;
+}
+
 .closeModal {
-  font-size: 25px;
+  background-color: rgb(220, 53, 69);
+  font-size: 19px;
+  padding: 5px;
+  margin: 5px;
+  width: 17px;
+  height: 18px;
+  border-radius: 5px;
+  border: 1px solid rgba(225, 225, 225, 0);
+  float: right;
+  color: white;
+  z-index: 1;
+  text-align: center;
+}
+
+.closeModal:hover {
+  cursor: pointer;
+  color: rgb(225, 225, 225);
+  background-color: rgb(200, 35, 51);
+  border: 1px solid white;
 }
 
 .modalMessage {
