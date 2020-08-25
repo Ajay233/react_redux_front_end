@@ -150,13 +150,30 @@ export class AllQuizes extends React.Component {
     history.push("/startQuiz")
   }
 
+  renderComponent = () => {
+    const { quizes } = this.props;
+    if(quizes === null || quizes.length === 0 ){
+      //This will need to be replaced with a component that renders an animated loading modal
+      //Reuse modal
+      return(
+        <div>Loading...</div>
+      );
+    } else {
+      return(
+        <React.Fragment>
+          <Notification />
+          <div id="allQuizzesTitle">Browse all quizzes by Category</div>
+          {this.renderModal()}
+          {this.renderCategories()}
+        </React.Fragment>
+      );
+    }
+  }
+
   render(){
     return(
       <div className="componentContainer">
-        <Notification />
-        <div id="allQuizzesTitle">Browse all quizzes by Category</div>
-        {this.renderModal()}
-        {this.renderCategories()}
+        {this.renderComponent()}
       </div>
     );
   }

@@ -10,7 +10,7 @@ import history from '../history'
 
 import { setNotification } from '../notifications/actions'
 import { logOut } from '../authentication/actions'
-import { getAllQuizes } from '../quizSearch/actions'
+import { getAllQuizes, clearQuizes } from '../quizSearch/actions'
 
 jest.mock("../history")
 jest.mock("../authentication/actions")
@@ -41,6 +41,7 @@ describe("DropdownList", () => {
             logOut={logOut}
             setNotification={setNotification}
             getAllQuizes={getAllQuizes}
+            clearQuizes={clearQuizes}
           />
         </Router>
       </Provider>
@@ -75,6 +76,7 @@ describe("DropdownList", () => {
             logOut={logOut}
             setNotification={setNotification}
             getAllQuizes={getAllQuizes}
+            clearQuizes={clearQuizes}
           />
         </Router>
       </Provider>

@@ -62,11 +62,12 @@ class DropdownList extends React.Component {
 
   renderHelp = () => {
     const { loggedIn } = this.props.userData
-    return loggedIn === true ? <li><Link to="/help" onClick={this.handleViewAll} className="links">Help</Link><hr/></li> : null;
+    return loggedIn === true ? <li><Link to="/help" className="links">Help</Link><hr/></li> : null;
   }
 
   handleViewAll = () => {
-    const { getAllQuizes, userData } = this.props
+    const { getAllQuizes, clearQuizes, userData } = this.props
+    clearQuizes()
     getAllQuizes("quiz/getAll", userData.jwt)
   }
 
