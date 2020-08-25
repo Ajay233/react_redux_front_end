@@ -54,6 +54,7 @@ exports[`login form should match the snapshot 1`] = `
     >
       Don't have an account? 
       <a
+        className="signUpLinkTag"
         href="/signUp"
         onClick={[Function]}
       >

@@ -14,14 +14,17 @@
   display: none
 }
 
-.modalContainer{
+.modalContainer, .imageModalContainer{
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
-
   border: 1px solid #888;
   width: 50%; /* Could be more or less, depending on screen size */
   border-radius: 5px;
   font-family: arial;
+}
+
+.imageModalContainer {
+  width: 80%; /* Override the standard size */
 }
 
 .modalHeader {
@@ -89,4 +92,9 @@
 .modalImg{
   margin-right: 5%;
   margin-left: 5%;
+}
+
+.modalScreenshot {
+  width: 100%;
+  margin: 0;
 }

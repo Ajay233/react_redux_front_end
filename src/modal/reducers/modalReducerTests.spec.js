@@ -11,13 +11,15 @@ describe("showModalReducer", () => {
     const initilState = {
       showModal: false,
       showModal2: false,
-      showModal3: false
+      showModal3: false,
+      imgPath: null
     }
 
     const expectedState = {
       showModal: true,
       showModal2: false,
-      showModal3: false
+      showModal3: false,
+      imgPath: null
     }
 
     const newState = showModalReducer(initilState, showModal())
@@ -29,13 +31,15 @@ describe("showModalReducer", () => {
     const initilState = {
       showModal: false,
       showModal2: false,
-      showModal3: false
+      showModal3: false,
+      imgPath: null
     }
 
     const expectedState = {
       showModal: false,
       showModal2: true,
-      showModal3: false
+      showModal3: false,
+      imgPath: null
     }
 
     const newState = showModalReducer(initilState, showModal2())
@@ -47,13 +51,15 @@ describe("showModalReducer", () => {
     const initilState = {
       showModal: false,
       showModal2: false,
-      showModal3: false
+      showModal3: false,
+      imgPath: null
     }
 
     const expectedState = {
       showModal: false,
       showModal2: false,
-      showModal3: true
+      showModal3: true,
+      imgPath: null
     }
 
     const newState = showModalReducer(initilState, showModal3())
@@ -65,13 +71,15 @@ describe("showModalReducer", () => {
     const initilState = {
       showModal: false,
       showModal2: true,
-      showModal3: false
+      showModal3: false,
+      imgPath: null
     }
 
     const expectedState = {
       showModal: false,
       showModal2: false,
-      showModal3: false
+      showModal3: false,
+      imgPath: null
     }
 
     const newState = showModalReducer(initilState, hideModal())
@@ -83,7 +91,8 @@ describe("showModalReducer", () => {
     const initilState = {
       showModal: false,
       showModal2: false,
-      showModal3: false
+      showModal3: false,
+      imgPath: null
     }
 
     const action = {

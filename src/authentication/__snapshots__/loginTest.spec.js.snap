@@ -70,6 +70,7 @@ exports[`Login should render the login form with notification 1`] = `
         >
           Don't have an account? 
           <a
+            className="signUpLinkTag"
             href="/signUp"
             onClick={[Function]}
           >
@@ -146,6 +147,7 @@ exports[`Login should render the login form without notification 1`] = `
         >
           Don't have an account? 
           <a
+            className="signUpLinkTag"
             href="/signUp"
             onClick={[Function]}
           >

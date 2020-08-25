@@ -54,7 +54,6 @@ class PermissionChangeRequestForm extends React.Component {
     const { userData, formValues } = this.props
     return(
       <div id="editUserDetails">
-      {console.log(this.props)}
       <form onSubmit={this.props.handleSubmit(this.onSubmitRequest)} className="profileForm">
         <div>
           <div id="editUserDetailsTitle">Permission Level</div>
