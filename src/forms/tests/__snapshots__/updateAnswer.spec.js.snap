@@ -43,7 +43,7 @@ exports[`UpdateAnswerForm should match the snapshot 1`] = `
     </div>
     <div>
       <label>
-        Correct? Yes/No:
+        Is this the correct answer? Yes/No:
       </label>
       <div>
         <select
@@ -56,6 +56,12 @@ exports[`UpdateAnswerForm should match the snapshot 1`] = `
           onFocus={[Function]}
           value=""
         >
+          <option
+            disabled={true}
+            value=""
+          >
+            Select an option
+          </option>
           <option
             value={true}
           >

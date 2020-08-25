@@ -82,7 +82,8 @@ class UpdateAnswerForm extends React.Component {
         <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
           <Field name="answerIndex" component={this.renderInput} label="Answer index:"/>
           <Field name="description" component={this.renderTextArea} label="Answer description"/>
-          <Field name="correct" component={this.renderSelect} label="Correct? Yes/No:">
+          <Field name="correct" component={this.renderSelect} label="Is this the correct answer? Yes/No:">
+            <option value="" disabled>Select an option</option>
             <option value={true}>Yes</option>
             <option value={false}>No</option>
           </Field>
@@ -98,7 +99,7 @@ class UpdateAnswerForm extends React.Component {
 const validate = (formValues) => {
   const { answerIndex, description, correct } = formValues
   const errors = {}
-
+  console.log(correct !== false && correct !== true)
   if(!answerIndex){
     errors.answerIndex = "This field must not be left empty"
   } else if(!isNaN(answerIndex)){
@@ -111,7 +112,9 @@ const validate = (formValues) => {
     errors.description = "The answer description must not be empty"
   }
 
-  if(!correct){
+  // The initial value is a boolean but redux form keeps changing true and false to string values when
+  // new values are entered 
+  if(correct !== false && correct !== true && correct !== 'false' && correct !== 'true'){
     errors.correct = "The answer must be marked as right of wrong"
   }
 

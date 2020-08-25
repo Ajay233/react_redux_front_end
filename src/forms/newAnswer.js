@@ -110,7 +110,7 @@ const validate = (formValues) => {
     errors.description = "The answer description must not be empty"
   }
 
-  if(!correct){
+  if(correct !== false && correct !== true && correct !== 'false' && correct !== 'true'){
     errors.correct = "The answer must be marked as right of wrong"
   }
 
