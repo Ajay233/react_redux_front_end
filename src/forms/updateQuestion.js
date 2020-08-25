@@ -45,7 +45,6 @@ class UpdateQuestionForm extends React.Component {
     put("question/update", [body], userData.jwt).then((response) => {
       setCurrentQuestion(response.data[0]);
       updateQuestion(response.data[0])
-      history.push("/editQuiz");
       setNotification("Question updated", "success", true)
     }).catch((error) => {
       console.log(error.response);
