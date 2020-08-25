@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom'
 export class Question extends React.Component {
 
   handleView = () => {
-    const { question, userData, getAnswers, setCurrentQuestion } = this.props
+    const { question, userData, getAnswers, setCurrentQuestion, setNotification } = this.props
     const param = { questionId: question.id }
+    setNotification()
     getAnswers("answer/findByQuestionId", param, userData.jwt)
     setCurrentQuestion(question);
   }

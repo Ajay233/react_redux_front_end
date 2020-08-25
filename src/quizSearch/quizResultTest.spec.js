@@ -150,6 +150,7 @@ describe("QuizResult", () => {
               setQuiz={setQuiz}
               getQuestions={getQuestions}
               userData={userDataProp}
+              setNotification={setNotification}
             />
           </Router>
         </Provider>

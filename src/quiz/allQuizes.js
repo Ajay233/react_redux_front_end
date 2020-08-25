@@ -69,7 +69,7 @@ export class AllQuizes extends React.Component {
     }
   }
 
-  renderQuizResults = (filteredQuizList, quizes, listItem, userData) => {
+  renderQuizResults = (filteredQuizList, quizes, listItem, userData, setNotification) => {
     if(filteredQuizList.length > 0){
       return(
         <React.Fragment>
@@ -79,6 +79,7 @@ export class AllQuizes extends React.Component {
             quizes={filteredQuizList}
             permission={userData.permission}
             jwt={userData.jwt}
+            setNotification={setNotification}
           />
         </React.Fragment>
       );
@@ -91,7 +92,7 @@ export class AllQuizes extends React.Component {
   // Will need a way to turn this on and off, possibly by using history.location.pathname
   // so this is only applied on the all quizes view
   renderCategories = () => {
-    const { quizes, userData } = this.props
+    const { quizes, userData, setNotification } = this.props
     let quizesList = quizes.map(listItem => {
       let filteredQuizList = userData.permission === "USER" ? listItem.quizList.filter(quiz => quiz.status === "READY") : listItem.quizList;
       return(
@@ -100,7 +101,7 @@ export class AllQuizes extends React.Component {
             <div className="categoryTitle">{listItem.category}</div>
             <div>{this.renderCategoryIcon(listItem.category)}</div>
           </div>
-          {this.renderQuizResults(filteredQuizList, quizes, listItem, userData)}
+          {this.renderQuizResults(filteredQuizList, quizes, listItem, userData, setNotification)}
         </div>
       );
     })

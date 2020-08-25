@@ -139,7 +139,7 @@ export class QuizSearch extends React.Component {
         <div>
           {this.renderResultsTitle(quizes)}
           {this.renderResultHeadings(quizes)}
-          <QuizResults quizes={quizes} permission={userData.permission} jwt={userData.jwt}/>
+          <QuizResults quizes={quizes} permission={userData.permission} jwt={userData.jwt} setNotification={setNotification}/>
         </div>
       </div>
     );

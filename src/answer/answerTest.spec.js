@@ -115,6 +115,7 @@ describe("handleEdit", () => {
         answer={answer}
         userData={userData}
         setCurrentAnswer={setCurrentAnswer}
+        setNotification={setNotification}
       />
     )
 

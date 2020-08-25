@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom'
 export class Answer extends React.Component {
 
   handleEdit = () => {
-    this.props.setCurrentAnswer(this.props.answer);
+    const { setNotification, setCurrentAnswer } = this.props
+    setNotification()
+    setCurrentAnswer(this.props.answer);
   }
 
   handleDelete = () => {
@@ -32,6 +34,11 @@ export class Answer extends React.Component {
         { permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="/editAnswer" className="edit" onClick={this.handleEdit}><i className="fas fa-edit blue"></i> Edit</Link> : null }
       </div>
     );
+  }
+
+  clearNotification = () => {
+    const { setNotification } = this.props
+    setNotification()
   }
 
   render(){

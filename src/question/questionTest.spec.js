@@ -118,6 +118,7 @@ describe("handleView", () => {
         userData={userData}
         getAnswers={getAnswers}
         setCurrentQuestion={setCurrentQuestion}
+        setNotification={setNotification}
       />
     );
 

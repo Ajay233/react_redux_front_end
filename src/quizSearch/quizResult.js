@@ -18,8 +18,9 @@ export class QuizResult extends React.Component {
   }
 
   handleView = () => {
-    const { userData, quiz, getQuestions, setQuiz } = this.props
+    const { userData, quiz, getQuestions, setQuiz, setNotification } = this.props
     const param = { quizId: quiz.id }
+    setNotification()
     getQuestions("question/findByQuizId", param, userData.jwt)
     setQuiz(quiz);
   }

@@ -130,9 +130,14 @@ export class Quiz extends React.Component {
     return questions.length === 0 ? null : <Questions questions={questions}/>
   }
 
+  clearNotification = () => {
+    const { setNotification } = this.props
+    setNotification()
+  }
+
   renderAddButton = () => {
     const { permission } = this.props.userData
-    return permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="/newQuestion" className="addButton"><i className="fas fa-plus-circle green"></i> Add a question</Link> : null
+    return permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="/newQuestion" className="addButton" onClick={this.clearNotification}><i className="fas fa-plus-circle green"></i> Add a question</Link> : null
   }
 
   triggerModal = (event) => {
@@ -197,7 +202,7 @@ export class Quiz extends React.Component {
     return(
       <div id="quiz">
         {this.renderModal()}
-        <Link className="link back" to="/quizSearch"><i className="fas fa-chevron-circle-left blue"></i> Back</Link>
+        <Link className="link back" to="/quizSearch" onClick={this.clearNotification}><i className="fas fa-chevron-circle-left blue"></i> Back</Link>
         <Notification />
         {this.renderDetailsOrUpdate()}
         <div className="headerContainer">

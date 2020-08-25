@@ -122,9 +122,14 @@ export class QuestionView extends React.Component {
     });
   }
 
+  clearNotification = () => {
+    const { setNotification } = this.props
+    setNotification()
+  }
+
   renderAddButton = () => {
     const { permission } = this.props.userData
-    return permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="/newAnswer" className="addButton"><i className="fas fa-plus-circle green"></i> Add an answer</Link> : null
+    return permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="/newAnswer" className="addButton" onClick={this.clearNotification}><i className="fas fa-plus-circle green"></i> Add an answer</Link> : null
   }
 
   triggerModal = (event) => {
@@ -135,9 +140,9 @@ export class QuestionView extends React.Component {
   renderBackButton = () => {
     const { permission } = this.props.userData
     if(permission === "READ-ONLY"){
-      return <Link to="/viewQuiz" className="link back"><i className="fas fa-chevron-circle-left blue"></i> Back</Link>
+      return <Link to="/viewQuiz" className="link back" onClick={this.clearNotification}><i className="fas fa-chevron-circle-left blue"></i> Back</Link>
     } else {
-      return <Link to="/editQuiz" className="link back"><i className="fas fa-chevron-circle-left blue"></i> Back</Link>
+      return <Link to="/editQuiz" className="link back" onClick={this.clearNotification}><i className="fas fa-chevron-circle-left blue"></i> Back</Link>
     }
   }
 

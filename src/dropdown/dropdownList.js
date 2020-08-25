@@ -15,14 +15,19 @@ class DropdownList extends React.Component {
     setNotification("Logged out", "success", true);
   }
 
+  clearNotifications = () => {
+    const { setNotification } = this.props
+    setNotification();
+  }
+
   renderSignUp = () => {
     const { loggedIn } = this.props.userData;
-    return loggedIn === true ? null : <li><Link to="/signup" className="links">Create Account</Link></li>
+    return loggedIn === true ? null : <li><Link to="/signup" className="links" onClick={this.clearNotifications}>Create Account</Link></li>
   }
 
   renderLogin = () => {
     const { loggedIn } = this.props.userData;
-    return loggedIn === true ? null : <li><Link to="/login" className="links">Login</Link><hr/></li>
+    return loggedIn === true ? null : <li><Link to="/login" className="links" onClick={this.clearNotifications}>Login</Link><hr/></li>
   }
 
   renderLogout = () => {
@@ -32,27 +37,27 @@ class DropdownList extends React.Component {
 
   renderListUser = () => {
     const { loggedIn, permission } = this.props.userData;
-    return loggedIn === true && permission === "SUPER-USER" ? <li><Link to="/userList" className="links">List all Users</Link><hr/></li> : null
+    return loggedIn === true && permission === "SUPER-USER" ? <li><Link to="/userList" className="links" onClick={this.clearNotifications}>List all Users</Link><hr/></li> : null
   }
 
   renderQuizSearch = () => {
     const { loggedIn } = this.props.userData;
-    return loggedIn === true ? <li><Link to="/quizSearch" className="links">Quiz search</Link><hr/></li> : null
+    return loggedIn === true ? <li><Link to="/quizSearch" className="links" onClick={this.clearNotifications}>Quiz search</Link><hr/></li> : null
   }
 
   renderManageAccount = () => {
     const { loggedIn } = this.props.userData;
-    return loggedIn === true ? <li><Link to="/manageAccount" className="links">Manage my account</Link><hr/></li> : null
+    return loggedIn === true ? <li><Link to="/manageAccount" className="links" onClick={this.clearNotifications}>Manage my account</Link><hr/></li> : null
   }
 
   renderEditPrivilege = () => {
     const { loggedIn, permission } = this.props.userData;
-    return loggedIn === true && permission === "SUPER-USER" ? <li><Link to="/editUserPrivilege" className="links">Edit Privileges</Link><hr/></li> : null
+    return loggedIn === true && permission === "SUPER-USER" ? <li><Link to="/editUserPrivilege" className="links" onClick={this.clearNotifications}>Edit Privileges</Link><hr/></li> : null
   }
 
   renderCreateQuiz = () => {
     const { loggedIn, permission } = this.props.userData;
-    return loggedIn === true && (permission === "ADMIN" || permission === "SUPER-USER") ? <li><Link to={ { pathname: "/newQuiz", from: "dropdown" } } className="links">Create a Quiz</Link><hr/></li> : null
+    return loggedIn === true && (permission === "ADMIN" || permission === "SUPER-USER") ? <li><Link to={ { pathname: "/newQuiz", from: "dropdown" } } className="links" onClick={this.clearNotifications}>Create a Quiz</Link><hr/></li> : null
   }
 
   renderBrowseAllQuizes = () => {
@@ -62,11 +67,12 @@ class DropdownList extends React.Component {
 
   renderHelp = () => {
     const { loggedIn } = this.props.userData
-    return loggedIn === true ? <li><Link to="/help" className="links">Help</Link><hr/></li> : null;
+    return loggedIn === true ? <li><Link to="/help" className="links" onClick={this.clearNotifications}>Help</Link><hr/></li> : null;
   }
 
   handleViewAll = () => {
-    const { getAllQuizes, clearQuizes, userData } = this.props
+    const { getAllQuizes, clearQuizes, setNotification, userData } = this.props
+    setNotification()
     clearQuizes()
     getAllQuizes("quiz/getAll", userData.jwt)
   }
