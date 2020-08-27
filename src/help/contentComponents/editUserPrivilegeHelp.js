@@ -13,6 +13,10 @@ import img6 from '../../public/help/editUserPrivileges/6.png'
 
 class EditUserPrivilegeHelp extends React.Component {
 
+  componentDidMount(){
+    document.documentElement.scrollTop = 0;
+  }
+
   render(){
     const { modalState, hideModal, showModal } = this.props
     return(
