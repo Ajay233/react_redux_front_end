@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Bookmarks from './bookmarks'
 import SideBar from './sideBar'
 import ImageModal from '../../modal/imageModal'
 import { showModal, hideModal } from '../../modal/actions'
@@ -34,6 +35,7 @@ class ManagingQuizzesHelp extends React.Component {
 
   componentDidMount(){
     document.documentElement.scrollTop = 0;
+    window.addEventListener("hashchange", function() { window.scrollBy(0, -60) });
   }
 
   render(){
@@ -50,8 +52,11 @@ class ManagingQuizzesHelp extends React.Component {
           </div>
           <div className="helpContent">
             <div className="title-large-spaced">Quiz management help</div>
+            <hr/>
+            <Bookmarks page={"managingQuizzes"}/>
+            <hr/>
             <div className="helpSectionSpacing">
-              <div className="title-medium-left-alt bold">Creating a quiz</div>
+              <div id="creatingQuizzes" className="title-medium-left-alt bold">Creating a quiz</div>
               <div className="">
                 If you have either Admin or Super-User privileges, then you will have the option to create a quiz
                 in the nav bar drop menu.
@@ -93,7 +98,7 @@ class ManagingQuizzesHelp extends React.Component {
             </div>
 
             <div className="helpSectionSpacing">
-              <div className="title-medium-left-alt bold">The quiz page</div>
+              <div id="quizPage" className="title-medium-left-alt bold">The quiz page</div>
               <div className="">
                 Below is a breakdown of the various sections of the edit quiz page.
               </div>
@@ -117,7 +122,7 @@ class ManagingQuizzesHelp extends React.Component {
             </div>
 
             <div className="helpSectionSpacing">
-              <div className="title-medium-left-alt bold">Editing quiz details</div>
+              <div id="editQuizDetails" className="title-medium-left-alt bold">Editing quiz details</div>
               <div className="">
               </div>
               <ol>
@@ -135,7 +140,7 @@ class ManagingQuizzesHelp extends React.Component {
             </div>
 
             <div className="helpSectionSpacing">
-              <div className="title-medium-left-alt bold">Deleting a quiz</div>
+              <div id="deletingQuizzes" className="title-medium-left-alt bold">Deleting a quiz</div>
               <ol>
                 <li>To delete a quiz simply click delete quiz</li>
                 <li>
@@ -161,7 +166,7 @@ class ManagingQuizzesHelp extends React.Component {
             </div>
 
             <div className="helpSectionSpacing">
-              <div className="title-medium-left-alt bold">Quiz Status</div>
+              <div id="quizStatus" className="title-medium-left-alt bold">Quiz Status</div>
               <div className="">
                 Each quiz has a status indicator next to the quiz title which shows if the quiz is in draft mode
                 or if it is ready for users to use.
@@ -200,7 +205,7 @@ class ManagingQuizzesHelp extends React.Component {
             </div>
 
             <div className="helpSectionSpacing">
-              <div className="title-medium-left-alt bold">Add a question</div>
+              <div id="addQuestion" className="title-medium-left-alt bold">Add a question</div>
               <div className="">
               </div>
               <ol>
@@ -246,7 +251,7 @@ class ManagingQuizzesHelp extends React.Component {
             </div>
 
             <div className="helpSectionSpacing">
-              <div className="title-medium-left-alt bold">Managing a quiz’s questions</div>
+              <div id="manageQuestions" className="title-medium-left-alt bold">Managing a quiz’s questions</div>
               <div className="">
                 Each question has options to the right of it which correspond to that particular question.
               </div>
@@ -259,7 +264,7 @@ class ManagingQuizzesHelp extends React.Component {
             </div>
 
             <div className="helpSectionSpacing">
-              <div className="title-medium-left-alt bold">Deleting a question</div>
+              <div id="deletingQuestions" className="title-medium-left-alt bold">Deleting a question</div>
               <ol>
                 <li>
                   To delete a question, simply click the delete button for the question you want to delete.
@@ -286,7 +291,7 @@ class ManagingQuizzesHelp extends React.Component {
             </div>
 
             <div className="helpSectionSpacing">
-              <div className="title-medium-left-alt bold">Editing questions</div>
+              <div id="editQuestions" className="title-medium-left-alt bold">Editing questions</div>
               <ol>
                 <li>
                   The other option that you will see with each question is ‘edit’.  Click on edit to edit the
@@ -320,7 +325,7 @@ class ManagingQuizzesHelp extends React.Component {
               </div>
               <div className="">
                 The question page also has a delete question button which you can use to delete the question.
-                This works as described in the <a href="#" className="helpLinkStandard">deleting a question section</a>.
+                This works as described in the <a href="#deletingQuestions" className="helpLinkStandard">deleting a question section</a>.
               </div>
               <img
                 src={require(`../../public/help/managingQuizzes/EditQuestionPage/3.png`)}
@@ -331,7 +336,7 @@ class ManagingQuizzesHelp extends React.Component {
             </div>
 
             <div className="helpSectionSpacing">
-              <div className="title-medium-left-alt bold">Adding an answer</div>
+              <div id="addAnswer" className="title-medium-left-alt bold">Adding an answer</div>
               <ol>
                 <li>To add an answer, click add an answer.</li>
                 <li>This will take you to the answer creation page.</li>
@@ -373,7 +378,7 @@ class ManagingQuizzesHelp extends React.Component {
             </div>
 
             <div className="helpSectionSpacing">
-              <div className="title-medium-left-alt bold">Managing a question’s answers</div>
+              <div id="manageAnswers" className="title-medium-left-alt bold">Managing a question’s answers</div>
               <div className="">
                 Each answer is rendered below the question details similarly to how the questions are rendered
                 on the quiz page.   Each answer has options to the right of it which correspond to that particular answer.
@@ -382,7 +387,7 @@ class ManagingQuizzesHelp extends React.Component {
             </div>
 
             <div className="helpSectionSpacing">
-              <div className="title-medium-left-alt bold">Editing answers</div>
+              <div id="editAnswers" className="title-medium-left-alt bold">Editing answers</div>
               <ol>
                 <li>To edit an answer simply click on an answer’s ‘edit’ button.</li>
                 <li>
@@ -416,7 +421,7 @@ class ManagingQuizzesHelp extends React.Component {
             </div>
 
             <div className="helpSectionSpacing">
-              <div className="title-medium-left-alt bold">Deleting an answer</div>
+              <div id="deleteAnswer" className="title-medium-left-alt bold">Deleting an answer</div>
               <div className="">
               </div>
               <ol>

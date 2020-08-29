@@ -30,7 +30,7 @@
   color: orange;
 }
 
-.helpLinkStandard {
+.helpLinkStandard, .bookmarkLink {
   font-weight: bold;
   color: white;
 }
@@ -38,6 +38,15 @@
 .helpLinkStandard:hover {
   cursor: pointer;
   color: orange;
+}
+
+.bookmarkLink:hover {
+  cursor: pointer;
+  color: orange;
+}
+
+.bookmarkLink {
+  text-decoration: none;
 }
 
 .helpLinkContainer {
@@ -151,4 +160,13 @@ ol > li {
 
 .screenshot:hover {
   cursor: pointer;
+}
+
+.bookmarksContainer ol {
+  column-count: 3;
+}
+
+.bookmarksContainer li {
+  margin-bottom: 15px;
+  margin-top: 0;
 }
