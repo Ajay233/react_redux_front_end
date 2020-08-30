@@ -24,6 +24,9 @@ import './stylesheets/inputs.css'
 import './stylesheets/links.css'
 
 class App extends React.Component {
+  componentDidMount(){
+    window.addEventListener("hashchange", function() { window.scrollBy(0, -60) });
+  }
   render(){
     return (
       <React.Fragment>

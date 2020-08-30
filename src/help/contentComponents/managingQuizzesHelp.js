@@ -35,7 +35,6 @@ class ManagingQuizzesHelp extends React.Component {
 
   componentDidMount(){
     document.documentElement.scrollTop = 0;
-    window.addEventListener("hashchange", function() { window.scrollBy(0, -60) });
   }
 
   render(){

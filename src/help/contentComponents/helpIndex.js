@@ -2,6 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 class HelpIndex extends React.Component {
+
+  componentDidMount(){
+    document.documentElement.scrollTop = 0;
+  }
+
   render(){
     return(
       <div className="componentContainer">

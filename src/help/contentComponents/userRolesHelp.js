@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom'
 import SideBar from './sideBar'
 
 class UserRolesHelp extends React.Component {
+
+  componentDidMount(){
+    document.documentElement.scrollTop = 0;
+  }
+
   render(){
     return(
       <div className="componentContainer-alt">
