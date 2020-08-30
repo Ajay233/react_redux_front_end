@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Bookmarks from './bookmarks'
 import SideBar from './sideBar'
 import ImageModal from '../../modal/imageModal'
 import { showModal, hideModal } from '../../modal/actions'
@@ -38,7 +39,10 @@ class AccountManagementHelp extends React.Component {
 
             <div className="helpSectionSpacing">
               <div className="title-large-spaced">Account Management Help</div>
-              <div className="title-medium-left-alt bold">Updating user details</div>
+              <hr/>
+              <Bookmarks page={"accountManagement"}/>
+              <hr/>
+              <div id="updatingUserDetails" className="title-medium-left-alt bold">Updating user details</div>
               <div className="spacedParagraph">
                 The first row in the account management page provides you with the details currently
                 held about you which were entered during sign up.
@@ -61,7 +65,7 @@ class AccountManagementHelp extends React.Component {
               <div className="spacedParagraph">You will see a notification to confirm the request was successful</div>
             </div>
             <div className="helpSectionSpacing">
-              <div className="title-medium-left-alt bold">Updating your password</div>
+              <div id="updatingPassword" className="title-medium-left-alt bold">Updating your password</div>
               <div className="spacedParagraph">
                 The second row gives you the option to change your password.  You will need to enter you old
                 password and the the new password will need to be entered twice to ensure it is correct.
@@ -109,7 +113,7 @@ class AccountManagementHelp extends React.Component {
               />
             </div>
             <div className="helpSectionSpacing">
-              <div className="title-medium-left-alt bold">Privilege change requests</div>
+              <div id="privilegeChangeRequest" className="title-medium-left-alt bold">Privilege change requests</div>
               <div className="spacedParagraph">
                 If you need to gain a greater level of access to the app you will gave to have your access privilege raised.
                 To do this you will have to make a request for a super-user to review and action.
@@ -139,7 +143,7 @@ class AccountManagementHelp extends React.Component {
               />
             </div>
             <div className="helpSectionSpacing">
-                <div className="title-medium-left-alt bold">Delete account</div>
+                <div id="deleteAccount" className="title-medium-left-alt bold">Delete account</div>
                 <div className="spacedParagraph">
                   At the bottom of the page you have the option to delete your account.  Please note that this will
                   completely remove your account from the system.  We will not hold any details about your account

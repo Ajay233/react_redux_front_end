@@ -1,6 +1,9 @@
 export const bookmarkList = {
   accountManagement: {
-
+    updatingUserDetails: "Updating user details",
+    updatingPassword: "Updating your password",
+    privilegeChangeRequest: "Privilege change requests",
+    deleteAccount: "Delete account"
   },
   editUserPrivilege: {
 
