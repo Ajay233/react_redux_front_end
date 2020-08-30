@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Bookmarks from './bookmarks'
 import SideBar from './sideBar'
 import ImageModal from '../../modal/imageModal'
 import { showModal, hideModal } from '../../modal/actions'
@@ -29,6 +30,9 @@ class FindingQuizzesHelp extends React.Component {
           </div>
           <div className="helpContent">
             <div className="title-large-spaced">Finding quizzes</div>
+            <hr/>
+            <Bookmarks page={"findingQuizzes"}/>
+            <hr/>
             <div className="helpSectionSpacing">
               <div className="title-medium-left-alt bold"></div>
               <div className="">
@@ -47,7 +51,7 @@ class FindingQuizzesHelp extends React.Component {
             </div>
 
             <div className="helpSectionSpacing">
-              <div className="title-medium-left-alt bold">Quiz search</div>
+              <div id="quizSearch" className="title-medium-left-alt bold">Quiz search</div>
               <div className="">
               </div>
               <ol>
@@ -83,7 +87,7 @@ class FindingQuizzesHelp extends React.Component {
             </div>
 
             <div className="helpSectionSpacing">
-              <div className="title-medium-left-alt bold">Browse quizzes</div>
+              <div id="browseQuizzes" className="title-medium-left-alt bold">Browse quizzes</div>
               <div className="">
                 Another option is to use the Browse quizzes page which will let you browse through all available quizzes per category.
               </div>

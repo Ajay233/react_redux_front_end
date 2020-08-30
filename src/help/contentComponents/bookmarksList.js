@@ -9,7 +9,8 @@ export const bookmarkList = {
 
   },
   findingQuizzes: {
-
+    quizSearch: "Quiz search",
+    browseQuizzes: "Browse quizzes"
   },
   takingQuizzes: {
 
