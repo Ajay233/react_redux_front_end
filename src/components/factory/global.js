@@ -1,3 +1,4 @@
 export const globalVaules = {
-  showToTopButton: false
+  showToTopButton: false,
+  url: ""
 }

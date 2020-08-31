@@ -4,3 +4,10 @@ export const setToTopButton = (show=false) => {
     payload: show
   }
 }
+
+export const setUrl = (url="") => {
+  return {
+    type: "SET_URL",
+    payload: url
+  }
+}

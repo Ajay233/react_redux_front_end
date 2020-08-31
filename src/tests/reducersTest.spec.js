@@ -63,7 +63,8 @@ describe("reducers", () => {
       lists: { categories: [] },
       form: {},
       globals: {
-        showToTopButton: false
+        showToTopButton: false,
+        url: ""
       }
     }
     expect(allReducers({}, {type: "INIT"})).toEqual(expectedState)
@@ -88,7 +89,8 @@ describe("reducers", () => {
       lists: { categories: [] },
       form: {},
       globals: {
-        showToTopButton: false
+        showToTopButton: false,
+        url: ""
       }
     }
 
