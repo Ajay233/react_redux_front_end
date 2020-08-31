@@ -9,3 +9,7 @@ export function timedFunc(delay, funcToDo){
     funcToDo();
   }, delay);
 }
+
+export function toTopFunction() {
+  document.documentElement.scrollTop = 0;
+}

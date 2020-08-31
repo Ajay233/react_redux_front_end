@@ -61,7 +61,10 @@ describe("reducers", () => {
       currentAnswer: {},
       modalState: { showModal: false, showModal2: false, showModal3: false, imgPath: null },
       lists: { categories: [] },
-      form: {}
+      form: {},
+      globals: {
+        showToTopButton: false
+      }
     }
     expect(allReducers({}, {type: "INIT"})).toEqual(expectedState)
   })
@@ -83,7 +86,10 @@ describe("reducers", () => {
       currentAnswer: { id: 1, answerIndex: 1, description: "test", correctAnswer: true },
       modalState: { showModal: false, showModal2: false, showModal3: false, imgPath: null },
       lists: { categories: [] },
-      form: {}
+      form: {},
+      globals: {
+        showToTopButton: false
+      }
     }
 
     let state = allReducers({}, {type: "INIT"})

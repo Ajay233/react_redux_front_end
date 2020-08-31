@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import SideBar from './sideBar'
+import ToTopButton from '../../components/toTopButton'
 
 class UserRolesHelp extends React.Component {
 
@@ -168,7 +169,7 @@ class UserRolesHelp extends React.Component {
               </div>
             </div>
           </div>
-
+          <ToTopButton />
       </div>
     );
   }

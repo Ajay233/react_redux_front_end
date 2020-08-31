@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import SideBar from './sideBar'
 import ImageModal from '../../modal/imageModal'
+import ToTopButton from '../../components/toTopButton'
 import { showModal, hideModal } from '../../modal/actions'
 import img1 from '../../public/help/editUserPrivileges/1.png'
 import img2 from '../../public/help/editUserPrivileges/2.png'
@@ -87,7 +88,7 @@ class EditUserPrivilegeHelp extends React.Component {
               </div>
             </div>
           </div>
-
+          <ToTopButton />
       </div>
     );
   }

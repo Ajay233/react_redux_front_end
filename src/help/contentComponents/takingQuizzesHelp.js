@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import SideBar from './sideBar'
 import ImageModal from '../../modal/imageModal'
+import ToTopButton from '../../components/toTopButton'
 import { showModal, hideModal } from '../../modal/actions'
 import img1 from '../../public/help/TakingQuizzes/1-anotated.png'
 import img2 from '../../public/help/TakingQuizzes/2.png'
@@ -100,6 +101,7 @@ class TakingQuizzesHelp extends React.Component {
             </div>
 
           </div>
+          <ToTopButton />
       </div>
     );
   }

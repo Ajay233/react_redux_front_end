@@ -102,6 +102,30 @@ button:disabled {
   margin: 20px 0;
 }
 
+.toTopButton {
+  display: block;
+  width: fit-content;
+  position: fixed;
+  bottom: 20px;
+  right: 15px;
+  border: 1px solid rgb(0, 0, 0, 0.4);
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.toTopButton:hover {
+  cursor: pointer;
+  color: orange;
+}
+
+.showToTopButton {
+  display: block;
+}
+
 .neumorphicElem {
   box-shadow: -12px -12px 12px 0px rgba(70, 70, 70, 1), 12px 12px 12px 0px rgba(0, 0, 0, 0.3);
   border: none;

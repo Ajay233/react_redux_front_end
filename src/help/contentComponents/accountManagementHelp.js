@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Bookmarks from './bookmarks'
 import SideBar from './sideBar'
 import ImageModal from '../../modal/imageModal'
+import ToTopButton from '../../components/toTopButton'
 import { showModal, hideModal } from '../../modal/actions'
 import img1 from '../../public/help/accountManagement/updatingUserDetails/1.png'
 import img2 from '../../public/help/accountManagement/updatingUserDetails/2.png'
@@ -158,7 +159,7 @@ class AccountManagementHelp extends React.Component {
             </div>
 
           </div>
-
+          <ToTopButton />
       </div>
     );
   }
