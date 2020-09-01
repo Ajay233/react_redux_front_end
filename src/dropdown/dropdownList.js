@@ -42,7 +42,7 @@ class DropdownList extends React.Component {
 
   renderQuizSearch = () => {
     const { loggedIn } = this.props.userData;
-    return loggedIn === true ? <li><Link to="/quizSearch" className="links" onClick={this.clearNotifications}>Quiz search</Link><hr/></li> : null
+    return loggedIn === true ? <li><Link to="/quizSearch" className="links" onClick={this.handleGoToSearch}>Quiz search</Link><hr/></li> : null
   }
 
   renderManageAccount = () => {
@@ -75,6 +75,12 @@ class DropdownList extends React.Component {
     setNotification()
     clearQuizes()
     getAllQuizes("quiz/getAll", userData.jwt)
+  }
+
+  handleGoToSearch = () => {
+    const { clearQuizes, setNotification } = this.props
+    setNotification()
+    clearQuizes()
   }
 
 // Todo:

@@ -18,7 +18,7 @@ export class UserList extends React.Component {
     const { listOfUsers } = this.props
     let userList = listOfUsers.map(user => {
       return(
-        <div key={listOfUsers.indexOf(user)} className="userDetails">
+        <div key={listOfUsers.indexOf(user)} className="userDetails userContainer">
           <div className="forename">{user.forename}</div>
           <div className="surname">{user.surname}</div>
           <div className="email">{user.email}</div>
@@ -32,7 +32,7 @@ export class UserList extends React.Component {
 
   renderHeaders = () => {
     return(
-      <div className="userDetailHeaders">
+      <div className="userDetailHeaders userHeadings">
         <div className="forenameHeader">First Name</div>
         <div className="surnameHeader">Surname</div>
         <div className="emailHeader">Email</div>

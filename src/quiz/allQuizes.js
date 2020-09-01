@@ -16,9 +16,9 @@ import "../stylesheets/allQuizzes.css"
 
 export class AllQuizes extends React.Component {
 
-  componentWillUnmount(){
-    this.props.clearQuizes();
-  }
+  // componentWillUnmount(){
+  //   this.props.clearQuizes();
+  // }
 
   renderModal = () => {
     const { hideModal } = this.props

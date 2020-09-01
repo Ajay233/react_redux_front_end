@@ -5,16 +5,58 @@ import DropdownList from './dropdown/dropdownList';
 import { setNotification } from './notifications/actions'
 import { logOut } from './authentication/actions'
 import { getAllQuizes, clearQuizes } from './quizSearch/actions'
+import { enableDarkMode, enableLightMode } from './components/actions'
 import './stylesheets/navBar.css'
 import './stylesheets/buttons.css'
 
 class NavBar extends React.Component {
 
+  //TODO This needs to be removed and the functionality converted to use redux
   constructor(props){
     super(props)
     this.state = {
-      show: false
+      show: false,
+      rerender: false
     }
+  }
+
+  componentDidMount(){
+    this.toggleRef = React.createRef();
+  }
+
+  handleThemeToggleClick = () => {
+    const { enableDarkMode, enableLightMode, globals } = this.props
+    let main = document.getElementById('mainStyling')
+    let links = document.getElementById('linkStyling')
+    if(globals.enableDarkMode){
+      enableLightMode()
+      main.href = "./lightStyling.css"
+      links.href = "./links-light.css"
+      this.toggleRef.current.setAttribute('checked', true)
+    } else {
+      enableDarkMode()
+      main.href = "./main.css"
+      links.href = "./links.css"
+      this.toggleRef.current.removeAttribute('checked')
+    }
+  }
+
+  renderThemeToggle = () => {
+    const { enableDarkMode } = this.props.globals
+    return(
+      <div className="toggle">
+          <i className="fas fa-yin-yang"></i> Toggle Theme
+          <label className="switch">
+              <input
+                ref={this.toggleRef}
+                id="darkModeToggle"
+                type="checkbox"
+                onClick={this.handleThemeToggleClick}
+              />
+              <span className="slider round"></span>
+          </label>
+      </div>
+    );
   }
 
   renderList = () => {
@@ -26,6 +68,7 @@ class NavBar extends React.Component {
         logOut={logOut}
         getAllQuizes={getAllQuizes}
         clearQuizes={clearQuizes}
+        toggleTheme={this.handleThemeToggleClick}
       /> : null
     );
   }
@@ -37,24 +80,13 @@ class NavBar extends React.Component {
     })
   }
 
-  // handleGoingBack = () => {
-  //   history.goBack();
-  // }
-
-  // renderBackButton = () => {
-  //     const url = window.location.href
-  //     return url === "http://localhost:3000/" ? null : <Link className="linkButton links navItem" to="#" onClick={this.handleGoingBack}><i className="fas fa-chevron-left"></i> Back</Link>
-  // }
-
-// <Link to="/" id="home" className="links"><img src={require("./public/icons/home.png")} width="22px"/> Home</Link>
   render(){
     return(
       <div>
         <div className="nav">
           <Link to="/" id="home" className="links"><i className="fas fa-home"></i> Home</Link>
           <button className="linkButton links navItem" onClick={this.showList}>Menu <i className="fas fa-bars"></i></button>
-
-
+          <span className="navItem">{this.renderThemeToggle()}</span>
         </div>
         {this.renderList()}
       </div>
@@ -63,7 +95,18 @@ class NavBar extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return {userData: state.userData};
+  return {
+    userData: state.userData,
+    globals: state.globals
+  };
 }
 
-export default connect(mapStateToProps, { setNotification, logOut, getAllQuizes, clearQuizes })( NavBar);
+export default connect(mapStateToProps,
+  {
+    setNotification,
+    logOut,
+    getAllQuizes,
+    clearQuizes,
+    enableDarkMode,
+    enableLightMode
+  })( NavBar);

@@ -12,7 +12,7 @@ body{
 
 .componentContainer, .componentContainer-alt {
   padding: 65px 10px 10px 10px;
-  background: url('../public/backgrounds/light.jpg') no-repeat center center fixed;
+  background: url('./light.jpg') no-repeat center center fixed;
   background-size: cover;
   /* background-image: linear-gradient(to bottom right, rgb(190, 190, 190), rgb(255, 255, 255), rgb(190, 190, 190)); */
   /* background-color: rgb(255, 255, 255); */
@@ -136,12 +136,12 @@ button:disabled {
   border: none;
 }
 
-.resultHeadings, .questionHeadings, .answerHeadings {
+.resultHeadings, .questionHeadings, .answerHeadings, .userHeadings {
   font-weight: bold;
   border-bottom: 3px solid black;
 }
 
-.quizContainer, .questionContainer, .answerContainer {
+.quizContainer, .questionContainer, .answerContainer, .userContainer {
   border-bottom: 1px solid black;
 }
 

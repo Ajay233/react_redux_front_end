@@ -12,7 +12,9 @@ const mockStore = configureStore({})
 
 describe("NavBar", () => {
   it("should render with just the options home and menu", () => {
-    const store = mockStore({})
+    const store = mockStore({
+      globals: { enableDarkMode: true }
+    })
 
     const component = renderer.create(
       <Provider store={store}>
@@ -27,7 +29,8 @@ describe("NavBar", () => {
 
   it("should render render the drop down whe menu button is clicked", () => {
     const store = mockStore({
-      userData: { id: 1, loggedIn: true, permission: "ADMIN"}
+      userData: { id: 1, loggedIn: true, permission: "ADMIN"},
+      globals: { enableDarkMode: true }
     })
 
     const wrapper = mount(
@@ -44,7 +47,8 @@ describe("NavBar", () => {
 
   it("should add an event listener when menu is clicked and remove it when clicked again", () => {
     const store = mockStore({
-      userData: { id: 1, loggedIn: true, permission: "ADMIN"}
+      userData: { id: 1, loggedIn: true, permission: "ADMIN"},
+      globals: { enableDarkMode: true }
     })
 
     const wrapper = mount(

@@ -93,7 +93,8 @@ export const mapStateToProps = (state) => {
   return {
     userData: state.userData,
     notificationData: state.notificationData,
-    modalState: state.modalState
+    modalState: state.modalState,
+    globals: state.globals
   };
 }
 

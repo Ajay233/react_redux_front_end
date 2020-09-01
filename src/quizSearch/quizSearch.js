@@ -18,10 +18,10 @@ import "../stylesheets/quizSearch.css"
 
 export class QuizSearch extends React.Component {
 
-  componentWillUnmount(){
-    console.log("I will now clear the quizzes store :)")
-    this.props.clearQuizes();
-  }
+  // componentWillUnmount(){
+  //   console.log("I will now clear the quizzes store :)")
+  //   this.props.clearQuizes();
+  // }
 
   renderModal = () => {
     const { hideModal } = this.props

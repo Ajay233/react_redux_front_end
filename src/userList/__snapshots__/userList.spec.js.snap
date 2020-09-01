@@ -10,7 +10,7 @@ exports[`UserList should render a list of users 1`] = `
     List of all users
   </div>
   <div
-    className="userDetailHeaders"
+    className="userDetailHeaders userHeadings"
   >
     <div
       className="forenameHeader"
@@ -39,7 +39,7 @@ exports[`UserList should render a list of users 1`] = `
     </div>
   </div>
   <div
-    className="userDetails"
+    className="userDetails userContainer"
   >
     <div
       className="forename"
@@ -68,7 +68,7 @@ exports[`UserList should render a list of users 1`] = `
     </div>
   </div>
   <div
-    className="userDetails"
+    className="userDetails userContainer"
   >
     <div
       className="forename"

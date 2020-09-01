@@ -25,6 +25,30 @@ exports[`NavBar should render with just the options home and menu 1`] = `
         className="fas fa-bars"
       />
     </button>
+    <span
+      className="navItem"
+    >
+      <div
+        className="toggle"
+      >
+        <i
+          className="fas fa-yin-yang"
+        />
+         Toggle Theme
+        <label
+          className="switch"
+        >
+          <input
+            id="darkModeToggle"
+            onClick={[Function]}
+            type="checkbox"
+          />
+          <span
+            className="slider round"
+          />
+        </label>
+      </div>
+    </span>
   </div>
 </div>
 `;

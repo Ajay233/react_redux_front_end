@@ -19,23 +19,17 @@ import AllQuizes from './quiz/allQuizes'
 import QuizStart from './quizStart/quizStart'
 import Help from './help/help'
 import history from './history'
-// import './stylesheets/main.css'
 import './stylesheets/buttons.css'
 import './stylesheets/inputs.css'
-// import './stylesheets/links.css'
+
 
 class App extends React.Component {
+
   componentDidMount(){
     const { enableDarkMode } = this.props.globals
     window.addEventListener("hashchange", function() { window.scrollBy(0, -60) });
-    if(enableDarkMode){
-      require('./stylesheets/main.css')
-      require('./stylesheets/links.css')
-    } else {
-      require('./stylesheets/lightStyling.css')
-      require('./stylesheets/links-light.css')
-    }
   }
+
   render(){
     return (
       <React.Fragment>
