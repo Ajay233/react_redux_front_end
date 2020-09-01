@@ -13,6 +13,7 @@ const mockStore = configureStore({})
 describe("NavBar", () => {
   it("should render with just the options home and menu", () => {
     const store = mockStore({
+      userData: { id: 1, loggedIn: true, permission: "ADMIN"},
       globals: { enableDarkMode: true }
     })
 

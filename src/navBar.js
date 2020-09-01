@@ -43,10 +43,12 @@ class NavBar extends React.Component {
 
   renderThemeToggle = () => {
     const { enableDarkMode } = this.props.globals
-    return(
-      <div className="toggle">
-          <i className="fas fa-yin-yang"></i> Toggle Theme
-          <label className="switch">
+    const { loggedIn } = this.props.userData
+    if(loggedIn){
+      return(
+        <div className="toggle">
+            <i className="fas fa-yin-yang"></i> Toggle Theme
+            <label className="switch">
               <input
                 ref={this.toggleRef}
                 id="darkModeToggle"
@@ -54,9 +56,12 @@ class NavBar extends React.Component {
                 onClick={this.handleThemeToggleClick}
               />
               <span className="slider round"></span>
-          </label>
-      </div>
-    );
+            </label>
+        </div>
+      );
+    } else {
+      return null
+    }
   }
 
   renderList = () => {
