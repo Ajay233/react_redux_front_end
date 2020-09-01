@@ -58,10 +58,10 @@ export class QuizResult extends React.Component {
     const { status } = this.props.quiz
     return(
       <div className="options">
-        { permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="#" className="deleteOption" onClick={this.handleDelete}><i className="fas fa-trash-alt red"></i> Delete</Link> : null }
+        { permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="#" className="deleteOption linkStandard" onClick={this.handleDelete}><i className="fas fa-trash-alt red"></i> Delete</Link> : null }
         { permission === "READ-ONLY" ? <Link to="/viewQuiz" className="view" onClick={this.handleView}><i className="far fa-eye blue"></i> View</Link> : null }
-        { permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="/editQuiz" className="edit" onClick={this.handleView}><i className="fas fa-edit blue"></i> Edit</Link> : null }
-        { status === "READY" ? <Link to="#" className="start" onClick={this.handleStart}><i className="far fa-play-circle blue"></i> Start</Link> : null }
+        { permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="/editQuiz" className="edit linkStandard" onClick={this.handleView}><i className="fas fa-edit blue"></i> Edit</Link> : null }
+        { status === "READY" ? <Link to="#" className="start linkStandard" onClick={this.handleStart}><i className="far fa-play-circle blue"></i> Start</Link> : null }
       </div>
     );
   }

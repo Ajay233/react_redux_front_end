@@ -11,3 +11,17 @@ export const setUrl = (url="") => {
     payload: url
   }
 }
+
+export const enableLightMode = () => {
+  return {
+    type: "SET_THEME",
+    payload: false
+  }
+}
+
+export const enableDarkMode = () => {
+  return {
+    type: "SET_THEME",
+    payload: true
+  }
+}

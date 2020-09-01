@@ -2,6 +2,7 @@
 
 exports[`QuestionView should render the QuestionView component, question details and answers 1`] = `
 <div
+  className="componentContainer"
   id="questionView"
 >
   <a
@@ -41,7 +42,7 @@ exports[`QuestionView should render the QuestionView component, question details
       Answers
     </div>
     <a
-      className="addButton"
+      className="addButton linkStandard"
       onClick={[Function]}
     >
       <i
@@ -51,6 +52,7 @@ exports[`QuestionView should render the QuestionView component, question details
     </a>
   </div>
   <div
+    className="answerHeadings"
     id="answerHeadings"
   >
     <div
@@ -101,7 +103,7 @@ exports[`QuestionView should render the QuestionView component, question details
             className="options"
           >
             <a
-              className="deleteOption"
+              className="deleteOption linkStandard"
               onClick={[Function]}
             >
               <i
@@ -110,7 +112,7 @@ exports[`QuestionView should render the QuestionView component, question details
                Delete
             </a>
             <a
-              className="edit"
+              className="edit linkStandard"
               onClick={[Function]}
             >
               <i
@@ -146,7 +148,7 @@ exports[`QuestionView should render the QuestionView component, question details
             className="options"
           >
             <a
-              className="deleteOption"
+              className="deleteOption linkStandard"
               onClick={[Function]}
             >
               <i
@@ -155,7 +157,7 @@ exports[`QuestionView should render the QuestionView component, question details
                Delete
             </a>
             <a
-              className="edit"
+              className="edit linkStandard"
               onClick={[Function]}
             >
               <i
@@ -173,6 +175,7 @@ exports[`QuestionView should render the QuestionView component, question details
 
 exports[`QuestionView should render the QuestionView component, update question form and no answers if the answers array is empty 1`] = `
 <div
+  className="componentContainer"
   id="questionView"
 >
   <a
@@ -212,7 +215,7 @@ exports[`QuestionView should render the QuestionView component, update question 
       Answers
     </div>
     <a
-      className="addButton"
+      className="addButton linkStandard"
       onClick={[Function]}
     >
       <i
@@ -222,6 +225,7 @@ exports[`QuestionView should render the QuestionView component, update question 
     </a>
   </div>
   <div
+    className="answerHeadings"
     id="answerHeadings"
   >
     <div

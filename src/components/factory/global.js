@@ -1,4 +1,4 @@
 export const globalVaules = {
-  showToTopButton: false,
-  url: ""
+  url: "",
+  enableDarkMode: true
 }

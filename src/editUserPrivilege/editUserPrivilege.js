@@ -28,7 +28,7 @@ export class EditUserPrivilege extends React.Component {
   render(){
     const { userData, setUserResults, setNotification } = this.props;
     return(
-      <div id="editUserPrivilege">
+      <div id="editUserPrivilege" className="componentContainer">
         <Notification />
         <div id="editPrivilegeHeading">
           <img id="editPrivilegeImg" src={require("../public/icons/privilege.png")} alt=""/>

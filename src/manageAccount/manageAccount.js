@@ -41,7 +41,7 @@ export class ManageAccount extends React.Component {
   render(){
     const { userData, setNotification, modalState, hideModal, showModal } = this.props;
     return(
-      <div id="editProfileContainer">
+      <div id="editProfileContainer" className="componentContainer">
       <Modal
         show={modalState.showModal}
         title={"Account"}

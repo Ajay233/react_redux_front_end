@@ -1,6 +1,7 @@
 .inputBox {
   font-size: 16px;
   font-family: arial;
+  border: 1px solid black;
   border-radius: 5px;
   display: inline-block;
   margin: 8px 0 20px 0;
@@ -31,6 +32,6 @@
   width: 30%;
 }
 
-.seldct-half {
+.select-half {
   width: 50%;
 }

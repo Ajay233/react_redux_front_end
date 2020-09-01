@@ -15,7 +15,7 @@ import { setAnswersReducer, setCurrentAnswerReducer } from './answer/reducers'
 import { showModalReducer } from './modal/reducers'
 import { setListsReducer } from './lists/reducers'
 import { setQuizProgressTracking } from './quizStart/reducers'
-import { globalReducer } from './components/reducers'
+import { globalReducer, toTopButtonReducer } from './components/reducers'
 
 export const rootReducer = (state, action) => {
   switch (action.type) {
@@ -46,5 +46,6 @@ export const allReducers = combineReducers({
   modalState: showModalReducer,
   lists: setListsReducer,
   form: formReducer,
+  toTopButtonState: toTopButtonReducer,
   globals: globalReducer
 });

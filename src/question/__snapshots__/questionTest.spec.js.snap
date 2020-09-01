@@ -19,7 +19,7 @@ exports[`Question should render a question along with edit and delete options fo
       className="options"
     >
       <a
-        className="deleteOption"
+        className="deleteOption linkStandard"
         href="/"
         onClick={[Function]}
       >
@@ -29,7 +29,7 @@ exports[`Question should render a question along with edit and delete options fo
          Delete
       </a>
       <a
-        className="edit"
+        className="edit linkStandard"
         href="/editQuestion"
         onClick={[Function]}
       >
@@ -62,7 +62,7 @@ exports[`Question should render a question along with view option for READ-ONLY 
       className="options"
     >
       <a
-        className="view"
+        className="view linkStandard"
         href="/viewQuestion"
         onClick={[Function]}
       >

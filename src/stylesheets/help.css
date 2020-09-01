@@ -19,36 +19,6 @@
   margin: auto 0;
 }
 
-.helpLink {
-  font-size: 20px;
-  text-decoration: none;
-  color: white;
-}
-
-.helpLink:hover {
-  cursor: pointer;
-  color: orange;
-}
-
-.helpLinkStandard, .bookmarkLink {
-  font-weight: bold;
-  color: white;
-}
-
-.helpLinkStandard:hover {
-  cursor: pointer;
-  color: orange;
-}
-
-.bookmarkLink:hover {
-  cursor: pointer;
-  color: orange;
-}
-
-.bookmarkLink {
-  text-decoration: none;
-}
-
 .helpLinkContainer {
   margin: auto 0;
 }
@@ -89,8 +59,8 @@
 }
 
 .helpSectionSpacing {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .helpContainer {
@@ -111,18 +81,6 @@
   margin-right: 10%;
 }
 
-table {
-  border-spacing: 0;
-}
-
-td, th {
-  padding: 10px 5px;
-  text-align: center;
-  width: 15%;
-  border: 1px solid white;
-  background-color: rgb(40, 40, 40)
-}
-
 ol > li {
   margin: 15px 0;
 }
@@ -135,6 +93,7 @@ ol > li {
 #sideBarTitle {
   font-size: 20px;
   font-weight: bold;
+  color: white;
   width: fit-content;
   margin: auto;
 }

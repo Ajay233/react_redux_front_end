@@ -6,7 +6,11 @@ const Bookmarks = (props) => {
   const renderBookmarkList = () => {
     const bookmarks = Object.entries(bookmarkList[props.page])
     let list = bookmarks.map(bookmark => {
-      return <li key={`bookmark-${bookmarks.indexOf(bookmark)}`}><a href={`#${bookmark[0]}`} className="bookmarkLink">{bookmark[1]}</a></li>
+      return(
+        <li key={`bookmark-${bookmarks.indexOf(bookmark)}`}>
+          <a href={`#${bookmark[0]}`} className="linkStandard">{bookmark[1]}</a>
+        </li>
+      );
     })
     return list
   }

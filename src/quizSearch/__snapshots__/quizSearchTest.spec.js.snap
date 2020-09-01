@@ -2,6 +2,7 @@
 
 exports[`QuizSearch should render quiz serchByName, searchByCategory forms and no results 1`] = `
 <div
+  className="componentContainer"
   id="quizSearch"
 >
   <div
@@ -55,10 +56,10 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and n
       </div>
     </div>
     <div
-      id="divider-left"
+      className="divider-left"
     />
     <div
-      id="divider-right"
+      className="divider-right"
     />
     <div
       id="quizSearchByCategory"
@@ -124,6 +125,7 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and n
 
 exports[`QuizSearch should render quiz serchByName, searchByCategory forms and results 1`] = `
 <div
+  className="componentContainer"
   id="quizSearch"
 >
   <div
@@ -177,10 +179,10 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
       </div>
     </div>
     <div
-      id="divider-left"
+      className="divider-left"
     />
     <div
-      id="divider-right"
+      className="divider-right"
     />
     <div
       id="quizSearchByCategory"
@@ -245,6 +247,7 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
       2 Results
     </div>
     <div
+      className="resultHeadings"
       id="resultsHeadings"
     >
       <div
@@ -289,7 +292,7 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
             className="options"
           >
             <a
-              className="deleteOption"
+              className="deleteOption linkStandard"
               href="/"
               onClick={[Function]}
             >
@@ -299,7 +302,7 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
                Delete
             </a>
             <a
-              className="edit"
+              className="edit linkStandard"
               href="/editQuiz"
               onClick={[Function]}
             >
@@ -309,7 +312,7 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
                Edit
             </a>
             <a
-              className="start"
+              className="start linkStandard"
               href="/"
               onClick={[Function]}
             >
@@ -346,7 +349,7 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
             className="options"
           >
             <a
-              className="deleteOption"
+              className="deleteOption linkStandard"
               href="/"
               onClick={[Function]}
             >
@@ -356,7 +359,7 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
                Delete
             </a>
             <a
-              className="edit"
+              className="edit linkStandard"
               href="/editQuiz"
               onClick={[Function]}
             >
@@ -366,7 +369,7 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
                Edit
             </a>
             <a
-              className="start"
+              className="start linkStandard"
               href="/"
               onClick={[Function]}
             >

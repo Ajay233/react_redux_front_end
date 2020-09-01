@@ -1,5 +1,6 @@
 import React from 'react';
 import { Router, Route } from 'react-router-dom';
+import { connect } from 'react-redux'
 import NavBar from './navBar.js'
 import Home from './home';
 import Login from './authentication/login';
@@ -18,14 +19,22 @@ import AllQuizes from './quiz/allQuizes'
 import QuizStart from './quizStart/quizStart'
 import Help from './help/help'
 import history from './history'
-import './stylesheets/main.css'
+// import './stylesheets/main.css'
 import './stylesheets/buttons.css'
 import './stylesheets/inputs.css'
-import './stylesheets/links.css'
+// import './stylesheets/links.css'
 
 class App extends React.Component {
   componentDidMount(){
+    const { enableDarkMode } = this.props.globals
     window.addEventListener("hashchange", function() { window.scrollBy(0, -60) });
+    if(enableDarkMode){
+      require('./stylesheets/main.css')
+      require('./stylesheets/links.css')
+    } else {
+      require('./stylesheets/lightStyling.css')
+      require('./stylesheets/links-light.css')
+    }
   }
   render(){
     return (
@@ -56,4 +65,10 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export const mapStateToProps = (state) => {
+  return {
+    globals: state.globals
+  }
+}
+
+export default connect(mapStateToProps)(App);

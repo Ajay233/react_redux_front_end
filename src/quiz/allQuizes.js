@@ -115,7 +115,7 @@ export class AllQuizes extends React.Component {
   resultHeadings = () => {
     const { permission } = this.props.userData
     return(
-      <div id="resultsHeadings">
+      <div id="resultsHeadings" className="resultHeadings">
         <div className={permission !== "USER" ? "nameHeader" : "nameHeaderExpanded"}>Quiz Name</div>
         <div className="descriptionHeader">Description</div>
         { permission !== "USER" ? <div className="statusHeader">Status</div> : null }

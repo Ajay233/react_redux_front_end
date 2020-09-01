@@ -20,7 +20,7 @@ class ToTopButton extends React.Component {
   }
 
   renderToTopButton = () => {
-    const { showToTopButton } = this.props.globals
+    const { showToTopButton } = this.props.toTopButtonState
     if (showToTopButton) {
       return(
         <React.Fragment>
@@ -45,7 +45,7 @@ class ToTopButton extends React.Component {
 
 export const mapStateToProps = (state) => {
   return {
-    globals: state.globals
+    toTopButtonState: state.toTopButtonState
   }
 }
 

@@ -2,6 +2,7 @@
 
 exports[`Quiz should render the quiz details, 'READY' status and questions for '/viewQuiz' url 1`] = `
 <div
+  className="componentContainer"
   id="quiz"
 >
   <a
@@ -70,6 +71,7 @@ exports[`Quiz should render the quiz details, 'READY' status and questions for '
     </div>
   </div>
   <div
+    className="questionHeadings"
     id="questionHeadings"
   >
     <div
@@ -131,6 +133,7 @@ exports[`Quiz should render the quiz details, 'READY' status and questions for '
 
 exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/editQuiz' url 1`] = `
 <div
+  className="componentContainer"
   id="quiz"
 >
   <a
@@ -274,7 +277,7 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
       Questions
     </div>
     <a
-      className="addButton"
+      className="addButton linkStandard"
       href="/newQuestion"
       onClick={[Function]}
     >
@@ -285,6 +288,7 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
     </a>
   </div>
   <div
+    className="questionHeadings"
     id="questionHeadings"
   >
     <div
@@ -320,7 +324,7 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
           className="options"
         >
           <a
-            className="deleteOption"
+            className="deleteOption linkStandard"
             href="/editQuiz"
             onClick={[Function]}
           >
@@ -330,7 +334,7 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
              Delete
           </a>
           <a
-            className="edit"
+            className="edit linkStandard"
             href="/editQuestion"
             onClick={[Function]}
           >
@@ -360,7 +364,7 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
           className="options"
         >
           <a
-            className="deleteOption"
+            className="deleteOption linkStandard"
             href="/editQuiz"
             onClick={[Function]}
           >
@@ -370,7 +374,7 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
              Delete
           </a>
           <a
-            className="edit"
+            className="edit linkStandard"
             href="/editQuestion"
             onClick={[Function]}
           >

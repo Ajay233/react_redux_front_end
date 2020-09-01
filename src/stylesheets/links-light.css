@@ -1,5 +1,5 @@
 .link {
-  color: white;
+  color: black;
   text-decoration: none;
   margin: 5px;
   font-size: 18px;
@@ -15,7 +15,7 @@
 }
 
 .linkStandard {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
@@ -27,7 +27,7 @@
 .helpLink {
   font-size: 20px;
   text-decoration: none;
-  color: white;
+  color: black;
 }
 
 .helpLink:hover {
@@ -37,7 +37,7 @@
 
 .helpLinkStandard, .bookmarkLink {
   font-weight: bold;
-  color: white;
+  color: black;
 }
 
 .helpLinkStandard:hover {

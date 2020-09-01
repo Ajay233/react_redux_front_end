@@ -62,9 +62,10 @@ describe("reducers", () => {
       modalState: { showModal: false, showModal2: false, showModal3: false, imgPath: null },
       lists: { categories: [] },
       form: {},
+      toTopButtonState: false,
       globals: {
-        showToTopButton: false,
-        url: ""
+        url: "",
+        enableDarkMode: true
       }
     }
     expect(allReducers({}, {type: "INIT"})).toEqual(expectedState)
@@ -88,9 +89,10 @@ describe("reducers", () => {
       modalState: { showModal: false, showModal2: false, showModal3: false, imgPath: null },
       lists: { categories: [] },
       form: {},
+      toTopButtonState: false,
       globals: {
-        showToTopButton: false,
-        url: ""
+        url: "",
+        enableDarkMode: true
       }
     }
 

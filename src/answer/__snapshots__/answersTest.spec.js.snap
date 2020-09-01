@@ -27,7 +27,7 @@ exports[`should render a list of answers with options for ADMIN users 1`] = `
         className="options"
       >
         <a
-          className="deleteOption"
+          className="deleteOption linkStandard"
           href="/"
           onClick={[Function]}
         >
@@ -37,7 +37,7 @@ exports[`should render a list of answers with options for ADMIN users 1`] = `
            Delete
         </a>
         <a
-          className="edit"
+          className="edit linkStandard"
           href="/editAnswer"
           onClick={[Function]}
         >
@@ -74,7 +74,7 @@ exports[`should render a list of answers with options for ADMIN users 1`] = `
         className="options"
       >
         <a
-          className="deleteOption"
+          className="deleteOption linkStandard"
           href="/"
           onClick={[Function]}
         >
@@ -84,7 +84,7 @@ exports[`should render a list of answers with options for ADMIN users 1`] = `
            Delete
         </a>
         <a
-          className="edit"
+          className="edit linkStandard"
           href="/editAnswer"
           onClick={[Function]}
         >
@@ -121,7 +121,7 @@ exports[`should render a list of answers with options for ADMIN users 1`] = `
         className="options"
       >
         <a
-          className="deleteOption"
+          className="deleteOption linkStandard"
           href="/"
           onClick={[Function]}
         >
@@ -131,7 +131,7 @@ exports[`should render a list of answers with options for ADMIN users 1`] = `
            Delete
         </a>
         <a
-          className="edit"
+          className="edit linkStandard"
           href="/editAnswer"
           onClick={[Function]}
         >

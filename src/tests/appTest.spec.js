@@ -58,7 +58,10 @@ describe("App", () => {
       answers: [],
       currentAnswer: { id: 1, answerIndex: 1, description: "", correctAnswer: true },
       showModal: { showModal: false, showModal2: false, showModal3: false },
-      lists: { categories: ["", "", "", ""] }
+      lists: { categories: ["", "", "", ""] },
+      globals: {
+        enableDarkMode: true
+      }
     })
   })
 

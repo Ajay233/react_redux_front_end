@@ -69,7 +69,7 @@ export class QuizSearch extends React.Component {
   resultHeadings = () => {
     const { permission } = this.props.userData
     return(
-      <div id="resultsHeadings">
+      <div id="resultsHeadings" className="resultHeadings">
         <div className={permission !== "USER" ? "nameHeader" : "nameHeaderExpanded"}>Quiz Name</div>
         <div className="descriptionHeader">Description</div>
         { permission !== "USER" ? <div className="statusHeader">Status</div> : null }
@@ -108,7 +108,7 @@ export class QuizSearch extends React.Component {
   render(){
     const { quizes, userData, setNotification, getQuizSearchResults, lists } = this.props
     return(
-      <div id="quizSearch">
+      <div id="quizSearch" className="componentContainer">
         {this.renderModal()}
         <Notification />
         <div id="quizSearchTitle">
@@ -124,8 +124,8 @@ export class QuizSearch extends React.Component {
               permission={userData.permission}
             />
           </div>
-          <div id="divider-left"></div>
-          <div id="divider-right"></div>
+          <div className="divider-left"></div>
+          <div className="divider-right"></div>
           <div id="quizSearchByCategory">
             <QuizSearchByCategory
               jwt={userData.jwt}

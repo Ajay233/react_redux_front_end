@@ -129,7 +129,7 @@ export class QuestionView extends React.Component {
 
   renderAddButton = () => {
     const { permission } = this.props.userData
-    return permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="/newAnswer" className="addButton" onClick={this.clearNotification}><i className="fas fa-plus-circle green"></i> Add an answer</Link> : null
+    return permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="/newAnswer" className="addButton linkStandard" onClick={this.clearNotification}><i className="fas fa-plus-circle green"></i> Add an answer</Link> : null
   }
 
   triggerModal = (event) => {
@@ -157,7 +157,7 @@ export class QuestionView extends React.Component {
 
   render(){
     return(
-      <div id="questionView">
+      <div id="questionView" className="componentContainer">
         {this.renderModal()}
         {this.renderBackButton()}
         <Notification />
@@ -166,7 +166,7 @@ export class QuestionView extends React.Component {
           <div id="answersTitle">Answers</div>
           {this.renderAddButton()}
         </div>
-        <div id="answerHeadings">
+        <div id="answerHeadings" className="answerHeadings">
           <div id="numberHeader">Answer</div>
           <div id="descriptionHeader">Description</div>
           <div id="correctAnswerHeading">Correct answer?</div>

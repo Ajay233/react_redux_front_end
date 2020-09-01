@@ -1,8 +1,8 @@
 #editProfileContainer {
-  padding-top: 60px;
+  /* padding-top: 60px;
   font-family: arial;
   color: white;
-  background-color: rgba(30, 30, 30, 1);
+  background-color: rgba(30, 30, 30, 1); */
 }
 
 #editProfileTitle {
@@ -121,7 +121,6 @@
   width: 20%;
   mergin-right: 2% !important;
 }
-
 
 .listWithBullets {
   padding: 2px 0;

@@ -1,9 +1,9 @@
 #quiz {
-  padding: 65px 10px 5px 10px;;
+  /* padding: 65px 10px 5px 10px;;
   background-color: rgb(30, 30, 30);
   color: white;
   font-family: arial;
-  height: 100%;
+  height: 100%; */
 }
 
 #quizTitle {
@@ -67,16 +67,10 @@
 }
 
 .addButton {
-  color: white;
-  text-decoration: none;
   font-size: 18px;
   font-weight: bold;
   margin-top: 63px;
   width: 14%;
-}
-
-.addButton:hover {
-  color: orange;
 }
 
 .detailsContainer {
@@ -101,8 +95,8 @@
 #questionHeadings{
   display: flex;
   padding: 10px 5px;
-  border-bottom: solid 3px white;
-  font-weight: bold;
+  /* border-bottom: solid 3px white;
+  font-weight: bold; */
 }
 
 #questionNumberHeader{
@@ -120,7 +114,7 @@
 .questionContainer {
   display: flex;
   padding: 10px 5px 10px 5px;
-  border-bottom: solid 1px white;
+  /* border-bottom: solid 1px white; */
 }
 
 .questionNumber {

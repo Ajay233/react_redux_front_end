@@ -1,9 +1,9 @@
 #quizSearch {
-  height: 100%;
+  /* height: 100%;
   padding: 60px 10px 10px 10px;
   background-color: rgb(30, 30, 30);
   color: white;
-  font-family: arial;
+  font-family: arial; */
 }
 
 #quizSearchTitle {
@@ -34,8 +34,8 @@
 }
 
 #resultsHeadings {
-  border-bottom: solid 3px white;
-  font-weight: bold;
+  /* border-bottom: solid 3px white;
+  font-weight: bold; */
 }
 
 .nameHeader {
@@ -65,7 +65,7 @@
 }
 
 .quizContainer {
-  border-bottom: solid 1px white;
+  /* border-bottom: solid 1px white; */
 }
 
 .quiz, #resultsHeadings {
@@ -93,7 +93,6 @@
   display: flex;
   flex-direction: row-reverse;
   padding-right: 5px;
-  color: white;
   margin: auto;
 }
 
@@ -105,14 +104,12 @@
 
 .edit, .start, .view, .deleteOption {
   width: fit-content;
-  color: white;
-  text-decoration: none;
   margin: 0 20px;
 }
 
-.edit:hover, .start:hover, .view:hover, .deleteOption:hover {
+/* .edit:hover, .start:hover, .view:hover, .deleteOption:hover {
   color: orange;
-}
+} */
 
 .blue {
   color: rgb(0, 104, 217);

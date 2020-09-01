@@ -23,6 +23,7 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
       <div />
     </div>
     <div
+      className="resultHeadings"
       id="resultsHeadings"
     >
       <div
@@ -67,7 +68,7 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
             className="options"
           >
             <a
-              className="start"
+              className="start linkStandard"
               onClick={[Function]}
             >
               <i
@@ -120,6 +121,7 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
       <div />
     </div>
     <div
+      className="resultHeadings"
       id="resultsHeadings"
     >
       <div
@@ -164,7 +166,7 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
             className="options"
           >
             <a
-              className="start"
+              className="start linkStandard"
               onClick={[Function]}
             >
               <i
@@ -248,6 +250,7 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
       <div />
     </div>
     <div
+      className="resultHeadings"
       id="resultsHeadings"
     >
       <div
@@ -292,7 +295,7 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
             className="options"
           >
             <a
-              className="start"
+              className="start linkStandard"
               onClick={[Function]}
             >
               <i
@@ -345,6 +348,7 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
       <div />
     </div>
     <div
+      className="resultHeadings"
       id="resultsHeadings"
     >
       <div
@@ -389,7 +393,7 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
             className="options"
           >
             <a
-              className="start"
+              className="start linkStandard"
               onClick={[Function]}
             >
               <i

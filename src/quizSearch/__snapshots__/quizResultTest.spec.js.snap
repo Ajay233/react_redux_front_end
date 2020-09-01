@@ -26,7 +26,7 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
       className="options"
     >
       <a
-        className="deleteOption"
+        className="deleteOption linkStandard"
         href="/"
         onClick={[Function]}
       >
@@ -36,7 +36,7 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
          Delete
       </a>
       <a
-        className="edit"
+        className="edit linkStandard"
         href="/editQuiz"
         onClick={[Function]}
       >
@@ -46,7 +46,7 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
          Edit
       </a>
       <a
-        className="start"
+        className="start linkStandard"
         href="/"
         onClick={[Function]}
       >
@@ -96,7 +96,7 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
          View
       </a>
       <a
-        className="start"
+        className="start linkStandard"
         href="/"
         onClick={[Function]}
       >
@@ -131,7 +131,7 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
       className="options"
     >
       <a
-        className="start"
+        className="start linkStandard"
         href="/"
         onClick={[Function]}
       >
