@@ -70,6 +70,7 @@ export class AllQuizes extends React.Component {
   }
 
   renderQuizResults = (filteredQuizList, quizes, listItem, userData, setNotification) => {
+    const { clearQuizes } = this.props
     if(filteredQuizList.length > 0){
       return(
         <React.Fragment>
@@ -80,6 +81,7 @@ export class AllQuizes extends React.Component {
             permission={userData.permission}
             jwt={userData.jwt}
             setNotification={setNotification}
+            clearQuizes={clearQuizes}
           />
         </React.Fragment>
       );

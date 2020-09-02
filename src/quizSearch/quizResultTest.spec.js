@@ -12,7 +12,7 @@ import history from '../history'
 
 import { setQuiz } from '../quiz/actions'
 import { setNotification } from '../notifications/actions'
-import { deleteQuiz } from './actions'
+import { deleteQuiz, clearQuizes } from './actions'
 import { showModal, showModal2 } from '../modal/actions'
 import { getQuestions, setCurrentQuestion } from '../question/actions'
 import { getAnswers } from '../answer/actions'
@@ -151,6 +151,7 @@ describe("QuizResult", () => {
               getQuestions={getQuestions}
               userData={userDataProp}
               setNotification={setNotification}
+              clearQuizes={clearQuizes}
             />
           </Router>
         </Provider>

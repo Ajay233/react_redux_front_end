@@ -106,7 +106,7 @@ export class QuizSearch extends React.Component {
   }
 
   render(){
-    const { quizes, userData, setNotification, getQuizSearchResults, lists } = this.props
+    const { quizes, userData, setNotification, getQuizSearchResults, lists, clearQuizes } = this.props
     return(
       <div id="quizSearch" className="componentContainer">
         {this.renderModal()}
@@ -139,7 +139,13 @@ export class QuizSearch extends React.Component {
         <div>
           {this.renderResultsTitle(quizes)}
           {this.renderResultHeadings(quizes)}
-          <QuizResults quizes={quizes} permission={userData.permission} jwt={userData.jwt} setNotification={setNotification}/>
+          <QuizResults
+            quizes={quizes}
+            permission={userData.permission}
+            jwt={userData.jwt}
+            setNotification={setNotification}
+            clearQuizes={clearQuizes}
+          />
         </div>
       </div>
     );
