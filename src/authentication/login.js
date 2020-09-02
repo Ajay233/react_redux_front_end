@@ -10,6 +10,10 @@ import '../stylesheets/login.css'
 
 export class Login extends React.Component {
 
+  componentDidMount(){
+    document.documentElement.scrollTop = 0;
+  }
+
   // AFTER back end update on login endpoint:
   // update action creator so it sets the correct error notification for incorrect credentials or
   // user has not yet verified their email address

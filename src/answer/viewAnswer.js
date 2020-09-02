@@ -7,6 +7,10 @@ import history from '../history'
 
 export class AnswerView extends React.Component {
 
+  componentDidMount(){
+    document.documentElement.scrollTop = 0;
+  }
+
   renderForm = () => {
     return history.location.pathname === "/newAnswer" ? <NewAnswerForm /> : <UpdateAnswerForm />;
   }

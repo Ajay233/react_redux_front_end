@@ -15,6 +15,10 @@ import history from '../history'
 
 class NewQuizForm extends React.Component {
 
+  componentDidMount(){
+    document.documentElement.scrollTop = 0;
+  }
+
   renderInput = (formProps) => {
     return(
       <div>

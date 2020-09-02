@@ -15,6 +15,7 @@ export class Verify extends React.Component {
 
   componentDidMount(){
     this.verifyUser();
+    document.documentElement.scrollTop = 0;
   }
 
   verifyingMsg = () => {

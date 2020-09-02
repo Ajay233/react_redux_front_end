@@ -8,8 +8,9 @@ export class UserList extends React.Component {
 
   componentDidMount(){
     this.props.setUserList("users", this.props.userData.jwt);
+    document.documentElement.scrollTop = 0;
   }
-
+  
   componentWillUnmount(){
     this.props.clearUserList()
   }

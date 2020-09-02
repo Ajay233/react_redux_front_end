@@ -20,6 +20,10 @@ import '../stylesheets/editProfile.css';
 
 export class ManageAccount extends React.Component {
 
+  componentDidMount(){
+    document.documentElement.scrollTop = 0;
+  }
+
   handleDelete = () => {
     const successMsg = "Your account has been deleted";
     const errorMsg = "An error has occurred, your account was not found";

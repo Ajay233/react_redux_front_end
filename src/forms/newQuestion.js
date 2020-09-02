@@ -10,6 +10,10 @@ import { sessionExpired } from '../utils/session'
 
 class NewQuestionForm extends React.Component {
 
+  componentDidMount(){
+    document.documentElement.scrollTop = 0;
+  }
+
   renderInput = (formProps) => {
     return(
       <div>

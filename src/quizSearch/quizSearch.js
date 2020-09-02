@@ -18,6 +18,10 @@ import "../stylesheets/quizSearch.css"
 
 export class QuizSearch extends React.Component {
 
+  componentDidMount(){
+    document.documentElement.scrollTop = 0;
+  }
+
   // componentWillUnmount(){
   //   console.log("I will now clear the quizzes store :)")
   //   this.props.clearQuizes();

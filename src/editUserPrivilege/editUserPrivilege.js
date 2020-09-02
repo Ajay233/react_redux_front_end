@@ -12,6 +12,10 @@ import '../stylesheets/editUserPrivilege.css'
 
 export class EditUserPrivilege extends React.Component {
 
+  componentDidMount(){
+    document.documentElement.scrollTop = 0;
+  }
+  
   componentWillUnmount(){
     this.props.clearUserResults()
   }

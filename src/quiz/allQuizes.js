@@ -16,6 +16,10 @@ import "../stylesheets/allQuizzes.css"
 
 export class AllQuizes extends React.Component {
 
+  componentDidMount(){
+    document.documentElement.scrollTop = 0;
+  }
+
   // componentWillUnmount(){
   //   this.props.clearQuizes();
   // }

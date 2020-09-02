@@ -10,6 +10,10 @@ import '../stylesheets/signup.css'
 
 export class SignUp extends React.Component {
 
+  componentDidMount(){
+    document.documentElement.scrollTop = 0;
+  }
+
   render(){
     const { setNotification } = this.props
     return(
