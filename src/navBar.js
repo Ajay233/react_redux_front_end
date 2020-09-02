@@ -30,13 +30,13 @@ class NavBar extends React.Component {
     let links = document.getElementById('linkStyling')
     if(globals.enableDarkMode){
       enableLightMode()
-      main.href = "./lightStyling.css"
-      links.href = "./links-light.css"
+      main.href = "/./lightStyling.css"
+      links.href = "/./links-light.css"
       this.toggleRef.current.setAttribute('checked', true)
     } else {
       enableDarkMode()
-      main.href = "./main.css"
-      links.href = "./links.css"
+      main.href = "/./main.css"
+      links.href = "/./links.css"
       this.toggleRef.current.removeAttribute('checked')
     }
   }
