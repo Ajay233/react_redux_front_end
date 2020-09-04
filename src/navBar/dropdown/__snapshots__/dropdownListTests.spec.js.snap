@@ -10,7 +10,7 @@ exports[`DropdownList should render only ADMIN options for user with ADMIN permi
         className="links"
         onClick={[Function]}
       >
-        Manage my account
+        Login
       </a>
       <hr />
     </li>
@@ -19,44 +19,8 @@ exports[`DropdownList should render only ADMIN options for user with ADMIN permi
         className="links"
         onClick={[Function]}
       >
-        Browse All Quizes
+        Create Account
       </a>
-      <hr />
-    </li>
-    <li>
-      <a
-        className="links"
-        onClick={[Function]}
-      >
-        Quiz search
-      </a>
-      <hr />
-    </li>
-    <li>
-      <a
-        className="links"
-        onClick={[Function]}
-      >
-        Create a Quiz
-      </a>
-      <hr />
-    </li>
-    <li>
-      <a
-        className="links"
-        onClick={[Function]}
-      >
-        Help
-      </a>
-      <hr />
-    </li>
-    <li>
-      <button
-        className="linkButton links"
-        onClick={[Function]}
-      >
-        Logout
-      </button>
     </li>
   </ul>
 </div>
@@ -72,7 +36,7 @@ exports[`DropdownList should render only READ-ONLY options for user with READ-ON
         className="links"
         onClick={[Function]}
       >
-        Manage my account
+        Login
       </a>
       <hr />
     </li>
@@ -81,35 +45,8 @@ exports[`DropdownList should render only READ-ONLY options for user with READ-ON
         className="links"
         onClick={[Function]}
       >
-        Browse All Quizes
+        Create Account
       </a>
-      <hr />
-    </li>
-    <li>
-      <a
-        className="links"
-        onClick={[Function]}
-      >
-        Quiz search
-      </a>
-      <hr />
-    </li>
-    <li>
-      <a
-        className="links"
-        onClick={[Function]}
-      >
-        Help
-      </a>
-      <hr />
-    </li>
-    <li>
-      <button
-        className="linkButton links"
-        onClick={[Function]}
-      >
-        Logout
-      </button>
     </li>
   </ul>
 </div>
@@ -125,7 +62,7 @@ exports[`DropdownList should render only USER options for user with USER permiss
         className="links"
         onClick={[Function]}
       >
-        Manage my account
+        Login
       </a>
       <hr />
     </li>
@@ -134,35 +71,8 @@ exports[`DropdownList should render only USER options for user with USER permiss
         className="links"
         onClick={[Function]}
       >
-        Browse All Quizes
+        Create Account
       </a>
-      <hr />
-    </li>
-    <li>
-      <a
-        className="links"
-        onClick={[Function]}
-      >
-        Quiz search
-      </a>
-      <hr />
-    </li>
-    <li>
-      <a
-        className="links"
-        onClick={[Function]}
-      >
-        Help
-      </a>
-      <hr />
-    </li>
-    <li>
-      <button
-        className="linkButton links"
-        onClick={[Function]}
-      >
-        Logout
-      </button>
     </li>
   </ul>
 </div>

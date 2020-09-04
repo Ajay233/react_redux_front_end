@@ -1,12 +1,12 @@
 import React from 'react'
-import NavBar from '../navBar/navBar'
+import NavBar from '../navBar'
 import DropdownList from '../dropdown/dropdownList'
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import { shallow, mount } from 'enzyme'
 import renderer from 'react-test-renderer'
 import configureStore from 'redux-mock-store'
-import history from '../history'
+import history from '../../history'
 
 const mockStore = configureStore({})
 

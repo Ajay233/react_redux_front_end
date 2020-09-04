@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
-import DropdownList from '../dropdown/dropdownList';
+import DropdownList from './dropdown/dropdownList';
 import { setDropDownState } from './actions'
 import { setNotification } from '../notifications/actions'
 import { logOut } from '../authentication/actions'
@@ -57,15 +57,17 @@ class NavBar extends React.Component {
   }
 
   renderList = () => {
-    const { setNotification, logOut, getAllQuizes, clearQuizes, navBarState } = this.props
+    const { setNotification, logOut, getAllQuizes, clearQuizes, navBarState, userData } = this.props
     return( navBarState.showDropDown ?
       <DropdownList
-        show={this.showList}
         setNotification={setNotification}
         logOut={logOut}
         getAllQuizes={getAllQuizes}
         clearQuizes={clearQuizes}
         toggleTheme={this.handleThemeToggleClick}
+        loggedIn={userData.loggedIn}
+        permission={userData.permission}
+        jwt={userData.jwt}
       /> : null
     );
   }
