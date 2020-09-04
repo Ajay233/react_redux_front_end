@@ -16,6 +16,7 @@ import { showModalReducer } from './modal/reducers'
 import { setListsReducer } from './lists/reducers'
 import { setQuizProgressTracking } from './quizStart/reducers'
 import { globalReducer, toTopButtonReducer } from './components/reducers'
+import { navBarReducer } from './navBar/reducers'
 
 export const rootReducer = (state, action) => {
   switch (action.type) {
@@ -32,6 +33,7 @@ export const rootReducer = (state, action) => {
 export const allReducers = combineReducers({
   userData: setUserReducer,
   verificationProcess: setVerificationProcessStatus,
+  navBarState: navBarReducer,
   redirect: setRedirectReducer,
   notificationData: setNotificationReducer,
   userResults: setUserResultsReducer,

@@ -18,6 +18,7 @@ exports[`NavBar should render with just the options home and menu 1`] = `
     </a>
     <button
       className="linkButton links navItem"
+      id="menu"
       onClick={[Function]}
     >
       Menu 

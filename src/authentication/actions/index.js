@@ -25,9 +25,12 @@ export const setUser = (endpoint, loginDetails) => {
       dispatch(getCategories("lookup/quizCategories", response.data.jwt))
       dispatch(setNotification(`Welcome back ${response.data.user.forename}`, "loginSuccess", true))
     }).catch((error) => {
-      if(error.response.data === "NOT VERIFIED"){
-        const verifyMsg = "Your email has not yet been veirified.  You will need to verify your email before you can log in"
-        dispatch(setNotification(verifyMsg, "warning", true))
+      console.log(error.response)
+      if(error.response.data){
+        if(error.response.data === "NOT VERIFIED"){
+          const verifyMsg = "Your email has not yet been veirified.  You will need to verify your email before you can log in"
+          dispatch(setNotification(verifyMsg, "warning", true))
+        }
       } else {
         dispatch(setNotification("The username or password you entered was incorrect", "error", true));
       }

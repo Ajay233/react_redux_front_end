@@ -2,7 +2,7 @@ import React from 'react'
 import { Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import App from '../App.js'
-import NavBar from '../navBar.js'
+import NavBar from '../navBar/navBar.js'
 import Home from '../home';
 import Login from '../authentication/login';
 import SignUp from '../authentication/signUp';
@@ -46,6 +46,7 @@ describe("App", () => {
   beforeEach(() => {
     store = mockStore({
       userData: {id:1, forename: "test", surname: "test", email: "", jwt: "jwt"},
+      navBarState: { showDropDown: false },
       verificationProcess: {completionStatus: "test", token: "", error: {}},
       notificationData: { message: "", type: "", show: false, timed: true },
       userResults: {},

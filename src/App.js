@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux'
-import NavBar from './navBar.js'
+import NavBar from './navBar/navBar.js'
 import Home from './home';
 import Login from './authentication/login';
 import SignUp from './authentication/signUp';

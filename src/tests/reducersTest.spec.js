@@ -48,6 +48,7 @@ describe("reducers", () => {
     const expectedState = {
       userData: {id: "", forename: "", surname: "", email: "", permission: "", verified: "",jwt: "", loggedIn: false},
       verificationProcess: { completionStatus: "", token: "", error: {} },
+      navBarState: { showDropDown: false },
       redirect: { status: false },
       notificationData: { message: "", type: "", show: false, timed: true },
       userResults: {},
@@ -75,6 +76,7 @@ describe("reducers", () => {
     const expectedState = {
       userData: {id: 1, forename: "test", surname: "test", email: "test", permission: "ADMIN", verified: true, jwt: "jwt", loggedIn: true},
       verificationProcess: { completionStatus: "", token: "", error: {} },
+      navBarState: { showDropDown: false },
       redirect: { status: false },
       notificationData: { message: "test", type: "success", show: true, timed: true},
       userResults: {},

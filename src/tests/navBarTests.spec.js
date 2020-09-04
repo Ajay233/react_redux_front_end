@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from '../navBar'
+import NavBar from '../navBar/navBar'
 import DropdownList from '../dropdown/dropdownList'
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux'
@@ -14,6 +14,7 @@ describe("NavBar", () => {
   it("should render with just the options home and menu", () => {
     const store = mockStore({
       userData: { id: 1, loggedIn: true, permission: "ADMIN"},
+      navBarState: { showDropDown: false },
       globals: { enableDarkMode: true }
     })
 
@@ -31,6 +32,7 @@ describe("NavBar", () => {
   it("should render render the drop down whe menu button is clicked", () => {
     const store = mockStore({
       userData: { id: 1, loggedIn: true, permission: "ADMIN"},
+      navBarState: { showDropDown: true },
       globals: { enableDarkMode: true }
     })
 
@@ -42,13 +44,14 @@ describe("NavBar", () => {
       </Provider>
     )
 
-    wrapper.find('button').simulate('click')
+    // wrapper.find('#menu').simulate('click')
     expect(wrapper.find(DropdownList)).toHaveLength(1)
   })
 
-  it("should add an event listener when menu is clicked and remove it when clicked again", () => {
+  it("should add an event listener when menu is clicked", () => {
     const store = mockStore({
       userData: { id: 1, loggedIn: true, permission: "ADMIN"},
+      navBarState: { showDropDown: false },
       globals: { enableDarkMode: true }
     })
 
@@ -60,11 +63,30 @@ describe("NavBar", () => {
       </Provider>
     )
     document.addEventListener = jest.fn()
-    document.removeEventListener = jest.fn()
 
-    const menu = wrapper.find('button').simulate('click')
+    const menu = wrapper.find('#menu')
     menu.simulate('click')
     expect(document.addEventListener).toHaveBeenCalledTimes(1)
+  })
+
+  it("should remove the event listener when menu is clicked again", () => {
+    const store = mockStore({
+      userData: { id: 1, loggedIn: true, permission: "ADMIN"},
+      navBarState: { showDropDown: true },
+      globals: { enableDarkMode: true }
+    })
+
+    const wrapper = mount(
+      <Provider store={store}>
+        <Router history={history}>
+          <NavBar />
+        </Router>
+      </Provider>
+    )
+
+    document.removeEventListener = jest.fn()
+
+    const menu = wrapper.find('#menu')
     menu.simulate('click')
     expect(document.removeEventListener).toHaveBeenCalledTimes(1)
   })
