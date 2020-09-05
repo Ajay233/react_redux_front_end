@@ -3,6 +3,7 @@ import { Router } from 'react-router-dom'
 import { Answer } from './answer'
 import { mount } from 'enzyme'
 import renderer from 'react-test-renderer'
+import { render, fireEvent, cleanup } from '@testing-library/react'
 import { setCurrentAnswer, deleteAnswer } from './actions'
 import { setNotification } from '../notifications/actions'
 import { showModal } from '../modal/actions'
@@ -34,10 +35,12 @@ describe("Answer", () => {
     }
 
     const component = renderer.create(
-      <Answer
-        answer={answer}
-        userData={userData}
-      />
+      <Router history={history}>
+        <Answer
+          answer={answer}
+          userData={userData}
+        />
+      </Router>
     )
 
     expect(component).toMatchSnapshot()
@@ -106,20 +109,24 @@ describe("handleEdit", () => {
   it("should call setCurrentAnswer", () => {
 
     const userData = {
-      permission: "USER",
+      permission: "ADMIN",
       jwt: "jwt"
     }
 
     const wrapper = mount(
-      <Answer
-        answer={answer}
-        userData={userData}
-        setCurrentAnswer={setCurrentAnswer}
-        setNotification={setNotification}
-      />
+      <Router history={history}>
+        <Answer
+          answer={answer}
+          userData={userData}
+          setCurrentAnswer={setCurrentAnswer}
+          setNotification={setNotification}
+        />
+      </Router>
     )
-
-    wrapper.instance().handleEdit()
+    
+    // wrapper.instance().handleEdit()
+    const editButton = wrapper.find('#editAnswer')
+    editButton.at(1).simulate('click')
     expect(setCurrentAnswer).toHaveBeenCalledTimes(1)
   })
 })
@@ -142,20 +149,24 @@ describe("handleDelete", () => {
     setCurrentAnswer.mockClear()
 
     const userData = {
-      permission: "USER",
+      permission: "ADMIN",
       jwt: "jwt"
     }
 
     const wrapper = mount(
+      <Router history={history}>
       <Answer
         answer={answer}
         userData={userData}
         setCurrentAnswer={setCurrentAnswer}
         showModal={showModal}
       />
+      </Router>
     )
 
-    wrapper.instance().handleDelete()
+    // wrapper.instance().handleDelete()
+    const deleteButton = wrapper.find('#deleteAnswer')
+    deleteButton.at(1).simulate('click')
     expect(setCurrentAnswer).toHaveBeenCalledTimes(1)
     expect(showModal).toHaveBeenCalledTimes(1)
 

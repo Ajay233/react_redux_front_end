@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Answers from '../answer/answers'
+import { Answers } from '../answer/answers'
 import UpdateQuestionForm from '../forms/updateQuestion'
 import Notification from '../notifications/notifications'
 import Modal from '../modal/modal'

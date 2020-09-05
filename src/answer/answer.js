@@ -1,53 +1,85 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export class Answer extends React.Component {
+export const Answer = (props) => {
 
-  handleEdit = () => {
-    const { setNotification, setCurrentAnswer } = this.props
+  const handleEdit = () => {
+    const { setNotification, setCurrentAnswer, answer } = props
     setNotification()
-    setCurrentAnswer(this.props.answer);
+    setCurrentAnswer(answer);
   }
 
-  handleDelete = () => {
-    this.props.showModal();
-    this.props.setCurrentAnswer(this.props.answer);
+  const handleDelete = () => {
+    const { showModal, setCurrentAnswer, answer } = props
+    showModal();
+    setCurrentAnswer(answer);
   }
 
-  renderAnswer = () => {
-    const { answerIndex, description, correctAnswer } = this.props.answer
+  const renderAnswer = () => {
+    const { answerIndex, description, correctAnswer } = props.answer
     return(
       <div className="answerContainer">
         <div className="ansNumber">{ answerIndex }</div>
         <div className="ansDecription">{ description }</div>
-        <div className="correctAns">{ correctAnswer === true ? <i className="far fa-check-circle green"></i> : <i className="far fa-times-circle red"></i> }</div>
-        {this.renderOptions()}
+        <div className="correctAns">{ renderCorrectAnswer(correctAnswer) }</div>
+        {renderOptions()}
       </div>
     );
   }
 
-  renderOptions = () => {
-    const { permission } = this.props.userData;
+  const renderCorrectAnswer = (correctAnswer) => {
+    return correctAnswer ? <i className="far fa-check-circle green"></i> : <i className="far fa-times-circle red"></i>
+  }
+
+  const renderOptions = () => {
+    const { permission } = props.userData;
     return(
       <div className="options">
-        { permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="#" className="deleteOption linkStandard" onClick={this.handleDelete}><i className="fas fa-trash-alt red"></i> Delete</Link> : null }
-        { permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="/editAnswer" className="edit linkStandard" onClick={this.handleEdit}><i className="fas fa-edit blue"></i> Edit</Link> : null }
+        { renderDelete(permission) }
+        { renderEdit(permission) }
       </div>
     );
   }
 
-  clearNotification = () => {
-    const { setNotification } = this.props
-    setNotification()
+  const renderDelete = (permission) => {
+    if(permission === "ADMIN" || permission === "SUPER-USER"){
+      return(
+        <Link
+          to="#"
+          id="deleteAnswer"
+          className="deleteOption linkStandard"
+          onClick={() => {handleDelete()}}
+        >
+          <i className="fas fa-trash-alt red"></i> Delete
+        </Link>
+      );
+    } else {
+      return null
+    }
   }
 
-  render(){
-    return(
-      <div>
-        {this.renderAnswer()}
-      </div>
-    );
+  const renderEdit = (permission) => {
+    if(permission === "ADMIN" || permission === "SUPER-USER"){
+      return(
+        <Link
+          to="/editAnswer"
+          id="editAnswer"
+          className="edit linkStandard"
+          onClick={() => {handleEdit()}}
+        >
+          <i className="fas fa-edit blue"></i> Edit
+        </Link>
+      );
+    } else {
+      return null
+    }
   }
+
+  return(
+    <div>
+      {renderAnswer()}
+    </div>
+  );
 }
 
 export default Answer

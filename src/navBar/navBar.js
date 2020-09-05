@@ -116,8 +116,7 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps,
-  {
-    setNotification,
+  { setNotification,
     logOut,
     getAllQuizes,
     clearQuizes,

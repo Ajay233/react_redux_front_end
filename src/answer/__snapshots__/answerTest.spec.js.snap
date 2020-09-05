@@ -28,6 +28,7 @@ exports[`Answer should match snapshot for user with 'ADMIN' permission 1`] = `
       <a
         className="deleteOption linkStandard"
         href="/"
+        id="deleteAnswer"
         onClick={[Function]}
       >
         <i
@@ -38,6 +39,7 @@ exports[`Answer should match snapshot for user with 'ADMIN' permission 1`] = `
       <a
         className="edit linkStandard"
         href="/editAnswer"
+        id="editAnswer"
         onClick={[Function]}
       >
         <i
@@ -107,6 +109,7 @@ exports[`Answer should match snapshot which renders a correct answer 1`] = `
       <a
         className="deleteOption linkStandard"
         href="/"
+        id="deleteAnswer"
         onClick={[Function]}
       >
         <i
@@ -117,6 +120,7 @@ exports[`Answer should match snapshot which renders a correct answer 1`] = `
       <a
         className="edit linkStandard"
         href="/editAnswer"
+        id="editAnswer"
         onClick={[Function]}
       >
         <i

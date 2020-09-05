@@ -104,6 +104,7 @@ exports[`QuestionView should render the QuestionView component, question details
           >
             <a
               className="deleteOption linkStandard"
+              id="deleteAnswer"
               onClick={[Function]}
             >
               <i
@@ -113,6 +114,7 @@ exports[`QuestionView should render the QuestionView component, question details
             </a>
             <a
               className="edit linkStandard"
+              id="editAnswer"
               onClick={[Function]}
             >
               <i
@@ -149,6 +151,7 @@ exports[`QuestionView should render the QuestionView component, question details
           >
             <a
               className="deleteOption linkStandard"
+              id="deleteAnswer"
               onClick={[Function]}
             >
               <i
@@ -158,6 +161,7 @@ exports[`QuestionView should render the QuestionView component, question details
             </a>
             <a
               className="edit linkStandard"
+              id="editAnswer"
               onClick={[Function]}
             >
               <i
