@@ -9,7 +9,6 @@ import { setNotification } from '../notifications/actions'
 class PermissionChangeRequestForm extends React.Component {
 
   renderSelect = (formProps) => {
-    const {permission} = this.props.userData
     return(
       <div>
         {this.renderError(formProps.meta)}
@@ -51,7 +50,7 @@ class PermissionChangeRequestForm extends React.Component {
   }
 
   render(){
-    const { userData, formValues } = this.props
+    const { userData } = this.props
     return(
       <div id="editUserDetails">
       <form onSubmit={this.props.handleSubmit(this.onSubmitRequest)} className="profileForm">

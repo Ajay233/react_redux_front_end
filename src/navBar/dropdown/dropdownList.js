@@ -124,7 +124,7 @@ const DropdownList = (props) => {
 
   const renderListOptions = () => {
     const { loggedIn } = props
-    return props.loggedIn ? renderLoggedInOptions() : renderPreLogInOptions()
+    return loggedIn ? renderLoggedInOptions() : renderPreLogInOptions()
   }
 
 // Todo:

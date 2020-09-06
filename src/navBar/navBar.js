@@ -34,7 +34,6 @@ class NavBar extends React.Component {
   }
 
   renderThemeToggle = () => {
-    const { enableDarkMode } = this.props.globals
     const { loggedIn } = this.props.userData
     if(loggedIn){
       return(

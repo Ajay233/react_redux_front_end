@@ -26,7 +26,6 @@ import './stylesheets/inputs.css'
 class App extends React.Component {
 
   componentDidMount(){
-    const { enableDarkMode } = this.props.globals
     window.addEventListener("hashchange", function() { window.scrollBy(0, -60) });
   }
 
