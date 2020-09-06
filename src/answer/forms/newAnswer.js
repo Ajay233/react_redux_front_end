@@ -2,12 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import history from '../../history'
 
-import { sessionExpired } from '../../utils/session'
-import { post } from '../../axiosRequests/requests'
-
-import { setNotification } from '../../notifications/actions'
 import { addAnswer } from '../actions'
 
 class NewAnswerForm extends React.Component {
@@ -52,32 +47,21 @@ class NewAnswerForm extends React.Component {
   }
 
   onSubmit = ({ answerIndex, description, correct }) => {
-    const { currentQuestion, userData, setNotification, addAnswer } = this.props
+    const { currentQuestion, userData, addAnswer } = this.props
     const data = {
       questionId: currentQuestion.id,
       answerIndex: answerIndex,
       description: description,
       correctAnswer: correct
     }
-    post("answer/create", [data], userData.jwt).then((response) => {
-      addAnswer(response.data[0]);
-      history.push("/editQuestion");
-      setNotification("Answer created", "success", true);
-    }).catch((error) => {
-      if(error.response.status === 403){
-        sessionExpired(this.props.dispatch);
-      } else {
-        console.log(error.response);
-        setNotification("Error - unable to update answer", "error", true);
-      }
-    });
+    addAnswer(data, userData.jwt);
   }
 
   render(){
     return(
       <div className="componentContainer">
         <div className="title-large-spaced">Create an Answer</div>
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered" data-testid="new-answer-form">
           <Field name="answerIndex" component={this.renderInput} label="Answer index:"/>
           <Field name="description" component={this.renderTextArea} label="Answer description"/>
           <Field name="correct" component={this.renderSelect} label="Correct? Yes/No:">
@@ -124,4 +108,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setNotification, addAnswer })(reduxForm({ form: 'updateAnswer', validate: validate })(NewAnswerForm))
+export default connect(mapStateToProps, { addAnswer })(reduxForm({ form: 'updateAnswer', validate: validate })(NewAnswerForm))

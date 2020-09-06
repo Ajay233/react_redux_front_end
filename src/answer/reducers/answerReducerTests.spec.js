@@ -34,7 +34,7 @@ describe("setAnswersReducer", () => {
       { answerIndex: 2 }
     ]
 
-    store.dispatch(getAnswers("answer/findByQuestionId", ""))
+    store.dispatch(getAnswers())
     mockAxios.mockResponse(requestResponse)
     const newState = setAnswersReducer(store, store.getActions()[0])
 
@@ -94,6 +94,8 @@ describe("setAnswersReducer", () => {
   })
 
   it("can set the state of answers when passed the addAnswer action", () => {
+    const store = mockStore({})
+
     const initialState = [
       { answerIndex: 1 },
       { answerIndex: 3 },
@@ -107,9 +109,13 @@ describe("setAnswersReducer", () => {
       { answerIndex: 5 },
     ]
 
-    const action = addAnswer({ answerIndex: 4 });
+    const requestResponse = {
+      data: [{ answerIndex: 4 }]
+    }
 
-    const newState = setAnswersReducer(initialState, action);
+    store.dispatch(addAnswer())
+    mockAxios.mockResponse(requestResponse)
+    const newState = setAnswersReducer(initialState, store.getActions()[0])
 
     expect(newState).toEqual(expectedState)
   })

@@ -1,6 +1,6 @@
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import { getUsingParams } from "../../axiosRequests/requests"
+import { sessionExpired } from "../../utils/session"
 import {
   getAnswers,
   setCurrentAnswer,
@@ -8,43 +8,41 @@ import {
   addAnswer,
   updateAnswer
 } from './index'
+import mockAxios from 'jest-mock-axios'
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares)
 
-jest.mock('../../axiosRequests/axiosUtil')
+jest.mock("../../utils/session")
+jest.mock("../../axiosRequests/axiosUtil")
 
 describe("getAnswers", () => {
   it("should create an action to set a list of answers", () => {
 
-    const store = mockStore({
-      answers:[]
-    })
+    const store = mockStore({})
+
+    const requestResponse = {
+      data: [ { questionNumber: 1 }, { questionNumber: 2 } ]
+    }
 
     const expectedAction = {
       type: "SET_ANSWERS",
-      payload: [
-        {
-          questionNumber: 1
-        },
-        {
-          questionNumber: 2
-        }
-      ]
+      payload: [ { questionNumber: 1 }, { questionNumber: 2 } ]
     }
 
-    store.dispatch(getAnswers("answer/findByQuestionId", "")).then(() => {
-      expect(store.getActions()).toEqual(expectedAction)
-    }).catch((error) => {
-      return // due to warning this has to be returned out of
-    })
-
+    store.dispatch(getAnswers())
+    mockAxios.mockResponse(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
   })
 
   it("should set an error notification if the catch block is reached", () => {
-    const store = mockStore({
-      answers:[]
-    })
+    const store = mockStore({})
+
+    const requestResponse = {
+      response: {
+        status: 403
+      }
+    }
 
     const expectedAction = {
       type: "SET_NOTIFICATION",
@@ -56,13 +54,10 @@ describe("getAnswers", () => {
       }
     }
 
-    store.dispatch(getAnswers("", "")).then(() => {
-      return // due to warning this has to be returned out of
-    }).catch((error) => {
-      expect(store.getActions()).toEqual(expectedAction)
-    })
+    store.dispatch(getAnswers())
+    mockAxios.mockError(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
   })
-
 })
 
 describe("setCurrentAnswer", () => {
@@ -92,20 +87,78 @@ describe("deleteAnswer", () => {
 })
 
 describe("addAnswer", () => {
-  it("should create an action to add an answer", () => {
+  it("should return an action to add an answer and set notification on success", () => {
     const answer = {answerIndex: 1, description: "answer"}
+    let store = mockStore({})
+
+    const requestResponse = {
+      data: [answer]
+    }
 
     const expectedAction = {
       type: "ADD_ANSWER",
       payload: answer
     }
 
-    expect(addAnswer(answer)).toEqual(expectedAction)
+    const expectedAction2 = {
+      type: "SET_NOTIFICATION",
+      payload: {
+        message: "Answer created",
+        type: "success",
+        show: true,
+        timed: true
+      }
+    }
+
+    store.dispatch(addAnswer())
+    mockAxios.mockResponse(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+  })
+
+  it("should return an action to set notification on error", () => {
+    const answer = {answerIndex: 1, description: "answer"}
+    let store = mockStore({})
+
+    const requestResponse = {
+      response: {
+        status: 403
+      }
+    }
+
+    store.dispatch(addAnswer())
+    mockAxios.mockError(requestResponse)
+    expect(sessionExpired).toHaveBeenCalledTimes(1);
+  })
+
+  it("should return an action to set notification on error", () => {
+    const answer = {answerIndex: 1, description: "answer"}
+    let store = mockStore({})
+
+    const requestResponse = {
+      response: {
+        status: 404
+      }
+    }
+
+    const expectedAction = {
+      type: "SET_NOTIFICATION",
+      payload: {
+        message: "Error - unable to create answer",
+        type: "error",
+        show: true,
+        timed: true
+      }
+    }
+
+    store.dispatch(addAnswer())
+    mockAxios.mockError(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
   })
 })
 
 describe("updateAnswer", () => {
-  it("should create an action to update an answer", () => {
+  it("should return an action to update an answer", () => {
     const answer = {answerIndex: 1, description: "answer"}
 
     const expectedAction = {

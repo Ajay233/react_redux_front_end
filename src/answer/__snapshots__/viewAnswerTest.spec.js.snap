@@ -15,6 +15,7 @@ exports[`AnswerView should render the NewAnswerForm 1`] = `
     </div>
     <form
       className="form-centered"
+      data-testid="new-answer-form"
       onSubmit={[Function]}
     >
       <div>

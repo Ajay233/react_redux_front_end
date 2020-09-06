@@ -4,19 +4,15 @@ import { Provider } from 'react-redux'
 import NewAnswerForm from '../newAnswer'
 import { mount } from 'enzyme'
 import configureStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
 import renderer from 'react-test-renderer'
-import mockAxios from 'jest-mock-axios'
 import history from '../../../history'
-import { sessionExpired } from '../../../utils/session'
-import { setNotification } from '../../../notifications/actions'
 import { addAnswer } from '../../actions'
 
-jest.mock("../../../axiosRequests/axiosUtil")
-jest.mock("../../actions")
-jest.mock("../../../notifications/actions")
-jest.mock("../../../utils/session")
+const middlewares = [thunk];
+const mockStore = configureStore(middlewares)
 
-const mockStore = configureStore({})
+jest.mock("../../actions")
 
 describe("newAnswer form", () => {
 
@@ -49,14 +45,9 @@ describe("newAnswer form", () => {
       id: 1,
       answerIndex: "b"
     }
-
   })
 
-  afterEach(() => {
-    mockAxios.reset();
-  })
-
-  it("should call axios.post and on success, action creators and history, when submit is clicked", () => {
+  it("should call addAnswer on submit", () => {
 
     const currentQuestion = {
       id: 1,
@@ -66,85 +57,16 @@ describe("newAnswer form", () => {
 
     const wrapper = mount(
       <Provider store={store}>
-        <Router history={history} >
+        <Router history={history}>
           <NewAnswerForm
             addAnswer={addAnswer}
-            setNotification={setNotification}
           />
         </Router>
       </Provider>
     )
 
-    const requestResponse = {
-      data: [{ id: 2, answerIndex: "B" }]
-    }
-
     wrapper.find('form').simulate('submit')
-    mockAxios.mockResponse(requestResponse)
-    expect(mockAxios.post).toHaveBeenCalledTimes(1)
     expect(addAnswer).toHaveBeenCalledTimes(1)
-    // actions after addAnswer aren't called in the test but are when the app is used
-    // expect(setNotification).toHaveBeenCalledTimes(1)
-  })
-
-  it("should call sessionExpired on 403 error", () => {
-    const currentQuestion = {
-      id: 1,
-      questionNumber: 1,
-      description: ""
-    }
-
-    const wrapper = mount(
-      <Provider store={store}>
-        <Router history={history} >
-          <NewAnswerForm
-            addAnswer={addAnswer}
-            setNotification={setNotification}
-          />
-        </Router>
-      </Provider>
-    )
-
-    const errorResponse = {
-      response: {
-        status: 403
-      }
-    }
-
-    wrapper.find('form').simulate('submit')
-    mockAxios.mockError(errorResponse)
-    expect(mockAxios.post).toHaveBeenCalledTimes(1)
-    expect(sessionExpired).toHaveBeenCalledTimes(1)
-  })
-
-  it("should call serNotification for any other error error", () => {
-    const currentQuestion = {
-      id: 1,
-      questionNumber: 1,
-      description: ""
-    }
-
-    const wrapper = mount(
-      <Provider store={store}>
-        <Router history={history} >
-          <NewAnswerForm
-            addAnswer={addAnswer}
-            setNotification={setNotification}
-          />
-        </Router>
-      </Provider>
-    )
-
-    const errorResponse = {
-      response: {
-        status: 404
-      }
-    }
-
-    wrapper.find('form').simulate('submit')
-    mockAxios.mockError(errorResponse)
-    expect(mockAxios.post).toHaveBeenCalledTimes(1)
-    expect(setNotification).toHaveBeenCalledTimes(1)
   })
 
   it("should match the snapshot", () => {
@@ -153,7 +75,6 @@ describe("newAnswer form", () => {
         <Router history={history} >
           <NewAnswerForm
             addAnswer={addAnswer}
-            setNotification={setNotification}
           />
         </Router>
       </Provider>
@@ -161,5 +82,4 @@ describe("newAnswer form", () => {
 
     expect(component).toMatchSnapshot()
   })
-
 })
