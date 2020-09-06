@@ -116,7 +116,7 @@ describe("addAnswer", () => {
     expect(store.getActions()[1]).toEqual(expectedAction2)
   })
 
-  it("should return an action to set notification on error", () => {
+  it("should call session expired on error status: 403", () => {
     const answer = {answerIndex: 1, description: "answer"}
     let store = mockStore({})
 
@@ -160,12 +160,105 @@ describe("addAnswer", () => {
 describe("updateAnswer", () => {
   it("should return an action to update an answer", () => {
     const answer = {answerIndex: 1, description: "answer"}
+    let store = mockStore({})
+
+    const requestResponse = {
+      data: [answer]
+    }
 
     const expectedAction = {
       type: "UPDATE_ANSWER",
       payload: answer
     }
 
-    expect(updateAnswer(answer)).toEqual(expectedAction)
+    const expectedAction2 = {
+      type: "SET_NOTIFICATION",
+      payload: {
+        message: "Answer updated",
+        type: "success",
+        show: true,
+        timed: true
+      }
+    }
+    store.dispatch(updateAnswer())
+    mockAxios.mockResponse(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+  })
+
+  it("should return an action to update an answer", () => {
+    const answer = {answerIndex: 1, description: "answer"}
+    let store = mockStore({})
+
+    const requestResponse = {
+      data: [answer]
+    }
+
+    const expectedAction = {
+      type: "UPDATE_ANSWER",
+      payload: answer
+    }
+
+    const expectedAction2 = {
+      type: "SET_NOTIFICATION",
+      payload: {
+        message: "Answer updated",
+        type: "success",
+        show: true,
+        timed: true
+      }
+    }
+    store.dispatch(updateAnswer())
+    mockAxios.mockResponse(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+  })
+
+  it("should call session expired on error status 403", () => {
+    const answer = {answerIndex: 1, description: "answer"}
+    let store = mockStore({})
+
+    const requestResponse = {
+      response: {
+        status: 403
+      }
+    }
+
+    const expectedAction = {
+      type: "SET_NOTIFICATION",
+      payload: {
+        message: "Answer updated",
+        type: "success",
+        show: true,
+        timed: true
+      }
+    }
+    store.dispatch(updateAnswer())
+    mockAxios.mockError(requestResponse)
+    expect(sessionExpired).toHaveBeenCalledTimes(1)
+  })
+
+  it("should return an action to set notification on any other error", () => {
+    const answer = {answerIndex: 1, description: "answer"}
+    let store = mockStore({})
+
+    const requestResponse = {
+      response: {
+        status: 404
+      }
+    }
+
+    const expectedAction = {
+      type: "SET_NOTIFICATION",
+      payload: {
+        message: "Error - unable to update answer",
+        type: "error",
+        show: true,
+        timed: true
+      }
+    }
+    store.dispatch(updateAnswer())
+    mockAxios.mockError(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
   })
 })

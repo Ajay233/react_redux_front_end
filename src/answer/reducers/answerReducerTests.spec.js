@@ -16,7 +16,7 @@ const mockStore = configureMockStore(middlewares)
 jest.mock('../../axiosRequests/axiosUtil')
 
 describe("setAnswersReducer", () => {
-  it("can set the state of answers when passed the getAnswers action", () => {
+  it("can set the state of answers when passed the SET_ANSWERS action", () => {
 
     const store = mockStore({
       answers:[]
@@ -41,7 +41,8 @@ describe("setAnswersReducer", () => {
     expect(newState).toEqual(expectedState)
   })
 
-  it("can set the state of answers when passed the updateAnswer action", () => {
+  it("can set the state of answers when passed the UPDATE_ANSWER action", () => {
+    const store = mockStore({})
     const initialState = [
       { id: 1,
         answerIndex: 1,
@@ -65,14 +66,22 @@ describe("setAnswersReducer", () => {
       }
     ]
 
-    const action = updateAnswer({ id: 1, answerIndex: 3, description: "updatedDescription" })
+    const requestResponse = {
+      data: [{
+        id: 1,
+        answerIndex: 3,
+        description: "updatedDescription"
+      }]
+    }
 
-    const newState = setAnswersReducer(initialState, action)
+    store.dispatch(updateAnswer())
+    mockAxios.mockResponse(requestResponse)
+    const newState = setAnswersReducer(initialState, store.getActions()[0])
 
     expect(newState).toEqual(expectedState)
   })
 
-  it("can set the state of answers when passed the deleteAnswer action", () => {
+  it("can set the state of answers when passed the DELETE_ANSWER action", () => {
     const initialState = [
       { id: 1, answerIndex: 1 },
       { id: 2, answerIndex: 2 },
@@ -93,7 +102,7 @@ describe("setAnswersReducer", () => {
     expect(newState).toEqual(expectedState)
   })
 
-  it("can set the state of answers when passed the addAnswer action", () => {
+  it("can set the state of answers when passed the ADD_ANSWER action", () => {
     const store = mockStore({})
 
     const initialState = [

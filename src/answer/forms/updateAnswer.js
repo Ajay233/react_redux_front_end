@@ -2,13 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import history from '../../history'
 
-import { sessionExpired } from '../../utils/session'
-import { put } from '../../axiosRequests/requests'
-
-import { setNotification } from '../../notifications/actions'
-import { setCurrentAnswer, updateAnswer } from '../actions'
+import { updateAnswer } from '../actions'
 
 class UpdateAnswerForm extends React.Component {
 
@@ -52,7 +47,7 @@ class UpdateAnswerForm extends React.Component {
   }
 
   onSubmit = ({ answerIndex, description, correct }) => {
-    const { currentAnswer, userData, setNotification, setCurrentAnswer, updateAnswer } = this.props
+    const { currentAnswer, userData, updateAnswer } = this.props
     const body = {
       id: currentAnswer.id,
       questionId: currentAnswer.questionId,
@@ -60,19 +55,7 @@ class UpdateAnswerForm extends React.Component {
       description: description,
       correctAnswer: correct
     }
-    put("answer/update", [body], userData.jwt).then((response) => {
-      setCurrentAnswer(response.data[0]);
-      updateAnswer(response.data[0]);
-      history.push("/editQuestion");
-      setNotification("Answer updated", "success", true);
-    }).catch((error) => {
-      console.log(error.response);
-      if(error.response.status === 403){
-        sessionExpired(this.props.dispatch);
-      } else {
-        setNotification("Error - unable to update answer", "error", true);
-      }
-    });
+    updateAnswer(body, userData.jwt);
   }
 
   render(){
@@ -134,7 +117,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps,
-  { setNotification,
-    setCurrentAnswer,
-    updateAnswer
+  { updateAnswer
   })(reduxForm({ form: 'updateAnswer', validate: validate })(UpdateAnswerForm))

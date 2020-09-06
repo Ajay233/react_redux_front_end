@@ -24,6 +24,7 @@ export const addAnswer = (data, jwt) => {
   }
 }
 
+// read
 export const getAnswers = (endpoint, param, jwt) => {
   return (dispatch) => {
     return getUsingParams(endpoint, param, jwt).then((response) => {
@@ -37,9 +38,26 @@ export const getAnswers = (endpoint, param, jwt) => {
   }
 }
 
-// update
-
-// delete
+// update (there was a call to setCurrentAnswer but have removed this as it's not needed)
+export const updateAnswer = (body, jwt) => {
+  return (dispatch) => {
+    return put("answer/update", [body], jwt).then((response) => {
+      dispatch({
+        type: "UPDATE_ANSWER",
+        payload: response.data[0]
+      })
+      history.push("/editQuestion");
+      dispatch(setNotification("Answer updated", "success", true));
+    }).catch((error) => {
+      console.log(error.response);
+      if(error.response.status === 403){
+        sessionExpired(this.props.dispatch);
+      } else {
+        dispatch(setNotification("Error - unable to update answer", "error", true));
+      }
+    });
+  }
+}
 
 export const setCurrentAnswer = (answer) => {
   return {
@@ -51,13 +69,6 @@ export const setCurrentAnswer = (answer) => {
 export const deleteAnswer = (answer) => {
   return {
     type: "DELETE_ANSWER",
-    payload: answer
-  }
-}
-
-export const updateAnswer = (answer) => {
-  return {
-    type: "UPDATE_ANSWER",
     payload: answer
   }
 }
