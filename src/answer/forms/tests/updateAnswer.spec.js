@@ -6,14 +6,14 @@ import { mount } from 'enzyme'
 import mockAxios from 'jest-mock-axios'
 import configureStore from 'redux-mock-store'
 import renderer from 'react-test-renderer'
-import history from '../../history'
-import { setCurrentAnswer } from '../../answer/actions'
-import { setNotification } from '../../notifications/actions'
-import { sessionExpired } from '../../utils/session'
+import history from '../../../history'
+import { setCurrentAnswer } from '../../actions'
+import { setNotification } from '../../../notifications/actions'
+import { sessionExpired } from '../../../utils/session'
 
-jest.mock('../../answer/actions')
-jest.mock('../../notifications/actions')
-jest.mock('../../utils/session')
+jest.mock('../../actions')
+jest.mock('../../../notifications/actions')
+jest.mock('../../../utils/session')
 
 const mockStore = configureStore({})
 

@@ -2,13 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import history from '../history'
+import history from '../../history'
 
-import { sessionExpired } from '../utils/session'
-import { post } from '../axiosRequests/requests'
+import { sessionExpired } from '../../utils/session'
+import { post } from '../../axiosRequests/requests'
 
-import { setNotification } from '../notifications/actions'
-import { addAnswer } from '../answer/actions'
+import { setNotification } from '../../notifications/actions'
+import { addAnswer } from '../actions'
 
 class NewAnswerForm extends React.Component {
 

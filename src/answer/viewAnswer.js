@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import UpdateAnswerForm from '../forms/updateAnswer'
-import NewAnswerForm from '../forms/newAnswer'
+import UpdateAnswerForm from './forms/updateAnswer'
+import NewAnswerForm from './forms/newAnswer'
 import Notification from '../notifications/notifications'
 import history from '../history'
 

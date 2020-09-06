@@ -2,13 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import history from '../history'
+import history from '../../history'
 
-import { sessionExpired } from '../utils/session'
-import { put } from '../axiosRequests/requests'
+import { sessionExpired } from '../../utils/session'
+import { put } from '../../axiosRequests/requests'
 
-import { setNotification } from '../notifications/actions'
-import { setCurrentAnswer, updateAnswer } from '../answer/actions'
+import { setNotification } from '../../notifications/actions'
+import { setCurrentAnswer, updateAnswer } from '../actions'
 
 class UpdateAnswerForm extends React.Component {
 
@@ -113,7 +113,7 @@ const validate = (formValues) => {
   }
 
   // The initial value is a boolean but redux form keeps changing true and false to string values when
-  // new values are entered 
+  // new values are entered
   if(correct !== false && correct !== true && correct !== 'false' && correct !== 'true'){
     errors.correct = "The answer must be marked as right of wrong"
   }
