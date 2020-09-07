@@ -1,95 +1,123 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
 
-import { setQuiz } from '../quiz/actions'
-import { setNotification } from '../notifications/actions'
-import { deleteQuiz } from './actions'
-import { showModal, showModal2 } from '../modal/actions'
-import { getQuestions, setCurrentQuestion } from '../question/actions'
-import { getAnswers } from '../answer/actions'
+export const QuizResult = (props) => {
 
-
-export class QuizResult extends React.Component {
-
-  handleDelete = () => {
-    this.props.setQuiz(this.props.quiz);
-    this.props.showModal();
+  const handleDelete = () => {
+    props.setQuiz(props.quiz);
+    props.showModal();
   }
 
-  handleView = () => {
-    const { userData, quiz, getQuestions, setQuiz, setNotification, clearQuizes } = this.props
+  const handleView = () => {
+    const { jwt, quiz, getQuestions, setQuiz, setNotification, clearQuizes } = props
     const param = { quizId: quiz.id }
     setNotification()
     clearQuizes()
-    getQuestions("question/findByQuizId", param, userData.jwt)
+    getQuestions("question/findByQuizId", param, jwt)
     setQuiz(quiz);
   }
 
-  // if questions.length is not greater than 0, setNotification or use modal
-  // handleStart = () => {
-    // const { userData, quiz, getQuestions, getAnswers, setCurrentQuestion, setQuiz } = this.props
-    // const param = { quizId: quiz.id }
-    // getQuestions("question/findByQuizId", param, userData.jwt, true, getAnswers, setCurrentQuestion)
-    // setQuiz(quiz);
-    // history.push("/startQuiz")
-  // }
-
-  handleStart = () => {
-    const { quiz, setQuiz, showModal2 } = this.props
+  const handleStart = () => {
+    const { quiz, setQuiz, showModal2 } = props
     setQuiz(quiz);
     showModal2();
   }
 
-  renderQuiz = () => {
-    const { name, description, status } = this.props.quiz
-    const { permission } = this.props;
+  const renderQuiz = () => {
+    const { name, description, status } = props.quiz
+    const { permission } = props;
     return(
       <div className="quiz">
         <div className={permission !== "USER" ? "quizName" : "quizNameExpanded"}>{name}</div>
         <div className="quizDescription">{description}</div>
         { permission !== "USER" ? <div className="quizStatus">{status}</div> : null }
-        {this.renderOptions()}
+        {renderOptions()}
       </div>
     );
   }
 
-  renderOptions = () => {
-    const { permission } = this.props;
-    const { status } = this.props.quiz
+  const renderOptions = () => {
+    const { permission } = props;
+    const { status } = props.quiz
     return(
       <div className="options">
-        { permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="#" className="deleteOption linkStandard" onClick={this.handleDelete}><i className="fas fa-trash-alt red"></i> Delete</Link> : null }
-        { permission === "READ-ONLY" ? <Link to="/viewQuiz" className="view" onClick={this.handleView}><i className="far fa-eye blue"></i> View</Link> : null }
-        { permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="/editQuiz" className="edit linkStandard" onClick={this.handleView}><i className="fas fa-edit blue"></i> Edit</Link> : null }
-        { status === "READY" ? <Link to="#" className="start linkStandard" onClick={this.handleStart}><i className="far fa-play-circle blue"></i> Start</Link> : null }
+        { renderDelete(permission) }
+        { renderView(permission) }
+        { renderEdit(permission) }
+        { renderStart(status) }
       </div>
     );
   }
 
-  render(){
-    return(
-      <div className="quizContainer">
-        {this.renderQuiz()}
-      </div>
-    );
+  const renderDelete = (permission) => {
+    if(permission === "ADMIN" || permission === "SUPER-USER"){
+      return(
+        <Link
+          to="#"
+          className="deleteOption linkStandard"
+          onClick={ () => {handleDelete()} }
+        >
+          <i className="fas fa-trash-alt red"></i> Delete
+        </Link>
+      );
+    } else {
+      return null
+    }
   }
+
+  const renderView = (permission) => {
+    if(permission === "READ-ONLY"){
+      return(
+        <Link
+          to="/viewQuiz"
+          className="view"
+          onClick={ () => { handleView() } }
+        >
+          <i className="far fa-eye blue"></i> View
+        </Link>
+      );
+    } else {
+      return null
+    }
+  }
+
+  const renderEdit = (permission) => {
+    if(permission === "ADMIN" || permission === "SUPER-USER"){
+      return(
+        <Link
+          to="/editQuiz"
+          className="edit linkStandard"
+          onClick={ () => { handleView() } }
+        >
+          <i className="fas fa-edit blue"></i> Edit
+        </Link>
+      );
+    } else {
+      return null
+    }
+  }
+
+  const renderStart = (status) => {
+    if(status === "READY"){
+      return(
+        <Link
+          to="#"
+          className="start linkStandard"
+          onClick={ () => { handleStart() } }
+        >
+          <i className="far fa-play-circle blue"></i> Start
+        </Link>
+      );
+    } else {
+      return null
+    }
+  }
+
+  return(
+    <div className="quizContainer">
+      {renderQuiz()}
+    </div>
+  );
 }
 
-export const mapStateToProps = (state) => {
-  return {
-    userData: state.userData,
-    modalState: state.modalState
-  }
-}
-
-export default connect(mapStateToProps,
-  { setQuiz,
-    setNotification,
-    deleteQuiz,
-    showModal,
-    showModal2,
-    getQuestions,
-    getAnswers,
-    setCurrentQuestion
-  })(QuizResult)
+export default QuizResult

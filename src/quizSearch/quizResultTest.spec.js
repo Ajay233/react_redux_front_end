@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { QuizResult, mapStateToProps } from './quizResult'
+import { QuizResult } from './quizResult'
 import { Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { mount } from 'enzyme'
@@ -24,24 +24,12 @@ jest.mock("../modal/actions")
 jest.mock("../question/actions")
 jest.mock("../answer/actions")
 
-const mockStore = configureStore({})
-
-describe("mapStateToProps", () => {
-  it("should mapStateToProps", () => {
-    const appState = {
-      userData: { id: 1, permission: "USER" },
-      modalState: { showModal: false, showModal2: false, showModal3: false}
-    }
-
-    const componentState = mapStateToProps(appState)
-    expect(componentState).toEqual(appState)
-  })
-})
-
 describe("QuizResult", () => {
 
   let store;
   let quiz;
+  let userData;
+  let modalState;
   beforeEach(() => {
     quiz = { id: 1, name: "test", description: "test", category: "test", status: "READY" }
   })
@@ -53,61 +41,39 @@ describe("QuizResult", () => {
   })
 
   it("should render a quiz result and the appropriate options for a user with USER permission", () => {
-
-    store = mockStore({
-      userData: { id: 1, permission: "USER", jwt: "jwt" },
-      modalState: { showModal: false, showModal2: false, showModal3: false}
-    })
-
     const component = renderer.create(
-      <Provider store={store}>
-        <Router history={history}>
-          <QuizResult
-            quiz={quiz}
-            permission={"USER"}
-          />
-        </Router>
-      </Provider>
+      <Router history={history}>
+        <QuizResult
+          quiz={quiz}
+          permission={"USER"}
+        />
+      </Router>
     )
 
     expect(component).toMatchSnapshot()
   })
 
   it("should render a quiz result and the appropriate options for a user with READ-ONLY permission", () => {
-    store = mockStore({
-      userData: { id: 1, permission: "READ-ONLY" },
-      modalState: { showModal: false, showModal2: false, showModal3: false}
-    })
-
     const component = renderer.create(
-      <Provider store={store}>
-        <Router history={history}>
-          <QuizResult
-            quiz={quiz}
-            permission={"READ-ONLY"}
-          />
-        </Router>
-      </Provider>
+      <Router history={history}>
+        <QuizResult
+          quiz={quiz}
+          permission={"READ-ONLY"}
+        />
+      </Router>
     )
 
     expect(component).toMatchSnapshot()
   })
 
   it("should render a quiz result and the appropriate options for a user with ADMIN permission", () => {
-    store = mockStore({
-      userData: { id: 1, permission: "ADMIN" },
-      modalState: { showModal: false, showModal2: false, showModal3: false}
-    })
-
     const component = renderer.create(
-      <Provider store={store}>
-        <Router history={history}>
-          <QuizResult
-            quiz={quiz}
-            permission={"ADMIN"}
-          />
-        </Router>
-      </Provider>
+      <Router history={history}>
+        <QuizResult
+          quiz={quiz}
+          permission={"ADMIN"}
+        />
+      </Router>
     )
 
     expect(component).toMatchSnapshot()
@@ -117,16 +83,14 @@ describe("QuizResult", () => {
 
     it("should call", () => {
       const component = render(
-        <Provider store={store}>
-          <Router history={history}>
-            <QuizResult
-              quiz={quiz}
-              permission={"USER"}
-              setQuiz={setQuiz}
-              showModal2={showModal2}
-            />
-          </Router>
-        </Provider>
+        <Router history={history}>
+          <QuizResult
+            quiz={quiz}
+            permission={"USER"}
+            setQuiz={setQuiz}
+            showModal2={showModal2}
+          />
+        </Router>
       )
 
       fireEvent.click(component.getByText("Start"))
@@ -138,23 +102,21 @@ describe("QuizResult", () => {
 
   describe("handleView", () => {
     it("should call", () => {
-
       const userDataProp = { id: 1, permission: "USER", jwt: "jwt" }
 
       const component = render(
-        <Provider store={store}>
-          <Router history={history}>
-            <QuizResult
-              quiz={quiz}
-              permission={"READ-ONLY"}
-              setQuiz={setQuiz}
-              getQuestions={getQuestions}
-              userData={userDataProp}
-              setNotification={setNotification}
-              clearQuizes={clearQuizes}
-            />
-          </Router>
-        </Provider>
+        <Router history={history}>
+          <QuizResult
+            quiz={quiz}
+            permission={"READ-ONLY"}
+            setQuiz={setQuiz}
+            getQuestions={getQuestions}
+            userData={userDataProp}
+            setNotification={setNotification}
+            clearQuizes={clearQuizes}
+            jwt="jwt"
+          />
+        </Router>
       )
 
       const param = { quizId: 1 }
@@ -170,16 +132,14 @@ describe("QuizResult", () => {
   describe("handleDelete", () => {
     it("should call", () => {
       const component = render(
-        <Provider store={store}>
-          <Router history={history}>
-            <QuizResult
-              quiz={quiz}
-              permission={"ADMIN"}
-              setQuiz={setQuiz}
-              showModal={showModal}
-            />
-          </Router>
-        </Provider>
+        <Router history={history}>
+          <QuizResult
+            quiz={quiz}
+            permission={"ADMIN"}
+            setQuiz={setQuiz}
+            showModal={showModal}
+          />
+        </Router>
       )
 
       fireEvent.click(component.getByText("Delete"))

@@ -9,7 +9,8 @@ import { del } from '../axiosRequests/requests'
 import { setNotification } from '../notifications/actions'
 import { setQuizes, getQuizSearchResults, deleteQuiz, clearQuizes } from './actions'
 import { getQuestions } from '../question/actions'
-import { hideModal } from '../modal/actions'
+import { setQuiz } from '../quiz/actions'
+import { hideModal, showModal, showModal2 } from '../modal/actions'
 import { sessionExpired } from '../utils/session'
 import history from '../history'
 
@@ -110,7 +111,18 @@ export class QuizSearch extends React.Component {
   }
 
   render(){
-    const { quizes, userData, setNotification, getQuizSearchResults, lists, clearQuizes } = this.props
+    const {
+      quizes,
+      userData,
+      setNotification,
+      getQuizSearchResults,
+      lists,
+      clearQuizes,
+      showModal,
+      showModal2,
+      setQuiz,
+      getQuestions
+    } = this.props
     return(
       <div id="quizSearch" className="componentContainer">
         {this.renderModal()}
@@ -149,6 +161,10 @@ export class QuizSearch extends React.Component {
             jwt={userData.jwt}
             setNotification={setNotification}
             clearQuizes={clearQuizes}
+            setQuiz={setQuiz}
+            showModal={showModal}
+            showModal2={showModal2}
+            getQuestions={getQuestions}
           />
         </div>
       </div>
@@ -173,7 +189,10 @@ export default connect(mapStateToProps,
     getQuizSearchResults,
     setNotification,
     hideModal,
+    showModal,
+    showModal2,
     getQuestions,
     deleteQuiz,
-    clearQuizes
+    clearQuizes,
+    setQuiz
   })(QuizSearch)

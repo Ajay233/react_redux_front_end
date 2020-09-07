@@ -1,10 +1,20 @@
 import React from 'react'
 import QuizResult from './quizResult'
 
-class QuizResults extends React.Component {
+const QuizResults = (props) => {
 
-  buildQuizes = () => {
-    const { quizes, permission , jwt, setNotification, clearQuizes } = this.props;
+  const buildQuizes = () => {
+    const {
+      quizes,
+      permission,
+      jwt,
+      setNotification,
+      clearQuizes,
+      setQuiz,
+      showModal,
+      showModal2,
+      getQuestions
+    } = props;
     const listOfQuizes = quizes.map(quiz => {
       return <QuizResult
                 key={quizes.indexOf(quiz)}
@@ -13,6 +23,10 @@ class QuizResults extends React.Component {
                 jwt={jwt}
                 setNotification={setNotification}
                 clearQuizes={clearQuizes}
+                setQuiz={setQuiz}
+                showModal={showModal}
+                showModal2={showModal2}
+                getQuestions={getQuestions}
               />
     })
     return listOfQuizes
@@ -20,17 +34,16 @@ class QuizResults extends React.Component {
 
 
 
-  renderQuizes = () => {
-    return this.props.quizes.length === 0 ? null : this.buildQuizes();
+  const renderQuizes = () => {
+    return props.quizes.length === 0 ? null : buildQuizes();
   }
 
-  render(){
-    return(
-      <div>
-        {this.renderQuizes()}
-      </div>
-    );
-  }
+
+  return(
+    <div>
+      {renderQuizes()}
+    </div>
+  );
 }
 
 export default QuizResults

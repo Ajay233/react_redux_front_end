@@ -5,9 +5,10 @@ import QuizResults from '../quizSearch/quizResults'
 import Modal from '../modal/modal'
 
 import { getAllQuizes, deleteQuizFromCategory, clearQuizes } from '../quizSearch/actions'
-import { hideModal } from '../modal/actions'
+import { hideModal, showModal, showModal2 } from '../modal/actions'
 import { setNotification } from '../notifications/actions'
 import { getQuestions } from '../question/actions'
+import { setQuiz } from '../quiz/actions'
 import { del } from '../axiosRequests/requests'
 import { sessionExpired } from '../utils/session'
 import history from '../history'
@@ -74,7 +75,7 @@ export class AllQuizes extends React.Component {
   }
 
   renderQuizResults = (filteredQuizList, quizes, listItem, userData, setNotification) => {
-    const { clearQuizes } = this.props
+    const { clearQuizes, setQuiz, showModal, showModal2, getQuestions } = this.props
     if(filteredQuizList.length > 0){
       return(
         <React.Fragment>
@@ -86,6 +87,10 @@ export class AllQuizes extends React.Component {
             jwt={userData.jwt}
             setNotification={setNotification}
             clearQuizes={clearQuizes}
+            setQuiz={setQuiz}
+            showModal={showModal}
+            showModal2={showModal2}
+            getQuestions={getQuestions}
           />
         </React.Fragment>
       );
@@ -201,5 +206,8 @@ export default connect(mapStateToProps,
     getQuestions,
     hideModal,
     setNotification,
-    clearQuizes
+    clearQuizes,
+    setQuiz,
+    showModal,
+    showModal2
   })(AllQuizes)
