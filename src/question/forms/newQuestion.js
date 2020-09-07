@@ -2,11 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import { post } from '../axiosRequests/requests'
-import history from '../history'
-import { setNotification } from '../notifications/actions'
-import { addQuestion } from '../question/actions'
-import { sessionExpired } from '../utils/session'
+import { post } from '../../axiosRequests/requests'
+import history from '../../history'
+import { setNotification } from '../../notifications/actions'
+import { addQuestion } from '../actions'
+import { sessionExpired } from '../../utils/session'
 
 class NewQuestionForm extends React.Component {
 
@@ -103,4 +103,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setNotification, addQuestion })(reduxForm({ form: 'questionForm', validate: validate })(NewQuestionForm))
+export default connect(mapStateToProps,
+  { setNotification,
+    addQuestion
+  })(reduxForm({ form: 'questionForm', validate: validate })(NewQuestionForm))

@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import { put } from '../axiosRequests/requests'
-import { setNotification } from '../notifications/actions'
-import { setCurrentQuestion, updateQuestion } from '../question/actions'
-import { sessionExpired } from '../utils/session'
+import { put } from '../../axiosRequests/requests'
+import { setNotification } from '../../notifications/actions'
+import { setCurrentQuestion, updateQuestion } from '../actions'
+import { sessionExpired } from '../../utils/session'
 
 class UpdateQuestionForm extends React.Component {
 
@@ -110,4 +110,5 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps,
   { setNotification,
     setCurrentQuestion,
-    updateQuestion })(reduxForm({ form: 'questionForm', validate: validate })(UpdateQuestionForm))
+    updateQuestion
+  })(reduxForm({ form: 'questionForm', validate: validate })(UpdateQuestionForm))

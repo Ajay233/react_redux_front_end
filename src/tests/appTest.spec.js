@@ -14,7 +14,7 @@ import QuizSearch from '../quizSearch/quizSearch'
 import NewQuizForm from '../forms/newQuiz'
 import Quiz from '../quiz/quiz'
 import QuestionView from '../question/questionView'
-import NewQuestionForm from '../forms/newQuestion'
+import NewQuestionForm from '../question/forms/newQuestion'
 import AnswerView from '../answer/viewAnswer'
 import AllQuizes from '../quiz/allQuizes'
 import QuizStart from '../quizStart/quizStart'
@@ -34,7 +34,7 @@ jest.mock('../quizSearch/quizSearch')
 jest.mock('../forms/newQuiz')
 jest.mock('../quiz/quiz')
 jest.mock('../question/questionView')
-jest.mock('../forms/newQuestion')
+jest.mock('../question/forms/newQuestion')
 jest.mock('../answer/viewAnswer')
 jest.mock('../quiz/allQuizes')
 jest.mock('../quizStart/quizStart')
