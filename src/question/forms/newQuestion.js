@@ -2,11 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import { post } from '../../axiosRequests/requests'
-import history from '../../history'
-import { setNotification } from '../../notifications/actions'
 import { addQuestion } from '../actions'
-import { sessionExpired } from '../../utils/session'
 
 class NewQuestionForm extends React.Component {
 
@@ -40,24 +36,13 @@ class NewQuestionForm extends React.Component {
   }
 
   onSubmit = ({ number, description }) => {
-    const { userData, quiz, setNotification, addQuestion } = this.props;
+    const { userData, quiz, addQuestion } = this.props;
     const body = {
       quizId: quiz.id,
       questionNumber: number,
       description: description
     }
-    post("question/create", [body], userData.jwt).then((response) => {
-      addQuestion(response.data[0]);
-      history.push("/editQuiz");
-      setNotification("Question created", "success", true);
-    }).catch((error) => {
-      if(error.response.status === 403){
-        sessionExpired(this.props.dispatch);
-      } else {
-        console.log(error.response);
-        setNotification("Error - unable to create question with the details provided", "error", true)
-      }
-    });
+    addQuestion(body, userData.jwt)
   }
 
   render(){
@@ -104,6 +89,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps,
-  { setNotification,
-    addQuestion
+  { addQuestion
   })(reduxForm({ form: 'questionForm', validate: validate })(NewQuestionForm))
