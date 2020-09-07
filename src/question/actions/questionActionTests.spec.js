@@ -18,6 +18,10 @@ jest.mock("../../axiosRequests/axiosUtil")
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 
+beforeEach(() => {
+  sessionExpired.mockClear()
+})
+
 describe("getQuestions", () => {
   it("should return an action that will add a list of questions the questions store", () => {
     const store = mockStore({})
@@ -101,14 +105,58 @@ describe("deleteQuestion", () => {
 
 describe("addQuestion", () => {
   it("should return an action that will add a question to the questions store", () => {
+    const store = mockStore({})
+
+    const requestResponse = {
+      data: [{ id: 1 }]
+    }
+
     const expectedAction = {
       type: "ADD_QUESTION",
       payload: { id: 1 }
     }
 
-    const question = { id: 1 }
+    store.dispatch(addQuestion())
+    mockAxios.mockResponse(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+  })
 
-    expect(addQuestion(question)).toEqual(expectedAction)
+  it("should call sessionExpired if the error response status is 403", () => {
+    const store = mockStore({})
+
+    const requestResponse = {
+      response: {
+        status: 403
+      }
+    }
+
+    store.dispatch(addQuestion())
+    mockAxios.mockError(requestResponse)
+    expect(sessionExpired).toHaveBeenCalledTimes(1)
+  })
+
+  it("should call setNotification if the error response status is anything else", () => {
+    const store = mockStore({})
+
+    const requestResponse = {
+      response: {
+        status: 404
+      }
+    }
+
+    const expectedAction = {
+      type: "SET_NOTIFICATION",
+      payload: {
+        message: "Error - unable to create question with the details provided",
+        type: "error",
+        show: true,
+        timed: true
+      }
+    }
+
+    store.dispatch(addQuestion())
+    mockAxios.mockError(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
   })
 })
 

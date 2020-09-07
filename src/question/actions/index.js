@@ -1,7 +1,28 @@
-import { getUsingParams } from '../../axiosRequests/requests'
+import { getUsingParams, post, put, del } from '../../axiosRequests/requests'
 import { getAnswers } from '../../answer/actions'
 import { sessionExpired } from '../../utils/session'
 import { setNotification } from '../../notifications/actions'
+import history from '../../history'
+
+export const addQuestion = (body, jwt) => {
+  return (dispatch) => {
+    return post("question/create", [body], jwt).then((response) => {
+      dispatch({
+        type: "ADD_QUESTION",
+        payload: response.data[0]
+      })
+      history.push("/editQuiz");
+      dispatch(setNotification("Question created", "success", true));
+    }).catch((error) => {
+      if(error.response.status === 403){
+        sessionExpired(dispatch);
+      } else {
+        console.log(error.response);
+        dispatch(setNotification("Error - unable to create question with the details provided", "error", true))
+      }
+    });
+  }
+}
 
 export const getQuestions = (endpoint, param, jwt, startQuiz=false) => {
   return (dispatch) => {
@@ -48,12 +69,12 @@ export const deleteQuestion = (question) => {
   }
 }
 
-export const addQuestion = (question) => {
-  return {
-    type: "ADD_QUESTION",
-    payload: question
-  }
-}
+// export const addQuestion = (question) => {
+//   return {
+//     type: "ADD_QUESTION",
+//     payload: question
+//   }
+// }
 
 export const updateQuestion = (question) => {
   return {

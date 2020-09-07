@@ -42,6 +42,7 @@ describe("setQuestionsReducer", () => {
   })
 
   it("should add a question to the questions store if passed an action from addQuestion", () => {
+    const store = mockStore({})
     const initialState = [{ id: 1, questionNumber: 1 } , { id: 3, questionNumber: 3 } , { id: 5, questionNumber: 5 }]
     const expectedState = [
       { id: 1, questionNumber: 1 },
@@ -49,9 +50,11 @@ describe("setQuestionsReducer", () => {
       { id: 4, questionNumber: 4 },
       { id: 5, questionNumber: 5 }
     ]
-    const question = { id: 4, questionNumber: 4 }
-    const newState = setQuestionsReducer(initialState, addQuestion(question))
+    const requestResponse = { data: [{id: 4, questionNumber: 4 }] }
 
+    store.dispatch(addQuestion())
+    mockAxios.mockResponse(requestResponse)
+    const newState = setQuestionsReducer(initialState, store.getActions()[0])
     expect(newState).toEqual(expectedState)
   })
 
