@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Quiz, mapStateToProps } from './quiz'
+import { QuizView, mapStateToProps } from './quizView'
 import { Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
@@ -80,7 +80,7 @@ describe("Quiz", () => {
     const component = renderer.create(
       <Provider store={store}>
         <Router history={history}>
-          <Quiz
+          <QuizView
             userData={userData}
             modalState={allModalsClosed}
             currentQuestion={currentQuestion}
@@ -101,7 +101,7 @@ describe("Quiz", () => {
     const component = renderer.create(
       <Provider store={store}>
         <Router history={history}>
-          <Quiz
+          <QuizView
             userData={userData}
             modalState={allModalsClosed}
             currentQuestion={currentQuestion}
@@ -124,7 +124,7 @@ describe("Quiz", () => {
       const component = render(
         <Provider store={store}>
           <Router history={history}>
-            <Quiz
+            <QuizView
               userData={userData}
               modalState={allModalsClosed}
               currentQuestion={currentQuestion}
@@ -154,7 +154,7 @@ describe("Quiz", () => {
       component = render(
         <Provider store={store}>
           <Router history={history}>
-            <Quiz
+            <QuizView
               userData={userData}
               modalState={stateToRenderModal1}
               currentQuestion={currentQuestion}
@@ -225,7 +225,7 @@ describe("Quiz", () => {
       component = render(
         <Provider store={store}>
           <Router history={history}>
-            <Quiz
+            <QuizView
               userData={userData}
               modalState={stateToRenderModal2}
               currentQuestion={currentQuestion}

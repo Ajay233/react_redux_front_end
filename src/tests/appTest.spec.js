@@ -12,7 +12,7 @@ import ManageAccount from '../manageAccount/manageAccount'
 import EditUserPrivilege from '../editUserPrivilege/editUserPrivilege'
 import QuizSearch from '../quizSearch/quizSearch'
 import NewQuizForm from '../forms/newQuiz'
-import Quiz from '../quiz/quiz'
+import QuizView from '../quiz/quizView'
 import QuestionView from '../question/questionView'
 import NewQuestionForm from '../question/forms/newQuestion'
 import AnswerView from '../answer/viewAnswer'
@@ -32,7 +32,7 @@ jest.mock('../manageAccount/manageAccount')
 jest.mock('../editUserPrivilege/editUserPrivilege')
 jest.mock('../quizSearch/quizSearch')
 jest.mock('../forms/newQuiz')
-jest.mock('../quiz/quiz')
+jest.mock('../quiz/quizView')
 jest.mock('../question/questionView')
 jest.mock('../question/forms/newQuestion')
 jest.mock('../answer/viewAnswer')
@@ -192,7 +192,7 @@ describe("App", () => {
     expect(wrapper.find(QuizSearch)).toHaveLength(1)
   })
 
-  it("should render the Quiz component if the path is '/viewQuiz'", () => {
+  it("should render the QuizView component if the path is '/viewQuiz'", () => {
 
     history.push("/viewQuiz")
 
@@ -203,10 +203,10 @@ describe("App", () => {
     )
 
     expect(wrapper.find(NavBar)).toHaveLength(1)
-    expect(wrapper.find(Quiz)).toHaveLength(1)
+    expect(wrapper.find(QuizView)).toHaveLength(1)
   })
 
-  it("should render the Quiz component if the path is '/editQuiz'", () => {
+  it("should render the QuizView component if the path is '/editQuiz'", () => {
 
     history.push("/editQuiz")
 
@@ -217,7 +217,7 @@ describe("App", () => {
     )
 
     expect(wrapper.find(NavBar)).toHaveLength(1)
-    expect(wrapper.find(Quiz)).toHaveLength(1)
+    expect(wrapper.find(QuizView)).toHaveLength(1)
   })
 
   it("should render the NewQuizForm component if the path is '/newQuiz'", () => {

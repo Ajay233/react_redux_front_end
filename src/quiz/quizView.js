@@ -17,7 +17,7 @@ import history from '../history'
 
 import '../stylesheets/quiz.css'
 
-export class Quiz extends React.Component {
+export class QuizView extends React.Component {
 
   componentDidMount(){
     document.documentElement.scrollTop = 0;
@@ -243,4 +243,4 @@ export default connect(mapStateToProps,
     showModal2,
     updateQuizStatus,
     getAnswers
-  })(Quiz)
+  })(QuizView)
