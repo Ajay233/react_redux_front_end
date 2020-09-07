@@ -80,16 +80,20 @@ describe("handleDelete", () => {
       permission: "ADMIN"
     }
 
-    const wrapper = shallow(
-      <Question
-        question={question}
-        userData={userData}
-        setCurrentQuestion={setCurrentQuestion}
-        showModal={showModal}
-      />
+    const wrapper = mount(
+      <Router history={history}>
+        <Question
+          question={question}
+          userData={userData}
+          setCurrentQuestion={setCurrentQuestion}
+          showModal={showModal}
+        />
+      </Router>
     );
 
-    wrapper.instance().handleDelete()
+    // wrapper.instance().handleDelete()
+    const deleteButton = wrapper.find('#deleteQuestionRow')
+    deleteButton.at(1).simulate('click')
     expect(setCurrentQuestion).toHaveBeenCalledTimes(1)
     expect(setCurrentQuestion).toHaveBeenCalledWith(question)
     expect(showModal).toHaveBeenCalledTimes(1)
@@ -112,17 +116,21 @@ describe("handleView", () => {
       permission: "ADMIN"
     }
 
-    const wrapper = shallow(
-      <Question
-        question={question}
-        userData={userData}
-        getAnswers={getAnswers}
-        setCurrentQuestion={setCurrentQuestion}
-        setNotification={setNotification}
-      />
+    const wrapper = mount(
+      <Router history={history}>
+        <Question
+          question={question}
+          userData={userData}
+          getAnswers={getAnswers}
+          setCurrentQuestion={setCurrentQuestion}
+          setNotification={setNotification}
+        />
+      </Router>
     );
 
-    wrapper.instance().handleView()
+    // wrapper.instance().handleView()
+    const deleteButton = wrapper.find('#editQuestionRow')
+    deleteButton.at(1).simulate('click')
     expect(getAnswers).toHaveBeenCalledTimes(1)
     expect(getAnswers).toHaveBeenCalledWith("answer/findByQuestionId", { questionId: 1 }, "jwt")
     expect(setCurrentQuestion).toHaveBeenCalledTimes(1)

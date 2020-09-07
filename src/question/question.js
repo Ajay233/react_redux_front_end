@@ -1,51 +1,99 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export class Question extends React.Component {
+export const Question = (props) => {
 
-  handleView = () => {
-    const { question, userData, getAnswers, setCurrentQuestion, setNotification } = this.props
+  const handleView = () => {
+    const { question, userData, getAnswers, setCurrentQuestion, setNotification } = props
     const param = { questionId: question.id }
     setNotification()
     getAnswers("answer/findByQuestionId", param, userData.jwt)
     setCurrentQuestion(question);
   }
 
-  handleDelete = () => {
-    const { question, setCurrentQuestion, showModal } = this.props
+  const handleDelete = () => {
+    const { question, setCurrentQuestion, showModal } = props
     setCurrentQuestion(question);
     showModal();
   }
 
-  renderQuestion = () => {
-    const { questionNumber, description } = this.props.question
+  const renderQuestion = () => {
+    const { questionNumber, description } = props.question
     return(
       <div className="questionContainer">
         <div className="questionNumber">{questionNumber}</div>
         <div className="questionDescription">{description}</div>
-        {this.renderOptions()}
+        {renderOptions()}
       </div>
     )
   }
 
-  renderOptions = () => {
-    const { permission } = this.props.userData;
+  const renderOptions = () => {
+    const { permission } = props.userData;
     return(
       <div className="options">
-        { permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="#" className="deleteOption linkStandard" onClick={this.handleDelete}><i className="fas fa-trash-alt red"></i> Delete</Link> : null }
-        { permission === "READ-ONLY" ? <Link to="/viewQuestion" className="view linkStandard" onClick={this.handleView}><i className="far fa-eye blue"></i> View</Link> : null }
-        { permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="/editQuestion" className="edit linkStandard" onClick={this.handleView}><i className="fas fa-edit blue"></i> Edit</Link> : null }
+        {renderDelete(permission)}
+        {renderView(permission)}
+        {renderEdit(permission)}
       </div>
     );
   }
 
-  render(){
-    return(
-      <div>
-        {this.renderQuestion()}
-      </div>
-    );
+  const renderDelete = (permission) => {
+    if(permission === "ADMIN" || permission === "SUPER-USER"){
+      return(
+        <Link
+          to="#"
+          id="deleteQuestionRow"
+          className="deleteOption linkStandard"
+          onClick={() => {handleDelete()}}
+        >
+         <i className="fas fa-trash-alt red"></i> Delete
+        </Link>
+      );
+    } else {
+      return null
+    }
   }
+
+  const renderView = (permission) => {
+    if(permission === "READ-ONLY"){
+      return(
+        <Link
+          to="/viewQuestion"
+          className="view linkStandard"
+          onClick={() => {handleView()}}
+        >
+          <i className="far fa-eye blue"></i> View
+        </Link>
+      );
+    } else {
+      return null
+    }
+  }
+
+  const renderEdit = (permission) => {
+    if(permission === "ADMIN" || permission === "SUPER-USER"){
+      return(
+        <Link
+          to="/editQuestion"
+          id="editQuestionRow"
+          className="edit linkStandard"
+          onClick={() => {handleView()}}
+        >
+          <i className="fas fa-edit blue"></i> Edit
+        </Link>
+      );
+    } else {
+      return null
+    }
+  }
+
+  return(
+    <div>
+      {renderQuestion()}
+    </div>
+  );
 }
 
 export default Question

@@ -1,5 +1,5 @@
 import React from 'react';
-import Question from './question'
+import { Question } from './question'
 
 const Questions = (props) => {
 
@@ -26,7 +26,7 @@ const Questions = (props) => {
       {renderQuestions()}
     </div>
   );
-  
+
 }
 
 export default Questions

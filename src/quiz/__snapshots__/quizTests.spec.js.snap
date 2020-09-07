@@ -326,6 +326,7 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
           <a
             className="deleteOption linkStandard"
             href="/editQuiz"
+            id="deleteQuestionRow"
             onClick={[Function]}
           >
             <i
@@ -336,6 +337,7 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
           <a
             className="edit linkStandard"
             href="/editQuestion"
+            id="editQuestionRow"
             onClick={[Function]}
           >
             <i
@@ -366,6 +368,7 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
           <a
             className="deleteOption linkStandard"
             href="/editQuiz"
+            id="deleteQuestionRow"
             onClick={[Function]}
           >
             <i
@@ -376,6 +379,7 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
           <a
             className="edit linkStandard"
             href="/editQuestion"
+            id="editQuestionRow"
             onClick={[Function]}
           >
             <i

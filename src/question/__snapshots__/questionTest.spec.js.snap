@@ -21,6 +21,7 @@ exports[`Question should render a question along with edit and delete options fo
       <a
         className="deleteOption linkStandard"
         href="/"
+        id="deleteQuestionRow"
         onClick={[Function]}
       >
         <i
@@ -31,6 +32,7 @@ exports[`Question should render a question along with edit and delete options fo
       <a
         className="edit linkStandard"
         href="/editQuestion"
+        id="editQuestionRow"
         onClick={[Function]}
       >
         <i

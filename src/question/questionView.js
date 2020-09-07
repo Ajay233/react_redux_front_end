@@ -27,7 +27,8 @@ export class QuestionView extends React.Component {
     const { currentAnswer, hideModal, currentQuestion } = this.props
     const { showModal, showModal2 } = this.props.modalState
     if(showModal === true){
-      return(<Modal
+      return(
+        <Modal
           type={"delete"}
           show={showModal}
           title={"Delete Answer"}
@@ -37,7 +38,8 @@ export class QuestionView extends React.Component {
         />
       );
     } else if(showModal2 === true){
-      return(<Modal
+      return(
+        <Modal
           type={"delete"}
           show={showModal2}
           title={"Delete Question"}

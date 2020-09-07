@@ -22,6 +22,7 @@ exports[`Questions should render a list of questions with delete and edit option
         <a
           className="deleteOption linkStandard"
           href="/"
+          id="deleteQuestionRow"
           onClick={[Function]}
         >
           <i
@@ -32,6 +33,7 @@ exports[`Questions should render a list of questions with delete and edit option
         <a
           className="edit linkStandard"
           href="/editQuestion"
+          id="editQuestionRow"
           onClick={[Function]}
         >
           <i
@@ -62,6 +64,7 @@ exports[`Questions should render a list of questions with delete and edit option
         <a
           className="deleteOption linkStandard"
           href="/"
+          id="deleteQuestionRow"
           onClick={[Function]}
         >
           <i
@@ -72,6 +75,7 @@ exports[`Questions should render a list of questions with delete and edit option
         <a
           className="edit linkStandard"
           href="/editQuestion"
+          id="editQuestionRow"
           onClick={[Function]}
         >
           <i
@@ -102,6 +106,7 @@ exports[`Questions should render a list of questions with delete and edit option
         <a
           className="deleteOption linkStandard"
           href="/"
+          id="deleteQuestionRow"
           onClick={[Function]}
         >
           <i
@@ -112,6 +117,7 @@ exports[`Questions should render a list of questions with delete and edit option
         <a
           className="edit linkStandard"
           href="/editQuestion"
+          id="editQuestionRow"
           onClick={[Function]}
         >
           <i
