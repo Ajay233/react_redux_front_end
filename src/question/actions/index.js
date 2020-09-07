@@ -55,6 +55,26 @@ export const getQuestions = (endpoint, param, jwt, startQuiz=false) => {
   }
 }
 
+export const updateQuestion = (body, jwt) => {
+  return (dispatch) => {
+    return put("question/update", [body], jwt).then((response) => {
+      dispatch(setCurrentQuestion(response.data[0]));
+      dispatch({
+        type: "UPDATE_QUESTION",
+        payload: response.data[0]
+      })
+      dispatch(setNotification("Question updated", "success", true))
+    }).catch((error) => {
+      console.log(error.response);
+      if(error.response.status === 403){
+        sessionExpired(dispatch);
+      } else {
+        dispatch(setNotification("Error - unable to update question", "error", true))
+      }
+    });
+  }
+}
+
 export const setCurrentQuestion = (question) => {
   return {
     type: "SET_CURRENT_QUESTION",
@@ -65,20 +85,6 @@ export const setCurrentQuestion = (question) => {
 export const deleteQuestion = (question) => {
   return {
     type: "DELETE_QUESTION",
-    payload: question
-  }
-}
-
-// export const addQuestion = (question) => {
-//   return {
-//     type: "ADD_QUESTION",
-//     payload: question
-//   }
-// }
-
-export const updateQuestion = (question) => {
-  return {
-    type: "UPDATE_QUESTION",
     payload: question
   }
 }

@@ -59,11 +59,14 @@ describe("setQuestionsReducer", () => {
   })
 
   it("should update a question in the questions store if passed an action from updateQuestion", () => {
+    const store = mockStore({})
     const initialState = [{ id: 1, questionNumber: 1 }, { id: 2, questionNumber: 2 }, { id: 4, questionNumber: 4 }]
     const expectedState = [{ id: 2, questionNumber: 2 }, { id: 1, questionNumber: 3 }, { id: 4, questionNumber: 4 }]
-    const question = { id: 1, questionNumber: 3 }
+    const requestResponse = { data: [{ id: 1, questionNumber: 3 }] }
 
-    const newState = setQuestionsReducer(initialState, updateQuestion(question))
+    store.dispatch(updateQuestion())
+    mockAxios.mockResponse(requestResponse)
+    const newState = setQuestionsReducer(initialState, store.getActions()[1])
     expect(newState).toEqual(expectedState)
   })
 

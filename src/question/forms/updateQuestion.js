@@ -1,10 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import { put } from '../../axiosRequests/requests'
-import { setNotification } from '../../notifications/actions'
-import { setCurrentQuestion, updateQuestion } from '../actions'
-import { sessionExpired } from '../../utils/session'
+import { updateQuestion } from '../actions'
 
 class UpdateQuestionForm extends React.Component {
 
@@ -34,25 +31,14 @@ class UpdateQuestionForm extends React.Component {
   }
 
   onSubmit = ({ number, description }) => {
-    const { userData, currentQuestion, setCurrentQuestion, setNotification, updateQuestion } = this.props;
+    const { userData, currentQuestion, updateQuestion } = this.props;
     const body = {
       id: currentQuestion.id,
       quizId: currentQuestion.quizId,
       questionNumber: number,
       description: description
     }
-    put("question/update", [body], userData.jwt).then((response) => {
-      setCurrentQuestion(response.data[0]);
-      updateQuestion(response.data[0])
-      setNotification("Question updated", "success", true)
-    }).catch((error) => {
-      console.log(error.response);
-      if(error.response.status === 403){
-        sessionExpired(this.props.dispatch);
-      } else {
-        setNotification("Error - unable to update question", "error", true)
-      }
-    });
+    updateQuestion(body, userData.jwt);
   }
 
   render(){
@@ -108,7 +94,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps,
-  { setNotification,
-    setCurrentQuestion,
-    updateQuestion
+  { updateQuestion
   })(reduxForm({ form: 'questionForm', validate: validate })(UpdateQuestionForm))

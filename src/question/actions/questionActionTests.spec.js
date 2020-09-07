@@ -162,14 +162,75 @@ describe("addQuestion", () => {
 
 describe("updateQuestion", () => {
   it("should return an action that will update a question in the questions store", () => {
+    const store = mockStore({})
+
     const expectedAction = {
+      type: "SET_CURRENT_QUESTION",
+      payload: { id: 1, questionNumber: 1 }
+    }
+
+    const expectedAction2 = {
       type: "UPDATE_QUESTION",
       payload: { id: 1, questionNumber: 1 }
     }
 
-    const question = { id: 1, questionNumber: 1 }
+    const expectedAction3 = {
+      type: "SET_NOTIFICATION",
+      payload: {
+        message: "Question updated",
+        type: "success",
+        show: true,
+        timed: true
+      }
+    }
+    const requestResponse = {
+      data: [{ id: 1, questionNumber: 1 }]
+    }
 
-    expect(updateQuestion(question)).toEqual(expectedAction)
+    const question = { id: 1, questionNumber: 1 }
+    store.dispatch(updateQuestion())
+    mockAxios.mockResponse(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
+  })
+
+  it("should call sessionExpired if the error response status is 403", () => {
+    const store = mockStore({})
+
+    const requestResponse = {
+      response: {
+        status: 403
+      }
+    }
+
+    store.dispatch(updateQuestion())
+    mockAxios.mockError(requestResponse)
+    expect(sessionExpired).toHaveBeenCalledTimes(1)
+  })
+
+  it("should call setNotification if the error response status is anything else", () => {
+    const store = mockStore({})
+
+    const requestResponse = {
+      response: {
+        status: 404
+      }
+    }
+
+    const expectedAction = {
+      type: "SET_NOTIFICATION",
+      payload: {
+        message: "Error - unable to update question",
+        type: "error",
+        show: true,
+        timed: true
+      }
+    }
+
+    store.dispatch(updateQuestion())
+    mockAxios.mockError(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
   })
 })
 
