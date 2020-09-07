@@ -150,7 +150,7 @@ describe("", () => {
       expect(setCurrentQuestion).toHaveBeenCalledTimes(1)
       expect(setCurrentQuestion).toHaveBeenCalledWith(questions[1])
       expect(getAnswers).toHaveBeenCalledTimes(1)
-      expect(getAnswers).toHaveBeenCalledWith("answer/findByQuestionId", body,"jwt")
+      expect(getAnswers).toHaveBeenCalledWith(body,"jwt")
 
     })
   })

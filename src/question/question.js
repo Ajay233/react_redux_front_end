@@ -7,7 +7,7 @@ export const Question = (props) => {
     const { question, userData, getAnswers, setCurrentQuestion, setNotification } = props
     const param = { questionId: question.id }
     setNotification()
-    getAnswers("answer/findByQuestionId", param, userData.jwt)
+    getAnswers(param, userData.jwt)
     setCurrentQuestion(question);
   }
 

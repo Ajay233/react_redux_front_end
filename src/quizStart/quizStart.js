@@ -28,7 +28,7 @@ export class QuizStart extends React.Component {
     addAnswer(mappedAnswer[0]);
     incrementQuestion(questionNumber + 1);
     setCurrentQuestion(questions[questionNumber + 1]);
-    getAnswers("answer/findByQuestionId", body, userData.jwt)
+    getAnswers(body, userData.jwt)
   }
 
   addLastAnswer = (answer) => {

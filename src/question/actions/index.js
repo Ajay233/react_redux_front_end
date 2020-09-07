@@ -19,7 +19,7 @@ export const getQuestions = (endpoint, param, jwt, startQuiz=false) => {
       }
       if(startQuiz){
         const body = { questionId: response.data[0].id }
-        dispatch(getAnswers("answer/findByQuestionId", body, jwt))
+        dispatch(getAnswers(body, jwt))
         dispatch(setCurrentQuestion(response.data[0]));
       }
       console.log("success")

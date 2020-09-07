@@ -132,7 +132,7 @@ describe("handleView", () => {
     const deleteButton = wrapper.find('#editQuestionRow')
     deleteButton.at(1).simulate('click')
     expect(getAnswers).toHaveBeenCalledTimes(1)
-    expect(getAnswers).toHaveBeenCalledWith("answer/findByQuestionId", { questionId: 1 }, "jwt")
+    expect(getAnswers).toHaveBeenCalledWith({ questionId: 1 }, "jwt")
     expect(setCurrentQuestion).toHaveBeenCalledTimes(1)
     expect(setCurrentQuestion).toHaveBeenCalledWith(question)
   })

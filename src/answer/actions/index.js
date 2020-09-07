@@ -25,9 +25,9 @@ export const addAnswer = (data, jwt) => {
 }
 
 // read
-export const getAnswers = (endpoint, param, jwt) => {
+export const getAnswers = (param, jwt) => {
   return (dispatch) => {
-    return getUsingParams(endpoint, param, jwt).then((response) => {
+    return getUsingParams("answer/findByQuestionId", param, jwt).then((response) => {
       dispatch({
         type: "SET_ANSWERS",
         payload: response.data
