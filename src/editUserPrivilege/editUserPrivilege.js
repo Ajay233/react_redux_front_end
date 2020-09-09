@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import FindUserByEmail from '../forms/findUserByEmail'
+import FindUserByEmail from './forms/findUserByEmail'
 import Notification from '../notifications/notifications'
 import User from './user'
-import UpdatePermission from '../forms/updatePermission'
+import UpdatePermission from './forms/updatePermission'
 
 import { setUserResults, clearUserResults } from './actions'
 import { setNotification } from '../notifications/actions'
@@ -15,7 +15,7 @@ export class EditUserPrivilege extends React.Component {
   componentDidMount(){
     document.documentElement.scrollTop = 0;
   }
-  
+
   componentWillUnmount(){
     this.props.clearUserResults()
   }

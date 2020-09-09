@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form';
-import { getUsingParams } from '../axiosRequests/requests'
-import { sessionExpired } from '../utils/session'
+import { getUsingParams } from '../../axiosRequests/requests'
+import { sessionExpired } from '../../utils/session'
 
 class FindUserByEmail extends React.Component {
 

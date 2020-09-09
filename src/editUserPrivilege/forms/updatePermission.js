@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { put } from '../axiosRequests/requests';
-import { sessionExpired } from '../utils/session'
+import { put } from '../../axiosRequests/requests';
+import { sessionExpired } from '../../utils/session'
 
 class UpdatePermission extends React.Component {
 
