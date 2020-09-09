@@ -6,16 +6,16 @@ import { mount } from 'enzyme'
 import configureStore from 'redux-mock-store'
 import renderer from 'react-test-renderer'
 import mockAxios from 'jest-mock-axios'
-import history from '../../history'
-import { setUser } from '../../authentication/actions'
+import history from '../../../history'
+import { setUser } from '../../actions'
 
-jest.mock("../../axiosRequests/axiosUtil")
-jest.mock("../../authentication/actions")
+jest.mock("../../../axiosRequests/axiosUtil")
+jest.mock("../../actions")
 
 const mockStore = configureStore({})
 
 describe("login form", () => {
-  
+
   let store;
   let props;
 

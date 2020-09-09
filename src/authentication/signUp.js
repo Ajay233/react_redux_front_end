@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setNotification } from '../notifications/actions'
 import Notification from '../notifications/notifications'
-import SignUpForm from '../forms/signUpForm'
+import SignUpForm from './forms/signUpForm'
 
 import '../stylesheets/inputs.css'
 import '../stylesheets/buttons.css'

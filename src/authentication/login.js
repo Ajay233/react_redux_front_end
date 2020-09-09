@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Notification from '../notifications/notifications'
-import LoginForm from '../forms/loginForm'
+import LoginForm from './forms/loginForm'
 
 import { setUser, setRedirect } from './actions'
 import { setNotification } from '../notifications/actions';

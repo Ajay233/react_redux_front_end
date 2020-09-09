@@ -5,9 +5,9 @@ import { mount } from 'enzyme'
 import mockAxios from 'jest-mock-axios'
 import configureStore from 'redux-mock-store'
 import renderer from 'react-test-renderer'
-import { setNotification } from '../../notifications/actions'
+import { setNotification } from '../../../notifications/actions'
 
-jest.mock("../../notifications/actions")
+jest.mock("../../../notifications/actions")
 
 const mockStore = configureStore({})
 
