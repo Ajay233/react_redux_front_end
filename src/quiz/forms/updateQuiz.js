@@ -1,14 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import { setNotification } from '../../notifications/actions'
-import { setQuiz } from '../actions'
-
-import { put } from '../../axiosRequests/requests'
-import { sessionExpired } from '../../utils/session'
-
-
-// pass in setNotification, setQuiz, jwt, quiz
+import { updateQuiz } from '../actions'
 
 class UpdateQuizForm extends React.Component {
 
@@ -70,7 +63,7 @@ class UpdateQuizForm extends React.Component {
   }
 
   onSubmit = ({ name, description, category }) => {
-    const { userData, quiz, setQuiz, setNotification } = this.props;
+    const { userData, quiz, updateQuiz } = this.props;
     const body = {
       id: quiz.id,
       name: name,
@@ -78,25 +71,20 @@ class UpdateQuizForm extends React.Component {
       category: category,
       status: quiz.status
     }
-    put("quiz/update", body, userData.jwt).then((response) => {
-      setQuiz(response.data);
-      setNotification("Quiz updated", "success", true);
-    }).catch((error) => {
-      console.log(error.response);
-      if(error.response.status === 403){
-        sessionExpired(this.props.dispatch);
-      } else {
-        setNotification("Error - Unable to update quiz", "error", true);
-      }
-    })
+    updateQuiz(body, userData.jwt)
   }
 
   renderStatusButton = () => {
     const { quiz } = this.props;
-    return( <button data-testid="updateStatus-button" className={quiz.status === "DRAFT" ? "save" : "warningButton"} onClick={this.props.updateStatus}>
-              { quiz.status === "DRAFT" ? <i className="far fa-check-circle"></i> : <i className="fas fa-pencil-ruler"></i>}
-              { quiz.status === "DRAFT" ? " Mark as Ready" : " Revert to draft" }
-            </button>
+    return(
+      <button
+        data-testid="updateStatus-button"
+        className={quiz.status === "DRAFT" ? "save" : "warningButton"}
+        onClick={this.props.updateStatus}
+      >
+        { quiz.status === "DRAFT" ? <i className="far fa-check-circle"></i> : <i className="fas fa-pencil-ruler"></i>}
+        { quiz.status === "DRAFT" ? " Mark as Ready" : " Revert to draft" }
+      </button>
     );
   }
 
@@ -159,6 +147,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps,
-  { setQuiz,
-    setNotification
+  { updateQuiz
   })(reduxForm({ form: 'editQuizForm', validate: validate, enableReinitialize: true, destroyOnUnmount: false })(UpdateQuizForm))

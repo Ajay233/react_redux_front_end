@@ -4,14 +4,7 @@ import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import Notification from '../../notifications/notifications'
 
-import { addQuiz } from '../../quizSearch/actions'
-import { setQuiz } from '../actions'
-import { clearQuestions } from '../../question/actions'
-import { setNotification } from '../../notifications/actions'
-
-import { post } from '../../axiosRequests/requests'
-import { sessionExpired } from '../../utils/session'
-import history from '../../history'
+import { createQuiz } from '../actions'
 
 class NewQuizForm extends React.Component {
 
@@ -67,27 +60,14 @@ class NewQuizForm extends React.Component {
   }
 
   onSubmit = ({ name, description, category }) => {
-    const { userData, setNotification, addQuiz, setQuiz, clearQuestions, dispatch } = this.props;
+    const { userData, createQuiz } = this.props;
     const body = {
       name: name,
       description: description,
       category: category,
       status: "DRAFT"
     }
-    post("quiz/create", body, userData.jwt).then((response) => {
-      setQuiz(response.data);
-      addQuiz(response.data);  // remove this??
-      clearQuestions();
-      history.push("/editQuiz");
-      setNotification("Quiz created, but what's a quiz without questions? Add your questions below.", "success", true);
-    }).catch((error) => {
-      console.log(error.response);
-      if(error.response.status === 403){
-        sessionExpired(dispatch);
-      } else {
-        setNotification("Error - Unable to create quiz", "error", true);
-      }
-    })
+    createQuiz(body, userData.jwt);
   }
 
   render(){
@@ -137,23 +117,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-// The warning is being caused by:
-//                                     initialValues: {
-//                                       category: "Comics"
-//                                     }
-
-// Setting the default value of a select does not work, for redux-form, the initialValues object has to be set somehow
-
-// Possible alternative from redux-form docs (doesn't throw any new warning/error but the old warning persists)
-// NewQuizForm = reduxForm({ form: 'quizForm' })(NewQuizForm)
-// NewQuizForm = connect( state => ({ initialValues: { category: "Comics" }, userData: state.userData }),{ setNotification, addQuiz })(NewQuizForm)
-//
-// export default NewQuizForm
-
-export default connect(mapStateToProps,
-  {
-    setNotification,
-    addQuiz,
-    setQuiz,
-    clearQuestions
-  })(reduxForm({ form: 'newQuizForm', validate: validate })(NewQuizForm))
+export default connect(mapStateToProps, { createQuiz })(reduxForm({ form: 'newQuizForm', validate: validate })(NewQuizForm))

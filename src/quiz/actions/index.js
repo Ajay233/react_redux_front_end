@@ -1,11 +1,47 @@
-import { put } from '../../axiosRequests/requests'
+import { post, put } from '../../axiosRequests/requests'
 import { setNotification } from '../../notifications/actions'
 import { sessionExpired } from '../../utils/session'
+import { clearQuestions } from '../../question/actions'
+import history from '../../history'
 
 export const setQuiz = (quiz) => {
   return {
     type: "SET_QUIZ",
     payload: quiz
+  }
+}
+
+export const createQuiz = (body, jwt) => {
+  return (dispatch) => {
+    return post("quiz/create", body, jwt).then((response) => {
+      dispatch(setQuiz(response.data));
+      dispatch(clearQuestions());
+      history.push("/editQuiz");
+      dispatch(setNotification("Quiz created, but what's a quiz without questions? Add your questions below.", "success", true));
+    }).catch((error) => {
+      console.log(error.response);
+      if(error.response.status === 403){
+        sessionExpired(dispatch);
+      } else {
+        dispatch(setNotification("Error - Unable to create quiz", "error", true));
+      }
+    })
+  }
+}
+
+export const updateQuiz = (body, jwt) => {
+  return (dispatch) => {
+    return put("quiz/update", body, jwt).then((response) => {
+      dispatch(setQuiz(response.data));
+      dispatch(setNotification("Quiz updated", "success", true));
+    }).catch((error) => {
+      console.log(error.response);
+      if(error.response.status === 403){
+        sessionExpired(dispatch);
+      } else {
+        dispatch(setNotification("Error - Unable to update quiz", "error", true));
+      }
+    })
   }
 }
 
