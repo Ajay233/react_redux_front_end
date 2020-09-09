@@ -1,25 +1,12 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form';
-import { getUsingParams } from '../../axiosRequests/requests'
-import { sessionExpired } from '../../utils/session'
 
 class FindUserByEmail extends React.Component {
 
   onSubmit = ({ email }) => {
-    console.log(email);
+    const { userData, setUserResults } = this.props;
     const param = {email: email}
-    const { jwt } = this.props.userData;
-    getUsingParams("users/findByEmail", param, jwt).then((response) => {
-      this.props.setUserResults(response.data);
-    }).catch((error) => {
-      if(error.response.status === 403){
-        sessionExpired(this.props.dispatch);
-      } else {
-        const msg = error.response.data;
-        this.props.setNotification(msg, "error", true);
-        console.log(error.response)
-      }
-    });
+    setUserResults(param, userData.jwt);
   }
 
   renderInput = (formProps) => {
