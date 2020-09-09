@@ -5,11 +5,11 @@ import { mount } from 'enzyme'
 import configureStore from 'redux-mock-store'
 import renderer from 'react-test-renderer'
 import mockAxios from 'jest-mock-axios'
-import history from '../../history'
+import history from '../../../history'
 
 const mockStore = configureStore({})
 
-jest.mock('../../history')
+jest.mock('../../../history')
 
 describe("pickAnswer form", () => {
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import history from '../history'
+import history from '../../history'
 
 const PickAnswer = (props) => {
 
@@ -65,7 +65,7 @@ const PickAnswer = (props) => {
         <div className="title-medium-left-alt">{props.title}</div>
         {mapFields(props.answers)}
         </div>
-        <img src={require("../public/icons/reply.png")} alt="" />
+        <img src={require("../../public/icons/reply.png")} alt="" />
         <div className="buttonContainer">
           <button data-testid="next-button" className="submit quizButton-left" disabled={disableButton()}>Next Question</button>
           <button data-testid="quit-button" className="submit quizButton-right" onClick={handleClick}>{renderButtonTitle()}</button>

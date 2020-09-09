@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
-import PickAnswer from '../forms/pickAnswer'
+import PickAnswer from './forms/pickAnswer'
 import { addAnswer, incrementQuestion, showResults, exitQuiz } from './actions'
 import { setCurrentQuestion } from '../question/actions'
 import { getAnswers } from '../answer/actions'
