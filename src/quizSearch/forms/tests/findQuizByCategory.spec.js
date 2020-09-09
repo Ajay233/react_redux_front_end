@@ -5,10 +5,10 @@ import { mount } from 'enzyme'
 import configureStore from 'redux-mock-store'
 import renderer from 'react-test-renderer'
 import mockAxios from 'jest-mock-axios'
-import { getQuizSearchResults } from '../../quizSearch/actions'
+import { getQuizSearchResults } from '../../actions'
 
-jest.mock("../../axiosRequests/axiosUtil")
-jest.mock("../../quizSearch/actions")
+jest.mock("../../../axiosRequests/axiosUtil")
+jest.mock("../../actions")
 
 const mockStore = configureStore({})
 

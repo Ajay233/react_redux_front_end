@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import QuizResults from './quizResults'
-import QuizSearchByName from '../forms/findQuizByName'
-import QuizSearchByCategory from '../forms/findQuizByCategory'
+import QuizSearchByName from './forms/findQuizByName'
+import QuizSearchByCategory from './forms/findQuizByCategory'
 import Notification from '../notifications/notifications'
 import Modal from '../modal/modal'
 import { del } from '../axiosRequests/requests'
