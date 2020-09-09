@@ -29,6 +29,8 @@ class UpdatePermission extends React.Component {
     const { jwt } = this.props.userData;
     const successMsg = "Permission level saved";
     const data = { id: id, permission: permission }
+
+    // This could possibly be moved into a new action creator??
     put("users/updatePermission", data, jwt).then((response) => {
       this.props.clearUserResults();
       this.props.setNotification(successMsg, "success", true);

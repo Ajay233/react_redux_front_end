@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { del } from '../axiosRequests/requests'
-import EditProfileForm from '../forms/editProfile'
-import ChangePassword from '../forms/changePassword'
-import PermissionChangeRequestForm from '../forms/permissionChangeRequest'
+import EditProfileForm from './forms/editProfile'
+import ChangePassword from './forms/changePassword'
+import PermissionChangeRequestForm from './forms/permissionChangeRequest'
 import PermissionDetails from './permissionDetails'
 import Notification from '../notifications/notifications'
 import Modal from '../modal/modal'

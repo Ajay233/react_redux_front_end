@@ -6,12 +6,12 @@ import configureStore from 'redux-mock-store'
 import renderer from 'react-test-renderer'
 import mockAxios from 'jest-mock-axios'
 
-import { sessionExpired } from '../../utils/session'
-import { setNotification } from '../../notifications/actions'
+import { sessionExpired } from '../../../utils/session'
+import { setNotification } from '../../../notifications/actions'
 
-jest.mock("../../axiosRequests/axiosUtil")
-jest.mock("../../utils/session")
-jest.mock("../../notifications/actions")
+jest.mock("../../../axiosRequests/axiosUtil")
+jest.mock("../../../utils/session")
+jest.mock("../../../notifications/actions")
 
 const mockStore = configureStore({})
 // 44,46,47,49,50

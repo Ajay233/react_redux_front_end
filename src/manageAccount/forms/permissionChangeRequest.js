@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import { post } from '../axiosRequests/requests'
-import { sessionExpired } from '../utils/session'
-import { setNotification } from '../notifications/actions'
+import { post } from '../../axiosRequests/requests'
+import { sessionExpired } from '../../utils/session'
+import { setNotification } from '../../notifications/actions'
 
 
 class PermissionChangeRequestForm extends React.Component {

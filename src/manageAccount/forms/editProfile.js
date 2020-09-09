@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import { put } from '../axiosRequests/requests'
-import { sessionExpired } from '../utils/session'
+import { put } from '../../axiosRequests/requests'
+import { sessionExpired } from '../../utils/session'
 
 
 class EditProfileForm extends React.Component {

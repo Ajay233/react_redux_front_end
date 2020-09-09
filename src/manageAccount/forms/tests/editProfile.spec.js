@@ -6,7 +6,7 @@ import configureStore from 'redux-mock-store'
 import renderer from 'react-test-renderer'
 import mockAxios from 'jest-mock-axios'
 
-jest.mock("../../axiosRequests/axiosUtil")
+jest.mock("../../../axiosRequests/axiosUtil")
 
 const mockStore = configureStore({})
 
