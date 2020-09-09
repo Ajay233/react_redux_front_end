@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import { setNotification } from '../notifications/actions'
-import { setQuiz } from '../quiz/actions'
+import { setNotification } from '../../notifications/actions'
+import { setQuiz } from '../actions'
 
-import { put } from '../axiosRequests/requests'
-import { sessionExpired } from '../utils/session'
+import { put } from '../../axiosRequests/requests'
+import { sessionExpired } from '../../utils/session'
 
 
 // pass in setNotification, setQuiz, jwt, quiz

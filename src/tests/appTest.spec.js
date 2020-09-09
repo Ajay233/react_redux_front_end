@@ -11,7 +11,7 @@ import UserList from '../userList/userList'
 import ManageAccount from '../manageAccount/manageAccount'
 import EditUserPrivilege from '../editUserPrivilege/editUserPrivilege'
 import QuizSearch from '../quizSearch/quizSearch'
-import NewQuizForm from '../forms/newQuiz'
+import NewQuizForm from '../quiz/forms/newQuiz'
 import QuizView from '../quiz/quizView'
 import QuestionView from '../question/questionView'
 import NewQuestionForm from '../question/forms/newQuestion'
@@ -31,7 +31,7 @@ jest.mock('../userList/userList')
 jest.mock('../manageAccount/manageAccount')
 jest.mock('../editUserPrivilege/editUserPrivilege')
 jest.mock('../quizSearch/quizSearch')
-jest.mock('../forms/newQuiz')
+jest.mock('../quiz/forms/newQuiz')
 jest.mock('../quiz/quizView')
 jest.mock('../question/questionView')
 jest.mock('../question/forms/newQuestion')

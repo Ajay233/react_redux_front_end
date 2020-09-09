@@ -2,16 +2,16 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import Notification from '../notifications/notifications'
+import Notification from '../../notifications/notifications'
 
-import { addQuiz } from '../quizSearch/actions'
-import { setQuiz } from '../quiz/actions'
-import { clearQuestions } from '../question/actions'
-import { setNotification } from '../notifications/actions'
+import { addQuiz } from '../../quizSearch/actions'
+import { setQuiz } from '../actions'
+import { clearQuestions } from '../../question/actions'
+import { setNotification } from '../../notifications/actions'
 
-import { post } from '../axiosRequests/requests'
-import { sessionExpired } from '../utils/session'
-import history from '../history'
+import { post } from '../../axiosRequests/requests'
+import { sessionExpired } from '../../utils/session'
+import history from '../../history'
 
 class NewQuizForm extends React.Component {
 

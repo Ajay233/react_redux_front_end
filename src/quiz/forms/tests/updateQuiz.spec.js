@@ -7,14 +7,14 @@ import mockAxios from 'jest-mock-axios'
 import configureStore from 'redux-mock-store'
 import renderer from 'react-test-renderer'
 import { render, fireEvent, cleanup } from '@testing-library/react'
-import history from '../../history'
-import { setQuiz } from '../../quiz/actions'
-import { setNotification } from '../../notifications/actions'
-import { sessionExpired } from '../../utils/session'
+import history from '../../../history'
+import { setQuiz } from '../../actions'
+import { setNotification } from '../../../notifications/actions'
+import { sessionExpired } from '../../../utils/session'
 
-jest.mock('../../quiz/actions')
-jest.mock('../../notifications/actions')
-jest.mock('../../utils/session')
+jest.mock('../../actions')
+jest.mock('../../../notifications/actions')
+jest.mock('../../../utils/session')
 
 const mockStore = configureStore({})
 
