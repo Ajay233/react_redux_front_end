@@ -1,4 +1,4 @@
-import { getUsingParams } from '../../axiosRequests/requests'
+import { getUsingParams, put } from '../../axiosRequests/requests'
 import { setNotification } from '../../notifications/actions'
 import { sessionExpired } from '../../utils/session'
 
@@ -18,6 +18,23 @@ export const setUserResults = (param, jwt) => {
         console.log(error.response)
       }
     });
+  }
+}
+
+export const updatePrivillege = (data, jwt) => {
+  return (dispatch) => {
+    return put("users/updatePermission", data, jwt).then((response) => {
+      dispatch(clearUserResults());
+      dispatch(setNotification("Permission level saved", "success", true));
+    }).catch((error) => {
+      console.log(error.response)
+      if(error.response.status === 403){
+        sessionExpired(dispatch);
+      } else {
+        const errorMsg = error.response.data ? error.response.data : "Error - unable to update permission for this user"
+        dispatch(setNotification(errorMsg, "error", true));
+      }
+    })
   }
 }
 

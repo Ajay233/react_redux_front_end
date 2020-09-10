@@ -5,7 +5,7 @@ import Notification from '../notifications/notifications'
 import User from './user'
 import UpdatePermission from './forms/updatePermission'
 
-import { setUserResults, clearUserResults } from './actions'
+import { setUserResults, clearUserResults, updatePrivillege } from './actions'
 import { setNotification } from '../notifications/actions'
 
 import '../stylesheets/editUserPrivilege.css'
@@ -25,8 +25,8 @@ export class EditUserPrivilege extends React.Component {
   }
 
   renderUpdatePermission = () => {
-    const {userResults, userData, setNotification, clearUserResults} = this.props
-    return Object.entries(this.props.userResults).length === 0 ? null : <UpdatePermission userResults={userResults} clearUserResults={clearUserResults} userData={userData} setNotification={setNotification} />;
+    const {userResults, userData, updatePrivillege} = this.props
+    return Object.entries(this.props.userResults).length === 0 ? null : <UpdatePermission userResults={userResults} userData={userData} updatePrivillege={updatePrivillege} />;
   }
 
   render(){
@@ -56,4 +56,4 @@ export const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setUserResults, clearUserResults, setNotification })(EditUserPrivilege)
+export default connect(mapStateToProps, { setUserResults, clearUserResults, setNotification, updatePrivillege })(EditUserPrivilege)

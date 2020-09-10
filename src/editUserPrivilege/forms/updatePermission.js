@@ -1,7 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { put } from '../../axiosRequests/requests';
-import { sessionExpired } from '../../utils/session'
+
 
 class UpdatePermission extends React.Component {
 
@@ -25,24 +24,9 @@ class UpdatePermission extends React.Component {
   }
 
   onSubmit = ({ permission }) => {
-    const { id } = this.props.userResults;
-    const { jwt } = this.props.userData;
-    const successMsg = "Permission level saved";
-    const data = { id: id, permission: permission }
-
-    // This could possibly be moved into a new action creator??
-    put("users/updatePermission", data, jwt).then((response) => {
-      this.props.clearUserResults();
-      this.props.setNotification(successMsg, "success", true);
-    }).catch((error) => {
-      console.log(error.response)
-      if(error.response.status === 403){
-        sessionExpired(this.props.dispatch);
-      } else {
-        const errorMsg = error.response.data ? error.response.data : "Error - unable to update permission for this user"
-        this.props.setNotification(errorMsg, "error", true);
-      }
-    })
+    const { updatePrivillege, userResults, userData } = this.props
+    const data = { id: userResults.id, permission: permission }
+    updatePrivillege(data, userData.jwt)
   }
 
   render(){
