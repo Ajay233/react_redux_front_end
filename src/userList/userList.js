@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { setUserList, clearUserList } from './actions'
+import Notification from '../notifications/notifications'
+import { setUserList, clearUserList, deleteUser } from './actions'
 
 import '../stylesheets/userList.css'
 
@@ -10,9 +11,15 @@ export class UserList extends React.Component {
     this.props.setUserList("users", this.props.userData.jwt);
     document.documentElement.scrollTop = 0;
   }
-  
+
   componentWillUnmount(){
     this.props.clearUserList()
+  }
+
+  deleteUser = (id) => {
+    const { userData, deleteUser } = this.props
+    const config = { data: { id: id } }
+    deleteUser(config, userData.jwt)
   }
 
   renderList = () => {
@@ -24,11 +31,16 @@ export class UserList extends React.Component {
           <div className="surname">{user.surname}</div>
           <div className="email">{user.email}</div>
           <div className="permission">{user.permission}</div>
-          <div className="verified">{user.verified === "true" ? "Yes" : "No"}</div>
+          <div className="verified">{ this.renderVerified(user.verified) }</div>
+          <div className="deleteUser" onClick={() => {this.deleteUser(user.id)}}><i className="fas fa-trash-alt red"></i> Delete</div>
         </div>
       );
     })
     return userList
+  }
+
+  renderVerified = (verified) => {
+    return verified ? <i className="far fa-check-circle green"></i> : <i className="far fa-times-circle red"></i>
   }
 
   renderHeaders = () => {
@@ -39,6 +51,7 @@ export class UserList extends React.Component {
         <div className="emailHeader">Email</div>
         <div className="permissionHeader">Permission</div>
         <div className="verifiedHeader">Verified?</div>
+        <div className="deleteUserHeader"></div>
       </div>
     );
   }
@@ -46,6 +59,7 @@ export class UserList extends React.Component {
   render(){
     return(
       <div className="componentContainer">
+        <Notification />
         <div className="title-large">List of all users</div>
         {this.renderHeaders()}
         {this.renderList()}
@@ -61,4 +75,4 @@ export const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps, { setUserList, clearUserList })(UserList)
+export default connect(mapStateToProps, { setUserList, clearUserList, deleteUser })(UserList)

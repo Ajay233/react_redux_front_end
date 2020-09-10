@@ -37,6 +37,9 @@ exports[`UserList should render a list of users 1`] = `
     >
       Verified?
     </div>
+    <div
+      className="deleteUserHeader"
+    />
   </div>
   <div
     className="userDetails userContainer"
@@ -64,7 +67,18 @@ exports[`UserList should render a list of users 1`] = `
     <div
       className="verified"
     >
-      Yes
+      <i
+        className="far fa-check-circle green"
+      />
+    </div>
+    <div
+      className="deleteUser"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-trash-alt red"
+      />
+       Delete
     </div>
   </div>
   <div
@@ -93,7 +107,18 @@ exports[`UserList should render a list of users 1`] = `
     <div
       className="verified"
     >
-      No
+      <i
+        className="far fa-check-circle green"
+      />
+    </div>
+    <div
+      className="deleteUser"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-trash-alt red"
+      />
+       Delete
     </div>
   </div>
 </div>

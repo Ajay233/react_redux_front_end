@@ -10,11 +10,7 @@
   padding: 10px 5px;
 }
 
-.forename{
-  width: 20%
-}
-
-.surname{
+.forename, .surname{
   width: 20%
 }
 
@@ -22,19 +18,20 @@
   width: 30%
 }
 
-.permission{
-  width: 15%
+.permission, .verified, .deleteUser{
+  width: 10%
 }
 
-.verified{
-  width: 15%
+.verified, .deleteUser {
+  text-align: center;
 }
 
-.forenameHeader{
-  width: 20%
+.deleteUser:hover {
+  color: orange;
+  cursor: pointer;
 }
 
-.surnameHeader{
+.forenameHeader, .surnameHeader{
   width: 20%
 }
 
@@ -42,10 +39,10 @@
   width: 30%
 }
 
-.permissionHeader{
-  width: 15%
+.permissionHeader, .verifiedHeader, .deleteUserHeader{
+  width: 10%
 }
 
-.verifiedHeader{
-  width: 15%
+.verifiedHeader {
+  text-align: center;
 }

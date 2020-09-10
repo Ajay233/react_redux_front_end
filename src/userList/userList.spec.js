@@ -35,9 +35,17 @@ describe("UserList", () => {
   let store;
   let listOfUsers;
   let userData;
+  let notificationData;
 
   beforeEach(() => {
-    store = mockStore({})
+    store = mockStore({
+      notificationData: {
+        message: "",
+        type: "",
+        show: false,
+        timed: true
+      }
+    })
 
     listOfUsers = [
       {
@@ -59,6 +67,7 @@ describe("UserList", () => {
     userData = {
       jwt: "jwt"
     }
+
   })
 
   afterEach(() => {
