@@ -82,6 +82,7 @@ describe("setAnswersReducer", () => {
   })
 
   it("can set the state of answers when passed the DELETE_ANSWER action", () => {
+    const store = mockStore({})
     const initialState = [
       { id: 1, answerIndex: 1 },
       { id: 2, answerIndex: 2 },
@@ -92,12 +93,18 @@ describe("setAnswersReducer", () => {
       { id: 1, answerIndex: 1 },
       { id: 3, answerIndex: 3 }
     ]
-
     const answer = initialState[1]
+    const config = {
+      data: [answer]
+    }
 
-    const action = deleteAnswer(answer);
+    const requestResponse = {
+      status: 200
+    }
 
-    const newState = setAnswersReducer(initialState, action);
+    store.dispatch(deleteAnswer(config, "jwt"))
+    mockAxios.mockResponse(requestResponse)
+    const newState = setAnswersReducer(initialState, store.getActions()[1]);
 
     expect(newState).toEqual(expectedState)
   })

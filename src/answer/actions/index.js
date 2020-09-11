@@ -1,5 +1,6 @@
 import { getUsingParams, post, put, del } from '../../axiosRequests/requests'
 import { setNotification } from '../../notifications/actions'
+import { hideModal } from '../../modal/actions'
 import { sessionExpired } from '../../utils/session'
 import history from '../../history'
 
@@ -51,9 +52,31 @@ export const updateAnswer = (body, jwt) => {
     }).catch((error) => {
       console.log(error.response);
       if(error.response.status === 403){
-        sessionExpired(this.props.dispatch);
+        sessionExpired(dispatch);
       } else {
         dispatch(setNotification("Error - unable to update answer", "error", true));
+      }
+    });
+  }
+}
+
+// delete
+export const deleteAnswer = (config, jwt) => {
+  return (dispatch) => {
+    return del("answer/delete", config, jwt).then((response) => {
+      dispatch(hideModal())
+      dispatch({
+        type: "DELETE_ANSWER",
+        payload: config.data[0]
+      })
+      dispatch(setNotification("Answer deleted", "success", true));
+    }).catch((error) => {
+      console.log(error.response);
+      if(error.response.status === 403){
+        sessionExpired(dispatch);
+      } else {
+        dispatch(hideModal())
+        dispatch(setNotification("Error - Unable to delete this answer", "error", true))
       }
     });
   }
@@ -62,13 +85,6 @@ export const updateAnswer = (body, jwt) => {
 export const setCurrentAnswer = (answer) => {
   return {
     type: "SET_CURRENT_ANSWER",
-    payload: answer
-  }
-}
-
-export const deleteAnswer = (answer) => {
-  return {
-    type: "DELETE_ANSWER",
     payload: answer
   }
 }

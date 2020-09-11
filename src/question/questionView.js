@@ -84,23 +84,11 @@ export class QuestionView extends React.Component {
   }
 
   handleDeleteAnswer = () => {
-    const { currentAnswer, userData, setNotification, deleteAnswer, hideModal } = this.props;
+    const { currentAnswer, userData, deleteAnswer } = this.props;
     const config = {
       data: [currentAnswer]
     }
-    del("answer/delete", config, userData.jwt).then((response) => {
-      hideModal()
-      deleteAnswer(currentAnswer);
-      setNotification("Answer deleted", "success", true);
-    }).catch((error) => {
-      console.log(error.response);
-      if(error.response.status === 403){
-        sessionExpired(this.props.dispatch);
-      } else {
-        hideModal()
-        setNotification("Error - Unable to delete this answer", "error", true)
-      }
-    });
+    deleteAnswer(config, userData.jwt)
   }
 
   handleDeleteQuestion = () => {
@@ -147,15 +135,6 @@ export class QuestionView extends React.Component {
       return <Link to="/editQuiz" className="link back" onClick={this.clearNotification}><i className="fas fa-chevron-circle-left blue"></i> Back</Link>
     }
   }
-
-  // renderDeleteButton = () => {
-  //   return <button data-testid="delete-question-button" onClick={this.triggerModal} className="delete"><i className="fas fa-trash-alt"></i> Delete</button>
-  // }
-
-  // renderOptions = () => {
-  //   const { permission } = this.props.userData
-  //   return permission === "ADMIN" ? <div>{this.renderDeleteButton()}</div> : null
-  // }
 
   render(){
     return(
