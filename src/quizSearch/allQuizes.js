@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Notification from '../notifications/notifications'
-import QuizResults from '../quizSearch/quizResults'
+import QuizResults from './quizResults'
 import Modal from '../modal/modal'
 
-import { getAllQuizes, deleteQuizFromCategory, clearQuizes } from '../quizSearch/actions'
+import { getAllQuizes, deleteQuizFromCategory, clearQuizes } from './actions'
 import { hideModal, showModal, showModal2 } from '../modal/actions'
 import { setNotification } from '../notifications/actions'
 import { getQuestions } from '../question/actions'

@@ -16,7 +16,7 @@ import QuizView from '../quiz/quizView'
 import QuestionView from '../question/questionView'
 import NewQuestionForm from '../question/forms/newQuestion'
 import AnswerView from '../answer/viewAnswer'
-import AllQuizes from '../quiz/allQuizes'
+import AllQuizes from '../quizSearch/allQuizes'
 import QuizStart from '../quizStart/quizStart'
 import { shallow, mount } from 'enzyme'
 import { setNotification } from '../notifications/actions'
@@ -36,7 +36,7 @@ jest.mock('../quiz/quizView')
 jest.mock('../question/questionView')
 jest.mock('../question/forms/newQuestion')
 jest.mock('../answer/viewAnswer')
-jest.mock('../quiz/allQuizes')
+jest.mock('../quizSearch/allQuizes')
 jest.mock('../quizStart/quizStart')
 
 describe("App", () => {
