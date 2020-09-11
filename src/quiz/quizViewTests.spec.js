@@ -4,7 +4,6 @@ import { QuizView, mapStateToProps } from './quizView'
 import { Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
-import mockAxios from 'jest-mock-axios'
 import { render, fireEvent, cleanup } from '@testing-library/react'
 import renderer from 'react-test-renderer'
 import { getQuestions, deleteQuestion, setCurrentQuestion } from '../question/actions'
@@ -12,7 +11,6 @@ import { setNotification } from '../notifications/actions'
 import { getAnswers } from '../answer/actions'
 import { setQuiz, updateQuizStatus, deleteQuiz } from './actions'
 import { hideModal, showModal2, showModal } from '../modal/actions'
-import { sessionExpired } from '../utils/session'
 import history from '../history'
 
 const mockStore = configureStore({})
@@ -23,7 +21,6 @@ jest.mock('../quizSearch/actions')
 jest.mock('../answer/actions')
 jest.mock('./actions')
 jest.mock('../modal/actions')
-jest.mock('../utils/session')
 
 describe("mapStateToProps", () => {
   it("should map state to props", () => {
@@ -168,13 +165,6 @@ describe("Quiz", () => {
       )
     })
 
-    afterEach(() => {
-      hideModal.mockClear()
-      setNotification.mockClear()
-      sessionExpired.mockClear()
-      mockAxios.reset()
-    })
-
     it("should call hideModal and deleteQuestion and then setNotification", () => {
       const requestResponse = {
         data: "DELETED"
@@ -212,48 +202,11 @@ describe("Quiz", () => {
       )
     })
 
-    afterEach(() => {
-      hideModal.mockClear()
-      setNotification.mockClear()
-      sessionExpired.mockClear()
-      mockAxios.reset()
-    })
-
     it("should call hideModal and deleteQuiz before redirectng to 'quizSearch' and calling setNotification", () => {
-      const requestResponse = {
-        data: "DELETED"
-      }
-      history.push = jest.fn()
-      fireEvent.click(component.getByTestId("modal-delete-button"))
-      // mockAxios.mockResponse(requestResponse)
-      // expect(hideModal).toHaveBeenCalledTimes(1)
-      expect(deleteQuiz).toHaveBeenCalledTimes(1)
-      // expect(history.push).toHaveBeenCalledTimes(1)
-      // expect(setNotification).toHaveBeenCalledTimes(1)
-      // expect(setNotification).toHaveBeenCalledWith("Quiz deleted", "success", true)
-    })
 
-    // it("should call sessionExpired if the error status is 403", () => {
-    //   const errorResponse = {
-    //     response: {
-    //       status: 403
-    //     }
-    //   }
-    //   fireEvent.click(component.getByTestId("modal-delete-button"))
-    //   mockAxios.mockError(errorResponse)
-    //   expect(sessionExpired).toHaveBeenCalledTimes(1)
-    // })
-    //
-    // it("should call hideModal and setNotification for any other error", () => {
-    //   const errorResponse = {
-    //     response: {
-    //       status: 404
-    //     }
-    //   }
-    //   fireEvent.click(component.getByTestId("modal-delete-button"))
-    //   mockAxios.mockError(errorResponse)
-    //   expect(hideModal).toHaveBeenCalledTimes(1)
-    //   expect(setNotification).toHaveBeenCalledWith("Error - Unable to delete this quiz", "error", true)
-    // })
+      fireEvent.click(component.getByTestId("modal-delete-button"))
+      expect(deleteQuiz).toHaveBeenCalledTimes(1)
+
+    })
   })
 })
