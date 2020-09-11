@@ -181,34 +181,7 @@ describe("Quiz", () => {
         data: "DELETED"
       }
       fireEvent.click(component.getByTestId("modal-delete-button"))
-      mockAxios.mockResponse(requestResponse)
-      expect(hideModal).toHaveBeenCalledTimes(1)
       expect(deleteQuestion).toHaveBeenCalledTimes(1)
-      expect(setNotification).toHaveBeenCalledTimes(1)
-      expect(setNotification).toHaveBeenCalledWith("Question deleted", "success", true)
-    })
-
-    it("should call sessionExpired if the error status is 403", () => {
-      const errorResponse = {
-        response: {
-          status: 403
-        }
-      }
-      fireEvent.click(component.getByTestId("modal-delete-button"))
-      mockAxios.mockError(errorResponse)
-      expect(sessionExpired).toHaveBeenCalledTimes(1)
-    })
-
-    it("should call hideModal and setNotification for any other error", () => {
-      const errorResponse = {
-        response: {
-          status: 404
-        }
-      }
-      fireEvent.click(component.getByTestId("modal-delete-button"))
-      mockAxios.mockError(errorResponse)
-      expect(hideModal).toHaveBeenCalledTimes(1)
-      expect(setNotification).toHaveBeenCalledWith("Error - Unable to delete this question", "error", true)
     })
   })
 

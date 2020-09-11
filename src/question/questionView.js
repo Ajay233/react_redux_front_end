@@ -11,8 +11,6 @@ import { setNotification } from '../notifications/actions'
 import { hideModal, showModal, showModal2 } from '../modal/actions'
 import { setCurrentAnswer, deleteAnswer } from '../answer/actions'
 import { deleteQuestion } from '../question/actions'
-import { del } from '../axiosRequests/requests'
-import { sessionExpired } from '../utils/session'
 
 import '../stylesheets/question.css'
 import '../stylesheets/answer.css'
@@ -92,24 +90,11 @@ export class QuestionView extends React.Component {
   }
 
   handleDeleteQuestion = () => {
-    const { currentQuestion, userData, setNotification, deleteQuestion, hideModal } = this.props;
+    const { currentQuestion, userData, deleteQuestion } = this.props;
     const config = {
       data: [currentQuestion]
     }
-    del("question/delete", config, userData.jwt).then((response) => {
-      hideModal()
-      deleteQuestion(currentQuestion);
-      history.push("/editQuiz")
-      setNotification("Question deleted", "success", true);
-    }).catch((error) => {
-      console.log(error.response);
-      if(error.response.status === 403){
-        sessionExpired(this.props.dispatch);
-      } else {
-        hideModal()
-        setNotification("Error - Unable to delete this question", "error", true)
-      }
-    });
+    deleteQuestion(config, userData.jwt)
   }
 
   clearNotification = () => {

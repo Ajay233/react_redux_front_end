@@ -2,6 +2,7 @@ import { getUsingParams, post, put, del } from '../../axiosRequests/requests'
 import { getAnswers } from '../../answer/actions'
 import { sessionExpired } from '../../utils/session'
 import { setNotification } from '../../notifications/actions'
+import { hideModal } from '../../modal/actions'
 import history from '../../history'
 
 export const addQuestion = (body, jwt) => {
@@ -82,10 +83,25 @@ export const setCurrentQuestion = (question) => {
   }
 }
 
-export const deleteQuestion = (question) => {
-  return {
-    type: "DELETE_QUESTION",
-    payload: question
+export const deleteQuestion = (config, jwt) => {
+  return (dispatch) => {
+    return del("question/delete", config, jwt).then((response) => {
+      dispatch(hideModal())
+      dispatch({
+        type: "DELETE_QUESTION",
+        payload: config.data[0]
+      })
+      history.push("/editQuiz")
+      dispatch(setNotification("Question deleted", "success", true));
+    }).catch((error) => {
+      console.log(error.response);
+      if(error.response.status === 403){
+        sessionExpired(dispatch);
+      } else {
+        dispatch(hideModal())
+        dispatch(setNotification("Error - Unable to delete this question", "error", true))
+      }
+    });
   }
 }
 

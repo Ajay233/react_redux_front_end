@@ -8,7 +8,6 @@ import { mapStateToProps } from './questionView'
 import configureStore from 'redux-mock-store'
 import renderer from 'react-test-renderer'
 import { render, fireEvent, cleanup } from '@testing-library/react'
-import mockAxios from 'jest-mock-axios'
 import history from '../history'
 
 import { setNotification } from '../notifications/actions'
@@ -17,7 +16,6 @@ import { setCurrentAnswer, deleteAnswer } from '../answer/actions'
 import { deleteQuestion } from '../question/actions'
 import { sessionExpired } from '../utils/session'
 
-jest.mock('../axiosRequests/axiosUtil')
 jest.mock('../notifications/actions')
 jest.mock('../modal/actions')
 jest.mock('../answer/actions')
@@ -129,13 +127,6 @@ describe("QuestionView", () => {
 
   })
 
-  afterEach(() => {
-    setNotification.mockClear()
-    history.push.mockClear()
-    mockAxios.reset()
-    cleanup()
-  })
-
   it("should render the QuestionView component, question details and answers", () => {
     const renderedComponent = renderer.create(
       <Provider store={store}>
@@ -223,12 +214,6 @@ describe("QuestionView", () => {
       );
     })
 
-    afterEach(() => {
-      setNotification.mockClear()
-      hideModal.mockClear()
-      mockAxios.reset()
-      cleanup()
-    })
 
     it("should call action creators to delete a question, set notification and change url", () => {
 
@@ -237,43 +222,8 @@ describe("QuestionView", () => {
       }
 
       fireEvent.click(component.getByTestId("modal-delete-button"))
-      mockAxios.mockResponse(requestResponse)
-      expect(hideModal).toHaveBeenCalledTimes(1)
       expect(deleteQuestion).toHaveBeenCalledTimes(1)
-      expect(history.push).toHaveBeenCalledTimes(1)
-      expect(setNotification).toHaveBeenCalledTimes(1)
     })
-
-    it("should call sessionExpired if the error status is 403", () => {
-
-      const errorResponse = {
-        response: {
-          status: 403
-        }
-      }
-
-      fireEvent.click(component.getByTestId("modal-delete-button"))
-      mockAxios.mockError(errorResponse)
-      expect(sessionExpired).toHaveBeenCalledTimes(1)
-
-    })
-
-    it("should call setNotification for any other error", () => {
-
-      const errorResponse = {
-        response: {
-          status: 404
-        }
-      }
-      const msg = "Error - Unable to delete this question"
-      fireEvent.click(component.getByTestId("modal-delete-button"))
-      mockAxios.mockError(errorResponse)
-      expect(hideModal).toHaveBeenCalledTimes(1)
-      expect(setNotification).toHaveBeenCalledTimes(1)
-      expect(setNotification).toHaveBeenCalledWith(msg, "error", true)
-
-    })
-
   })
 
   describe("handleDeleteAnswer", () => {
@@ -310,14 +260,6 @@ describe("QuestionView", () => {
       );
     })
 
-    afterEach(() => {
-      setNotification.mockClear()
-      hideModal.mockClear()
-      sessionExpired.mockClear()
-      mockAxios.reset()
-      cleanup()
-    })
-
     it("should call action creators to delete an answer, set notification and change url", () => {
 
       const requestResponse = {
@@ -325,41 +267,7 @@ describe("QuestionView", () => {
       }
 
       fireEvent.click(component.getByTestId("modal-delete-button"))
-      // mockAxios.mockResponse(requestResponse)
-      // expect(hideModal).toHaveBeenCalledTimes(1)
       expect(deleteAnswer).toHaveBeenCalledTimes(1)
-      // expect(setNotification).toHaveBeenCalledTimes(1)
     })
-
-    // it("should call sessionExpired if the error status is 403", () => {
-    //
-    //   const errorResponse = {
-    //     response: {
-    //       status: 403
-    //     }
-    //   }
-    //
-    //   fireEvent.click(component.getByTestId("modal-delete-button"))
-    //   mockAxios.mockError(errorResponse)
-    //   expect(sessionExpired).toHaveBeenCalledTimes(1)
-    //
-    // })
-    //
-    // it("should call setNotification for any other error", () => {
-    //
-    //   const errorResponse = {
-    //     response: {
-    //       status: 404
-    //     }
-    //   }
-    //   const msg = "Error - Unable to delete this answer"
-    //   fireEvent.click(component.getByTestId("modal-delete-button"))
-    //   mockAxios.mockError(errorResponse)
-    //   expect(hideModal).toHaveBeenCalledTimes(1)
-    //   expect(setNotification).toHaveBeenCalledTimes(1)
-    //   expect(setNotification).toHaveBeenCalledWith(msg, "error", true)
-    //
-    // })
-
   })
 })

@@ -52,23 +52,11 @@ export class QuizView extends React.Component {
   }
 
   handleDeleteQuestion = () => {
-    const { currentQuestion, userData, setNotification, deleteQuestion, hideModal } = this.props;
+    const { currentQuestion, userData, deleteQuestion } = this.props;
     const config = {
       data: [currentQuestion]
     }
-    del("question/delete", config, userData.jwt).then((response) => {
-      hideModal()
-      deleteQuestion(currentQuestion);
-      setNotification("Question deleted", "success", true);
-    }).catch((error) => {
-      console.log(error.response);
-      if(error.response.status === 403){
-        sessionExpired(this.props.dispatch);
-      } else {
-        hideModal()
-        setNotification("Error - Unable to delete this question", "error", true)
-      }
-    });
+    deleteQuestion(config, userData.jwt)
   }
 
   handleDeleteQuiz = () => {
@@ -144,19 +132,6 @@ export class QuizView extends React.Component {
     event.preventDefault()
     this.props.showModal2()
   }
-
-  // renderDeleteButton = () => {
-  //   return <button data-testid="delete-quiz-button" onClick={this.triggerModal} className="delete"><i className="fas fa-trash-alt"></i> Delete</button>
-  // }
-  //
-  // renderStatusButton = () => {
-  //   const { quiz } = this.props;
-  //   return( <button data-testid="updateStatus-button" className={quiz.status === "DRAFT" ? "save" : "warningButton"} onClick={this.updateStatus}>
-  //             { quiz.status === "DRAFT" ? <i className="far fa-check-circle"></i> : <i className="fas fa-pencil-ruler"></i>}
-  //             { quiz.status === "DRAFT" ? " Mark as Ready" : " Revert to draft" }
-  //           </button>
-  //   );
-  // }
 
   updateStatus = (event) => {
     event.preventDefault()

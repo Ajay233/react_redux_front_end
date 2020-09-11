@@ -34,10 +34,14 @@ describe("setQuestionsReducer", () => {
   })
 
   it("should delete a question from the questions store if passed an action from deleteQuestion", () => {
+    const store = mockStore({})
     const initialState = [{ id: 1, questionNumber: 1 } , { id: 2, questionNumber: 2 } , { id: 3, questionNumber: 3 }]
     const expectedState = [{ id: 1, questionNumber: 1 } , { id: 3, questionNumber: 3 }]
-    const question = initialState[1]
-    const newState = setQuestionsReducer(initialState, deleteQuestion(question));
+    const config = { data: [initialState[1]] }
+    const requestResponse = { status: 200 }
+    store.dispatch(deleteQuestion(config, "jwt"))
+    mockAxios.mockResponse(requestResponse)
+    const newState = setQuestionsReducer(initialState, store.getActions()[1]);
     expect(newState).toEqual(expectedState)
   })
 

@@ -92,14 +92,95 @@ describe("getQuestions", () => {
 
 describe("deleteQuestion", () => {
   it("should return an action that will delete a question from the questions store", () => {
+    const store = mockStore({})
+
     const expectedAction = {
+      type: "HIDE_MODAL",
+      payload: {
+        showModal: false,
+        showModal2: false,
+        showModal3: false,
+        imgPath: null
+      }
+    }
+
+    const expectedAction2 = {
       type: "DELETE_QUESTION",
       payload: { id: 1 }
     }
 
-    const question = { id: 1 }
+    const expectedAction3 = {
+      type: "SET_NOTIFICATION",
+      payload: {
+        message: "Question deleted",
+        type: "success",
+        show: true,
+        timed: true
+      }
+    }
 
-    expect(deleteQuestion(question)).toEqual(expectedAction)
+    const requestResponse = {
+      status: 200
+    }
+
+    const config = {
+      data: [{ id: 1 }]
+    }
+
+    store.dispatch(deleteQuestion(config, "jwt"))
+    mockAxios.mockResponse(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
+  })
+
+  it("should call sessionExpired if the error response status is 403", () => {
+    const store = mockStore({})
+
+    const requestResponse = {
+      response: {
+        status: 403
+      }
+    }
+
+    store.dispatch(deleteQuestion())
+    mockAxios.mockError(requestResponse)
+    expect(sessionExpired).toHaveBeenCalledTimes(1)
+  })
+
+  it("should call setNotification if the error response status is anything else", () => {
+    const store = mockStore({})
+
+    const requestResponse = {
+      response: {
+        status: 404
+      }
+    }
+
+    const expectedAction = {
+      type: "HIDE_MODAL",
+      payload: {
+        showModal: false,
+        showModal2: false,
+        showModal3: false,
+        imgPath: null
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_NOTIFICATION",
+      payload: {
+        message: "Error - Unable to delete this question",
+        type: "error",
+        show: true,
+        timed: true
+      }
+    }
+
+    store.dispatch(deleteQuestion())
+    mockAxios.mockError(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
   })
 })
 
