@@ -19,6 +19,10 @@ jest.mock("../../utils/session")
 const middlewares = [thunk]
 const mockStore = configuerMockStore(middlewares)
 
+beforeEach(() => {
+  sessionExpired.mockClear()
+})
+
 describe("setQuizes", () => {
   it("should return an action to set quizes in the quizes store", () => {
     const expectedAction = {
@@ -255,16 +259,79 @@ describe("getQuizSearchResults", () => {
 })
 
 describe("deleteQuiz", () => {
-  it("should return an action to delete a quiz from the quizes store", () => {
+  it("should return an action to hide modal, delete a quiz and set notification", () => {
+    const store = mockStore({})
+    const config = { data: { id: 1, name: "test" } }
+
     const expectedAction = {
+      type: "HIDE_MODAL",
+      payload: {
+        showModal: false,
+        showModal2: false,
+        showModal3: false,
+        imgPath: null
+      }
+    }
+
+    const expectedAction2 = {
       type: "DELETE_QUIZ",
       payload: { id: 1, name: "test" }
     }
 
-    const quiz = { id: 1, name: "test" }
+    const expectedAction3 = {
+      type: "SET_NOTIFICATION",
+      payload: {
+        message: "Quiz deleted",
+        type: "success",
+        show: true,
+        timed: true
+      }
+    }
 
-    expect(deleteQuiz(quiz)).toEqual(expectedAction)
+    const requestResponse = { status: 200 }
 
+    store.dispatch(deleteQuiz(config, "jwt"))
+    mockAxios.mockResponse(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
+  })
+
+  it("should call sessionExpired on error status 403", () => {
+    const store = mockStore({})
+    const requestResponse = { response: { status: 403 } }
+
+    store.dispatch(deleteQuiz())
+    mockAxios.mockError(requestResponse)
+    expect(sessionExpired).toHaveBeenCalledTimes(1)
+  })
+
+  it("should return an action to hide modal and set notification for any other error", () => {
+    const store = mockStore({})
+    const requestResponse = { response: { status: 404 } }
+    const expectedAction = {
+      type: "HIDE_MODAL",
+      payload: {
+        showModal: false,
+        showModal2: false,
+        showModal3: false,
+        imgPath: null
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_NOTIFICATION",
+      payload: {
+        message: "Error - Unable to delete this quiz",
+        type: "error",
+        show: true,
+        timed: true
+      }
+    }
+    store.dispatch(deleteQuiz())
+    mockAxios.mockError(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
   })
 })
 

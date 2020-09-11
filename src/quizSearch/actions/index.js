@@ -1,6 +1,7 @@
-import { get, getUsingParams } from '../../axiosRequests/requests';
+import { get, getUsingParams, del } from '../../axiosRequests/requests';
 import { setNotification } from '../../notifications/actions'
 import { sessionExpired } from '../../utils/session'
+import { hideModal } from '../../modal/actions'
 
 export const setQuizes = (quizes) => {
   return {
@@ -50,12 +51,33 @@ export const getQuizSearchResults = (endpoint, data, token, permission, errorMsg
   }
 }
 
-export const deleteQuiz = (quiz) => {
-  return {
-    type: "DELETE_QUIZ",
-    payload: quiz
+export const deleteQuiz = (config, jwt) => {
+  return (dispatch) => {
+    return del("quiz/delete", config, jwt).then((response) => {
+      dispatch(hideModal())
+      dispatch({
+        type: "DELETE_QUIZ",
+        payload: config.data
+      })
+      dispatch(setNotification("Quiz deleted", "success", true))
+    }).catch((error) => {
+      console.log(error.response)
+      if(error.response.status === 403){
+        sessionExpired(dispatch);
+      } else {
+        dispatch(hideModal())
+        dispatch(setNotification("Error - Unable to delete this quiz", "error", true))
+      }
+    })
   }
 }
+
+// export const deleteQuiz = (quiz) => {
+//   return {
+//     type: "DELETE_QUIZ",
+//     payload: quiz
+//   }
+// }
 
 export const addQuiz = (quiz) => {
   return {

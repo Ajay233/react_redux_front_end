@@ -4,7 +4,6 @@ import { QuizSearch, mapStateToProps } from './quizSearch'
 import { Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
-import mockAxios from 'jest-mock-axios'
 import { render, fireEvent, cleanup } from '@testing-library/react'
 import renderer from 'react-test-renderer'
 import history from '../history'
@@ -69,13 +68,6 @@ describe("QuizSearch", () => {
     ReactDOM.createPortal = jest.fn((element, node) => {
       return element
     })
-  })
-
-  afterEach(() => {
-    setNotification.mockClear()
-    hideModal.mockClear()
-    mockAxios.reset()
-    cleanup()
   })
 
   it("should render quiz serchByName, searchByCategory forms and results", () => {
@@ -143,42 +135,8 @@ describe("QuizSearch", () => {
     })
 
     it("should call hideModal, deleteQuiz and then setNotification", () => {
-      const requestResponse = {
-        data: "DELETED"
-      }
-
       fireEvent.click(component.getByTestId("modal-delete-button"))
-      mockAxios.mockResponse(requestResponse)
-      expect(hideModal).toHaveBeenCalledTimes(1)
       expect(deleteQuiz).toHaveBeenCalledTimes(1)
-      expect(deleteQuiz).toHaveBeenCalledWith(quizToDelete)
-      expect(setNotification).toHaveBeenCalledTimes(1)
-      expect(setNotification).toHaveBeenCalledWith("Quiz deleted", "success", true)
-    })
-
-    it("should call sessionExpired when a 403 error status is recieved", () => {
-      const errorResponse = {
-        response: {
-          status: 403
-        }
-      }
-
-      fireEvent.click(component.getByTestId("modal-delete-button"))
-      mockAxios.mockError(errorResponse)
-      expect(sessionExpired).toHaveBeenCalledTimes(1)
-    })
-
-    it("should call setNotification when any other error is recieved", () => {
-      const errorResponse = {
-        response: {
-          status: 404
-        }
-      }
-
-      fireEvent.click(component.getByTestId("modal-delete-button"))
-      mockAxios.mockError(errorResponse)
-      expect(setNotification).toHaveBeenCalledTimes(1)
-      expect(setNotification).toHaveBeenCalledWith("Error - Unable to delete this quiz", "error", true)
     })
   })
 

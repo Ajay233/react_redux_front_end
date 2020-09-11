@@ -5,13 +5,11 @@ import QuizSearchByName from './forms/findQuizByName'
 import QuizSearchByCategory from './forms/findQuizByCategory'
 import Notification from '../notifications/notifications'
 import Modal from '../modal/modal'
-import { del } from '../axiosRequests/requests'
 import { setNotification } from '../notifications/actions'
 import { setQuizes, getQuizSearchResults, deleteQuiz, clearQuizes } from './actions'
 import { getQuestions } from '../question/actions'
 import { setQuiz } from '../quiz/actions'
 import { hideModal, showModal, showModal2 } from '../modal/actions'
-import { sessionExpired } from '../utils/session'
 import history from '../history'
 
 import "../stylesheets/quizSearch.css"
@@ -83,23 +81,9 @@ export class QuizSearch extends React.Component {
   }
 
   handleDelete = () => {
-    const { quiz, userData, deleteQuiz, setNotification, hideModal } = this.props;
-    const config = {
-      data: quiz
-    }
-    del("quiz/delete", config, userData.jwt).then((response) => {
-      hideModal()
-      deleteQuiz(quiz)
-      setNotification("Quiz deleted", "success", true)
-    }).catch((error) => {
-      console.log(error.response)
-      if(error.response.status === 403){
-        sessionExpired(this.props.dispatch);
-      } else {
-        hideModal()
-        setNotification("Error - Unable to delete this quiz", "error", true)
-      }
-    })
+    const { quiz, userData, deleteQuiz } = this.props;
+    const config = { data: quiz }
+    deleteQuiz(config, userData.jwt)
   }
 
   handleStartQuiz = () => {

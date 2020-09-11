@@ -95,6 +95,7 @@ describe("", () => {
   })
 
   it("should use the payload from deleteQuiz to remove a quiz from the state", () => {
+    const store = mockStore({})
     const initialState = [
       {id: 1, name: "test1", status: "DRAFT"},
       {id: 2, name: "test2", status: "DRAFT"},
@@ -106,9 +107,11 @@ describe("", () => {
       {id: 3, name: "test3", status: "DRAFT"}
     ]
 
-    const quiz = initialState[1]
-
-    const newState = setQuizSearchReducer(initialState, deleteQuiz(quiz))
+    const config = { data: initialState[1] }
+    const requestResponse = { status: 200 }
+    store.dispatch(deleteQuiz(config, "jwt"))
+    mockAxios.mockResponse(requestResponse)
+    const newState = setQuizSearchReducer(initialState, store.getActions()[1])
     expect(newState).toEqual(expectedState)
   })
 
