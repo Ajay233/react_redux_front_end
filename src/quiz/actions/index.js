@@ -1,7 +1,8 @@
-import { post, put } from '../../axiosRequests/requests'
+import { post, put, del } from '../../axiosRequests/requests'
 import { setNotification } from '../../notifications/actions'
 import { sessionExpired } from '../../utils/session'
 import { clearQuestions } from '../../question/actions'
+import { hideModal } from '../../modal/actions'
 import history from '../../history'
 
 export const setQuiz = (quiz) => {
@@ -40,6 +41,28 @@ export const updateQuiz = (body, jwt) => {
         sessionExpired(dispatch);
       } else {
         dispatch(setNotification("Error - Unable to update quiz", "error", true));
+      }
+    })
+  }
+}
+
+export const deleteQuiz = (config, jwt) => {
+  return (dispatch) => {
+    return del("quiz/delete", config, jwt).then((response) => {
+      dispatch(hideModal())
+      dispatch({
+        type: "DELETE_QUIZ",
+        payload: { id: "", name: "", description: "", category: "", status: "" }
+      })
+      history.push("/quizSearch")
+      dispatch(setNotification("Quiz deleted", "success", true))
+    }).catch((error) => {
+      console.log(error.response)
+      if(error.response.status === 403){
+        sessionExpired(dispatch);
+      } else {
+        dispatch(hideModal())
+        dispatch(setNotification("Error - Unable to delete this quiz", "error", true))
       }
     })
   }

@@ -21,9 +21,9 @@ export class AllQuizes extends React.Component {
     document.documentElement.scrollTop = 0;
   }
 
-  // componentWillUnmount(){
-  //   this.props.clearQuizes();
-  // }
+  componentWillUnmount(){
+    this.props.clearQuizes();
+  }
 
   renderModal = () => {
     const { hideModal } = this.props

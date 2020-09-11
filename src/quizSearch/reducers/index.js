@@ -1,5 +1,6 @@
 import { deleteQuizFromCategory } from '../../utils/deleteActions'
 
+// This may need to be split into a separate reducer for All Quizzes
 export const setQuizSearchReducer = (state=[], action) => {
   switch (action.type) {
     case "SET_QUIZES": return action.payload;

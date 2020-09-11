@@ -7,12 +7,9 @@ import UpdateQuizForm from './forms/updateQuiz'
 import Modal from '../modal/modal'
 import { getQuestions, deleteQuestion, setCurrentQuestion } from '../question/actions'
 import { setNotification } from '../notifications/actions'
-import { deleteQuiz } from '../quizSearch/actions'
 import { getAnswers } from '../answer/actions'
-import { setQuiz, updateQuizStatus } from './actions'
+import { setQuiz, updateQuizStatus, deleteQuiz } from './actions'
 import { hideModal, showModal2, showModal } from '../modal/actions'
-import { del } from '../axiosRequests/requests'
-import { sessionExpired } from '../utils/session'
 import history from '../history'
 
 import '../stylesheets/quiz.css'
@@ -53,31 +50,14 @@ export class QuizView extends React.Component {
 
   handleDeleteQuestion = () => {
     const { currentQuestion, userData, deleteQuestion } = this.props;
-    const config = {
-      data: [currentQuestion]
-    }
+    const config = { data: [currentQuestion] }
     deleteQuestion(config, userData.jwt)
   }
 
   handleDeleteQuiz = () => {
-    const { quiz, userData, deleteQuiz, setNotification, hideModal } = this.props;
-    const config = {
-      data: quiz
-    }
-    del("quiz/delete", config, userData.jwt).then((response) => {
-      hideModal()
-      deleteQuiz(quiz)
-      history.push("/quizSearch")
-      setNotification("Quiz deleted", "success", true)
-    }).catch((error) => {
-      console.log(error.response)
-      if(error.response.status === 403){
-        sessionExpired(this.props.dispatch);
-      } else {
-        hideModal()
-        setNotification("Error - Unable to delete this quiz", "error", true)
-      }
-    })
+    const { quiz, userData, deleteQuiz } = this.props;
+    const config = { data: quiz }
+    deleteQuiz(config, userData.jwt)
   }
 
   renderDetails = () => {

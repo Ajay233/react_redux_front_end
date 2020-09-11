@@ -1,4 +1,4 @@
-import { setQuiz, updateQuizStatus } from '../actions'
+import { setQuiz, updateQuizStatus, deleteQuiz } from '../actions'
 import { setQuizReducer } from './index'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
@@ -33,6 +33,32 @@ describe("setQuizReducer", () => {
     const newState = setQuizReducer(initialState, setQuiz(question))
 
     expect(newState).toEqual(expectedState)
+  })
+
+  it("should set the status of a quiz in the store when passed DELETE_QUIZ", () => {
+    const store = mockStore({})
+    const requestResponse = { status: 200 }
+    const initialState = {
+      id: "1",
+      name: "Test",
+      description: "Test description",
+      category: "Test category",
+      status: "DRAFT"
+    }
+
+    const expectedState = {
+      id: "",
+      name: "",
+      description: "",
+      category: "",
+      status: ""
+    }
+
+    store.dispatch(deleteQuiz())
+    mockAxios.mockResponse(requestResponse)
+    const newState = setQuizReducer(initialState, store.getActions()[1])
+    expect(newState).toEqual(expectedState)
+
   })
 
   it("should set the status of a quiz in the store when passed an action from updateQuizStatus", () => {
