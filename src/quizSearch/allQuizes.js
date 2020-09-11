@@ -9,8 +9,6 @@ import { hideModal, showModal, showModal2 } from '../modal/actions'
 import { setNotification } from '../notifications/actions'
 import { getQuestions } from '../question/actions'
 import { setQuiz } from '../quiz/actions'
-import { del } from '../axiosRequests/requests'
-import { sessionExpired } from '../utils/session'
 import history from '../history'
 
 import "../stylesheets/allQuizzes.css"
@@ -135,23 +133,9 @@ export class AllQuizes extends React.Component {
   }
 
   handleDelete = () => {
-    const { quiz, userData, deleteQuizFromCategory, setNotification, hideModal } = this.props;
-    const config = {
-      data: quiz
-    }
-    del("quiz/delete", config, userData.jwt).then((response) => {
-      hideModal()
-      deleteQuizFromCategory(quiz)
-      setNotification("Quiz deleted", "success", true)
-    }).catch((error) => {
-      console.log(error.response)
-      if(error.response.status === 403){
-        sessionExpired(this.props.dispatch);
-      } else {
-        hideModal()
-        setNotification("Error - Unable to delete this quiz", "error", true)
-      }
-    })
+    const { quiz, userData, deleteQuizFromCategory } = this.props;
+    const config = { data: quiz }
+    deleteQuizFromCategory(config, userData.jwt)
   }
 
   handleStartQuiz = () => {

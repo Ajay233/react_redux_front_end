@@ -361,13 +361,76 @@ describe("clearQuizes", () => {
 
 describe("deleteQuizFromCategory", () => {
   it("should return an action to quiz from a category's quizList in quizes store", () => {
+    const store = mockStore({})
+
     const expectedAction = {
+      type: "HIDE_MODAL",
+      payload: {
+        showModal: false,
+        showModal2: false,
+        showModal3: false,
+        imgPath: null
+      }
+    }
+
+    const expectedAction2 = {
       type: "DELETE_QUIZ_FROM_CATEGORY",
       payload: { id: 1, name: "test" }
     }
 
-    const quiz = { id: 1, name: "test" }
+    const expectedAction3 = {
+      type: "SET_NOTIFICATION",
+      payload: {
+        message: "Quiz deleted",
+        type: "success",
+        show: true,
+        timed: true
+      }
+    }
 
-    expect(deleteQuizFromCategory(quiz)).toEqual(expectedAction)
+    const config = { data: { id: 1, name: "test" } }
+    const requestResponse = { status: 200 }
+    store.dispatch(deleteQuizFromCategory(config, "jwt"))
+    mockAxios.mockResponse(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
+  })
+
+  it("should call sessionExpired on error status 403", () => {
+    const store = mockStore({})
+    const requestResponse = { response: { status: 403 } }
+
+    store.dispatch(deleteQuizFromCategory())
+    mockAxios.mockError(requestResponse)
+    expect(sessionExpired).toHaveBeenCalledTimes(1)
+  })
+
+  it("should return an action to hide modal and set notification for any other error", () => {
+    const store = mockStore({})
+    const requestResponse = { response: { status: 404 } }
+    const expectedAction = {
+      type: "HIDE_MODAL",
+      payload: {
+        showModal: false,
+        showModal2: false,
+        showModal3: false,
+        imgPath: null
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_NOTIFICATION",
+      payload: {
+        message: "Error - Unable to delete this quiz",
+        type: "error",
+        show: true,
+        timed: true
+      }
+    }
+    store.dispatch(deleteQuizFromCategory())
+    mockAxios.mockError(requestResponse)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
   })
 })

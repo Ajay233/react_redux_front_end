@@ -72,13 +72,6 @@ export const deleteQuiz = (config, jwt) => {
   }
 }
 
-// export const deleteQuiz = (quiz) => {
-//   return {
-//     type: "DELETE_QUIZ",
-//     payload: quiz
-//   }
-// }
-
 export const addQuiz = (quiz) => {
   return {
     type: "ADD_QUIZ",
@@ -93,9 +86,23 @@ export const clearQuizes = () => {
   }
 }
 
-export const deleteQuizFromCategory = (quiz) => {
-  return {
-    type: "DELETE_QUIZ_FROM_CATEGORY",
-    payload: quiz
+export const deleteQuizFromCategory = (config, jwt) => {
+  return (dispatch) => {
+    return del("quiz/delete", config, jwt).then((response) => {
+      dispatch(hideModal())
+      dispatch({
+        type: "DELETE_QUIZ_FROM_CATEGORY",
+        payload: config.data
+      })
+      dispatch(setNotification("Quiz deleted", "success", true))
+    }).catch((error) => {
+      console.log(error.response)
+      if(error.response.status === 403){
+        sessionExpired(dispatch);
+      } else {
+        dispatch(hideModal())
+        dispatch(setNotification("Error - Unable to delete this quiz", "error", true))
+      }
+    })
   }
 }

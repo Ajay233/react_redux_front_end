@@ -5,7 +5,6 @@ import { Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { mount } from 'enzyme'
 import configureStore from 'redux-mock-store'
-import mockAxios from 'jest-mock-axios'
 import { render, fireEvent, cleanup } from '@testing-library/react'
 import renderer from 'react-test-renderer'
 import { getAllQuizes, deleteQuizFromCategory, clearQuizes } from './actions'
@@ -167,12 +166,6 @@ describe("AllQuizes", () => {
 
     const renderModal1 = { showModal: true, showModal2: false, showModal3: false }
 
-    afterEach(() => {
-      setNotification.mockClear()
-      hideModal.mockClear()
-      mockAxios.reset()
-    })
-
     it("should call action creators when a quiz has been deleted", () => {
 
       const wrapper = render(
@@ -191,77 +184,10 @@ describe("AllQuizes", () => {
         </Provider>
       )
 
-      const requestResponse = {
-        data: "DELETED"
-      }
-
       fireEvent.click(wrapper.getByTestId("modal-delete-button"))
-      mockAxios.mockResponse(requestResponse)
-      expect(hideModal).toHaveBeenCalledTimes(1)
       expect(deleteQuizFromCategory).toHaveBeenCalledTimes(1)
-      expect(setNotification).toHaveBeenCalledTimes(1)
-      expect(setNotification).toHaveBeenCalledWith("Quiz deleted", "success", true)
     })
 
-    it("should call sessionExpired if the error status is 403", () => {
-
-      const wrapper = render(
-        <Provider store={store}>
-          <Router history={history}>
-            <AllQuizes
-              userData={userData}
-              modalState={renderModal1}
-              quizes={quizes}
-              clearQuizes={clearQuizes}
-              hideModal={hideModal}
-              deleteQuizFromCategory={deleteQuizFromCategory}
-              setNotification={setNotification}
-            />
-          </Router>
-        </Provider>
-      )
-
-      const errorResponse = {
-        response: {
-          status: 403
-        }
-      }
-
-      fireEvent.click(wrapper.getByTestId("modal-delete-button"))
-      mockAxios.mockError(errorResponse)
-      expect(sessionExpired).toHaveBeenCalledTimes(1)
-    })
-
-    it("should call setNotification for any other error", () => {
-
-      const wrapper = render(
-        <Provider store={store}>
-          <Router history={history}>
-            <AllQuizes
-              userData={userData}
-              modalState={renderModal1}
-              quizes={quizes}
-              clearQuizes={clearQuizes}
-              hideModal={hideModal}
-              deleteQuizFromCategory={deleteQuizFromCategory}
-              setNotification={setNotification}
-            />
-          </Router>
-        </Provider>
-      )
-
-      const errorResponse = {
-        response: {
-          status: 404
-        }
-      }
-
-      fireEvent.click(wrapper.getByTestId("modal-delete-button"))
-      mockAxios.mockError(errorResponse)
-      expect(hideModal).toHaveBeenCalledTimes(1)
-      expect(setNotification).toHaveBeenCalledTimes(1)
-      expect(setNotification).toHaveBeenCalledWith("Error - Unable to delete this quiz", "error", true)
-    })
   })
 
   describe("handleStartQuiz", () => {

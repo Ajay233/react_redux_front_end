@@ -160,6 +160,7 @@ describe("", () => {
 
 
   it("should delete a quiz from a category's quizList", () => {
+      const store = mockStore({})
       const initialState = [
         {
           category: "test1",
@@ -213,8 +214,11 @@ describe("", () => {
         }
       ]
 
-      const quiz = initialState[1].quizList[1]
-      const newState = setQuizSearchReducer(initialState, deleteQuizFromCategory(quiz))
+      const config = { data: initialState[1].quizList[1] }
+      const requestResponse = { status: 200 }
+      store.dispatch(deleteQuizFromCategory(config, "jwt"))
+      mockAxios.mockResponse(requestResponse)
+      const newState = setQuizSearchReducer(initialState, store.getActions()[1])
       expect(newState).toEqual(expectedState)
   })
 
