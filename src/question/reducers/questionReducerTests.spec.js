@@ -54,7 +54,7 @@ describe("setQuestionsReducer", () => {
       { id: 4, questionNumber: 4 },
       { id: 5, questionNumber: 5 }
     ]
-    const requestResponse = { data: [{id: 4, questionNumber: 4 }] }
+    const requestResponse = { data: {id: 4, questionNumber: 4 } }
 
     store.dispatch(addQuestion())
     mockAxios.mockResponse(requestResponse)
@@ -66,7 +66,7 @@ describe("setQuestionsReducer", () => {
     const store = mockStore({})
     const initialState = [{ id: 1, questionNumber: 1 }, { id: 2, questionNumber: 2 }, { id: 4, questionNumber: 4 }]
     const expectedState = [{ id: 2, questionNumber: 2 }, { id: 1, questionNumber: 3 }, { id: 4, questionNumber: 4 }]
-    const requestResponse = { data: [{ id: 1, questionNumber: 3 }] }
+    const requestResponse = { data: { id: 1, questionNumber: 3 } }
 
     store.dispatch(updateQuestion())
     mockAxios.mockResponse(requestResponse)

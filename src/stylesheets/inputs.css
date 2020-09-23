@@ -35,3 +35,37 @@
 .select-half {
   width: 50%;
 }
+
+.custom-file-input {
+  border: none;
+  padding: 0;
+  background-color: white;
+  color: black;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: 'Choose file';
+  color: white;
+  display: inline-block;
+  background-color: rgb(0, 104, 217);
+  /* border: 1px solid #999; */
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 10pt;
+}
+.custom-file-input:hover::before {
+  background-color: rgb(0, 80, 198);
+  cursor: pointer;
+}
+.custom-file-input:active::before {
+  background-color: rgb(0, 80, 198);
+}

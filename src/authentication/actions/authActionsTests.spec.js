@@ -114,7 +114,8 @@ describe("setUser", () => {
 
     let requestError = {
       response:{
-        status: 400
+        status: 400,
+        data: "The username or password you entered was incorrect"
       }
     }
 

@@ -32,7 +32,7 @@ export const rootReducer = (state, action) => {
 
 export const allReducers = combineReducers({
   userData: setUserReducer,
-  verificationProcess: setVerificationProcessStatus,
+  verificationProcess: setVerificationProcessStatus,  // Rename this to reducer
   navBarState: navBarReducer,
   redirect: setRedirectReducer,
   notificationData: setNotificationReducer,

@@ -1,3 +1,4 @@
+import { reset } from 'redux-form'
 import { getUsingParams, post, put, del } from '../../axiosRequests/requests'
 import { getAnswers } from '../../answer/actions'
 import { sessionExpired } from '../../utils/session'
@@ -7,10 +8,10 @@ import history from '../../history'
 
 export const addQuestion = (body, jwt) => {
   return (dispatch) => {
-    return post("question/create", [body], jwt).then((response) => {
+    return post("question/create", body, jwt).then((response) => {
       dispatch({
         type: "ADD_QUESTION",
-        payload: response.data[0]
+        payload: response.data
       })
       history.push("/editQuiz");
       dispatch(setNotification("Question created", "success", true));
@@ -58,13 +59,14 @@ export const getQuestions = (endpoint, param, jwt, startQuiz=false) => {
 
 export const updateQuestion = (body, jwt) => {
   return (dispatch) => {
-    return put("question/update", [body], jwt).then((response) => {
-      dispatch(setCurrentQuestion(response.data[0]));
+    return put("question/update", body, jwt).then((response) => {
+      dispatch(setCurrentQuestion(response.data));
       dispatch({
         type: "UPDATE_QUESTION",
-        payload: response.data[0]
+        payload: response.data
       })
       dispatch(setNotification("Question updated", "success", true))
+      dispatch(reset('updateQuestionForm'))
     }).catch((error) => {
       console.log(error.response);
       if(error.response.status === 403){
@@ -102,6 +104,28 @@ export const deleteQuestion = (config, jwt) => {
         dispatch(setNotification("Error - Unable to delete this question", "error", true))
       }
     });
+  }
+}
+
+export const deleteImage = (config, jwt) => {
+  return (dispatch) => {
+    return del("question/deleteImage", config, jwt).then((response) => {
+      dispatch(hideModal())
+      dispatch(setCurrentQuestion(response.data))
+      dispatch({
+        type: "UPDATE_QUESTION",
+        payload: response.data
+      })
+      dispatch(setNotification("Image has been deleted", "success", true))
+    }).catch((error) => {
+      console.log(error.response);
+      dispatch(hideModal())
+      if(error.response.status === 403){
+        sessionExpired(dispatch);
+      } else {
+        dispatch(setNotification("Error - Unable to delete this image", "error", true))
+      }
+    })
   }
 }
 

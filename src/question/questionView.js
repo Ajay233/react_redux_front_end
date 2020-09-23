@@ -8,9 +8,9 @@ import Modal from '../modal/modal'
 import history from '../history'
 
 import { setNotification } from '../notifications/actions'
-import { hideModal, showModal, showModal2 } from '../modal/actions'
+import { hideModal, showModal, showModal2, showModal3 } from '../modal/actions'
 import { setCurrentAnswer, deleteAnswer } from '../answer/actions'
-import { deleteQuestion } from '../question/actions'
+import { deleteQuestion, deleteImage } from '../question/actions'
 
 import '../stylesheets/question.css'
 import '../stylesheets/answer.css'
@@ -23,7 +23,7 @@ export class QuestionView extends React.Component {
 
   renderModal = () => {
     const { currentAnswer, hideModal, currentQuestion } = this.props
-    const { showModal, showModal2 } = this.props.modalState
+    const { showModal, showModal2, showModal3 } = this.props.modalState
     if(showModal === true){
       return(
         <Modal
@@ -43,6 +43,16 @@ export class QuestionView extends React.Component {
           title={"Delete Question"}
           message={`You are about to delete question ${currentQuestion.questionNumber}, this will also delete any associated answers for this question.  Do you want to continue?`}
           onDelete={this.handleDeleteQuestion}
+          onCancel={hideModal}
+        />
+      );
+    } else if(showModal3 === true){
+      return(
+        <Modal
+          show={showModal3}
+          title={"Delete Image"}
+          message={`You are about to delete the image for this question.  Do you want to continue?`}
+          onDelete={this.handleDeleteImg}
           onCancel={hideModal}
         />
       );
@@ -77,8 +87,37 @@ export class QuestionView extends React.Component {
     );
   }
 
+  renderImg = () => {
+    const { showModal3 } = this.props
+    return(
+      <div className="questionImageArea">
+        {this.renderQuestionImage()}
+        <div className="link deleteImg" onClick={() => showModal3()}>
+          <i className="fas fa-trash-alt red"></i> Delete Image
+        </div>
+      </div>
+    );
+  }
+
   renderFormOrDetails = () => {
-    return history.location.pathname === "/editQuestion" ? <UpdateQuestionForm triggerModal={this.triggerModal}/> : this.renderDetails();
+    const { currentQuestion } = this.props
+    if(history.location.pathname === "/editQuestion"){
+      return(
+        <div className={currentQuestion.imgUrl !== null ? 'questionFormArea' : ''}>
+          <div className={currentQuestion.imgUrl !== null ? 'questionForm' : ''}>
+            <UpdateQuestionForm triggerModal={this.triggerModal}/>
+          </div>
+          {currentQuestion.imgUrl !== null ? this.renderImg() : null}
+        </div>
+      );
+    } else {
+      return this.renderDetails()
+    }
+  }
+
+  renderQuestionImage = () => {
+    const { currentQuestion } = this.props
+    return currentQuestion.imgUrl || currentQuestion.imgUrl !== null ? <div className="imgView"><img src={currentQuestion.imgUrl} alt="" className="preview"/></div> : null
   }
 
   handleDeleteAnswer = () => {
@@ -95,6 +134,17 @@ export class QuestionView extends React.Component {
       data: [currentQuestion]
     }
     deleteQuestion(config, userData.jwt)
+  }
+
+  handleDeleteImg = () => {
+    const { currentQuestion, userData, deleteImage } = this.props;
+    const config = {
+      params: {
+        questionId: currentQuestion.id,
+        url: currentQuestion.imgUrl
+      }
+    }
+    deleteImage(config, userData.jwt)
   }
 
   clearNotification = () => {
@@ -164,6 +214,8 @@ export default connect(mapStateToProps,
     deleteAnswer,
     setCurrentAnswer,
     deleteQuestion,
+    deleteImage,
     showModal,
-    showModal2
+    showModal2,
+    showModal3
   })(QuestionView)

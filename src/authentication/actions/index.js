@@ -26,13 +26,17 @@ export const setUser = (endpoint, loginDetails) => {
       dispatch(setNotification(`Welcome back ${response.data.user.forename}`, "loginSuccess", true))
     }).catch((error) => {
       console.log(error.response)
+      console.log(error.response.data)
       if(error.response.data){
+        console.log("OK")
         if(error.response.data === "NOT VERIFIED"){
+          console.log("not verified")
           const verifyMsg = "Your email has not yet been veirified.  You will need to verify your email before you can log in"
           dispatch(setNotification(verifyMsg, "warning", true))
+        } else {
+          console.log("else")
+          dispatch(setNotification(error.response.data, "error", true));
         }
-      } else {
-        dispatch(setNotification("The username or password you entered was incorrect", "error", true));
       }
     })
   }

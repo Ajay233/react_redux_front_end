@@ -10,61 +10,72 @@ exports[`UpdateQuestionForm should match the snapshot 1`] = `
   >
     Edit Question 1
   </div>
-  <form
-    className="form-centered"
-    onSubmit={[Function]}
+  <div
+    className=""
   >
-    <div>
-      <label>
-        Question Number:
-      </label>
-      <input
-        className="inputBox"
-        name="number"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        value=""
-      />
-    </div>
-    <div>
-      <label>
-        Question description:
-      </label>
-      <textarea
-        className="inputBox"
-        name="description"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        value=""
-      />
+    <div
+      className=""
+    >
+      <form
+        className="form"
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Question Number:
+          </label>
+          <input
+            className="inputBox"
+            name="number"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            value=""
+          />
+        </div>
+        <div>
+          <label>
+            Question description:
+          </label>
+          <textarea
+            className="inputBox"
+            name="description"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            value=""
+          />
+        </div>
+        <div
+          className="buttonGroup"
+        >
+          <button
+            className="submit"
+          >
+            <i
+              className="far fa-save"
+            />
+             Save Changes
+          </button>
+          <button
+            className="delete"
+            data-testid="delete-question-button"
+          >
+            <i
+              className="fas fa-trash-alt"
+            />
+             Delete
+          </button>
+        </div>
+      </form>
     </div>
     <div
-      className="buttonGroup"
-    >
-      <button
-        className="submit"
-      >
-        <i
-          className="far fa-save"
-        />
-         Save Changes
-      </button>
-      <button
-        className="delete"
-        data-testid="delete-question-button"
-      >
-        <i
-          className="fas fa-trash-alt"
-        />
-         Delete
-      </button>
-    </div>
-  </form>
+      className=""
+    />
+  </div>
 </div>
 `;

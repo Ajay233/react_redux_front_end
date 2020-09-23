@@ -11,8 +11,58 @@
   font-weight: bold;
   text-align: center;
   width: auto;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin: 30px 0px;
+}
+
+.questionFormArea {
+  display: flex;
+}
+
+.questionForm, .questionImageArea {
+  width: 50%;
+}
+
+.preview {
+  /* width: 100%; */
+  margin: 20px auto;
+  max-height: 350px;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.4),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.imgPreview, .imgView {
+  width: fit-content;
+  margin: auto;
+}
+
+.deleteImg {
+  text-align: center;
+}
+
+.imgPlaceholderContainer {
+  border: 1px inset rgb(60, 60, 60);
+  border-radius: 5px;
+  height: 200px;
+  width: 100%;
+  margin: 20px 0px;
+}
+
+.placeholderImg {
+  padding: 10%
+}
+
+.placeholderImgContainer {
+  font-size: 70px;
+  height: 80%;
+}
+
+.placeholderBackground {
+  height: 20%;
+  padding: 0 10px;
+}
+
+.placeholderBackground, .placeholderImgContainer {
+  color: rgb(90, 90, 90);
+  text-align: center;
 }
 
 #answersTitle {

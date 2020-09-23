@@ -189,7 +189,7 @@ describe("addQuestion", () => {
     const store = mockStore({})
 
     const requestResponse = {
-      data: [{ id: 1 }]
+      data: { id: 1 }
     }
 
     const expectedAction = {
@@ -265,7 +265,7 @@ describe("updateQuestion", () => {
       }
     }
     const requestResponse = {
-      data: [{ id: 1, questionNumber: 1 }]
+      data: { id: 1, questionNumber: 1 }
     }
 
     const question = { id: 1, questionNumber: 1 }
