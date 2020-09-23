@@ -2,8 +2,29 @@
   display: flex;
 }
 
-#questionDetailsContainer{
+.questionDetailsContainer{
   width: 50%;
+}
+
+.questionDetailsContainerAdjusted{
+  width: 35%;
+}
+
+#questionImageContainer {
+  width: 30%;
+  margin-top: 30px;
+}
+
+.quizQuestionImg {
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.4),0 6px 20px 0 rgba(0,0,0,0.19);
+  border-radius: 5px;
+  width: 100%;
+  margin: 0;
+}
+
+.imgWrapper {
+  width: fit-content;
+  margin: auto;
 }
 
 #quizStartTitle {
@@ -18,7 +39,7 @@
 #questionContainer {
   padding: 10px;
   background-color: rgb(50, 50, 50);
-  width: 65%;
+  width: 75%;
   border-right: solid 5px rgb(179, 136, 221);
   border-radius: 5px;
 
@@ -72,8 +93,12 @@
   margin-right: 20px;
 }
 
-#answerFormContainer {
+.answerFormContainer {
   width: 50%;
+}
+
+.answerFormContainerAdjusted {
+  width: 35%;
 }
 
 .buttonContainer {

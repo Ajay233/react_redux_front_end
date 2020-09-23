@@ -58,20 +58,36 @@ export class QuizStart extends React.Component {
     );
   }
 
+  renderQuestionImg = () => {
+    const { imgUrl } = this.props.currentQuestion
+    if(imgUrl !== null){
+      return(
+        <div id="questionImageContainer" className="">
+          <div className="imgWrapper">
+            <img src={imgUrl} alt="" className="quizQuestionImg"/>
+          </div>
+        </div>
+      );
+    } else {
+      return null
+    }
+  }
+
   render(){
-    const { quiz, answers, questions, exitQuiz } = this.props
+    const { quiz, answers, questions, exitQuiz, currentQuestion } = this.props
     const { showResults, questionNumber } = this.props.quizProgressTracking
     return(
       <div className="componentContainer">
         {questions[1] === undefined ? null : console.log(questions[1].description)}
         <div id="quizStartTitle">{quiz.name}</div>
         <div id="quizStartContainer">
-          <div id="questionDetailsContainer">
+          <div className={currentQuestion.imgUrl === null ? "questionDetailsContainer" : "questionDetailsContainerAdjusted"}>
             {this.renderQuestion()}
             <img id="quizBot2" src={require("../public/icons/quizBot2.png")} alt="" />
             {this.renderResults()}
           </div>
-          <div id="answerFormContainer">
+          {this.renderQuestionImg()}
+          <div className={currentQuestion.imgUrl === null ? "answerFormContainer" : "answerFormContainerAdjusted"}>
             <PickAnswer
               title={"Answers"}
               answers={answers}

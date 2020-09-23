@@ -13,7 +13,7 @@ exports[`should render a question, list of answers to pick, 'next question' and 
     id="quizStartContainer"
   >
     <div
-      id="questionDetailsContainer"
+      className="questionDetailsContainerAdjusted"
     >
       <div
         className="sectionSpacing"
@@ -35,7 +35,20 @@ exports[`should render a question, list of answers to pick, 'next question' and 
       />
     </div>
     <div
-      id="answerFormContainer"
+      className=""
+      id="questionImageContainer"
+    >
+      <div
+        className="imgWrapper"
+      >
+        <img
+          alt=""
+          className="quizQuestionImg"
+        />
+      </div>
+    </div>
+    <div
+      className="answerFormContainerAdjusted"
     >
       <div
         id="pickAnswerForm"
@@ -128,7 +141,7 @@ exports[`should render the results 1`] = `
     id="quizStartContainer"
   >
     <div
-      id="questionDetailsContainer"
+      className="questionDetailsContainerAdjusted"
     >
       <div
         className="sectionSpacing"
@@ -158,7 +171,20 @@ exports[`should render the results 1`] = `
       </div>
     </div>
     <div
-      id="answerFormContainer"
+      className=""
+      id="questionImageContainer"
+    >
+      <div
+        className="imgWrapper"
+      >
+        <img
+          alt=""
+          className="quizQuestionImg"
+        />
+      </div>
+    </div>
+    <div
+      className="answerFormContainerAdjusted"
     >
       <div
         id="pickAnswerForm"
