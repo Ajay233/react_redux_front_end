@@ -8,8 +8,8 @@ import Modal from '../modal/modal'
 import { getQuestions, deleteQuestion, setCurrentQuestion } from '../question/actions'
 import { setNotification } from '../notifications/actions'
 import { getAnswers } from '../answer/actions'
-import { setQuiz, updateQuizStatus, deleteQuiz } from './actions'
-import { hideModal, showModal2, showModal } from '../modal/actions'
+import { setQuiz, updateQuizStatus, deleteQuiz, deleteQuizImage } from './actions'
+import { hideModal, showModal, showModal2, showModal3 } from '../modal/actions'
 import history from '../history'
 
 import '../stylesheets/quiz.css'
@@ -22,7 +22,7 @@ export class QuizView extends React.Component {
 
   renderModal = () => {
     const { hideModal, currentQuestion } = this.props
-    const { showModal, showModal2 } = this.props.modalState
+    const { showModal, showModal2, showModal3 } = this.props.modalState
     if(showModal === true){
       return(
         <Modal
@@ -43,6 +43,16 @@ export class QuizView extends React.Component {
           onCancel={hideModal}
         />
       );
+    } else if(showModal3 === true){
+      return(
+        <Modal
+          show={showModal3}
+          title={"Delete Image"}
+          message={`You are about to delete the image for this quiz.  Do you want to continue?`}
+          onDelete={this.handleDeleteImg}
+          onCancel={hideModal}
+        />
+      );
     } else {
       return null
     }
@@ -60,12 +70,41 @@ export class QuizView extends React.Component {
     deleteQuiz(config, userData.jwt)
   }
 
+  handleDeleteImg = () => {
+    const { quiz, userData, deleteQuizImage } = this.props;
+    const config = {
+      params: {
+        id: quiz.id,
+        imgUrl: quiz.imgUrl
+      }
+    }
+    deleteQuizImage(config, userData.jwt)
+  }
+
+  // renderDetails = () => {
+  //   const { name, description, category } = this.props.quiz
+  //   return(
+  //     <React.Fragment>
+  //       <div id="quizTitle">{name}</div>
+  //       <div className="quizStatus">Status: {this.renderStatus()}</div>
+  //       <div className="detailsContainer">
+  //         <div className="detailsHeading">Description:</div>
+  //         <div className="detailsContent">{description}</div>
+  //       </div>
+  //       <div className="detailsContainer">
+  //         <div className="detailsHeading">Category:</div>
+  //         <div className="detailsContent">{category}</div>
+  //       </div>
+  //     </React.Fragment>
+  //   );
+  // }
+
   renderDetails = () => {
-    const { name, description, category } = this.props.quiz
+    const { description, category, imgUrl } = this.props.quiz
     return(
-      <React.Fragment>
-        <div id="quizTitle">{name}</div>
-        <div className="quizStatus">Status: {this.renderStatus()}</div>
+      <div className={imgUrl !== null ? 'quizFormArea' : ''}>
+        <div className={imgUrl !== null ? 'quizForm' : ''}>
+
         <div className="detailsContainer">
           <div className="detailsHeading">Description:</div>
           <div className="detailsContent">{description}</div>
@@ -74,18 +113,68 @@ export class QuizView extends React.Component {
           <div className="detailsHeading">Category:</div>
           <div className="detailsContent">{category}</div>
         </div>
-      </React.Fragment>
+        </div>
+        {imgUrl !== null ? this.renderImg() : null}
+      </div>
     );
   }
 
-  renderUpdateForm = () => {
-    const { name } = this.props.quiz
+  renderQuizImage = () => {
+    const { quiz } = this.props
+    return quiz.imgUrl || quiz.imgUrl !== null ? <div className="imgView"><img src={quiz.imgUrl} alt="" className="preview"/></div> : null
+  }
+
+  renderImg = () => {
+    const { showModal3 } = this.props
     return(
-      <React.Fragment>
-        <div id="quizTitle">{`Edit the ${name} ${name.includes("quiz") || name.includes("Quiz") ? "" : "quiz"}`}</div>
-        <div className="quizStatusBadge">Status: {this.renderStatus()}</div>
-        <UpdateQuizForm triggerModal={this.triggerModal} updateStatus={this.updateStatus}/>
-      </React.Fragment>
+      <div className="quizImageArea">
+        {this.renderQuizImage()}
+        <div className="link deleteImg" onClick={() => showModal3()}>
+          <i className="fas fa-trash-alt red"></i> Delete Image
+        </div>
+      </div>
+    );
+  }
+
+  renderHeadings = () => {
+    const { name } = this.props.quiz
+    if(history.location.pathname === "/editQuiz"){
+      return(
+        <React.Fragment>
+          <div id="quizTitle">{`Edit the ${name} ${name.includes("quiz") || name.includes("Quiz") ? "" : "quiz"}`}</div>
+          <div className="quizStatusBadge">Status: {this.renderStatus()}</div>
+        </React.Fragment>
+      );
+    } else {
+      return(
+        <React.Fragment>
+          <div id="quizTitle">{name}</div>
+          <div className="quizStatus">Status: {this.renderStatus()}</div>
+        </React.Fragment>
+      );
+    }
+  }
+
+  // renderUpdateForm = () => {
+  //   const { name } = this.props.quiz
+  //   return(
+  //     <React.Fragment>
+  //       <div id="quizTitle">{`Edit the ${name} ${name.includes("quiz") || name.includes("Quiz") ? "" : "quiz"}`}</div>
+  //       <div className="quizStatusBadge">Status: {this.renderStatus()}</div>
+  //       <UpdateQuizForm triggerModal={this.triggerModal} updateStatus={this.updateStatus}/>
+  //     </React.Fragment>
+  //   );
+  // }
+
+  renderUpdateForm = () => {
+    const { imgUrl } = this.props.quiz
+    return(
+      <div className={imgUrl !== null ? 'quizFormArea' : ''}>
+        <div className={imgUrl !== null ? 'quizForm' : ''}>
+          <UpdateQuizForm triggerModal={this.triggerModal} updateStatus={this.updateStatus}/>
+        </div>
+        {imgUrl !== null ? this.renderImg() : null}
+      </div>
     );
   }
 
@@ -159,6 +248,7 @@ export class QuizView extends React.Component {
         {this.renderModal()}
         <Link className="link back" to="/quizSearch" onClick={this.clearNotification}><i className="fas fa-chevron-circle-left blue"></i> Back</Link>
         <Notification />
+        {this.renderHeadings()}
         {this.renderDetailsOrUpdate()}
         <div className="headerContainer">
           <div id="questionsTitle">Questions</div>
@@ -194,8 +284,10 @@ export default connect(mapStateToProps,
     hideModal,
     deleteQuestion,
     deleteQuiz,
+    deleteQuizImage,
     showModal,
     showModal2,
+    showModal3,
     updateQuizStatus,
     getAnswers
   })(QuizView)

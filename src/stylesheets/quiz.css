@@ -73,6 +73,18 @@
   width: 14%;
 }
 
+.quizFormArea {
+  display: flex;
+}
+
+.quizForm {
+  width: 52%;
+}
+
+.quizImageArea {
+  width: 47%;
+}
+
 .detailsContainer {
   display: flex;
   width: 50%;

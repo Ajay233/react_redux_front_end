@@ -89,3 +89,21 @@ export const updateQuizStatus = (endpoint, data, jwt) => {
     })
   }
 }
+
+export const deleteQuizImage = (config, jwt) => {
+  return (dispatch) => {
+    return del("quiz/deleteImage", config, jwt).then((response) => {
+      dispatch(hideModal())
+      dispatch(setQuiz(response.data))
+      dispatch(setNotification("Image has been deleted", "success", true))
+    }).catch((error) => {
+      console.log(error.response);
+      dispatch(hideModal())
+      if(error.response.status === 403){
+        sessionExpired(dispatch);
+      } else {
+        dispatch(setNotification("Error - Unable to delete this image", "error", true))
+      }
+    })
+  }
+}

@@ -82,6 +82,21 @@ exports[`newQuiz form should match the snapshot 1`] = `
         </select>
       </div>
     </div>
+    <div>
+      <label>
+        Add an image or gif:
+      </label>
+      <input
+        className="inputBox custom-file-input"
+        name="file"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onDragStart={[Function]}
+        onDrop={[Function]}
+        onFocus={[Function]}
+        type="file"
+      />
+    </div>
     <div
       className="buttonGroup"
     >

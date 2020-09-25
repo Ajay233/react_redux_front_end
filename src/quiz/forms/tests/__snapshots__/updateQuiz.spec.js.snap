@@ -1,107 +1,116 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UpdateQuiz Form should match the snapshot 1`] = `
-<div>
-  <form
-    className="form-centered"
-    onSubmit={[Function]}
+<div
+  className=""
+>
+  <div
+    className=""
   >
-    <div>
-      <label>
-        Quiz name:
-      </label>
-      <input
-        className="inputBox"
-        name="name"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        placeholder="testName"
-        value=""
-      />
-    </div>
-    <div>
-      <label>
-        Quiz description:
-      </label>
-      <textarea
-        className="inputBox"
-        name="description"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        placeholder="testDescription"
-        value=""
-      />
-    </div>
-    <div>
-      <label>
-        Quiz category:
-      </label>
+    <form
+      className="form"
+      onSubmit={[Function]}
+    >
       <div>
-        <select
-          className="inputBox select-medium"
-          name="category"
+        <label>
+          Quiz name:
+        </label>
+        <input
+          className="inputBox"
+          name="name"
           onBlur={[Function]}
           onChange={[Function]}
           onDragStart={[Function]}
           onDrop={[Function]}
           onFocus={[Function]}
-          placeholder="testCategory"
+          placeholder="testName"
           value=""
-        >
-          <option
-            value="testCategory"
-          >
-            testCategory
-          </option>
-          <option
-            value="testCategor2"
-          >
-            testCategor2
-          </option>
-          <option
-            value="testCategor3"
-          >
-            testCategor3
-          </option>
-        </select>
+        />
       </div>
-    </div>
-    <div
-      className="buttonGroup"
-    >
-      <button
-        className="submit"
-      >
-        <i
-          className="far fa-save"
+      <div>
+        <label>
+          Quiz description:
+        </label>
+        <textarea
+          className="inputBox"
+          name="description"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          placeholder="testDescription"
+          value=""
         />
-         Save Changes
-      </button>
-      <button
-        className="delete"
-        data-testid="delete-quiz-button"
+      </div>
+      <div>
+        <label>
+          Quiz category:
+        </label>
+        <div>
+          <select
+            className="inputBox select-medium"
+            name="category"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            placeholder="testCategory"
+            value=""
+          >
+            <option
+              value="testCategory"
+            >
+              testCategory
+            </option>
+            <option
+              value="testCategor2"
+            >
+              testCategor2
+            </option>
+            <option
+              value="testCategor3"
+            >
+              testCategor3
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        className="buttonGroup"
       >
-        <i
-          className="fas fa-trash-alt"
-        />
-         Delete Quiz
-      </button>
-      <button
-        className="save"
-        data-testid="updateStatus-button"
-      >
-        <i
-          className="far fa-check-circle"
-        />
-         Mark as Ready
-      </button>
-    </div>
-  </form>
+        <button
+          className="submit"
+        >
+          <i
+            className="far fa-save"
+          />
+           Save Changes
+        </button>
+        <button
+          className="delete"
+          data-testid="delete-quiz-button"
+        >
+          <i
+            className="fas fa-trash-alt"
+          />
+           Delete Quiz
+        </button>
+        <button
+          className="save"
+          data-testid="updateStatus-button"
+        >
+          <i
+            className="far fa-check-circle"
+          />
+           Mark as Ready
+        </button>
+      </div>
+    </form>
+  </div>
+  <div
+    className=""
+  />
 </div>
 `;

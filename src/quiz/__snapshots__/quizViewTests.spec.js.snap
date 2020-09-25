@@ -34,31 +34,60 @@ exports[`Quiz should render the quiz details, 'READY' status and questions for '
     </span>
   </div>
   <div
-    className="detailsContainer"
+    className="quizFormArea"
   >
     <div
-      className="detailsHeading"
+      className="quizForm"
     >
-      Description:
+      <div
+        className="detailsContainer"
+      >
+        <div
+          className="detailsHeading"
+        >
+          Description:
+        </div>
+        <div
+          className="detailsContent"
+        >
+          test
+        </div>
+      </div>
+      <div
+        className="detailsContainer"
+      >
+        <div
+          className="detailsHeading"
+        >
+          Category:
+        </div>
+        <div
+          className="detailsContent"
+        >
+          test
+        </div>
+      </div>
     </div>
     <div
-      className="detailsContent"
+      className="quizImageArea"
     >
-      test
-    </div>
-  </div>
-  <div
-    className="detailsContainer"
-  >
-    <div
-      className="detailsHeading"
-    >
-      Category:
-    </div>
-    <div
-      className="detailsContent"
-    >
-      test
+      <div
+        className="imgView"
+      >
+        <img
+          alt=""
+          className="preview"
+        />
+      </div>
+      <div
+        className="link deleteImg"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-trash-alt red"
+        />
+         Delete Image
+      </div>
     </div>
   </div>
   <div
@@ -164,109 +193,147 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
        Ready for use
     </span>
   </div>
-  <div>
-    <form
-      className="form-centered"
-      onSubmit={[Function]}
+  <div
+    className="quizFormArea"
+  >
+    <div
+      className="quizForm"
     >
-      <div>
-        <label>
-          Quiz name:
-        </label>
-        <input
-          className="inputBox"
-          name="name"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          onFocus={[Function]}
-          placeholder="test"
-          value=""
-        />
-      </div>
-      <div>
-        <label>
-          Quiz description:
-        </label>
-        <textarea
-          className="inputBox"
-          name="description"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          onFocus={[Function]}
-          placeholder="test"
-          value=""
-        />
-      </div>
-      <div>
-        <label>
-          Quiz category:
-        </label>
-        <div>
-          <select
-            className="inputBox select-medium"
-            name="category"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onDragStart={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            value=""
+      <div
+        className=""
+      >
+        <div
+          className=""
+        >
+          <form
+            className="form"
+            onSubmit={[Function]}
           >
-            <option
-              value="Cat1"
+            <div>
+              <label>
+                Quiz name:
+              </label>
+              <input
+                className="inputBox"
+                name="name"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onDragStart={[Function]}
+                onDrop={[Function]}
+                onFocus={[Function]}
+                placeholder="test"
+                value=""
+              />
+            </div>
+            <div>
+              <label>
+                Quiz description:
+              </label>
+              <textarea
+                className="inputBox"
+                name="description"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onDragStart={[Function]}
+                onDrop={[Function]}
+                onFocus={[Function]}
+                placeholder="test"
+                value=""
+              />
+            </div>
+            <div>
+              <label>
+                Quiz category:
+              </label>
+              <div>
+                <select
+                  className="inputBox select-medium"
+                  name="category"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onDragStart={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  value=""
+                >
+                  <option
+                    value="Cat1"
+                  >
+                    Cat1
+                  </option>
+                  <option
+                    value="Cat2"
+                  >
+                    Cat2
+                  </option>
+                  <option
+                    value="Cat3"
+                  >
+                    Cat3
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div
+              className="buttonGroup"
             >
-              Cat1
-            </option>
-            <option
-              value="Cat2"
-            >
-              Cat2
-            </option>
-            <option
-              value="Cat3"
-            >
-              Cat3
-            </option>
-          </select>
+              <button
+                className="submit"
+              >
+                <i
+                  className="far fa-save"
+                />
+                 Save Changes
+              </button>
+              <button
+                className="delete"
+                data-testid="delete-quiz-button"
+                onClick={[Function]}
+              >
+                <i
+                  className="fas fa-trash-alt"
+                />
+                 Delete Quiz
+              </button>
+              <button
+                className="warningButton"
+                data-testid="updateStatus-button"
+                onClick={[Function]}
+              >
+                <i
+                  className="fas fa-pencil-ruler"
+                />
+                 Revert to draft
+              </button>
+            </div>
+          </form>
         </div>
+        <div
+          className=""
+        />
+      </div>
+    </div>
+    <div
+      className="quizImageArea"
+    >
+      <div
+        className="imgView"
+      >
+        <img
+          alt=""
+          className="preview"
+        />
       </div>
       <div
-        className="buttonGroup"
+        className="link deleteImg"
+        onClick={[Function]}
       >
-        <button
-          className="submit"
-        >
-          <i
-            className="far fa-save"
-          />
-           Save Changes
-        </button>
-        <button
-          className="delete"
-          data-testid="delete-quiz-button"
-          onClick={[Function]}
-        >
-          <i
-            className="fas fa-trash-alt"
-          />
-           Delete Quiz
-        </button>
-        <button
-          className="warningButton"
-          data-testid="updateStatus-button"
-          onClick={[Function]}
-        >
-          <i
-            className="fas fa-pencil-ruler"
-          />
-           Revert to draft
-        </button>
+        <i
+          className="fas fa-trash-alt red"
+        />
+         Delete Image
       </div>
-    </form>
+    </div>
   </div>
   <div
     className="headerContainer"

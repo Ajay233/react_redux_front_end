@@ -111,7 +111,14 @@ export class QuestionView extends React.Component {
         </div>
       );
     } else {
-      return this.renderDetails()
+      return(
+        <div className={currentQuestion.imgUrl !== null ? 'questionFormArea' : ''}>
+          <div className={currentQuestion.imgUrl !== null ? 'questionForm' : ''}>
+            {this.renderDetails()}
+          </div>
+          {currentQuestion.imgUrl !== null ? this.renderImg() : null}
+        </div>
+      );
     }
   }
 

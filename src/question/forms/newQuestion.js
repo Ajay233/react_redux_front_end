@@ -52,7 +52,6 @@ class NewQuestionForm extends React.Component {
 
   onSubmit = ({ number, description, file }) => {
     const { userData, quiz, addQuestion } = this.props;
-    console.log(file)
     let formData = new FormData()
     formData.append('quizId', quiz.id)
     formData.append('questionNumber', number)

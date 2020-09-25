@@ -32,6 +32,21 @@ class NewQuizForm extends React.Component {
     )
   }
 
+  renderFileInput = (formProps) => {
+    return(
+      <div>
+        {this.renderError(formProps.meta)}
+        <label>{ formProps.label }</label>
+        {this.renderImgPreview(formProps.input.value[0])}
+        <input {...formProps.input} type="file" className="inputBox custom-file-input" value={undefined} />
+      </div>
+    );
+  }
+
+  renderImgPreview = (value) => {
+    return value ? <div className="imgPreview"><img src={URL.createObjectURL(value)} alt="" className="preview" /></div> : null
+  }
+
   renderError = (meta) => {
     const { error, touched } = meta
     return error && touched ? <div className="error-medium"><i className="fas fa-exclamation-circle"></i> {error}</div> : null
@@ -59,15 +74,22 @@ class NewQuizForm extends React.Component {
     return optionsList;
   }
 
-  onSubmit = ({ name, description, category }) => {
+  onSubmit = ({ name, description, category, file }) => {
     const { userData, createQuiz } = this.props;
-    const body = {
-      name: name,
-      description: description,
-      category: category,
-      status: "DRAFT"
+    let formData = new FormData()
+    formData.append('name', name)
+    formData.append('description', description)
+    formData.append('category', category)
+    if(file !== undefined){
+      formData.append('file', file[0])
     }
-    createQuiz(body, userData.jwt);
+    // const body = {
+    //   name: name,
+    //   description: description,
+    //   category: category,
+    //   status: "DRAFT"
+    // }
+    createQuiz(formData, userData.jwt);
   }
 
   render(){
@@ -82,6 +104,7 @@ class NewQuizForm extends React.Component {
             <option value="" disabled>Select a category</option>
             {this.renderOptions()}
           </Field>
+          <Field name="file" component={this.renderFileInput} label="Add an image or gif:" />
           <div className="buttonGroup">
             <button className="submit">Save and continue</button><Link to="/quizSearch" className="cancel">Cancel</Link>
           </div>

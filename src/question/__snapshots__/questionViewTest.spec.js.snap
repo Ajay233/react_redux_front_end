@@ -15,22 +15,51 @@ exports[`QuestionView should render the QuestionView component, question details
      Back
   </a>
   <div
-    className="title-large"
-  >
-    Question number 1 from the Quiz 1 quiz
-  </div>
-  <div
-    className="detailsContainer"
+    className="questionFormArea"
   >
     <div
-      className="detailsHeading"
+      className="questionForm"
     >
-      Question description:
+      <div
+        className="title-large"
+      >
+        Question number 1 from the Quiz 1 quiz
+      </div>
+      <div
+        className="detailsContainer"
+      >
+        <div
+          className="detailsHeading"
+        >
+          Question description:
+        </div>
+        <div
+          className="detailsContent"
+        >
+          Test question
+        </div>
+      </div>
     </div>
     <div
-      className="detailsContent"
+      className="questionImageArea"
     >
-      Test question
+      <div
+        className="imgView"
+      >
+        <img
+          alt=""
+          className="preview"
+        />
+      </div>
+      <div
+        className="link deleteImg"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-trash-alt red"
+        />
+         Delete Image
+      </div>
     </div>
   </div>
   <div
@@ -192,22 +221,51 @@ exports[`QuestionView should render the QuestionView component, update question 
      Back
   </a>
   <div
-    className="title-large"
-  >
-    Question number 1 from the Quiz 1 quiz
-  </div>
-  <div
-    className="detailsContainer"
+    className="questionFormArea"
   >
     <div
-      className="detailsHeading"
+      className="questionForm"
     >
-      Question description:
+      <div
+        className="title-large"
+      >
+        Question number 1 from the Quiz 1 quiz
+      </div>
+      <div
+        className="detailsContainer"
+      >
+        <div
+          className="detailsHeading"
+        >
+          Question description:
+        </div>
+        <div
+          className="detailsContent"
+        >
+          Test question
+        </div>
+      </div>
     </div>
     <div
-      className="detailsContent"
+      className="questionImageArea"
     >
-      Test question
+      <div
+        className="imgView"
+      >
+        <img
+          alt=""
+          className="preview"
+        />
+      </div>
+      <div
+        className="link deleteImg"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-trash-alt red"
+        />
+         Delete Image
+      </div>
     </div>
   </div>
   <div
