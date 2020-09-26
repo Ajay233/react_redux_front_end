@@ -220,7 +220,7 @@ describe("AllQuizes", () => {
       expect(getQuestions).toHaveBeenCalledWith("question/findByQuizId", param, "jwt", true)
       expect(hideModal).toHaveBeenCalledTimes(1)
       expect(history.push).toHaveBeenCalledTimes(1)
-      expect(history.push).toHaveBeenCalledWith("/startQuiz")
+      expect(history.push).toHaveBeenCalledWith("/startQuizIntro")
     })
   })
 

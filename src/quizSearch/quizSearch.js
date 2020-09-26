@@ -91,7 +91,7 @@ export class QuizSearch extends React.Component {
     const param = { quizId: quiz.id }
     getQuestions("question/findByQuizId", param, userData.jwt, true)
     hideModal()
-    history.push("/startQuiz")
+    history.push("/startQuizIntro")
   }
 
   render(){

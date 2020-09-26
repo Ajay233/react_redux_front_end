@@ -143,7 +143,7 @@ export class AllQuizes extends React.Component {
     const param = { quizId: quiz.id }
     getQuestions("question/findByQuizId", param, userData.jwt, true)
     hideModal()
-    history.push("/startQuiz")
+    history.push("/startQuizIntro")
   }
 
   renderComponent = () => {

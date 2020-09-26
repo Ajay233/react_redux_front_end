@@ -16,6 +16,7 @@ import QuestionView from './question/questionView'
 import NewQuestionForm from './question/forms/newQuestion'
 import AnswerView from './answer/viewAnswer'
 import AllQuizes from './quizSearch/allQuizes'
+import QuizIntro from './quizStart/quizIntro'
 import QuizStart from './quizStart/quizStart'
 import Help from './help/help'
 import history from './history'
@@ -49,6 +50,7 @@ class App extends React.Component {
             <Route path={["/viewQuestion", "/editQuestion"]} component={()=> <QuestionView />}/>
             <Route path="/newQuestion" component={()=> <NewQuestionForm />}/>
             <Route path={["/editAnswer", "/newAnswer"]} component={()=> <AnswerView />} />
+            <Route path="/startQuizIntro" component={()=>< QuizIntro/>} />
             <Route path="/startQuiz" component={()=>< QuizStart/>} />
             <Route path="/help" component={()=>< Help/>} />
           </React.Fragment>
