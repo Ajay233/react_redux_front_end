@@ -9,7 +9,7 @@ import { render, fireEvent, cleanup } from '@testing-library/react'
 import renderer from 'react-test-renderer'
 import history from '../history'
 
-import { addAnswer, incrementQuestion, showResults, exitQuiz } from './actions'
+import { addAnswer, incrementQuestion, showResults, exitQuiz, clearQuizProgress } from './actions'
 import { setCurrentQuestion } from '../question/actions'
 import { getAnswers } from '../answer/actions'
 
@@ -138,6 +138,7 @@ describe("", () => {
               setCurrentQuestion={setCurrentQuestion}
               getAnswers={getAnswers}
               answer={pickedAns}
+              clearQuizProgress={clearQuizProgress}
             />
           </Router>
         </Provider>
@@ -174,6 +175,7 @@ describe("", () => {
               getAnswers={getAnswers}
               userData={userData}
               showResults={showResults}
+              clearQuizProgress={clearQuizProgress}
             />
           </Router>
         </Provider>
