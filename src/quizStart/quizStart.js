@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PickAnswer from './forms/pickAnswer'
-import { addAnswer, incrementQuestion, showResults, exitQuiz } from './actions'
+import { addAnswer, incrementQuestion, showResults, exitQuiz, clearQuizProgress } from './actions'
 import { setCurrentQuestion } from '../question/actions'
 import { getAnswers } from '../answer/actions'
 
@@ -11,6 +11,10 @@ export class QuizStart extends React.Component {
 
   componentDidMount(){
     window.scrollTo(500, 0);
+  }
+
+  componentWillUnmount(){
+    this.props.clearQuizProgress()
   }
 
   handleSubmit = ({ answer }) => {
@@ -116,4 +120,12 @@ export const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { addAnswer, setCurrentQuestion, getAnswers, incrementQuestion, showResults, exitQuiz })(QuizStart)
+export default connect(mapStateToProps,
+  { addAnswer,
+    setCurrentQuestion,
+    getAnswers,
+    incrementQuestion,
+    showResults,
+    exitQuiz,
+    clearQuizProgress
+  })(QuizStart)

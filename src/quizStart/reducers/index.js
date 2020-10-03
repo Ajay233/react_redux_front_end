@@ -5,6 +5,7 @@ export const setQuizProgressTracking = (state=quizProgressTracking, action) => {
     case "ADD_SELECTED_ANSWER": return {...state, answersPicked: [...state.answersPicked, action.payload] };
     case "INCREMENT_QUESTION": return {...state, questionNumber: action.payload };
     case "SHOW_RESULTS": return {...state, showResults: action.payload};
+    case "RESET_QUIZ_PROGRESS": return action.payload;
     default: return state;
   }
 }

@@ -1,3 +1,5 @@
+import { quizProgressTracking } from '../factory/quizProgressTrackingFactory'
+
 export const addAnswer = (answer) => {
   return {
     type: "ADD_SELECTED_ANSWER",
@@ -22,5 +24,12 @@ export const showResults = () => {
 export const exitQuiz = () => {
   return {
     type: "RESET_STATE"
+  }
+}
+
+export const clearQuizProgress = () => {
+  return {
+    type: "RESET_QUIZ_PROGRESS",
+    payload: quizProgressTracking
   }
 }
