@@ -317,6 +317,16 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
               onClick={[Function]}
             >
               <i
+                className="far fa-file-pdf red"
+              />
+               PDF
+            </a>
+            <a
+              className="start linkStandard"
+              href="/"
+              onClick={[Function]}
+            >
+              <i
                 className="far fa-play-circle blue"
               />
                Start
@@ -367,6 +377,16 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
                 className="fas fa-edit blue"
               />
                Edit
+            </a>
+            <a
+              className="start linkStandard"
+              href="/"
+              onClick={[Function]}
+            >
+              <i
+                className="far fa-file-pdf red"
+              />
+               PDF
             </a>
             <a
               className="start linkStandard"

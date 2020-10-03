@@ -5,6 +5,7 @@ import Notification from '../notifications/notifications'
 import Questions from '../question/questions'
 import UpdateQuizForm from './forms/updateQuiz'
 import Modal from '../modal/modal'
+
 import { getQuestions, deleteQuestion, setCurrentQuestion } from '../question/actions'
 import { setNotification } from '../notifications/actions'
 import { getAnswers } from '../answer/actions'
@@ -240,8 +241,6 @@ export class QuizView extends React.Component {
     );
   }
 
-
-
   render(){
     return(
       <div id="quiz" className="componentContainer">
@@ -272,7 +271,8 @@ export const mapStateToProps = (state) => {
     questions: state.questions,
     currentQuestion: state.currentQuestion,
     modalState: state.modalState,
-    lists: state.lists
+    lists: state.lists,
+    quizDownloadData: state.quizDownloadData
   }
 }
 

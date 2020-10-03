@@ -19,9 +19,11 @@ import AllQuizes from './quizSearch/allQuizes'
 import QuizIntro from './quizStart/quizIntro'
 import QuizStart from './quizStart/quizStart'
 import Help from './help/help'
+import PDFView from './pdf/pdfView'
 import history from './history'
 import './stylesheets/buttons.css'
 import './stylesheets/inputs.css'
+import './stylesheets/pdf.css'
 
 
 class App extends React.Component {
@@ -50,9 +52,10 @@ class App extends React.Component {
             <Route path={["/viewQuestion", "/editQuestion"]} component={()=> <QuestionView />}/>
             <Route path="/newQuestion" component={()=> <NewQuestionForm />}/>
             <Route path={["/editAnswer", "/newAnswer"]} component={()=> <AnswerView />} />
-            <Route path="/startQuizIntro" component={()=>< QuizIntro/>} />
-            <Route path="/startQuiz" component={()=>< QuizStart/>} />
-            <Route path="/help" component={()=>< Help/>} />
+            <Route path="/startQuizIntro" component={()=><QuizIntro />} />
+            <Route path="/startQuiz" component={()=><QuizStart />} />
+            <Route path="/help" component={()=><Help />} />
+            <Route path="/viewPdf" component={()=><PDFView />} />
           </React.Fragment>
         </Router>
       </React.Fragment>

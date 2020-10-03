@@ -51,6 +51,16 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
         onClick={[Function]}
       >
         <i
+          className="far fa-file-pdf red"
+        />
+         PDF
+      </a>
+      <a
+        className="start linkStandard"
+        href="/"
+        onClick={[Function]}
+      >
+        <i
           className="far fa-play-circle blue"
         />
          Start
@@ -101,6 +111,16 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
         onClick={[Function]}
       >
         <i
+          className="far fa-file-pdf red"
+        />
+         PDF
+      </a>
+      <a
+        className="start linkStandard"
+        href="/"
+        onClick={[Function]}
+      >
+        <i
           className="far fa-play-circle blue"
         />
          Start
@@ -130,6 +150,16 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
     <div
       className="options"
     >
+      <a
+        className="start linkStandard"
+        href="/"
+        onClick={[Function]}
+      >
+        <i
+          className="far fa-file-pdf red"
+        />
+         PDF
+      </a>
       <a
         className="start linkStandard"
         href="/"

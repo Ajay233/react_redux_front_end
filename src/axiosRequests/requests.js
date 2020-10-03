@@ -33,6 +33,15 @@ export const getUsingParams = (endpoint, customParams, token=null) => {
   );
 }
 
+export const asyncGetUsingParams = async (endpoint, customParams, token=null) => {
+  setDefault(token, axios);
+  const response = await axios.get(
+    `http://localhost:8080/${endpoint}`,
+    { params: customParams }
+  )
+  return response
+}
+
 export const put = (endpoint, data={}, token=null) => {
   setDefault(token, axios);
   return axios.put(

@@ -44,6 +44,7 @@ export const QuizResult = (props) => {
         { renderDelete(permission) }
         { renderView(permission) }
         { renderEdit(permission) }
+        { renderPdf(status) }
         { renderStart(status) }
       </div>
     );
@@ -106,6 +107,29 @@ export const QuizResult = (props) => {
           onClick={ () => { handleStart() } }
         >
           <i className="far fa-play-circle blue"></i> Start
+        </Link>
+      );
+    } else {
+      return null
+    }
+  }
+
+  const handleRenderPdf = () => {
+    const { jwt, quiz, setQuiz, setQuizDownloadData } = props
+    const param = { id: quiz.id }
+    setQuiz(quiz);
+    setQuizDownloadData(param, jwt)
+  }
+
+  const renderPdf = (status) => {
+    if(status === "READY"){
+      return(
+        <Link
+          to="#"
+          className="start linkStandard"
+          onClick={ () => { handleRenderPdf() } }
+        >
+          <i className="far fa-file-pdf red"></i> PDF
         </Link>
       );
     } else {

@@ -64,6 +64,7 @@ describe("reducers", () => {
       lists: { categories: [] },
       form: {},
       toTopButtonState: false,
+      quizDownloadData: {},
       globals: {
         url: "",
         enableDarkMode: true
@@ -92,6 +93,7 @@ describe("reducers", () => {
       lists: { categories: [] },
       form: {},
       toTopButtonState: false,
+      quizDownloadData: {},
       globals: {
         url: "",
         enableDarkMode: true

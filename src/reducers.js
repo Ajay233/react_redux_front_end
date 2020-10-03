@@ -17,6 +17,7 @@ import { setListsReducer } from './lists/reducers'
 import { setQuizProgressTracking } from './quizStart/reducers'
 import { globalReducer, toTopButtonReducer } from './components/reducers'
 import { navBarReducer } from './navBar/reducers'
+import { quizDownloadReducer } from './pdf/reducers'
 
 export const rootReducer = (state, action) => {
   switch (action.type) {
@@ -49,5 +50,6 @@ export const allReducers = combineReducers({
   lists: setListsReducer,
   form: formReducer,
   toTopButtonState: toTopButtonReducer,
+  quizDownloadData:  quizDownloadReducer,
   globals: globalReducer
 });

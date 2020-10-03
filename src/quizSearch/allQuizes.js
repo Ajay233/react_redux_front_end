@@ -9,6 +9,7 @@ import { hideModal, showModal, showModal2 } from '../modal/actions'
 import { setNotification } from '../notifications/actions'
 import { getQuestions } from '../question/actions'
 import { setQuiz } from '../quiz/actions'
+import { setQuizDownloadData } from '../pdf/actions'
 import history from '../history'
 
 import "../stylesheets/allQuizzes.css"
@@ -73,7 +74,7 @@ export class AllQuizes extends React.Component {
   }
 
   renderQuizResults = (filteredQuizList, quizes, listItem, userData, setNotification) => {
-    const { clearQuizes, setQuiz, showModal, showModal2, getQuestions } = this.props
+    const { clearQuizes, setQuiz, showModal, showModal2, getQuestions, setQuizDownloadData } = this.props
     if(filteredQuizList.length > 0){
       return(
         <React.Fragment>
@@ -89,6 +90,7 @@ export class AllQuizes extends React.Component {
             showModal={showModal}
             showModal2={showModal2}
             getQuestions={getQuestions}
+            setQuizDownloadData={setQuizDownloadData}
           />
         </React.Fragment>
       );
@@ -193,5 +195,6 @@ export default connect(mapStateToProps,
     clearQuizes,
     setQuiz,
     showModal,
-    showModal2
+    showModal2,
+    setQuizDownloadData
   })(AllQuizes)

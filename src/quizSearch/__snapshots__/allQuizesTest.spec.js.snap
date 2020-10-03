@@ -72,6 +72,15 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
               onClick={[Function]}
             >
               <i
+                className="far fa-file-pdf red"
+              />
+               PDF
+            </a>
+            <a
+              className="start linkStandard"
+              onClick={[Function]}
+            >
+              <i
                 className="far fa-play-circle blue"
               />
                Start
@@ -165,6 +174,15 @@ exports[`AllQuizes should render all quizes regardless of status for ADMIN users
           <div
             className="options"
           >
+            <a
+              className="start linkStandard"
+              onClick={[Function]}
+            >
+              <i
+                className="far fa-file-pdf red"
+              />
+               PDF
+            </a>
             <a
               className="start linkStandard"
               onClick={[Function]}
@@ -299,6 +317,15 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
               onClick={[Function]}
             >
               <i
+                className="far fa-file-pdf red"
+              />
+               PDF
+            </a>
+            <a
+              className="start linkStandard"
+              onClick={[Function]}
+            >
+              <i
                 className="far fa-play-circle blue"
               />
                Start
@@ -392,6 +419,15 @@ exports[`AllQuizes should render only READY quizes for a user 1`] = `
           <div
             className="options"
           >
+            <a
+              className="start linkStandard"
+              onClick={[Function]}
+            >
+              <i
+                className="far fa-file-pdf red"
+              />
+               PDF
+            </a>
             <a
               className="start linkStandard"
               onClick={[Function]}

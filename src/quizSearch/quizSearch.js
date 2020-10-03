@@ -10,6 +10,7 @@ import { setQuizes, getQuizSearchResults, deleteQuiz, clearQuizes } from './acti
 import { getQuestions } from '../question/actions'
 import { setQuiz } from '../quiz/actions'
 import { hideModal, showModal, showModal2 } from '../modal/actions'
+import { setQuizDownloadData } from '../pdf/actions'
 import history from '../history'
 
 import "../stylesheets/quizSearch.css"
@@ -105,7 +106,8 @@ export class QuizSearch extends React.Component {
       showModal,
       showModal2,
       setQuiz,
-      getQuestions
+      getQuestions,
+      setQuizDownloadData
     } = this.props
     return(
       <div id="quizSearch" className="componentContainer">
@@ -149,6 +151,7 @@ export class QuizSearch extends React.Component {
             showModal={showModal}
             showModal2={showModal2}
             getQuestions={getQuestions}
+            setQuizDownloadData={setQuizDownloadData}
           />
         </div>
       </div>
@@ -178,5 +181,6 @@ export default connect(mapStateToProps,
     getQuestions,
     deleteQuiz,
     clearQuizes,
-    setQuiz
+    setQuiz,
+    setQuizDownloadData
   })(QuizSearch)
