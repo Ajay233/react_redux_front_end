@@ -5,16 +5,6 @@ exports[`Quiz should render the quiz details, 'READY' status and questions for '
   className="componentContainer"
   id="quiz"
 >
-  <a
-    className="link back"
-    href="/quizSearch"
-    onClick={[Function]}
-  >
-    <i
-      className="fas fa-chevron-circle-left blue"
-    />
-     Back
-  </a>
   <div
     id="quizTitle"
   >
@@ -165,16 +155,6 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
   className="componentContainer"
   id="quiz"
 >
-  <a
-    className="link back"
-    href="/quizSearch"
-    onClick={[Function]}
-  >
-    <i
-      className="fas fa-chevron-circle-left blue"
-    />
-     Back
-  </a>
   <div
     id="quizTitle"
   >

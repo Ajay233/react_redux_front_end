@@ -245,7 +245,6 @@ export class QuizView extends React.Component {
     return(
       <div id="quiz" className="componentContainer">
         {this.renderModal()}
-        <Link className="link back" to="/quizSearch" onClick={this.clearNotification}><i className="fas fa-chevron-circle-left blue"></i> Back</Link>
         <Notification />
         {this.renderHeadings()}
         {this.renderDetailsOrUpdate()}
