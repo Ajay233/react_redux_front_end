@@ -1,4 +1,5 @@
 import { post } from '../../axiosRequests/requests'
+import { reset } from 'redux-form'
 import { setNotification } from '../../notifications/actions'
 import { getCategories } from '../../lists/actions'
 import history from '../../history'
@@ -29,6 +30,7 @@ export const setUser = (endpoint, loginDetails) => {
       console.log(error.response.data)
       if(error.response.data){
         console.log("OK")
+        dispatch(reset('loginForm'))
         if(error.response.data === "NOT VERIFIED"){
           console.log("not verified")
           const verifyMsg = "Your email has not yet been veirified.  You will need to verify your email before you can log in"

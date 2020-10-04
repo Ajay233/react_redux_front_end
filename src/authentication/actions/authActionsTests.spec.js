@@ -97,7 +97,7 @@ describe("setUser", () => {
 
     store.dispatch(setUser("auth/loginUnverified", "data"))
     mockAxios.mockError(requestError)
-    expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction)
   })
 
   it("can return an action to set incorrect credentials notification", () => {
@@ -121,7 +121,7 @@ describe("setUser", () => {
 
     store.dispatch(setUser("auth/loginFailed", ""))
     mockAxios.mockError(requestError)
-    expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction)
   })
 })
 
