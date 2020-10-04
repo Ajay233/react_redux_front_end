@@ -62,10 +62,10 @@ export const deleteQuiz = (config, jwt) => {
       dispatch(setNotification("Quiz deleted", "success", true))
     }).catch((error) => {
       console.log(error.response)
+      dispatch(hideModal())
       if(error.response.status === 403){
         sessionExpired(dispatch);
       } else {
-        dispatch(hideModal())
         dispatch(setNotification("Error - Unable to delete this quiz", "error", true))
       }
     })
@@ -97,10 +97,10 @@ export const deleteQuizFromCategory = (config, jwt) => {
       dispatch(setNotification("Quiz deleted", "success", true))
     }).catch((error) => {
       console.log(error.response)
+      dispatch(hideModal())
       if(error.response.status === 403){
         sessionExpired(dispatch);
       } else {
-        dispatch(hideModal())
         dispatch(setNotification("Error - Unable to delete this quiz", "error", true))
       }
     })

@@ -126,6 +126,7 @@ describe("Manage Account", () => {
           userData={userData}
           notificationData={notificationData}
           showModal={showModal}
+          hideModal={hideModal}
         />
       </Provider>
     );
@@ -151,6 +152,7 @@ describe("Manage Account", () => {
             showModal={showModal}
             logOut={logOut}
             setNotification={setNotification}
+            hideModal={hideModal}
           />
         </Router>
       </Provider>
@@ -184,6 +186,7 @@ describe("Manage Account", () => {
             showModal={showModal}
             logOut={logOut}
             setNotification={setNotification}
+            hideModal={hideModal}
           />
         </Router>
       </Provider>
@@ -217,6 +220,7 @@ describe("Manage Account", () => {
             showModal={showModal}
             logOut={logOut}
             setNotification={setNotification}
+            hideModal={hideModal}
           />
         </Router>
       </Provider>

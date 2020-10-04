@@ -97,10 +97,10 @@ export const deleteQuestion = (config, jwt) => {
       dispatch(setNotification("Question deleted", "success", true));
     }).catch((error) => {
       console.log(error.response);
+      dispatch(hideModal())
       if(error.response.status === 403){
         sessionExpired(dispatch);
       } else {
-        dispatch(hideModal())
         dispatch(setNotification("Error - Unable to delete this question", "error", true))
       }
     });

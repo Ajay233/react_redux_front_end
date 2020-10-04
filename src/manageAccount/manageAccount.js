@@ -28,16 +28,19 @@ export class ManageAccount extends React.Component {
     const successMsg = "Your account has been deleted";
     const errorMsg = "An error has occurred, your account was not found";
     const {id, jwt} = this.props.userData
+    const { hideModal, logOut, setNotification } = this.props
     const config = { data: { id: id } }
     del("users/deleteAccount", config, jwt).then((response) => {
-      this.props.logOut();
-      history.push('/');
-      this.props.setNotification(successMsg, "success", true);
+      hideModal()
+      logOut()
+      history.push('/')
+      setNotification(successMsg, "success", true)
     }).catch((error) => {
+      hideModal()
       if(error.response.status === 403){
         sessionExpired(this.props.dispatch);
       } else {
-        this.props.setNotification(errorMsg, "error", true);
+        setNotification(errorMsg, "error", true);
       }
     });
   }
