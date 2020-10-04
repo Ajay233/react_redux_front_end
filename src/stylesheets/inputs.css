@@ -42,7 +42,7 @@
 }
 
 .custom-file-input {
-  border: none;
+  border: 1px solid black;
   padding: 0;
   background-color: white;
   color: black;
