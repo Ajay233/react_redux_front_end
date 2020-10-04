@@ -16,7 +16,9 @@ exports[`pickAnswer form should match the snapshot, button title should be: 'Fin
         Answers
       </div>
       <div>
-        <label>
+        <label
+          className="radioInputlabel"
+        >
           <input
             checked={false}
             className="radioInput"
@@ -33,7 +35,9 @@ exports[`pickAnswer form should match the snapshot, button title should be: 'Fin
         </label>
       </div>
       <div>
-        <label>
+        <label
+          className="radioInputlabel"
+        >
           <input
             checked={false}
             className="radioInput"
@@ -92,7 +96,9 @@ exports[`pickAnswer form should match the snapshot, button title should be: 'Nex
         Answers
       </div>
       <div>
-        <label>
+        <label
+          className="radioInputlabel"
+        >
           <input
             checked={false}
             className="radioInput"
@@ -109,7 +115,9 @@ exports[`pickAnswer form should match the snapshot, button title should be: 'Nex
         </label>
       </div>
       <div>
-        <label>
+        <label
+          className="radioInputlabel"
+        >
           <input
             checked={false}
             className="radioInput"

@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import history from '../../history'
+// import history from '../../history'
 
 import '../../stylesheets/dropdown.css'
 
 const DropdownList = (props) => {
 
   const logOut = () => {
-    const { logOut, setNotification } = props
+    const { logOut, setNotification, toggleDropDown } = props
+    toggleDropDown()
     logOut();
-    history.push("/");
+    // history.push("/");
     setNotification("Logged out", "success", true);
   }
 
@@ -30,7 +31,7 @@ const DropdownList = (props) => {
 
   const renderLogout = () => {
 
-    return <li><button id="logOutButton" className="linkButton links" onClick={ () => {logOut()} }>Logout</button></li>
+    return <li><Link to="/" id="logOutButton" className="links" onClick={ () => {logOut()} }>Logout</Link></li>
   }
 
   const renderListUser = () => {

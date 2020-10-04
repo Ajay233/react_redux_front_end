@@ -65,7 +65,9 @@ exports[`should render a question, list of answers to pick, 'next question' and 
               Answers
             </div>
             <div>
-              <label>
+              <label
+                className="radioInputlabel"
+              >
                 <input
                   checked={false}
                   className="radioInput"
@@ -82,7 +84,9 @@ exports[`should render a question, list of answers to pick, 'next question' and 
               </label>
             </div>
             <div>
-              <label>
+              <label
+                className="radioInputlabel"
+              >
                 <input
                   checked={false}
                   className="radioInput"
@@ -201,7 +205,9 @@ exports[`should render the results 1`] = `
               Answers
             </div>
             <div>
-              <label>
+              <label
+                className="radioInputlabel"
+              >
                 <input
                   checked={false}
                   className="radioInput"
@@ -218,7 +224,9 @@ exports[`should render the results 1`] = `
               </label>
             </div>
             <div>
-              <label>
+              <label
+                className="radioInputlabel"
+              >
                 <input
                   checked={false}
                   className="radioInput"

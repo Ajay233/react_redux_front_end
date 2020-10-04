@@ -24,6 +24,11 @@
   padding: 5px;
 }
 
+.radioInputlabel:hover {
+  cursor: pointer;
+  color: orange;
+}
+
 .select {
   height: 34px;
 }

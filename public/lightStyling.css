@@ -178,3 +178,50 @@ td, th {
   margin-left: 5%;
   border-right: solid 1px black;
 }
+
+#questionContainer {
+  padding: 10px;
+  background-color: rgba(50, 50, 50, 0.1);
+  width: 75%;
+  border-right: solid 5px rgb(179, 136, 221);
+  border-radius: 5px;
+
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
+#questionContainer::after {
+  content: '';
+    margin-top: -30px;
+    padding-top: 0px;
+    position: relative;
+    bottom: -40px;
+    left: 280px;
+    border-width: 30px 30px 0 0;
+    border-style: solid;
+    border-color: rgba(50, 50, 50, 0.1) transparent;
+    display: block;
+    width: 0;
+}
+
+#answerContainer {
+  padding: 10px;
+  background-color: rgba(50, 50, 50, 0.1);
+  border-left: solid 5px rgb(255, 135, 80);
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+#answerContainer::after {
+  content: '';
+  margin-top: -30px;
+  padding-top: 0px;
+  position: relative;
+  bottom: -40px;
+  left: 20px;
+  border-width: 30px 0 0 30px;
+  border-style: solid;
+  border-color: rgba(50, 50, 50, 0.1) transparent;
+  display: block;
+  width: 0;
+}

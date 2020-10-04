@@ -26,6 +26,7 @@ describe("DropdownList", () => {
 
   beforeEach(() => {
     const handleThemeToggleClick = jest.fn()
+    const toggleDropDown = jest.fn()
     wrapper = mount(
       <Router history={history}>
         <DropdownList
@@ -36,17 +37,16 @@ describe("DropdownList", () => {
           loggedIn={true}
           permission={"SUPER-USER"}
           jwt={"testJWT"}
+          toggleDropDown={jest.fn()}
         />
       </Router>
     )
   })
 
   it("should call action creators and push a new location pathname on logout", () => {
-    wrapper.find('button').simulate('click')
+    wrapper.find('#logOutButton').at(1).simulate('click')
     expect(logOut).toHaveBeenCalledTimes(1)
     expect(setNotification).toHaveBeenCalledTimes(1)
-    expect(history.push).toHaveBeenCalledTimes(1)
-
   })
 
   it("should call getAllQuizes when browse all is clicked", () => {

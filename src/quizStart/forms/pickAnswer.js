@@ -8,7 +8,7 @@ const PickAnswer = (props) => {
     return(
       <div>
         {renderError(formProps.meta)}
-        <label><input {...formProps.input} type={formProps.type} className="radioInput"/>{formProps.label}</label>
+        <label className="radioInputlabel"><input {...formProps.input} type={formProps.type} className="radioInput"/>{formProps.label}</label>
       </div>
     );
   }
@@ -16,7 +16,7 @@ const PickAnswer = (props) => {
   const renderInput = (formProps) => {
     return(
       <div>
-        <label><input {...formProps.input} type={formProps.type} className="radioInput"/>{formProps.label}</label>
+        <label className="radioInputlabel"><input {...formProps.input} type={formProps.type} className="radioInput"/>{formProps.label}</label>
       </div>
     );
   }
