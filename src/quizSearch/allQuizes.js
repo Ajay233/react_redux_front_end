@@ -18,6 +18,8 @@ export class AllQuizes extends React.Component {
 
   componentDidMount(){
     document.documentElement.scrollTop = 0;
+    this.props.clearQuizes()
+    this.props.getAllQuizes("quiz/getAll", this.props.userData.jwt)
   }
 
   componentWillUnmount(){

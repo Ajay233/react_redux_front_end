@@ -135,4 +135,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(reduxForm({ form: 'editProfile', validate: validate })(EditProfileForm))
+export default connect(mapStateToProps)(reduxForm({ form: 'editProfile', validate: validate, enableReinitialize: true, destroyOnUnmount: false })(EditProfileForm))

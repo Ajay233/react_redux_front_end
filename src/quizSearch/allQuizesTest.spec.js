@@ -132,6 +132,7 @@ describe("AllQuizes", () => {
           modalState={modalState}
           quizes={quizes}
           clearQuizes={clearQuizes}
+          getAllQuizes={getAllQuizes}
         />
         </Router>
       </Provider>
@@ -154,6 +155,7 @@ describe("AllQuizes", () => {
             modalState={modalState}
             quizes={quizes}
             clearQuizes={clearQuizes}
+            getAllQuizes={getAllQuizes}
           />
         </Router>
       </Provider>
@@ -179,6 +181,7 @@ describe("AllQuizes", () => {
               hideModal={hideModal}
               deleteQuizFromCategory={deleteQuizFromCategory}
               setNotification={setNotification}
+              getAllQuizes={getAllQuizes}
             />
           </Router>
         </Provider>
@@ -208,6 +211,7 @@ describe("AllQuizes", () => {
               deleteQuizFromCategory={deleteQuizFromCategory}
               setNotification={setNotification}
               getQuestions={getQuestions}
+              getAllQuizes={getAllQuizes}
             />
           </Router>
         </Provider>
