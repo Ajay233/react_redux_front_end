@@ -146,14 +146,14 @@ exports[`Manage Account should call showModal when delete account is clicked 1`]
             testEmail
              
             <span
-              className="red rightAlign"
+              className="green rightAlign"
             >
               <b>
-                Unverified
+                Verified
               </b>
                
               <i
-                className="fas fa-times-circle"
+                className="fas fa-check-circle"
               />
             </span>
           </span>

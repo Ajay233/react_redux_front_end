@@ -31,7 +31,8 @@ describe("mapStateToProps", () => {
       userData: {
         forename: "testForename",
         surname: "testSurname",
-        email: "testEmail"
+        email: "testEmail",
+        verified: true
       },
       notificationData:{
         message: "",
@@ -68,7 +69,8 @@ describe("Manage Account", () => {
     userData = {
       forename: "testForename",
       surname: "testSurname",
-      email: "testEmail"
+      email: "testEmail",
+      verified: true
     }
 
     notificationData = {

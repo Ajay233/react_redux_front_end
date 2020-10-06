@@ -38,6 +38,7 @@ describe("DropdownList", () => {
           permission={"SUPER-USER"}
           jwt={"testJWT"}
           toggleDropDown={jest.fn()}
+          verified={true}
         />
       </Router>
     )

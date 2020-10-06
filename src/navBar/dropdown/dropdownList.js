@@ -25,12 +25,10 @@ const DropdownList = (props) => {
   }
 
   const renderLogin = () => {
-
     return <li><Link to="/login" className="links" onClick={ () => {clearNotifications() } }>Login</Link><hr/></li>
   }
 
   const renderLogout = () => {
-
     return <li><Link to="/" id="logOutButton" className="links" onClick={ () => {logOut()} }>Logout</Link></li>
   }
 
@@ -100,18 +98,28 @@ const DropdownList = (props) => {
   }
 
   const renderLoggedInOptions = () => {
-    return(
-      <React.Fragment>
-        {renderManageAccount()}
-        {renderListUser()}
-        {renderEditPrivilege()}
-        {renderBrowseAllQuizes()}
-        {renderQuizSearch()}
-        {renderCreateQuiz()}
-        {renderHelp()}
-        {renderLogout()}
-      </React.Fragment>
-    );
+    if(props.verified){
+      return(
+        <React.Fragment>
+          {renderManageAccount()}
+          {renderListUser()}
+          {renderEditPrivilege()}
+          {renderBrowseAllQuizes()}
+          {renderQuizSearch()}
+          {renderCreateQuiz()}
+          {renderHelp()}
+          {renderLogout()}
+        </React.Fragment>
+      );
+    } else {
+      return(
+        <React.Fragment>
+          {renderManageAccount()}
+          {renderHelp()}
+          {renderLogout()}
+        </React.Fragment>
+      );
+    }
   }
 
   const renderPreLogInOptions = () => {

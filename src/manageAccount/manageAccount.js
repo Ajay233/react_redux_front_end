@@ -45,6 +45,23 @@ export class ManageAccount extends React.Component {
     });
   }
 
+  renderPermissionChange = () => {
+    const { permission, verified } = this.props.userData
+    if(verified){
+      return(
+        <React.Fragment>
+          <hr/>
+          <div className="manageAccountRow">
+            <PermissionChangeRequestForm />
+            <PermissionDetails permission={permission}/>
+          </div>
+        </React.Fragment>
+      );
+    } else {
+      return null
+    }
+  }
+
   render(){
     const { userData, setNotification, modalState, hideModal, showModal } = this.props;
     return(
@@ -78,12 +95,7 @@ export class ManageAccount extends React.Component {
             <img src={require("../public/icons/changePassword.png")} className="changePasswordImg" alt=""/>
           </div>
         </div>
-
-        <hr/>
-        <div className="manageAccountRow">
-          <PermissionChangeRequestForm />
-          <PermissionDetails permission={userData.permission}/>
-        </div>
+        {this.renderPermissionChange()}
         <hr/>
         <div id="deleteAccountContainer">
           <div id="deleteAccountTitle">Delete Account</div>

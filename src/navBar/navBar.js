@@ -68,6 +68,7 @@ class NavBar extends React.Component {
         permission={userData.permission}
         jwt={userData.jwt}
         toggleDropDown={this.toggleDropDown}
+        verified={userData.verified}
       /> : null
     );
   }
