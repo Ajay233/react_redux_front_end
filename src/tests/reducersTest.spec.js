@@ -9,7 +9,7 @@ const testAction1 = {
 }
 
 const testAction2 = {
-  type: "SET_USER_LOGGED_IN",
+  type: "SET_USER",
   payload: {
     id: 1,
     forename: "test",

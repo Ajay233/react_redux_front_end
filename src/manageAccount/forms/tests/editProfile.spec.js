@@ -5,7 +5,9 @@ import { mount } from 'enzyme'
 import configureStore from 'redux-mock-store'
 import renderer from 'react-test-renderer'
 import mockAxios from 'jest-mock-axios'
+import { updateUser } from '../../actions'
 
+jest.mock("../../actions")
 jest.mock("../../../axiosRequests/axiosUtil")
 
 const mockStore = configureStore({})
@@ -48,7 +50,7 @@ describe("editProfile form", () => {
     )
 
     wrapper.find('form').simulate('submit')
-    expect(mockAxios.put).toHaveBeenCalledTimes(1)
+    expect(updateUser).toHaveBeenCalledTimes(1)
   })
 
   it("should match the snapshot", () => {

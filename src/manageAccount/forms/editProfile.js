@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import { put } from '../../axiosRequests/requests'
-import { sessionExpired } from '../../utils/session'
+import { updateUser } from '../actions'
 
 
 class EditProfileForm extends React.Component {
@@ -47,11 +46,7 @@ class EditProfileForm extends React.Component {
 
   // We don't need event.preventDefault() because redux-form handles that for us
   onSubmitProfileChange = ({forename, surname, newEmail}) => {
-    const successMsg = "Profile information updated";
-    const errorMsg = "Error updating your profile data, please check the details you provided and try again";
     const {id, email, jwt} = this.props.userData
-    console.log(newEmail)
-    console.log(this.validateNewEmail(newEmail, email))
     const validatedNewEmail = this.validateNewEmail(newEmail, email);
     const data = {
       id: id,
@@ -60,18 +55,7 @@ class EditProfileForm extends React.Component {
       email: email,
       newEmail: validatedNewEmail
     }
-    put('users/update', data, jwt).then((response) => {
-      this.props.setNotification(successMsg, "success", true)
-      console.log("Edited")
-    }).catch((error) => {
-      if(error.response.status === 403){
-        sessionExpired(this.props.dispatch);
-      } else {
-        this.props.setNotification(errorMsg, "error", true)
-        console.log(error.config)
-        console.log(error.response)
-      }
-    });
+    this.props.updateUser(data, jwt)
   }
 
   verifiedEmail = () => {
@@ -135,4 +119,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(reduxForm({ form: 'editProfile', validate: validate, enableReinitialize: true, destroyOnUnmount: false })(EditProfileForm))
+export default connect(mapStateToProps, { updateUser })(reduxForm({ form: 'editProfile', validate: validate, enableReinitialize: true, destroyOnUnmount: false })(EditProfileForm))

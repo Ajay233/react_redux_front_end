@@ -5,29 +5,14 @@ import { getCategories } from '../../lists/actions'
 import history from '../../history'
 
 export const setUser = (endpoint, loginDetails) => {
-
   return (dispatch) => {
-
     return post(endpoint, loginDetails).then((response) => {
-      dispatch({
-        type: "SET_USER_LOGGED_IN",
-        payload: {
-          id: response.data.user.id,
-          forename: response.data.user.forename,
-          surname: response.data.user.surname,
-          email: response.data.user.email,
-          permission: response.data.user.permission,
-          verified: response.data.user.verified,
-          jwt: response.data.jwt,
-          loggedIn: true
-        }
-      })
+      dispatch(setUserData(response.data.user, response.data.jwt))
       history.push("/")
       dispatch(getCategories("lookup/quizCategories", response.data.jwt))
       dispatch(setNotification(`Welcome back ${response.data.user.forename}`, "loginSuccess", true))
     }).catch((error) => {
       console.log(error.response)
-      console.log(error.response.data)
       if(error.response.data){
         console.log("OK")
         dispatch(reset('loginForm'))
@@ -70,6 +55,22 @@ export const setVerficationProcess = (endpoint, verificationDetails) => {
         }
       })
     })
+  }
+}
+
+export const setUserData = (user, jwt) => {
+  return {
+    type: "SET_USER",
+    payload: {
+      id: user.id,
+      forename: user.forename,
+      surname: user.surname,
+      email: user.email,
+      permission: user.permission,
+      verified: user.verified,
+      jwt: jwt,
+      loggedIn: true
+    }
   }
 }
 
