@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Notification from '../notifications/notifications'
 import QuizResults from './quizResults'
 import Modal from '../modal/modal'
+import Loading from '../components/loading.js'
 
 import { getAllQuizes, deleteQuizFromCategory, clearQuizes } from './actions'
 import { hideModal, showModal, showModal2 } from '../modal/actions'
@@ -153,28 +154,26 @@ export class AllQuizes extends React.Component {
   renderComponent = () => {
     const { quizes } = this.props;
     if(quizes === null || quizes.length === 0 ){
-      //This will need to be replaced with a component that renders an animated loading modal
-      //Reuse modal
       return(
-        <div>Loading...</div>
+        <Loading />
       );
     } else {
       return(
-        <React.Fragment>
+        <div className="componentContainer">
           <Notification />
           <div id="allQuizzesTitle">Browse all quizzes by Category</div>
           {this.renderModal()}
           {this.renderCategories()}
-        </React.Fragment>
+        </div>
       );
     }
   }
 
   render(){
     return(
-      <div className="componentContainer">
+      <React.Fragment>
         {this.renderComponent()}
-      </div>
+      </React.Fragment>
     );
   }
 }

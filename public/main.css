@@ -214,3 +214,7 @@ td, th {
   display: block;
   width: 0;
 }
+
+.loadingLabel {
+  color: white;
+}

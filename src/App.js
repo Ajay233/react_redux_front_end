@@ -24,6 +24,7 @@ import history from './history'
 import './stylesheets/buttons.css'
 import './stylesheets/inputs.css'
 import './stylesheets/pdf.css'
+import './stylesheets/loading.css'
 
 
 class App extends React.Component {
