@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import axios from 'axios';
+import { post } from '../../axiosRequests/requests'
 
 class SignUpForm extends React.Component {
 
@@ -28,7 +28,7 @@ class SignUpForm extends React.Component {
     const { setNotification, reset } = this.props
     const successMsg = "An email has been sent to the email address you provided.  \n\n Please login and click the link provided to verify your email address and complete the registration process.  \n\n Once your email address has been verified you will be able to log into the quiz app";
     const errorMsg = "An account already exists for that email address"
-    axios.post('http://localhost:8080/auth/signUp',{
+    post('auth/signUp',{
         'forename': forename,
         'surname': surname,
         'email': email,
