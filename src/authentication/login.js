@@ -24,7 +24,7 @@ export class Login extends React.Component {
       <div className="loginContainer">
         <div className="login">
         <div className="notificationContainer">
-        <Notification />
+          <Notification />
         </div>
           <LoginForm setUser={setUser} />
         </div>
