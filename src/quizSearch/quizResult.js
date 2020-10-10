@@ -71,7 +71,7 @@ export const QuizResult = (props) => {
       return(
         <Link
           to="/viewQuiz"
-          className="view"
+          className="view linkStandard"
           onClick={ () => { handleView() } }
         >
           <i className="far fa-eye blue"></i> View

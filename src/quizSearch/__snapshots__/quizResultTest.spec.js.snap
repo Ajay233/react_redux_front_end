@@ -96,7 +96,7 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
       className="options"
     >
       <a
-        className="view"
+        className="view linkStandard"
         href="/viewQuiz"
         onClick={[Function]}
       >

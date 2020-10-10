@@ -60,7 +60,7 @@ class UpdateQuestionForm extends React.Component {
             <i className="fas fa-photo-video"></i>
           </div>
         </div>
-        <div className="placeholderBackground">If you add an image or png file, a preview will be shown here</div>
+        <div className="placeholderBackground">If you add an image or gif file, a preview will be shown here</div>
       </div>
     );
   }

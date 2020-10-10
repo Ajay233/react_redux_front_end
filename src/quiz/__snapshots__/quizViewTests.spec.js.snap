@@ -6,55 +6,62 @@ exports[`Quiz should render the quiz details, 'READY' status and questions for '
   id="quiz"
 >
   <div
-    id="quizTitle"
-  >
-    test
-  </div>
-  <div
-    className="quizStatus"
-  >
-    Status: 
-    <span
-      className="readyFlag"
-    >
-      <i
-        className="far fa-check-circle"
-      />
-       Ready for use
-    </span>
-  </div>
-  <div
     className="quizFormArea"
   >
     <div
       className="quizForm"
     >
-      <div
-        className="detailsContainer"
-      >
+      <div>
         <div
-          className="detailsHeading"
-        >
-          Description:
-        </div>
-        <div
-          className="detailsContent"
+          id="quizTitle"
         >
           test
         </div>
-      </div>
-      <div
-        className="detailsContainer"
-      >
         <div
-          className="detailsHeading"
+          className="detailsContainerLarge"
         >
-          Category:
+          <div
+            className="detailsHeading"
+          >
+            Description:
+          </div>
+          <div
+            className="detailsContent"
+          >
+            test
+          </div>
         </div>
         <div
-          className="detailsContent"
+          className="detailsContainerLarge"
         >
-          test
+          <div
+            className="detailsHeading"
+          >
+            Category:
+          </div>
+          <div
+            className="detailsContent"
+          >
+            test
+          </div>
+        </div>
+        <div
+          className="detailsContainerLarge"
+        >
+          <span
+            className="bold"
+          >
+            Status:
+          </span>
+           
+          <span
+            className="readyFlag"
+          >
+            <i
+              className="far fa-check-circle"
+            />
+             Ready for use
+          </span>
         </div>
       </div>
     </div>
@@ -72,12 +79,7 @@ exports[`Quiz should render the quiz details, 'READY' status and questions for '
       <div
         className="link deleteImg"
         onClick={[Function]}
-      >
-        <i
-          className="fas fa-trash-alt red"
-        />
-         Delete Image
-      </div>
+      />
     </div>
   </div>
   <div
@@ -308,10 +310,12 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
         className="link deleteImg"
         onClick={[Function]}
       >
-        <i
-          className="fas fa-trash-alt red"
-        />
-         Delete Image
+        <span>
+          <i
+            className="fas fa-trash-alt red"
+          />
+           Delete Image
+        </span>
       </div>
     </div>
   </div>

@@ -101,19 +101,24 @@ export class QuizView extends React.Component {
   // }
 
   renderDetails = () => {
-    const { description, category, imgUrl } = this.props.quiz
+    const { description, category, imgUrl, name } = this.props.quiz
     return(
       <div className={imgUrl !== null ? 'quizFormArea' : ''}>
         <div className={imgUrl !== null ? 'quizForm' : ''}>
-
-        <div className="detailsContainer">
-          <div className="detailsHeading">Description:</div>
-          <div className="detailsContent">{description}</div>
-        </div>
-        <div className="detailsContainer">
-          <div className="detailsHeading">Category:</div>
-          <div className="detailsContent">{category}</div>
-        </div>
+          <div>
+          <div id="quizTitle">{name}</div>
+          <div className={imgUrl !== null ? "detailsContainerLarge" : "detailsContainer"}>
+            <div className="detailsHeading">Description:</div>
+            <div className="detailsContent">{description}</div>
+          </div>
+          <div className={imgUrl !== null ? "detailsContainerLarge" : "detailsContainer"}>
+            <div className="detailsHeading">Category:</div>
+            <div className="detailsContent">{category}</div>
+          </div>
+          <div className={imgUrl !== null ? "detailsContainerLarge" : "detailsContainer"}>
+            <span className="bold">Status:</span> {this.renderStatus()}
+          </div>
+          </div>
         </div>
         {imgUrl !== null ? this.renderImg() : null}
       </div>
@@ -126,12 +131,12 @@ export class QuizView extends React.Component {
   }
 
   renderImg = () => {
-    const { showModal3 } = this.props
+    const { showModal3, userData } = this.props
     return(
       <div className="quizImageArea">
         {this.renderQuizImage()}
         <div className="link deleteImg" onClick={() => showModal3()}>
-          <i className="fas fa-trash-alt red"></i> Delete Image
+          {userData.permission === "ADMIN" || userData.permission === "SUPER-USER" ? <span><i className="fas fa-trash-alt red"></i> Delete Image</span> : null}
         </div>
       </div>
     );
@@ -147,12 +152,7 @@ export class QuizView extends React.Component {
         </React.Fragment>
       );
     } else {
-      return(
-        <React.Fragment>
-          <div id="quizTitle">{name}</div>
-          <div className="quizStatus">Status: {this.renderStatus()}</div>
-        </React.Fragment>
-      );
+      return null
     }
   }
 

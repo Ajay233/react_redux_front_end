@@ -14,12 +14,50 @@
   margin: 30px 0px;
 }
 
+.questionViewTitle {
+  font-size: 40px;
+  text-align: center;
+  width: 95%;
+  margin: 30px 2.5%;
+}
+
+.questionViewTitleAlt {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  width: auto;
+  margin: 30px 0px;
+}
+
 .questionFormArea {
   display: flex;
+  margin: 0 10px;
 }
 
 .questionForm, .questionImageArea {
   width: 50%;
+}
+
+.questionDetailsContainerLarge{
+  display: flex;
+  width: 90%;
+  margin: 10px auto;
+  padding: 10px 5px 10px 5px;
+}
+
+.questionDetailsContainer{
+  display: flex;
+  width: 50%;
+  margin: 10px auto;
+  padding: 10px 5px 10px 5px;
+}
+
+.questionDetailsHeading {
+  width: 30%
+}
+
+.questionDetailsContent {
+  width: 70%
 }
 
 .preview {
@@ -35,7 +73,8 @@
 }
 
 .deleteImg {
-  text-align: center;
+  width: fit-content;
+  margin: 5px auto;
 }
 
 .imgPlaceholderContainer {

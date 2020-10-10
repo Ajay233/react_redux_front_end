@@ -92,6 +92,21 @@
   padding: 10px 5px 10px 5px;
 }
 
+.detailsContainerLarge {
+  display: flex;
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px 5px 10px 5px;
+}
+
+/* margin: 10px 30% 40px 30%; */
+.detailsStatusContainerLarge {
+  display: flex;
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px 5px 10px 5px;
+}
+
 .detailsHeading {
   font-weight: bold;
 }

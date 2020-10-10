@@ -5,6 +5,7 @@ import { Answers } from '../answer/answers'
 import UpdateQuestionForm from './forms/updateQuestion'
 import Notification from '../notifications/notifications'
 import Modal from '../modal/modal'
+import FilePlaceholder from '../components/filePlaceholder'
 import history from '../history'
 
 import { setNotification } from '../notifications/actions'
@@ -78,8 +79,8 @@ export class QuestionView extends React.Component {
     const { currentQuestion, quiz } = this.props
     return(
       <React.Fragment>
-        <div className="title-large">{`Question number ${currentQuestion.questionNumber} from the ${quiz.name} quiz`}</div>
-        <div className="detailsContainer">
+        <div className="questionViewTitle">{`Question ${currentQuestion.questionNumber} from the ${quiz.name} quiz`}</div>
+        <div className={"questionDetailsContainerLarge"}>
           <div className="detailsHeading">Question description:</div>
           <div className="detailsContent">{ currentQuestion.description }</div>
         </div>
@@ -88,19 +89,19 @@ export class QuestionView extends React.Component {
   }
 
   renderImg = () => {
-    const { showModal3 } = this.props
+    const { showModal3, userData } = this.props
     return(
       <div className="questionImageArea">
         {this.renderQuestionImage()}
         <div className="link deleteImg" onClick={() => showModal3()}>
-          <i className="fas fa-trash-alt red"></i> Delete Image
+          {userData.permission === "ADMIN" || userData.permission === "SUPER-USER" ? <span><i className="fas fa-trash-alt red"></i> Delete Image</span> : null}
         </div>
       </div>
     );
   }
 
   renderFormOrDetails = () => {
-    const { currentQuestion } = this.props
+    const { currentQuestion, userData } = this.props
     if(history.location.pathname === "/editQuestion"){
       return(
         <div className={currentQuestion.imgUrl !== null ? 'questionFormArea' : ''}>
@@ -112,13 +113,26 @@ export class QuestionView extends React.Component {
       );
     } else {
       return(
-        <div className={currentQuestion.imgUrl !== null ? 'questionFormArea' : ''}>
-          <div className={currentQuestion.imgUrl !== null ? 'questionForm' : ''}>
+        <div className={'questionFormArea'}>
+          <div className={'questionForm'}>
             {this.renderDetails()}
           </div>
           {currentQuestion.imgUrl !== null ? this.renderImg() : null}
+          {this.renderPlaceholder(currentQuestion.imgUrl, userData.permission)}
         </div>
       );
+    }
+  }
+
+  renderPlaceholder = (imgUrl, permission) => {
+    if(imgUrl === null && permission !== "ADMIN" && permission !== "SUPER-USER"){
+      return(
+        <div className="questionImageArea">
+        <FilePlaceholder type={'question'} permission={permission}/>
+        </div>
+      );
+    } else {
+      return null
     }
   }
 

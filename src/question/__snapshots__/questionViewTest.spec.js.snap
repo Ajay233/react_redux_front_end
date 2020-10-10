@@ -21,12 +21,12 @@ exports[`QuestionView should render the QuestionView component, question details
       className="questionForm"
     >
       <div
-        className="title-large"
+        className="questionViewTitle"
       >
-        Question number 1 from the Quiz 1 quiz
+        Question 1 from the Quiz 1 quiz
       </div>
       <div
-        className="detailsContainer"
+        className="questionDetailsContainerLarge"
       >
         <div
           className="detailsHeading"
@@ -55,10 +55,12 @@ exports[`QuestionView should render the QuestionView component, question details
         className="link deleteImg"
         onClick={[Function]}
       >
-        <i
-          className="fas fa-trash-alt red"
-        />
-         Delete Image
+        <span>
+          <i
+            className="fas fa-trash-alt red"
+          />
+           Delete Image
+        </span>
       </div>
     </div>
   </div>
@@ -227,12 +229,12 @@ exports[`QuestionView should render the QuestionView component, update question 
       className="questionForm"
     >
       <div
-        className="title-large"
+        className="questionViewTitle"
       >
-        Question number 1 from the Quiz 1 quiz
+        Question 1 from the Quiz 1 quiz
       </div>
       <div
-        className="detailsContainer"
+        className="questionDetailsContainerLarge"
       >
         <div
           className="detailsHeading"
@@ -261,10 +263,12 @@ exports[`QuestionView should render the QuestionView component, update question 
         className="link deleteImg"
         onClick={[Function]}
       >
-        <i
-          className="fas fa-trash-alt red"
-        />
-         Delete Image
+        <span>
+          <i
+            className="fas fa-trash-alt red"
+          />
+           Delete Image
+        </span>
       </div>
     </div>
   </div>
