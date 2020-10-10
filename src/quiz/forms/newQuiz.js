@@ -76,10 +76,12 @@ class NewQuizForm extends React.Component {
 
   onSubmit = ({ name, description, category, file }) => {
     const { userData, createQuiz } = this.props;
+    const author = userData.forename + ' ' + userData.surname
     let formData = new FormData()
     formData.append('name', name)
     formData.append('description', description)
     formData.append('category', category)
+    formData.append('author', author)
     if(file !== undefined){
       formData.append('file', file[0])
     }

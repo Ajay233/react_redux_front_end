@@ -77,6 +77,22 @@ exports[`UpdateQuiz Form should match the snapshot 1`] = `
           </select>
         </div>
       </div>
+      <div>
+        <label>
+          Created by:
+        </label>
+        <input
+          className="inputBox"
+          name="author"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          placeholder={null}
+          value=""
+        />
+      </div>
       <div
         className="buttonGroup"
       >

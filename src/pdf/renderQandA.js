@@ -1,24 +1,44 @@
 import React from 'react'
-import { Text, View, StyleSheet, Image } from '@react-pdf/renderer';
+import { Text, View, StyleSheet, Image, Font } from '@react-pdf/renderer';
+import roboto from './fonts/Roboto-Bold.ttf'
+import robotoRegular from './fonts/Roboto-Regular.ttf'
 // import { asyncGetUsingParams } from '../axiosRequests/requests'
 
 const RenderQandA = (props) => {
+
+  Font.register({family: 'RobotoBold', src: roboto})
+  Font.register({family: 'RobotoRegular', src: robotoRegular})
 
   const styles = StyleSheet.create({
     page: {
       backgroundColor: '#E4E4E4'
     },
+    questionNumber: {
+      fontSize: 15,
+      fontFamily: 'RobotoBold',
+      marginTop:10,
+      marginBottom: 15
+    },
     question: {
       fontSize: 15,
-      marginVertical:10,
-      marginHorizontal: 30
+      fontFamily: 'RobotoRegular',
+    },
+    answerIndex: {
+      fontSize: 15,
+      fontFamily: 'RobotoBold',
+      marginBottom: 5
     },
     answer: {
       fontSize: 15,
-      marginHorizontal: 30
+      fontFamily: 'RobotoRegular',
+    },
+    answerSection:{
+      marginTop:15,
+      marginBottom: 20
     },
     section: {
-      margin: 10,
+      marginLeft: 20,
+      marginRight: 20,
       padding: 10,
       flexGrow: 1
     },
@@ -37,12 +57,12 @@ const RenderQandA = (props) => {
       let id = question.id
       return(
         <View key={id} style={styles.section}>
-          <Text style={styles.question}>{question.questionNumber}. {question.description}</Text>
+          <Text style={styles.questionNumber}>{question.questionNumber}. <Text style={styles.question}>{question.description}</Text></Text>
           <Image
             src={question.imgUrl !== null ? question.imgUrl : null}
             style={question.imgUrl !== null ? styles.image : styles.noImage}
           />
-          <View style={styles.section}>
+          <View style={styles.answerSection}>
             {renderAnswers(id, answers[id])}
           </View>
         </View>
@@ -54,8 +74,8 @@ const RenderQandA = (props) => {
   const renderAnswers = (questionId, answers) => {
     let answerList = answers.map(answer => {
       return(
-        <Text key={`${questionId}-${answers.indexOf(answer)}`} style={styles.answer}>
-          {answer.answerIndex}. {answer.description}
+        <Text key={`${questionId}-${answers.indexOf(answer)}`} style={styles.answerIndex}>
+          {answer.answerIndex}. <Text style={styles.answer}>{answer.description}</Text>
         </Text>
       );
     })

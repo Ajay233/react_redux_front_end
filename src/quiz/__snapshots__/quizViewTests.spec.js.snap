@@ -48,6 +48,18 @@ exports[`Quiz should render the quiz details, 'READY' status and questions for '
         <div
           className="detailsContainerLarge"
         >
+          <div
+            className="detailsHeading"
+          >
+            Created by:
+          </div>
+          <div
+            className="detailsContent"
+          />
+        </div>
+        <div
+          className="detailsContainerLarge"
+        >
           <span
             className="bold"
           >
@@ -255,6 +267,22 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
                   </option>
                 </select>
               </div>
+            </div>
+            <div>
+              <label>
+                Created by:
+              </label>
+              <input
+                className="inputBox"
+                name="author"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onDragStart={[Function]}
+                onDrop={[Function]}
+                onFocus={[Function]}
+                placeholder={null}
+                value=""
+              />
             </div>
             <div
               className="buttonGroup"

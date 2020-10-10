@@ -3,5 +3,7 @@ export const quiz = {
   name: "",
   description: "",
   category: "",
-  status: ""
+  status: "",
+  imgUrl: "",
+  author: ""
 }

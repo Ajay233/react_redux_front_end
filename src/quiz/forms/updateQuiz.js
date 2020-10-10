@@ -107,13 +107,15 @@ class UpdateQuizForm extends React.Component {
     return listOfOptions
   }
 
-  onSubmit = ({ name, description, category, file }) => {
+  onSubmit = ({ name, description, category, author, file }) => {
     const { userData, quiz, updateQuiz } = this.props;
+    const quizAuthor = !author ? 'Anonymous' : author
     let formData = new FormData()
     formData.append('id', quiz.id)
     formData.append('name', name)
     formData.append('description', description)
     formData.append('category', category)
+    formData.append('author', quizAuthor)
     if(file !== undefined){
       formData.append('file', file[0])
     }
@@ -154,6 +156,7 @@ class UpdateQuizForm extends React.Component {
             <Field name="category" component={this.renderSelect} label="Quiz category:">
               {this.renderOptions()}
             </Field>
+            <Field name="author" component={this.renderInput} label="Created by:" />
             {imgUrl === null ? <Field name="file" component={this.renderFileInput} label="Add an image or gif:" /> : null}
             <div className="buttonGroup">
               <button className="submit"><i className="far fa-save"></i> Save Changes</button>
@@ -200,7 +203,8 @@ const mapStateToProps = (state) => {
     initialValues: {
       name: state.quiz.name,
       description: state.quiz.description,
-      category: state.quiz.category
+      category: state.quiz.category,
+      author: state.quiz.author
     },
     userData: state.userData,
     quiz: state.quiz,

@@ -5,6 +5,10 @@ import history from '../history'
 
 class QuizIntro extends React.Component {
 
+  componentDidMount(){
+    document.documentElement.scrollTop = 0;
+  }
+
   timedRedirect = () => {
     history.push("/startQuiz")
   }
@@ -13,14 +17,19 @@ class QuizIntro extends React.Component {
     return imgUrl ? <div className="quizIntroImgContainer"><img src={imgUrl}  className="quizIntroImg" alt=""/></div> : null
   }
 
+  renderAuthor = (author) => {
+    return author !== 'Anonymous' ? <div className="quizIntroAuthor">{`Created by: ${author}`}</div> : null
+  }
+
   render(){
-    const { name, description, imgUrl } = this.props.quiz
+    const { name, description, imgUrl, author } = this.props.quiz
     return(
       <div className="componentContainer">
         {timedFunc(2500, this.timedRedirect)}
         <div className="quizIntroTitle">{name}</div>
         {this.renderImg(imgUrl)}
         <div className="quizIntroDescription">{description}</div>
+        {this.renderAuthor(author)}
       </div>
     );
   }

@@ -101,7 +101,7 @@ export class QuizView extends React.Component {
   // }
 
   renderDetails = () => {
-    const { description, category, imgUrl, name } = this.props.quiz
+    const { description, category, imgUrl, name, author } = this.props.quiz
     return(
       <div className={imgUrl !== null ? 'quizFormArea' : ''}>
         <div className={imgUrl !== null ? 'quizForm' : ''}>
@@ -114,6 +114,10 @@ export class QuizView extends React.Component {
           <div className={imgUrl !== null ? "detailsContainerLarge" : "detailsContainer"}>
             <div className="detailsHeading">Category:</div>
             <div className="detailsContent">{category}</div>
+          </div>
+          <div className={imgUrl !== null ? "detailsContainerLarge" : "detailsContainer"}>
+            <div className="detailsHeading">Created by:</div>
+            <div className="detailsContent">{author}</div>
           </div>
           <div className={imgUrl !== null ? "detailsContainerLarge" : "detailsContainer"}>
             <span className="bold">Status:</span> {this.renderStatus()}
