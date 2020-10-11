@@ -43,11 +43,11 @@
 }
 
 .nameHeaderExpanded {
-  width: 23%;
+  width: 20%;
 }
 
 .descriptionHeader {
-  width: 50%;
+  width: 45%;
 }
 
 .statusHeader {
@@ -55,7 +55,7 @@
 }
 
 #optionsHeader {
-  width: 27%;
+  width: 30%;
 }
 
 .quizContainer, #resultsHeadings {
@@ -77,11 +77,11 @@
 }
 
 .quizNameExpanded {
-  width: 23%;
+  width: 20%;
 }
 
 .quizDescription {
-  width: 50%;
+  width: 45%;
 }
 
 .quizStatus {
@@ -89,7 +89,7 @@
 }
 
 .options {
-  width: 27%;
+  width: 30%;
   display: flex;
   flex-direction: row-reverse;
   padding-right: 5px;

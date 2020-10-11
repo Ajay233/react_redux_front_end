@@ -17,31 +17,8 @@ exports[`Questions should render a list of questions with delete and edit option
         testDescription
       </div>
       <div
-        className="options"
-      >
-        <a
-          className="deleteOption linkStandard"
-          href="/"
-          id="deleteQuestionRow"
-          onClick={[Function]}
-        >
-          <i
-            className="fas fa-trash-alt red"
-          />
-           Delete
-        </a>
-        <a
-          className="edit linkStandard"
-          href="/editQuestion"
-          id="editQuestionRow"
-          onClick={[Function]}
-        >
-          <i
-            className="fas fa-edit blue"
-          />
-           Edit
-        </a>
-      </div>
+        className="questionOptions"
+      />
     </div>
   </div>
   <div>
@@ -59,31 +36,8 @@ exports[`Questions should render a list of questions with delete and edit option
         testDescription2
       </div>
       <div
-        className="options"
-      >
-        <a
-          className="deleteOption linkStandard"
-          href="/"
-          id="deleteQuestionRow"
-          onClick={[Function]}
-        >
-          <i
-            className="fas fa-trash-alt red"
-          />
-           Delete
-        </a>
-        <a
-          className="edit linkStandard"
-          href="/editQuestion"
-          id="editQuestionRow"
-          onClick={[Function]}
-        >
-          <i
-            className="fas fa-edit blue"
-          />
-           Edit
-        </a>
-      </div>
+        className="questionOptions"
+      />
     </div>
   </div>
   <div>
@@ -101,31 +55,8 @@ exports[`Questions should render a list of questions with delete and edit option
         testDescription3
       </div>
       <div
-        className="options"
-      >
-        <a
-          className="deleteOption linkStandard"
-          href="/"
-          id="deleteQuestionRow"
-          onClick={[Function]}
-        >
-          <i
-            className="fas fa-trash-alt red"
-          />
-           Delete
-        </a>
-        <a
-          className="edit linkStandard"
-          href="/editQuestion"
-          id="editQuestionRow"
-          onClick={[Function]}
-        >
-          <i
-            className="fas fa-edit blue"
-          />
-           Edit
-        </a>
-      </div>
+        className="questionOptions"
+      />
     </div>
   </div>
 </div>
@@ -148,19 +79,8 @@ exports[`Questions should render a list of questions with only the view option f
         testDescription
       </div>
       <div
-        className="options"
-      >
-        <a
-          className="view linkStandard"
-          href="/viewQuestion"
-          onClick={[Function]}
-        >
-          <i
-            className="far fa-eye blue"
-          />
-           View
-        </a>
-      </div>
+        className="questionOptions"
+      />
     </div>
   </div>
   <div>
@@ -178,19 +98,8 @@ exports[`Questions should render a list of questions with only the view option f
         testDescription2
       </div>
       <div
-        className="options"
-      >
-        <a
-          className="view linkStandard"
-          href="/viewQuestion"
-          onClick={[Function]}
-        >
-          <i
-            className="far fa-eye blue"
-          />
-           View
-        </a>
-      </div>
+        className="questionOptions"
+      />
     </div>
   </div>
   <div>
@@ -208,19 +117,8 @@ exports[`Questions should render a list of questions with only the view option f
         testDescription3
       </div>
       <div
-        className="options"
-      >
-        <a
-          className="view linkStandard"
-          href="/viewQuestion"
-          onClick={[Function]}
-        >
-          <i
-            className="far fa-eye blue"
-          />
-           View
-        </a>
-      </div>
+        className="questionOptions"
+      />
     </div>
   </div>
 </div>

@@ -292,24 +292,14 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
             className="options"
           >
             <a
-              className="deleteOption linkStandard"
-              href="/"
+              className="view linkStandard"
+              href="/viewQuiz"
               onClick={[Function]}
             >
               <i
-                className="fas fa-trash-alt red"
+                className="far fa-eye blue"
               />
-               Delete
-            </a>
-            <a
-              className="edit linkStandard"
-              href="/editQuiz"
-              onClick={[Function]}
-            >
-              <i
-                className="fas fa-edit blue"
-              />
-               Edit
+               View
             </a>
             <a
               className="start linkStandard"
@@ -359,24 +349,14 @@ exports[`QuizSearch should render quiz serchByName, searchByCategory forms and r
             className="options"
           >
             <a
-              className="deleteOption linkStandard"
-              href="/"
+              className="view linkStandard"
+              href="/viewQuiz"
               onClick={[Function]}
             >
               <i
-                className="fas fa-trash-alt red"
+                className="far fa-eye blue"
               />
-               Delete
-            </a>
-            <a
-              className="edit linkStandard"
-              href="/editQuiz"
-              onClick={[Function]}
-            >
-              <i
-                className="fas fa-edit blue"
-              />
-               Edit
+               View
             </a>
             <a
               className="start linkStandard"

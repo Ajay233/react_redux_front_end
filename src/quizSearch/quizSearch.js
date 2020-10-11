@@ -152,6 +152,7 @@ export class QuizSearch extends React.Component {
             showModal2={showModal2}
             getQuestions={getQuestions}
             setQuizDownloadData={setQuizDownloadData}
+            userId={userData.id}
           />
         </div>
       </div>

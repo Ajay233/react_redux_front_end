@@ -107,7 +107,7 @@ class UpdateQuizForm extends React.Component {
     return listOfOptions
   }
 
-  onSubmit = ({ name, description, category, author, file }) => {
+  onSubmit = ({ name, description, category, author, authorId, file }) => {
     const { userData, quiz, updateQuiz } = this.props;
     const quizAuthor = !author ? 'Anonymous' : author
     let formData = new FormData()
@@ -116,6 +116,7 @@ class UpdateQuizForm extends React.Component {
     formData.append('description', description)
     formData.append('category', category)
     formData.append('author', quizAuthor)
+    formData.append('authorId', authorId)
     if(file !== undefined){
       formData.append('file', file[0])
     }
@@ -204,7 +205,8 @@ const mapStateToProps = (state) => {
       name: state.quiz.name,
       description: state.quiz.description,
       category: state.quiz.category,
-      author: state.quiz.author
+      author: state.quiz.author,
+      authorId: state.quiz.authorId
     },
     userData: state.userData,
     quiz: state.quiz,

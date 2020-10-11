@@ -104,12 +104,13 @@ describe("handleEdit", () => {
       description: "testDescription",
       correct: false
     }
+    history.push('/editQuestion')
   })
 
   it("should call setCurrentAnswer", () => {
-
+  
     const userData = {
-      permission: "ADMIN",
+      permission: "SUPER-USER",
       jwt: "jwt"
     }
 
@@ -123,7 +124,7 @@ describe("handleEdit", () => {
         />
       </Router>
     )
-    
+
     // wrapper.instance().handleEdit()
     const editButton = wrapper.find('#editAnswer')
     editButton.at(1).simulate('click')
@@ -149,7 +150,7 @@ describe("handleDelete", () => {
     setCurrentAnswer.mockClear()
 
     const userData = {
-      permission: "ADMIN",
+      permission: "SUPER-USER",
       jwt: "jwt"
     }
 

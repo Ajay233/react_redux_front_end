@@ -94,6 +94,7 @@ export class AllQuizes extends React.Component {
             showModal2={showModal2}
             getQuestions={getQuestions}
             setQuizDownloadData={setQuizDownloadData}
+            userId={userData.id}
           />
         </React.Fragment>
       );

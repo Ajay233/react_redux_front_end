@@ -36,66 +36,83 @@ export const QuizResult = (props) => {
     );
   }
 
+  const renderEditOrView = (permission, quiz, userId) => {
+    if (quiz.status === 'READY'){
+      if (quiz.authorId === userId || permission === "SUPER-USER"){
+        return renderEdit()
+      } else {
+        return renderView()
+      }
+    } else if((quiz.authorId === userId && permission === "ADMIN") || permission === "SUPER-USER") {
+      return renderEdit()
+    } else if(permission === 'READ-ONLY') {
+      return renderView()
+    } else {
+      return null
+    }
+  }
+
+  const renderDelete = (permission, quiz, userId) => {
+    if (quiz.status === 'READY'){
+      if (quiz.authorId === userId || permission === "SUPER-USER"){
+        return deleteButton()
+      } else {
+        return null
+      }
+    } else if(permission === "SUPER-USER") {
+      return deleteButton()
+    } else {
+      return null
+    }
+  }
+
   const renderOptions = () => {
-    const { permission } = props;
+    const { permission, quiz, userId } = props;
     const { status } = props.quiz
     return(
       <div className="options">
-        { renderDelete(permission) }
-        { renderView(permission) }
-        { renderEdit(permission) }
+        { renderDelete(permission, quiz, userId) }
+        { renderEditOrView(permission, quiz, userId) }
         { renderPdf(status) }
         { renderStart(status) }
       </div>
     );
   }
 
-  const renderDelete = (permission) => {
-    if(permission === "ADMIN" || permission === "SUPER-USER"){
-      return(
-        <Link
-          to="#"
-          className="deleteOption linkStandard"
-          onClick={ () => {handleDelete()} }
-        >
-          <i className="fas fa-trash-alt red"></i> Delete
-        </Link>
-      );
-    } else {
-      return null
-    }
+  const deleteButton = (permission) => {
+    return(
+      <Link
+        to="#"
+        className="deleteOption linkStandard"
+        onClick={ () => {handleDelete()} }
+      >
+        <i className="fas fa-trash-alt red"></i> Delete
+      </Link>
+    );
   }
 
-  const renderView = (permission) => {
-    if(permission === "READ-ONLY"){
-      return(
-        <Link
-          to="/viewQuiz"
-          className="view linkStandard"
-          onClick={ () => { handleView() } }
-        >
-          <i className="far fa-eye blue"></i> View
-        </Link>
-      );
-    } else {
-      return null
-    }
+  const renderView = () => {
+    return(
+      <Link
+        to="/viewQuiz"
+        className="view linkStandard"
+        onClick={ () => { handleView() } }
+      >
+        <i className="far fa-eye blue"></i> View
+      </Link>
+    );
   }
 
-  const renderEdit = (permission) => {
-    if(permission === "ADMIN" || permission === "SUPER-USER"){
-      return(
-        <Link
-          to="/editQuiz"
-          className="edit linkStandard"
-          onClick={ () => { handleView() } }
-        >
-          <i className="fas fa-edit blue"></i> Edit
-        </Link>
-      );
-    } else {
-      return null
-    }
+  const renderEdit = () => {
+    return(
+      <Link
+        to="/editQuiz"
+        className="edit linkStandard"
+        onClick={ () => { handleView() } }
+      >
+        <i className="fas fa-edit blue"></i> Edit
+      </Link>
+    );
   }
 
   const renderStart = (status) => {

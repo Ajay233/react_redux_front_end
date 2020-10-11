@@ -137,7 +137,7 @@ exports[`Quiz should render the quiz details, 'READY' status and questions for '
           test
         </div>
         <div
-          className="options"
+          className="questionOptions"
         />
       </div>
     </div>
@@ -156,7 +156,7 @@ exports[`Quiz should render the quiz details, 'READY' status and questions for '
           test2
         </div>
         <div
-          className="options"
+          className="questionOptions"
         />
       </div>
     </div>
@@ -400,7 +400,7 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
           test
         </div>
         <div
-          className="options"
+          className="questionOptions"
         >
           <a
             className="deleteOption linkStandard"
@@ -442,7 +442,7 @@ exports[`Quiz should render the quiz form, 'DRAFT' status and questions for '/ed
           test2
         </div>
         <div
-          className="options"
+          className="questionOptions"
         >
           <a
             className="deleteOption linkStandard"

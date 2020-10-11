@@ -31,7 +31,7 @@ describe("QuizResult", () => {
   let userData;
   let modalState;
   beforeEach(() => {
-    quiz = { id: 1, name: "test", description: "test", category: "test", status: "READY" }
+    quiz = { id: 1, name: "test", description: "test", category: "test", status: "READY", imgUrl: "", author: "test", authorId: 2 }
   })
 
   afterEach(() => {
@@ -79,6 +79,34 @@ describe("QuizResult", () => {
     expect(component).toMatchSnapshot()
   })
 
+  it("should render a quiz result and the appropriate options for a user with SUPER-USER permission", () => {
+    const component = renderer.create(
+      <Router history={history}>
+        <QuizResult
+          quiz={quiz}
+          permission={"SUPER-USER"}
+        />
+      </Router>
+    )
+
+    expect(component).toMatchSnapshot()
+  })
+
+  it("should render a quiz result and the appropriate options for a user with ADMIN permission who is the quiz author", () => {
+    const userDataProp = { id: 2, permission: "ADMIN", jwt: "jwt" }
+    const component = renderer.create(
+      <Router history={history}>
+        <QuizResult
+          quiz={quiz}
+          permission={"ADMIN"}
+          userData={userDataProp}
+        />
+      </Router>
+    )
+
+    expect(component).toMatchSnapshot()
+  })
+
   describe("handleStart", () => {
 
     it("should call", () => {
@@ -102,7 +130,7 @@ describe("QuizResult", () => {
 
   describe("handleView", () => {
     it("should call", () => {
-      const userDataProp = { id: 1, permission: "USER", jwt: "jwt" }
+      const userDataProp = { id: 1, permission: "READ-ONLY", jwt: "jwt" }
 
       const component = render(
         <Router history={history}>
@@ -135,7 +163,7 @@ describe("QuizResult", () => {
         <Router history={history}>
           <QuizResult
             quiz={quiz}
-            permission={"ADMIN"}
+            permission={"SUPER-USER"}
             setQuiz={setQuiz}
             showModal={showModal}
           />

@@ -135,15 +135,23 @@ export class QuizView extends React.Component {
   }
 
   renderImg = () => {
-    const { showModal3, userData } = this.props
+    const { showModal3 } = this.props
     return(
       <div className="quizImageArea">
         {this.renderQuizImage()}
         <div className="link deleteImg" onClick={() => showModal3()}>
-          {userData.permission === "ADMIN" || userData.permission === "SUPER-USER" ? <span><i className="fas fa-trash-alt red"></i> Delete Image</span> : null}
+          {this.renderDeleteImg()}
         </div>
       </div>
     );
+  }
+
+  renderDeleteImg = () => {
+    if(history.location.pathname === '/editQuiz'){
+      return <span><i className="fas fa-trash-alt red"></i> Delete Image</span>
+    } else {
+      return null
+    }
   }
 
   renderHeadings = () => {
@@ -198,8 +206,15 @@ export class QuizView extends React.Component {
   }
 
   renderAddButton = () => {
-    const { permission } = this.props.userData
-    return permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="/newQuestion" className="addButton linkStandard" onClick={this.clearNotification}><i className="fas fa-plus-circle green"></i> Add a question</Link> : null
+    if(history.location.pathname === "/editQuiz"){
+      return(
+        <Link to="/newQuestion" className="addButton linkStandard" onClick={this.clearNotification}>
+          <i className="fas fa-plus-circle green"></i> Add a question
+        </Link>
+      );
+    } else {
+      return null
+    }
   }
 
   triggerModal = (event) => {

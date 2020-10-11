@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import history from '../history'
 
 export const Question = (props) => {
 
@@ -31,7 +32,7 @@ export const Question = (props) => {
   const renderOptions = () => {
     const { permission } = props.userData;
     return(
-      <div className="options">
+      <div className="questionOptions">
         {renderDelete(permission)}
         {renderView(permission)}
         {renderEdit(permission)}
@@ -40,7 +41,7 @@ export const Question = (props) => {
   }
 
   const renderDelete = (permission) => {
-    if(permission === "ADMIN" || permission === "SUPER-USER"){
+    if(history.location.pathname === '/editQuiz'){
       return(
         <Link
           to="#"
@@ -57,7 +58,7 @@ export const Question = (props) => {
   }
 
   const renderView = (permission) => {
-    if(permission === "READ-ONLY"){
+    if(history.location.pathname === '/viewQuiz'){
       return(
         <Link
           to="/viewQuestion"
@@ -73,7 +74,7 @@ export const Question = (props) => {
   }
 
   const renderEdit = (permission) => {
-    if(permission === "ADMIN" || permission === "SUPER-USER"){
+    if(history.location.pathname === '/editQuiz'){
       return(
         <Link
           to="/editQuestion"

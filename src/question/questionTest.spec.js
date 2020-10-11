@@ -68,7 +68,7 @@ describe("handleDelete", () => {
   it("should call setCurrentQuestion and showModal", () => {
 
     setCurrentQuestion.mockClear()
-
+    history.push('/editQuiz')
     const question = {
       id: 1,
       questionNumber: 1,
@@ -77,7 +77,7 @@ describe("handleDelete", () => {
 
     const userData={
       jwt: "jwt",
-      permission: "ADMIN"
+      permission: "SUPER-USER"
     }
 
     const wrapper = mount(
@@ -104,7 +104,7 @@ describe("handleView", () => {
   it("should call setCurrentQuestion and getAnswers", () => {
 
     setCurrentQuestion.mockClear()
-
+    history.push('/editQuiz')
     const question = {
       id: 1,
       questionNumber: 1,
@@ -113,7 +113,7 @@ describe("handleView", () => {
 
     const userData={
       jwt: "jwt",
-      permission: "ADMIN"
+      permission: "SUPER-USER"
     }
 
     const wrapper = mount(

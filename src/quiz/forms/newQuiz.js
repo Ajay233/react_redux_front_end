@@ -82,6 +82,7 @@ class NewQuizForm extends React.Component {
     formData.append('description', description)
     formData.append('category', category)
     formData.append('author', author)
+    formData.append('authorId', userData.id)
     if(file !== undefined){
       formData.append('file', file[0])
     }

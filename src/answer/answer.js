@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import history from '../history'
 
 export const Answer = (props) => {
 
@@ -28,13 +29,17 @@ export const Answer = (props) => {
   }
 
   const renderCorrectAnswer = (correctAnswer) => {
-    return correctAnswer ? <i className="far fa-check-circle green"></i> : <i className="far fa-times-circle red"></i>
+    if(history.location.pathname !== '/editQuestion'){
+      return <i className="fas fa-eye-slash"></i>
+    } else {
+      return correctAnswer ? <i className="far fa-check-circle green"></i> : <i className="far fa-times-circle red"></i>
+    }
   }
 
   const renderOptions = () => {
     const { permission } = props.userData;
     return(
-      <div className="options">
+      <div className="ansOptions">
         { renderDelete(permission) }
         { renderEdit(permission) }
       </div>
@@ -42,7 +47,7 @@ export const Answer = (props) => {
   }
 
   const renderDelete = (permission) => {
-    if(permission === "ADMIN" || permission === "SUPER-USER"){
+    if(history.location.pathname === '/editQuestion'){
       return(
         <Link
           to="#"
@@ -59,7 +64,7 @@ export const Answer = (props) => {
   }
 
   const renderEdit = (permission) => {
-    if(permission === "ADMIN" || permission === "SUPER-USER"){
+    if(history.location.pathname === '/editQuestion'){
       return(
         <Link
           to="/editAnswer"

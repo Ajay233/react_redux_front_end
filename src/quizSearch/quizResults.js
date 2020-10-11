@@ -14,7 +14,8 @@ const QuizResults = (props) => {
       showModal,
       showModal2,
       getQuestions,
-      setQuizDownloadData
+      setQuizDownloadData,
+      userId
     } = props;
     const listOfQuizes = quizes.map(quiz => {
       return <QuizResult
@@ -29,6 +30,7 @@ const QuizResults = (props) => {
                 showModal2={showModal2}
                 getQuestions={getQuestions}
                 setQuizDownloadData={setQuizDownloadData}
+                userId={userId}
               />
     })
     return listOfQuizes

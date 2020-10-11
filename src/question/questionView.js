@@ -63,7 +63,7 @@ export class QuestionView extends React.Component {
   }
 
   renderAnswers = () => {
-    const { answers, userData, setCurrentAnswer, setNotification, deleteAnswer, showModal } = this.props;
+    const { answers, userData, setCurrentAnswer, setNotification, deleteAnswer, showModal, quiz } = this.props;
     return answers.length === 0 ? null :
     <Answers
       answers={answers}
@@ -72,6 +72,7 @@ export class QuestionView extends React.Component {
       setNotification={setNotification}
       deleteAnswer={deleteAnswer}
       showModal={showModal}
+      quiz={quiz}
     />
   }
 
@@ -89,15 +90,23 @@ export class QuestionView extends React.Component {
   }
 
   renderImg = () => {
-    const { showModal3, userData } = this.props
+    const { showModal3 } = this.props
     return(
       <div className="questionImageArea">
         {this.renderQuestionImage()}
         <div className="link deleteImg" onClick={() => showModal3()}>
-          {userData.permission === "ADMIN" || userData.permission === "SUPER-USER" ? <span><i className="fas fa-trash-alt red"></i> Delete Image</span> : null}
+          {this.renderDeleteImg()}
         </div>
       </div>
     );
+  }
+
+  renderDeleteImg = () => {
+    if(history.location.pathname === '/editQuestion'){
+      return <span><i className="fas fa-trash-alt red"></i> Delete Image</span>
+    } else {
+      return null
+    }
   }
 
   renderFormOrDetails = () => {
@@ -174,8 +183,15 @@ export class QuestionView extends React.Component {
   }
 
   renderAddButton = () => {
-    const { permission } = this.props.userData
-    return permission === "ADMIN" || permission === "SUPER-USER" ? <Link to="/newAnswer" className="addButton linkStandard" onClick={this.clearNotification}><i className="fas fa-plus-circle green"></i> Add an answer</Link> : null
+    if(history.location.pathname === '/editQuestion'){
+      return(
+        <Link to="/newAnswer" className="addButton linkStandard" onClick={this.clearNotification}>
+          <i className="fas fa-plus-circle green"></i> Add an answer
+        </Link>
+      );
+    } else {
+      return null
+    }
   }
 
   triggerModal = (event) => {
@@ -184,8 +200,7 @@ export class QuestionView extends React.Component {
   }
 
   renderBackButton = () => {
-    const { permission } = this.props.userData
-    if(permission === "READ-ONLY"){
+    if(history.location.pathname === '/viewQuestion'){
       return <Link to="/viewQuiz" className="link back" onClick={this.clearNotification}><i className="fas fa-chevron-circle-left blue"></i> Back</Link>
     } else {
       return <Link to="/editQuiz" className="link back" onClick={this.clearNotification}><i className="fas fa-chevron-circle-left blue"></i> Back</Link>

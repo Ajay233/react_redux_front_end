@@ -4,7 +4,7 @@ import { Answer } from './answer'
 export const Answers = (props) => {
 
   const renderAnswers = () => {
-    const { answers, userData, setCurrentAnswer, setNotification, deleteAnswer, showModal } = props;
+    const { answers, userData, setCurrentAnswer, setNotification, deleteAnswer, showModal, quiz } = props;
     const listOfAnswers = answers.map(answer => {
       return(
         <Answer
@@ -15,6 +15,7 @@ export const Answers = (props) => {
           setNotification={setNotification}
           deleteAnswer={deleteAnswer}
           showModal={showModal}
+          quiz={quiz}
         />
       );
     });

@@ -19,35 +19,12 @@ exports[`Answer should match snapshot for user with 'ADMIN' permission 1`] = `
       className="correctAns"
     >
       <i
-        className="far fa-times-circle red"
+        className="fas fa-eye-slash"
       />
     </div>
     <div
-      className="options"
-    >
-      <a
-        className="deleteOption linkStandard"
-        href="/"
-        id="deleteAnswer"
-        onClick={[Function]}
-      >
-        <i
-          className="fas fa-trash-alt red"
-        />
-         Delete
-      </a>
-      <a
-        className="edit linkStandard"
-        href="/editAnswer"
-        id="editAnswer"
-        onClick={[Function]}
-      >
-        <i
-          className="fas fa-edit blue"
-        />
-         Edit
-      </a>
-    </div>
+      className="ansOptions"
+    />
   </div>
 </div>
 `;
@@ -71,11 +48,11 @@ exports[`Answer should match snapshot for user with 'READ-ONLY' permission 1`] =
       className="correctAns"
     >
       <i
-        className="far fa-times-circle red"
+        className="fas fa-eye-slash"
       />
     </div>
     <div
-      className="options"
+      className="ansOptions"
     />
   </div>
 </div>
@@ -100,35 +77,12 @@ exports[`Answer should match snapshot which renders a correct answer 1`] = `
       className="correctAns"
     >
       <i
-        className="far fa-check-circle green"
+        className="fas fa-eye-slash"
       />
     </div>
     <div
-      className="options"
-    >
-      <a
-        className="deleteOption linkStandard"
-        href="/"
-        id="deleteAnswer"
-        onClick={[Function]}
-      >
-        <i
-          className="fas fa-trash-alt red"
-        />
-         Delete
-      </a>
-      <a
-        className="edit linkStandard"
-        href="/editAnswer"
-        id="editAnswer"
-        onClick={[Function]}
-      >
-        <i
-          className="fas fa-edit blue"
-        />
-         Edit
-      </a>
-    </div>
+      className="ansOptions"
+    />
   </div>
 </div>
 `;

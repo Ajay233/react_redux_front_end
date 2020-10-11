@@ -26,24 +26,74 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
       className="options"
     >
       <a
-        className="deleteOption linkStandard"
+        className="view linkStandard"
+        href="/viewQuiz"
+        onClick={[Function]}
+      >
+        <i
+          className="far fa-eye blue"
+        />
+         View
+      </a>
+      <a
+        className="start linkStandard"
         href="/"
         onClick={[Function]}
       >
         <i
-          className="fas fa-trash-alt red"
+          className="far fa-file-pdf red"
         />
-         Delete
+         PDF
       </a>
       <a
-        className="edit linkStandard"
-        href="/editQuiz"
+        className="start linkStandard"
+        href="/"
         onClick={[Function]}
       >
         <i
-          className="fas fa-edit blue"
+          className="far fa-play-circle blue"
         />
-         Edit
+         Start
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`QuizResult should render a quiz result and the appropriate options for a user with ADMIN permission who is the quiz author 1`] = `
+<div
+  className="quizContainer"
+>
+  <div
+    className="quiz"
+  >
+    <div
+      className="quizName"
+    >
+      test
+    </div>
+    <div
+      className="quizDescription"
+    >
+      test
+    </div>
+    <div
+      className="quizStatus"
+    >
+      READY
+    </div>
+    <div
+      className="options"
+    >
+      <a
+        className="view linkStandard"
+        href="/viewQuiz"
+        onClick={[Function]}
+      >
+        <i
+          className="far fa-eye blue"
+        />
+         View
       </a>
       <a
         className="start linkStandard"
@@ -130,6 +180,76 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
 </div>
 `;
 
+exports[`QuizResult should render a quiz result and the appropriate options for a user with SUPER-USER permission 1`] = `
+<div
+  className="quizContainer"
+>
+  <div
+    className="quiz"
+  >
+    <div
+      className="quizName"
+    >
+      test
+    </div>
+    <div
+      className="quizDescription"
+    >
+      test
+    </div>
+    <div
+      className="quizStatus"
+    >
+      READY
+    </div>
+    <div
+      className="options"
+    >
+      <a
+        className="deleteOption linkStandard"
+        href="/"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-trash-alt red"
+        />
+         Delete
+      </a>
+      <a
+        className="edit linkStandard"
+        href="/editQuiz"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-edit blue"
+        />
+         Edit
+      </a>
+      <a
+        className="start linkStandard"
+        href="/"
+        onClick={[Function]}
+      >
+        <i
+          className="far fa-file-pdf red"
+        />
+         PDF
+      </a>
+      <a
+        className="start linkStandard"
+        href="/"
+        onClick={[Function]}
+      >
+        <i
+          className="far fa-play-circle blue"
+        />
+         Start
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`QuizResult should render a quiz result and the appropriate options for a user with USER permission 1`] = `
 <div
   className="quizContainer"
@@ -150,6 +270,16 @@ exports[`QuizResult should render a quiz result and the appropriate options for 
     <div
       className="options"
     >
+      <a
+        className="view linkStandard"
+        href="/viewQuiz"
+        onClick={[Function]}
+      >
+        <i
+          className="far fa-eye blue"
+        />
+         View
+      </a>
       <a
         className="start linkStandard"
         href="/"
