@@ -1,9 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { setNotification } from '../../notifications/actions'
+import history from '../../history'
 
 class HelpIndex extends React.Component {
 
   componentDidMount(){
+    if(!this.props.userData.loggedIn){
+      history.push('/login')
+      this.props.setNotification("Your session has expired, please log in to continue", "warning", true)
+    }
     document.documentElement.scrollTop = 0;
   }
 
@@ -51,4 +58,10 @@ class HelpIndex extends React.Component {
   }
 }
 
-export default HelpIndex
+const mapStateToProps = (state) => {
+  return {
+    userData: state.userData
+  }
+}
+
+export default connect(mapStateToProps, { setNotification })(HelpIndex)

@@ -21,6 +21,10 @@ import '../stylesheets/editProfile.css';
 export class ManageAccount extends React.Component {
 
   componentDidMount(){
+    if(!this.props.userData.loggedIn){
+      history.push('/login')
+      this.props.setNotification("Your session has expired, please log in to continue", "warning", true)
+    }
     document.documentElement.scrollTop = 0;
   }
 

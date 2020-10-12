@@ -32,7 +32,8 @@ describe("mapStateToProps", () => {
         forename: "testForename",
         surname: "testSurname",
         email: "testEmail",
-        verified: true
+        verified: true,
+        loggedIn: true
       },
       notificationData:{
         message: "",
@@ -70,7 +71,8 @@ describe("Manage Account", () => {
       forename: "testForename",
       surname: "testSurname",
       email: "testEmail",
-      verified: true
+      verified: true,
+      loggedIn: true
     }
 
     notificationData = {
@@ -84,7 +86,8 @@ describe("Manage Account", () => {
       userData: {
         forename: "testForename",
         surname: "testSurname",
-        email: "testEmail"
+        email: "testEmail",
+        loggedIn: true
       },
       notificationData:{
         message: "",
@@ -101,6 +104,7 @@ describe("Manage Account", () => {
 
   afterEach(() => {
     setNotification.mockClear()
+    history.push.mockClear()
     mockAxios.reset()
     cleanup()
   })
@@ -113,6 +117,7 @@ describe("Manage Account", () => {
           modalState={modalState}
           userData={userData}
           notificationData={notificationData}
+          setNotification={setNotification}
         />
       </Provider>
     );
@@ -129,6 +134,7 @@ describe("Manage Account", () => {
           notificationData={notificationData}
           showModal={showModal}
           hideModal={hideModal}
+          setNotification={setNotification}
         />
       </Provider>
     );

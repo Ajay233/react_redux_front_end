@@ -45,16 +45,26 @@ const QuizPdf = (props) => {
 
   const { name, imgUrl, description, author } = props.quiz
 
+  const renderImg = (imgUrl) => {
+    if(imgUrl){
+      return(
+        <Image
+          cache={false}
+          style={styles.image}
+          src={`${imgUrl}`}
+        />
+      );
+    } else {
+      return null
+    }
+  }
+
   return(
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.section}>
           <Text style={styles.title}>{name}</Text>
-          <Image
-            cache={false}
-            style={styles.image}
-            src={`${imgUrl}`}
-          />
+          {renderImg(imgUrl)}
           <Text style={styles.quizDescription}>{description}</Text>
           <Text style={styles.quizAuthor}>{`Created by: ${author}`}</Text>
         </View>

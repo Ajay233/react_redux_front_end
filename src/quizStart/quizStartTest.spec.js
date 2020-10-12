@@ -12,17 +12,19 @@ import history from '../history'
 import { addAnswer, incrementQuestion, showResults, exitQuiz, clearQuizProgress } from './actions'
 import { setCurrentQuestion } from '../question/actions'
 import { getAnswers } from '../answer/actions'
+import { setNotification } from '../notifications/actions'
 
 jest.mock("./actions")
 jest.mock("../question/actions")
 jest.mock("../answer/actions")
+jest.mock("../notifications/actions")
 
 const mockStore = configureStore({})
 
 describe("mapStateToProps", () => {
   it("should map state to props", () => {
     const appState = {
-      userData: { id: 1 },
+      userData: { id: 1, loggedIn: true },
       quiz: { id: 1, name: "test", description: "test" },
       questions: [
         { id: 1, questionNumber: 1, description: "test" },
@@ -54,13 +56,13 @@ describe("", () => {
   beforeEach(() => {
     store = mockStore({})
 
-    userData = { id: 1, jwt: "jwt" },
-    quiz = { id: 1, name: "test", description: "test" },
+    userData = { id: 1, jwt: "jwt", loggedIn: true }
+    quiz = { id: 1, name: "test", description: "test" }
     questions = [
       { id: 1, questionNumber: 1, description: "test" },
       { id: 2, questionNumber: 2, description: "test2" }
     ],
-    currentQuestion = { id: 1, questionNumber: 1, description: "test" },
+    currentQuestion = { id: 1, questionNumber: 1, description: "test" }
     answers = [
       { id: 1, answerIndex: 1, description: "test" },
       { id: 2, answerIndex: 2, description: "test2" }
@@ -80,11 +82,13 @@ describe("", () => {
       <Provider store={store}>
         <Router history={history}>
           <QuizStart
+            userData={userData}
             quizProgressTracking={quizProgressTracking}
             questions={questions}
             quiz={quiz}
             currentQuestion={currentQuestion}
             answers={answers}
+            setNotification={setNotification}
           />
         </Router>
       </Provider>
@@ -102,15 +106,18 @@ describe("", () => {
       ],
       showResults: true
     }
+
     const component = renderer.create(
       <Provider store={store}>
         <Router history={history}>
           <QuizStart
+            userData={userData}
             quizProgressTracking={finishedQuiz}
             questions={questions}
             quiz={quiz}
             currentQuestion={currentQuestion}
             answers={answers}
+            setNotification={setNotification}
           />
         </Router>
       </Provider>
@@ -139,6 +146,7 @@ describe("", () => {
               getAnswers={getAnswers}
               answer={pickedAns}
               clearQuizProgress={clearQuizProgress}
+              setNotification={setNotification}
             />
           </Router>
         </Provider>
@@ -176,6 +184,7 @@ describe("", () => {
               userData={userData}
               showResults={showResults}
               clearQuizProgress={clearQuizProgress}
+              setNotification={setNotification}
             />
           </Router>
         </Provider>

@@ -4,12 +4,17 @@ import PickAnswer from './forms/pickAnswer'
 import { addAnswer, incrementQuestion, showResults, exitQuiz, clearQuizProgress } from './actions'
 import { setCurrentQuestion } from '../question/actions'
 import { getAnswers } from '../answer/actions'
-
+import { setNotification } from '../notifications/actions'
+import history from '../history'
 import '../stylesheets/quizStart.css'
 
 export class QuizStart extends React.Component {
 
   componentDidMount(){
+    if(!this.props.userData.loggedIn){
+      history.push('/login')
+      this.props.setNotification("Your session has expired, please log in to continue", "warning", true)
+    }
     window.scrollTo(500, 0);
   }
 
@@ -127,5 +132,6 @@ export default connect(mapStateToProps,
     incrementQuestion,
     showResults,
     exitQuiz,
-    clearQuizProgress
+    clearQuizProgress,
+    setNotification
   })(QuizStart)

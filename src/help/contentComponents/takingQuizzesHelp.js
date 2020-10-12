@@ -4,6 +4,8 @@ import SideBar from './sideBar'
 import ImageModal from '../../modal/imageModal'
 import ToTopButton from '../../components/toTopButton'
 import { showModal, hideModal } from '../../modal/actions'
+import { setNotification } from '../../notifications/actions'
+import history from '../../history'
 import img1 from '../../public/help/TakingQuizzes/1-anotated.png'
 import img2 from '../../public/help/TakingQuizzes/2.png'
 import img3 from '../../public/help/TakingQuizzes/3.png'
@@ -13,6 +15,10 @@ import img5 from '../../public/help/TakingQuizzes/5-anotated.png'
 class TakingQuizzesHelp extends React.Component {
 
   componentDidMount(){
+    if(!this.props.userData.loggedIn){
+      history.push('/login')
+      this.props.setNotification("Your session has expired, please log in to continue", "warning", true)
+    }
     document.documentElement.scrollTop = 0;
   }
 
@@ -108,8 +114,9 @@ class TakingQuizzesHelp extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    userData: state.userData,
     modalState: state.modalState
   }
 }
 
-export default connect(mapStateToProps, { showModal, hideModal })(TakingQuizzesHelp)
+export default connect(mapStateToProps, { showModal, hideModal, setNotification })(TakingQuizzesHelp)

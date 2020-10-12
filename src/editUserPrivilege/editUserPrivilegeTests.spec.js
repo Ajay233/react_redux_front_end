@@ -7,8 +7,9 @@ import configureStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import history from '../history'
 import { clearUserResults } from './actions/__mocks__/index'
+import { setNotification } from '../notifications/actions'
 
-// jest.mock("./actions")
+jest.mock("../notifications/actions")
 
 const mockStore = configureStore({})
 
@@ -57,6 +58,7 @@ describe("User", () => {
           userData={userData}
           userResults={userResults}
           notificationData={notificationData}
+          setNotification={setNotification}
         />
       </Provider>
     )
@@ -75,6 +77,7 @@ describe("User", () => {
           userData={userData}
           userResults={userResults}
           notificationData={notificationData}
+          setNotification={setNotification}
         />
       </Provider>
     )
@@ -92,6 +95,7 @@ describe("User", () => {
           clearUserResults={clearUserResults}
           userResults={userResults}
           notificationData={notificationData}
+          setNotification={setNotification}
         />
       </Provider>
     )

@@ -53,21 +53,24 @@ const RenderQandA = (props) => {
     console.log(props)
     const questions = props.questions
     const answers = props.answers
-    let list = questions.map(question => {
-      let id = question.id
-      return(
-        <View key={id} style={styles.section}>
-          <Text style={styles.questionNumber}>{question.questionNumber}. <Text style={styles.question}>{question.description}</Text></Text>
-          <Image
-            src={question.imgUrl !== null ? question.imgUrl : null}
-            style={question.imgUrl !== null ? styles.image : styles.noImage}
-          />
-          <View style={styles.answerSection}>
-            {renderAnswers(id, answers[id])}
+    let list = []
+    if(questions !== undefined){
+      list = questions.map(question => {
+        let id = question.id
+        return(
+          <View key={id} style={styles.section}>
+            <Text style={styles.questionNumber}>{question.questionNumber}. <Text style={styles.question}>{question.description}</Text></Text>
+            <Image
+              src={question.imgUrl !== null ? question.imgUrl : null}
+              style={question.imgUrl !== null ? styles.image : styles.noImage}
+            />
+            <View style={styles.answerSection}>
+              {renderAnswers(id, answers[id])}
+            </View>
           </View>
-        </View>
-      );
-    })
+        );
+      })
+    }
     return list
   }
 

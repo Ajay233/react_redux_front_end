@@ -55,7 +55,8 @@ describe("AllQuizes", () => {
     store = mockStore({
       userData: {
         id: 1,
-        permision: "USER"
+        permision: "USER",
+        loggedIn: true
       },
       quizes: [
         {
@@ -113,7 +114,8 @@ describe("AllQuizes", () => {
     userData = {
       id: 1,
       permision: "USER",
-      jwt: "jwt"
+      jwt: "jwt",
+      loggedIn: true
     }
 
     quiz = { id: 1, name: "test", description: "test" }
@@ -121,6 +123,11 @@ describe("AllQuizes", () => {
     ReactDOM.createPortal = jest.fn((element, node) => {
       return element
     })
+  })
+
+  afterEach(() => {
+    setNotification.mockClear()
+    history.push.mockClear()
   })
 
   it("should render only READY quizes for a user", () => {
@@ -133,6 +140,7 @@ describe("AllQuizes", () => {
           quizes={quizes}
           clearQuizes={clearQuizes}
           getAllQuizes={getAllQuizes}
+          setNotification={setNotification}
         />
         </Router>
       </Provider>
@@ -156,6 +164,7 @@ describe("AllQuizes", () => {
             quizes={quizes}
             clearQuizes={clearQuizes}
             getAllQuizes={getAllQuizes}
+            setNotification={setNotification}
           />
         </Router>
       </Provider>

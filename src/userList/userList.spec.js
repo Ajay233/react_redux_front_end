@@ -10,8 +10,10 @@ import renderer from 'react-test-renderer'
 import history from '../history'
 
 import { setUserList, clearUserList } from './actions'
+import { setNotification } from '../notifications/actions'
 
 jest.mock('./actions')
+jest.mock('../notifications/actions')
 
 const mockStore = configureStore({})
 
@@ -83,6 +85,7 @@ describe("UserList", () => {
             userData={userData}
             setUserList={setUserList}
             clearUserList={clearUserList}
+            setNotification={setNotification}
           />
         </Router>
       </Provider>
@@ -100,6 +103,7 @@ describe("UserList", () => {
             userData={userData}
             setUserList={setUserList}
             clearUserList={clearUserList}
+            setNotification={setNotification}
           />
         </Router>
       </Provider>
@@ -117,6 +121,7 @@ describe("UserList", () => {
             userData={userData}
             setUserList={setUserList}
             clearUserList={clearUserList}
+            setNotification={setNotification}
           />
         </Router>
       </Provider>

@@ -4,11 +4,17 @@ import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import Notification from '../../notifications/notifications'
 
+import { setNotification } from '../../notifications/actions'
 import { createQuiz } from '../actions'
+import history from '../../history'
 
 class NewQuizForm extends React.Component {
 
   componentDidMount(){
+    if(!this.props.userData.loggedIn){
+      history.push('/login')
+      this.props.setNotification("Your session has expired, please log in to continue", "warning", true)
+    }
     document.documentElement.scrollTop = 0;
   }
 
@@ -143,4 +149,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { createQuiz })(reduxForm({ form: 'newQuizForm', validate: validate })(NewQuizForm))
+export default connect(mapStateToProps, { createQuiz, setNotification })(reduxForm({ form: 'newQuizForm', validate: validate })(NewQuizForm))

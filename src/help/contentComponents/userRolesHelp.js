@@ -1,10 +1,17 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import SideBar from './sideBar'
 import ToTopButton from '../../components/toTopButton'
+import { setNotification } from '../../notifications/actions'
+import history from '../../history'
 
 class UserRolesHelp extends React.Component {
 
   componentDidMount(){
+    if(!this.props.userData.loggedIn){
+      history.push('/login')
+      this.props.setNotification("Your session has expired, please log in to continue", "warning", true)
+    }
     document.documentElement.scrollTop = 0;
   }
 
@@ -174,4 +181,10 @@ class UserRolesHelp extends React.Component {
   }
 }
 
-export default UserRolesHelp
+const mapStateToProps = (state) => {
+  return {
+    userData: state.userData
+  }
+}
+
+export default connect(mapStateToProps, { setNotification })(UserRolesHelp)

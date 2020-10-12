@@ -2,12 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux'
 import Notification from '../notifications/notifications'
 import { setUserList, clearUserList, deleteUser } from './actions'
-
+import { setNotification } from '../notifications/actions'
+import history from '../history'
 import '../stylesheets/userList.css'
 
 export class UserList extends React.Component {
 
   componentDidMount(){
+    if(!this.props.userData.loggedIn){
+      history.push('/login')
+      this.props.setNotification("Your session has expired, please log in to continue", "warning", true)
+    }
     this.props.setUserList("users", this.props.userData.jwt);
     document.documentElement.scrollTop = 0;
   }
@@ -75,4 +80,4 @@ export const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps, { setUserList, clearUserList, deleteUser })(UserList)
+export default connect(mapStateToProps, { setUserList, clearUserList, deleteUser, setNotification })(UserList)

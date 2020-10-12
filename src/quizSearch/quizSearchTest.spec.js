@@ -58,7 +58,7 @@ describe("QuizSearch", () => {
     })
 
     modalState = { showModal: false, showModal2: false, showModal3: false }
-    userData = { id: 1, jwt: "jwt", permission: "ADMIN" }
+    userData = { id: 1, jwt: "jwt", permission: "ADMIN", loggedIn: true }
     lists = { categories: ["test", "test2", "test3"] }
     quizes = [
       { id: 1, name: 1, description: "test", category: "test", status: "READY" },
@@ -80,6 +80,7 @@ describe("QuizSearch", () => {
             lists={lists}
             quizes={quizes}
             clearQuizes={clearQuizes}
+            setNotification={setNotification}
           />
         </Router>
       </Provider>
@@ -99,6 +100,7 @@ describe("QuizSearch", () => {
             lists={lists}
             quizes={emptyQuizes}
             clearQuizes={clearQuizes}
+            setNotification={setNotification}
           />
         </Router>
       </Provider>

@@ -7,12 +7,16 @@ import UpdatePermission from './forms/updatePermission'
 
 import { setUserResults, clearUserResults, updatePrivillege } from './actions'
 import { setNotification } from '../notifications/actions'
-
+import history from '../history'
 import '../stylesheets/editUserPrivilege.css'
 
 export class EditUserPrivilege extends React.Component {
 
   componentDidMount(){
+    if(!this.props.userData.loggedIn){
+      history.push('/login')
+      this.props.setNotification("Your session has expired, please log in to continue", "warning", true)
+    }
     document.documentElement.scrollTop = 0;
   }
 

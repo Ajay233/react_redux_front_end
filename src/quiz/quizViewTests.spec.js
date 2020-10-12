@@ -82,6 +82,7 @@ describe("Quiz", () => {
             currentQuestion={currentQuestion}
             quiz={quiz}
             questions={questions}
+            setNotification={setNotification}
           />
         </Router>
       </Provider>
@@ -91,7 +92,7 @@ describe("Quiz", () => {
   })
 
   it("should render the quiz form, 'DRAFT' status and questions for '/editQuiz' url", () => {
-    userData = { id: 1, permission: 'ADMIN' }
+    userData = { id: 1, permission: 'ADMIN', loggedIn: true }
     let draftQuiz = { id: 1, name: "test", description: "test", category: "test", status: "READY" }
     history.push('/editQuiz')
     const component = renderer.create(
@@ -103,6 +104,7 @@ describe("Quiz", () => {
             currentQuestion={currentQuestion}
             quiz={draftQuiz}
             questions={questions}
+            setNotification={setNotification}
           />
         </Router>
       </Provider>
@@ -127,6 +129,7 @@ describe("Quiz", () => {
               quiz={quiz}
               questions={questions}
               showModal2={showModal2}
+              setNotification={setNotification}
             />
           </Router>
         </Provider>
