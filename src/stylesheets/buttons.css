@@ -86,3 +86,7 @@
   cursor: pointer;
   background-color: rgb(224, 168, 0);
 }
+
+.showToTop {
+  display: block;
+}

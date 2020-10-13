@@ -17,7 +17,7 @@ const Bookmarks = (props) => {
 
   return(
     <div className="bookmarksContainer">
-      <div className="title-medium-left-alt bold"><i class="far fa-bookmark"></i> Bookmarks</div>
+      <div className="title-medium-left-alt bold"><i className="far fa-bookmark"></i> Bookmarks</div>
       <ol>
         {renderBookmarkList()}
       </ol>

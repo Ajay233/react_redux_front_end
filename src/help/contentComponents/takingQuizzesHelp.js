@@ -9,8 +9,10 @@ import history from '../../history'
 import img1 from '../../public/help/TakingQuizzes/1-anotated.png'
 import img2 from '../../public/help/TakingQuizzes/2.png'
 import img3 from '../../public/help/TakingQuizzes/3.png'
-import img4 from '../../public/help/TakingQuizzes/4-anotated.png'
+import img4 from '../../public/help/TakingQuizzes/4.png'
 import img5 from '../../public/help/TakingQuizzes/5-anotated.png'
+import img6 from '../../public/help/TakingQuizzes/6.png'
+import img7 from '../../public/help/TakingQuizzes/7-anotated.png'
 
 class TakingQuizzesHelp extends React.Component {
 
@@ -63,8 +65,8 @@ class TakingQuizzesHelp extends React.Component {
                   onClick={() => {showModal(img2)}}
                 />
                 <li>
-                  After confirming you want to start the quiz, you will be taken to that quiz’s Q&A page where you will
-                  start the quiz.
+                  After confirming you want to start the quiz, a quiz intro page will load, displaying the quiz title, the quiz
+                  image (if one was added), the quiz description and the quiz author.
                 </li>
                 <img
                   src={require(`../../public/help/TakingQuizzes/3.png`)}
@@ -72,25 +74,42 @@ class TakingQuizzesHelp extends React.Component {
                   alt=""
                   onClick={() => {showModal(img3)}}
                 />
-                <div className="">
-                  The current question you are being asked is displayed on the left.
-                </div>
-                <div className="">
-                  You will have a list of potential answers to pick from on the right.
-                </div>
+                <li>
+                  Once the intro page title and author animations complete, you will be taken to that quiz’s Q&A page where you will
+                  start the quiz.
+                </li>
                 <img
-                  src={require(`../../public/help/TakingQuizzes/4-anotated.png`)}
+                  src={require(`../../public/help/TakingQuizzes/4.png`)}
                   className="screenshot"
                   alt=""
                   onClick={() => {showModal(img4)}}
                 />
-                <li>Select an answer and then click ‘next question’.</li>
-                <li>When you answer the last question, you will be given your score.</li>
+                <div className="">
+                  The current question you are being asked is displayed on the left.  You will have a list of potential
+                  answers to pick from on the right.
+                </div>
                 <img
                   src={require(`../../public/help/TakingQuizzes/5-anotated.png`)}
                   className="screenshot"
                   alt=""
                   onClick={() => {showModal(img5)}}
+                />
+                <div className="">
+                  If a question includes an image, the image will be displayed between the question and answer as shown below.
+                </div>
+                <img
+                  src={require(`../../public/help/TakingQuizzes/6.png`)}
+                  className="screenshot"
+                  alt=""
+                  onClick={() => {showModal(img6)}}
+                />
+                <li>Select an answer and then click ‘next question’.</li>
+                <li>When you answer the last question, you will be given your score.</li>
+                <img
+                  src={require(`../../public/help/TakingQuizzes/7-anotated.png`)}
+                  className="screenshot"
+                  alt=""
+                  onClick={() => {showModal(img7)}}
                 />
                 <li>
                   Once you have noted your score, click finish to exit back to the home page where you can continue

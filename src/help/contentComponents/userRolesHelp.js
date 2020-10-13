@@ -87,21 +87,21 @@ class UserRolesHelp extends React.Component {
                     <td><i className="fas fa-check-circle green"></i></td>
                   </tr>
                   <tr>
-                    <td>Edit Quiz details</td>
+                    <td>Edit Quiz details <b>*</b></td>
                     <td><i className="fas fa-times-circle red"></i></td>
                     <td><i className="fas fa-times-circle red"></i></td>
                     <td><i className="fas fa-check-circle green"></i></td>
                     <td><i className="fas fa-check-circle green"></i></td>
                   </tr>
                   <tr>
-                    <td>Delete Quizzes</td>
+                    <td>Delete Quizzes <b>*</b></td>
                     <td><i className="fas fa-times-circle red"></i></td>
                     <td><i className="fas fa-times-circle red"></i></td>
                     <td><i className="fas fa-check-circle green"></i></td>
                     <td><i className="fas fa-check-circle green"></i></td>
                   </tr>
                   <tr>
-                    <td>Create questions</td>
+                    <td>Create questions <b>*</b></td>
                     <td><i className="fas fa-times-circle red"></i></td>
                     <td><i className="fas fa-times-circle red"></i></td>
                     <td><i className="fas fa-check-circle green"></i></td>
@@ -115,21 +115,21 @@ class UserRolesHelp extends React.Component {
                     <td><i className="fas fa-check-circle green"></i></td>
                   </tr>
                   <tr>
-                    <td>Edit questions</td>
+                    <td>Edit questions <b>*</b></td>
                     <td><i className="fas fa-times-circle red"></i></td>
                     <td><i className="fas fa-times-circle red"></i></td>
                     <td><i className="fas fa-check-circle green"></i></td>
                     <td><i className="fas fa-check-circle green"></i></td>
                   </tr>
                   <tr>
-                    <td>Delete questions</td>
+                    <td>Delete questions <b>*</b></td>
                     <td><i className="fas fa-times-circle red"></i></td>
                     <td><i className="fas fa-times-circle red"></i></td>
                     <td><i className="fas fa-check-circle green"></i></td>
                     <td><i className="fas fa-check-circle green"></i></td>
                   </tr>
                   <tr>
-                    <td>Create answers</td>
+                    <td>Create answers <b>*</b></td>
                     <td><i className="fas fa-times-circle red"></i></td>
                     <td><i className="fas fa-times-circle red"></i></td>
                     <td><i className="fas fa-check-circle green"></i></td>
@@ -143,17 +143,31 @@ class UserRolesHelp extends React.Component {
                     <td><i className="fas fa-check-circle green"></i></td>
                   </tr>
                   <tr>
-                    <td>Edit answers</td>
+                    <td>Edit answers <b>*</b></td>
                     <td><i className="fas fa-times-circle red"></i></td>
                     <td><i className="fas fa-times-circle red"></i></td>
                     <td><i className="fas fa-check-circle green"></i></td>
                     <td><i className="fas fa-check-circle green"></i></td>
                   </tr>
                   <tr>
-                    <td>Delete Answers</td>
+                    <td>Delete Answers <b>*</b></td>
                     <td><i className="fas fa-times-circle red"></i></td>
                     <td><i className="fas fa-times-circle red"></i></td>
                     <td><i className="fas fa-check-circle green"></i></td>
+                    <td><i className="fas fa-check-circle green"></i></td>
+                  </tr>
+                  <tr>
+                    <td>Edit <u>any</u> quiz</td>
+                    <td><i className="fas fa-times-circle red"></i></td>
+                    <td><i className="fas fa-times-circle red"></i></td>
+                    <td><i className="fas fa-times-circle red"></i></td>
+                    <td><i className="fas fa-check-circle green"></i></td>
+                  </tr>
+                  <tr>
+                    <td>Delete <u>any</u> quiz</td>
+                    <td><i className="fas fa-times-circle red"></i></td>
+                    <td><i className="fas fa-times-circle red"></i></td>
+                    <td><i className="fas fa-times-circle red"></i></td>
                     <td><i className="fas fa-check-circle green"></i></td>
                   </tr>
                   <tr>
@@ -172,6 +186,10 @@ class UserRolesHelp extends React.Component {
                   </tr>
                   </tbody>
                 </table>
+              </div>
+              <div className="helpSectionSpacing">
+                <b>*</b> - These options only apply to quizzes an admin user owns.
+                They do not apply to quizzes created by other admin users.
               </div>
             </div>
           </div>
