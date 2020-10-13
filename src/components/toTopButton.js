@@ -15,13 +15,20 @@ class ToTopButton extends React.Component {
   }
 
   scrollValueCheck = () => {
-    const { setToTopButton } = this.props
-    window.scrollY > 20 ? setToTopButton(true) : setToTopButton()
+    const { setToTopButton, toTopButtonState } = this.props
+    if(window.scrollY > 20 && toTopButtonState === false){
+      setToTopButton(true)
+    }
+
+    if(window.scrollY < 20 && toTopButtonState === true){
+      setToTopButton()
+    }
+    // window.scrollY > 20 ? setToTopButton(true) : setToTopButton()
   }
 
   renderToTopButton = () => {
-    const { showToTopButton } = this.props.toTopButtonState
-    if (showToTopButton) {
+    const { toTopButtonState } = this.props
+    if (toTopButtonState) {
       return(
         <React.Fragment>
           <button onClick={() => toTopFunction()} className="toTopButton">

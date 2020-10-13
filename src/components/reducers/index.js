@@ -10,7 +10,7 @@ export const globalReducer = (state=globalVaules, action) => {
 
 export const toTopButtonReducer = (state=false, action) => {
   switch (action.type) {
-    case "SHOW_TO_TOP_BUTTON": return {...state, showToTopButton: action.payload}
+    case "SHOW_TO_TOP_BUTTON": return action.payload
     default: return state;
   }
 }
