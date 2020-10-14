@@ -108,4 +108,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { addAnswer })(reduxForm({ form: 'updateAnswer', validate: validate })(NewAnswerForm))
+export default connect(mapStateToProps, { addAnswer })(reduxForm({ form: 'newAnswer', validate: validate })(NewAnswerForm))
