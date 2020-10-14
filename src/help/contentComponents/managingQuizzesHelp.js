@@ -29,6 +29,7 @@ import editQuizPage9 from '../../public/help/managingQuizzes/EditQuizPage/9-anno
 import editQuizPage10 from '../../public/help/managingQuizzes/EditQuizPage/10.png'
 
 import editQuestionPage1 from '../../public/help/managingQuizzes/EditQuestionPage/1.png'
+import editQuestionPage1noImg from '../../public/help/managingQuizzes/EditQuestionPage/1-1.png'
 import editQuestionPage2 from '../../public/help/managingQuizzes/EditQuestionPage/2.png'
 import editQuestionPage3 from '../../public/help/managingQuizzes/EditQuestionPage/3.png'
 import editQuestionPage4 from '../../public/help/managingQuizzes/EditQuestionPage/4.png'
@@ -370,13 +371,32 @@ class ManagingQuizzesHelp extends React.Component {
                   question details, similarly to the quiz details page.  There is an option to delete the image, which works in the
                   same way as on the quiz details page.
                 </li>
-                <img
-                  src={require(`../../public/help/managingQuizzes/EditQuestionPage/1.png`)}
-                  className="screenshot"
-                  alt=""
-                  onClick={() => {showModal(editQuestionPage1)}}
-                />
-                <li>To edit the question details simply make the desired changes in the question fields.</li>
+                <div className="helpImgContainer">
+                  <div className="helpImgAlt">
+                    <img
+                      src={require(`../../public/help/managingQuizzes/EditQuestionPage/1.png`)}
+                      className="screenshot"
+                      alt=""
+                      onClick={() => {showModal(editQuestionPage1)}}
+                    />
+                    <div className="helpImgFooter">Question view with image</div>
+                  </div>
+                  <div className="helpImgAlt">
+                    <img
+                      src={require(`../../public/help/managingQuizzes/EditQuestionPage/1-1.png`)}
+                      className="screenshot"
+                      alt=""
+                      onClick={() => {showModal(editQuestionPage1noImg)}}
+                    />
+                    <div className="helpImgFooter">question view with no image</div>
+                  </div>
+                </div>
+                <li>
+                  To edit the question details simply make the desired changes in the question fields.  If you did not upload an
+                  image, there will be a file upload input you can use to upload an image.  If you have added an image, the input
+                  will be hidden as questions are limited to one image per question.  If you delete the image, the file upload
+                  will once again be displayed.
+                </li>
                 <li>
                   Then click save changes.  A notification will be displayed to indicate that the changes have been saved.
                 </li>
