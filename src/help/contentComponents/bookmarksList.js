@@ -20,6 +20,7 @@ export const bookmarkList = {
     creatingQuizzes: "Creating a quiz",
     quizPage: "The quiz page",
     editQuizDetails: "Editing quiz details",
+    quizPageimgUpload: "Uploading a quiz image",
     deletingQuizzes: "Deleting a quiz",
     quizStatus: "Quiz Status",
     addQuestion: "Add a question",

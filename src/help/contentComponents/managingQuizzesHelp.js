@@ -7,13 +7,19 @@ import ToTopButton from '../../components/toTopButton'
 import { showModal, hideModal } from '../../modal/actions'
 import { setNotification } from '../../notifications/actions'
 import history from '../../history'
+
 import createQuiz1 from '../../public/help/managingQuizzes/CreateQuiz/1.png'
 import createQuiz2 from '../../public/help/managingQuizzes/CreateQuiz/2.png'
 import createQuiz3 from '../../public/help/managingQuizzes/CreateQuiz/3.png'
-import createQuiz4 from '../../public/help/managingQuizzes/CreateQuiz/4.png'
+import createQuiz4img from '../../public/help/managingQuizzes/CreateQuiz/4-withImg.png'
+import createQuiz4noImg from '../../public/help/managingQuizzes/CreateQuiz/4-noImg.png'
+
 import editQuizPage1 from '../../public/help/managingQuizzes/EditQuizPage/1v2.png'
 import editQuizPage2 from '../../public/help/managingQuizzes/EditQuizPage/2v2.png'
 import editQuizPage3 from '../../public/help/managingQuizzes/EditQuizPage/3.png'
+import editQuizPage3img1 from '../../public/help/managingQuizzes/EditQuizPage/3-1.png'
+import editQuizPage3img2 from '../../public/help/managingQuizzes/EditQuizPage/3-2.png'
+import editQuizPage3img3 from '../../public/help/managingQuizzes/EditQuizPage/3-3.png'
 import editQuizPage4 from '../../public/help/managingQuizzes/EditQuizPage/4.png'
 import editQuizPage5 from '../../public/help/managingQuizzes/EditQuizPage/5.png'
 import editQuizPage6 from '../../public/help/managingQuizzes/EditQuizPage/6.png'
@@ -21,6 +27,7 @@ import editQuizPage7 from '../../public/help/managingQuizzes/EditQuizPage/7.png'
 import editQuizPage8 from '../../public/help/managingQuizzes/EditQuizPage/8.png'
 import editQuizPage9 from '../../public/help/managingQuizzes/EditQuizPage/9-annotated.png'
 import editQuizPage10 from '../../public/help/managingQuizzes/EditQuizPage/10.png'
+
 import editQuestionPage1 from '../../public/help/managingQuizzes/EditQuestionPage/1.png'
 import editQuestionPage2 from '../../public/help/managingQuizzes/EditQuestionPage/2.png'
 import editQuestionPage3 from '../../public/help/managingQuizzes/EditQuestionPage/3.png'
@@ -81,6 +88,11 @@ class ManagingQuizzesHelp extends React.Component {
                   alt=""
                   onClick={() => {showModal(createQuiz2)}}
                 />
+                <li>
+                  There is also the option to upload an image which will be seen as part of the quiz
+                  intro when a user starts the quiz.  It will also be seen in the title page of the quiz if a user
+                  views a pdf of the quiz.
+                </li>
                 <img
                   src={require(`../../public/help/managingQuizzes/CreateQuiz/3.png`)}
                   className="screenshot"
@@ -88,17 +100,31 @@ class ManagingQuizzesHelp extends React.Component {
                   onClick={() => {showModal(createQuiz3)}}
                 />
                 <div className="warning-medium">
-                  <b><i className="fas fa-exclamation-triangle"></i> Note:</b> these fields are mandatory and you will be notified of
+                  <b><i className="fas fa-exclamation-triangle"></i> Note:</b> All fields, except the file upload, are mandatory and you will be notified of
                   this if you try to create a quiz without one of these fields filled out.
                 </div>
                 <li>Once you are ready, click save and continue</li>
                 <li>This will take you to the edit quiz page where you can edit the quiz details, begin adding questions and answers</li>
-                <img
-                  src={require(`../../public/help/managingQuizzes/CreateQuiz/4.png`)}
-                  className="screenshot"
-                  alt=""
-                  onClick={() => {showModal(createQuiz4)}}
-                />
+                <div className="helpImgContainer">
+                  <div className="helpImgAlt">
+                    <img
+                      src={require(`../../public/help/managingQuizzes/CreateQuiz/4-withImg.png`)}
+                      className="screenshot"
+                      alt=""
+                      onClick={() => {showModal(createQuiz4img)}}
+                    />
+                    <div className="helpImgFooter">With image attached</div>
+                  </div>
+                  <div className="helpImgAlt">
+                    <img
+                      src={require(`../../public/help/managingQuizzes/CreateQuiz/4-noImg.png`)}
+                      className="screenshot"
+                      alt=""
+                      onClick={() => {showModal(createQuiz4noImg)}}
+                    />
+                    <div className="helpImgFooter">No image attached</div>
+                  </div>
+                </div>
               </ol>
             </div>
 
@@ -141,6 +167,44 @@ class ManagingQuizzesHelp extends React.Component {
                   alt=""
                   onClick={() => {showModal(editQuizPage2)}}
                 />
+              </ol>
+            </div>
+
+            <div className="helpSectionSpacing">
+              <div id="quizPageimgUpload" className="title-medium-left-alt bold">Uploading an image</div>
+              <ol>
+                <li>You can upload an image for your quiz by clicking the file upload button.</li>
+              <img
+                src={require(`../../public/help/managingQuizzes/EditQuizPage/3-1.png`)}
+                className="screenshot"
+                alt=""
+                onClick={() => {showModal(editQuizPage3img1)}}
+              />
+              <li>Select the file you want to upload</li>
+              <li>
+                Then click on the save changes button and the image will be displayed to the
+               right of the quiz details with a delete button underneath it
+               </li>
+               <div className="warning-medium">
+                 <b><i className="fas fa-exclamation-triangle"></i> Note:</b> You can only upload one image for a quiz, so once you
+                 have uploaded an image, the file upload input is hidden; however if you delete the image, the input will be displayed
+                 again so you can upload a different image if required.
+               </div>
+              <li>If you want to delete the image form your quiz, click on the delete button</li>
+              <img
+                src={require(`../../public/help/managingQuizzes/EditQuizPage/3-2.png`)}
+                className="screenshot"
+                alt=""
+                onClick={() => {showModal(editQuizPage3img2)}}
+              />
+              <li>A message will be displayed asking if you are sure you want to continue.  Click Delete to continue and delete the image</li>
+              <li>A notififcation will be displayed confirming the image was successfully deleted</li>
+              <img
+                src={require(`../../public/help/managingQuizzes/EditQuizPage/3-3.png`)}
+                className="screenshot"
+                alt=""
+                onClick={() => {showModal(editQuizPage3img3)}}
+              />
               </ol>
             </div>
 
@@ -223,21 +287,19 @@ class ManagingQuizzesHelp extends React.Component {
                   onClick={() => {showModal(editQuizPage6)}}
                 />
                 <li>Enter a question number (this must be a number). </li>
-                <div className="warning-medium">
-                  <b><i className="fas fa-exclamation-triangle"></i> Note:</b> This field is mandatory so if you leave the
-                  field blank or enter anything other than a number a warning notification will be displayed.
-                </div>
                 <li>Enter a description for your question.</li>
-                <div className="warning-medium">
-                  <b><i className="fas fa-exclamation-triangle"></i> Note:</b> This field is mandatory so if you leave
-                  the field blank a warning notification will be displayed.
-                </div>
+                <li>There is also an option to upload an image if you would like to include one as part of the question.</li>
                 <img
                   src={require(`../../public/help/managingQuizzes/EditQuizPage/7.png`)}
                   className="screenshot"
                   alt=""
                   onClick={() => {showModal(editQuizPage7)}}
                 />
+                <div className="warning-medium">
+                  <b><i className="fas fa-exclamation-triangle"></i> Note:</b> All fields, except the file upload, are
+                  mandatory so if you leave the any fields empty or enter anything other than a number in the question number field,
+                  a warning notification will be displayed.
+                </div>
                 <li>Once you are happy with this, click save to create the question</li>
               </ol>
               <div className="">
@@ -304,7 +366,9 @@ class ManagingQuizzesHelp extends React.Component {
                 </li>
                 <li>
                   After clicking the edit button, you will be taken to the question page which has a similar
-                  layout to the quiz page.
+                  layout to the quiz page.  If you uploaded an image you will see that it has been added to the right of the
+                  question details, similarly to the quiz details page.  There is an option to delete the image, which works in the
+                  same way as on the quiz details page.
                 </li>
                 <img
                   src={require(`../../public/help/managingQuizzes/EditQuestionPage/1.png`)}
