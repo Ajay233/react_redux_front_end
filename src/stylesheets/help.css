@@ -129,3 +129,21 @@ ol > li {
   margin-bottom: 15px;
   margin-top: 0;
 }
+
+.helpImgContainer {
+  display: flex;
+  margin: 30px 0;
+}
+
+.helpImgAlt {
+  width: 50%;
+}
+
+.helpImgFooter{
+  font-weight: bold;
+  text-align: center;
+}
+
+.helpTextContainer {
+  margin: 20px 0;
+}

@@ -10,6 +10,7 @@ export const bookmarkList = {
   },
   findingQuizzes: {
     quizSearch: "Quiz search",
+    viewPdfOption: "View a quiz as a pdf",
     browseQuizzes: "Browse quizzes"
   },
   takingQuizzes: {
