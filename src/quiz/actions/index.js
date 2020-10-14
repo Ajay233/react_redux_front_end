@@ -54,7 +54,7 @@ export const deleteQuiz = (config, jwt) => {
         type: "DELETE_QUIZ",
         payload: { id: "", name: "", description: "", category: "", status: "" }
       })
-      history.push("/quizSearch")
+      history.push("/")
       dispatch(setNotification("Quiz deleted", "success", true))
     }).catch((error) => {
       console.log(error.response)
