@@ -5,7 +5,7 @@ const Loading = (props) => {
     <div className="loadingBackground">
       <div className="loadingIconContainer">
         <div className="loadingIcon"></div>
-        <div className="loadingLabel">{props.message}</div>
+        <div className={`loadingLabel ${props.label ? props.label : ''}`}>{props.message}</div>
       </div>
     </div>
   );

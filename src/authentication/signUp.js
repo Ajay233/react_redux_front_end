@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setNotification } from '../notifications/actions'
+import { setLoaderState } from '../components/actions'
 import Notification from '../notifications/notifications'
 import SignUpForm from './forms/signUpForm'
+import Loading from '../components/loading'
 
 import '../stylesheets/inputs.css'
 import '../stylesheets/buttons.css'
@@ -14,15 +16,20 @@ export class SignUp extends React.Component {
     document.documentElement.scrollTop = 0;
   }
 
+  renderLoader = () => {
+    return this.props.globals.showLoader ? <Loading message={"Signing Up"} label={'signUpLabel'}/> : null
+  }
+
   render(){
-    const { setNotification } = this.props
+    const { setNotification, setLoaderState } = this.props
     return(
       <div className="signupContainer">
+        {this.renderLoader()}
         <div className="signup">
         <div className="notificationContainer">
           <Notification />
         </div>
-          <SignUpForm setNotification={setNotification} />
+          <SignUpForm setNotification={setNotification} setLoaderState={setLoaderState}/>
         </div>
       </div>
     );
@@ -31,8 +38,9 @@ export class SignUp extends React.Component {
 
 export const mapStateToProps = (state) => {
   return {
-    notificationData: state.notificationData
+    notificationData: state.notificationData,
+    globals: state.globals
   }
 }
 
-export default connect(mapStateToProps, {setNotification})(SignUp);
+export default connect(mapStateToProps, {setNotification, setLoaderState})(SignUp);

@@ -29,7 +29,7 @@ describe("SignUp", () => {
     const component = renderer.create(
       <Provider store={store}>
         <Router history={history}>
-          <SignUp />
+          <SignUp globals={{showLoader: false}}/>
         </Router>
       </Provider>
     );
@@ -45,7 +45,7 @@ describe("SignUp", () => {
     const component = renderer.create(
       <Provider store={store}>
         <Router history={history}>
-          <SignUp />
+          <SignUp globals={{showLoader: false}}/>
         </Router>
       </Provider>
     );

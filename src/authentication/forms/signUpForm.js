@@ -25,9 +25,10 @@ class SignUpForm extends React.Component {
   }
 
   onSubmit = ({ forename, surname, email, password }) => {
-    const { setNotification, reset } = this.props
+    const { setNotification, reset, setLoaderState } = this.props
     const successMsg = "An email has been sent to the email address you provided.  \n\n Please login and click the link provided to verify your email address and complete the registration process.  \n\n Once your email address has been verified you will be able to log into the quiz app";
     const errorMsg = "An account already exists for that email address"
+    setLoaderState(true)
     post('auth/signUp',{
         'forename': forename,
         'surname': surname,
@@ -37,7 +38,9 @@ class SignUpForm extends React.Component {
       console.log(response.data);
       setNotification(successMsg, "verifyProcess", true, false);
       reset('signUpForm')
+      setLoaderState()
     }).catch((error) => {
+      setLoaderState()
       console.log(error.response);
       reset('signUpForm')
       setNotification(errorMsg, "error", true);

@@ -16,7 +16,7 @@ export class Login extends React.Component {
   }
 
   renderLoader = () => {
-    return this.props.globals.showLoader ? <Loading message="Logging in"/> : null
+    return this.props.globals.showLoader ? <Loading message="Logging in" label="loginLabel"/> : null
   }
   // AFTER back end update on login endpoint:
   // update action creator so it sets the correct error notification for incorrect credentials or

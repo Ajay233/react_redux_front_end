@@ -6,8 +6,10 @@ import mockAxios from 'jest-mock-axios'
 import configureStore from 'redux-mock-store'
 import renderer from 'react-test-renderer'
 import { setNotification } from '../../../notifications/actions'
+import { setLoaderState } from '../../../components/actions'
 
 jest.mock("../../../notifications/actions")
+jest.mock("../../../components/actions")
 
 const mockStore = configureStore({})
 
@@ -27,7 +29,7 @@ describe("signUpForm", () => {
   it("should call setNotification on submit success", () => {
     const wrapper = mount(
       <Provider store={store}>
-        <SignUpForm setNotification={setNotification}/>
+        <SignUpForm setNotification={setNotification} setLoaderState={setLoaderState}/>
       </Provider>
     )
 
@@ -45,7 +47,7 @@ describe("signUpForm", () => {
   it("should call setNotification on submit error", () => {
     const wrapper = mount(
       <Provider store={store}>
-        <SignUpForm setNotification={setNotification}/>
+        <SignUpForm setNotification={setNotification} setLoaderState={setLoaderState}/>
       </Provider>
     )
 
@@ -62,7 +64,7 @@ describe("signUpForm", () => {
   it("should match the snapshot", () => {
     const component = renderer.create(
       <Provider store={store}>
-        <SignUpForm setNotification={setNotification}/>
+        <SignUpForm setNotification={setNotification} setLoaderState={setLoaderState}/>
       </Provider>
     )
 
