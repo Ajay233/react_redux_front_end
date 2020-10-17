@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
 
   onSubmit = ({ userName, password }) => {
     const loginDetails =  {'email': userName,'password': password}
-    this.props.setUser('auth/login', loginDetails);
+    this.props.setUser('auth/login', loginDetails)
   }
 
   render(){
@@ -31,7 +31,7 @@ class LoginForm extends React.Component {
           <div className="loginTitle">Login</div>
           <Field name="userName" component={this.renderInput} label="Username (Email address):"/>
           <Field name="password" component={this.renderInput} type="password" label="Password:"/>
-          <button className="submit loginButton">Login</button>
+          <button ref={this.submitBtn} className="submit loginButton">Login</button>
           <hr/>
           <div id="signUpLink">
             Don't have an account? <Link to="/signUp" className="signUpLinkTag">Sign up</Link> here

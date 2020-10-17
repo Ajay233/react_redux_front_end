@@ -67,7 +67,8 @@ describe("reducers", () => {
       quizDownloadData: {},
       globals: {
         url: "",
-        enableDarkMode: true
+        enableDarkMode: true,
+        showLoader: false
       }
     }
     expect(allReducers({}, {type: "INIT"})).toEqual(expectedState)
@@ -96,7 +97,8 @@ describe("reducers", () => {
       quizDownloadData: {},
       globals: {
         url: "",
-        enableDarkMode: true
+        enableDarkMode: true,
+        showLoader: false
       }
     }
 

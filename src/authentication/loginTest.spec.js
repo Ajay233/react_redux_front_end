@@ -27,13 +27,14 @@ describe("Login", () => {
     const store = mockStore({
       userData: { id: 1, jwt: "jwt" },
       verificationProcess: { completionStatus: "test", token: "test", error: {} },
-      notificationData: { message: "", type: "", show: false, timed: true }
+      notificationData: { message: "", type: "", show: false, timed: true },
+      globals: { showLoader: false }
     })
 
     const component = renderer.create(
       <Provider store={store}>
         <Router history={history}>
-          <Login />
+          <Login globals={{ showLoader: false }}/>
         </Router>
       </Provider>
     );
@@ -46,13 +47,14 @@ describe("Login", () => {
     const store = mockStore({
       userData: { id: 1, jwt: "jwt" },
       verificationProcess: { completionStatus: "test", token: "test", error: {} },
-      notificationData: { message: "Username or passord incorrect", type: "error", show: true, timed: true }
+      notificationData: { message: "Username or passord incorrect", type: "error", show: true, timed: true },
+      globals: { showLoader: false }
     })
 
     const component = renderer.create(
       <Provider store={store}>
         <Router history={history}>
-          <Login />
+          <Login globals={{ showLoader: false }}/>
         </Router>
       </Provider>
     );

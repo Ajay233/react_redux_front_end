@@ -160,7 +160,7 @@ export class AllQuizes extends React.Component {
     const { quizes } = this.props;
     if(quizes === null || quizes.length === 0 ){
       return(
-        <Loading />
+        <Loading message={"Loading..."} type="Loading"/>
       );
     } else {
       return(

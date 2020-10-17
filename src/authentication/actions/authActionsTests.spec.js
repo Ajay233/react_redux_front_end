@@ -37,8 +37,12 @@ describe("setUser", () => {
       data: [ "item1", "item2", "item3" ]
     }
 
-
     const expectedAction1 = {
+      type: "SET_LOADER_STATE",
+      payload: false
+    }
+
+    const expectedAction2 = {
       type: "SET_USER",
       payload: {
         id: 1,
@@ -53,7 +57,7 @@ describe("setUser", () => {
       }
     }
 
-    const expectedAction2 = {
+    const expectedAction3 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Welcome back Joe",
@@ -63,7 +67,7 @@ describe("setUser", () => {
       }
     }
 
-    const expectedAction3 = {
+    const expectedAction4 = {
       type: "SET_CATEGORIES",
       payload: [ "item1", "item2", "item3" ]
     }
@@ -71,9 +75,10 @@ describe("setUser", () => {
     store.dispatch(setUser("auth/login", "data"))
     mockAxios.mockResponse(requestResponse)  // mock response for the login request
     mockAxios.mockResponse(requestResponse2) // mock response for the getCategories request
-    expect(store.getActions()[0]).toEqual(expectedAction1)
-    expect(store.getActions()[1]).toEqual(expectedAction2)
-    expect(store.getActions()[2]).toEqual(expectedAction3)
+    expect(store.getActions()[1]).toEqual(expectedAction1)
+    expect(store.getActions()[2]).toEqual(expectedAction2)
+    expect(store.getActions()[3]).toEqual(expectedAction3)
+    expect(store.getActions()[4]).toEqual(expectedAction4)
   })
 
   it("can return an action to set email not verified notification", () => {
@@ -85,7 +90,12 @@ describe("setUser", () => {
       }
     }
 
-    const expectedAction = {
+    const expectedAction1 = {
+      type: "SET_LOADER_STATE",
+      payload: false
+    }
+
+    const expectedAction2 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Your email has not yet been veirified.  You will need to verify your email before you can log in",
@@ -95,14 +105,21 @@ describe("setUser", () => {
       }
     }
 
-    store.dispatch(setUser("auth/loginUnverified", "data"))
+    store.dispatch(setUser())
     mockAxios.mockError(requestError)
-    expect(store.getActions()[1]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction1)
+    expect(store.getActions()[3]).toEqual(expectedAction2)
   })
 
   it("can return an action to set incorrect credentials notification", () => {
     let store = mockStore({})
-    const expectedAction = {
+
+    const expectedAction1 = {
+      type: "SET_LOADER_STATE",
+      payload: false
+    }
+
+    const expectedAction2 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "The username or password you entered was incorrect",
@@ -119,9 +136,10 @@ describe("setUser", () => {
       }
     }
 
-    store.dispatch(setUser("auth/loginFailed", ""))
+    store.dispatch(setUser())
     mockAxios.mockError(requestError)
-    expect(store.getActions()[1]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction1)
+    expect(store.getActions()[3]).toEqual(expectedAction2)
   })
 })
 

@@ -2,26 +2,27 @@ import { post } from '../../axiosRequests/requests'
 import { reset } from 'redux-form'
 import { setNotification } from '../../notifications/actions'
 import { getCategories } from '../../lists/actions'
+import { setLoaderState } from '../../components/actions'
 import history from '../../history'
 
 export const setUser = (endpoint, loginDetails) => {
   return (dispatch) => {
+    dispatch(setLoaderState(true))
     return post(endpoint, loginDetails).then((response) => {
+      dispatch(setLoaderState())
       dispatch(setUserData(response.data.user, response.data.jwt))
       history.push("/")
       dispatch(getCategories("lookup/quizCategories", response.data.jwt))
       dispatch(setNotification(`Welcome back ${response.data.user.forename}`, "loginSuccess", true))
     }).catch((error) => {
+      dispatch(setLoaderState())
       console.log(error.response)
       if(error.response.data){
-        console.log("OK")
         dispatch(reset('loginForm'))
         if(error.response.data === "NOT VERIFIED"){
-          console.log("not verified")
           const verifyMsg = "Your email has not yet been veirified.  You will need to verify your email before you can log in"
           dispatch(setNotification(verifyMsg, "warning", true))
         } else {
-          console.log("else")
           dispatch(setNotification(error.response.data, "error", true));
         }
       }

@@ -46,7 +46,7 @@ describe("setUserReducer", () => {
 
     store.dispatch(setUser("auth/login", "credentials"))
     mockAxios.mockResponse(requestResponse)
-    const newState = setUserReducer(store, store.getActions()[0])
+    const newState = setUserReducer(store, store.getActions()[2])
 
     expect(newState).toEqual(expectedState)
 
