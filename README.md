@@ -10,7 +10,7 @@ This app has been created as a practice project to trial the use of React and Re
 
 The app is now live and has been deployed on Heroku.  You can try it out using the following link: https://quiz-hosting-and-management.herokuapp.com/viewPdf.
 
-I am using the free tier which means that when there has been no activity for a short period of time, the app dyno that serves the app goes to sleep.  Due to this, please bear this in mind when using the app.  If there are any Heroku errors where the app was unable to load, I have found this to be the issue and a refresh will have the app back up and running as the dyno will have started up by then.
+I am using Heroku's free tier which means that when there has been no activity for a short period of time, the app dyno that serves the app goes to sleep.  Due to this, please bear this in mind when using the app.  If there are any Heroku errors where the app was unable to load, I have found this to be the issue and a refresh will have the app back up and running as the dyno will have started up by then.
 
 ### Demo credentials
 
@@ -32,6 +32,8 @@ User the credentials below to try out the app if you do not want to sign up for 
 
 This will run the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+N.B - You will need to make sure the back end is up and running to be able to use the app.  While the front end will load and you will be able to navigate to the login and sign up pages, you will not be able to login or signup unless the back end is running.
 
 ## Technology used
 
