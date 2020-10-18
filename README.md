@@ -8,7 +8,7 @@ This app has been created as a practice project to trial the use of React and Re
 
 ## The live app
 
-The app is now live and has been deployed on Heroku.  You can try it out using the following link: https://quiz-hosting-and-management.herokuapp.com/viewPdf.
+The app is now live and has been deployed on Heroku.  You can try it out using the following link: https://quiz-hosting-and-management.herokuapp.com/.
 
 I am using Heroku's free tier which means that when there has been no activity for a short period of time, the Heroku dyno that serves the app goes to sleep.  Due to this, please bear this in mind when using the app.  If you notice images do not load, a page refresh will have the loading as normal.
 
