@@ -97,7 +97,7 @@ describe("setVerificationProcessStatus", () => {
 
     store.dispatch(setVerficationProcess("auth/verify", {token: "testToken"}))
     mockAxios.mockError(errorResponse);
-    const newState = setVerificationProcessStatus(store, store.getActions()[0])
+    const newState = setVerificationProcessStatus(store, store.getActions()[1])
 
     expect(newState).toEqual(expectedState)
   })

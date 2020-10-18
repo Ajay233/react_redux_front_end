@@ -37,6 +37,7 @@ export const setVerficationProcess = (endpoint, verificationDetails) => {
     return post(endpoint, verificationDetails).then((response) => {
       const successMsg = "Your email has now been verified.  Please log in below to continue."
       history.push("/login")
+      dispatch(setLoaderState())
       dispatch(setNotification(successMsg, "verifySuccess", true, false));
       // dispatch({
       //   type: "SET_VERIFY_PROCESS_STATUS",
@@ -47,6 +48,7 @@ export const setVerficationProcess = (endpoint, verificationDetails) => {
       //   }
       // })
     }).catch((error) => {
+      dispatch(setLoaderState())
       dispatch({
         type: "SET_VERIFY_PROCESS_STATUS",
         payload: {

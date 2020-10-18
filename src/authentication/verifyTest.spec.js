@@ -11,6 +11,7 @@ import mockAxios from 'jest-mock-axios'
 import history from '../history'
 import { setVerficationProcess } from './actions'
 import { setNotification } from '../notifications/actions'
+import { setLoaderState } from '../components/actions'
 
 // jest.mock('./actions')
 // jest.mock('../notifications/actions')
@@ -81,7 +82,8 @@ describe("Verify component", () => {
     const store = mockStore({
       userData: { id: 1, jwt: "jwt" },
       verificationProcess: { completionStatus: "test", token: "test", error: { data: "TOKEN_EXPIRED" } },
-      notificationData: { message: "", type: "", show: false, timed: true }
+      notificationData: { message: "", type: "", show: false, timed: true },
+      globals: { showLoader: false }
     })
 
     history.push("/verify?token=test");
@@ -95,6 +97,7 @@ describe("Verify component", () => {
             notificationData={notificationData}
             setVerficationProcess={setVerficationProcess}
             setNotification={setNotification}
+            setLoaderState={setLoaderState}
           />
         </Router>
       </Provider>
@@ -117,7 +120,8 @@ describe("Verify component", () => {
     const store = mockStore({
       userData: { id: 1, jwt: "jwt" },
       verificationProcess: { completionStatus: "test", token: "test", error: { data: "TOKEN_EXPIRED" } },
-      notificationData: { message: "", type: "", show: false, timed: true }
+      notificationData: { message: "", type: "", show: false, timed: true },
+      globals: { showLoader: false }
     })
 
     history.push("/verify?token=test");
@@ -131,6 +135,7 @@ describe("Verify component", () => {
             notificationData={notificationData}
             setVerficationProcess={setVerficationProcess}
             setNotification={setNotification}
+            setLoaderState={setLoaderState}
           />
         </Router>
       </Provider>
@@ -148,7 +153,8 @@ describe("Verify component", () => {
     const store = mockStore({
       userData: { id: 1, jwt: "jwt" },
       verificationProcess: { completionStatus: "test", token: "test", error: { data: "TOKEN_UNMATCHED" } },
-      notificationData: { message: "", type: "", show: false, timed: true }
+      notificationData: { message: "", type: "", show: false, timed: true },
+      globals: { showLoader: false }
     })
 
     history.push("/verify?token=test");
@@ -162,6 +168,7 @@ describe("Verify component", () => {
             notificationData={notificationData}
             setVerficationProcess={setVerficationProcess}
             setNotification={setNotification}
+            setLoaderState={setLoaderState}
           />
         </Router>
       </Provider>
@@ -179,7 +186,8 @@ describe("Verify component", () => {
     const store = mockStore({
       userData: { id: 1, jwt: "jwt" },
       verificationProcess: { completionStatus: "test", token: "test", error: {} },
-      notificationData: { message: "", type: "", show: false, timed: true }
+      notificationData: { message: "", type: "", show: false, timed: true },
+      globals: { showLoader: false }
     })
 
     history.push("/verify?token=test");
@@ -193,6 +201,7 @@ describe("Verify component", () => {
             notificationData={notificationData}
             setVerficationProcess={setVerficationProcess}
             setNotification={setNotification}
+            setLoaderState={setLoaderState}
           />
         </Router>
       </Provider>

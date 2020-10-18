@@ -33,10 +33,10 @@
   left: 28px;
 }
 
-.signUpLabel {
+.signUpLabel, .resendingLabel {
   left: 20px;
 }
 
-.loginLabel {
+.loginLabel, .verifyingLabel {
   left: 23px;
 }

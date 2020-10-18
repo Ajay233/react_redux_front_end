@@ -154,7 +154,12 @@ describe("setVerficationProcess", () => {
 
     const successMsg = "Your email has now been verified.  Please log in below to continue."
 
-    const expectedAction = {
+    const expectedAction1 = {
+      type: "SET_LOADER_STATE",
+      payload: false
+    }
+
+    const expectedAction2 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: successMsg,
@@ -166,13 +171,19 @@ describe("setVerficationProcess", () => {
 
     store.dispatch(setVerficationProcess("auth/verify", {token: "testToken"}))
     mockAxios.mockResponse();
-    expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[0]).toEqual(expectedAction1)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
   })
 
   it("can create an action to set an error status of the verification process", () => {
     let store = mockStore({})
 
-    const expectedAction = {
+    const expectedAction1 = {
+      type: "SET_LOADER_STATE",
+      payload: false
+    }
+
+    const expectedAction2 = {
       type: "SET_VERIFY_PROCESS_STATUS",
       payload: {
         completionStatus: "not verified",
@@ -191,7 +202,8 @@ describe("setVerficationProcess", () => {
 
     store.dispatch(setVerficationProcess("auth/verifyFailed", {token: "testToken"}))
     mockAxios.mockError(requestError);
-    expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[0]).toEqual(expectedAction1)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
   })
 })
 
