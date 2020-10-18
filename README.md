@@ -10,7 +10,9 @@ This app has been created as a practice project to trial the use of React and Re
 
 The app is now live and has been deployed on Heroku.  You can try it out using the following link: https://quiz-hosting-and-management.herokuapp.com/viewPdf.
 
-I am using Heroku's free tier which means that when there has been no activity for a short period of time, the app dyno that serves the app goes to sleep.  Due to this, please bear this in mind when using the app.  If there are any Heroku errors where the app was unable to load, I have found this to be the issue and a refresh will have the app back up and running as the dyno will have started up by then.
+I am using Heroku's free tier which means that when there has been no activity for a short period of time, the Heroku dyno that serves the app goes to sleep.  Due to this, please bear this in mind when using the app.  If you notice images do not load, a page refresh will have the loading as normal.
+
+N.B - In order to allow users to ry out the email verification 'resend email' feature, I have set verification expiry times for 1 minute so users won't have to wait long to try out resending the token.
 
 ### Demo credentials
 
