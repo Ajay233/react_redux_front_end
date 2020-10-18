@@ -14,7 +14,7 @@ I am using Heroku's free tier which means that when there has been no activity f
 
 ### Demo credentials
 
-User the credentials below to try out the app if you do not want to sign up for an account.  Please note that passwords are encrypted using Bcrypt so they are securely encrypted before they are saved in the database.  You also have the option to delete your account which will permanently delete it from the database.  No information will be held in relation to the account after it's deletion.
+Use the credentials below to try out the app if you do not want to sign up for an account.  If you are worried about signing up for an account, please note that passwords are encrypted using Bcrypt so they are securely encrypted before they are saved in the database and no one will be able to see what the password is.  You also have the option to delete your account which will permanently delete it from the database.  No information will be held in relation to the account after it's deletion.
 
 | Username | Password | Permission level |
 |----------|----------|------------------|
