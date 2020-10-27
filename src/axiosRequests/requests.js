@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { setDefault } from './axiosUtil'
-const url = "https://quiz-manager-api.herokuapp.com"
-// const url = "http://localhost:8080"
+// const url = "https://quiz-manager-api.herokuapp.com"
+const url = "http://localhost:8080"
 
 export const post = (endpoint, data={}, token=null) => {
   setDefault(token, axios);

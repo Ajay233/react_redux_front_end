@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { setNotification } from './actions'
 
 import { timedFunc } from '../utils/display'
-import { isIconRequired, iconPicker } from '../utils/icons'
+import { isIconRequired } from '../utils/icons'
 
 class Notification extends React.Component {
 
@@ -18,6 +18,17 @@ class Notification extends React.Component {
   // decide if timer needs to be applied
   // decide what icon to rende
   // make a close button
+
+  iconPicker = (name) => {
+    switch (name) {
+      case "verifyProcess": return "mail-sent.png";
+      case "verifyResend": return "mail-sent.png";
+      case "permissionRequest": return "mail-sent.png";
+      case "verifySuccess": return "mail-success.png";
+      case "verifyError": return "mail-error.png";
+      default: return null;
+    }
+  }
 
   renderMsg = () => {
     const { setNotification } = this.props;
@@ -41,7 +52,7 @@ class Notification extends React.Component {
         {timed ? null : <span className="close" onClick={this.handleClose}><i className="far fa-times-circle"></i></span>}
         <div className="notificationBody">
           <div className="notificationImg">
-            <img ref={this.imgRef} src={require(`../public/icons/${iconPicker(type)}`)} className={`img ${timed ? "shrinkImg" : ""}`} alt=""/>
+            <img ref={this.imgRef} src={require(`../public/icons/${this.iconPicker(type)}`)} className={`img ${timed ? "shrinkImg" : ""}`} alt=""/>
           </div>
           <div className="notificationText">
             {this.props.notificationData.message}
