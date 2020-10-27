@@ -39,7 +39,11 @@ describe("setUser", () => {
 
     const expectedAction1 = {
       type: "SET_LOADER_STATE",
-      payload: false
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
     }
 
     const expectedAction2 = {
@@ -53,7 +57,6 @@ describe("setUser", () => {
         verified: "true",
         jwt: "jwtString",
         loggedIn: true
-
       }
     }
 
@@ -92,7 +95,11 @@ describe("setUser", () => {
 
     const expectedAction1 = {
       type: "SET_LOADER_STATE",
-      payload: false
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
     }
 
     const expectedAction2 = {
@@ -116,7 +123,11 @@ describe("setUser", () => {
 
     const expectedAction1 = {
       type: "SET_LOADER_STATE",
-      payload: false
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
     }
 
     const expectedAction2 = {
@@ -156,7 +167,11 @@ describe("setVerficationProcess", () => {
 
     const expectedAction1 = {
       type: "SET_LOADER_STATE",
-      payload: false
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
     }
 
     const expectedAction2 = {
@@ -180,7 +195,11 @@ describe("setVerficationProcess", () => {
 
     const expectedAction1 = {
       type: "SET_LOADER_STATE",
-      payload: false
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
     }
 
     const expectedAction2 = {

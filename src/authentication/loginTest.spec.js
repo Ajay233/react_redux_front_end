@@ -28,13 +28,13 @@ describe("Login", () => {
       userData: { id: 1, jwt: "jwt" },
       verificationProcess: { completionStatus: "test", token: "test", error: {} },
       notificationData: { message: "", type: "", show: false, timed: true },
-      globals: { showLoader: false }
+      globals: { loaderState: { show: false } }
     })
 
     const component = renderer.create(
       <Provider store={store}>
         <Router history={history}>
-          <Login globals={{ showLoader: false }}/>
+          <Login globals={{ loaderState: { show: false } }}/>
         </Router>
       </Provider>
     );
@@ -48,13 +48,13 @@ describe("Login", () => {
       userData: { id: 1, jwt: "jwt" },
       verificationProcess: { completionStatus: "test", token: "test", error: {} },
       notificationData: { message: "Username or passord incorrect", type: "error", show: true, timed: true },
-      globals: { showLoader: false }
+      globals: { loaderState: { show: false } }
     })
 
     const component = renderer.create(
       <Provider store={store}>
         <Router history={history}>
-          <Login globals={{ showLoader: false }}/>
+          <Login globals={{ loaderState: { show: false } }}/>
         </Router>
       </Provider>
     );

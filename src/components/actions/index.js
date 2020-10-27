@@ -26,9 +26,13 @@ export const enableDarkMode = () => {
   }
 }
 
-export const setLoaderState = (show=false) => {
+export const setLoaderState = (show=false, message="", label="") => {
   return {
     type: "SET_LOADER_STATE",
-    payload: show
+    payload: {
+      show: show,
+      message: message,
+      label: label
+    }
   }
 }

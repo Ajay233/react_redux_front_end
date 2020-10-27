@@ -68,7 +68,11 @@ describe("reducers", () => {
       globals: {
         url: "",
         enableDarkMode: true,
-        showLoader: false
+        loaderState: {
+          show: false,
+          message: "",
+          label: ""
+        }
       }
     }
     expect(allReducers({}, {type: "INIT"})).toEqual(expectedState)
@@ -98,7 +102,11 @@ describe("reducers", () => {
       globals: {
         url: "",
         enableDarkMode: true,
-        showLoader: false
+        loaderState: {
+          show: false,
+          message: "",
+          label: ""
+        }
       }
     }
 

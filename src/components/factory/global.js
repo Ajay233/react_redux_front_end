@@ -1,5 +1,9 @@
 export const globalVaules = {
   url: "",
   enableDarkMode: true,
-  showLoader: false
+  loaderState: {
+    show: false,
+    message: "",
+    label: ""
+  }
 }

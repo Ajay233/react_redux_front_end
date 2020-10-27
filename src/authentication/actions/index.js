@@ -7,7 +7,7 @@ import history from '../../history'
 
 export const setUser = (endpoint, loginDetails) => {
   return (dispatch) => {
-    dispatch(setLoaderState(true))
+    dispatch(setLoaderState(true, "Logging in", "loginLabel"))
     return post(endpoint, loginDetails).then((response) => {
       dispatch(setLoaderState())
       dispatch(setUserData(response.data.user, response.data.jwt))

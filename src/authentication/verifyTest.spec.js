@@ -83,7 +83,7 @@ describe("Verify component", () => {
       userData: { id: 1, jwt: "jwt" },
       verificationProcess: { completionStatus: "test", token: "test", error: { data: "TOKEN_EXPIRED" } },
       notificationData: { message: "", type: "", show: false, timed: true },
-      globals: { showLoader: false }
+      globals: { loaderState: { show: false } }
     })
 
     history.push("/verify?token=test");
@@ -121,7 +121,7 @@ describe("Verify component", () => {
       userData: { id: 1, jwt: "jwt" },
       verificationProcess: { completionStatus: "test", token: "test", error: { data: "TOKEN_EXPIRED" } },
       notificationData: { message: "", type: "", show: false, timed: true },
-      globals: { showLoader: false }
+      globals: { loaderState: { show: false } }
     })
 
     history.push("/verify?token=test");
@@ -154,7 +154,7 @@ describe("Verify component", () => {
       userData: { id: 1, jwt: "jwt" },
       verificationProcess: { completionStatus: "test", token: "test", error: { data: "TOKEN_UNMATCHED" } },
       notificationData: { message: "", type: "", show: false, timed: true },
-      globals: { showLoader: false }
+      globals: { loaderState: { show: false } }
     })
 
     history.push("/verify?token=test");
@@ -187,7 +187,7 @@ describe("Verify component", () => {
       userData: { id: 1, jwt: "jwt" },
       verificationProcess: { completionStatus: "test", token: "test", error: {} },
       notificationData: { message: "", type: "", show: false, timed: true },
-      globals: { showLoader: false }
+      globals: { loaderState: { show: false } }
     })
 
     history.push("/verify?token=test");

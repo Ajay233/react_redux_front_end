@@ -61,7 +61,12 @@ describe("App", () => {
       showModal: { showModal: false, showModal2: false, showModal3: false },
       lists: { categories: ["", "", "", ""] },
       globals: {
-        enableDarkMode: true
+        enableDarkMode: true,
+        loaderState: {
+          show: false,
+          message: "",
+          label: ""
+        }
       }
     })
   })

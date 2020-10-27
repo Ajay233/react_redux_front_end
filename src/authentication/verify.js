@@ -72,7 +72,7 @@ export class Verify extends React.Component {
     const successMsg = "Token resent to the email provided during signup, please check your email and use the link provided to complete the sign up process";
     console.log(this.props.verificationProcess.token);
     const data = {'userId': 0, 'token': this.props.verificationProcess.token}
-    this.props.setLoaderState(true)
+    this.props.setLoaderState(true, "Resending", "resendingLabel")
     post("auth/resendToken", data).then((response) => {
       this.props.setLoaderState()
       this.props.setNotification(successMsg, "verifyResend", true, false);
@@ -95,7 +95,7 @@ export class Verify extends React.Component {
     console.log("VERIFYING.....")
     let token = this.getToken();
     const verificationDetails = {'userId': 0, 'token': token}
-    this.props.setLoaderState(true)
+    this.props.setLoaderState(true, "Verifying...", "verifyingLabel")
     this.props.setVerficationProcess('auth/verify', verificationDetails);
   }
 
@@ -121,17 +121,21 @@ export class Verify extends React.Component {
     }
   }
 
-  renderVerifyingToken = () => {
-    return this.props.globals.showLoader ? <Loading message="Verifying..." label="verifyingLabel"/> : null
-  }
+  // renderVerifyingToken = () => {
+  //   return this.props.globals.showLoader ? <Loading message="Verifying..." label="verifyingLabel"/> : null
+  // }
+  //
+  // renderGettingToken = () => {
+  //   return this.props.globals.showLoader ? <Loading message="Resending" label="resendingLabel"/> : null
+  // }
 
-  renderGettingToken = () => {
-    return this.props.globals.showLoader ? <Loading message="Resending" label="resendingLabel"/> : null
-  }
+  // renderLoader = () => {
+  //   const { completionStatus } = this.props.verificationProcess
+  //   return completionStatus === "not verified" ? this.renderGettingToken() : this.renderVerifyingToken()
+  // }
 
   renderLoader = () => {
-    const { completionStatus } = this.props.verificationProcess
-    return completionStatus === "not verified" ? this.renderGettingToken() : this.renderVerifyingToken()
+    return this.props.globals.loaderState.show ? <Loading /> : null
   }
 
   render(){

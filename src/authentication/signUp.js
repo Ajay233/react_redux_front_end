@@ -17,7 +17,7 @@ export class SignUp extends React.Component {
   }
 
   renderLoader = () => {
-    return this.props.globals.showLoader ? <Loading message={"Signing Up"} label={'signUpLabel'}/> : null
+    return this.props.globals.loaderState.show ? <Loading /> : null
   }
 
   render(){
