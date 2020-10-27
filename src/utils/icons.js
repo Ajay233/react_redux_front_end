@@ -1,4 +1,4 @@
-export function isIconRequired(name){
+export const isIconRequired = (name) => {
   switch (name) {
     case "verifyProcess": return true;
     case "verifySuccess": return true;
@@ -9,7 +9,7 @@ export function isIconRequired(name){
   }
 }
 
-export function iconPicker(name){
+export const iconPicker = (name) => {
   switch (name) {
     case "verifyProcess": return "mail-sent.png";
     case "verifyResend": return "mail-sent.png";
