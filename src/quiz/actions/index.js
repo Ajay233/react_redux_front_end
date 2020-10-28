@@ -15,7 +15,7 @@ export const setQuiz = (quiz) => {
 
 export const createQuiz = (body, jwt) => {
   return (dispatch) => {
-    dispatch(setLoaderState(true, "Saving..."))
+    dispatch(setLoaderState(true, "Saving...", "saving"))
     return post("quiz/create", body, jwt).then((response) => {
       dispatch(setLoaderState())
       dispatch(setQuiz(response.data));
@@ -36,7 +36,7 @@ export const createQuiz = (body, jwt) => {
 
 export const updateQuiz = (body, jwt) => {
   return (dispatch) => {
-    dispatch(setLoaderState(true, "Saving..."))
+    dispatch(setLoaderState(true, "Saving...", "saving"))
     return put("quiz/update", body, jwt).then((response) => {
       dispatch(setLoaderState())
       dispatch(setQuiz(response.data));
@@ -79,7 +79,7 @@ export const deleteQuiz = (config, jwt) => {
 
 export const updateQuizStatus = (endpoint, data, jwt) => {
   return (dispatch) => {
-    dispatch(setLoaderState(true, "Saving..."))
+    dispatch(setLoaderState(true, "Saving...", "saving"))
     return put(endpoint, data, jwt).then((response) => {
       dispatch(setLoaderState())
       dispatch({

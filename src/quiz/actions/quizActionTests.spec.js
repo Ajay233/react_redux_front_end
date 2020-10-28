@@ -36,7 +36,7 @@ describe("createQuiz", () => {
       payload: {
         show: true,
         message: "Saving...",
-        label: ""
+        label: "saving"
       }
     }
 
@@ -99,7 +99,7 @@ describe("createQuiz", () => {
       payload: {
         show: true,
         message: "Saving...",
-        label: ""
+        label: "saving"
       }
     }
 
@@ -143,7 +143,7 @@ describe("updateQuiz", () => {
       payload: {
         show: true,
         message: "Saving...",
-        label: ""
+        label: "saving"
       }
     }
 
@@ -201,7 +201,7 @@ describe("updateQuiz", () => {
       payload: {
         show: true,
         message: "Saving...",
-        label: ""
+        label: "saving"
       }
     }
 
@@ -375,7 +375,7 @@ describe("updateQuizStatus", () => {
       payload: {
         show: true,
         message: "Saving...",
-        label: ""
+        label: "saving"
       }
     }
 
@@ -434,7 +434,7 @@ describe("updateQuizStatus", () => {
       payload: {
         show: true,
         message: "Saving...",
-        label: ""
+        label: "saving"
       }
     }
 
