@@ -15,19 +15,15 @@ export class Login extends React.Component {
     document.documentElement.scrollTop = 0;
   }
 
-  renderLoader = () => {
-    const { show } = this.props.globals.loaderState
-    return show ? <Loading /> : null
-  }
   // AFTER back end update on login endpoint:
   // update action creator so it sets the correct error notification for incorrect credentials or
   // user has not yet verified their email address
 
   render(){
-    const { setUser } = this.props
+    const { setUser, globals } = this.props
     return(
       <div className="loginContainer">
-        {this.renderLoader()}
+        <Loading loaderState={globals.loaderState}/>
         <div className="login">
         <div className="notificationContainer">
           <Notification />

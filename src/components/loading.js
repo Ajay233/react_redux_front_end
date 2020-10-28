@@ -1,22 +1,29 @@
 import React from 'react'
-import { connect } from 'react-redux'
 
 const Loading = (props) => {
-  const { label, message } = props.globals.loaderState
+
+  const renderLoader = () => {
+    const { show, label, message } = props.loaderState
+    if(show){
+      return(
+        <div className="loadingBackground">
+          <div className="loadingIconContainer">
+            <div className="loadingIcon"></div>
+            <div className={`loadingLabel ${label}`}>{message}</div>
+          </div>
+        </div>
+      );
+    } else {
+      return null
+    }
+  }
+
   return(
-    <div className="loadingBackground">
-      <div className="loadingIconContainer">
-        <div className="loadingIcon"></div>
-        <div className={`loadingLabel ${label}`}>{message}</div>
-      </div>
-    </div>
+    <React.Fragment>
+      {renderLoader()}
+    </React.Fragment>
   );
 }
 
-export const mapStateToProps = (state) => {
-  return {
-    globals: state.globals
-  }
-}
 
-export default connect(mapStateToProps)(Loading)
+export default Loading

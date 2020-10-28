@@ -16,15 +16,11 @@ export class SignUp extends React.Component {
     document.documentElement.scrollTop = 0;
   }
 
-  renderLoader = () => {
-    return this.props.globals.loaderState.show ? <Loading /> : null
-  }
-
   render(){
-    const { setNotification, setLoaderState } = this.props
+    const { setNotification, setLoaderState, globals } = this.props
     return(
       <div className="signupContainer">
-        {this.renderLoader()}
+        <Loading loaderState={globals.loaderState}/>
         <div className="signup">
         <div className="notificationContainer">
           <Notification />

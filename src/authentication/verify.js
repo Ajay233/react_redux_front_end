@@ -121,28 +121,12 @@ export class Verify extends React.Component {
     }
   }
 
-  // renderVerifyingToken = () => {
-  //   return this.props.globals.showLoader ? <Loading message="Verifying..." label="verifyingLabel"/> : null
-  // }
-  //
-  // renderGettingToken = () => {
-  //   return this.props.globals.showLoader ? <Loading message="Resending" label="resendingLabel"/> : null
-  // }
-
-  // renderLoader = () => {
-  //   const { completionStatus } = this.props.verificationProcess
-  //   return completionStatus === "not verified" ? this.renderGettingToken() : this.renderVerifyingToken()
-  // }
-
-  renderLoader = () => {
-    return this.props.globals.loaderState.show ? <Loading /> : null
-  }
-
   render(){
+    const { globals } = this.props
     return(
       <div id="verifyContainer">
         {console.log(this.props.verificationProcess)}
-        {this.renderLoader()}
+        <Loading loaderState={globals.loaderState} />
         <Notification />
         <div id="verifyContent">
           <div id="verifyLogo">
