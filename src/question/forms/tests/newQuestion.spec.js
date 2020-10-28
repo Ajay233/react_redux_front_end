@@ -31,7 +31,8 @@ describe("newQuestion form", () => {
         verified: "true",
         jwt: "testJwt",
         loggedIn: true
-      }
+      },
+      globals: { loaderState: { show: false, message: "", label: "" } }
     })
 
     props = {

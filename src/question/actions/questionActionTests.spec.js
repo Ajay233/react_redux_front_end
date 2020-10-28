@@ -105,11 +105,29 @@ describe("deleteQuestion", () => {
     }
 
     const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Deleting...",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction4 = {
       type: "DELETE_QUESTION",
       payload: { id: 1 }
     }
 
-    const expectedAction3 = {
+    const expectedAction5 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Question deleted",
@@ -132,6 +150,8 @@ describe("deleteQuestion", () => {
     expect(store.getActions()[0]).toEqual(expectedAction)
     expect(store.getActions()[1]).toEqual(expectedAction2)
     expect(store.getActions()[2]).toEqual(expectedAction3)
+    expect(store.getActions()[3]).toEqual(expectedAction4)
+    expect(store.getActions()[4]).toEqual(expectedAction5)
   })
 
   it("should call sessionExpired if the error response status is 403", () => {
@@ -168,6 +188,24 @@ describe("deleteQuestion", () => {
     }
 
     const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Deleting...",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction4 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Error - Unable to delete this question",
@@ -181,6 +219,8 @@ describe("deleteQuestion", () => {
     mockAxios.mockError(requestResponse)
     expect(store.getActions()[0]).toEqual(expectedAction)
     expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
+    expect(store.getActions()[3]).toEqual(expectedAction4)
   })
 })
 
@@ -193,6 +233,24 @@ describe("addQuestion", () => {
     }
 
     const expectedAction = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Saving...",
+        label: "saving"
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
       type: "ADD_QUESTION",
       payload: { id: 1 }
     }
@@ -200,6 +258,8 @@ describe("addQuestion", () => {
     store.dispatch(addQuestion())
     mockAxios.mockResponse(requestResponse)
     expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
   })
 
   it("should call sessionExpired if the error response status is 403", () => {
@@ -226,6 +286,24 @@ describe("addQuestion", () => {
     }
 
     const expectedAction = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Saving...",
+        label: "saving"
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Error - unable to create question with the details provided",
@@ -238,6 +316,8 @@ describe("addQuestion", () => {
     store.dispatch(addQuestion())
     mockAxios.mockError(requestResponse)
     expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
   })
 })
 
@@ -246,16 +326,34 @@ describe("updateQuestion", () => {
     const store = mockStore({})
 
     const expectedAction = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Saving...",
+        label: "saving"
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
       type: "SET_CURRENT_QUESTION",
       payload: { id: 1, questionNumber: 1 }
     }
 
-    const expectedAction2 = {
+    const expectedAction4 = {
       type: "UPDATE_QUESTION",
       payload: { id: 1, questionNumber: 1 }
     }
 
-    const expectedAction3 = {
+    const expectedAction5 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Question updated",
@@ -274,6 +372,8 @@ describe("updateQuestion", () => {
     expect(store.getActions()[0]).toEqual(expectedAction)
     expect(store.getActions()[1]).toEqual(expectedAction2)
     expect(store.getActions()[2]).toEqual(expectedAction3)
+    expect(store.getActions()[3]).toEqual(expectedAction4)
+    expect(store.getActions()[4]).toEqual(expectedAction5)
   })
 
   it("should call sessionExpired if the error response status is 403", () => {
@@ -300,6 +400,24 @@ describe("updateQuestion", () => {
     }
 
     const expectedAction = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Saving...",
+        label: "saving"
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Error - unable to update question",
@@ -312,6 +430,8 @@ describe("updateQuestion", () => {
     store.dispatch(updateQuestion())
     mockAxios.mockError(requestResponse)
     expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
   })
 })
 

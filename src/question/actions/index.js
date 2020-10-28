@@ -4,11 +4,14 @@ import { getAnswers } from '../../answer/actions'
 import { sessionExpired } from '../../utils/session'
 import { setNotification } from '../../notifications/actions'
 import { hideModal } from '../../modal/actions'
+import { setLoaderState } from '../../components/actions'
 import history from '../../history'
 
 export const addQuestion = (body, jwt) => {
   return (dispatch) => {
+    dispatch(setLoaderState(true, "Saving...", "saving"))
     return post("question/create", body, jwt).then((response) => {
+      dispatch(setLoaderState())
       dispatch({
         type: "ADD_QUESTION",
         payload: response.data
@@ -16,6 +19,7 @@ export const addQuestion = (body, jwt) => {
       history.push("/editQuiz");
       dispatch(setNotification("Question created", "success", true));
     }).catch((error) => {
+      dispatch(setLoaderState())
       if(error.response.status === 403){
         sessionExpired(dispatch);
       } else {
@@ -59,7 +63,9 @@ export const getQuestions = (endpoint, param, jwt, startQuiz=false) => {
 
 export const updateQuestion = (body, jwt) => {
   return (dispatch) => {
+    dispatch(setLoaderState(true, "Saving...", "saving"))
     return put("question/update", body, jwt).then((response) => {
+      dispatch(setLoaderState())
       dispatch(setCurrentQuestion(response.data));
       dispatch({
         type: "UPDATE_QUESTION",
@@ -69,6 +75,7 @@ export const updateQuestion = (body, jwt) => {
       dispatch(reset('updateQuestionForm'))
     }).catch((error) => {
       console.log(error.response);
+      dispatch(setLoaderState())
       if(error.response.status === 403){
         sessionExpired(dispatch);
       } else {
@@ -87,8 +94,10 @@ export const setCurrentQuestion = (question) => {
 
 export const deleteQuestion = (config, jwt) => {
   return (dispatch) => {
+    dispatch(hideModal())
+    dispatch(setLoaderState(true, "Deleting..."))
     return del("question/delete", config, jwt).then((response) => {
-      dispatch(hideModal())
+      dispatch(setLoaderState())
       dispatch({
         type: "DELETE_QUESTION",
         payload: config.data[0]
@@ -97,7 +106,7 @@ export const deleteQuestion = (config, jwt) => {
       dispatch(setNotification("Question deleted", "success", true));
     }).catch((error) => {
       console.log(error.response);
-      dispatch(hideModal())
+      dispatch(setLoaderState())
       if(error.response.status === 403){
         sessionExpired(dispatch);
       } else {
@@ -109,8 +118,10 @@ export const deleteQuestion = (config, jwt) => {
 
 export const deleteImage = (config, jwt) => {
   return (dispatch) => {
+    dispatch(hideModal())
+    dispatch(setLoaderState(true, "Deleting..."))
     return del("question/deleteImage", config, jwt).then((response) => {
-      dispatch(hideModal())
+      dispatch(setLoaderState())
       dispatch(setCurrentQuestion(response.data))
       dispatch({
         type: "UPDATE_QUESTION",
@@ -119,7 +130,7 @@ export const deleteImage = (config, jwt) => {
       dispatch(setNotification("Image has been deleted", "success", true))
     }).catch((error) => {
       console.log(error.response);
-      dispatch(hideModal())
+      dispatch(setLoaderState())
       if(error.response.status === 403){
         sessionExpired(dispatch);
       } else {

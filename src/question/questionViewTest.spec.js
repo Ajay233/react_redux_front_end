@@ -52,6 +52,7 @@ describe("QuestionView", () => {
   let answers;
   let currentAnswer;
   let component;
+  let globals;
 
   beforeEach(() => {
     modalState = {
@@ -106,6 +107,8 @@ describe("QuestionView", () => {
       correctAnswer: false
     }
 
+    globals = { loaderState: { show: false, message: "", label: "" } }
+
     store = mockStore({
       userData: {
         forename: "testForename",
@@ -144,6 +147,7 @@ describe("QuestionView", () => {
             hideModal={hideModal}
             setNotification={setNotification}
             deleteQuestion={deleteQuestion}
+            globals={globals}
           />
         </Router>
       </Provider>
@@ -172,6 +176,7 @@ describe("QuestionView", () => {
             hideModal={hideModal}
             setNotification={setNotification}
             deleteQuestion={deleteQuestion}
+            globals={globals}
           />
         </Router>
       </Provider>
@@ -208,6 +213,7 @@ describe("QuestionView", () => {
               setNotification={setNotification}
               deleteQuestion={deleteQuestion}
               sessionExpired={sessionExpired}
+              globals={globals}
             />
           </Router>
         </Provider>
@@ -254,6 +260,7 @@ describe("QuestionView", () => {
               setNotification={setNotification}
               deleteAnswer={deleteAnswer}
               sessionExpired={sessionExpired}
+              globals={globals}
             />
           </Router>
         </Provider>

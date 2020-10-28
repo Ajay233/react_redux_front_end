@@ -6,6 +6,7 @@ import UpdateQuestionForm from './forms/updateQuestion'
 import Notification from '../notifications/notifications'
 import Modal from '../modal/modal'
 import FilePlaceholder from '../components/filePlaceholder'
+import Loading from '../components/loading'
 import history from '../history'
 
 import { setNotification } from '../notifications/actions'
@@ -214,6 +215,7 @@ export class QuestionView extends React.Component {
   render(){
     return(
       <div id="questionView" className="componentContainer">
+        <Loading loaderState={this.props.globals.loaderState}/>
         {this.renderModal()}
         {this.renderBackButton()}
         <Notification />
@@ -243,7 +245,8 @@ export const mapStateToProps = (state) => {
     currentQuestion: state.currentQuestion,
     answers: state.answers,
     currentAnswer: state.currentAnswer,
-    modalState: state.modalState
+    modalState: state.modalState,
+    globals: state.globals
   }
 }
 

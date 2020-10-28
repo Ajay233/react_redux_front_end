@@ -41,7 +41,7 @@ describe("setQuestionsReducer", () => {
     const requestResponse = { status: 200 }
     store.dispatch(deleteQuestion(config, "jwt"))
     mockAxios.mockResponse(requestResponse)
-    const newState = setQuestionsReducer(initialState, store.getActions()[1]);
+    const newState = setQuestionsReducer(initialState, store.getActions()[3]);
     expect(newState).toEqual(expectedState)
   })
 
@@ -58,7 +58,7 @@ describe("setQuestionsReducer", () => {
 
     store.dispatch(addQuestion())
     mockAxios.mockResponse(requestResponse)
-    const newState = setQuestionsReducer(initialState, store.getActions()[0])
+    const newState = setQuestionsReducer(initialState, store.getActions()[2])
     expect(newState).toEqual(expectedState)
   })
 
@@ -70,7 +70,7 @@ describe("setQuestionsReducer", () => {
 
     store.dispatch(updateQuestion())
     mockAxios.mockResponse(requestResponse)
-    const newState = setQuestionsReducer(initialState, store.getActions()[1])
+    const newState = setQuestionsReducer(initialState, store.getActions()[3])
     expect(newState).toEqual(expectedState)
   })
 

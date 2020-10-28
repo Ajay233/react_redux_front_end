@@ -103,13 +103,15 @@ export const updateQuizStatus = (endpoint, data, jwt) => {
 
 export const deleteQuizImage = (config, jwt) => {
   return (dispatch) => {
+    dispatch(hideModal())
+    dispatch(setLoaderState(true, "Deleting..."))
     return del("quiz/deleteImage", config, jwt).then((response) => {
-      dispatch(hideModal())
+      dispatch(setLoaderState())
       dispatch(setQuiz(response.data))
       dispatch(setNotification("Image has been deleted", "success", true))
     }).catch((error) => {
       console.log(error.response);
-      dispatch(hideModal())
+      dispatch(setLoaderState())
       if(error.response.status === 403){
         sessionExpired(dispatch);
       } else {
