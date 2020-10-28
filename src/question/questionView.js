@@ -214,26 +214,28 @@ export class QuestionView extends React.Component {
 
   render(){
     return(
-      <div id="questionView" className="componentContainer">
+      <React.Fragment>
         <Loading loaderState={this.props.globals.loaderState}/>
-        {this.renderModal()}
-        {this.renderBackButton()}
-        <Notification />
-        {this.renderFormOrDetails()}
-        <div className="headerContainer">
-          <div id="answersTitle">Answers</div>
-          {this.renderAddButton()}
+        <div id="questionView" className="componentContainer">
+          {this.renderModal()}
+          {this.renderBackButton()}
+          <Notification />
+          {this.renderFormOrDetails()}
+          <div className="headerContainer">
+            <div id="answersTitle">Answers</div>
+            {this.renderAddButton()}
+          </div>
+          <div id="answerHeadings" className="answerHeadings">
+            <div id="numberHeader">Answer</div>
+            <div id="descriptionHeader">Description</div>
+            <div id="correctAnswerHeading">Correct answer?</div>
+            <div id="optionsHeader"></div>
+          </div>
+          <div id="answers">
+            {this.renderAnswers()}
+          </div>
         </div>
-        <div id="answerHeadings" className="answerHeadings">
-          <div id="numberHeader">Answer</div>
-          <div id="descriptionHeader">Description</div>
-          <div id="correctAnswerHeading">Correct answer?</div>
-          <div id="optionsHeader"></div>
-        </div>
-        <div id="answers">
-          {this.renderAnswers()}
-        </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

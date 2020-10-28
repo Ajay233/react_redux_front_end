@@ -2,6 +2,7 @@ import { get, getUsingParams, del } from '../../axiosRequests/requests';
 import { setNotification } from '../../notifications/actions'
 import { sessionExpired } from '../../utils/session'
 import { hideModal } from '../../modal/actions'
+import { setLoaderState } from '../../components/actions'
 
 export const setQuizes = (quizes) => {
   return {
@@ -31,8 +32,10 @@ export const getAllQuizes = (endpoint, token) => {
 
 export const getQuizSearchResults = (endpoint, data, token, permission, errorMsg) => {
   return (dispatch) => {
+    dispatch(setLoaderState(true, "Searching", "searching"))
     return getUsingParams(endpoint, data, token).then((response) => {
       let filteredQuizList = permission === "USER" ? response.data.filter(quiz => quiz.status === "READY") : response.data;
+      dispatch(setLoaderState())
       dispatch({
         type: "SET_QUIZ_SEARCH_RESULTS",
         payload: filteredQuizList
@@ -42,6 +45,7 @@ export const getQuizSearchResults = (endpoint, data, token, permission, errorMsg
        }
     }).catch((error) => {
       console.log(error.response);
+      dispatch(setLoaderState())
       if(error.response.status === 403){
         sessionExpired(dispatch);
       } else {

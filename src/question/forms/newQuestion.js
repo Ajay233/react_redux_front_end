@@ -71,18 +71,20 @@ class NewQuestionForm extends React.Component {
 
   render(){
     return(
-      <div className="componentContainer">
+      <React.Fragment>
         <Loading loaderState={this.props.globals.loaderState}/>
-        <div className="title-large-spaced">Create a Question</div>
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
-          <Field name="number" component={this.renderInput} label="Question Number:"/>
-          <Field name="description" component={this.renderTextArea} label="Question description:"/>
-          <Field name="file" component={this.renderFileInput} label="Add an image or gif:" />
-          <div className="buttonGroup">
-            <button className="submit">Save</button><Link to="/editQuiz" className="cancel">Cancel</Link>
-          </div>
-        </form>
-      </div>
+        <div className="componentContainer">
+          <div className="title-large-spaced">Create a Question</div>
+          <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
+            <Field name="number" component={this.renderInput} label="Question Number:"/>
+            <Field name="description" component={this.renderTextArea} label="Question description:"/>
+            <Field name="file" component={this.renderFileInput} label="Add an image or gif:" />
+            <div className="buttonGroup">
+              <button className="submit">Save</button><Link to="/editQuiz" className="cancel">Cancel</Link>
+            </div>
+          </form>
+        </div>
+      </React.Fragment>
     );
   }
 }

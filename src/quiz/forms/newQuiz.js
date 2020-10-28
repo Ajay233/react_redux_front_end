@@ -103,11 +103,12 @@ class NewQuizForm extends React.Component {
 
   render(){
     return(
-      <div className="componentContainer">
+      <React.Fragment>
         <Loading loaderState={this.props.globals.loaderState}/>
-        <Notification />
-        <div className="title-large-spaced">Create a Quiz</div>
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
+        <div className="componentContainer">
+          <Notification />
+          <div className="title-large-spaced">Create a Quiz</div>
+          <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
           <Field name="name" component={this.renderInput} label="Quiz name:"/>
           <Field name="description" component={this.renderTextArea} label="Quiz description:"/>
           <Field name="category" component={this.renderSelect} label="Quiz category:">
@@ -118,8 +119,9 @@ class NewQuizForm extends React.Component {
           <div className="buttonGroup">
             <button className="submit">Save and continue</button><Link to="/quizSearch" className="cancel">Cancel</Link>
           </div>
-        </form>
-      </div>
+          </form>
+        </div>
+      </React.Fragment>
     );
   }
 }

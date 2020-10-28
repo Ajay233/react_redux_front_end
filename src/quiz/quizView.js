@@ -266,23 +266,25 @@ export class QuizView extends React.Component {
 
   render(){
     return(
-      <div id="quiz" className="componentContainer">
+      <React.Fragment>
         <Loading loaderState={this.props.globals.loaderState}/>
-        {this.renderModal()}
-        <Notification />
-        {this.renderHeadings()}
-        {this.renderDetailsOrUpdate()}
-        <div className="headerContainer">
-          <div id="questionsTitle">Questions</div>
-          {this.renderAddButton()}
+        <div id="quiz" className="componentContainer">
+          {this.renderModal()}
+          <Notification />
+          {this.renderHeadings()}
+          {this.renderDetailsOrUpdate()}
+          <div className="headerContainer">
+            <div id="questionsTitle">Questions</div>
+            {this.renderAddButton()}
+          </div>
+          <div id="questionHeadings" className="questionHeadings">
+            <div id="questionNumberHeader">Answer</div>
+            <div id="questionDescriptionHeader">Description</div>
+            <div id="questionOptionsHeader"></div>
+          </div>
+          {this.renderQuestions()}
         </div>
-        <div id="questionHeadings" className="questionHeadings">
-          <div id="questionNumberHeader">Answer</div>
-          <div id="questionDescriptionHeader">Description</div>
-          <div id="questionOptionsHeader"></div>
-        </div>
-        {this.renderQuestions()}
-      </div>
+      </React.Fragment>
     );
   }
 }

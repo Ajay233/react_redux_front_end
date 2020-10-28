@@ -146,6 +146,24 @@ describe("getQuizSearchResults", () => {
     }
 
     const expectedAction = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Searching",
+        label: "searching"
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
       type: "SET_QUIZ_SEARCH_RESULTS",
       payload: [
         {id: 1, name: "test1", status: "DRAFT"},
@@ -157,6 +175,8 @@ describe("getQuizSearchResults", () => {
     store.dispatch(getQuizSearchResults("quiz/findByName","data", "jwt", "ADMIN"))
     mockAxios.mockResponse(requestResponse)
     expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
   })
 
   it("should filter out draft reports if requestor has USER permission to set appropriate payload", () => {
@@ -171,6 +191,24 @@ describe("getQuizSearchResults", () => {
     }
 
     const expectedAction = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Searching",
+        label: "searching"
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
       type: "SET_QUIZ_SEARCH_RESULTS",
       payload: [
         {id: 1, name: "test1", status: "READY"},
@@ -181,6 +219,8 @@ describe("getQuizSearchResults", () => {
     store.dispatch(getQuizSearchResults("quiz/findByCategory", "data", "jwt", "USER"))
     mockAxios.mockResponse(requestResponse)
     expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
   })
 
   it("should return an action to set an error notification if the response array is empty", () => {
@@ -195,11 +235,29 @@ describe("getQuizSearchResults", () => {
     }
 
     const expectedAction = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Searching",
+        label: "searching"
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
       type: "SET_QUIZ_SEARCH_RESULTS",
       payload: []
     }
 
-    const expectedAction2 = {
+    const expectedAction4 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "No results were found",
@@ -215,6 +273,8 @@ describe("getQuizSearchResults", () => {
     mockAxios.mockResponse(requestResponse)
     expect(store.getActions()[0]).toEqual(expectedAction)
     expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
+    expect(store.getActions()[3]).toEqual(expectedAction4)
   })
 
   it("should call sessionExpired if a 403 error status is recieved", () => {
@@ -243,6 +303,24 @@ describe("getQuizSearchResults", () => {
     }
 
     const expectedAction = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Searching",
+        label: "searching"
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Error - unable to get quiz list",
@@ -255,6 +333,8 @@ describe("getQuizSearchResults", () => {
     store.dispatch(getQuizSearchResults("error", "data", "jwt", "ADMIN", msg))
     mockAxios.mockError(requestError)
     expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
   })
 })
 

@@ -23,13 +23,15 @@ export class AnswerView extends React.Component {
 
   render(){
     return(
-      <div className="componentContainer">
+      <React.Fragment>
         <Loading loaderState={this.props.globals.loaderState} />
-        <div>
-          <Notification />
+        <div className="componentContainer">
+          <div>
+            <Notification />
+          </div>
+          {this.renderForm()}
         </div>
-        {this.renderForm()}
-      </div>
+      </React.Fragment>
     );
   }
 }

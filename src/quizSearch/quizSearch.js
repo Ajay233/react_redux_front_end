@@ -5,6 +5,7 @@ import QuizSearchByName from './forms/findQuizByName'
 import QuizSearchByCategory from './forms/findQuizByCategory'
 import Notification from '../notifications/notifications'
 import Modal from '../modal/modal'
+import Loading from '../components/loading'
 import { setNotification } from '../notifications/actions'
 import { setQuizes, getQuizSearchResults, deleteQuiz, clearQuizes } from './actions'
 import { getQuestions } from '../question/actions'
@@ -111,9 +112,12 @@ export class QuizSearch extends React.Component {
       showModal2,
       setQuiz,
       getQuestions,
-      setQuizDownloadData
+      setQuizDownloadData,
+      globals
     } = this.props
     return(
+      <React.Fragment>
+      <Loading loaderState={globals.loaderState} />
       <div id="quizSearch" className="componentContainer">
         {this.renderModal()}
         <Notification />
@@ -160,6 +164,7 @@ export class QuizSearch extends React.Component {
           />
         </div>
       </div>
+      </React.Fragment>
     );
   }
 }
@@ -171,7 +176,8 @@ export const mapStateToProps = (state) => {
     quizes: state.quizes,
     quiz: state.quiz,
     lists: state.lists,
-    modalState: state.modalState
+    modalState: state.modalState,
+    globals: state.globals
   }
 }
 

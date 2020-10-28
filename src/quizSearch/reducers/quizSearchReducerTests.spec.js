@@ -89,7 +89,7 @@ describe("", () => {
 
     store.dispatch(getQuizSearchResults("quiz/findByCategory", "data", "jwt", "USER"))
     mockAxios.mockResponse(requestResponse)
-    const newState = setQuizSearchReducer(initialState, store.getActions()[0])
+    const newState = setQuizSearchReducer(initialState, store.getActions()[2])
     expect(newState).toEqual(expectedState)
 
   })

@@ -48,6 +48,7 @@ describe("QuizSearch", () => {
   let userData;
   let lists;
   let quizes;
+  let globals;
 
   beforeEach(() => {
     store = mockStore({
@@ -65,6 +66,8 @@ describe("QuizSearch", () => {
       { id: 2, name: 2, description: "test2", category: "test", status: "READY" }
     ]
 
+    globals = { loaderState: { show: false, message: "", label: "" } }
+
     ReactDOM.createPortal = jest.fn((element, node) => {
       return element
     })
@@ -81,6 +84,7 @@ describe("QuizSearch", () => {
             quizes={quizes}
             clearQuizes={clearQuizes}
             setNotification={setNotification}
+            globals={globals}
           />
         </Router>
       </Provider>
@@ -101,6 +105,7 @@ describe("QuizSearch", () => {
             quizes={emptyQuizes}
             clearQuizes={clearQuizes}
             setNotification={setNotification}
+            globals={globals}
           />
         </Router>
       </Provider>
@@ -130,6 +135,7 @@ describe("QuizSearch", () => {
               hideModal={hideModal}
               deleteQuiz={deleteQuiz}
               setNotification={setNotification}
+              globals={globals}
             />
           </Router>
         </Provider>
@@ -160,6 +166,7 @@ describe("QuizSearch", () => {
               hideModal={hideModal}
               getQuestions={getQuestions}
               setNotification={setNotification}
+              globals={globals}
             />
           </Router>
         </Provider>
