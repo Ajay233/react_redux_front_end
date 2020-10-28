@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Notification from '../notifications/notifications'
 import QuizResults from './quizResults'
 import Modal from '../modal/modal'
-import Loading from '../components/loading.js'
+import StaticLoading from '../components/staticLoading.js'
 
 import { getAllQuizes, deleteQuizFromCategory, clearQuizes } from './actions'
 import { hideModal, showModal, showModal2 } from '../modal/actions'
@@ -160,7 +160,7 @@ export class AllQuizes extends React.Component {
     const { quizes } = this.props;
     if(quizes === null || quizes.length === 0 ){
       return(
-        <Loading message={"Loading..."} type="Loading"/>
+        <StaticLoading message={"Loading..."} />
       );
     } else {
       return(

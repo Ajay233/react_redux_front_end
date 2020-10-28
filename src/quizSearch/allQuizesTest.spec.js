@@ -50,6 +50,7 @@ describe("AllQuizes", () => {
   let modalState;
   let quizes;
   let quiz;
+  let globals;
 
   beforeEach(() => {
     store = mockStore({
@@ -85,7 +86,8 @@ describe("AllQuizes", () => {
         type: "",
         show: false,
         timed: true
-      }
+      },
+      globals: { loaderState: { show: false, message: "", label: "" } }
     })
 
     modalState = { showModal: false, showModal2: false, showModal3: false }
@@ -120,6 +122,8 @@ describe("AllQuizes", () => {
 
     quiz = { id: 1, name: "test", description: "test" }
 
+    globals = { loaderState: { show: false, message: "", label: "" } }
+
     ReactDOM.createPortal = jest.fn((element, node) => {
       return element
     })
@@ -141,6 +145,7 @@ describe("AllQuizes", () => {
           clearQuizes={clearQuizes}
           getAllQuizes={getAllQuizes}
           setNotification={setNotification}
+          globals={globals}
         />
         </Router>
       </Provider>
@@ -165,6 +170,7 @@ describe("AllQuizes", () => {
             clearQuizes={clearQuizes}
             getAllQuizes={getAllQuizes}
             setNotification={setNotification}
+            globals={globals}
           />
         </Router>
       </Provider>
@@ -191,6 +197,7 @@ describe("AllQuizes", () => {
               deleteQuizFromCategory={deleteQuizFromCategory}
               setNotification={setNotification}
               getAllQuizes={getAllQuizes}
+              globals={globals}
             />
           </Router>
         </Provider>
@@ -221,6 +228,7 @@ describe("AllQuizes", () => {
               setNotification={setNotification}
               getQuestions={getQuestions}
               getAllQuizes={getAllQuizes}
+              globals={globals}
             />
           </Router>
         </Provider>
