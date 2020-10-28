@@ -36,7 +36,8 @@ describe("newQuiz form", () => {
         type: "",
         show: false,
         timed: true
-      }
+      },
+      globals: { loaderState: { show: false, message: "", label: "" } }
     })
   })
 

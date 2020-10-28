@@ -49,13 +49,14 @@ describe("Quiz", () => {
   let quiz;
   let userData;
   let questions;
-
+  let globals;
 
   beforeEach(() => {
     store = mockStore({
       lists: { categories: ["Cat1", "Cat2", "Cat3"] },
       notificationData: { message: "", type: "", show: false, timed: true},
-      quiz: { id: 1, name: "test", description: "test" }
+      quiz: { id: 1, name: "test", description: "test" },
+      globals: { loaderState: { show: false, message: "", label: "" } }
     })
 
     allModalsClosed = { showModal: false, showModal2: false, showModal3: false }
@@ -66,6 +67,8 @@ describe("Quiz", () => {
       { id: 1, questionNumber: 1, description: "test" },
       { id: 2, questionNumber: 2, description: "test2" }
     ]
+
+    globals = { loaderState: { show: false, message: "", label: "" } }
 
     ReactDOM.createPortal = jest.fn((element, node) => {
       return element
@@ -83,6 +86,7 @@ describe("Quiz", () => {
             quiz={quiz}
             questions={questions}
             setNotification={setNotification}
+            globals={globals}
           />
         </Router>
       </Provider>
@@ -105,6 +109,7 @@ describe("Quiz", () => {
             quiz={draftQuiz}
             questions={questions}
             setNotification={setNotification}
+            globals={globals}
           />
         </Router>
       </Provider>
@@ -130,6 +135,7 @@ describe("Quiz", () => {
               questions={questions}
               showModal2={showModal2}
               setNotification={setNotification}
+              globals={globals}
             />
           </Router>
         </Provider>
@@ -162,6 +168,7 @@ describe("Quiz", () => {
               hideModal={hideModal}
               deleteQuestion={deleteQuestion}
               setNotification={setNotification}
+              globals={globals}
             />
           </Router>
         </Provider>
@@ -199,6 +206,7 @@ describe("Quiz", () => {
               hideModal={hideModal}
               deleteQuiz={deleteQuiz}
               setNotification={setNotification}
+              globals={globals}
             />
           </Router>
         </Provider>

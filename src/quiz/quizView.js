@@ -5,7 +5,7 @@ import Notification from '../notifications/notifications'
 import Questions from '../question/questions'
 import UpdateQuizForm from './forms/updateQuiz'
 import Modal from '../modal/modal'
-
+import Loading from '../components/loading'
 import { getQuestions, deleteQuestion, setCurrentQuestion } from '../question/actions'
 import { setNotification } from '../notifications/actions'
 import { getAnswers } from '../answer/actions'
@@ -267,6 +267,7 @@ export class QuizView extends React.Component {
   render(){
     return(
       <div id="quiz" className="componentContainer">
+        <Loading loaderState={this.props.globals.loaderState}/>
         {this.renderModal()}
         <Notification />
         {this.renderHeadings()}
@@ -294,7 +295,8 @@ export const mapStateToProps = (state) => {
     currentQuestion: state.currentQuestion,
     modalState: state.modalState,
     lists: state.lists,
-    quizDownloadData: state.quizDownloadData
+    quizDownloadData: state.quizDownloadData,
+    globals: state.globals
   }
 }
 

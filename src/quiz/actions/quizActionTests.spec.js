@@ -30,15 +30,34 @@ describe("setQuiz", () => {
 describe("createQuiz", () => {
   it("should return an action to set the quiz store", () => {
     const store = mockStore({})
+
     const expectedAction = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Saving...",
+        label: ""
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
       type: "SET_QUIZ",
       payload: { id: 1, name: "test" }
     }
-    const expectedAction2 = {
+    const expectedAction4 = {
       type: "CLEAR_QUESTIONS",
       payload: []
     }
-    const expectedAction3 = {
+    const expectedAction5 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Quiz created, but what's a quiz without questions? Add your questions below.",
@@ -55,6 +74,8 @@ describe("createQuiz", () => {
     expect(store.getActions()[0]).toEqual(expectedAction)
     expect(store.getActions()[1]).toEqual(expectedAction2)
     expect(store.getActions()[2]).toEqual(expectedAction3)
+    expect(store.getActions()[3]).toEqual(expectedAction4)
+    expect(store.getActions()[4]).toEqual(expectedAction5)
   })
 
   it("should call the sessionExpired function on a 403 status error", () => {
@@ -74,6 +95,24 @@ describe("createQuiz", () => {
     const store = mockStore({})
 
     const expectedAction = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Saving...",
+        label: ""
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Error - Unable to create quiz",
@@ -90,17 +129,38 @@ describe("createQuiz", () => {
     store.dispatch(createQuiz())
     mockAxios.mockError(requestResponse)
     expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
   })
 })
 
 describe("updateQuiz", () => {
   it("should return an action to set the quiz store", () => {
     const store = mockStore({})
+
     const expectedAction = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Saving...",
+        label: ""
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
       type: "SET_QUIZ",
       payload: { id: 1, name: "test" }
     }
-    const expectedAction2 = {
+    const expectedAction4 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Quiz updated",
@@ -116,6 +176,8 @@ describe("updateQuiz", () => {
     mockAxios.mockResponse(requestResponse)
     expect(store.getActions()[0]).toEqual(expectedAction)
     expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
+    expect(store.getActions()[3]).toEqual(expectedAction4)
   })
 
   it("should call the sessionExpired function on a 403 status error", () => {
@@ -135,6 +197,23 @@ describe("updateQuiz", () => {
     const store = mockStore({})
 
     const expectedAction = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Saving...",
+        label: ""
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+    const expectedAction3 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Error - Unable to update quiz",
@@ -151,6 +230,8 @@ describe("updateQuiz", () => {
     store.dispatch(updateQuiz())
     mockAxios.mockError(requestResponse)
     expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
   })
 })
 
@@ -170,11 +251,29 @@ describe("deleteQuiz", () => {
     }
 
     const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Deleting...",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction4 = {
       type: "DELETE_QUIZ",
       payload: { id: "", name: "", description: "", category: "", status: "" }
     }
 
-    const expectedAction3 = {
+    const expectedAction5 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Quiz deleted",
@@ -188,6 +287,8 @@ describe("deleteQuiz", () => {
     expect(store.getActions()[0]).toEqual(expectedAction)
     expect(store.getActions()[1]).toEqual(expectedAction2)
     expect(store.getActions()[2]).toEqual(expectedAction3)
+    expect(store.getActions()[3]).toEqual(expectedAction4)
+    expect(store.getActions()[4]).toEqual(expectedAction5)
   })
 
   it("should call sessionExpired on error status 403", () => {
@@ -215,6 +316,24 @@ describe("deleteQuiz", () => {
     }
 
     const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Deleting...",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction4 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Error - Unable to delete this quiz",
@@ -227,6 +346,8 @@ describe("deleteQuiz", () => {
     mockAxios.mockError(requestResponse)
     expect(store.getActions()[0]).toEqual(expectedAction)
     expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
+    expect(store.getActions()[3]).toEqual(expectedAction4)
   })
 })
 
@@ -250,6 +371,24 @@ describe("updateQuizStatus", () => {
     }
 
     const expectedAction = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Saving...",
+        label: ""
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
       type: "SET_STATUS",
       payload: {
         id: "1",
@@ -263,6 +402,8 @@ describe("updateQuizStatus", () => {
     store.dispatch(updateQuizStatus("quiz/updateStatus", "quizData", "Jwt"))
     mockAxios.mockResponse(requestResponse)
     expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
   })
 
   it("should call the sessionExpired function", () => {
@@ -289,6 +430,24 @@ describe("updateQuizStatus", () => {
     }
 
     const expectedAction = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Saving...",
+        label: ""
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Error - Unable to update quiz status",
@@ -301,6 +460,7 @@ describe("updateQuizStatus", () => {
     store.dispatch(updateQuizStatus())
     mockAxios.mockError(requestError)
     expect(store.getActions()[0]).toEqual(expectedAction)
-
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
   })
 })

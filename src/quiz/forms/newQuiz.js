@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import Notification from '../../notifications/notifications'
-
+import Loading from '../../components/loading'
 import { setNotification } from '../../notifications/actions'
 import { createQuiz } from '../actions'
 import history from '../../history'
@@ -104,6 +104,7 @@ class NewQuizForm extends React.Component {
   render(){
     return(
       <div className="componentContainer">
+        <Loading loaderState={this.props.globals.loaderState}/>
         <Notification />
         <div className="title-large-spaced">Create a Quiz</div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
@@ -145,7 +146,8 @@ const validate = (formValues) => {
 const mapStateToProps = (state) => {
   return {
     userData: state.userData,
-    lists: state.lists
+    lists: state.lists,
+    globals: state.globals
   }
 }
 

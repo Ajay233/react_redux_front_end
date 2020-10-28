@@ -56,7 +56,7 @@ describe("setQuizReducer", () => {
 
     store.dispatch(deleteQuiz())
     mockAxios.mockResponse(requestResponse)
-    const newState = setQuizReducer(initialState, store.getActions()[1])
+    const newState = setQuizReducer(initialState, store.getActions()[3])
     expect(newState).toEqual(expectedState)
 
   })
@@ -92,7 +92,7 @@ describe("setQuizReducer", () => {
 
     store.dispatch(updateQuizStatus("quiz/updateStatus", "quizData", "Jwt"))
     mockAxios.mockResponse(requestResponse)
-    const newState = setQuizReducer(initialState, store.getActions()[0])
+    const newState = setQuizReducer(initialState, store.getActions()[2])
 
 
     expect(newState).toEqual(expectedState)

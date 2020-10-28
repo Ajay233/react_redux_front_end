@@ -3,6 +3,7 @@ import { setNotification } from '../../notifications/actions'
 import { sessionExpired } from '../../utils/session'
 import { clearQuestions } from '../../question/actions'
 import { hideModal } from '../../modal/actions'
+import { setLoaderState } from '../../components/actions'
 import history from '../../history'
 
 export const setQuiz = (quiz) => {
@@ -14,13 +15,16 @@ export const setQuiz = (quiz) => {
 
 export const createQuiz = (body, jwt) => {
   return (dispatch) => {
+    dispatch(setLoaderState(true, "Saving..."))
     return post("quiz/create", body, jwt).then((response) => {
+      dispatch(setLoaderState())
       dispatch(setQuiz(response.data));
       dispatch(clearQuestions());
       history.push("/editQuiz");
       dispatch(setNotification("Quiz created, but what's a quiz without questions? Add your questions below.", "success", true));
     }).catch((error) => {
       console.log(error.response);
+      dispatch(setLoaderState())
       if(error.response.status === 403){
         sessionExpired(dispatch);
       } else {
@@ -32,11 +36,14 @@ export const createQuiz = (body, jwt) => {
 
 export const updateQuiz = (body, jwt) => {
   return (dispatch) => {
+    dispatch(setLoaderState(true, "Saving..."))
     return put("quiz/update", body, jwt).then((response) => {
+      dispatch(setLoaderState())
       dispatch(setQuiz(response.data));
       dispatch(setNotification("Quiz updated", "success", true));
     }).catch((error) => {
       console.log(error.response);
+      dispatch(setLoaderState())
       if(error.response.status === 403){
         sessionExpired(dispatch);
       } else {
@@ -48,8 +55,10 @@ export const updateQuiz = (body, jwt) => {
 
 export const deleteQuiz = (config, jwt) => {
   return (dispatch) => {
+    dispatch(hideModal())
+    dispatch(setLoaderState(true, "Deleting..."))
     return del("quiz/delete", config, jwt).then((response) => {
-      dispatch(hideModal())
+      dispatch(setLoaderState())
       dispatch({
         type: "DELETE_QUIZ",
         payload: { id: "", name: "", description: "", category: "", status: "" }
@@ -58,7 +67,7 @@ export const deleteQuiz = (config, jwt) => {
       dispatch(setNotification("Quiz deleted", "success", true))
     }).catch((error) => {
       console.log(error.response)
-      dispatch(hideModal())
+      dispatch(setLoaderState())
       if(error.response.status === 403){
         sessionExpired(dispatch);
       } else {
@@ -70,8 +79,9 @@ export const deleteQuiz = (config, jwt) => {
 
 export const updateQuizStatus = (endpoint, data, jwt) => {
   return (dispatch) => {
-
+    dispatch(setLoaderState(true, "Saving..."))
     return put(endpoint, data, jwt).then((response) => {
+      dispatch(setLoaderState())
       dispatch({
         type: "SET_STATUS",
         payload: response.data
@@ -79,6 +89,7 @@ export const updateQuizStatus = (endpoint, data, jwt) => {
       dispatch(setNotification(`Quiz status updated to - ${response.data.status}`, "success", true))
     }).catch((error) => {
       console.log(error.response)
+      dispatch(setLoaderState())
       if(error.response.status === 403){
         sessionExpired(dispatch);
       } else if(error.response.status === 400){
