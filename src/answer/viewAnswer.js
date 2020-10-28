@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import UpdateAnswerForm from './forms/updateAnswer'
 import NewAnswerForm from './forms/newAnswer'
 import Notification from '../notifications/notifications'
+import Loading from '../components/loading'
 import { setNotification } from '../notifications/actions'
 import history from '../history'
 
@@ -23,6 +24,7 @@ export class AnswerView extends React.Component {
   render(){
     return(
       <div className="componentContainer">
+        <Loading loaderState={this.props.globals.loaderState} />
         <div>
           <Notification />
         </div>
@@ -35,7 +37,8 @@ export class AnswerView extends React.Component {
 export const mapStateToProps = (state) => {
   return {
     userData: state.userData,
-    currentAnswer: state.currentAnswer
+    currentAnswer: state.currentAnswer,
+    globals: state.globals
   }
 }
 

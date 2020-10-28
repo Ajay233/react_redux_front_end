@@ -94,11 +94,29 @@ describe("deleteAnswer", () => {
     }
 
     const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Deleting...",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction4 = {
       type: "DELETE_ANSWER",
       payload: {answerIndex: 1, description: "answer"}
     }
 
-    const expectedAction3 = {
+    const expectedAction5 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Answer deleted",
@@ -117,6 +135,8 @@ describe("deleteAnswer", () => {
     expect(store.getActions()[0]).toEqual(expectedAction)
     expect(store.getActions()[1]).toEqual(expectedAction2)
     expect(store.getActions()[2]).toEqual(expectedAction3)
+    expect(store.getActions()[3]).toEqual(expectedAction4)
+    expect(store.getActions()[4]).toEqual(expectedAction5)
   })
 
   it("should call session expired on error status: 403", () => {
@@ -153,6 +173,24 @@ describe("deleteAnswer", () => {
     }
 
     const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Deleting...",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction4 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Error - Unable to delete this answer",
@@ -166,6 +204,8 @@ describe("deleteAnswer", () => {
     mockAxios.mockError(requestResponse)
     expect(store.getActions()[0]).toEqual(expectedAction)
     expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
+    expect(store.getActions()[3]).toEqual(expectedAction4)
   })
 })
 
@@ -179,11 +219,31 @@ describe("addAnswer", () => {
     }
 
     const expectedAction = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Saving...",
+        label: "saving"
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
       type: "ADD_ANSWER",
       payload: answer
     }
 
-    const expectedAction2 = {
+
+
+    const expectedAction4 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Answer created",
@@ -197,6 +257,8 @@ describe("addAnswer", () => {
     mockAxios.mockResponse(requestResponse)
     expect(store.getActions()[0]).toEqual(expectedAction)
     expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
+    expect(store.getActions()[3]).toEqual(expectedAction4)
   })
 
   it("should call session expired on error status: 403", () => {
@@ -225,6 +287,24 @@ describe("addAnswer", () => {
     }
 
     const expectedAction = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Saving...",
+        label: "saving"
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Error - unable to create answer",
@@ -237,6 +317,8 @@ describe("addAnswer", () => {
     store.dispatch(addAnswer())
     mockAxios.mockError(requestResponse)
     expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
   })
 })
 
@@ -250,11 +332,29 @@ describe("updateAnswer", () => {
     }
 
     const expectedAction = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Saving...",
+        label: "saving"
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
       type: "UPDATE_ANSWER",
       payload: answer
     }
 
-    const expectedAction2 = {
+    const expectedAction4 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Answer updated",
@@ -267,35 +367,37 @@ describe("updateAnswer", () => {
     mockAxios.mockResponse(requestResponse)
     expect(store.getActions()[0]).toEqual(expectedAction)
     expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
+    expect(store.getActions()[3]).toEqual(expectedAction4)
   })
 
-  it("should return an action to update an answer", () => {
-    const answer = {answerIndex: 1, description: "answer"}
-    let store = mockStore({})
-
-    const requestResponse = {
-      data: [answer]
-    }
-
-    const expectedAction = {
-      type: "UPDATE_ANSWER",
-      payload: answer
-    }
-
-    const expectedAction2 = {
-      type: "SET_NOTIFICATION",
-      payload: {
-        message: "Answer updated",
-        type: "success",
-        show: true,
-        timed: true
-      }
-    }
-    store.dispatch(updateAnswer())
-    mockAxios.mockResponse(requestResponse)
-    expect(store.getActions()[0]).toEqual(expectedAction)
-    expect(store.getActions()[1]).toEqual(expectedAction2)
-  })
+  // it("should return an action to update an answer", () => {
+  //   const answer = {answerIndex: 1, description: "answer"}
+  //   let store = mockStore({})
+  //
+  //   const requestResponse = {
+  //     data: [answer]
+  //   }
+  //
+  //   const expectedAction = {
+  //     type: "UPDATE_ANSWER",
+  //     payload: answer
+  //   }
+  //
+  //   const expectedAction2 = {
+  //     type: "SET_NOTIFICATION",
+  //     payload: {
+  //       message: "Answer updated",
+  //       type: "success",
+  //       show: true,
+  //       timed: true
+  //     }
+  //   }
+  //   store.dispatch(updateAnswer())
+  //   mockAxios.mockResponse(requestResponse)
+  //   expect(store.getActions()[0]).toEqual(expectedAction)
+  //   expect(store.getActions()[1]).toEqual(expectedAction2)
+  // })
 
   it("should call session expired on error status 403", () => {
     let store = mockStore({})
@@ -322,6 +424,24 @@ describe("updateAnswer", () => {
     }
 
     const expectedAction = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: true,
+        message: "Saving...",
+        label: "saving"
+      }
+    }
+
+    const expectedAction2 = {
+      type: "SET_LOADER_STATE",
+      payload: {
+        show: false,
+        message: "",
+        label: ""
+      }
+    }
+
+    const expectedAction3 = {
       type: "SET_NOTIFICATION",
       payload: {
         message: "Error - unable to update answer",
@@ -333,5 +453,7 @@ describe("updateAnswer", () => {
     store.dispatch(updateAnswer())
     mockAxios.mockError(requestResponse)
     expect(store.getActions()[0]).toEqual(expectedAction)
+    expect(store.getActions()[1]).toEqual(expectedAction2)
+    expect(store.getActions()[2]).toEqual(expectedAction3)
   })
 })

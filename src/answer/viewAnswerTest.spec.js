@@ -28,6 +28,7 @@ describe("mapStateToProps", () => {
 describe("AnswerView", () => {
   it("should render the NewAnswerForm", () => {
     const userData = { id: 1, jwt: "jwt", loggedIn: true }
+    const globals = { loaderState: { show: false, message: "", label: "" } }
     const store = mockStore({
       notificationData: {
         message: "",
@@ -40,7 +41,7 @@ describe("AnswerView", () => {
     const component = renderer.create(
       <Provider store={store}>
       <Router history={history}>
-        <AnswerView setNotification={setNotification} userData={userData}/>
+        <AnswerView setNotification={setNotification} userData={userData} globals={globals} />
       </Router>
       </Provider>
     )
@@ -50,6 +51,7 @@ describe("AnswerView", () => {
 
   it("should render the UpdateAnswerForm", () => {
     const userData = { id: 1, jwt: "jwt", loggedIn: true }
+    const globals = { loaderState: { show: false, message: "", label: "" } }
     const store = mockStore({
       notificationData: {
         message: "",
@@ -68,7 +70,7 @@ describe("AnswerView", () => {
     const component = renderer.create(
       <Provider store={store}>
       <Router history={history}>
-        <AnswerView setNotification={setNotification} userData={userData}/>
+        <AnswerView setNotification={setNotification} userData={userData} globals={globals} />
       </Router>
       </Provider>
     )
