@@ -32,7 +32,13 @@ describe("newQuestion form", () => {
         jwt: "testJwt",
         loggedIn: true
       },
-      globals: { loaderState: { show: false, message: "", label: "" } }
+      globals: { loaderState: { show: false, message: "", label: "" } },
+      notificationData:{
+        message: "",
+        type: "",
+        show: false,
+        timed: true
+      }
     })
 
     props = {

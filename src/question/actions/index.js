@@ -22,6 +22,8 @@ export const addQuestion = (body, jwt) => {
       dispatch(setLoaderState())
       if(error.response.status === 403){
         sessionExpired(dispatch);
+      } else if(error.response.status === 500 && error.response.data.message.includes("Maximum upload size exceeded")) {
+        dispatch(setNotification("Error - Image exceeds the maximum size of 1040KB", "error", true));
       } else {
         console.log(error.response);
         dispatch(setNotification("Error - unable to create question with the details provided", "error", true))
@@ -78,6 +80,8 @@ export const updateQuestion = (body, jwt) => {
       dispatch(setLoaderState())
       if(error.response.status === 403){
         sessionExpired(dispatch);
+      } else if(error.response.status === 500 && error.response.data.message.includes("Maximum upload size exceeded")) {
+        dispatch(setNotification("Error - Image exceeds the maximum size of 1040KB", "error", true));
       } else {
         dispatch(setNotification("Error - unable to update question", "error", true))
       }

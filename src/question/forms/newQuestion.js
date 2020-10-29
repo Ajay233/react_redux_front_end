@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { addQuestion } from '../actions'
 import { setNotification } from '../../notifications/actions'
+import Notification from '../../notifications/notifications'
 import Loading from '../../components/loading'
 import history from '../../history'
 
@@ -74,6 +75,7 @@ class NewQuestionForm extends React.Component {
       <React.Fragment>
         <Loading loaderState={this.props.globals.loaderState}/>
         <div className="componentContainer">
+        <Notification />
           <div className="title-large-spaced">Create a Question</div>
           <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-centered">
             <Field name="number" component={this.renderInput} label="Question Number:"/>

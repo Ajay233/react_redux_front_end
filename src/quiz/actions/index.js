@@ -27,6 +27,8 @@ export const createQuiz = (body, jwt) => {
       dispatch(setLoaderState())
       if(error.response.status === 403){
         sessionExpired(dispatch);
+      } else if(error.response.status === 500 && error.response.data.message.includes("Maximum upload size exceeded")) {
+        dispatch(setNotification("Error - Image exceeds the maximum size of 1040KB", "error", true));
       } else {
         dispatch(setNotification("Error - Unable to create quiz", "error", true));
       }
@@ -46,6 +48,8 @@ export const updateQuiz = (body, jwt) => {
       dispatch(setLoaderState())
       if(error.response.status === 403){
         sessionExpired(dispatch);
+      } else if(error.response.status === 500 && error.response.data.message.includes("Maximum upload size exceeded")) {
+        dispatch(setNotification("Error - Image exceeds the maximum size of 1040KB", "error", true));
       } else {
         dispatch(setNotification("Error - Unable to update quiz", "error", true));
       }
