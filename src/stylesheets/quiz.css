@@ -85,6 +85,10 @@
   width: 47%;
 }
 
+.quizImgPlaceholder {
+  margin-top: 20px;
+}
+
 .detailsContainer {
   display: flex;
   width: 50%;

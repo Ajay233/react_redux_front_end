@@ -139,7 +139,7 @@ export class QuestionView extends React.Component {
   }
 
   renderPlaceholder = (imgUrl, permission) => {
-    if(imgUrl === null && permission !== "ADMIN" && permission !== "SUPER-USER"){
+    if(imgUrl === null && permission !== "SUPER-USER"){
       return(
         <div className="questionImageArea">
         <FilePlaceholder type={'question'} permission={permission}/>

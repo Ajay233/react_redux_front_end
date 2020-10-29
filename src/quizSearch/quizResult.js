@@ -45,7 +45,7 @@ export const QuizResult = (props) => {
       }
     } else if((quiz.authorId === userId && permission === "ADMIN") || permission === "SUPER-USER") {
       return renderEdit()
-    } else if(permission === 'READ-ONLY') {
+    } else if(permission !== 'USER') {
       return renderView()
     } else {
       return null
@@ -53,13 +53,7 @@ export const QuizResult = (props) => {
   }
 
   const renderDelete = (permission, quiz, userId) => {
-    if (quiz.status === 'READY'){
-      if (quiz.authorId === userId || permission === "SUPER-USER"){
-        return deleteButton()
-      } else {
-        return null
-      }
-    } else if(permission === "SUPER-USER") {
+    if (quiz.authorId === userId || permission === "SUPER-USER"){
       return deleteButton()
     } else {
       return null

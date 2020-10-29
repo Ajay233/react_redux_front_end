@@ -17,7 +17,7 @@ const FilePlaceholder = (props) => {
   }
 
   return(
-    <div className="imgPlaceholderContainer">
+    <div className={`${props.size === 'largePlaceholder' ? "largeImgPlaceholderContainer" : "imgPlaceholderContainer"}`}>
       <div className="placeholderImgContainer">
         <div className="placeholderImg">
           <i className="fas fa-photo-video"></i>

@@ -5,6 +5,7 @@ import Notification from '../notifications/notifications'
 import Questions from '../question/questions'
 import UpdateQuizForm from './forms/updateQuiz'
 import Modal from '../modal/modal'
+import FilePlaceholder from '../components/filePlaceholder'
 import Loading from '../components/loading'
 import { getQuestions, deleteQuestion, setCurrentQuestion } from '../question/actions'
 import { setNotification } from '../notifications/actions'
@@ -107,8 +108,8 @@ export class QuizView extends React.Component {
   renderDetails = () => {
     const { description, category, imgUrl, name, author } = this.props.quiz
     return(
-      <div className={imgUrl !== null ? 'quizFormArea' : ''}>
-        <div className={imgUrl !== null ? 'quizForm' : ''}>
+      <div className={'quizFormArea'}>
+        <div className={'quizForm'}>
           <div>
           <div id="quizTitle">{name}</div>
           <div className={imgUrl !== null ? "detailsContainerLarge" : "detailsContainer"}>
@@ -128,9 +129,17 @@ export class QuizView extends React.Component {
           </div>
           </div>
         </div>
-        {imgUrl !== null ? this.renderImg() : null}
+        {imgUrl !== null ? this.renderImg() : this.renderPlaceholder(this.props.userData.permission)}
       </div>
     );
+  }
+
+  renderPlaceholder = (permission) => {
+      return(
+        <div className="quizImageArea">
+          <FilePlaceholder permission={permission} size={"largePlaceholder"}/>
+        </div>
+      );
   }
 
   renderQuizImage = () => {
